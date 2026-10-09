@@ -51,6 +51,9 @@ def main():
         from .news import fetch_headlines
         headlines = fetch_headlines()
     plan = script.build_script(headlines)
+    print(f"Başlık: {plan['title']}")
+    for seg in plan["segments"]:
+        print(f"  [{seg['kind']}] {seg['text']}")
 
     parts = []
     for i, seg in enumerate(plan["segments"]):

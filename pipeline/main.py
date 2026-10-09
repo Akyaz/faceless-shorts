@@ -9,7 +9,7 @@ import subprocess
 from datetime import date
 from pathlib import Path
 
-from . import render, script
+from . import images, render, script
 
 
 def _offline_audio(text, out_path):
@@ -29,7 +29,9 @@ def build_metadata(plan):
     title = f"{plan['title']} | {date.today().strftime('%d.%m.%Y')} #shorts"
     return {
         "title": title[:100],
-        "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n\n#gündem #haber #shorts",
+        "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n"
+                       + (f"\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
+                       + "\n#gündem #haber #shorts",
         "tags": ["gündem", "haber", "son dakika", "türkiye", "shorts"],
     }
 
@@ -38,6 +40,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -55,6 +58,16 @@ def main():
     for seg in plan["segments"]:
         print(f"  [{seg['kind']}] {seg['text']}")
 
+    background, credit = None, None
+    if not args.offline and (plan.get("image_query") or plan.get("image_prompt")):
+        background = work / "background.png"
+        credit = images.find_background(plan, background)
+        if not credit:
+            background = None
+    elif args.offline and args.background:
+        background = args.background
+    plan["image_credit"] = credit
+
     parts = []
     for i, seg in enumerate(plan["segments"]):
         audio = work / f"seg{i}.mp3"
@@ -65,7 +78,7 @@ def main():
             words = synthesize(seg["text"], audio)
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
-        render.draw_card(seg, i, card)
+        render.draw_card(seg, i, card, background)
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
         render.render_segment(card, audio, ass, part)

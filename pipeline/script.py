@@ -54,16 +54,25 @@ def _generate(prompt, key):
 
 
 def story_script(headline):
+    related = "\n".join(f"- {r}" for r in headline.get("related", [])[:8]) or "- (yok)"
     prompt = (
-        "Aşağıdaki Türkçe haber başlığından YouTube Shorts için 35-45 saniyelik, "
-        "özgün ve tarafsız bir anlatım metni yaz. İlk cümle merak uyandıran bir kanca olsun. "
-        "Başlıkta olmayan bilgi uydurma; emin olmadığın ayrıntıyı ekleme. "
-        "Sadece JSON döndür: {\"title\": \"...\", \"paragraphs\": [\"...\", \"...\"]}\n\n"
-        f"Başlık: {headline['title']}\nKaynak: {headline['source']}"
+        "YouTube Shorts için Türkçe, tarafsız bir haber anlatımı yaz (35-40 saniye, yaklaşık 90-110 kelime, "
+        "3-4 paragraf). İlk cümle merak uyandıran bir kanca olsun.\n"
+        "KESİN KURAL: Yalnızca aşağıdaki başlıklarda geçen bilgileri kullan. Başlıklarda olmayan hiçbir "
+        "tarih, kurum, rakam, yer veya isim ekleme. Bilgi azsa konuyu genel çerçevede açıkla ve "
+        "izleyiciye ne beklemesi gerektiğini söyle; uydurma.\n"
+        "Ayrıca arka plan görseli için:\n"
+        "- image_query: Wikimedia Commons'ta aranacak 2-4 kelimelik İngilizce anahtar (yer, nesne veya kurum; "
+        "kişi adı değil). Örn: \"smartphone social media\", \"Istanbul Bosphorus\".\n"
+        "- image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen, dikey bir illüstrasyon tarifi (İngilizce).\n"
+        "Sadece JSON döndür: {\"title\": \"...\", \"paragraphs\": [\"...\"], "
+        "\"image_query\": \"...\", \"image_prompt\": \"...\"}\n\n"
+        f"Ana başlık: {headline['title']} ({headline['source']})\nAynı haberin diğer kaynaklardaki başlıkları:\n{related}"
     )
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
-    return {"title": out["title"], "segments": segments, "sources": [headline]}
+    return {"title": out["title"], "segments": segments, "sources": [headline],
+            "image_query": out.get("image_query", ""), "image_prompt": out.get("image_prompt", "")}
 
 
 def build_script(headlines):

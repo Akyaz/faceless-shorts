@@ -15,8 +15,7 @@ def _font_path(bold=True):
                           capture_output=True, text=True, check=True).stdout
 
 
-def draw_card(segment, idx, out_path):
-    accent = ACCENTS[idx % len(ACCENTS)]
+def _gradient(accent):
     img = Image.new("RGB", (W, H))
     px = img.load()
     for y in range(H):  # koyu dikey degrade, üstte vurgu renginin izi
@@ -24,6 +23,22 @@ def draw_card(segment, idx, out_path):
         r, g, b = (int(c * 0.35 * (1 - t) + 12 * t) for c in accent)
         for x in range(W):
             px[x, y] = (r, g, b)
+    return img
+
+
+def _photo(path):
+    """Görseli 9:16'ya kırpar ve altyazı okunsun diye karartır."""
+    src = Image.open(path).convert("RGB")
+    scale = max(W / src.width, H / src.height)
+    src = src.resize((round(src.width * scale), round(src.height * scale)), Image.LANCZOS)
+    left, top = (src.width - W) // 2, (src.height - H) // 2
+    img = src.crop((left, top, left + W, top + H))
+    return Image.blend(img, Image.new("RGB", (W, H)), 0.5)
+
+
+def draw_card(segment, idx, out_path, background=None):
+    accent = ACCENTS[idx % len(ACCENTS)]
+    img = _photo(background) if background else _gradient(accent)
 
     d = ImageDraw.Draw(img)
     bold = ImageFont.truetype(_font_path(True), 56)
@@ -38,7 +53,8 @@ def draw_card(segment, idx, out_path):
     if segment["kind"] == "headline":
         d.text((W / 2, 520), f"{segment['index']}/{segment['total']}", font=big, fill="white", anchor="mm")
     if segment.get("source"):
-        d.text((W / 2, 1560), f"Kaynak: {segment['source']}", font=regular, fill=(220, 220, 220), anchor="mm")
+        d.text((W / 2, 1560), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
+               anchor="mm", stroke_width=3, stroke_fill="black")
     img.save(out_path)
 
 

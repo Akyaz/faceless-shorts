@@ -20,7 +20,7 @@ def digest_script(headlines, count=3):
 
 def story_script(headline):
     key = os.environ["GEMINI_API_KEY"]
-    model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
     prompt = (
         "Aşağıdaki Türkçe haber başlığından YouTube Shorts için 35-45 saniyelik, "
         "özgün ve tarafsız bir anlatım metni yaz. İlk cümle merak uyandıran bir kanca olsun. "
@@ -32,9 +32,10 @@ def story_script(headline):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"responseMimeType": "application/json"},
     }).encode()
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
+                                                          "x-goog-api-key": key})
+    with urllib.request.urlopen(req, timeout=180) as resp:
         data = json.load(resp)
     out = json.loads(data["candidates"][0]["content"]["parts"][0]["text"])
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
@@ -43,5 +44,8 @@ def story_script(headline):
 
 def build_script(headlines):
     if os.environ.get("GEMINI_API_KEY"):
-        return story_script(headlines[0])
+        try:
+            return story_script(headlines[0])
+        except Exception as exc:  # dil modeli düşerse o günün videosu yine çıksın
+            print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
     return digest_script(headlines)

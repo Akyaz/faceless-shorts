@@ -84,27 +84,53 @@ def gemini_illustration(prompt, out_path):
     return None
 
 
-SELECT_RULES = """Bir haber videosunun arka planı için temsili fotoğraf seçiyorsun. Aşağıda aday fotoğrafların dosya adı
-ve açıklaması var. Haberin konusunu anlatan fotoğrafları seç; konuyla ilgili genel bir fotoğraf da uygundur
-(örnek: hızlı tren haberi için herhangi bir modern hızlı tren, deprem haberi için bir sismograf).
-Seçme: konuyla ilgisiz olanlar; başka bir olaya ait olduğu açıkça belli olanlar (örnek: başka bir depremin yıkımı);
-harita, grafik, tablo, logo, belge ve yazı ağırlıklı görseller; siyah beyaz ya da eski tarihli fotoğraflar;
-tek bir kişinin yakın portresi.
-Birbirinden farklı görünen 3-5 aday seçmeye çalış; haberin geçtiği yere ait olanları öne al.
+SELECT_RULES = """Bir haber videosunun arka planı için fotoğraf seçiyorsun. Aşağıda numaralı adayların dosya adı ve
+açıklaması, ardından aynı sırayla fotoğrafların kendisi var. Fotoğrafa bakarak karar ver.
+
+Seç: haberin geçtiği yeri, kurumu ya da haberin konusu olan nesneyi açıkça gösteren, net ve iyi çekilmiş fotoğraflar.
+Yeri belli olmayan yakın plan nesne fotoğrafı da uygundur (örnek: sigara haberi için sigara paketi).
+
+Seçme:
+- Konuyla ilgisi zayıf olanlar. Emin değilsen seçme; az ama doğru görsel, çok ama alakasız görselden iyidir.
+- Haberin geçtiği yerden başka bir ülke ya da şehre ait olduğu fotoğraftan veya açıklamadan anlaşılan sokak, bina
+  ve şehir görüntüleri (örnek: İstanbul haberi için Helsinki sokağı, Budapeşte trafiği).
+- Başka bir olaya ait olduğu belli olanlar (örnek: başka bir depremin yıkımı).
+- Harita, grafik, tablo, logo, belge, ekran görüntüsü ve yazı ağırlıklı görseller.
+- Siyah beyaz ya da eski tarihli, bulanık, karanlık ya da özensiz çekilmiş fotoğraflar.
+- Bir kişinin yüzünün öne çıktığı fotoğraflar.
+- Dikey videoda ortası kırpılınca konusu kadraj dışında kalacak fotoğraflar.
+
+Birbirinden farklı görünenleri tercih et; haberin geçtiği yere ait olanları öne al. En fazla 5 aday seç.
+Tam uyan hiç aday yoksa boş dönme: yeri belli olmayan ve konuyu genel olarak anlatan en uygun 2 adayı ver.
 Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1, 7]}
 """
+PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
+
+
+def _preview(url):
+    small = re.sub(r"/\d+px-", f"/{PREVIEW_WIDTH}px-", url)
+    req = urllib.request.Request(small, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read()
 
 
 def _select(plan, candidates):
-    """Adayları dil modeline eleme için verir; model yoksa ya da yanıt vermezse None döner."""
+    """Adayları dil modeline gösterip eletir; model yoksa ya da yanıt vermezse None döner."""
     if not os.environ.get("GEMINI_API_KEY"):
         return None
-    listing = "\n".join(f"{i}. {c['about']}" for i, c in enumerate(candidates, 1))
+    shown, previews = [], []
+    for cand in candidates:
+        try:
+            previews.append(_preview(cand["url"]))
+            shown.append(cand)
+        except Exception as exc:
+            print(f"Önizleme alınamadı: {exc}")
+    listing = "\n".join(f"{i}. {c['about']}" for i, c in enumerate(shown, 1))
     prompt = f"{SELECT_RULES}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
-        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"]))["pick"]
-        print(f"Görsel seçimi: {picks}")
-        return [candidates[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(candidates)]
+        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews))["pick"]
+        print(f"Görsel seçimi: {picks} ({len(shown)} aday içinden)")
+        return [shown[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(shown)]
     except Exception as exc:
         print(f"Görsel seçimi yapılamadı, arama sırası kullanılacak: {exc}")
         return None
@@ -135,7 +161,7 @@ def find_backgrounds(plan, out_dir, count):
                 candidates.append(pool[rank])
 
     picked = _select(plan, candidates) if candidates else []
-    if not picked:  # eleme yapılamadıysa ya da hepsi elendiyse en özel iki aramanın ilk sonucu kullanılır
+    if picked is None:  # eleme yapılamadıysa en özel iki aramanın ilk sonucuna güvenilir
         picked = candidates[:2]
 
     results = []

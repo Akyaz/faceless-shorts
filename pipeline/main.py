@@ -9,7 +9,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from . import images, render, script
+from . import images, music, render, script
 
 
 def _offline_audio(text, out_path):
@@ -47,6 +47,7 @@ def build_metadata(plan):
         "title": title[:100],
         "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n"
                        + (f"\nGörseller temsilidir.\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
+                       + (f"\n{plan['music_credit']}\n" if plan.get("music_credit") else "")
                        + "\n#gündem #haber #shorts",
         "tags": ["gündem", "haber", "son dakika", "türkiye", "shorts"],
     }
@@ -117,7 +118,8 @@ def main():
         render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
         parts.append(part)
 
-    render.concat(parts, out / "short.mp4")
+    render.concat(parts, work / "voice.mp4")
+    plan["music_credit"] = music.add(work / "voice.mp4", plan.get("mood"), out / "short.mp4")
     meta = build_metadata(plan)
     (out / "metadata.json").write_text(json.dumps({**meta, "plan": plan}, ensure_ascii=False, indent=2))
     print(f"Hazır: {out / 'short.mp4'} ({render.audio_duration(out / 'short.mp4'):.1f} sn)")

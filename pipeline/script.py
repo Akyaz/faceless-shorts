@@ -3,6 +3,7 @@
 GEMINI_API_KEY varsa tek bir haberi özgün bir hikayeye çevirir.
 Yoksa "Günün 3 haberi" özet formatına düşer (dil modeli gerekmez).
 """
+import base64
 import json
 import os
 import time
@@ -26,13 +27,16 @@ def digest_script(headlines, count=3):
                          "source": h["source"], "text": _sentence(h["title"])})
     segments.append({"kind": "outro", "text": "Günün haberleri için takipte kalın."})
     # Dil modeli yokken habere özel arama üretilemez; genel Türkiye fotoğrafları kullanılır
-    return {"title": "Günün 3 Haberi", "segments": segments, "sources": picked,
+    return {"title": "Günün 3 Haberi", "segments": segments, "sources": picked, "mood": "notr",
             "image_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"]}
 
 
-def _generate(prompt, key):
+def _generate(prompt, key, images=()):
+    """images: istemin sonuna eklenecek JPEG baytları (görsel değerlendirme için)."""
+    parts = [{"text": prompt}] + [{"inline_data": {"mime_type": "image/jpeg",
+                                                   "data": base64.b64encode(img).decode()}} for img in images]
     body = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
+        "contents": [{"parts": parts}],
         "generationConfig": {"responseMimeType": "application/json"},
     }).encode()
     models = os.environ.get("GEMINI_MODELS", DEFAULT_MODELS).split(",")
@@ -75,14 +79,18 @@ Metin kuralları:
 Ek alanlar:
 - hook_title: ekranda yazacak en fazla 5 kelimelik çarpıcı başlık (doğru olmalı).
 - title: YouTube başlığı, en fazla 70 karakter, merak uyandıran ama doğru.
-- image_queries: Wikimedia Commons için 4 farklı İngilizce arama (yer, nesne, kurum; kişi adı değil).
-  Her biri haberin başka bir yönünü göstersin. İlk üçü 2-3 kelime, sonuncusu tek kelimelik çok genel bir kavram
-  (örnek: "smartphone", "earthquake", "courthouse") olsun ki mutlaka sonuç çıksın.
-  Haber belirli bir yer ya da kurumla ilgiliyse aramalardan en az biri onun adını içersin (örnek: "Edirne", "TCDD train").
+- image_queries: Wikimedia Commons için 5 farklı arama (yer, nesne, kurum; kişi adı değil).
+  İlk ikisi haberin geçtiği yeri ya da kurumu adıyla arasın (örnek: "E-5 İstanbul", "Kapıkule", "TCDD train");
+  yer adlarını Türkçe yazabilirsin. Sonraki ikisi haberin konusu olan nesneyi yakın planda gösteren 2-3 kelimelik
+  İngilizce arama olsun (örnek: "cigarette pack", "road construction barrier"). Sonuncusu tek kelimelik çok genel
+  bir İngilizce kavram olsun (örnek: "smartphone", "earthquake", "courthouse").
+- mood: fon müziği için haberin duygusu, şunlardan biri: "notr" (bilgilendirici, gündelik; emin değilsen bu),
+  "gergin" (kriz, afet, tehlike, uyarı, çatışma), "umutlu" (iyi haber, başarı, açılış, kolaylık),
+  "huzunlu" (kayıp, yas, üzücü olay).
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
 
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "mood": "notr", "image_prompt": "..."}
 """
 
 
@@ -102,6 +110,7 @@ def story_script(headlines, count=8, recent=()):
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "segments": segments,
             "sources": [headline], "image_queries": out.get("image_queries") or [],
+            "mood": out.get("mood", "notr"),
             "image_prompt": out.get("image_prompt", "")}
 
 

@@ -46,7 +46,7 @@ def build_metadata(plan):
     return {
         "title": title[:100],
         "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n"
-                       + (f"\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
+                       + (f"\nGörseller temsilidir.\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
                        + "\n#gündem #haber #shorts",
         "tags": ["gündem", "haber", "son dakika", "türkiye", "shorts"],
     }

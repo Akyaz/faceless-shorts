@@ -78,6 +78,7 @@ Ek alanlar:
 - image_queries: Wikimedia Commons için 4 farklı İngilizce arama (yer, nesne, kurum; kişi adı değil).
   Her biri haberin başka bir yönünü göstersin. İlk üçü 2-3 kelime, sonuncusu tek kelimelik çok genel bir kavram
   (örnek: "smartphone", "earthquake", "courthouse") olsun ki mutlaka sonuç çıksın.
+  Haber belirli bir yer ya da kurumla ilgiliyse aramalardan en az biri onun adını içersin (örnek: "Edirne", "TCDD train").
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
 
 Sadece JSON döndür:

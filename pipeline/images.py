@@ -84,12 +84,14 @@ def gemini_illustration(prompt, out_path):
     return None
 
 
-SELECT_RULES = """Bir haber videosunun arka planı için fotoğraf seçiyorsun. Aşağıda aday fotoğrafların dosya adı ve
-açıklaması var. Yalnızca haberin konusunu doğru ve yanıltmadan gösterenleri seç.
-Seçme: konuyla ilgisiz olanlar; başka bir ülke, şehir ya da olaya ait olduğu belli olanlar; harita, grafik, tablo,
-logo, belge ve yazı ağırlıklı görseller; siyah beyaz ya da eski tarihli fotoğraflar; tek bir kişinin yakın portresi.
-Birbirinden farklı görünenleri tercih et. Uygun aday yoksa boş liste döndür.
-Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1]}
+SELECT_RULES = """Bir haber videosunun arka planı için temsili fotoğraf seçiyorsun. Aşağıda aday fotoğrafların dosya adı
+ve açıklaması var. Haberin konusunu anlatan fotoğrafları seç; konuyla ilgili genel bir fotoğraf da uygundur
+(örnek: hızlı tren haberi için herhangi bir modern hızlı tren, deprem haberi için bir sismograf).
+Seçme: konuyla ilgisiz olanlar; başka bir olaya ait olduğu açıkça belli olanlar (örnek: başka bir depremin yıkımı);
+harita, grafik, tablo, logo, belge ve yazı ağırlıklı görseller; siyah beyaz ya da eski tarihli fotoğraflar;
+tek bir kişinin yakın portresi.
+Birbirinden farklı görünen 3-5 aday seçmeye çalış; haberin geçtiği yere ait olanları öne al.
+Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1, 7]}
 """
 
 
@@ -101,6 +103,7 @@ def _select(plan, candidates):
     prompt = f"{SELECT_RULES}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
         picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"]))["pick"]
+        print(f"Görsel seçimi: {picks}")
         return [candidates[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(candidates)]
     except Exception as exc:
         print(f"Görsel seçimi yapılamadı, arama sırası kullanılacak: {exc}")
@@ -127,7 +130,7 @@ def find_backgrounds(plan, out_dir, count):
                 candidates.append(pool[rank])
 
     picked = _select(plan, candidates) if candidates else []
-    if picked is None:  # eleme yapılamadıysa her aramanın yalnızca ilk sonucuna güvenilir
+    if not picked:  # eleme yapılamadıysa ya da hepsi elendiyse her aramanın ilk sonucu kullanılır
         picked = candidates[:len(pools)]
 
     results = []

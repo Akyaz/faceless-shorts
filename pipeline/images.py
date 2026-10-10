@@ -1,6 +1,6 @@
-"""Habere uygun arka plan görseli bulur.
+"""Habere uygun arka plan görsellerini bulur.
 
-Sıra: Wikimedia Commons (serbest lisanslı gerçek fotoğraf) -> Gemini illüstrasyonu -> yok.
+Sıra: Wikimedia Commons (serbest lisanslı gerçek fotoğraflar) -> Gemini illüstrasyonu -> yok.
 Haber sitelerinin fotoğrafları telifli olduğu için kullanılmaz.
 """
 import base64
@@ -10,6 +10,8 @@ import os
 import re
 import urllib.parse
 import urllib.request
+
+from . import script
 
 UA = "faceless-shorts/0.1 (https://github.com/Akyaz/faceless-shorts)"
 FREE_LICENSE = re.compile(r"^(CC0|CC BY(-SA)?( \d\.\d)?|Public domain|PD)", re.I)
@@ -25,26 +27,38 @@ def _strip(text):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html.unescape(text or ""))).strip()
 
 
-def wikimedia(query, out_path):
+def wikimedia(query, limit=5):
+    """Serbest lisanslı fotoğraf adaylarını döner: url, credit, about (dosya adı ve açıklaması)."""
     params = urllib.parse.urlencode({
         "action": "query", "format": "json", "generator": "search",
-        "gsrsearch": f"filetype:bitmap {query}", "gsrnamespace": 6, "gsrlimit": 15,
+        # Sadece JPEG: PNG sonuçlar çoğunlukla logo, harita ve şema
+        "gsrsearch": f"filemime:image/jpeg {query}", "gsrnamespace": 6, "gsrlimit": 20,
         "prop": "imageinfo", "iiprop": "url|size|extmetadata", "iiurlwidth": 1400,
     })
     data = _get_json(f"https://commons.wikimedia.org/w/api.php?{params}")
     pages = sorted(data.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99))
+    found = []
     for page in pages:
         info = (page.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata", {})
         license_name = _strip(meta.get("LicenseShortName", {}).get("value"))
-        if not FREE_LICENSE.match(license_name) or info.get("width", 0) < 800:
+        width, height = info.get("width", 0), info.get("height", 0)
+        # Çok yatık panoramalar dikeye kırpılınca ince bir şerit kalıyor
+        if not FREE_LICENSE.match(license_name) or width < 800 or width > 2.5 * height:
             continue
-        req = urllib.request.Request(info["thumburl"], headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=60) as resp, open(out_path, "wb") as f:
-            f.write(resp.read())
         artist = _strip(meta.get("Artist", {}).get("value")) or "Bilinmiyor"
-        return f"Görsel: {artist}, {license_name}, Wikimedia Commons ({info['descriptionurl']})"
-    return None
+        about = f"{page.get('title', '')} | {_strip(meta.get('ImageDescription', {}).get('value'))[:200]}"
+        found.append({"url": info["thumburl"], "about": about, "credit":
+                      f"Görsel: {artist}, {license_name}, Wikimedia Commons ({info['descriptionurl']})"})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def _download(url, out_path):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as resp, open(out_path, "wb") as f:
+        f.write(resp.read())
 
 
 def gemini_illustration(prompt, out_path):
@@ -70,23 +84,73 @@ def gemini_illustration(prompt, out_path):
     return None
 
 
-def find_background(plan, out_path):
-    """Görseli out_path'e yazar, açıklamaya eklenecek kaynak satırını döner (yoksa None)."""
-    query = plan.get("image_query") or ""
-    short = " ".join(query.split()[:2])
-    attempts = [("Wikimedia", wikimedia, query),
-                ("Wikimedia", wikimedia, short if short != query else ""),  # daha genel arama
-                ("Gemini", gemini_illustration, plan.get("image_prompt"))]
-    for name, fn, arg in attempts:
-        if not arg:
-            continue
+SELECT_RULES = """Bir haber videosunun arka planı için fotoğraf seçiyorsun. Aşağıda aday fotoğrafların dosya adı ve
+açıklaması var. Yalnızca haberin konusunu doğru ve yanıltmadan gösterenleri seç.
+Seçme: konuyla ilgisiz olanlar; başka bir ülke, şehir ya da olaya ait olduğu belli olanlar; harita, grafik, tablo,
+logo, belge ve yazı ağırlıklı görseller; siyah beyaz ya da eski tarihli fotoğraflar; tek bir kişinin yakın portresi.
+Birbirinden farklı görünenleri tercih et. Uygun aday yoksa boş liste döndür.
+Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1]}
+"""
+
+
+def _select(plan, candidates):
+    """Adayları dil modeline eleme için verir; model yoksa ya da yanıt vermezse None döner."""
+    if not os.environ.get("GEMINI_API_KEY"):
+        return None
+    listing = "\n".join(f"{i}. {c['about']}" for i, c in enumerate(candidates, 1))
+    prompt = f"{SELECT_RULES}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
+    try:
+        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"]))["pick"]
+        return [candidates[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(candidates)]
+    except Exception as exc:
+        print(f"Görsel seçimi yapılamadı, arama sırası kullanılacak: {exc}")
+        return None
+
+
+def find_backgrounds(plan, out_dir, count):
+    """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner."""
+    pools = []
+    for query in plan.get("image_queries") or []:
         try:
-            credit = fn(arg, out_path)
+            found = wikimedia(query)
         except Exception as exc:
-            print(f"{name} görseli alınamadı: {exc}")
+            print(f"Wikimedia görseli alınamadı ({query}): {exc}")
             continue
+        print(f"Wikimedia ({query}): {len(found)} aday")
+        pools.append(found)
+
+    # Sorgular arasında sırayla dolaşılır ki görseller haberin farklı yönlerini göstersin
+    candidates = []
+    for rank in range(max(map(len, pools), default=0)):
+        for pool in pools:
+            if rank < len(pool) and all(c["url"] != pool[rank]["url"] for c in candidates):
+                candidates.append(pool[rank])
+
+    picked = _select(plan, candidates) if candidates else []
+    if picked is None:  # eleme yapılamadıysa her aramanın yalnızca ilk sonucuna güvenilir
+        picked = candidates[:len(pools)]
+
+    results = []
+    for cand in picked:
+        path = out_dir / f"background{len(results)}.jpg"
+        try:
+            _download(cand["url"], path)
+        except Exception as exc:
+            print(f"Görsel indirilemedi: {exc}")
+            continue
+        print(f"Arka plan: {cand['about'][:120]}")
+        results.append((path, cand["credit"]))
+        if len(results) >= count:
+            break
+
+    if not results and plan.get("image_prompt"):
+        path = out_dir / "background.png"
+        try:
+            credit = gemini_illustration(plan["image_prompt"], path)
+        except Exception as exc:
+            print(f"Gemini görseli alınamadı: {exc}")
+            credit = None
         if credit:
-            print(f"Arka plan: {name} ({arg})")
-            return credit
-        print(f"{name}: uygun görsel bulunamadı ({arg})")
-    return None
+            results.append((path, credit))
+    print(f"Arka plan: {len(results)} görsel")
+    return results

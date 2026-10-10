@@ -25,7 +25,9 @@ def digest_script(headlines, count=3):
         segments.append({"kind": "headline", "index": i, "total": len(picked),
                          "source": h["source"], "text": _sentence(h["title"])})
     segments.append({"kind": "outro", "text": "Günün haberleri için takipte kalın."})
-    return {"title": "Günün 3 Haberi", "segments": segments, "sources": picked}
+    # Dil modeli yokken habere özel arama üretilemez; genel Türkiye fotoğrafları kullanılır
+    return {"title": "Günün 3 Haberi", "segments": segments, "sources": picked,
+            "image_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"]}
 
 
 def _generate(prompt, key):
@@ -73,11 +75,13 @@ Metin kuralları:
 Ek alanlar:
 - hook_title: ekranda yazacak en fazla 5 kelimelik çarpıcı başlık (doğru olmalı).
 - title: YouTube başlığı, en fazla 70 karakter, merak uyandıran ama doğru.
-- image_query: Wikimedia Commons için 2-4 kelimelik İngilizce arama (yer, nesne, kurum; kişi adı değil).
+- image_queries: Wikimedia Commons için 4 farklı İngilizce arama (yer, nesne, kurum; kişi adı değil).
+  Her biri haberin başka bir yönünü göstersin. İlk üçü 2-3 kelime, sonuncusu tek kelimelik çok genel bir kavram
+  (örnek: "smartphone", "earthquake", "courthouse") olsun ki mutlaka sonuç çıksın.
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
 
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_query": "...", "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "image_prompt": "..."}
 """
 
 
@@ -96,7 +100,7 @@ def story_script(headlines, count=8, recent=()):
     headline = headlines[max(0, min(int(out.get("pick", 1)), len(blocks)) - 1)]
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "segments": segments,
-            "sources": [headline], "image_query": out.get("image_query", ""),
+            "sources": [headline], "image_queries": out.get("image_queries") or [],
             "image_prompt": out.get("image_prompt", "")}
 
 

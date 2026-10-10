@@ -90,15 +90,14 @@ def main():
     for seg in plan["segments"]:
         print(f"  [{seg['kind']}] {seg['text']}")
 
-    background, credit = None, None
-    if not args.offline and (plan.get("image_query") or plan.get("image_prompt")):
-        background = work / "background.png"
-        credit = images.find_background(plan, background)
-        if not credit:
-            background = None
-    elif args.offline and args.background:
-        background = args.background
-    plan["image_credit"] = credit
+    backgrounds, credits = [], []
+    if args.offline:
+        backgrounds = [args.background] if args.background else []
+    else:
+        found = images.find_backgrounds(plan, work, len(plan["segments"]))
+        backgrounds = [path for path, _ in found]
+        credits = [credit for _, credit in found]
+    plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
     parts = []
     for i, seg in enumerate(plan["segments"]):
@@ -110,10 +109,12 @@ def main():
             words = synthesize(seg["text"], audio)
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
+        # Görsel sayısı paragraftan azsa baştan döner
+        background = backgrounds[i % len(backgrounds)] if backgrounds else None
         render.draw_card(seg, i, card, background, plan.get("hook_title", ""))
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
-        render.render_segment(card, audio, ass, part)
+        render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
         parts.append(part)
 
     render.concat(parts, out / "short.mp4")

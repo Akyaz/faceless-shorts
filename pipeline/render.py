@@ -118,10 +118,12 @@ def audio_duration(path):
     return float(json.loads(out.stdout)["format"]["duration"])
 
 
-def render_segment(card, audio, ass, out_path, pad=0.35):
+def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False):
     dur = audio_duration(audio) + pad
-    # Hafif yakınlaşma: görüntü boyunca %6 büyür
-    vf = (f"scale={W}:{H},zoompan=z='1+0.06*on/({dur}*30)':d=1:s={W}x{H}:fps=30,"
+    # Hafif hareket: görüntü boyunca %6 yakınlaşır ya da uzaklaşır
+    progress = f"on/({dur}*30)"
+    zoom = f"1.06-0.06*{progress}" if zoom_out else f"1+0.06*{progress}"
+    vf = (f"scale={W}:{H},zoompan=z='{zoom}':d=1:s={W}x{H}:fps=30,"
           f"ass={ass}")
     subprocess.run([
         "ffmpeg", "-y", "-loglevel", "error",

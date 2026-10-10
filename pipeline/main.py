@@ -1,7 +1,8 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--out out] [--offline]
+Kullanım: python -m pipeline.main [--out out] [--offline] [--history dosya.json]
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
+--history daha önce işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
 import json
@@ -23,6 +24,22 @@ def _offline_audio(text, out_path):
     return words
 
 
+HISTORY_KEEP = 60  # günde 6 videoyla yaklaşık 10 gün
+
+
+def load_history(path):
+    try:
+        return json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+
+
+def save_history(path, history, plan):
+    history = history + [{"source": h["title"], "title": plan["title"]} for h in plan["sources"]]
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text(json.dumps(history[-HISTORY_KEEP:], ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 def build_metadata(plan):
     sources = "\n".join(f"- {h['title']} ({h['source']})" for h in plan["sources"])
     title = f"{plan['title']} #shorts"
@@ -40,6 +57,7 @@ def main():
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
+    ap.add_argument("--history", help="işlenen haberlerin tutulduğu JSON dosyası")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -51,8 +69,17 @@ def main():
                       "link": ""} for i in range(1, 4)]
     else:
         from .news import fetch_headlines
-        headlines = fetch_headlines()
-    plan = script.build_script(headlines)
+        headlines = fetch_headlines(limit=30)
+    history = load_history(args.history) if args.history else []
+    used = {h["source"] for h in history}
+    fresh = [h for h in headlines if h["title"] not in used]
+    if fresh:
+        headlines = fresh
+    else:
+        print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
+    plan = script.build_script(headlines, recent=[h["title"] for h in history[-12:]])
+    if args.history:
+        save_history(args.history, history, plan)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):

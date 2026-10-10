@@ -1,6 +1,9 @@
 name: Short üret
 
 on:
+  # Türkiye saatiyle 10, 12, 15, 17, 19 ve 23 (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
+  schedule:
+    - cron: "50 6,8,11,13,15,19 * * *"
   workflow_dispatch:
     inputs:
       upload:
@@ -21,10 +24,20 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
       - name: Python paketleri
         run: pip install -r requirements.txt
+      # Aynı haber ikinci kez videoya dönmesin diye işlenenler çalışmalar arasında taşınır
+      - uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: history-${{ github.run_id }}
+          restore-keys: history-
       - name: Videoyu üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python -m pipeline.main --out out
+        run: python -m pipeline.main --out out --history state/history.json
+      - uses: actions/cache/save@v4
+        with:
+          path: state
+          key: history-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
         with:
           name: short
@@ -32,8 +45,9 @@ jobs:
             out/short.mp4
             out/metadata.json
       - name: YouTube'a yükle
-        if: ${{ inputs.upload }}
+        if: ${{ github.event_name == 'schedule' || inputs.upload }}
         env:
+          YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}

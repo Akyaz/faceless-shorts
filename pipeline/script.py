@@ -81,12 +81,17 @@ Sadece JSON döndür:
 """
 
 
-def story_script(headlines, count=8):
+def story_script(headlines, count=8, recent=()):
     blocks = []
     for i, h in enumerate(headlines[:count], 1):
         related = "\n".join(f"   - {r}" for r in h.get("related", [])[:6])
         blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   Diğer kaynaklar:\n{related}" if related else ""))
-    prompt = STORY_RULES + "\nHaberler:\n" + "\n".join(blocks)
+    prompt = STORY_RULES
+    if recent:
+        # Aynı olay farklı başlıkla yeniden gelebiliyor; başlık eşleşmesi yetmez
+        prompt += ("\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n"
+                   + "\n".join(f"- {t}" for t in recent) + "\n")
+    prompt += "\nHaberler:\n" + "\n".join(blocks)
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     headline = headlines[max(0, min(int(out.get("pick", 1)), len(blocks)) - 1)]
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
@@ -95,10 +100,10 @@ def story_script(headlines, count=8):
             "image_prompt": out.get("image_prompt", "")}
 
 
-def build_script(headlines):
+def build_script(headlines, recent=()):
     if os.environ.get("GEMINI_API_KEY"):
         try:
-            return story_script(headlines)
+            return story_script(headlines, recent=recent)
         except Exception as exc:  # dil modeli düşerse o günün videosu yine çıksın
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
     return digest_script(headlines)

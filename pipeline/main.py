@@ -54,6 +54,10 @@ def main():
         from .news import fetch_headlines
         headlines = fetch_headlines()
     plan = script.build_script(headlines)
+    for src in plan["sources"]:
+        print(f"Kaynak başlık: {src['title']} ({src['source']})")
+        for r in src.get("related", []):
+            print(f"  ilgili: {r}")
     print(f"Başlık: {plan['title']}")
     for seg in plan["segments"]:
         print(f"  [{seg['kind']}] {seg['text']}")

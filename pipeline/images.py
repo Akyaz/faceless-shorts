@@ -72,7 +72,10 @@ def gemini_illustration(prompt, out_path):
 
 def find_background(plan, out_path):
     """Görseli out_path'e yazar, açıklamaya eklenecek kaynak satırını döner (yoksa None)."""
-    attempts = [("Wikimedia", wikimedia, plan.get("image_query")),
+    query = plan.get("image_query") or ""
+    short = " ".join(query.split()[:2])
+    attempts = [("Wikimedia", wikimedia, query),
+                ("Wikimedia", wikimedia, short if short != query else ""),  # daha genel arama
                 ("Gemini", gemini_illustration, plan.get("image_prompt"))]
     for name, fn, arg in attempts:
         if not arg:

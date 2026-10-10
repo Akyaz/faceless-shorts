@@ -67,7 +67,8 @@ Metin kuralları:
 4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
 5. Toplam 70-85 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
 6. KESİN: Yalnızca verilen başlıklardaki bilgileri kullan. Başlıkta olmayan tarih, kurum, rakam, yer, isim ekleme.
-   Merak uyandır ama abartma ve yanlış izlenim verme.
+   Merak uyandır ama abartma ve yanlış izlenim verme. Bir başlıktaki talep, çağrı veya öneriyi
+   alınmış karar gibi sunma ("engelleyin" diyen başlık "engellendi" demek değildir).
 
 Ek alanlar:
 - hook_title: ekranda yazacak en fazla 5 kelimelik çarpıcı başlık (doğru olmalı).

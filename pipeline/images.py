@@ -123,15 +123,20 @@ def find_backgrounds(plan, out_dir, count):
         pools.append(found)
 
     # Sorgular arasında sırayla dolaşılır ki görseller haberin farklı yönlerini göstersin
-    candidates = []
+    candidates, seen = [], set()
     for rank in range(max(map(len, pools), default=0)):
         for pool in pools:
-            if rank < len(pool) and all(c["url"] != pool[rank]["url"] for c in candidates):
+            if rank >= len(pool):
+                continue
+            # "Sokak 05.jpg" ile "Sokak 06.jpg" aynı çekimin kareleri; biri yeter
+            series = re.sub(r"[\d\s]+", "", pool[rank]["about"].split("|")[0])
+            if series not in seen:
+                seen.add(series)
                 candidates.append(pool[rank])
 
     picked = _select(plan, candidates) if candidates else []
-    if not picked:  # eleme yapılamadıysa ya da hepsi elendiyse her aramanın ilk sonucu kullanılır
-        picked = candidates[:len(pools)]
+    if not picked:  # eleme yapılamadıysa ya da hepsi elendiyse en özel iki aramanın ilk sonucu kullanılır
+        picked = candidates[:2]
 
     results = []
     for cand in picked:

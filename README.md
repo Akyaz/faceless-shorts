@@ -11,3 +11,5 @@ Akış: Google News Türkiye RSS → metin → Edge TTS seslendirme → Pillow +
 Çalıştırma: Actions sekmesinde **Short üret** → *Run workflow*. Video, çalışmanın "Artifacts" bölümünden indirilir.
 
 Yerelde ağsız deneme: `python -m pipeline.main --offline`
+
+YouTube yükleme kurulumu: [KURULUM.md](KURULUM.md)

@@ -2,6 +2,11 @@ name: Short üret
 
 on:
   workflow_dispatch:
+    inputs:
+      upload:
+        description: "Üretilen videoyu kanala da yükle"
+        type: boolean
+        default: false
 
 jobs:
   make:
@@ -26,3 +31,10 @@ jobs:
           path: |
             out/short.mp4
             out/metadata.json
+      - name: YouTube'a yükle
+        if: ${{ inputs.upload }}
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m pipeline.upload out/short.mp4 out/metadata.json

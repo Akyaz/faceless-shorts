@@ -6,7 +6,6 @@ Kullanım: python -m pipeline.main [--out out] [--offline]
 import argparse
 import json
 import subprocess
-from datetime import date
 from pathlib import Path
 
 from . import images, render, script
@@ -26,7 +25,7 @@ def _offline_audio(text, out_path):
 
 def build_metadata(plan):
     sources = "\n".join(f"- {h['title']} ({h['source']})" for h in plan["sources"])
-    title = f"{plan['title']} | {date.today().strftime('%d.%m.%Y')} #shorts"
+    title = f"{plan['title']} #shorts"
     return {
         "title": title[:100],
         "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n"
@@ -59,6 +58,8 @@ def main():
         for r in src.get("related", []):
             print(f"  ilgili: {r}")
     print(f"Başlık: {plan['title']}")
+    if plan.get("hook_title"):
+        print(f"Ekran başlığı: {plan['hook_title']}")
     for seg in plan["segments"]:
         print(f"  [{seg['kind']}] {seg['text']}")
 
@@ -82,7 +83,7 @@ def main():
             words = synthesize(seg["text"], audio)
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
-        render.draw_card(seg, i, card, background)
+        render.draw_card(seg, i, card, background, plan.get("hook_title", ""))
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
         render.render_segment(card, audio, ass, part)

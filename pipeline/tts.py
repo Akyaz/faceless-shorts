@@ -4,7 +4,7 @@ import asyncio
 import edge_tts
 
 VOICE = "tr-TR-AhmetNeural"
-RATE = "+8%"
+RATE = "+15%"  # Shorts temposu
 
 
 async def _synthesize(text, out_path, voice):

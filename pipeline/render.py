@@ -36,7 +36,19 @@ def _photo(path):
     return Image.blend(img, Image.new("RGB", (W, H)), 0.5)
 
 
-def draw_card(segment, idx, out_path, background=None):
+def _wrap(draw, text, font, max_width):
+    lines, line = [], ""
+    for word in text.split():
+        trial = f"{line} {word}".strip()
+        if draw.textlength(trial, font=font) <= max_width:
+            line = trial
+        else:
+            lines.append(line)
+            line = word
+    return lines + [line] if line else lines
+
+
+def draw_card(segment, idx, out_path, background=None, hook_title=""):
     accent = ACCENTS[idx % len(ACCENTS)]
     img = _photo(background) if background else _gradient(accent)
 
@@ -50,6 +62,14 @@ def draw_card(segment, idx, out_path, background=None):
     d.rounded_rectangle([(W - lw) / 2 - 36, 180, (W + lw) / 2 + 36, 280], radius=50, fill=accent)
     d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
 
+    if hook_title:  # merak başlığı her kartta üstte sabit durur
+        hook_font = ImageFont.truetype(_font_path(True), 78)
+        lines = _wrap(d, hook_title, hook_font, W - 140)
+        y = 400
+        for line in lines:
+            d.text((W / 2, y), line, font=hook_font, fill=(255, 214, 0), anchor="mm",
+                   stroke_width=5, stroke_fill="black")
+            y += 96
     if segment["kind"] == "headline":
         d.text((W / 2, 520), f"{segment['index']}/{segment['total']}", font=big, fill="white", anchor="mm")
     if segment.get("source"):

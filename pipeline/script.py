@@ -53,32 +53,51 @@ def _generate(prompt, key):
     raise RuntimeError(f"Hiçbir Gemini modeli yanıt vermedi: {last_err}")
 
 
-def story_script(headline):
-    related = "\n".join(f"- {r}" for r in headline.get("related", [])[:8]) or "- (yok)"
-    prompt = (
-        "YouTube Shorts için Türkçe, tarafsız bir haber anlatımı yaz (35-40 saniye, yaklaşık 90-110 kelime, "
-        "3-4 paragraf). İlk cümle merak uyandıran bir kanca olsun.\n"
-        "KESİN KURAL: Yalnızca aşağıdaki başlıklarda geçen bilgileri kullan. Başlıklarda olmayan hiçbir "
-        "tarih, kurum, rakam, yer veya isim ekleme. Bilgi azsa konuyu genel çerçevede açıkla ve "
-        "izleyiciye ne beklemesi gerektiğini söyle; uydurma.\n"
-        "Ayrıca arka plan görseli için:\n"
-        "- image_query: Wikimedia Commons'ta aranacak 2-4 kelimelik İngilizce anahtar (yer, nesne veya kurum; "
-        "kişi adı değil). Örn: \"smartphone social media\", \"Istanbul Bosphorus\".\n"
-        "- image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen, dikey bir illüstrasyon tarifi (İngilizce).\n"
-        "Sadece JSON döndür: {\"title\": \"...\", \"paragraphs\": [\"...\"], "
-        "\"image_query\": \"...\", \"image_prompt\": \"...\"}\n\n"
-        f"Ana başlık: {headline['title']} ({headline['source']})\nAynı haberin diğer kaynaklardaki başlıkları:\n{related}"
-    )
+STORY_RULES = """Görev: YouTube Shorts için Türkçe haber anlatımı. Amaç izleyicinin kaydırmadan sonuna kadar izlemesi.
+
+Haber seçimi: Aşağıdaki haberlerden genel kitleyi en çok meraklandıracak, gündelik hayata dokunan birini seç.
+Seçme: ölüm/şiddet ayrıntısı öne çıkan haberler, adı geçen kişilere yönelik suçlama/tutuklama haberleri,
+seçim ve parti çekişmesi. "pick" alanına seçtiğin haberin numarasını yaz.
+
+Metin kuralları:
+1. İlk cümle en fazla 10 kelime: şaşırtıcı bir tezat ya da doğrudan izleyiciye soru. Selam, giriş, "bugün" yok.
+2. Asıl çarpıcı ayrıntıyı hemen verme: önce bağlam, sonra "ama asıl dikkat çeken şu" gibi bir geçişle en sona yakın ver.
+3. Cümleler kısa (en fazla 12 kelime), konuşur gibi, "sen" diye hitap et. Tekrar ve dolgu cümle yok
+   ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
+4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
+5. Toplam 70-85 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
+6. KESİN: Yalnızca verilen başlıklardaki bilgileri kullan. Başlıkta olmayan tarih, kurum, rakam, yer, isim ekleme.
+   Merak uyandır ama abartma ve yanlış izlenim verme.
+
+Ek alanlar:
+- hook_title: ekranda yazacak en fazla 5 kelimelik çarpıcı başlık (doğru olmalı).
+- title: YouTube başlığı, en fazla 70 karakter, merak uyandıran ama doğru.
+- image_query: Wikimedia Commons için 2-4 kelimelik İngilizce arama (yer, nesne, kurum; kişi adı değil).
+- image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
+
+Sadece JSON döndür:
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_query": "...", "image_prompt": "..."}
+"""
+
+
+def story_script(headlines, count=8):
+    blocks = []
+    for i, h in enumerate(headlines[:count], 1):
+        related = "\n".join(f"   - {r}" for r in h.get("related", [])[:6])
+        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   Diğer kaynaklar:\n{related}" if related else ""))
+    prompt = STORY_RULES + "\nHaberler:\n" + "\n".join(blocks)
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
+    headline = headlines[max(0, min(int(out.get("pick", 1)), len(blocks)) - 1)]
     segments = [{"kind": "story", "source": headline["source"], "text": p} for p in out["paragraphs"]]
-    return {"title": out["title"], "segments": segments, "sources": [headline],
-            "image_query": out.get("image_query", ""), "image_prompt": out.get("image_prompt", "")}
+    return {"title": out["title"], "hook_title": out.get("hook_title", ""), "segments": segments,
+            "sources": [headline], "image_query": out.get("image_query", ""),
+            "image_prompt": out.get("image_prompt", "")}
 
 
 def build_script(headlines):
     if os.environ.get("GEMINI_API_KEY"):
         try:
-            return story_script(headlines[0])
+            return story_script(headlines)
         except Exception as exc:  # dil modeli düşerse o günün videosu yine çıksın
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
     return digest_script(headlines)

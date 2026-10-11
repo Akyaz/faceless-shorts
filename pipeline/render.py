@@ -6,6 +6,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1080, 1920
+LOGO = Path(__file__).resolve().parent.parent / "assets" / "logo.png"
+CHANNEL = "QUICK RECAP"
 ACCENTS = [(229, 57, 53), (30, 136, 229), (67, 160, 71), (251, 140, 0), (142, 36, 170)]
 
 
@@ -48,6 +50,15 @@ def _wrap(draw, text, font, max_width):
     return lines + [line] if line else lines
 
 
+def _brand(img, d):
+    """Sol üstte kanal logosu ve adı. Logonun içindeki yazı bu boyutta okunmadığı için ad ayrıca yazılır."""
+    size = 104
+    logo = Image.open(LOGO).convert("RGBA").resize((size, size), Image.LANCZOS)
+    img.paste(logo, (60, 230 - size // 2), logo)
+    d.text((60 + size + 18, 230), CHANNEL, font=ImageFont.truetype(_font_path(True), 42), fill="white",
+           anchor="lm", stroke_width=4, stroke_fill="black")
+
+
 def draw_card(segment, idx, out_path, background=None, hook_title=""):
     accent = ACCENTS[idx % len(ACCENTS)]
     img = _photo(background) if background else _gradient(accent)
@@ -57,10 +68,11 @@ def draw_card(segment, idx, out_path, background=None, hook_title=""):
     regular = ImageFont.truetype(_font_path(False), 44)
     big = ImageFont.truetype(_font_path(True), 220)
 
-    label = "GÜNDEM"
+    _brand(img, d)
+    label = "GÜNDEM"  # kanal adıyla aynı satırda, sağa yaslı
     lw = d.textlength(label, font=bold)
-    d.rounded_rectangle([(W - lw) / 2 - 36, 180, (W + lw) / 2 + 36, 280], radius=50, fill=accent)
-    d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
+    d.rounded_rectangle([W - 60 - lw - 72, 180, W - 60, 280], radius=50, fill=accent)
+    d.text((W - 60 - 36 - lw / 2, 230), label, font=bold, fill="white", anchor="mm")
 
     if hook_title:  # merak başlığı her kartta üstte sabit durur
         hook_font = ImageFont.truetype(_font_path(True), 78)

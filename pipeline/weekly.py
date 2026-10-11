@@ -12,6 +12,7 @@ import re
 from pathlib import Path
 
 from . import images, music, render, script
+from .news import is_sensitive
 from .tts import synthesize
 
 MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım",
@@ -40,7 +41,8 @@ def collect(week_dir):
         key = (plan.get("sources") or [{}])[0].get("title")
         if not key or key in seen or not segments or any(s.get("kind") != "story" for s in segments):
             continue
-        if DATED.search(" ".join([plan.get("title", ""), plan.get("hook_title", "")] + [s["text"] for s in segments])):
+        text = " ".join([plan.get("title", ""), plan.get("hook_title", ""), key] + [s["text"] for s in segments])
+        if DATED.search(text) or is_sensitive(text):
             continue
         seen.add(key)
         # İlk günlerin çalışmalarında tek bir arama kayıtlı

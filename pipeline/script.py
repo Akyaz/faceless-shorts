@@ -12,6 +12,8 @@ import time
 import urllib.error
 import urllib.request
 
+from .news import sensitive_headline
+
 # Yoğunlukta 503 dönebiliyor; sırayla denenir
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
 _out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
@@ -58,6 +60,9 @@ ACCURACY = """KESİN kurallar (başlık, ekran yazısı ve metin için aynen ge�
 - Abartma, yanlış izlenim verme. Başlıkta yazmayan bir etki ya da tepki uydurma ("piyasalar karıştı", "ortalık yıkıldı").
 - Bir başlıktaki talep, çağrı veya öneriyi alınmış karar gibi sunma ("engelleyin" diyen başlık "engellendi" demek değildir).
 - 18 yaşından küçüklerin, mağdurların ve kamuya mal olmamış kişilerin adını yazma; "16 yaşındaki genç" gibi anlat.
+- Can kaybı, yaralanma ya da mağduriyet içeren bir haberi yalnızca sade ve saygılı bir dille, ayrıntıya girmeden
+  aktar: merak kancası, ünlem, "feci", "dehşet" gibi sözcükler ve izleyiciye soru yok. Başlıkta yazmayan
+  "ekipler sevk edildi", "trafik etkilendi" gibi ayrıntılar ekleme.
 """
 
 IMAGE_FIELDS = """Wikimedia Commons araması (yer, nesne, kurum; kişi adı değil). Haberin geçtiği yeri ya da kurumu adıyla
@@ -78,9 +83,10 @@ Metin kuralları:
 2. Asıl çarpıcı ayrıntıyı hemen verme: önce bağlam, sonra "ama asıl dikkat çeken şu" gibi bir geçişle en sona yakın ver.
 3. Cümleler kısa (en fazla 12 kelime), konuşur gibi, "sen" diye hitap et. Tekrar ve dolgu cümle yok
    ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
-4. Sondan bir önceki paragraf "Peki bu senin için ne demek?" diye başlasın ve başlıklardaki bilgiden doğrudan çıkan
-   pratik sonucu söylesin (örnek: "O yolu kullanıyorsan yarın erken çık."). Başlıklardan böyle bir sonuç çıkmıyorsa
-   bu paragrafı hiç yazma; tahmin yürütme.
+4. Haber bir düzenleme, uyarı, zam, yasak ya da hizmet değişikliğiyse sondan bir önceki paragraf
+   "Peki bu senin için ne demek?" diye başlasın ve başlıklardaki bilgiden doğrudan çıkan pratik sonucu söylesin
+   (örnek: "O yolu kullanıyorsan yarın erken çık."). Başlıklardan böyle bir sonuç çıkmıyorsa ya da haberde
+   zarar gören insanlar varsa bu paragrafı hiç yazma; tahmin yürütme.
 5. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
 6. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
 
@@ -219,7 +225,10 @@ def digest_script(headlines, kind, count=14):
         headline = _pick(headlines, item.get("pick", 1))
         if headline["title"] not in seen:
             seen.add(headline["title"])
-            items.append((headline, item.get("heading", ""), item["text"], item.get("image_queries") or []))
+            heading, text = item.get("heading", ""), item["text"]
+            if sensitive_headline(headline):  # acı haber ünlemle verilmez
+                heading, text = heading.replace("!", ""), text.replace("!", ".")
+            items.append((headline, heading, text, item.get("image_queries") or []))
     return _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
 
 

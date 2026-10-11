@@ -12,6 +12,23 @@ FEEDS = {
 COLUMN = re.compile(r"\b(yazdı|yazıyor)\b", re.I)
 
 
+# Can kaybı, yaralanma ve ağır suç haberleri: merak kancası, "senin için ne demek" ve abone çağrısıyla
+# anlatılmaya uygun değil. Dil modeli talimata her zaman uymadığı için bu ayrım kodda yapılır.
+SENSITIVE = re.compile(
+    r"\böl(ü|dü|en|üm)|hayatını kaybe|yaşamını yitir|can verdi|can kayb|canından ol|cansız|cenaze|ceset|cesed"
+    r"|şehit|yaralı|yaralan|katlia|katled|cinayet|intihar|tecavüz|taciz|istismar|kaza\b|kazada|kazası|facia"
+    r"|feci|boğul|vuruldu|bıçakla|silahlı saldırı|bombalı|enkaz")
+
+
+def is_sensitive(*texts):
+    joined = " ".join(texts).replace("İ", "i").replace("I", "ı").lower()
+    return bool(SENSITIVE.search(joined))
+
+
+def sensitive_headline(headline):
+    return is_sensitive(headline["title"], *(r["title"] for r in headline.get("related", [])))
+
+
 def _text(fragment):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", fragment))).strip()
 

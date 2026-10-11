@@ -104,6 +104,12 @@ def main():
     else:
         from .news import fetch_headlines
         headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
+    if args.mode == "story" and not args.offline:
+        # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
+        from .news import sensitive_headline
+        calm = [h for h in headlines if not sensitive_headline(h)]
+        print(f"Hassas içerik nedeniyle ayrılan haber: {len(headlines) - len(calm)}")
+        headlines = calm or headlines
     # Toplu özetler günün haberlerini yeniden anar; tekrar kaydı yalnızca tek haber videoları içindir
     use_history = bool(args.history) and args.mode == "story"
     history = load_history(args.history) if use_history else []

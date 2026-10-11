@@ -49,16 +49,31 @@ def collect(week_dir):
     return plans
 
 
+def _stems(plan):
+    return {w[:5] for w in re.findall(r"\w{4,}", plan["title"].lower())}
+
+
+def _distinct(plans, count):
+    """Başlığı öncekilerden biriyle büyük ölçüde örtüşen haberi atar: aynı olay iki kez anlatılmasın."""
+    kept = []
+    for plan in plans:
+        stems = _stems(plan)
+        if all(len(stems & _stems(k)) < 0.5 * min(len(stems), len(_stems(k))) for k in kept):
+            kept.append(plan)
+    return kept[:count]
+
+
 def choose(plans, count=COUNT):
     """(seçilen planlar, başlık). Dil modeli yoksa ya da yanıt vermezse en yeni haberler alınır."""
-    fallback = plans[-count:][::-1], f"Haftanın {min(count, len(plans))} Haberi"
+    newest = _distinct(plans[::-1], count)
+    fallback = newest, f"Haftanın {len(newest)} Haberi"
     if not os.environ.get("GEMINI_API_KEY") or len(plans) <= count:
         return fallback
     listing = "\n".join(f"{i}. {p['title']} ({p['sources'][0]['title']})" for i, p in enumerate(plans, 1))
     try:
         out = json.loads(script._generate(CHOOSE_RULES.format(count=count) + "\nHaberler:\n" + listing,
                                           os.environ["GEMINI_API_KEY"]))
-        picked = [plans[int(n) - 1] for n in dict.fromkeys(out["pick"]) if 1 <= int(n) <= len(plans)][:count]
+        picked = _distinct([plans[int(n) - 1] for n in dict.fromkeys(out["pick"]) if 1 <= int(n) <= len(plans)], count)
         return (picked, out["title"]) if picked else fallback
     except Exception as exc:
         print(f"Haber seçimi yapılamadı, en yeni haberler kullanılacak: {exc}")

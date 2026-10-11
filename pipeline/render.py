@@ -133,7 +133,8 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False):
         d.rounded_rectangle([(w - tw) / 2 - 44, 500, (w + tw) / 2 + 44, 600], radius=50, fill=SUBSCRIBE_RED)
         d.text((w / 2, 550), text, font=bold, fill="white", anchor="mm")
     if segment.get("source"):
-        d.text((w - 70, h - 50), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
+        # Kenardan pay: yakınlaşınca yazı kadrajın dışına taşmasın
+        d.text((w - 110, h - 90), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
                anchor="rm", stroke_width=3, stroke_fill="black")
     img.save(out_path)
 

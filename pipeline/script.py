@@ -17,15 +17,16 @@ DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
 _out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
 
 
-def _generate(prompt, key, images=()):
-    """images: istemin sonuna eklenecek JPEG baytları (görsel değerlendirme için)."""
+def _generate(prompt, key, images=(), models=None):
+    """images: istemin sonuna eklenecek JPEG baytları (görsel değerlendirme için).
+    models: denenecek modeller, virgülle; verilmezse metin yazımı için ayrılan sıra kullanılır."""
     parts = [{"text": prompt}] + [{"inline_data": {"mime_type": "image/jpeg",
                                                    "data": base64.b64encode(img).decode()}} for img in images]
     body = json.dumps({
         "contents": [{"parts": parts}],
         "generationConfig": {"responseMimeType": "application/json"},
     }).encode()
-    models = os.environ.get("GEMINI_MODELS", DEFAULT_MODELS).split(",")
+    models = (models or os.environ.get("GEMINI_MODELS", DEFAULT_MODELS)).split(",")
     last_err = None
     for model in models:
         if model in _out_of_quota:
@@ -42,6 +43,8 @@ def _generate(prompt, key, images=()):
                 last_err = exc
                 print(f"Gemini {model} deneme {attempt + 1}: {exc}")
                 if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
+                    # Hangi sınırın dolduğu (dakikalık mı günlük mü) yanıtın içinde yazıyor
+                    print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:300])
                     _out_of_quota.add(model)
                     break
                 if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):

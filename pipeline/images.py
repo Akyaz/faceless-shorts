@@ -105,6 +105,8 @@ Tam uyan hiç aday yoksa boş dönme: yeri belli olmayan ve konuyu genel olarak 
 Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1, 7]}
 """
 PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
+# Ücretsiz kota model başına sayılıyor: görsel eleme hafif modele gider, iyi model metin yazımına kalır
+SELECT_MODELS = "gemini-flash-lite-latest,gemini-flash-latest"
 
 
 def _preview(url):
@@ -128,7 +130,7 @@ def _select(plan, candidates):
     listing = "\n".join(f"{i}. {c['about']}" for i, c in enumerate(shown, 1))
     prompt = f"{SELECT_RULES}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
-        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews))["pick"]
+        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews, SELECT_MODELS))["pick"]
         print(f"Görsel seçimi: {picks} ({len(shown)} aday içinden)")
         return [shown[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(shown)]
     except Exception as exc:

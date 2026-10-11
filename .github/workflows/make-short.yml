@@ -1,8 +1,11 @@
 name: Short üret
 
 on:
-  # Türkiye saatiyle 10, 12, 15, 17, 19 ve 23 (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
+  # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
+    # 07:15: sabah paketi, arka arkaya 3 video
+    - cron: "5 4 * * *"
+    # 10, 12, 15, 17, 19 ve 23: birer video
     - cron: "50 6,8,11,13,15,19 * * *"
   workflow_dispatch:
     inputs:
@@ -10,11 +13,15 @@ on:
         description: "Üretilen videoyu kanala da yükle"
         type: boolean
         default: false
+      count:
+        description: "Kaç video üretilsin"
+        type: number
+        default: 1
 
 jobs:
   make:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,25 +37,43 @@ jobs:
           path: state
           key: history-${{ github.run_id }}
           restore-keys: history-
-      - name: Videoyu üret
+      # İlk video out/, sonrakiler out/2, out/3... altına yazılır; işlenen haber kaydı sayesinde konular farklı olur
+      - name: Videoları üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python -m pipeline.main --out out --history state/history.json
+          COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
+        run: |
+          failed=0
+          for i in $(seq 1 "$COUNT"); do
+            dir=out; [ "$i" -gt 1 ] && dir="out/$i"
+            python -m pipeline.main --out "$dir" --history state/history.json || failed=1
+          done
+          exit $failed
       - uses: actions/cache/save@v4
+        if: ${{ !cancelled() }}
         with:
           path: state
           key: history-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: short
           path: |
             out/short.mp4
             out/metadata.json
+            out/*/short.mp4
+            out/*/metadata.json
       - name: YouTube'a yükle
-        if: ${{ github.event_name == 'schedule' || inputs.upload }}
+        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) }}
         env:
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: python -m pipeline.upload out/short.mp4 out/metadata.json
+        run: |
+          failed=0
+          for meta in out/metadata.json out/*/metadata.json; do
+            [ -f "$meta" ] || continue
+            python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
+          done
+          exit $failed

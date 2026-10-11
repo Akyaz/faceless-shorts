@@ -7,7 +7,7 @@ on:
     - cron: "5 4 * * *"
     # 10, 12, 17 ve 19: birer gündem haberi
     - cron: "50 6,8,13,15 * * *"
-    # 15 ve 23: bilim ve teknolojiden birer trend videosu
+    # 15 ve 23: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
     - cron: "50 11,19 * * *"
     # 13:30: spor gündemi özeti
     - cron: "20 10 * * *"
@@ -24,7 +24,7 @@ on:
         type: number
         default: 1
       mode:
-        description: "Video türü: story (gündem haberi), trend (bilim ve teknoloji), digest (günün özeti), sports (spor gündemi)"
+        description: "Video türü: story (gündem haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi)"
         type: choice
         options: [story, trend, digest, sports]
         default: story

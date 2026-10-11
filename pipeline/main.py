@@ -1,10 +1,10 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
 Kullanım: python -m pipeline.main [--mode story|trend|digest|sports] [--out out] [--offline] [--history dosya.json]
---mode story tek gündem haberini anlatır (varsayılan), trend bilim ve teknolojiden merak uyandıran bir gelişmeyi;
-digest günün öne çıkan haberlerini, sports spor gündemini özetler.
+--mode story tek gündem haberini anlatır (varsayılan); digest günün öne çıkan haberlerini, sports spor gündemini,
+trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
---history tek konulu videolarda (story, trend) işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
+--history story ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
 import json
@@ -26,7 +26,7 @@ def _offline_audio(text, out_path):
     return words
 
 
-HISTORY_KEEP = 90  # günde 9 tek haber videosuyla yaklaşık 10 gün
+HISTORY_KEEP = 150  # günde 7 tek haber ve 8 trend maddesiyle yaklaşık 10 gün
 
 
 def load_history(path):
@@ -111,14 +111,19 @@ def main():
         else:
             headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
     single = args.mode in script.STORIES
-    if single and not args.offline:
+    if args.mode in ("story", "trend") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
         print(f"Hassas içerik nedeniyle ayrılan haber: {len(headlines) - len(calm)}")
         headlines = calm or headlines
-    # Toplu özetler günün haberlerini yeniden anar; tekrar kaydı yalnızca tek haber videoları içindir
-    use_history = bool(args.history) and single
+    if single and not args.offline:
+        # Tek başlıktan 80 kelimelik metin çıkmaz, model boşluğu uydurarak doldurur; en az üç başlığı olan haber aranır
+        rich = [h for h in headlines if len(h.get("related", [])) >= 2]
+        print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
+        headlines = rich if len(rich) >= 3 else headlines
+    # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
+    use_history = bool(args.history) and args.mode in ("story", "trend")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]

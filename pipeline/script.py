@@ -1,7 +1,7 @@
 """Haberlerden seslendirilecek video metnini hazırlar.
 
-Dört tür video var: "story" tek bir gündem haberini, "trend" bilim ve teknolojiden merak uyandıran tek bir
-gelişmeyi anlatır; "digest" günün öne çıkan haberlerini, "sports" spor gündemini toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
+Dört tür video var: "story" tek bir gündem haberini anlatır; "digest" günün öne çıkan haberlerini, "sports" spor
+gündemini, "trend" bilim ve teknolojiden merak uyandıran gelişmeleri toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
 başlıkların düz okunduğu özet formatına düşülür.
 """
 import base64
@@ -69,7 +69,7 @@ IMAGE_FIELDS = """Wikimedia Commons araması (yer, nesne, kurum; kişi adı değ
   ara (örnek: "E-5 İstanbul", "Kapıkule", "TCDD train", "Rams Park"); yer adlarını Türkçe yazabilirsin. Konunun
   nesnesini yakın planda gösteren aramalar 2-3 kelimelik İngilizce olsun (örnek: "cigarette pack", "football stadium")."""
 
-# Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi. Metin kuralları ikisinde de aynı.
+# Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi
 STORIES = {
     "story": {
         "label": "GÜNDEM", "hashtags": ["gündem", "haber"],
@@ -81,18 +81,6 @@ resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim, 
 Seçme: cinayet, cinsel suç, kaza ve ölüm ayrıntısı öne çıkan haberler; adı geçen kişilere yönelik suçlama ve
 tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; magazin; Türkiye'deki izleyicinin hayatına
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
-""",
-    },
-    "trend": {
-        "label": "TREND", "hashtags": ["bilim", "teknoloji"],
-        "brief": """Görev: Ciddi bir haber kanalının "bunu duydun mu?" köşesi için YouTube Shorts anlatımı: bilim, uzay, teknoloji
-ve doğadan merak uyandıran tek bir gelişme. Amaç izleyicinin şaşırması, sonuna kadar izlemesi ve videoyu paylaşması.
-Üslup meraklı ve canlı ama haber kanalı ciddiyetinde: bilgi doğru, abartı yok.
-
-Konu seçimi: En şaşırtıcı, "vay be" dedirten ve herkesin anlayabileceği gelişmeyi seç: keşifler, uzay, yapay zekâ,
-yeni teknolojiler, doğa olayları, rekorlar, Türkiye'den bilim ve teknoloji başarıları.
-Seçme: magazin, dizi ve televizyon, ünlüler; ürün tanıtımı, indirim ve fiyat haberleri; sızıntı ve söylentiler;
-savaş ve silah haberleri; siyaset; dinî yorum içeren haberler. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
 }
@@ -173,6 +161,24 @@ DIGESTS = {
         "fallback_title": "Spor Gündemi", "fallback_intro": "Spor gündeminde bugün öne çıkanlar.",
         "fallback_outro": "Sence günün spor haberi hangisiydi?",
         "fallback_queries": ["football stadium", "football pitch", "soccer ball"],
+    },
+    # Bilim ve teknoloji akışı haber başına tek başlık verir; tek haberlik uzun anlatım için malzeme yetmez
+    # (model boşluğu uydurarak dolduruyor), bu yüzden trendler de kısa maddeler hâlinde verilir.
+    "trend": {
+        "label": "TREND", "count": 4, "mood": "notr", "hashtags": ["bilim", "teknoloji"],
+        "subject": "bilim ve teknolojiden merak uyandıran gelişmeler özeti (ciddi bir haber kanalının "
+                   "\"bunu duydun mu?\" köşesi; üslup meraklı ve canlı ama abartısız)",
+        "selection": "En şaşırtıcı, \"vay be\" dedirten ve herkesin anlayabileceği gelişmeler: keşifler, uzay, yapay zekâ, "
+                     "yeni teknolojiler, doğa olayları, rekorlar, Türkiye'den bilim ve teknoloji başarıları. Başlığı ne "
+                     "olduğunu somut olarak söyleyen haberleri seç.",
+        "avoid": "ne olduğunu söylemeyen merak tuzağı başlıklar (\"mucizeyi yaşadılar\", \"duyan inanamadı\"); magazin, "
+                 "dizi ve ünlüler; ürün tanıtımı, indirim ve fiyat haberleri; sızıntı ve söylentiler; savaş ve silah "
+                 "haberleri; siyaset; dinî yorum içeren haberler.",
+        "intro_example": "Bugün bilim dünyasından dört şaşırtıcı gelişme.",
+        "outro_example": "Hangisi seni en çok şaşırttı?",
+        "fallback_title": "Bilim ve Teknolojide Bugün", "fallback_intro": "Bilim ve teknolojide bugün öne çıkanlar.",
+        "fallback_outro": "Hangisi seni en çok şaşırttı?",
+        "fallback_queries": ["space telescope", "laboratory microscope", "circuit board"],
     },
 }
 

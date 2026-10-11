@@ -1,7 +1,7 @@
 """Haberlerden seslendirilecek video metnini hazırlar.
 
-Üç tür video var: "story" tek bir haberi anlatır, "digest" günün öne çıkan haberlerini,
-"sports" spor gündemini toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
+Dört tür video var: "story" tek bir gündem haberini, "trend" bilim ve teknolojiden merak uyandıran tek bir
+gelişmeyi anlatır; "digest" günün öne çıkan haberlerini, "sports" spor gündemini toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
 başlıkların düz okunduğu özet formatına düşülür.
 """
 import base64
@@ -69,7 +69,11 @@ IMAGE_FIELDS = """Wikimedia Commons araması (yer, nesne, kurum; kişi adı değ
   ara (örnek: "E-5 İstanbul", "Kapıkule", "TCDD train", "Rams Park"); yer adlarını Türkçe yazabilirsin. Konunun
   nesnesini yakın planda gösteren aramalar 2-3 kelimelik İngilizce olsun (örnek: "cigarette pack", "football stadium")."""
 
-STORY_RULES = """Görev: YouTube Shorts için Türkçe haber anlatımı. Kanalın sözü: "seni etkileyen haber, 40 saniyede".
+# Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi. Metin kuralları ikisinde de aynı.
+STORIES = {
+    "story": {
+        "label": "GÜNDEM", "hashtags": ["gündem", "haber"],
+        "brief": """Görev: YouTube Shorts için Türkçe haber anlatımı. Kanalın sözü: "seni etkileyen haber, 40 saniyede".
 Amaç izleyicinin kaydırmadan sonuna kadar izlemesi ve videodan işine yarar bir şey öğrenmesi.
 
 Haber seçimi: İzleyicinin gündelik hayatını doğrudan etkileyen haberi seç: zam, maaş, vergi, yeni düzenleme, yasak,
@@ -77,7 +81,23 @@ resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim, 
 Seçme: cinayet, cinsel suç, kaza ve ölüm ayrıntısı öne çıkan haberler; adı geçen kişilere yönelik suçlama ve
 tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; magazin; Türkiye'deki izleyicinin hayatına
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
+""",
+    },
+    "trend": {
+        "label": "TREND", "hashtags": ["bilim", "teknoloji"],
+        "brief": """Görev: Ciddi bir haber kanalının "bunu duydun mu?" köşesi için YouTube Shorts anlatımı: bilim, uzay, teknoloji
+ve doğadan merak uyandıran tek bir gelişme. Amaç izleyicinin şaşırması, sonuna kadar izlemesi ve videoyu paylaşması.
+Üslup meraklı ve canlı ama haber kanalı ciddiyetinde: bilgi doğru, abartı yok.
 
+Konu seçimi: En şaşırtıcı, "vay be" dedirten ve herkesin anlayabileceği gelişmeyi seç: keşifler, uzay, yapay zekâ,
+yeni teknolojiler, doğa olayları, rekorlar, Türkiye'den bilim ve teknoloji başarıları.
+Seçme: magazin, dizi ve televizyon, ünlüler; ürün tanıtımı, indirim ve fiyat haberleri; sızıntı ve söylentiler;
+savaş ve silah haberleri; siyaset; dinî yorum içeren haberler. "pick" alanına seçtiğin haberin numarasını yaz.
+""",
+    },
+}
+
+STORY_RULES = """
 Metin kuralları:
 1. İlk cümle en fazla 10 kelime: şaşırtıcı bir tezat ya da doğrudan izleyiciye soru. Selam, giriş, "bugün" yok.
 2. Asıl çarpıcı ayrıntıyı hemen verme: önce bağlam, sonra "ama asıl dikkat çeken şu" gibi bir geçişle en sona yakın ver.
@@ -184,9 +204,10 @@ def _tags(values):
     return [t for t in (re.sub(r"[^\w]", "", str(v)).lower() for v in values or []) if t][:3]
 
 
-def story_script(headlines, count=8, recent=()):
+def story_script(headlines, kind="story", count=10, recent=()):
+    spec = STORIES[kind]
     headlines = headlines[:count]
-    prompt = STORY_RULES
+    prompt = spec["brief"] + STORY_RULES
     if recent:
         # Aynı olay farklı başlıkla yeniden gelebiliyor; başlık eşleşmesi yetmez
         prompt += ("\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n"
@@ -195,9 +216,10 @@ def story_script(headlines, count=8, recent=()):
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
-    return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": "GÜNDEM", "segments": segments,
+    return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
+            "segments": segments,
             "sources": [headline], "image_queries": out.get("image_queries") or [],
-            "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + ["gündem", "haber"],
+            "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "image_prompt": out.get("image_prompt", "")}
 
 
@@ -243,9 +265,9 @@ def plain_digest(headlines, kind="digest", count=3):
 def build_script(headlines, mode="story", recent=()):
     if os.environ.get("GEMINI_API_KEY"):
         try:
-            if mode == "story":
-                return story_script(headlines, recent=recent)
+            if mode in STORIES:
+                return story_script(headlines, mode, recent=recent)
             return digest_script(headlines, mode)
         except Exception as exc:  # dil modeli düşerse o saatin videosu yine çıksın
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
-    return plain_digest(headlines, "digest" if mode == "story" else mode)
+    return plain_digest(headlines, "digest" if mode in STORIES else mode)

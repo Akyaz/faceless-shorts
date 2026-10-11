@@ -7,6 +7,8 @@ import xml.etree.ElementTree as ET
 FEEDS = {
     "top": "https://news.google.com/rss?hl=tr&gl=TR&ceid=TR:tr",
     "sports": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=tr&gl=TR&ceid=TR:tr",
+    "science": "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=tr&gl=TR&ceid=TR:tr",
+    "technology": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=tr&gl=TR&ceid=TR:tr",
 }
 # Köşe yazıları haber değil; kümenin başına geçince kaynak gösterimini de bozuyor
 COLUMN = re.compile(r"\b(yazdı|yazıyor)\b", re.I)

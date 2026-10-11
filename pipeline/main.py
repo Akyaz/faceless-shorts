@@ -1,9 +1,10 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--mode story|digest|sports] [--out out] [--offline] [--history dosya.json]
---mode story tek haberi anlatır (varsayılan), digest günün öne çıkan haberlerini, sports spor gündemini özetler.
+Kullanım: python -m pipeline.main [--mode story|trend|digest|sports] [--out out] [--offline] [--history dosya.json]
+--mode story tek gündem haberini anlatır (varsayılan), trend bilim ve teknolojiden merak uyandıran bir gelişmeyi;
+digest günün öne çıkan haberlerini, sports spor gündemini özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
---history story videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
+--history tek konulu videolarda (story, trend) işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
 import json
@@ -41,6 +42,7 @@ def save_history(path, history, plan):
     Path(path).write_text(json.dumps(history[-HISTORY_KEEP:], ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+CATEGORIES = {"sports": "17", "trend": "28"}  # Spor, Bilim ve Teknoloji; diğerleri 25: Haber ve Politika
 SUBSCRIBE_LINE = "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol."
 
 
@@ -56,7 +58,7 @@ def build_metadata(plan, mode="story"):
                        + (f"\n{plan['music_credit']}\n" if plan.get("music_credit") else "")
                        + "\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
         "tags": tags + ["son dakika", "türkiye", "shorts"],
-        "category": "17" if mode == "sports" else "25",
+        "category": CATEGORIES.get(mode, "25"),
     }
 
 
@@ -87,7 +89,7 @@ def find_images(plan, work):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "digest", "sports"], default="story")
+    ap.add_argument("--mode", choices=["story", "trend", "digest", "sports"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
@@ -103,15 +105,20 @@ def main():
                       "link": ""} for i in range(1, 4)]
     else:
         from .news import fetch_headlines
-        headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
-    if args.mode == "story" and not args.offline:
+        if args.mode == "trend":  # iki akış sırayla karıştırılır, ikisinde de çıkan haber bir kez alınır
+            mixed = [h for pair in zip(fetch_headlines(20, "science"), fetch_headlines(20, "technology")) for h in pair]
+            headlines = list({h["title"]: h for h in mixed}.values())
+        else:
+            headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
+    single = args.mode in script.STORIES
+    if single and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
         print(f"Hassas içerik nedeniyle ayrılan haber: {len(headlines) - len(calm)}")
         headlines = calm or headlines
     # Toplu özetler günün haberlerini yeniden anar; tekrar kaydı yalnızca tek haber videoları içindir
-    use_history = bool(args.history) and args.mode == "story"
+    use_history = bool(args.history) and single
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]

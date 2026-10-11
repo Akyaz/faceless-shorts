@@ -1,0 +1,58 @@
+name: Haftalık derleme
+
+# Son 7 günün tek haber videolarından yatay, uzun bir "haftanın haberleri" videosu üretir
+on:
+  # Pazar 11:00 (Türkiye saati, UTC+3); GitHub geciktirebildiği için 10 dakika erken başlar
+  schedule:
+    - cron: "50 7 * * 0"
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: "Üretilen videoyu kanala da yükle"
+        type: boolean
+        default: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sistem paketleri
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Python paketleri
+        run: pip install -r requirements.txt
+      - name: Haftanın videolarının metinlerini topla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          since=$(date -u -d "7 days ago" +%Y-%m-%d)
+          gh run list --workflow make-short.yml --branch main --status success --created ">=$since" \
+            --limit 200 --json databaseId --jq ".[].databaseId" | sort -n | while read -r id; do
+            gh run download "$id" --name short --dir "week/$id" || echo "::warning::$id indirilemedi"
+          done
+          find week -name "*.mp4" -delete
+      - name: Derlemeyi üret
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m pipeline.weekly --week week --out out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weekly
+          path: |
+            out/short.mp4
+            out/metadata.json
+      - name: YouTube'a yükle
+        if: ${{ github.event_name == 'schedule' || inputs.upload }}
+        env:
+          YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m pipeline.upload out/short.mp4 out/metadata.json

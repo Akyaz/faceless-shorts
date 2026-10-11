@@ -63,7 +63,7 @@ def main():
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
     video_id = upload(video_path, meta)
-    print(f"Yüklendi: https://youtube.com/shorts/{video_id}")
+    print(f"Yüklendi: https://youtu.be/{video_id}")
 
 
 if __name__ == "__main__":

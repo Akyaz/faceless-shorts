@@ -14,6 +14,7 @@ import urllib.request
 
 # Yoğunlukta 503 dönebiliyor; sırayla denenir
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
+_out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
 
 
 def _generate(prompt, key, images=()):
@@ -27,6 +28,8 @@ def _generate(prompt, key, images=()):
     models = os.environ.get("GEMINI_MODELS", DEFAULT_MODELS).split(",")
     last_err = None
     for model in models:
+        if model in _out_of_quota:
+            continue
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model.strip()}:generateContent"
         for attempt in range(2):
             req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
@@ -38,7 +41,10 @@ def _generate(prompt, key, images=()):
             except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError) as exc:
                 last_err = exc
                 print(f"Gemini {model} deneme {attempt + 1}: {exc}")
-                if isinstance(exc, urllib.error.HTTPError) and exc.code not in (429, 500, 503):
+                if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
+                    _out_of_quota.add(model)
+                    break
+                if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):
                     break  # tekrar denemek işe yaramaz, sıradaki modele geç
                 time.sleep(10)
     raise RuntimeError(f"Hiçbir Gemini modeli yanıt vermedi: {last_err}")

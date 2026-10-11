@@ -44,7 +44,7 @@ def _generate(prompt, key, images=(), models=None):
                 print(f"Gemini {model} deneme {attempt + 1}: {exc}")
                 if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
                     # Hangi sınırın dolduğu (dakikalık mı günlük mü) yanıtın içinde yazıyor
-                    print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:300])
+                    print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:700])
                     _out_of_quota.add(model)
                     break
                 if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):

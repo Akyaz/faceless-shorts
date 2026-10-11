@@ -13,6 +13,8 @@ Video türleri (`--mode`): `story` tek bir haberi anlatır, `digest` günün ön
 
 Zamanlama (Türkiye saati): 07:15'te 3 tek haber videosu; 10:00, 12:00, 15:00, 17:00, 19:00 ve 23:00'te birer tek haber; 13:30'da spor gündemi; 20:30'da günün özeti. GitHub zamanlanmış işleri geciktirebilir ya da atlayabilir.
 
+Haftalık derleme: **Haftalık derleme** iş akışı her pazar 11:00'de son 7 günün tek haber videolarından 10 haber seçip yatay (1920x1080), yaklaşık 5 dakikalık bir video üretir (`pipeline/weekly.py`). Metinler yeniden yazılmaz; "yarın", "bugün" gibi o güne bağlı ifade içeren haberler alınmaz.
+
 Çalıştırma: Actions sekmesinde **Short üret** → *Run workflow*. Video, çalışmanın "Artifacts" bölümünden indirilir.
 
 Yerelde ağsız deneme: `python -m pipeline.main --offline`

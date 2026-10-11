@@ -136,12 +136,13 @@ def _select(plan, candidates):
         return None
 
 
-def find_backgrounds(plan, out_dir, count):
+def find_backgrounds(plan, out_dir, count, per_query=5):
     """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner."""
+    out_dir.mkdir(parents=True, exist_ok=True)
     pools = []
     for query in plan.get("image_queries") or []:
         try:
-            found = wikimedia(query)
+            found = wikimedia(query, per_query)
         except Exception as exc:
             print(f"Wikimedia görseli alınamadı ({query}): {exc}")
             continue

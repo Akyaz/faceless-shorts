@@ -1,8 +1,9 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--out out] [--offline] [--history dosya.json]
+Kullanım: python -m pipeline.main [--mode story|digest|sports] [--out out] [--offline] [--history dosya.json]
+--mode story tek haberi anlatır (varsayılan), digest günün öne çıkan haberlerini, sports spor gündemini özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
---history daha önce işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
+--history story videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
 import json
@@ -24,7 +25,7 @@ def _offline_audio(text, out_path):
     return words
 
 
-HISTORY_KEEP = 60  # günde 6 videoyla yaklaşık 10 gün
+HISTORY_KEEP = 90  # günde 9 tek haber videosuyla yaklaşık 10 gün
 
 
 def load_history(path):
@@ -40,21 +41,53 @@ def save_history(path, history, plan):
     Path(path).write_text(json.dumps(history[-HISTORY_KEEP:], ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def build_metadata(plan):
-    sources = "\n".join(f"- {h['title']} ({h['source']})" for h in plan["sources"])
-    title = f"{plan['title']} #shorts"
+SUBSCRIBE_LINE = "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol."
+
+
+def build_metadata(plan, mode="story"):
+    # Haber kümesindeki bütün yayınlar: metin yalnızca en üstteki başlığa dayanmıyor
+    cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:4]]
+    sources = "\n".join(f"- {x['title']} ({x['source']})" for x in cluster)
+    tags = list(dict.fromkeys(plan.get("hashtags") or ["gündem", "haber"]))
     return {
-        "title": title[:100],
-        "description": f"{plan['title']}\n\nKaynaklar:\n{sources}\n"
+        "title": plan["title"][:100],
+        "description": f"{plan['title']}\n\n{SUBSCRIBE_LINE}\n\nKaynaklar:\n{sources}\n"
                        + (f"\nGörseller temsilidir.\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
                        + (f"\n{plan['music_credit']}\n" if plan.get("music_credit") else "")
-                       + "\n#gündem #haber #shorts",
-        "tags": ["gündem", "haber", "son dakika", "türkiye", "shorts"],
+                       + "\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
+        "tags": tags + ["son dakika", "türkiye", "shorts"],
+        "category": "17" if mode == "sports" else "25",
     }
+
+
+def find_images(plan, work):
+    """Her segment için arka plan dosyası (yoksa None) ve kaynak satırları."""
+    segments = plan["segments"]
+    if plan.get("image_queries") or plan.get("image_prompt"):  # tek haber: görseller paragraflar arasında döner
+        found = images.find_backgrounds(plan, work, len(segments))
+        paths = [path for path, _ in found]
+        return [paths[i % len(paths)] if paths else None for i in range(len(segments))], [c for _, c in found]
+
+    per_segment, credits = [None] * len(segments), []
+    for i, seg in enumerate(segments):  # toplu özet: her haberin kendi görseli
+        if not seg.get("image_queries"):
+            continue
+        item = {"title": seg.get("heading") or seg["text"], "sources": [seg["headline"]],
+                "image_queries": seg["image_queries"]}
+        found = images.find_backgrounds(item, work / f"item{i}", 1, per_query=3)
+        if found:
+            per_segment[i], credit = found[0]
+            credits.append(credit)
+    # Giriş ilk haberin, kapanış son haberin görselini kullanır
+    known = [p for p in per_segment if p]
+    if known:
+        per_segment[0], per_segment[-1] = per_segment[0] or known[0], per_segment[-1] or known[-1]
+    return per_segment, credits
 
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--mode", choices=["story", "digest", "sports"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
@@ -70,38 +103,39 @@ def main():
                       "link": ""} for i in range(1, 4)]
     else:
         from .news import fetch_headlines
-        headlines = fetch_headlines(limit=30)
-    history = load_history(args.history) if args.history else []
+        headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
+    # Toplu özetler günün haberlerini yeniden anar; tekrar kaydı yalnızca tek haber videoları içindir
+    use_history = bool(args.history) and args.mode == "story"
+    history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]
     if fresh:
         headlines = fresh
     else:
         print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
-    plan = script.build_script(headlines, recent=[h["title"] for h in history[-12:]])
-    if args.history:
+    plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+    if use_history:
         save_history(args.history, history, plan)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):
-            print(f"  ilgili: {r}")
+            print(f"  ilgili: {r['title']} ({r['source']})")
     print(f"Başlık: {plan['title']}")
     if plan.get("hook_title"):
         print(f"Ekran başlığı: {plan['hook_title']}")
     for seg in plan["segments"]:
-        print(f"  [{seg['kind']}] {seg['text']}")
+        heading = f"{seg['heading']}: " if seg.get("heading") else ""
+        print(f"  [{seg['kind']}] {heading}{seg['text']}")
 
-    backgrounds, credits = [], []
+    segments = plan["segments"]
     if args.offline:
-        backgrounds = [args.background] if args.background else []
+        backgrounds, credits = [args.background] * len(segments), []
     else:
-        found = images.find_backgrounds(plan, work, len(plan["segments"]))
-        backgrounds = [path for path, _ in found]
-        credits = [credit for _, credit in found]
+        backgrounds, credits = find_images(plan, work)
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
     parts = []
-    for i, seg in enumerate(plan["segments"]):
+    for i, seg in enumerate(segments):
         audio = work / f"seg{i}.mp3"
         if args.offline:
             words = _offline_audio(seg["text"], audio)
@@ -110,9 +144,8 @@ def main():
             words = synthesize(seg["text"], audio)
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
-        # Görsel sayısı paragraftan azsa baştan döner
-        background = backgrounds[i % len(backgrounds)] if backgrounds else None
-        render.draw_card(seg, i, card, background, plan.get("hook_title", ""))
+        render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
+                         subscribe=i == len(segments) - 1)
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
         render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
@@ -120,7 +153,9 @@ def main():
 
     render.concat(parts, work / "voice.mp4")
     plan["music_credit"] = music.add(work / "voice.mp4", plan.get("mood"), out / "short.mp4")
-    meta = build_metadata(plan)
+    meta = build_metadata(plan, args.mode)
+    for seg in segments:  # haberin tamamı zaten plan["sources"] içinde
+        seg.pop("headline", None)
     (out / "metadata.json").write_text(json.dumps({**meta, "plan": plan}, ensure_ascii=False, indent=2))
     print(f"Hazır: {out / 'short.mp4'} ({render.audio_duration(out / 'short.mp4'):.1f} sn)")
 

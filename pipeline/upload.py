@@ -32,7 +32,7 @@ def upload(video_path, meta):
             "title": meta["title"][:100],
             "description": meta["description"][:5000],
             "tags": meta.get("tags", []),
-            "categoryId": "25",  # Haber ve Politika
+            "categoryId": meta.get("category", "25"),  # 25: Haber ve Politika, 17: Spor
             "defaultLanguage": "tr",
             "defaultAudioLanguage": "tr",
         },

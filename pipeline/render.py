@@ -57,17 +57,31 @@ def _brand(img):
     img.paste(logo, (60, 76), logo)
 
 
-def draw_card(segment, idx, out_path, background=None, hook_title=""):
+SUBSCRIBE_RED = (229, 57, 53)
+
+
+def _subscribe(d, bold, regular):
+    """Son kartta altyazının altında abone çağrısı."""
+    d.text((W / 2, 1270), "Günün haberleri her gün bu kanalda", font=regular, fill="white", anchor="mm",
+           stroke_width=3, stroke_fill="black")
+    text = "ABONE OL"
+    tw = d.textlength(text, font=bold)
+    d.rounded_rectangle([(W - tw) / 2 - 48, 1330, (W + tw) / 2 + 48, 1440], radius=55, fill=SUBSCRIBE_RED)
+    d.text((W / 2, 1385), text, font=bold, fill="white", anchor="mm")
+
+
+def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False):
+    """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer."""
     accent = ACCENTS[idx % len(ACCENTS)]
     img = _photo(background) if background else _gradient(accent)
 
     d = ImageDraw.Draw(img)
     bold = ImageFont.truetype(_font_path(True), 56)
     regular = ImageFont.truetype(_font_path(False), 44)
-    big = ImageFont.truetype(_font_path(True), 220)
 
     _brand(img)
-    label = "GÜNDEM"
+    label = segment.get("label") or label
+    hook_title = segment.get("heading") or hook_title
     lw = d.textlength(label, font=bold)
     d.rounded_rectangle([(W - lw) / 2 - 36, 180, (W + lw) / 2 + 36, 280], radius=50, fill=accent)
     d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
@@ -80,8 +94,8 @@ def draw_card(segment, idx, out_path, background=None, hook_title=""):
             d.text((W / 2, y), line, font=hook_font, fill=(255, 214, 0), anchor="mm",
                    stroke_width=5, stroke_fill="black")
             y += 96
-    if segment["kind"] == "headline":
-        d.text((W / 2, 520), f"{segment['index']}/{segment['total']}", font=big, fill="white", anchor="mm")
+    if subscribe:
+        _subscribe(d, bold, regular)
     if segment.get("source"):
         d.text((W / 2, 1560), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
                anchor="mm", stroke_width=3, stroke_fill="black")

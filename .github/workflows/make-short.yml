@@ -85,15 +85,6 @@ jobs:
         with:
           path: state
           key: history-${{ github.run_id }}
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: short
-          path: |
-            out/short.mp4
-            out/metadata.json
-            out/*/short.mp4
-            out/*/metadata.json
       - name: YouTube'a yükle
         if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) }}
         env:
@@ -108,6 +99,16 @@ jobs:
             python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
           done
           exit $failed
+      # Yüklemeden sonra saklanır: metadata.json'da YouTube bağlantısı da olur, yeniden yükleme bunu atlar
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: short
+          path: |
+            out/short.mp4
+            out/metadata.json
+            out/*/short.mp4
+            out/*/metadata.json
       # Telegram mesajı ve yönetim panelinin okuduğu kayıt; başarısız çalışmalar da bildirilir
       - name: Sonucu bildir
         if: ${{ always() }}

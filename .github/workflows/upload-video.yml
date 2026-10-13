@@ -1,11 +1,12 @@
 name: Hazır videoyu yükle
 
-# Daha önce üretilmiş bir "Short üret" çalışmasının videosunu kanala yükler
+# Daha önce üretilmiş bir çalışmanın videolarını kanala yükler (örneğin günlük yükleme sınırına takılanları).
+# Zaten yüklenmiş olanlar atlanır.
 on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: "Videoyu üreten çalışmanın numarası (Actions linkindeki sayı)"
+        description: "Videoları üreten çalışmanın numarası (Actions linkindeki sayı)"
         required: true
       privacy:
         description: "public, unlisted veya private"
@@ -16,7 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: read
-      contents: read
+      contents: write  # sonuç kaydı panel-data dalına yazılır
+    env:
+      MODE: retry
+      SOURCE_RUN_ID: ${{ inputs.run_id }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,7 +28,8 @@ jobs:
           python-version: "3.12"
       - uses: actions/download-artifact@v4
         with:
-          name: short
+          pattern: "{short,weekly}"
+          merge-multiple: true
           path: out
           run-id: ${{ inputs.run_id }}
           github-token: ${{ github.token }}
@@ -34,4 +39,18 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           YT_PRIVACY: ${{ inputs.privacy }}
-        run: python -m pipeline.upload out/short.mp4 out/metadata.json
+        run: |
+          failed=0
+          for meta in out/metadata.json out/*/metadata.json; do
+            [ -f "$meta" ] || continue
+            python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
+          done
+          exit $failed
+      - name: Sonucu bildir
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m pipeline.report out

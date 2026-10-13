@@ -59,6 +59,11 @@ def append_feed(entry):
         except urllib.error.HTTPError as exc:
             if exc.code != 404:
                 raise
+        # Aynı çalışmanın önceki kaydı (yeniden deneme, yeniden yükleme) yenisiyle değiştirilir
+        previous = [e for e in feed if e["run"] == entry["run"]]
+        if previous and entry["mode"] == "retry":
+            entry["mode"] = previous[-1]["mode"]
+        feed = [e for e in feed if e["run"] != entry["run"]]
         content = json.dumps((feed + [entry])[-KEEP:], ensure_ascii=False, indent=1)
         body = {"message": f"feed: {entry['run']}", "branch": BRANCH,
                 "content": base64.b64encode(content.encode()).decode(), **({"sha": sha} if sha else {})}
@@ -103,7 +108,9 @@ def main():
         print("Bildirilecek video yok.")  # örneğin maç olmayan gün
         return
     repo, run = os.environ.get("GITHUB_REPOSITORY", ""), os.environ.get("GITHUB_RUN_ID", "")
-    entry = {"time": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "run": run,
+    # Yeniden yüklemede kayıt, videoları üreten asıl çalışmanın numarasıyla tutulur
+    entry = {"time": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+             "run": os.environ.get("SOURCE_RUN_ID") or run,
              "event": os.environ.get("GITHUB_EVENT_NAME", ""), "mode": os.environ.get("MODE", ""), "status": status,
              "link": f"https://github.com/{repo}/actions/runs/{run}", "videos": videos}
     for name, step in (("Kayıt", lambda: append_feed(entry)), ("Telegram", lambda: telegram(message(entry)))):

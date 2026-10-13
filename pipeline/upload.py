@@ -63,6 +63,9 @@ def upload(video_path, meta):
 def main():
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
+    if meta.get("youtube_url"):  # yeniden yükleme denemesinde aynı video iki kez çıkmasın
+        print(f"Zaten yüklenmiş: {meta['youtube_url']}")
+        return
     try:
         video_id = upload(video_path, meta)
     except urllib.error.HTTPError as exc:

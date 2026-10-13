@@ -143,6 +143,60 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False):
     img.save(out_path)
 
 
+PITCH = (9, 24, 58)  # maç programı kartının koyu lacivert zemini
+
+
+def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), note=""):
+    """Maç programı tablosu. groups: [(saat, [(ev sahibi, deplasman)])]; highlight'taki takımların maçı sarı yazılır."""
+    img = Image.new("RGB", (W, H))
+    px = img.load()
+    for y in range(H):  # üstten alta koyulaşan lacivert
+        t = y / H
+        row = tuple(int(c * (1.25 - 0.9 * t)) for c in PITCH)
+        for x in range(W):
+            px[x, y] = row
+    d = ImageDraw.Draw(img)
+    line = (34, 58, 104)  # zeminde silik saha çizgileri
+    d.rectangle([70, 330, W - 70, H - 250], outline=line, width=5)
+    d.line([70, H / 2 + 40, W - 70, H / 2 + 40], fill=line, width=5)
+    d.ellipse([W / 2 - 210, H / 2 - 170, W / 2 + 210, H / 2 + 250], outline=line, width=5)
+
+    _brand(img)
+    bold = ImageFont.truetype(_font_path(True), 50)
+    regular = ImageFont.truetype(_font_path(False), 40)
+    lw = d.textlength(label, font=bold)
+    d.rounded_rectangle([(W - lw) / 2 - 36, 184, (W + lw) / 2 + 36, 276], radius=46, fill=ACCENTS[1])
+    d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
+    d.text((W / 2, 400), title, font=ImageFont.truetype(_font_path(True), 84), fill=(255, 214, 0), anchor="mm",
+           stroke_width=5, stroke_fill="black")
+    d.text((W / 2, 490), date_label, font=ImageFont.truetype(_font_path(False), 48), fill="white", anchor="mm",
+           stroke_width=3, stroke_fill="black")
+
+    # Tablo, Shorts arayüzünün kapattığı alt bölüme taşmasın diye satır aralığı maç sayısına göre daralır
+    rows = sum(len(matches) for _, matches in groups)
+    step = min(96, (1500 - 600 - 104 * len(groups)) // max(rows, 1))
+    y = 600
+    for time, matches in groups:
+        tw = d.textlength(time, font=bold)
+        d.rounded_rectangle([(W - tw) / 2 - 30, y - 38, (W + tw) / 2 + 30, y + 38], radius=38, fill=SUBSCRIBE_RED)
+        d.text((W / 2, y), time, font=bold, fill="white", anchor="mm")
+        y += 104 - (96 - step) // 2
+        for home, away in matches:
+            text = f"{home}  –  {away}"
+            size = 50
+            font = ImageFont.truetype(_font_path(True), size)
+            while d.textlength(text, font=font) > W - 150 and size > 30:
+                size -= 2
+                font = ImageFont.truetype(_font_path(True), size)
+            color = (255, 214, 0) if home in highlight or away in highlight else "white"
+            d.text((W / 2, y), text, font=font, fill=color, anchor="mm", stroke_width=4, stroke_fill="black")
+            y += step
+        y += 26
+    if note:
+        d.text((W / 2, min(y + 10, 1540)), note, font=regular, fill=(200, 210, 230), anchor="mm")
+    img.save(out_path)
+
+
 def _ass_escape(text):
     return text.replace("\\", "").replace("{", "(").replace("}", ")")
 

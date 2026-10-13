@@ -26,9 +26,9 @@ on:
         type: number
         default: 1
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, sports]
+        options: [story, world, trend, digest, sports, ucl]
         default: story
 
 jobs:
@@ -60,7 +60,11 @@ jobs:
           failed=0
           for i in $(seq 1 "$COUNT"); do
             dir=out; [ "$i" -gt 1 ] && dir="out/$i"
-            python -m pipeline.main --mode "$MODE" --out "$dir" --history state/history.json || failed=1
+            if [ "$MODE" = "ucl" ]; then
+              python -m pipeline.fixtures --out "$dir" || failed=1
+            else
+              python -m pipeline.main --mode "$MODE" --out "$dir" --history state/history.json || failed=1
+            fi
           done
           exit $failed
       - uses: actions/cache/save@v4

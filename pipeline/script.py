@@ -258,7 +258,10 @@ def _pick(headlines, number):
 def source_label(headline, limit=2):
     """Ekranda gösterilecek kaynak adları: haber kümesindeki ilk birkaç yayın."""
     names = [headline["source"]] + [r["source"] for r in headline.get("related", [])]
-    return ", ".join(list(dict.fromkeys(n for n in names if n))[:limit])
+    # Bazı yayınlar adına slogan ekliyor ("ABC News - Breaking News, Latest News and Videos")
+    names = list(dict.fromkeys(n.split(" - ")[0].strip() for n in names if n))[:limit]
+    label = ", ".join(names)
+    return label if len(label) <= 34 else names[0][:34]  # ekrana tek satırda sığmalı
 
 
 def _tags(values):

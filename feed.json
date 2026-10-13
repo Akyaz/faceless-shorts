@@ -90,5 +90,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-13T18:40:05Z",
+  "run": "38447475601",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38447475601",
+  "videos": [
+   {
+    "title": "Mars'ta Rekor ve Uzayda Gülen Yüz: Günün Bilim Gelişmeleri",
+    "url": null
+   }
+  ]
  }
 ]

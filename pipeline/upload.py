@@ -33,8 +33,8 @@ def upload(video_path, meta):
             "description": meta["description"][:5000],
             "tags": meta.get("tags", []),
             "categoryId": meta.get("category", "25"),  # 25: Haber ve Politika, 17: Spor
-            "defaultLanguage": "tr",
-            "defaultAudioLanguage": "tr",
+            "defaultLanguage": meta.get("language", "tr"),
+            "defaultAudioLanguage": meta.get("language", "tr"),
         },
         "status": {
             "privacyStatus": os.environ.get("YT_PRIVACY", "public"),

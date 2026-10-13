@@ -9,6 +9,8 @@ on:
     - cron: "50 6,8,13,15 * * *"
     # 15 ve 23: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
     - cron: "50 11,19 * * *"
+    # 16:00 ve 02:00: dünya gündeminden İngilizce birer haber (ABD'de sabah ve akşam)
+    - cron: "50 12,22 * * *"
     # 13:30: spor gündemi özeti
     - cron: "20 10 * * *"
     # 20:30: günün öne çıkan haberleri özeti
@@ -24,9 +26,9 @@ on:
         type: number
         default: 1
       mode:
-        description: "Video türü: story (gündem haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi)"
         type: choice
-        options: [story, trend, digest, sports]
+        options: [story, world, trend, digest, sports]
         default: story
 
 jobs:
@@ -53,7 +55,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
-          MODE: ${{ github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || inputs.mode || 'story' }}
+          MODE: ${{ github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || github.event.schedule == '50 12,22 * * *' && 'world' || inputs.mode || 'story' }}
         run: |
           failed=0
           for i in $(seq 1 "$COUNT"); do

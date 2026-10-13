@@ -61,19 +61,23 @@ def _brand(img):
 
 
 SUBSCRIBE_RED = (229, 57, 53)
+TEXTS = {
+    "tr": {"source": "Kaynak", "promise": "Günün haberleri her gün bu kanalda", "subscribe": "ABONE OL"},
+    "en": {"source": "Source", "promise": "World news in under a minute, every day", "subscribe": "SUBSCRIBE"},
+}
 
 
-def _subscribe(d, bold, regular):
+def _subscribe(d, bold, regular, texts):
     """Son kartta altyazının altında abone çağrısı."""
-    d.text((W / 2, 1270), "Günün haberleri her gün bu kanalda", font=regular, fill="white", anchor="mm",
+    d.text((W / 2, 1270), texts["promise"], font=regular, fill="white", anchor="mm",
            stroke_width=3, stroke_fill="black")
-    text = "ABONE OL"
+    text = texts["subscribe"]
     tw = d.textlength(text, font=bold)
     d.rounded_rectangle([(W - tw) / 2 - 48, 1330, (W + tw) / 2 + 48, 1440], radius=55, fill=SUBSCRIBE_RED)
     d.text((W / 2, 1385), text, font=bold, fill="white", anchor="mm")
 
 
-def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False):
+def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False, lang="tr"):
     """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer."""
     accent = ACCENTS[idx % len(ACCENTS)]
     img = _photo(background) if background else _gradient(accent)
@@ -98,9 +102,9 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
                    stroke_width=5, stroke_fill="black")
             y += 96
     if subscribe:
-        _subscribe(d, bold, regular)
+        _subscribe(d, bold, regular, TEXTS[lang])
     if segment.get("source"):
-        d.text((W / 2, 1560), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
+        d.text((W / 2, 1560), f"{TEXTS[lang]['source']}: {segment['source']}", font=regular, fill=(230, 230, 230),
                anchor="mm", stroke_width=3, stroke_fill="black")
     img.save(out_path)
 

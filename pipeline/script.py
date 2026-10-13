@@ -1,6 +1,7 @@
 """Haberlerden seslendirilecek video metnini hazırlar.
 
-Dört tür video var: "story" tek bir gündem haberini anlatır; "digest" günün öne çıkan haberlerini, "sports" spor
+Beş tür video var: "story" tek bir gündem haberini, "world" dünya gündeminden tek bir haberi İngilizce
+anlatır; "digest" günün öne çıkan haberlerini, "sports" spor
 gündemini, "trend" bilim ve teknolojiden merak uyandıran gelişmeleri toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
 başlıkların düz okunduğu özet formatına düşülür.
 """
@@ -83,7 +84,60 @@ tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; maga
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
+    "world": {
+        "label": "WORLD", "hashtags": ["worldnews", "news"], "lang": "en",
+        "brief": """Task: write the English voice-over for a YouTube Short about one world news story. The channel's promise
+is "world news in under a minute". The goal is that the viewer watches to the end and learns something real.
+
+Story selection: pick the story a general international audience will care about most today: major diplomacy,
+economy and markets, technology, science, climate and weather, health, or a decision that affects many people.
+Do not pick: stories centred on deaths, attacks or violence; accusations against or arrests of named private people;
+celebrity and entertainment news; opinion pieces; live blogs. Put the number of the story you picked in "pick".
+""",
+    },
 }
+
+# Aşağıdaki İngilizce kurallar Türkçe olanların karşılığıdır; biri değişirse diğeri de güncellenmeli.
+ACCURACY_EN = """STRICT rules (they apply to the title, the on-screen text and the script alike):
+- Use only information that appears in the headlines below. Do not add dates, institutions, numbers, places, names
+  or outcomes that are not in a headline.
+- Do not exaggerate or create a false impression. Do not invent an effect or reaction ("markets panicked").
+- Do not present a demand, call or proposal as a decision that has been taken.
+- Do not name minors, victims or private individuals; say "a 16-year-old" instead.
+- If a story involves loss of life, injury or suffering, report it plainly and respectfully, without detail:
+  no curiosity hook, no exclamation marks, no words like "horrific", and no question to the viewer.
+"""
+
+STORY_RULES_EN = """
+Script rules:
+1. The first sentence has at most 10 words: a surprising contrast or a direct question to the viewer.
+   No greeting, no introduction, no "today".
+2. Do not give the most striking detail straight away: context first, then lead into it near the end with a
+   transition like "but here is what stands out".
+3. Short sentences (at most 14 words), conversational, addressing the viewer as "you". No filler
+   ("stay tuned", "only time will tell", "all eyes are on").
+4. If the story is a rule, warning, price change, ban or service change, the second-to-last paragraph starts with
+   "So what does this mean for you?" and states the practical consequence that follows directly from the headlines.
+   If no such consequence follows, or people were harmed, leave this paragraph out; do not speculate.
+5. The last sentence is a short question that invites a comment.
+6. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
+
+""" + ACCURACY_EN + """
+Other fields:
+- hook_title: on-screen title, at most 5 words.
+- title: YouTube title, at most 70 characters, with the story's main keyword first.
+- image_queries: 5 different Wikimedia Commons searches in English (places, objects, institutions; never a
+  person's name). The first two name the place or institution in the story (example: "Brussels European
+  Commission", "Port of Rotterdam"), the next two show the subject as an object in 2-3 words (example:
+  "oil tanker", "wind turbines"), the last is one very general word (example: "parliament", "satellite").
+- mood: one of "notr" (informative, everyday; use this when unsure), "gergin" (crisis, disaster, danger, warning,
+  conflict), "umutlu" (good news, success, opening), "huzunlu" (loss, mourning). Use these exact words.
+- hashtags: 3 topic-specific tags; one word each, lowercase, no spaces (example: "eu", "inflation", "nasa").
+- image_prompt: a symbolic vertical illustration of the topic with no real people and no text.
+
+Return only JSON:
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
+"""
 
 STORY_RULES = """
 Metin kuralları:
@@ -188,11 +242,12 @@ def _sentence(text):
     return text if text[-1:] in ".!?" else text + "."
 
 
-def _blocks(headlines):
+def _blocks(headlines, english=False):
+    others = "Other sources" if english else "Diğer kaynaklar"
     blocks = []
     for i, h in enumerate(headlines, 1):
         related = "\n".join(f"   - {r['title']} ({r['source']})" for r in h.get("related", [])[:6])
-        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   Diğer kaynaklar:\n{related}" if related else ""))
+        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   {others}:\n{related}" if related else ""))
     return blocks
 
 
@@ -212,18 +267,20 @@ def _tags(values):
 
 def story_script(headlines, kind="story", count=10, recent=()):
     spec = STORIES[kind]
+    english = spec.get("lang") == "en"
     headlines = headlines[:count]
-    prompt = spec["brief"] + STORY_RULES
+    prompt = spec["brief"] + (STORY_RULES_EN if english else STORY_RULES)
     if recent:
         # Aynı olay farklı başlıkla yeniden gelebiliyor; başlık eşleşmesi yetmez
-        prompt += ("\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n"
-                   + "\n".join(f"- {t}" for t in recent) + "\n")
-    prompt += "\nHaberler:\n" + "\n".join(_blocks(headlines))
+        prompt += ("\nTopics covered in recent videos (do not pick a story about the same event):\n" if english
+                   else "\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n")
+        prompt += "\n".join(f"- {t}" for t in recent) + "\n"
+    prompt += ("\nStories:\n" if english else "\nHaberler:\n") + "\n".join(_blocks(headlines, english))
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
-            "segments": segments,
+            "lang": spec.get("lang", "tr"), "segments": segments,
             "sources": [headline], "image_queries": out.get("image_queries") or [],
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "image_prompt": out.get("image_prompt", "")}
@@ -276,4 +333,6 @@ def build_script(headlines, mode="story", recent=()):
             return digest_script(headlines, mode)
         except Exception as exc:  # dil modeli düşerse o saatin videosu yine çıksın
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
+    if STORIES.get(mode, {}).get("lang") == "en":
+        raise RuntimeError("İngilizce video dil modeli olmadan yazılamıyor; bu saatin videosu atlanıyor.")
     return plain_digest(headlines, "digest" if mode in STORIES else mode)

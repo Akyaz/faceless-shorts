@@ -9,6 +9,7 @@ FEEDS = {
     "sports": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=tr&gl=TR&ceid=TR:tr",
     "science": "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=tr&gl=TR&ceid=TR:tr",
     "technology": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=tr&gl=TR&ceid=TR:tr",
+    "world": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en",  # İngilizce
 }
 # Köşe yazıları haber değil; kümenin başına geçince kaynak gösterimini de bozuyor
 COLUMN = re.compile(r"\b(yazdı|yazıyor)\b", re.I)
@@ -22,9 +23,16 @@ SENSITIVE = re.compile(
     r"|feci|boğul|vuruldu|bıçakla|silahlı saldırı|bombalı|enkaz")
 
 
+# İngilizce dünya haberleri için aynı ayrım
+SENSITIVE_EN = re.compile(
+    r"\b(kill(s|ed|ing)?|dead|deadly|deaths?|dies|died|fatal\w*|murder\w*|shot|shooting|stabb\w+|rape\w*|massacre"
+    r"|suicide|wounded|injur\w+|crash(es|ed)?|bomb\w*|airstrikes?|hostages?|execut\w+|abus\w+|assault\w*|victims?"
+    r"|casualt\w+|drown\w*|genocide|terror\w*)\b", re.I)
+
+
 def is_sensitive(*texts):
-    joined = " ".join(texts).replace("İ", "i").replace("I", "ı").lower()
-    return bool(SENSITIVE.search(joined))
+    joined = " ".join(texts)
+    return bool(SENSITIVE.search(joined.replace("İ", "i").replace("I", "ı").lower()) or SENSITIVE_EN.search(joined))
 
 
 def sensitive_headline(headline):

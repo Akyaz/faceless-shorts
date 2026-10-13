@@ -1,10 +1,10 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--mode story|trend|digest|sports] [--out out] [--offline] [--history dosya.json]
---mode story tek gündem haberini anlatır (varsayılan); digest günün öne çıkan haberlerini, sports spor gündemini,
+Kullanım: python -m pipeline.main [--mode story|world|trend|digest|sports] [--out out] [--offline] [--history dosya.json]
+--mode story tek gündem haberini anlatır (varsayılan), world dünya gündeminden bir haberi İngilizce anlatır; digest günün öne çıkan haberlerini, sports spor gündemini,
 trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
---history story ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
+--history story, world ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
 import json
@@ -43,22 +43,39 @@ def save_history(path, history, plan):
 
 
 CATEGORIES = {"sports": "17", "trend": "28"}  # Spor, Bilim ve Teknoloji; diğerleri 25: Haber ve Politika
-SUBSCRIBE_LINE = "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol."
+DESCRIPTION = {
+    "tr": {"subscribe": "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.",
+           "sources": "Kaynaklar:", "images": "Görseller temsilidir.", "tags": ["son dakika", "türkiye", "shorts"]},
+    "en": {"subscribe": "World news in under a minute, every day. Subscribe so you don't miss it.",
+           "sources": "Sources:", "images": "Images are illustrative.", "tags": ["breaking news", "world", "shorts"]},
+}
+
+
+def _credit(line, lang):
+    """Görsel ve müzik künyeleri Türkçe üretilir; İngilizce videoda etiketleri çevrilir."""
+    if lang != "en" or not line:
+        return line
+    return (line.replace("Görsel: ", "Image: ").replace("Müzik: ", "Music: ").replace("Bilinmiyor", "Unknown")
+            .replace("yapay zekâ ile üretilmiş temsili illüstrasyon", "AI-generated illustration"))
 
 
 def build_metadata(plan, mode="story"):
+    lang = plan.get("lang", "tr")
+    text = DESCRIPTION[lang]
     # Haber kümesindeki bütün yayınlar: metin yalnızca en üstteki başlığa dayanmıyor
     cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:4]]
     sources = "\n".join(f"- {x['title']} ({x['source']})" for x in cluster)
     tags = list(dict.fromkeys(plan.get("hashtags") or ["gündem", "haber"]))
+    image_credit, music_credit = _credit(plan.get("image_credit"), lang), _credit(plan.get("music_credit"), lang)
     return {
         "title": plan["title"][:100],
-        "description": f"{plan['title']}\n\n{SUBSCRIBE_LINE}\n\nKaynaklar:\n{sources}\n"
-                       + (f"\nGörseller temsilidir.\n{plan['image_credit']}\n" if plan.get("image_credit") else "")
-                       + (f"\n{plan['music_credit']}\n" if plan.get("music_credit") else "")
+        "description": f"{plan['title']}\n\n{text['subscribe']}\n\n{text['sources']}\n{sources}\n"
+                       + (f"\n{text['images']}\n{image_credit}\n" if image_credit else "")
+                       + (f"\n{music_credit}\n" if music_credit else "")
                        + "\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
-        "tags": tags + ["son dakika", "türkiye", "shorts"],
+        "tags": tags + text["tags"],
         "category": CATEGORIES.get(mode, "25"),
+        "language": lang,
     }
 
 
@@ -89,7 +106,7 @@ def find_images(plan, work):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "trend", "digest", "sports"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "sports"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
@@ -109,9 +126,9 @@ def main():
             mixed = [h for pair in zip(fetch_headlines(20, "science"), fetch_headlines(20, "technology")) for h in pair]
             headlines = list({h["title"]: h for h in mixed}.values())
         else:
-            headlines = fetch_headlines(limit=30, topic="sports" if args.mode == "sports" else "top")
+            headlines = fetch_headlines(limit=30, topic=args.mode if args.mode in ("sports", "world") else "top")
     single = args.mode in script.STORIES
-    if args.mode in ("story", "trend") and not args.offline:
+    if args.mode in ("story", "world", "trend") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
@@ -123,7 +140,7 @@ def main():
         print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
         headlines = rich if len(rich) >= 3 else headlines
     # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
-    use_history = bool(args.history) and args.mode in ("story", "trend")
+    use_history = bool(args.history) and args.mode in ("story", "world", "trend")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]
@@ -159,11 +176,11 @@ def main():
             words = _offline_audio(seg["text"], audio)
         else:
             from .tts import synthesize
-            words = synthesize(seg["text"], audio)
+            words = synthesize(seg["text"], audio, plan.get("lang", "tr"))
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
         render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
-                         subscribe=i == len(segments) - 1)
+                         subscribe=i == len(segments) - 1, lang=plan.get("lang", "tr"))
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
         render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)

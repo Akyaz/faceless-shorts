@@ -11,13 +11,13 @@ from pathlib import Path
 
 import edge_tts
 
-VOICE = "tr-TR-AhmetNeural"
+VOICES = {"tr": "tr-TR-AhmetNeural", "en": "en-US-GuyNeural"}
 RATE = "+15%"  # Shorts temposu
-PIPER_VOICE = "tr_TR-dfki-medium"
+PIPER_VOICES = {"tr": "tr_TR-dfki-medium", "en": "en_US-lessac-medium"}
 PIPER_DIR = Path.home() / ".cache" / "faceless-shorts" / "piper"
 PIPER_PACE = 0.87  # Edge'deki +%15 hıza denk
 _edge_down = False  # bir kez reddedildiyse aynı çalışmada yeniden denenmez; video tek sesle çıksın
-_piper = None
+_piper = {}
 
 
 async def _synthesize(text, out_path, voice):
@@ -37,22 +37,22 @@ async def _synthesize(text, out_path, voice):
     return words
 
 
-def _piper_voice():
-    global _piper
-    if _piper is None:
+def _piper_voice(lang):
+    if lang not in _piper:
         from piper import PiperVoice
         from piper.download_voices import download_voice
+        name = PIPER_VOICES[lang]
         PIPER_DIR.mkdir(parents=True, exist_ok=True)
-        if not (PIPER_DIR / f"{PIPER_VOICE}.onnx").exists():
-            download_voice(PIPER_VOICE, PIPER_DIR)
-        _piper = PiperVoice.load(PIPER_DIR / f"{PIPER_VOICE}.onnx")
-    return _piper
+        if not (PIPER_DIR / f"{name}.onnx").exists():
+            download_voice(name, PIPER_DIR)
+        _piper[lang] = PiperVoice.load(PIPER_DIR / f"{name}.onnx")
+    return _piper[lang]
 
 
-def _synthesize_piper(text, out_path):
+def _synthesize_piper(text, out_path, lang):
     """Piper kelime zamanı vermez: her cümlenin süresi kelimelerine harf sayısıyla orantılı paylaştırılır."""
     from piper import SynthesisConfig
-    voice = _piper_voice()
+    voice = _piper_voice(lang)
     wav_path = Path(out_path).with_suffix(".wav")
     words, clock = [], 0.0
     with wave.open(str(wav_path), "wb") as wav:
@@ -77,16 +77,16 @@ def _synthesize_piper(text, out_path):
     return [w for w in words if w["text"]]
 
 
-def synthesize(text, out_path, voice=VOICE):
+def synthesize(text, out_path, lang="tr"):
     """Sesi out_path'e yazar, [{text, start, end}] kelime listesini döner (saniye)."""
     global _edge_down
     if not _edge_down:
         try:
-            words = asyncio.run(_synthesize(text, out_path, voice))
+            words = asyncio.run(_synthesize(text, out_path, VOICES[lang]))
             if words:
                 return words
             raise RuntimeError("kelime zamanı gelmedi")
         except Exception as exc:
             _edge_down = True
             print(f"Edge TTS kullanılamadı ({type(exc).__name__}: {str(exc)[:80]}); yedek sese geçiliyor")
-    return _synthesize_piper(text, out_path)
+    return _synthesize_piper(text, out_path, lang)

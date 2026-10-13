@@ -76,5 +76,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-13T17:47:24Z",
+  "run": "38440514533",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38440514533",
+  "videos": [
+   {
+    "title": "Galatasaray'ın maçı öncesi yemek ve büyük kulüplerin borçları",
+    "url": null
+   }
+  ]
  }
 ]

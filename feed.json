@@ -14,34 +14,6 @@
   ]
  },
  {
-  "time": "2026-10-13T09:44:08Z",
-  "run": "38378123073",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
-  "videos": [
-   {
-    "title": "EU and China Reach Trade Breakthrough on Hybrid Vehicles",
-    "url": null
-   }
-  ]
- },
- {
-  "time": "2026-10-13T10:09:44Z",
-  "run": "38378123073",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
-  "videos": [
-   {
-    "title": "Pope Leo Scheduled for Lung Nodule Surgery in Rome",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T11:38:53Z",
   "run": "38390528852",
   "event": "schedule",
@@ -120,20 +92,6 @@
   ]
  },
  {
-  "time": "2026-10-13T21:30:45Z",
-  "run": "38378123073",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
-  "videos": [
-   {
-    "title": "Pope Leo Diagnosed with Lung Cancer After Surgery, Vatican Says",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T21:46:10Z",
   "run": "38465976916",
   "event": "workflow_dispatch",
@@ -143,6 +101,20 @@
   "videos": [
    {
     "title": "12 İle Kuvvetli Yağış ve Fırtına Uyarısı Verildi",
+    "url": null
+   }
+  ]
+ },
+ {
+  "time": "2026-10-13T21:46:33Z",
+  "run": "38378123073",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38473069316",
+  "videos": [
+   {
+    "title": "Pope Leo Diagnosed with Lung Cancer After Surgery, Vatican Says",
     "url": null
    }
   ]

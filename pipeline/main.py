@@ -4,6 +4,7 @@ Kullanım: python -m pipeline.main [--mode story|world|trend|digest|sports] [--o
 --mode story tek gündem haberini anlatır (varsayılan), world dünya gündeminden bir haberi İngilizce anlatır; digest günün öne çıkan haberlerini, sports spor gündemini,
 trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
+--script ile metni elle yazılmış bir video üretilir (bkz. scripts/custom/); haber çekilmez.
 --history story, world ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
@@ -74,7 +75,7 @@ def build_metadata(plan, mode="story"):
                        + (f"\n{music_credit}\n" if music_credit else "")
                        + "\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
         "tags": tags + text["tags"],
-        "category": CATEGORIES.get(mode, "25"),
+        "category": plan.get("category") or CATEGORIES.get(mode, "25"),
         "language": lang,
     }
 
@@ -104,19 +105,8 @@ def find_images(plan, work):
     return per_segment, credits
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "sports"], default="story")
-    ap.add_argument("--out", default="out")
-    ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
-    ap.add_argument("--history", help="işlenen haberlerin tutulduğu JSON dosyası")
-    args = ap.parse_args()
-
-    out = Path(args.out)
-    work = out / "work"
-    work.mkdir(parents=True, exist_ok=True)
-
+def news_plan(args):
+    """Haber akışından o saatin videosunu planlar."""
     if args.offline:
         headlines = [{"title": f"Örnek haber başlığı numara {i} burada yer alıyor", "source": "Örnek Kaynak",
                       "link": ""} for i in range(1, 4)]
@@ -151,6 +141,31 @@ def main():
     plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
     if use_history:
         save_history(args.history, history, plan)
+    return plan
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "sports"], default="story")
+    ap.add_argument("--out", default="out")
+    ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
+    ap.add_argument("--history", help="işlenen haberlerin tutulduğu JSON dosyası")
+    ap.add_argument("--script", help="metni elle yazılmış videoların JSON dosyası (scripts/custom/ altında)")
+    ap.add_argument("--item", type=int, default=1, help="--script dosyasındaki kaçıncı video (1'den başlar)")
+    args = ap.parse_args()
+
+    out = Path(args.out)
+    work = out / "work"
+    work.mkdir(parents=True, exist_ok=True)
+
+    if args.script:
+        # Metni elle yazılmış video: haber çekilmez, dil modeli yalnızca fotoğraf elemede kullanılır
+        plan = script.custom_plan(json.loads(Path(args.script).read_text(encoding="utf-8"))[args.item - 1])
+        if args.history:  # otomatik videolar aynı konuyu yeniden işlemesin
+            save_history(args.history, load_history(args.history), plan)
+    else:
+        plan = news_plan(args)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):
@@ -180,7 +195,8 @@ def main():
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
         render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
-                         subscribe=i == len(segments) - 1, lang=plan.get("lang", "tr"))
+                         subscribe=i == len(segments) - 1 and plan.get("subscribe", True),
+                         lang=plan.get("lang", "tr"))
         render.write_ass(words, ass)
         part = work / f"seg{i}.mp4"
         render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)

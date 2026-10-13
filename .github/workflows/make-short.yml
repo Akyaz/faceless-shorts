@@ -25,6 +25,10 @@ on:
         description: "Kaç video üretilsin"
         type: number
         default: 1
+      script:
+        description: "Elle yazılmış metin dosyası (örnek: scripts/custom/2026-10-13.json); doluysa içindeki bütün videolar üretilir"
+        type: string
+        default: ""
       mode:
         description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
@@ -56,11 +60,17 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
           MODE: ${{ github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || github.event.schedule == '50 12,22 * * *' && 'world' || inputs.mode || 'story' }}
+          SCRIPT: ${{ inputs.script }}
         run: |
           failed=0
+          if [ -n "$SCRIPT" ]; then
+            COUNT=$(python -c "import json, sys; print(len(json.load(open(sys.argv[1], encoding='utf-8'))))" "$SCRIPT")
+          fi
           for i in $(seq 1 "$COUNT"); do
             dir=out; [ "$i" -gt 1 ] && dir="out/$i"
-            if [ "$MODE" = "ucl" ]; then
+            if [ -n "$SCRIPT" ]; then
+              python -m pipeline.main --script "$SCRIPT" --item "$i" --out "$dir" --history state/history.json || failed=1
+            elif [ "$MODE" = "ucl" ]; then
               python -m pipeline.fixtures --out "$dir" || failed=1
             else
               python -m pipeline.main --mode "$MODE" --out "$dir" --history state/history.json || failed=1

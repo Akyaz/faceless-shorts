@@ -340,6 +340,17 @@ def plain_digest(headlines, kind="digest", count=3):
     return _digest_plan(kind, spec["fallback_title"], spec["fallback_intro"], items, spec["fallback_outro"])
 
 
+def custom_plan(item):
+    """Elle yazılmış bir videonun planı. item alanları için scripts/custom/ altındaki dosyalara bakın."""
+    sources = item["sources"]
+    headline = {**sources[0], "related": sources[1:]}
+    segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in item["paragraphs"]]
+    return {"title": item["title"], "hook_title": item.get("hook_title", ""), "label": item.get("label", "GÜNDEM"),
+            "lang": item.get("lang", "tr"), "segments": segments, "sources": [headline], **_image_fields(item),
+            "mood": item.get("mood", "notr"), "hashtags": _tags(item.get("hashtags")) + ["gündem", "haber"],
+            "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": ""}
+
+
 def build_script(headlines, mode="story", recent=()):
     if os.environ.get("GEMINI_API_KEY"):
         try:

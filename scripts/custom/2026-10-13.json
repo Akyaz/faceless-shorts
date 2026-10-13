@@ -1,0 +1,216 @@
+[
+  {
+    "title": "Elektrikli Skuter Düzenlemesi Resmî Gazete'de: Cezalar 170 Bin TL'ye Ulaştı",
+    "hook_title": "Skuter İşletmelerine 170 Bin TL Ceza",
+    "label": "GÜNDEM",
+    "mood": "notr",
+    "hashtags": [
+      "skuter",
+      "scooter",
+      "resmigazete"
+    ],
+    "country": "Turkey",
+    "city": "",
+    "image_queries": [
+      "electric scooter",
+      "scooter street",
+      "e-scooter parked"
+    ],
+    "object_query": "electric scooter",
+    "paragraphs": [
+      "Sakın bu hatayı yapmayın! Elektrikli skuter işletmelerine 170 bin liraya kadar ceza geliyor!",
+      "Resmî Gazete'de yayımlanan yeni yönetmelikle elektrikli skuterlerde kurallar değişti. Kurallara uymayan işletmelere ağır yaptırımlar yolda.",
+      "Artık her ihlal için ayrı ceza kesilecek. Üçüncü ihlalde ceza 170 bin liraya kadar çıkıyor.",
+      "Peki sizce skuterler tamamen yasaklanmalı mı, yoksa daha sıkı mı denetlenmeli? Yorumlarda buluşalım!"
+    ],
+    "sources": [
+      {
+        "title": "Elektrikli scooter işletmelerine 170 bin liraya kadar ceza geliyor",
+        "source": "Habertürk"
+      },
+      {
+        "title": "Skuter işletmelerine 170 bin TL'ye kadar ceza geliyor",
+        "source": "Sözcü Gazetesi"
+      },
+      {
+        "title": "Elektrikli scooter yönetmeliği değişti: İhlal başına ayrı ceza kesilecek",
+        "source": "Yeni Şafak"
+      },
+      {
+        "title": "Elektrikli skuter yönetmeliği değişti: Üçüncü ihlalde 170 bin TL ceza",
+        "source": "Manşet Haber"
+      },
+      {
+        "title": "Resmi Gazete'de duyuruldu: Elektrikli skuter ihlallerine ağır ceza: 170 bin TL'ye kadar çıkıyor!",
+        "source": "CNBC-e"
+      }
+    ]
+  },
+  {
+    "title": "Devler Ligi Heyecanı: Galatasaray, RAMS Park'ta Barcelona'yı Ağırlıyor",
+    "hook_title": "Galatasaray – Barcelona Bu Gece",
+    "label": "SPOR",
+    "mood": "umutlu",
+    "category": "17",
+    "hashtags": [
+      "galatasaray",
+      "barcelona",
+      "şampiyonlarligi"
+    ],
+    "country": "Turkey",
+    "city": "Istanbul",
+    "image_queries": [
+      "Rams Park",
+      "Türk Telekom Stadium",
+      "Galatasaray stadium"
+    ],
+    "object_query": "",
+    "paragraphs": [
+      "Bu gece İstanbul'da yer yerinden oynayacak! Gözler dev kapışmada!",
+      "UEFA Şampiyonlar Ligi'nde temsilcimiz Galatasaray, İspanyol devi Barcelona'yı RAMS Park'ta ağırlıyor. Maç bu akşam saat 22.00'de başlıyor.",
+      "Barcelona'nın yıldızı Lamine Yamal maç öncesinde İstanbul paylaşımı yaptı. Sarı-kırmızılı taraftarlar büyük geceye hazırlanıyor.",
+      "Sizce maç kaç kaç biter? Skor tahminlerinizi yoruma yazın!"
+    ],
+    "sources": [
+      {
+        "title": "MUHTEMEL 11'LER | Galatasaray evinde Barcelona'yı konuk ediyor!",
+        "source": "beinsports.com.tr"
+      },
+      {
+        "title": "Galatasaray - Barcelona maçı ne zaman, saat kaçta, hangi kanalda?",
+        "source": "Hürriyet"
+      },
+      {
+        "title": "Galatasaray maçı öncesi... Lamine Yamal'dan dikkat çeken İstanbul paylaşımı!",
+        "source": "Cumhuriyet"
+      },
+      {
+        "title": "Galatasaray evinde Barcelona'yı ağırlıyor! İşte Okan Buruk'un sahaya süreceği ilk 11",
+        "source": "A Spor"
+      }
+    ]
+  },
+  {
+    "title": "İŞKUR Gençlik Programı: Üniversite Öğrencilerine Günlük 1.375 TL",
+    "hook_title": "Öğrenciye Günlük 1.375 TL",
+    "label": "GÜNDEM",
+    "mood": "umutlu",
+    "hashtags": [
+      "işkur",
+      "öğrenci",
+      "üniversite"
+    ],
+    "country": "Turkey",
+    "city": "",
+    "image_queries": [
+      "university campus",
+      "university building",
+      "university library"
+    ],
+    "object_query": "Turkish lira banknotes",
+    "paragraphs": [
+      "Öğrencilere müjde! Kampüste çalışarak ayda 19 bin 250 liraya kadar kazanabilirsiniz!",
+      "İŞKUR Gençlik Programı'nda kontenjan 150 bine çıkarıldı. Yeni dönemde üniversite öğrencilerine günlük 1.375 lira ödeme yapılacak.",
+      "Hem tecrübe kazanıp hem de kendi harçlığını çıkarmak isteyenler için başvurular başladı.",
+      "Bu fırsattan haberdar olmasını istediğin öğrenci arkadaşına bu videoyu hemen gönder!"
+    ],
+    "sources": [
+      {
+        "title": "İŞKUR Gençlik Programı'nda 150 bin kontenjan: Kimler yararlanabilir, başvurular nasıl yapılır?",
+        "source": "NTV Haber"
+      },
+      {
+        "title": "İŞKUR Gençlik Programı'nda yeni dönem: 150 bin öğrenciye gelir desteği",
+        "source": "Hürriyet"
+      },
+      {
+        "title": "İŞKUR Gençlik Programı başvuruları başlıyor: 150 bin üniversiteliye günlük 1.375 lira",
+        "source": "Memurlar.Net"
+      },
+      {
+        "title": "Bakan Işıkhan duyurdu: İŞKUR Gençlik Programı ile üniversitelilere 19 bin 250 TL destek",
+        "source": "Sabah"
+      },
+      {
+        "title": "İŞKUR Gençlik Programı'nda yeni dönem: 150 bin öğrenciye günlük 1.375 TL destek",
+        "source": "CNBC-e"
+      }
+    ]
+  },
+  {
+    "title": "Orta Doğu'da Kritik Saatler: Riyad'da Gerilim, Masada Dev Elektrik Projesi",
+    "hook_title": "Orta Doğu'da Kritik Saatler",
+    "label": "DÜNYA",
+    "mood": "gergin",
+    "subscribe": false,
+    "hashtags": [
+      "ortadoğu",
+      "enerji",
+      "riyad"
+    ],
+    "country": "Saudi Arabia",
+    "city": "Riyadh",
+    "image_queries": [
+      "Riyadh skyline",
+      "King Khalid International Airport",
+      "power transmission line"
+    ],
+    "object_query": "electricity pylon",
+    "paragraphs": [
+      "Orta Doğu'da kritik saatler yaşanıyor.",
+      "Bir yanda Riyad'daki havalimanına yönelik saldırılar ve kentte duyulan patlama sesleri var.",
+      "Diğer yanda Türkiye, Suudi Arabistan, Ürdün ve Suriye arasında konuşulan dev elektrik bağlantısı projesi. Enerji Bakanı Bayraktar, Riyad'da mevkidaşlarıyla enerji iş birliğini görüştü.",
+      "Sizce bu gelişmeler akaryakıt ve enerji fiyatlarına nasıl yansır?"
+    ],
+    "sources": [
+      {
+        "title": "Türkiye, Suudi Arabistan, Ürdün ve Suriye arasında mega elektrik projesi",
+        "source": "TRT Haber"
+      },
+      {
+        "title": "Bakan Bayraktar, Riyad'da mevkidaşlarıyla enerji iş birliğini görüştü",
+        "source": "Anadolu Ajansı"
+      },
+      {
+        "title": "Suudi Arabistan'ın başkenti Riyad'da saldırı uyarısı sonrası 3 ayrı patlama sesi duyuldu",
+        "source": "Anadolu Ajansı"
+      },
+      {
+        "title": "Riyad'daki havalimanına yeni saldırı. Husiler saldırıları üstlendi, yeni tehditler savurdu",
+        "source": "NTV Haber"
+      }
+    ]
+  },
+  {
+    "title": "Tarımda Biyolojik Mücadele: Pestisite Karşı 2 Milyar Liralık Destek",
+    "hook_title": "Pestisite Karşı 2 Milyar Lira",
+    "label": "GÜNDEM",
+    "mood": "umutlu",
+    "hashtags": [
+      "tarım",
+      "pestisit",
+      "biyolojikmücadele"
+    ],
+    "country": "Turkey",
+    "city": "",
+    "image_queries": [
+      "farm field",
+      "orchard",
+      "greenhouse",
+      "vegetable field"
+    ],
+    "object_query": "Trissolcus japonicus",
+    "paragraphs": [
+      "Meyve ve sebzelerdeki kimyasal ilaca karşı dev adım! 2 milyar liralık destek verildi!",
+      "Tarımda kimyasal ilaç kullanımının azaltılması hedefleniyor. Pestisite karşı biyolojik mücadele için 2 milyar liralık destek sağlandı.",
+      "Samuray arıları ve steril böcekler sahada. Zararlılarla artık doğal yoldan savaşılacak.",
+      "Tarımda kimyasal yerine biyolojik mücadeleye geçilmesini destekliyor musunuz? Yorum yapmayı ve takip etmeyi unutmayın!"
+    ],
+    "sources": [
+      {
+        "title": "Bir süredir 'Pestisite' karşı verilen mücadelede: 2 milyar liralık destek verildi... Samuray arısı - steril böcekler sahada",
+        "source": "Yeni Akit Gazetesi"
+      }
+    ]
+  }
+]

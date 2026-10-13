@@ -132,7 +132,7 @@ def main():
     # Her haberin kendi görselleri; paragraflar arasında döner
     backgrounds, credits = {}, []
     for i, plan in enumerate(picked):
-        found = images.find_backgrounds(plan, work / f"item{i}", 4, per_query=3) if plan.get("image_queries") else []
+        found = images.find_backgrounds(plan, work / f"item{i}", 4, per_query=2) if plan.get("image_queries") else []
         backgrounds[i] = [path for path, _ in found]
         credits += [credit for _, credit in found]
 

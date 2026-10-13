@@ -87,23 +87,28 @@ def gemini_illustration(prompt, out_path):
 SELECT_RULES = """Bir haber videosunun arka planı için fotoğraf seçiyorsun. Aşağıda numaralı adayların dosya adı ve
 açıklaması, ardından aynı sırayla fotoğrafların kendisi var. Fotoğrafa bakarak karar ver.
 
-Seç: haberin geçtiği yeri, kurumu ya da haberin konusu olan nesneyi açıkça gösteren, net ve iyi çekilmiş fotoğraflar.
-Yeri belli olmayan yakın plan nesne fotoğrafı da uygundur (örnek: sigara haberi için sigara paketi).
+EN ÖNEMLİ KURAL - YER: {place_rule}
+
+Seç: haberin geçtiği yeri, kurumu ya da ortamı açıkça gösteren, net ve iyi çekilmiş fotoğraflar.
+[nesne] işaretli adaylar yalnızca içinde insan olmayan, yeri belli etmeyen yakın plan nesne fotoğrafıysa seçilebilir.
 
 Seçme:
 - Konuyla ilgisi zayıf olanlar. Emin değilsen seçme; az ama doğru görsel, çok ama alakasız görselden iyidir.
-- Haberin geçtiği yerden başka bir ülke ya da şehre ait olduğu fotoğraftan veya açıklamadan anlaşılan sokak, bina
-  ve şehir görüntüleri (örnek: İstanbul haberi için Helsinki sokağı, Budapeşte trafiği).
 - Başka bir olaya ait olduğu belli olanlar (örnek: başka bir depremin yıkımı).
 - Harita, grafik, tablo, logo, belge, ekran görüntüsü ve yazı ağırlıklı görseller.
 - Siyah beyaz ya da eski tarihli, bulanık, karanlık ya da özensiz çekilmiş fotoğraflar.
 - Bir kişinin yüzünün öne çıktığı fotoğraflar.
 - Dikey videoda ortası kırpılınca konusu kadraj dışında kalacak fotoğraflar.
 
-Birbirinden farklı görünenleri tercih et; haberin geçtiği yere ait olanları öne al. En fazla 5 aday seç.
-Tam uyan hiç aday yoksa boş dönme: yeri belli olmayan ve konuyu genel olarak anlatan en uygun 2 adayı ver.
-Sadece JSON döndür, en uygun olan başta: {"pick": [3, 1, 7]}
+Birbirinden farklı görünenleri tercih et. En fazla 5 aday seç. Kurallara uyan aday yoksa boş liste döndür.
+Sadece JSON döndür, en uygun olan başta: {{"pick": [3, 1, 7]}}
 """
+PLACE_RULE = ("Haber {where} ile ilgili. İçinde insan, sokak, bina, okul, taşıt ya da manzara olan her fotoğraf "
+              "{where} içinde çekilmiş olmalı. Dosya adından, açıklamasından ya da görüntüsünden (yazılar, tabelalar, "
+              "bayraklar, mimari, insanlar) başka bir ülkede ya da şehirde çekildiği anlaşılan fotoğrafı seçme; "
+              "nerede çekildiği anlaşılmayan insan fotoğrafını da seçme.")
+NO_PLACE_RULE = ("Haber belirli bir ülkeyle ilgili değil. Belirli bir ülkeyi ya da halkı temsil eden insan ve sokak "
+                 "fotoğraflarını seçme; konuyu gösteren nesne, cihaz, doğa ve uzay fotoğraflarını tercih et.")
 PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
 # Ücretsiz kota model başına sayılıyor: görsel eleme hafif modele gider, iyi model metin yazımına kalır
 SELECT_MODELS = "gemini-flash-lite-latest,gemini-flash-latest"
@@ -127,8 +132,10 @@ def _select(plan, candidates):
             shown.append(cand)
         except Exception as exc:
             print(f"Önizleme alınamadı: {exc}")
-    listing = "\n".join(f"{i}. {c['about']}" for i, c in enumerate(shown, 1))
-    prompt = f"{SELECT_RULES}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
+    listing = "\n".join(f"{i}. {'[nesne] ' if c.get('neutral') else ''}{c['about']}" for i, c in enumerate(shown, 1))
+    where = _where(plan)
+    rules = SELECT_RULES.format(place_rule=PLACE_RULE.format(where=where) if where else NO_PLACE_RULE)
+    prompt = f"{rules}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
         picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews, SELECT_MODELS))["pick"]
         print(f"Görsel seçimi: {picks} ({len(shown)} aday içinden)")
@@ -138,13 +145,31 @@ def _select(plan, candidates):
         return None
 
 
-def find_backgrounds(plan, out_dir, count, per_query=5):
+def _where(plan):
+    place = plan.get("place") or {}
+    return ", ".join(x for x in (place.get("city"), place.get("country")) if x)
+
+
+def _searches(plan):
+    """(arama, nesne mi) listesi. Yer biliniyorsa her arama şehir ve ülke adıyla yapılır; yersiz arama yapılmaz."""
+    place = plan.get("place") or {}
+    city, country = place.get("city", ""), place.get("country", "")
+    searches = [(city, False)] if city else []  # şehrin kendi fotoğrafları her zaman doğru yerdendir
+    for query in plan.get("image_queries") or []:
+        located = [f"{query} {loc}" for loc in (city, country) if loc and loc.lower() not in query.lower()]
+        searches += [(q, False) for q in (located or [query])]
+    if plan.get("object_query"):
+        searches.append((plan["object_query"], True))
+    return list(dict.fromkeys(searches))
+
+
+def find_backgrounds(plan, out_dir, count, per_query=3):
     """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner."""
     out_dir.mkdir(parents=True, exist_ok=True)
     pools = []
-    for query in plan.get("image_queries") or []:
+    for query, neutral in _searches(plan):
         try:
-            found = wikimedia(query, per_query)
+            found = [{**c, "neutral": neutral} for c in wikimedia(query, per_query)]
         except Exception as exc:
             print(f"Wikimedia görseli alınamadı ({query}): {exc}")
             continue
@@ -162,10 +187,12 @@ def find_backgrounds(plan, out_dir, count, per_query=5):
             if series not in seen:
                 seen.add(series)
                 candidates.append(pool[rank])
+    candidates = candidates[:24]
 
     picked = _select(plan, candidates) if candidates else []
-    if picked is None:  # eleme yapılamadıysa en özel iki aramanın ilk sonucuna güvenilir
-        picked = candidates[:2]
+    if picked is None:
+        # Eleme yapılamadıysa yalnızca yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları elenmeden kullanılmaz
+        picked = [c for c in candidates if not c["neutral"]][:2]
 
     results = []
     for cand in picked:

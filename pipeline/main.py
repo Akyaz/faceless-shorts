@@ -92,8 +92,8 @@ def find_images(plan, work):
         if not seg.get("image_queries"):
             continue
         item = {"title": seg.get("heading") or seg["text"], "sources": [seg["headline"]],
-                "image_queries": seg["image_queries"]}
-        found = images.find_backgrounds(item, work / f"item{i}", 1, per_query=3)
+                **{k: seg.get(k) for k in ("image_queries", "object_query", "place")}}
+        found = images.find_backgrounds(item, work / f"item{i}", 1, per_query=2)
         if found:
             per_segment[i], credit = found[0]
             credits.append(credit)

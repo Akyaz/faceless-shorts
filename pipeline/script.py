@@ -66,9 +66,25 @@ ACCURACY = """KESİN kurallar (başlık, ekran yazısı ve metin için aynen ge�
   "ekipler sevk edildi", "trafik etkilendi" gibi ayrıntılar ekleme.
 """
 
-IMAGE_FIELDS = """Wikimedia Commons araması (yer, nesne, kurum; kişi adı değil). Haberin geçtiği yeri ya da kurumu adıyla
-  ara (örnek: "E-5 İstanbul", "Kapıkule", "TCDD train", "Rams Park"); yer adlarını Türkçe yazabilirsin. Konunun
-  nesnesini yakın planda gösteren aramalar 2-3 kelimelik İngilizce olsun (örnek: "cigarette pack", "football stadium")."""
+# Görsel alanları. Yer adı aramaya kodda eklenir: böylece insan, sokak ve bina fotoğrafları yalnızca haberin
+# geçtiği ülkeden ya da şehirden aranır.
+IMAGE_FIELDS = """- country: haberin geçtiği ülkenin İngilizce adı (örnek: "Turkey", "France"). Haber belirli bir ülkede
+  geçmiyorsa (uzay, genel bilim, küresel teknoloji) boş bırak.
+- city: haber tek bir şehirde geçiyorsa o şehrin adı (örnek: "Istanbul", "Tokat", "Paris"); değilse boş bırak.
+- image_queries: Wikimedia Commons için {n} farklı İngilizce arama, her biri 1-3 kelime; haberde görülmesi gereken
+  yer, bina, kurum ya da ortam (örnek: "school building", "courthouse", "highway traffic", "stadium").
+  Aramaya ülke ya da şehir adı YAZMA (onlar ayrıca eklenir) ve kişi adı yazma.
+- object_query: haberin konusu olan nesnenin, içinde insan ve yer olmayan yakın plan fotoğrafı için tek bir
+  İngilizce arama (örnek: "cigarette pack", "banknotes", "smartphone"); uygun bir nesne yoksa boş bırak."""
+
+IMAGE_FIELDS_EN = """- country: English name of the country where the story takes place (example: "Poland", "Japan"). Leave empty
+  if the story is not tied to one country (space, global technology).
+- city: the city, if the story takes place in a single city (example: "Brussels", "Paris"); otherwise empty.
+- image_queries: {n} different Wikimedia Commons searches in English, 1-3 words each: the place, building,
+  institution or setting the viewer should see (example: "parliament building", "container port", "power plant").
+  Do NOT put the country or city name in the search (it is added separately) and never a person's name.
+- object_query: one English search for a close-up of the object the story is about, with no people and no
+  location in the frame (example: "oil barrel", "banknotes", "satellite dish"); empty if there is none."""
 
 # Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi
 STORIES = {
@@ -116,27 +132,21 @@ Script rules:
    transition like "but here is what stands out".
 3. Short sentences (at most 14 words), conversational, addressing the viewer as "you". No filler
    ("stay tuned", "only time will tell", "all eyes are on").
-4. If the story is a rule, warning, price change, ban or service change, the second-to-last paragraph starts with
-   "So what does this mean for you?" and states the practical consequence that follows directly from the headlines.
-   If no such consequence follows, or people were harmed, leave this paragraph out; do not speculate.
-5. The last sentence is a short question that invites a comment.
-6. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
+4. The last sentence is a short question that invites a comment.
+5. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
 
 """ + ACCURACY_EN + """
 Other fields:
 - hook_title: on-screen title, at most 5 words.
 - title: YouTube title, at most 70 characters, with the story's main keyword first.
-- image_queries: 5 different Wikimedia Commons searches in English (places, objects, institutions; never a
-  person's name). The first two name the place or institution in the story (example: "Brussels European
-  Commission", "Port of Rotterdam"), the next two show the subject as an object in 2-3 words (example:
-  "oil tanker", "wind turbines"), the last is one very general word (example: "parliament", "satellite").
+""" + IMAGE_FIELDS_EN.format(n=4) + """
 - mood: one of "notr" (informative, everyday; use this when unsure), "gergin" (crisis, disaster, danger, warning,
   conflict), "umutlu" (good news, success, opening), "huzunlu" (loss, mourning). Use these exact words.
 - hashtags: 3 topic-specific tags; one word each, lowercase, no spaces (example: "eu", "inflation", "nasa").
 - image_prompt: a symbolic vertical illustration of the topic with no real people and no text.
 
 Return only JSON:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
 """
 
 STORY_RULES = """
@@ -145,20 +155,14 @@ Metin kuralları:
 2. Asıl çarpıcı ayrıntıyı hemen verme: önce bağlam, sonra "ama asıl dikkat çeken şu" gibi bir geçişle en sona yakın ver.
 3. Cümleler kısa (en fazla 12 kelime), konuşur gibi, "sen" diye hitap et. Tekrar ve dolgu cümle yok
    ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
-4. Haber bir düzenleme, uyarı, zam, yasak ya da hizmet değişikliğiyse sondan bir önceki paragraf
-   "Peki bu senin için ne demek?" diye başlasın ve başlıklardaki bilgiden doğrudan çıkan pratik sonucu söylesin
-   (örnek: "O yolu kullanıyorsan yarın erken çık."). Başlıklardan böyle bir sonuç çıkmıyorsa ya da haberde
-   zarar gören insanlar varsa bu paragrafı hiç yazma; tahmin yürütme.
-5. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
-6. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
+4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
+5. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
 
 """ + ACCURACY + """
 Ek alanlar:
 - hook_title: ekranda yazacak en fazla 5 kelimelik başlık.
 - title: YouTube başlığı, en fazla 70 karakter; haberin anahtar kelimesi başta olsun.
-- image_queries: 5 farklı """ + IMAGE_FIELDS + """
-  İlk ikisi yer ya da kurum, sonraki ikisi nesne, sonuncusu tek kelimelik çok genel bir İngilizce kavram olsun
-  (örnek: "smartphone", "earthquake", "courthouse").
+""" + IMAGE_FIELDS.format(n=4) + """
 - mood: fon müziği için haberin duygusu, şunlardan biri: "notr" (bilgilendirici, gündelik; emin değilsen bu),
   "gergin" (kriz, afet, tehlike, uyarı, çatışma), "umutlu" (iyi haber, başarı, açılış, kolaylık),
   "huzunlu" (kayıp, yas, üzücü olay).
@@ -166,7 +170,7 @@ Ek alanlar:
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
 
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
 """
 
 DIGEST_RULES = """Görev: YouTube Shorts için Türkçe {subject}. Aşağıdaki haberlerden birbirinden farklı {count} tanesini
@@ -181,14 +185,14 @@ Alanlar:
   - pick: haberin numarası
   - heading: ekranda yazacak en fazla 5 kelimelik başlık
   - text: 1-2 kısa cümle, en fazla 22 kelime; haberin özü, konuşur gibi
-  - image_queries: 3 farklı """ + IMAGE_FIELDS + """
+""" + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
 - outro: izleyiciye yorum yaptıracak kısa bir soru (örnek: "{outro_example}").
 - title: YouTube başlığı, en fazla 70 karakter; en dikkat çekici iki haberi ansın.
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
 
 """ + ACCURACY + """
 Sadece JSON döndür:
-{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "image_queries": ["..."]}}], "outro": "...", "title": "...", "hashtags": ["..."]}}
+{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "country": "...", "city": "", "image_queries": ["..."], "object_query": ""}}], "outro": "...", "title": "...", "hashtags": ["..."]}}
 """
 
 # Toplu özet türleri: ekran etiketi, istem ayrıntıları ve dil modeli yokken kullanılacak yedekler
@@ -264,6 +268,13 @@ def source_label(headline, limit=2):
     return label if len(label) <= 34 else names[0][:34]  # ekrana tek satırda sığmalı
 
 
+def _image_fields(out):
+    """Modelin yanıtındaki görsel alanları: aramalar, nesne araması ve haberin geçtiği yer."""
+    return {"image_queries": [q for q in out.get("image_queries") or [] if q],
+            "object_query": (out.get("object_query") or "").strip(),
+            "place": {"country": (out.get("country") or "").strip(), "city": (out.get("city") or "").strip()}}
+
+
 def _tags(values):
     return [t for t in (re.sub(r"[^\w]", "", str(v)).lower() for v in values or []) if t][:3]
 
@@ -284,19 +295,19 @@ def story_script(headlines, kind="story", count=10, recent=()):
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
             "lang": spec.get("lang", "tr"), "segments": segments,
-            "sources": [headline], "image_queries": out.get("image_queries") or [],
+            "sources": [headline], **_image_fields(out),
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "image_prompt": out.get("image_prompt", "")}
 
 
 def _digest_plan(kind, title, intro, items, outro, hashtags=()):
-    """items: [(haber, ekran başlığı, metin, görsel aramaları)]"""
+    """items: [(haber, ekran başlığı, metin, görsel alanları)]"""
     spec = DIGESTS[kind]
     segments = [{"kind": "intro", "text": intro}]
     for i, (headline, heading, text, queries) in enumerate(items, 1):
         segments.append({"kind": "item", "label": f"{spec['label']} {i}/{len(items)}", "heading": heading,
                          "source": source_label(headline), "text": _sentence(text),
-                         "headline": headline, "image_queries": queries})
+                         "headline": headline, **queries})
     segments.append({"kind": "outro", "text": outro})
     return {"title": title, "hook_title": "", "label": spec["label"], "segments": segments,
             "sources": [h for h, *_ in items], "mood": spec["mood"],
@@ -316,7 +327,7 @@ def digest_script(headlines, kind, count=14):
             heading, text = item.get("heading", ""), item["text"]
             if sensitive_headline(headline):  # acı haber ünlemle verilmez
                 heading, text = heading.replace("!", ""), text.replace("!", ".")
-            items.append((headline, heading, text, item.get("image_queries") or []))
+            items.append((headline, heading, text, _image_fields(item)))
     return _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
 
 
@@ -324,7 +335,8 @@ def plain_digest(headlines, kind="digest", count=3):
     """Dil modeli olmadan: ilk başlıklar olduğu gibi okunur, genel fotoğraflar kullanılır."""
     spec = DIGESTS[kind]
     queries = spec["fallback_queries"]
-    items = [(h, "", h["title"], [queries[i % len(queries)]]) for i, h in enumerate(headlines[:count])]
+    items = [(h, "", h["title"], {"image_queries": [queries[i % len(queries)]]})
+             for i, h in enumerate(headlines[:count])]
     return _digest_plan(kind, spec["fallback_title"], spec["fallback_intro"], items, spec["fallback_outro"])
 
 

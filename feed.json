@@ -12,5 +12,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-13T09:44:08Z",
+  "run": "38378123073",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
+  "videos": [
+   {
+    "title": "EU and China Reach Trade Breakthrough on Hybrid Vehicles",
+    "url": null
+   }
+  ]
  }
 ]

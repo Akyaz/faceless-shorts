@@ -132,5 +132,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-13T21:30:45Z",
+  "run": "38378123073",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
+  "videos": [
+   {
+    "title": "Pope Leo Diagnosed with Lung Cancer After Surgery, Vatican Says",
+    "url": null
+   }
+  ]
  }
 ]

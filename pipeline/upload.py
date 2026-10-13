@@ -8,6 +8,7 @@ Kullanım: python -m pipeline.upload out/short.mp4 out/metadata.json
 import json
 import os
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -62,7 +63,11 @@ def upload(video_path, meta):
 def main():
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
-    video_id = upload(video_path, meta)
+    try:
+        video_id = upload(video_path, meta)
+    except urllib.error.HTTPError as exc:
+        # YouTube ret sebebini yanıtın gövdesinde söyler (kota, günlük yükleme sınırı, geçersiz alan...)
+        sys.exit(f"YouTube yüklemeyi reddetti (HTTP {exc.code}): {exc.read().decode('utf-8', 'replace')[:800]}")
     # Bildirim ve yönetim paneli bağlantıyı buradan okur
     meta["youtube_url"] = f"https://youtu.be/{video_id}"
     with open(meta_path, "w", encoding="utf-8") as f:

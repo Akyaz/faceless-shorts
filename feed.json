@@ -26,5 +26,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-13T10:09:44Z",
+  "run": "38378123073",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38378123073",
+  "videos": [
+   {
+    "title": "Pope Leo Scheduled for Lung Nodule Surgery in Rome",
+    "url": null
+   }
+  ]
  }
 ]

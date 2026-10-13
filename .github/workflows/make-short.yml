@@ -3,14 +3,15 @@ name: Short üret
 on:
   # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
-    # 07:15: sabah paketi, arka arkaya 3 video
+    # Günde 9 otomatik video: YouTube kanala günde yaklaşık 10 yüklemeye izin veriyor, biri elle yüklemeye kalır.
+    # 07:15: sabah özeti
     - cron: "5 4 * * *"
     # 10, 12, 17 ve 19: birer gündem haberi
     - cron: "50 6,8,13,15 * * *"
-    # 15 ve 23: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
-    - cron: "50 11,19 * * *"
-    # 16:00 ve 02:00: dünya gündeminden İngilizce birer haber (ABD'de sabah ve akşam)
-    - cron: "50 12,22 * * *"
+    # 15:00: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
+    - cron: "50 11 * * *"
+    # 16:00: dünya gündeminden İngilizce bir haber (ABD'de sabah)
+    - cron: "50 12 * * *"
     # 13:30: spor gündemi özeti
     - cron: "20 10 * * *"
     # 20:30: günün öne çıkan haberleri özeti
@@ -30,9 +31,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), sports (spor gündemi), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, sports, ucl]
+        options: [story, world, trend, digest, morning, sports, ucl]
         default: story
 
 jobs:
@@ -42,8 +43,8 @@ jobs:
     permissions:
       contents: write  # sonuç kaydı panel-data dalına yazılır
     env:
-      COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
-      MODE: ${{ inputs.script && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || github.event.schedule == '50 12,22 * * *' && 'world' || inputs.mode || 'story' }}
+      COUNT: ${{ inputs.count || 1 }}
+      MODE: ${{ inputs.script && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '5 4 * * *' && 'morning' || github.event.schedule == '50 11 * * *' && 'trend' || github.event.schedule == '50 12 * * *' && 'world' || inputs.mode || 'story' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

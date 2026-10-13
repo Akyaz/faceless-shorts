@@ -1,6 +1,6 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--mode story|world|trend|digest|sports] [--out out] [--offline] [--history dosya.json]
+Kullanım: python -m pipeline.main [--mode story|world|trend|digest|morning|sports] [--out out] [--offline] [--history dosya.json]
 --mode story tek gündem haberini anlatır (varsayılan), world dünya gündeminden bir haberi İngilizce anlatır; digest günün öne çıkan haberlerini, sports spor gündemini,
 trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
@@ -146,7 +146,7 @@ def news_plan(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "sports"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")

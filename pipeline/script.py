@@ -1,7 +1,7 @@
 """Haberlerden seslendirilecek video metnini hazırlar.
 
 Beş tür video var: "story" tek bir gündem haberini, "world" dünya gündeminden tek bir haberi İngilizce
-anlatır; "digest" günün öne çıkan haberlerini, "sports" spor
+anlatır; "digest" günün, "morning" sabahın öne çıkan haberlerini, "sports" spor
 gündemini, "trend" bilim ve teknolojiden merak uyandıran gelişmeleri toplu özetler. GEMINI_API_KEY yoksa ya da model yanıt vermezse
 başlıkların düz okunduğu özet formatına düşülür.
 """
@@ -206,6 +206,19 @@ DIGESTS = {
         "outro_example": "Sence bugünün en önemli haberi hangisiydi?",
         "fallback_title": "Günün Öne Çıkan Haberleri", "fallback_intro": "Bugün Türkiye'de öne çıkan haberler.",
         "fallback_outro": "Sence günün en önemli haberi hangisiydi?",
+        "fallback_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"],
+    },
+    # Sabah özeti: YouTube'un günlük yükleme sınırı yüzünden üç ayrı sabah videosunun yerini tek video aldı
+    "morning": {
+        "label": "SABAH ÖZETİ", "count": 5, "mood": "notr", "hashtags": ["gündem", "haber"],
+        "subject": "sabah haber özeti (güne başlarken bilinmesi gerekenler)",
+        "selection": "Geceden sabaha Türkiye'de öne çıkan ve izleyicinin o gününü etkileyen haberler: yeni düzenleme ve "
+                     "kararlar, zam ve ödemeler, hava ve yol durumu, resmi uyarılar; konular çeşitli olsun.",
+        "avoid": "seçim ve parti çekişmesi; magazin.",
+        "intro_example": "Güne başlarken bilmen gereken beş haber.",
+        "outro_example": "Bugün seni en çok hangisi etkileyecek?",
+        "fallback_title": "Sabah Haber Özeti", "fallback_intro": "Güne başlarken öne çıkan haberler.",
+        "fallback_outro": "Bugün seni en çok hangisi etkileyecek?",
         "fallback_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"],
     },
     "sports": {

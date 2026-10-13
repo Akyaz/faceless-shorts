@@ -39,6 +39,11 @@ jobs:
   make:
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    permissions:
+      contents: write  # sonuç kaydı panel-data dalına yazılır
+    env:
+      COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
+      MODE: ${{ inputs.script && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || github.event.schedule == '50 12,22 * * *' && 'world' || inputs.mode || 'story' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -58,8 +63,6 @@ jobs:
       - name: Videoları üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          COUNT: ${{ github.event.schedule == '5 4 * * *' && 3 || inputs.count || 1 }}
-          MODE: ${{ github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '50 11,19 * * *' && 'trend' || github.event.schedule == '50 12,22 * * *' && 'world' || inputs.mode || 'story' }}
           SCRIPT: ${{ inputs.script }}
         run: |
           failed=0
@@ -105,3 +108,12 @@ jobs:
             python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
           done
           exit $failed
+      # Telegram mesajı ve yönetim panelinin okuduğu kayıt; başarısız çalışmalar da bildirilir
+      - name: Sonucu bildir
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m pipeline.report out

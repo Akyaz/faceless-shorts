@@ -63,7 +63,11 @@ def main():
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
     video_id = upload(video_path, meta)
-    print(f"Yüklendi: https://youtu.be/{video_id}")
+    # Bildirim ve yönetim paneli bağlantıyı buradan okur
+    meta["youtube_url"] = f"https://youtu.be/{video_id}"
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
+    print(f"Yüklendi: {meta['youtube_url']}")
 
 
 if __name__ == "__main__":

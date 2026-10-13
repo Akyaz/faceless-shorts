@@ -18,7 +18,9 @@ jobs:
     timeout-minutes: 45
     permissions:
       actions: read
-      contents: read
+      contents: write  # sonuç kaydı panel-data dalına yazılır
+    env:
+      MODE: weekly
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -56,3 +58,11 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python -m pipeline.upload out/short.mp4 out/metadata.json
+      - name: Sonucu bildir
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m pipeline.report out

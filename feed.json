@@ -160,5 +160,19 @@
     "url": "https://youtu.be/kAMnZMhM8RI"
    }
   ]
+ },
+ {
+  "time": "2026-10-14T04:40:46Z",
+  "run": "38512538965",
+  "event": "workflow_dispatch",
+  "mode": "ucl",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38512538965",
+  "videos": [
+   {
+    "title": "Bu Şampiyonlar Ligi Haftasında Neler Oldu?! 😱 13 Ekim Sonuçları ve 14 Ekim Dev Maç Programı!",
+    "url": null
+   }
+  ]
  }
 ]

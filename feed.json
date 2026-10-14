@@ -92,20 +92,6 @@
   ]
  },
  {
-  "time": "2026-10-13T21:46:10Z",
-  "run": "38465976916",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38473028889",
-  "videos": [
-   {
-    "title": "12 İle Kuvvetli Yağış ve Fırtına Uyarısı Verildi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T21:58:46Z",
   "run": "38474133939",
   "event": "workflow_dispatch",
@@ -144,6 +130,20 @@
    {
     "title": "Pope Leo Diagnosed with Lung Cancer After Surgery, Vatican Says",
     "url": "https://youtu.be/F50rWrb0Nek"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-14T04:22:24Z",
+  "run": "38465976916",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511026430",
+  "videos": [
+   {
+    "title": "12 İle Kuvvetli Yağış ve Fırtına Uyarısı Verildi",
+    "url": "https://youtu.be/VJ5qPPm-nuU"
    }
   ]
  }

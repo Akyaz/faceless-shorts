@@ -146,8 +146,10 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False):
 PITCH = (9, 24, 58)  # maç programı kartının koyu lacivert zemini
 
 
-def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), note=""):
-    """Maç programı tablosu. groups: [(saat, [(ev sahibi, deplasman)])]; highlight'taki takımların maçı sarı yazılır."""
+def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), note="", emphasize=(), visible=None):
+    """Maç tablosu. groups: [(saat ya da None, [(ev sahibi, deplasman[, skor])])].
+    highlight'taki takımların maçı sarı yazılır, emphasize'dakilerin maçı kırmızı çerçeveye alınır.
+    visible verilirse yalnızca ilk o kadar maç çizilir (skorların tek tek gelmesi için); yerleşim değişmez."""
     img = Image.new("RGB", (W, H))
     px = img.load()
     for y in range(H):  # üstten alta koyulaşan lacivert
@@ -174,20 +176,30 @@ def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), 
 
     # Tablo, Shorts arayüzünün kapattığı alt bölüme taşmasın diye satır aralığı maç sayısına göre daralır
     rows = sum(len(matches) for _, matches in groups)
-    step = min(96, (1500 - 600 - 104 * len(groups)) // max(rows, 1))
-    y = 600
+    headers = sum(1 for time, _ in groups if time)
+    step = min(96, (1500 - 600 - 104 * headers) // max(rows, 1))
+    y, drawn = 600 if headers else 580, 0
     for time, matches in groups:
-        tw = d.textlength(time, font=bold)
-        d.rounded_rectangle([(W - tw) / 2 - 30, y - 38, (W + tw) / 2 + 30, y + 38], radius=38, fill=SUBSCRIBE_RED)
-        d.text((W / 2, y), time, font=bold, fill="white", anchor="mm")
-        y += 104 - (96 - step) // 2
-        for home, away in matches:
-            text = f"{home}  –  {away}"
+        if time:
+            tw = d.textlength(time, font=bold)
+            d.rounded_rectangle([(W - tw) / 2 - 30, y - 38, (W + tw) / 2 + 30, y + 38], radius=38, fill=SUBSCRIBE_RED)
+            d.text((W / 2, y), time, font=bold, fill="white", anchor="mm")
+            y += 104 - (96 - step) // 2
+        for home, away, *score in matches:
+            drawn += 1
+            if visible is not None and drawn > visible:
+                y += step
+                continue
+            text = f"{home}   {score[0]}   {away}" if score else f"{home}  –  {away}"
             size = 50
             font = ImageFont.truetype(_font_path(True), size)
-            while d.textlength(text, font=font) > W - 150 and size > 30:
+            while d.textlength(text, font=font) > W - 170 and size > 30:
                 size -= 2
                 font = ImageFont.truetype(_font_path(True), size)
+            if home in emphasize or away in emphasize:
+                half = d.textlength(text, font=font) / 2 + 28
+                d.rounded_rectangle([W / 2 - half, y - step / 2 + 6, W / 2 + half, y + step / 2 - 6], radius=16,
+                                    outline=SUBSCRIBE_RED, width=6)
             color = (255, 214, 0) if home in highlight or away in highlight else "white"
             d.text((W / 2, y), text, font=font, fill=color, anchor="mm", stroke_width=4, stroke_fill="black")
             y += step
@@ -242,12 +254,13 @@ def audio_duration(path):
     return float(json.loads(out.stdout)["format"]["duration"])
 
 
-def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W, H)):
+def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W, H), motion=True):
+    """motion=False: görüntü kıpırdamaz (art arda gelen kartlarda sıçrama olmasın diye)."""
     w, h = size
     dur = audio_duration(audio) + pad
     # Hafif hareket: görüntü boyunca %6 yakınlaşır ya da uzaklaşır
     progress = f"on/({dur}*30)"
-    zoom = f"1.06-0.06*{progress}" if zoom_out else f"1+0.06*{progress}"
+    zoom = "1" if not motion else f"1.06-0.06*{progress}" if zoom_out else f"1+0.06*{progress}"
     vf = (f"scale={w}:{h},zoompan=z='{zoom}':d=1:s={w}x{h}:fps=30,"
           f"ass={ass}")
     subprocess.run([

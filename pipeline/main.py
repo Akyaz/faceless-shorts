@@ -64,7 +64,7 @@ def build_metadata(plan, mode="story"):
     lang = plan.get("lang", "tr")
     text = DESCRIPTION[lang]
     # Haber kümesindeki bütün yayınlar: metin yalnızca en üstteki başlığa dayanmıyor
-    cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:4]]
+    cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:6]]
     sources = "\n".join(f"- {x['title']} ({x['source']})" for x in cluster)
     tags = list(dict.fromkeys(plan.get("hashtags") or ["gündem", "haber"]))
     image_credit, music_credit = _credit(plan.get("image_credit"), lang), _credit(plan.get("music_credit"), lang)

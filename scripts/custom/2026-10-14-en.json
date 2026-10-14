@@ -1,0 +1,60 @@
+[
+  {
+    "lang": "en",
+    "label": "US NEWS",
+    "mood": "notr",
+    "title": "Social Security COLA 2027: Benefits Rise 3.6%, the Highest in 4 Years",
+    "hook_title": "Social Security +3.6% in 2027",
+    "hashtags": [
+      "socialsecurity",
+      "cola",
+      "retirement"
+    ],
+    "country": "United States",
+    "city": "",
+    "image_files": [
+      "File:United States one-hundred-dollar bill.jpg",
+      "File:Social Security Administration Building, Griffin.JPG",
+      "File:Hundred dollar bill 01.jpg",
+      "File:The New Social Security Administration Office - panoramio.jpg",
+      "File:Seminole County Senior Citizens Center, Donalsonville.jpg"
+    ],
+    "paragraphs": [
+      "Social Security checks are going up next year. Here's exactly how much.",
+      "The Social Security Administration just announced a 3.6 percent cost-of-living adjustment for 2027.",
+      "That's the highest increase in four years, driven by high inflation. One analysis calls it the fifth-largest in 35 years.",
+      "But not everyone gets the full bump. Some federal retirees will see a smaller adjustment.",
+      "Will 3.6 percent keep up with your bills? Tell us in the comments."
+    ],
+    "sources": [
+      {
+        "title": "Social Security Announces 3.6 Percent Benefit Increase for 2027",
+        "source": "Social Security Administration"
+      },
+      {
+        "title": "Social Security Administration announces 3.6% cost-of-living adjustment for 2027",
+        "source": "CNBC"
+      },
+      {
+        "title": "Social Security COLA for 2027 Will Be 3.6%",
+        "source": "The New York Times"
+      },
+      {
+        "title": "Social Security announces 3.6% COLA for 2027, the highest in 4 years",
+        "source": "Yahoo Finance"
+      },
+      {
+        "title": "High Inflation Drives 3.6% Social Security COLA",
+        "source": "Committee for a Responsible Federal Budget"
+      },
+      {
+        "title": "Social Security's 2027 COLA Is Officially the 5th-Largest in 35 Years -- but This Doesn't Tell the Full Story",
+        "source": "The Motley Fool"
+      },
+      {
+        "title": "2027 COLA is 3.6% for many retirees, but some feds will see a smaller adjustment",
+        "source": "Federal News Network"
+      }
+    ]
+  }
+]

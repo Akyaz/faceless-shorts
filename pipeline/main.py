@@ -83,7 +83,8 @@ def build_metadata(plan, mode="story"):
 def find_images(plan, work):
     """Her segment için arka plan dosyası (yoksa None) ve kaynak satırları."""
     segments = plan["segments"]
-    if plan.get("image_queries") or plan.get("image_prompt"):  # tek haber: görseller paragraflar arasında döner
+    if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
+        # Tek haber: görseller paragraflar arasında sırayla döner
         found = images.find_backgrounds(plan, work, len(segments))
         paths = [path for path, _ in found]
         return [paths[i % len(paths)] if paths else None for i in range(len(segments))], [c for _, c in found]

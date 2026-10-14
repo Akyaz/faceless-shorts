@@ -55,6 +55,28 @@ def wikimedia(query, limit=5):
     return found
 
 
+def commons_files(titles):
+    """Elle seçilmiş Wikimedia dosyaları ("File:...") wikimedia() ile aynı biçimde, verilen sırayla."""
+    params = urllib.parse.urlencode({
+        "action": "query", "format": "json", "titles": "|".join(titles),
+        "prop": "imageinfo", "iiprop": "url|size|extmetadata", "iiurlwidth": 1400,
+    })
+    pages = {p.get("title"): p for p in _get_json(f"https://commons.wikimedia.org/w/api.php?{params}")
+             .get("query", {}).get("pages", {}).values()}
+    found = []
+    for title in titles:
+        info = ((pages.get(title) or {}).get("imageinfo") or [None])[0]
+        if not info:
+            print(f"Wikimedia dosyası bulunamadı: {title}")
+            continue
+        meta = info.get("extmetadata", {})
+        license_name = _strip(meta.get("LicenseShortName", {}).get("value"))
+        artist = _strip(meta.get("Artist", {}).get("value")) or "Bilinmiyor"
+        found.append({"url": info["thumburl"], "about": title, "neutral": False, "credit":
+                      f"Görsel: {artist}, {license_name}, Wikimedia Commons ({info['descriptionurl']})"})
+    return found
+
+
 def _download(url, out_path):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as resp, open(out_path, "wb") as f:
@@ -163,9 +185,28 @@ def _searches(plan):
     return list(dict.fromkeys(searches))
 
 
+def _save(picked, out_dir, count):
+    """Adayları sırayla indirir; (dosya, kaynak satırı) listesi döner."""
+    results = []
+    for cand in picked:
+        path = out_dir / f"background{len(results)}.jpg"
+        try:
+            _download(cand["url"], path)
+        except Exception as exc:
+            print(f"Görsel indirilemedi: {exc}")
+            continue
+        print(f"Arka plan: {cand['about'][:120]}")
+        results.append((path, cand["credit"]))
+        if len(results) >= count:
+            break
+    return results
+
+
 def find_backgrounds(plan, out_dir, count, per_query=3):
     """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner."""
     out_dir.mkdir(parents=True, exist_ok=True)
+    if plan.get("image_files"):  # görseller elle seçilmiş: arama ve eleme yapılmaz, sıra korunur
+        return _save(commons_files(plan["image_files"]), out_dir, count)
     pools = []
     for query, neutral in _searches(plan):
         try:
@@ -194,19 +235,7 @@ def find_backgrounds(plan, out_dir, count, per_query=3):
         # Eleme yapılamadıysa yalnızca yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları elenmeden kullanılmaz
         picked = [c for c in candidates if not c["neutral"]][:2]
 
-    results = []
-    for cand in picked:
-        path = out_dir / f"background{len(results)}.jpg"
-        try:
-            _download(cand["url"], path)
-        except Exception as exc:
-            print(f"Görsel indirilemedi: {exc}")
-            continue
-        print(f"Arka plan: {cand['about'][:120]}")
-        results.append((path, cand["credit"]))
-        if len(results) >= count:
-            break
-
+    results = _save(picked, out_dir, count)
     if not results and plan.get("image_prompt"):
         path = out_dir / "background.png"
         try:

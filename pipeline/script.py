@@ -358,9 +358,12 @@ def custom_plan(item):
     sources = item["sources"]
     headline = {**sources[0], "related": sources[1:]}
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in item["paragraphs"]]
-    return {"title": item["title"], "hook_title": item.get("hook_title", ""), "label": item.get("label", "GÜNDEM"),
-            "lang": item.get("lang", "tr"), "segments": segments, "sources": [headline], **_image_fields(item),
-            "mood": item.get("mood", "notr"), "hashtags": _tags(item.get("hashtags")) + ["gündem", "haber"],
+    english = item.get("lang") == "en"
+    return {"title": item["title"], "hook_title": item.get("hook_title", ""),
+            "label": item.get("label", "NEWS" if english else "GÜNDEM"), "lang": item.get("lang", "tr"),
+            "segments": segments, "sources": [headline], **_image_fields(item),
+            "image_files": item.get("image_files") or [], "mood": item.get("mood", "notr"),
+            "hashtags": _tags(item.get("hashtags")) + (["news"] if english else ["gündem", "haber"]),
             "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": ""}
 
 

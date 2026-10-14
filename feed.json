@@ -188,5 +188,19 @@
     "url": "https://youtu.be/lGDGUzzj3dc"
    }
   ]
+ },
+ {
+  "time": "2026-10-14T12:31:30Z",
+  "run": "38564092858",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38564092858",
+  "videos": [
+   {
+    "title": "İki Şehrin Arası 2,5 Saate Düşüyor: Tarihi Projede Sona Gelindi",
+    "url": "https://youtu.be/giMOpw2leaA"
+   }
+  ]
  }
 ]

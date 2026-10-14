@@ -244,5 +244,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-14T16:40:36Z",
+  "run": "38599888399",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38599888399",
+  "videos": [
+   {
+    "title": "Social Security COLA 2027: Benefits Rise 3.6%, the Highest in 4 Years",
+    "url": null
+   }
+  ]
  }
 ]

@@ -30,6 +30,10 @@ on:
         description: "Elle yazılmış metin dosyası (örnek: scripts/custom/2026-10-13.json); doluysa içindeki bütün videolar üretilir"
         type: string
         default: ""
+      script_json:
+        description: "Elle yazılmış metin, doğrudan JSON olarak (yönetim panelinin Metin ekranı bunu doldurur)"
+        type: string
+        default: ""
       results:
         description: "Maç programı (ucl): önce dünün sonuçlarını göster"
         type: boolean
@@ -52,7 +56,7 @@ jobs:
       contents: write  # sonuç kaydı panel-data dalına yazılır
     env:
       COUNT: ${{ inputs.count || 1 }}
-      MODE: ${{ inputs.script && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '5 4 * * *' && 'morning' || github.event.schedule == '50 11 * * *' && 'trend' || github.event.schedule == '50 12 * * *' && 'world' || inputs.mode || 'story' }}
+      MODE: ${{ (inputs.script || inputs.script_json) && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '5 4 * * *' && 'morning' || github.event.schedule == '50 11 * * *' && 'trend' || github.event.schedule == '50 12 * * *' && 'world' || inputs.mode || 'story' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -73,10 +77,15 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SCRIPT: ${{ inputs.script }}
+          SCRIPT_JSON: ${{ inputs.script_json }}
           UCL_RESULTS: ${{ inputs.results }}
           UCL_EMPHASIZE: ${{ inputs.emphasize }}
         run: |
           failed=0
+          if [ -n "$SCRIPT_JSON" ]; then  # panelden gelen metin depoya yazılmadan kullanılır
+            printf '%s' "$SCRIPT_JSON" > "$RUNNER_TEMP/custom.json"
+            SCRIPT="$RUNNER_TEMP/custom.json"
+          fi
           if [ -n "$SCRIPT" ]; then
             COUNT=$(python -c "import json, sys; print(len(json.load(open(sys.argv[1], encoding='utf-8'))))" "$SCRIPT")
           fi

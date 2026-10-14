@@ -50,20 +50,6 @@
   ]
  },
  {
-  "time": "2026-10-13T17:47:24Z",
-  "run": "38440514533",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38440514533",
-  "videos": [
-   {
-    "title": "Galatasaray'ın maçı öncesi yemek ve büyük kulüplerin borçları",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T21:58:46Z",
   "run": "38474133939",
   "event": "workflow_dispatch",
@@ -144,6 +130,20 @@
    {
     "title": "Mars'ta Rekor ve Uzayda Gülen Yüz: Günün Bilim Gelişmeleri",
     "url": "https://youtu.be/jAYtAAcwVy8"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-14T04:24:06Z",
+  "run": "38440514533",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511170069",
+  "videos": [
+   {
+    "title": "Galatasaray'ın maçı öncesi yemek ve büyük kulüplerin borçları",
+    "url": "https://youtu.be/_X64lLjA524"
    }
   ]
  }

@@ -314,5 +314,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-14T20:44:52Z",
+  "run": "38634195876",
+  "event": "schedule",
+  "mode": "digest",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38634195876",
+  "videos": [
+   {
+    "title": "Halk TV'ye Kayyum ve Eğitime Hava Engeli",
+    "url": null
+   }
+  ]
  }
 ]

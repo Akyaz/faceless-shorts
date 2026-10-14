@@ -78,20 +78,6 @@
   ]
  },
  {
-  "time": "2026-10-13T19:36:27Z",
-  "run": "38455888872",
-  "event": "schedule",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38455888872",
-  "videos": [
-   {
-    "title": "Pope Leo Undergoes Successful Surgery to Remove Lung Nodule",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T21:58:46Z",
   "run": "38474133939",
   "event": "workflow_dispatch",
@@ -144,6 +130,20 @@
    {
     "title": "12 İle Kuvvetli Yağış ve Fırtına Uyarısı Verildi",
     "url": "https://youtu.be/VJ5qPPm-nuU"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-14T04:22:31Z",
+  "run": "38455888872",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511042070",
+  "videos": [
+   {
+    "title": "Pope Leo Undergoes Successful Surgery to Remove Lung Nodule",
+    "url": "https://youtu.be/fMNenX5r6oY"
    }
   ]
  }

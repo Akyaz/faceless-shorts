@@ -134,12 +134,12 @@
   ]
  },
  {
-  "time": "2026-10-13T22:01:24Z",
+  "time": "2026-10-14T03:27:02Z",
   "run": "38473637121",
-  "event": "schedule",
+  "event": "workflow_dispatch",
   "mode": "digest",
   "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38473637121",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38506296065",
   "videos": [
    {
     "title": "Trump'tan Erdoğan Açıklaması ve Karadeniz'de İHA Saldırısı",

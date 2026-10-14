@@ -258,5 +258,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-14T16:52:46Z",
+  "run": "38601606494",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38601606494",
+  "videos": [
+   {
+    "title": "İŞKUR Gençlik Programı: Öğrencilere Günlük 1.375 TL",
+    "url": null
+   }
+  ]
  }
 ]

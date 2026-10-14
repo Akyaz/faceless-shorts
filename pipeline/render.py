@@ -169,7 +169,10 @@ def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), 
     lw = d.textlength(label, font=bold)
     d.rounded_rectangle([(W - lw) / 2 - 36, 184, (W + lw) / 2 + 36, 276], radius=46, fill=ACCENTS[1])
     d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
-    d.text((W / 2, 400), title, font=ImageFont.truetype(_font_path(True), 84), fill=(255, 214, 0), anchor="mm",
+    size = 84  # uzun başlık çerçeveye sığana kadar küçülür
+    while d.textlength(title, font=ImageFont.truetype(_font_path(True), size)) > W - 200 and size > 50:
+        size -= 2
+    d.text((W / 2, 400), title, font=ImageFont.truetype(_font_path(True), size), fill=(255, 214, 0), anchor="mm",
            stroke_width=5, stroke_fill="black")
     d.text((W / 2, 490), date_label, font=ImageFont.truetype(_font_path(False), 48), fill="white", anchor="mm",
            stroke_width=3, stroke_fill="black")

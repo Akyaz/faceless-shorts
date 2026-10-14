@@ -67,6 +67,14 @@ def _silence(seconds, out_path):
     return out_path
 
 
+def _overlay(video, voice, out_path):
+    """Seslendirmeyi videonun başına, mevcut sesin üstüne ekler."""
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(voice), "-filter_complex",
+                    "[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]",
+                    "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-ar", "44100", "-ac", "2",
+                    str(out_path)], check=True)
+
+
 def _label(day):
     return f"{day.day} {MONTHS[day.month - 1]} {DAYS[day.weekday()]}"
 
@@ -102,6 +110,7 @@ def main():
 
     # Her parça: (kart, ses, ses bitince ekranda kalma süresi, hareket)
     parts = []
+    intro = work / "intro.mp3"
     if results:
         yesterday = day - datetime.timedelta(days=1)
         # Türk takımının maçı en üstte, sonra öne çıkarılanlar; skorlar bu sırayla gelir
@@ -111,10 +120,10 @@ def main():
         draw = lambda n, path: render.draw_fixture_card(  # noqa: E731
             "Sürprizlerle Dolu Gece", f"{yesterday.day} {MONTHS[yesterday.month - 1]} Sonuçları", [(None, rows)],
             path, "ŞAMPİYONLAR LİGİ", highlight=TURKISH, emphasize=emphasize, visible=n)
-        intro = work / "intro.mp3"
         synthesize("Şampiyonlar Ligi'nde dün gece neler oldu? İşte sonuçlar.", intro)
+        # Boş tablo yalnızca bir an görünür; seslendirme skorlar gelirken üstüne eklenir
         draw(0, work / "results0.png")
-        parts.append((work / "results0.png", intro, 0.2, False))
+        parts.append((work / "results0.png", _silence(0.8, work / "tick0.mp3"), 0.0, False))
         for n in range(1, len(rows) + 1):  # skorlar tek tek gelir
             draw(n, work / f"results{n}.png")
             parts.append((work / f"results{n}.png", _silence(0.6, work / f"tick{n}.mp3"), 0.0, False))
@@ -136,7 +145,10 @@ def main():
         render.render_segment(card, audio, ass, clip, pad=pad, motion=motion)
         clips.append(clip)
     render.concat(clips, work / "voice.mp4")
-    music_credit = music.add(work / "voice.mp4", "gergin" if results else "umutlu", out / "short.mp4")
+    if results:
+        _overlay(work / "voice.mp4", intro, work / "voiced.mp4")
+    music_credit = music.add(work / ("voiced.mp4" if results else "voice.mp4"), "gergin" if results else "umutlu",
+                             out / "short.mp4")
 
     teams = [t for _, home, away, *_ in results + matches for t in (home, away)]
     locals_ = list(dict.fromkeys(t for t in teams if t in TURKISH))

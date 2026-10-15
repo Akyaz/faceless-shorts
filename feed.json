@@ -246,20 +246,6 @@
   ]
  },
  {
-  "time": "2026-10-14T16:58:47Z",
-  "run": "38601007018",
-  "event": "workflow_dispatch",
-  "mode": "weekly",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38601007018",
-  "videos": [
-   {
-    "title": "Panama Depremi ve Sosyal Medya Yaş Sınırı Bu Hafta Konuşuldu",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:03Z",
   "run": "38634195876",
   "event": "workflow_dispatch",
@@ -326,6 +312,20 @@
    {
     "title": "Kızıl Cinlerin Sırrı ve Telefon Pazarındaki Son Durum",
     "url": "https://youtu.be/ouPeF2pMQG4"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:42:04Z",
+  "run": "38601007018",
+  "event": "workflow_dispatch",
+  "mode": "weekly",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682815905",
+  "videos": [
+   {
+    "title": "Panama Depremi ve Sosyal Medya Yaş Sınırı Bu Hafta Konuşuldu",
+    "url": "https://youtu.be/aF-Sut7jpCU"
    }
   ]
  }

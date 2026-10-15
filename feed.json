@@ -218,20 +218,6 @@
   ]
  },
  {
-  "time": "2026-10-14T16:49:45Z",
-  "run": "38601046729",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38601046729",
-  "videos": [
-   {
-    "title": "Starlink Restrictions Threaten Ukraine's Front Line Operations",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-14T16:52:46Z",
   "run": "38601606494",
   "event": "workflow_dispatch",
@@ -326,6 +312,20 @@
    {
     "title": "Panama Depremi ve Sosyal Medya Yaş Sınırı Bu Hafta Konuşuldu",
     "url": "https://youtu.be/aF-Sut7jpCU"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:50:56Z",
+  "run": "38601046729",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38683602006",
+  "videos": [
+   {
+    "title": "Starlink Restrictions Threaten Ukraine's Front Line Operations",
+    "url": "https://youtu.be/fIV-PhEf9mA"
    }
   ]
  }

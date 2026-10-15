@@ -204,20 +204,6 @@
   ]
  },
  {
-  "time": "2026-10-14T16:02:52Z",
-  "run": "38594122654",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38594122654",
-  "videos": [
-   {
-    "title": "Kızıl Cinlerin Sırrı ve Telefon Pazarındaki Son Durum",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-14T16:40:36Z",
   "run": "38599888399",
   "event": "workflow_dispatch",
@@ -326,6 +312,20 @@
    {
     "title": "Spor Gündemi",
     "url": "https://youtu.be/ZF3wWn7qUEI"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:41:42Z",
+  "run": "38594122654",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682783924",
+  "videos": [
+   {
+    "title": "Kızıl Cinlerin Sırrı ve Telefon Pazarındaki Son Durum",
+    "url": "https://youtu.be/ouPeF2pMQG4"
    }
   ]
  }

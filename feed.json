@@ -356,5 +356,19 @@
     "url": "https://youtu.be/p-90KVSCFZo"
    }
   ]
+ },
+ {
+  "time": "2026-10-15T09:01:29Z",
+  "run": "38709250566",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38709250566",
+  "videos": [
+   {
+    "title": "İstanbul'da Okullar Tatil ve TBB Seçimi Kararı",
+    "url": null
+   }
+  ]
  }
 ]

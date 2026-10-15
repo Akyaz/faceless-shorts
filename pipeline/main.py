@@ -46,8 +46,10 @@ def save_history(path, history, plan):
 CATEGORIES = {"sports": "17", "trend": "28"}  # Spor, Bilim ve Teknoloji; diğerleri 25: Haber ve Politika
 DESCRIPTION = {
     "tr": {"subscribe": "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.",
+           "subscribe_long": "Yeni videoları kaçırmamak için kanala abone ol.", "chapters": "Bölümler:",
            "sources": "Kaynaklar:", "images": "Görseller temsilidir.", "tags": ["son dakika", "türkiye", "shorts"]},
     "en": {"subscribe": "World news in under a minute, every day. Subscribe so you don't miss it.",
+           "subscribe_long": "Subscribe so you don't miss the next one.", "chapters": "Chapters:",
            "sources": "Sources:", "images": "Images are illustrative.", "tags": ["breaking news", "world", "shorts"]},
 }
 
@@ -68,13 +70,17 @@ def build_metadata(plan, mode="story"):
     sources = "\n".join(f"- {x['title']} ({x['source']})" for x in cluster)
     tags = list(dict.fromkeys(plan.get("hashtags") or ["gündem", "haber"]))
     image_credit, music_credit = _credit(plan.get("image_credit"), lang), _credit(plan.get("music_credit"), lang)
+    wide = plan.get("wide")  # yatay uzun video Short değildir: #shorts etiketi ve "bir dakikada" vaadi yok
+    chapters = plan.get("chapters") or []
     return {
         "title": plan["title"][:100],
-        "description": f"{plan['title']}\n\n{text['subscribe']}\n\n{text['sources']}\n{sources}\n"
+        "description": f"{plan['title']}\n\n{text['subscribe_long' if wide else 'subscribe']}\n\n"
+                       + (f"{text['chapters']}\n" + "\n".join(chapters) + "\n\n" if chapters else "")
+                       + f"{text['sources']}\n{sources}\n"
                        + (f"\n{text['images']}\n{image_credit}\n" if image_credit else "")
                        + (f"\n{music_credit}\n" if music_credit else "")
-                       + "\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
-        "tags": tags + text["tags"],
+                       + "\n" + " ".join(f"#{t}" for t in tags + ([] if wide else ["shorts"])),
+        "tags": tags + [t for t in text["tags"] if not (wide and t == "shorts")],
         "category": plan.get("category") or CATEGORIES.get(mode, "25"),
         "language": lang,
     }
@@ -83,6 +89,8 @@ def build_metadata(plan, mode="story"):
 def find_images(plan, work):
     """Her segment için arka plan dosyası (yoksa None) ve kaynak satırları."""
     segments = plan["segments"]
+    if any(plan.get("sections") or []):
+        return _section_images(plan, work)
     if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
         # Tek haber: görseller paragraflar arasında sırayla döner
         found = images.find_backgrounds(plan, work, len(segments))
@@ -104,6 +112,38 @@ def find_images(plan, work):
     if known:
         per_segment[0], per_segment[-1] = per_segment[0] or known[0], per_segment[-1] or known[-1]
     return per_segment, credits
+
+
+def _section_images(plan, work):
+    """Bölümlü özel metin: her bölüm kendi görsellerini paragrafları arasında döndürür.
+    Kendi araması olmayan bölümler (giriş, kapanış) videonun genel görsellerini kullanır."""
+    segments, credits = plan["segments"], []
+    pools = {}
+    for k, section in enumerate(plan["sections"]):
+        if not section:
+            continue
+        count = sum(1 for seg in segments if seg.get("section") == k)
+        found = images.find_backgrounds(section, work / f"section{k}", max(count, 1))
+        pools[k] = [path for path, _ in found]
+        credits += [c for _, c in found]
+    general = []
+    if any(not pools.get(seg.get("section")) for seg in segments) and (
+            plan.get("image_queries") or plan.get("image_files") or plan.get("object_query")):
+        found = images.find_backgrounds(plan, work / "general", 4)
+        general = [path for path, _ in found]
+        credits += [c for _, c in found]
+    shown, backgrounds = {}, []
+    for seg in segments:
+        key = seg.get("section") if pools.get(seg.get("section")) else "general"
+        pool = pools.get(key) or general
+        shown[key] = shown.get(key, -1) + 1
+        backgrounds.append(pool[shown[key] % len(pool)] if pool else None)
+    return backgrounds, credits
+
+
+def _clock(seconds):
+    seconds = int(seconds)
+    return f"{seconds // 60}:{seconds % 60:02d}"
 
 
 def news_plan(args):
@@ -185,7 +225,8 @@ def main():
         backgrounds, credits = find_images(plan, work)
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
-    parts = []
+    parts, chapters, clock = [], [], 0.0
+    wide = plan.get("wide")
     for i, seg in enumerate(segments):
         audio = work / f"seg{i}.mp3"
         if args.offline:
@@ -195,13 +236,30 @@ def main():
             words = synthesize(seg["text"], audio, plan.get("lang", "tr"))
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
-        render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
-                         subscribe=i == len(segments) - 1 and plan.get("subscribe", True),
-                         lang=plan.get("lang", "tr"))
-        render.write_ass(words, ass)
+        last = i == len(segments) - 1 and plan.get("subscribe", True)
         part = work / f"seg{i}.mp4"
-        render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
+        if wide:
+            # Bölüm başlığı yoksa (giriş) videonun ekran başlığı yazar; renk bölüm boyunca aynı kalır
+            card_seg = {**seg, "label": plan.get("label"), "heading": seg.get("heading") or plan.get("hook_title", "")}
+            render.draw_wide_card(card_seg, 0 if seg.get("section") is None else seg["section"] + 1, card, backgrounds[i], subscribe=last,
+                                  lang=plan.get("lang", "tr"))
+            render.write_ass(words, ass, wide=True)
+            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, size=render.WIDE)
+        else:
+            render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
+                             subscribe=last, lang=plan.get("lang", "tr"))
+            render.write_ass(words, ass)
+            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
+        if seg.get("chapter"):
+            chapters.append(f"{_clock(clock)} {seg['chapter']}")
+        clock += render.audio_duration(part)
         parts.append(part)
+
+    # YouTube bölümleri 0:00 ile başlamalı ve en az üç tane olmalı
+    if wide and chapters:
+        if not chapters[0].startswith("0:00 "):
+            chapters.insert(0, "0:00 Intro" if plan.get("lang") == "en" else "0:00 Giriş")
+        plan["chapters"] = chapters if len(chapters) >= 3 else []
 
     render.concat(parts, work / "voice.mp4")
     plan["music_credit"] = music.add(work / "voice.mp4", plan.get("mood"), out / "short.mp4")

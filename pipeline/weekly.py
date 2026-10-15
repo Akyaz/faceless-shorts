@@ -39,7 +39,8 @@ def collect(week_dir):
             continue
         segments = plan.get("segments") or []
         key = (plan.get("sources") or [{}])[0].get("title")
-        if not key or key in seen or not segments or any(s.get("kind") != "story" for s in segments):
+        # Yatay uzun özel videolar zaten derleme biçiminde; haftalık derlemeye girmez
+        if not key or key in seen or not segments or plan.get("wide") or any(s.get("kind") != "story" for s in segments):
             continue
         text = " ".join([plan.get("title", ""), plan.get("hook_title", ""), key] + [s["text"] for s in segments])
         if DATED.search(text) or is_sensitive(text):

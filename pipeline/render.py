@@ -109,8 +109,8 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     img.save(out_path)
 
 
-def draw_wide_card(segment, idx, out_path, background=None, subscribe=False):
-    """Yatay derleme kartı: üstte etiket ve haber başlığı, altyazı altta kalır."""
+def draw_wide_card(segment, idx, out_path, background=None, subscribe=False, lang="tr"):
+    """Yatay kart (haftalık derleme, uzun özel metin): üstte etiket ve başlık, altyazı altta kalır."""
     w, h = WIDE
     accent = ACCENTS[idx % len(ACCENTS)]
     img = _photo(background, WIDE) if background else _gradient(accent, WIDE)
@@ -132,13 +132,13 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False):
             d.text((w / 2, y), line, font=font, fill=(255, 214, 0), anchor="mm", stroke_width=5, stroke_fill="black")
             y += 94
     if subscribe:
-        text = "ABONE OL"
+        text = TEXTS[lang]["subscribe"]
         tw = d.textlength(text, font=bold)
         d.rounded_rectangle([(w - tw) / 2 - 44, 500, (w + tw) / 2 + 44, 600], radius=50, fill=SUBSCRIBE_RED)
         d.text((w / 2, 550), text, font=bold, fill="white", anchor="mm")
     if segment.get("source"):
         # Kenardan pay: yakınlaşınca yazı kadrajın dışına taşmasın
-        d.text((w - 110, h - 90), f"Kaynak: {segment['source']}", font=regular, fill=(230, 230, 230),
+        d.text((w - 110, h - 90), f"{TEXTS[lang]['source']}: {segment['source']}", font=regular, fill=(230, 230, 230),
                anchor="rm", stroke_width=3, stroke_fill="black")
     img.save(out_path)
 

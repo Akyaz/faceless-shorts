@@ -357,9 +357,29 @@ def custom_plan(item):
     """Elle yazılmış bir videonun planı. item alanları için scripts/custom/ altındaki dosyalara bakın."""
     sources = item["sources"]
     headline = {**sources[0], "related": sources[1:]}
-    segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in item["paragraphs"]]
     english = item.get("lang") == "en"
+    # Paragraf düz metin ya da bölüm başı olabilir: {"text", "heading", "source" (kaynak sırası, 1'den),
+    # "image_queries", "object_query", "country", "city"}. Bölüm başlığı sonraki düz paragraflara da geçer;
+    # yatay uzun videoda (wide) ekranda yazar, bölümün kendi görselleri ve açıklamada zaman damgası olur.
+    segments, sections = [], []
+    current = {"heading": "", "source": source_label(headline), "section": None}
+    for p in item["paragraphs"]:
+        if isinstance(p, dict):
+            if p.get("heading"):
+                index = p.get("source")
+                own = sources[index - 1] if isinstance(index, int) and 1 <= index <= len(sources) else None
+                fields = _image_fields(p)
+                has_images = fields["image_queries"] or fields["object_query"]
+                sections.append({"title": p["heading"], "sources": [own or headline], **fields} if has_images else None)
+                current = {"heading": p["heading"], "source": source_label(own) if own else source_label(headline),
+                           "section": len(sections) - 1, "chapter": p["heading"]}
+            text = p["text"]
+        else:
+            text = p
+        segments.append({"kind": "story", "text": text, **current})
+        current = {k: v for k, v in current.items() if k != "chapter"}  # zaman damgası yalnız bölümün ilk paragrafında
     return {"title": item["title"], "hook_title": item.get("hook_title", ""),
+            "wide": bool(item.get("wide")), "sections": sections,
             "label": item.get("label", "NEWS" if english else "GÜNDEM"), "lang": item.get("lang", "tr"),
             "segments": segments, "sources": [headline], **_image_fields(item),
             "image_files": item.get("image_files") or [], "mood": item.get("mood", "notr"),

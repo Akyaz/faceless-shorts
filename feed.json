@@ -440,5 +440,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-15T20:26:42Z",
+  "run": "38801187914",
+  "event": "schedule",
+  "mode": "digest",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38801187914",
+  "videos": [
+   {
+    "title": "İstanbul'da okullar tatil edildi ve Hakan Fidan'dan tepki",
+    "url": null
+   }
+  ]
  }
 ]

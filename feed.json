@@ -358,12 +358,12 @@
   ]
  },
  {
-  "time": "2026-10-15T09:01:29Z",
+  "time": "2026-10-15T09:41:48Z",
   "run": "38709250566",
-  "event": "schedule",
+  "event": "workflow_dispatch",
   "mode": "morning",
   "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38709250566",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38714810677",
   "videos": [
    {
     "title": "İstanbul'da Okullar Tatil ve TBB Seçimi Kararı",

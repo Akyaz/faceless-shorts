@@ -344,16 +344,16 @@
   ]
  },
  {
-  "time": "2026-10-15T06:00:46Z",
+  "time": "2026-10-15T07:29:42Z",
   "run": "38688893532",
   "event": "workflow_dispatch",
   "mode": "custom",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38688893532",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38699089908",
   "videos": [
    {
     "title": "8 Mind-Blowing Discoveries Scientists Made This Week",
-    "url": null
+    "url": "https://youtu.be/p-90KVSCFZo"
    }
   ]
  }

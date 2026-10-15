@@ -204,20 +204,6 @@
   ]
  },
  {
-  "time": "2026-10-14T15:15:48Z",
-  "run": "38587543814",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38587543814",
-  "videos": [
-   {
-    "title": "Spor Gündemi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-14T16:02:52Z",
   "run": "38594122654",
   "event": "schedule",
@@ -326,6 +312,20 @@
    {
     "title": "Pope Leo’s Health Tests Papacy After Surgery",
     "url": "https://youtu.be/c7GirPJW7p8"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:41:34Z",
+  "run": "38587543814",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682777798",
+  "videos": [
+   {
+    "title": "Spor Gündemi",
+    "url": "https://youtu.be/ZF3wWn7qUEI"
    }
   ]
  }

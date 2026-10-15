@@ -316,16 +316,16 @@
   ]
  },
  {
-  "time": "2026-10-14T20:44:52Z",
+  "time": "2026-10-15T04:41:03Z",
   "run": "38634195876",
-  "event": "schedule",
+  "event": "workflow_dispatch",
   "mode": "digest",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38634195876",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682730261",
   "videos": [
    {
     "title": "Halk TV'ye Kayyum ve Eğitime Hava Engeli",
-    "url": null
+    "url": "https://youtu.be/F3zbQg00l9U"
    }
   ]
  }

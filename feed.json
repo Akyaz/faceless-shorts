@@ -288,20 +288,6 @@
   ]
  },
  {
-  "time": "2026-10-14T17:42:35Z",
-  "run": "38608316408",
-  "event": "schedule",
-  "mode": "world",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38608316408",
-  "videos": [
-   {
-    "title": "Pope Leo’s Health Tests Papacy After Surgery",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:03Z",
   "run": "38634195876",
   "event": "workflow_dispatch",
@@ -326,6 +312,20 @@
    {
     "title": "İstanbul'da Sağanak Sonrası Okullar Tatil Edildi",
     "url": "https://youtu.be/fMSgx5XqaJs"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:41:17Z",
+  "run": "38608316408",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682755102",
+  "videos": [
+   {
+    "title": "Pope Leo’s Health Tests Papacy After Surgery",
+    "url": "https://youtu.be/c7GirPJW7p8"
    }
   ]
  }

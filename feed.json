@@ -398,5 +398,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-15T15:49:57Z",
+  "run": "38763325935",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38763325935",
+  "videos": [
+   {
+    "title": "Uzaydan sinyal ve saatlerden saniye kaldırılıyor!",
+    "url": null
+   }
+  ]
  }
 ]

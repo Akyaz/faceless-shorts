@@ -302,20 +302,6 @@
   ]
  },
  {
-  "time": "2026-10-14T18:13:48Z",
-  "run": "38613044248",
-  "event": "schedule",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38613044248",
-  "videos": [
-   {
-    "title": "İstanbul'da Sağanak Sonrası Okullar Tatil Edildi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:03Z",
   "run": "38634195876",
   "event": "workflow_dispatch",
@@ -326,6 +312,20 @@
    {
     "title": "Halk TV'ye Kayyum ve Eğitime Hava Engeli",
     "url": "https://youtu.be/F3zbQg00l9U"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-15T04:41:09Z",
+  "run": "38613044248",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682745276",
+  "videos": [
+   {
+    "title": "İstanbul'da Sağanak Sonrası Okullar Tatil Edildi",
+    "url": "https://youtu.be/fMSgx5XqaJs"
    }
   ]
  }

@@ -1,0 +1,335 @@
+{
+  "lang": "tr",
+  "topic": "Preveze Deniz Muharebesi",
+  "era": "1538, Osmanlı donanması ve Kutsal İttifak",
+  "country": "Greece",
+  "label": "TARİH",
+  "mood": "gergin",
+  "title": "Preveze 1538: Barbaros Hayreddin Akdeniz'i Nasıl Kazandı?",
+  "description": "28 Eylül 1538'de Barbaros Hayreddin Paşa komutasındaki Osmanlı donanması, Papa'nın kurduğu Kutsal İttifak donanmasıyla Preveze açıklarında karşılaştı. Sayıca daha kalabalık bir donanma, dinen rüzgâr ve akşamüstü geri çekilen bir amiral. Savaşı, iki tarafın kaynaklarının birbirinden ne kadar farklı anlattığını da göstererek anlatıyoruz.",
+  "hashtags": [
+    "preveze",
+    "barbaros",
+    "tarih",
+    "denizkuvvetleri"
+  ],
+  "tags": [
+    "preveze deniz muharebesi",
+    "1538",
+    "barbaros hayreddin paşa",
+    "andrea doria",
+    "kutsal ittifak",
+    "osmanlı donanması",
+    "turgut reis",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Preveze Deniz Muharebesi, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Preveze_Deniz_Muharebesi"
+    },
+    {
+      "title": "Battle of Preveza, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Preveza"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Preveza",
+      "image_queries": [
+        "Battle of Preveza painting",
+        "Hayreddin Barbarossa portrait",
+        "Ottoman galley"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, sayıca daha az bir donanmanın, daha büyük bir donanmayı denizde yenmesi mümkün mü?"
+        },
+        {
+          "s": "B",
+          "t": "Mümkün ama zor. Denizde büyüklük ve ateş gücü çok önemli."
+        },
+        {
+          "s": "A",
+          "t": "1538'de Preveze açıklarında tam olarak bu tartışma yaşandı. Bir tarafta Barbaros Hayreddin Paşa, diğer tarafta Cenevizli Amiral Andrea Doria."
+        },
+        {
+          "s": "B",
+          "t": "Ve bu savaşın yıl dönümü bugün Türk Deniz Kuvvetleri Günü olarak kutlanıyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet, 28 Eylül. Ama bu savaşın en ilginç yanı, iki tarafın kaynaklarının sonucu birbirinden çok farklı anlatması."
+        },
+        {
+          "s": "B",
+          "t": "O zaman ikisini de dinleyelim."
+        }
+      ]
+    },
+    {
+      "heading": "Barbaros Ege'de",
+      "country": "",
+      "image_queries": [
+        "Hayreddin Barbarossa",
+        "Naxos castle",
+        "Aegean islands"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Savaş neden çıktı?"
+        },
+        {
+          "s": "A",
+          "t": "1537'de Barbaros Hayreddin Paşa, büyük bir Osmanlı donanmasıyla Venedik'e ait Ege ve İyon adalarına sefer düzenledi."
+        },
+        {
+          "s": "A",
+          "t": "Siros, Egina, İos, Paros, Tinos, Kerpe, Kaşot ve Nakşa gibi adaları ele geçirdi ve Nakşa Dükalığı'nı Osmanlı topraklarına kattı."
+        },
+        {
+          "s": "B",
+          "t": "Avrupa buna sessiz kalmadı."
+        },
+        {
+          "s": "A",
+          "t": "Kalmadı. Papa III. Paulus'un teşvikiyle İspanya, Venedik, Ceneviz, Papalık ve Malta Şövalyeleri bir araya geldi ve Kutsal İttifak donanmasını kurdu."
+        },
+        {
+          "s": "A",
+          "t": "Amaç, Osmanlı'nın Ege ve İyon denizlerindeki Venedik topraklarına doğru genişlemesini durdurmaktı. Bu çatışma, 1537-1540 Osmanlı-Venedik Savaşı'nın da bir parçasıydı."
+        }
+      ]
+    },
+    {
+      "heading": "İki Donanma",
+      "country": "",
+      "image_queries": [
+        "Andrea Doria portrait",
+        "galleon 16th century",
+        "Venetian galley"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Donanmalar ne kadar büyüktü?"
+        },
+        {
+          "s": "A",
+          "t": "Burada da kaynaklar farklı rakamlar veriyor. Türkçe kaynaklara göre Barbaros'un emrinde 122 kadırga ve kalyota ile on iki bin levent vardı."
+        },
+        {
+          "s": "A",
+          "t": "Aynı kaynaklara göre Kutsal İttifak donanmasında 112 kadırga, 50 kalyon ve 140 barka vardı; toplam üç yüzü aşkın gemi. Bazı kaynaklar bu sayıyı altı yüzün üstünde veriyor. Altmış bin asker taşıdıkları yazılıyor."
+        },
+        {
+          "s": "B",
+          "t": "Rakamlar bu kadar farklıysa neye güveneceğiz?"
+        },
+        {
+          "s": "A",
+          "t": "Kroniklerde ve arşiv belgelerinde kesin bir uzlaşma yok. Ama genel kabul şu: Hristiyan koalisyonu gemi tonajı, asker sayısı ve ateş gücü bakımından daha büyük bir donanma toplamıştı."
+        },
+        {
+          "s": "A",
+          "t": "Kutsal İttifak donanmasının komutanı, o sırada Kutsal Roma-Germen İmparatoru Şarlken'in hizmetinde olan Andrea Doria'ydı."
+        }
+      ]
+    },
+    {
+      "heading": "Aktium'daki Kale",
+      "city": "Preveza",
+      "image_queries": [
+        "Preveza",
+        "Ambracian Gulf",
+        "Actium"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Savaştan önce iki donanma nerede konuşlandı?"
+        },
+        {
+          "s": "A",
+          "t": "Kutsal İttifak donanması Korfu yakınlarında toplandı. Önce Papalık ve Venedik filoları geldi. Barbaros ise o sırada Ege'deydi; yolda Kefalonya'yı ele geçirerek Preveze'ye ulaştı."
+        },
+        {
+          "s": "A",
+          "t": "Barbaros'un kaptanlarından Sinan Reis, askerleri Narda Körfezi'nin girişindeki Aktium'a yerleştirmeyi önerdi. Barbaros önce karşı çıktı, sonra bu fikri benimsedi."
+        },
+        {
+          "s": "B",
+          "t": "Neden önemliydi?"
+        },
+        {
+          "s": "A",
+          "t": "Aktium'daki kaleyi tutan askerler Osmanlı filosunu topçu ateşiyle destekleyecek, Doria'yı da gemilerini kıyıdan uzak tutmaya zorlayacaktı."
+        },
+        {
+          "s": "A",
+          "t": "İlginç bir rastlantı: aynı coğrafya, MÖ 31'de Roma tarihinin dönüm noktalarından Aktium Deniz Savaşı'na da sahne olmuştu."
+        },
+        {
+          "s": "B",
+          "t": "Doria ne yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "Preveze Kalesi yakınlarına asker çıkarmayı denedi ama Murat Reis tarafından geri püskürtüldü. Ters bir rüzgârın gemilerini kıyıya sürüklemesinden çekinerek açıkta bekledi ve sonra güneye, Lefkada yakınlarına çekildi."
+        }
+      ]
+    },
+    {
+      "heading": "28 Eylül 1538",
+      "city": "Preveza",
+      "image_queries": [
+        "Battle of Preveza 1538",
+        "Ottoman galley fleet painting",
+        "Turgut Reis"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Ve savaş günü geldi."
+        },
+        {
+          "s": "A",
+          "t": "Doria ve komutanları, İnebahtı'ya doğru bir saldırıyla Barbaros'u savaşa zorlamaya karar vermişti. Ama şafak sökerken Osmanlı donanmasının üzerlerine geldiğini görünce Doria çok şaşırdı."
+        },
+        {
+          "s": "A",
+          "t": "Turgut Reis altı büyük kalyotayla birlikteydi; sol kanat kıyıya iyice sokulmuştu. Sayıca az bir donanmadan böyle cesur bir saldırı beklemeyen Doria, ancak üç saat sonra demir alıp savaşa hazırlanma emri verebildi."
+        },
+        {
+          "s": "B",
+          "t": "Ve rüzgâr?"
+        },
+        {
+          "s": "A",
+          "t": "İşte belirleyici unsur. Savaş günü rüzgâr kesildi. Bu, yelkenli ve ağır kalyonlardan oluşan Kutsal İttifak donanmasının hareketini kısıtladı."
+        },
+        {
+          "s": "A",
+          "t": "Kürekle ilerleyen daha hafif Osmanlı kadırgaları ise manevra avantajını kullanarak karşı tarafın düzenini bozdu."
+        },
+        {
+          "s": "B",
+          "t": "Kutsal İttifak hiç direnemedi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Direndi. Alessandro Condalmiero komutasındaki Venedik amiral gemisi, büyük kalyon Galeone di Venezia, top ateşiyle bir dizi Osmanlı gemisine ciddi zarar verdi."
+        },
+        {
+          "s": "A",
+          "t": "Ama akşam saatlerinde Andrea Doria geri çekilme kararı aldı ve savaş sona erdi."
+        }
+      ]
+    },
+    {
+      "heading": "İki Farklı Sonuç",
+      "country": "",
+      "image_queries": [
+        "Battle of Preveza painting",
+        "Süleyman the Magnificent",
+        "Charles V portrait"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Kayıplar ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Türkçe kaynaklara göre günün sonunda Osmanlılar yüz yirmi sekiz gemiyi batırdı, yok etti ya da ele geçirdi ve yaklaşık üç bin esir aldı. Osmanlılar hiç gemi kaybetmedi, ama dört yüz ölü ve sekiz yüz yaralı verdi."
+        },
+        {
+          "s": "A",
+          "t": "İngilizce kaynaklar ise Kutsal İttifak'ın büyük donanmasının çoğunlukla hasarsız kurtulduğunu vurguluyor. Asıl zararın ittifak içindeki güvene geldiğini yazıyorlar."
+        },
+        {
+          "s": "B",
+          "t": "Yani rakamlar tartışmalı ama sonuç belli."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Kazanan tarafın Osmanlı olduğunda iki taraf da birleşiyor. Kanuni Sultan Süleyman zaferi büyük bir sevinçle karşıladı ve Barbaros'a subaylarına dağıtması için yüz bin altın gönderdi."
+        },
+        {
+          "s": "A",
+          "t": "Venedik ile İspanya arasında zaten var olan düşmanlık, savaştan sonra ittifakta derin bir ayrılığa yol açtı."
+        }
+      ]
+    },
+    {
+      "heading": "Otuz Yıllık Üstünlük",
+      "country": "",
+      "image_queries": [
+        "Ottoman navy 16th century",
+        "Mediterranean Sea",
+        "Battle of Lepanto painting"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Preveze'nin uzun vadeli sonucu neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Akdeniz'deki deniz güç dengesini değiştirdi. İngilizce kaynaklara göre bu zafer, Osmanlı İmparatorluğu'nun Akdeniz'in birinci deniz gücü olduğu dönemin başlangıcıydı."
+        },
+        {
+          "s": "A",
+          "t": "Büyük filo savaşlarındaki Osmanlı üstünlüğü, 1571'deki İnebahtı Savaşı'na kadar, yaklaşık otuz yıl sürdü."
+        },
+        {
+          "s": "B",
+          "t": "Ve bugün 28 Eylül hâlâ anılıyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Preveze zaferinin yıl dönümü, Türkiye'de Deniz Kuvvetleri Günü olarak kutlanıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Preveza",
+      "image_queries": [
+        "Battle of Preveza painting",
+        "Hayreddin Barbarossa"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: sayıca daha kalabalık bir donanma, Aktium'daki kale, kesilen rüzgâr ve akşamüstü geri çekilen bir amiral."
+        },
+        {
+          "s": "A",
+          "t": "Ve iki tarafın kaynaklarında birbirinden çok farklı anlatılan bir sonuç."
+        },
+        {
+          "s": "B",
+          "t": "Sence Preveze'yi asıl ne kazandırdı? Barbaros'un cesareti mi, Aktium'daki kale mi, yoksa rüzgâr mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

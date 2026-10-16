@@ -63,7 +63,7 @@ def build(script, out):
     speakers = script["speakers"]
     order = list(speakers)  # konuşmacı sırası rengini belirler
 
-    parts, chapters, credits, clock = [], [], [], 0.0
+    parts, chapters, credits, clock, used = [], [], [], 0.0, set()
     for c, chapter in enumerate(script["chapters"]):
         lines = chapter["lines"]
         count = max(2, math.ceil(len(lines) / LINES_PER_IMAGE))
@@ -73,7 +73,7 @@ def build(script, out):
                           "city": chapter.get("city", "")},
                 "image_queries": chapter.get("image_queries", []), "image_files": chapter.get("image_files", []),
                 "object_query": ""}
-        found = images.find_backgrounds(plan, work / f"chapter{c}", count, per_query=4)
+        found = images.find_backgrounds(plan, work / f"chapter{c}", count, per_query=4, exclude=used)
         pool = [path for path, _ in found]
         credits += [credit for _, credit in found]
         print(f"Bölüm {c + 1}: {chapter['heading']} | {len(lines)} konuşma, {len(pool)} görsel")

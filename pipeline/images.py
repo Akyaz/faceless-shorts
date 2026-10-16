@@ -14,6 +14,9 @@ import urllib.request
 from . import script
 
 UA = "faceless-shorts/0.1 (https://github.com/Akyaz/faceless-shorts)"
+# Lisansı serbest görünse de açıklamasında "tüm hakları saklıdır" yazan ve müstehcen sayılabilecek görseller atlanır
+EXCLUDED = re.compile(r"all rights reserved|diritti riservati|todos los derechos|alle rechte|tüm hakları|"
+                      r"ithyphallic|phallic|phallus|nude|naked|erotic", re.I)
 FREE_LICENSE = re.compile(r"^(CC0|CC BY(-SA)?( \d\.\d)?|Public domain|PD)", re.I)
 
 
@@ -45,6 +48,8 @@ def wikimedia(query, limit=5):
         width, height = info.get("width", 0), info.get("height", 0)
         # Çok yatık panoramalar dikeye kırpılınca ince bir şerit kalıyor
         if not FREE_LICENSE.match(license_name) or width < 800 or width > 2.5 * height:
+            continue
+        if EXCLUDED.search(page.get("title", "") + " " + _strip(meta.get("ImageDescription", {}).get("value"))):
             continue
         artist = _strip(meta.get("Artist", {}).get("value")) or "Bilinmiyor"
         about = f"{page.get('title', '')} | {_strip(meta.get('ImageDescription', {}).get('value'))[:200]}"
@@ -230,7 +235,7 @@ def _searches(plan):
     return list(dict.fromkeys(searches))
 
 
-def _save(picked, out_dir, count):
+def _save(picked, out_dir, count, exclude_out=None):
     """Adayları sırayla indirir; (dosya, kaynak satırı) listesi döner."""
     results = []
     for cand in picked:
@@ -242,16 +247,19 @@ def _save(picked, out_dir, count):
             continue
         print(f"Arka plan: {cand['about'][:120]}")
         results.append((path, cand["credit"]))
+        if exclude_out is not None:
+            exclude_out.add(cand["url"])
         if len(results) >= count:
             break
     return results
 
 
-def find_backgrounds(plan, out_dir, count, per_query=3):
-    """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner."""
+def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
+    """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner.
+    exclude: daha önce kullanılmış adresler; uzun videoda bölümler aynı görseli tekrarlamasın diye."""
     out_dir.mkdir(parents=True, exist_ok=True)
     if plan.get("image_files"):  # görseller elle seçilmiş: arama ve eleme yapılmaz, sıra korunur
-        return _save(commons_files(plan["image_files"]), out_dir, count)
+        return _save(commons_files(plan["image_files"]), out_dir, count, exclude)
     pools = []
     for query, neutral in _searches(plan):
         try:
@@ -273,6 +281,8 @@ def find_backgrounds(plan, out_dir, count, per_query=3):
             if series not in seen:
                 seen.add(series)
                 candidates.append(pool[rank])
+    if exclude:  # hepsi kullanılmışsa tekrar kabul edilir; görselsiz bölüm olmasın
+        candidates = [c for c in candidates if c["url"] not in exclude] or candidates
     candidates = candidates[:24]
 
     picked = _select(plan, candidates) if candidates else []
@@ -280,7 +290,7 @@ def find_backgrounds(plan, out_dir, count, per_query=3):
         # Eleme yapılamadıysa yalnızca yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları elenmeden kullanılmaz
         picked = [c for c in candidates if not c["neutral"]][:2]
 
-    results = _save(picked, out_dir, count)
+    results = _save(picked, out_dir, count, exclude)
     if not results and plan.get("image_prompt"):
         path = out_dir / "background.png"
         try:

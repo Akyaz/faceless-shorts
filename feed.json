@@ -496,5 +496,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T15:00:12Z",
+  "run": "38919749873",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38919749873",
+  "videos": [
+   {
+    "title": "Spor Gündemi",
+    "url": null
+   }
+  ]
  }
 ]

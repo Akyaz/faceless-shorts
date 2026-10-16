@@ -386,20 +386,6 @@
   ]
  },
  {
-  "time": "2026-10-15T15:12:17Z",
-  "run": "38757590068",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38757590068",
-  "videos": [
-   {
-    "title": "Fenerbahçe 6-0 Kaybetti, Arda Turan Tarih Yazdı!",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:02Z",
   "run": "38801187914",
   "event": "workflow_dispatch",
@@ -452,6 +438,20 @@
    {
     "title": "Uzaydan sinyal ve saatlerden saniye kaldırılıyor!",
     "url": "https://youtu.be/EVAGWKAq6s4"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-16T04:35:08Z",
+  "run": "38757590068",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851361915",
+  "videos": [
+   {
+    "title": "Fenerbahçe 6-0 Kaybetti, Arda Turan Tarih Yazdı!",
+    "url": "https://youtu.be/xO0yDGOloSk"
    }
   ]
  }

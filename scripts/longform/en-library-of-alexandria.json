@@ -188,6 +188,10 @@
         },
         {
           "s": "A",
+          "t": "Apollonius of Rhodes composed the epic poem the Argonautica, the story of Jason and the Golden Fleece."
+        },
+        {
+          "s": "A",
           "t": "Eratosthenes of Cyrene calculated the circumference of the Earth to within a few hundred kilometres."
         },
         {
@@ -275,6 +279,18 @@
         {
           "s": "A",
           "t": "There's even a story, told by Plutarch, that Mark Antony gave Cleopatra two hundred thousand scrolls from the library of Pergamum. Plutarch himself warned that his source might be unreliable."
+        },
+        {
+          "s": "B",
+          "t": "Why would that story matter?"
+        },
+        {
+          "s": "A",
+          "t": "The historian Lionel Casson pointed out that even if the story was invented, it would only have been believable if the library still existed."
+        },
+        {
+          "s": "A",
+          "t": "And the historian Edward Watts suggests such a gift may have been meant to replenish the library's collection after the damage of Caesar's war."
         }
       ]
     },
@@ -294,6 +310,10 @@
         {
           "s": "A",
           "t": "The last known references to scholars belonging to the Mouseion date to the 260s AD."
+        },
+        {
+          "s": "A",
+          "t": "Little is known about the library in the first and second centuries AD. It is unclear what happened to the Mouseion after Strabo's visit; it may simply have mattered less and less."
         },
         {
           "s": "A",
@@ -345,6 +365,18 @@
         {
           "s": "A",
           "t": "The Bibliotheca Alexandrina was completed in 2002. Today it is a modern library and cultural centre, commemorating the ancient one."
+        },
+        {
+          "s": "B",
+          "t": "Does it try to be like the original?"
+        },
+        {
+          "s": "A",
+          "t": "In spirit. In line with the mission of the ancient library, it also houses a school of information science for future librarians and archivists."
+        },
+        {
+          "s": "A",
+          "t": "It's a reminder that what made Alexandria special wasn't just the scrolls. It was the idea of gathering all knowledge in one place, and the people who studied it."
         }
       ]
     },

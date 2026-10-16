@@ -1,0 +1,405 @@
+{
+  "lang": "tr",
+  "topic": "Malazgirt Muharebesi",
+  "era": "1071, Büyük Selçuklu ve Bizans",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "gergin",
+  "title": "Malazgirt 1071: Bir İmparatorun Esir Düştüğü Gün",
+  "description": "26 Ağustos 1071'de Sultan Alp Arslan ile İmparator IV. Romanos Diogenes, Muş'taki Malazgirt yakınlarında karşılaştı. Bizans ordusu bozguna uğradı, imparator esir düştü. Ama hikâyenin asıl kırılma noktası savaş alanında değil, Bizans'ın kendi içindeydi. Savaşı, kaynakları ve sonuçlarını anlatıyoruz.",
+  "hashtags": [
+    "malazgirt",
+    "tarih",
+    "alparslan",
+    "1071"
+  ],
+  "tags": [
+    "malazgirt",
+    "1071",
+    "alp arslan",
+    "romanos diogenes",
+    "selçuklu",
+    "bizans",
+    "anadolu",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Battle of Manzikert, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Manzikert"
+    },
+    {
+      "title": "Malazgirt Meydan Muharebesi, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Malazgirt_Meydan_Muharebesi"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Muş",
+      "image_queries": [
+        "Malazgirt",
+        "Battle of Manzikert miniature",
+        "Alp Arslan"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, bir Bizans imparatorunun bir Müslüman komutanın esiri olduğu kaç savaş biliyorsun?"
+        },
+        {
+          "s": "B",
+          "t": "Hiç düşünmedim. Birkaç tane vardır herhalde."
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklara göre bir tane. 1071'de, Muş'taki Malazgirt yakınlarında. Üstelik bir Roma imparatoru, yüzyıllar sonra ilk kez savaş alanında canlı esir düşüyor."
+        },
+        {
+          "s": "B",
+          "t": "Malazgirt Savaşı. Bize genelde Anadolu'nun kapılarının açıldığı gün olarak anlatılır."
+        },
+        {
+          "s": "A",
+          "t": "Doğru. Ama bu savaşın asıl kırılma noktası savaş alanında değil, Bizans ordusunun kendi içindeydi."
+        },
+        {
+          "s": "B",
+          "t": "O zaman baştan başlayalım."
+        }
+      ]
+    },
+    {
+      "heading": "Zayıflayan Bir Sınır",
+      "city": "Muş",
+      "image_queries": [
+        "Ani ruins",
+        "Byzantine Empire map 11th century",
+        "Seljuk"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Savaştan önce durum neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Bizans bir zamanlar çok güçlüydü. Ama on birinci yüzyılın ortasında, özellikle doğu sınırında zayıfladı."
+        },
+        {
+          "s": "A",
+          "t": "Dönemin tarihçileri, İmparator IX. Konstantin'in doğu sınırındaki elli bin kişilik İber ordusunu dağıttığını ve bunun savunmaya büyük zarar verdiğini yazıyor."
+        },
+        {
+          "s": "B",
+          "t": "Selçuklular da bu boşluktan yararlandı."
+        },
+        {
+          "s": "A",
+          "t": "Evet. 1064'te Sultan Alp Arslan komutasındaki büyük bir Selçuklu ordusu, yirmi beş günlük bir kuşatmanın ardından Ani şehrini aldı."
+        },
+        {
+          "s": "A",
+          "t": "1068'de IV. Romanos Diogenes tahta çıktı. Orduda bazı reformlar yaptı ve Selçuklulara karşı iki büyük sefere çıktı."
+        },
+        {
+          "s": "B",
+          "t": "Ve üçüncüsü Malazgirt'e çıktı."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Romanos, Alp Arslan'ın güneyde, Halep'i kuşatmakla meşgul olduğunu düşündü ve kaybedilen kaleleri geri almak için büyük bir orduyla doğuya yürüdü."
+        }
+      ]
+    },
+    {
+      "heading": "İki Ordu",
+      "city": "Muş",
+      "image_queries": [
+        "Byzantine army miniature",
+        "Seljuk horse archer",
+        "Lake Van"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Romanos'un ordusu ne kadar büyüktü?"
+        },
+        {
+          "s": "A",
+          "t": "Modern tahminlere göre yaklaşık kırk bin kişi. Ama bu ordu çok karışıktı."
+        },
+        {
+          "s": "A",
+          "t": "İçinde Bizans'ın düzenli birlikleri, beş yüz Frank ve Norman paralı askeri, Peçenek ve Uz gibi Türk paralı askerler, Bulgar, Gürcü ve Ermeni birlikleri ve Varang Muhafızlarının bir kısmı vardı."
+        },
+        {
+          "s": "B",
+          "t": "Yani sadakati tartışmalı birçok grup."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bir de Romanos'un yanında Andronikos Dukas vardı. Romanos'un siyasi rakibi olan Dukas ailesinden biri."
+        },
+        {
+          "s": "B",
+          "t": "Alp Arslan'ın ordusu?"
+        },
+        {
+          "s": "A",
+          "t": "Alp Arslan da bölgedeydi. Halep ve Musul'dan gelen otuz bin süvari ve müttefiklerinin desteğiyle Romanos'un tahmin ettiğinden çok daha yakındaydı. İzcileri Romanos'un nerede olduğunu biliyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Malazgirt'e Doğru",
+      "city": "Muş",
+      "image_queries": [
+        "Malazgirt castle",
+        "Ahlat",
+        "Lake Van"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Romanos, Van Gölü'ne doğru ilerledi. Malazgirt'i ve yakındaki Ahlat Kalesi'ni hızla geri almayı umuyordu."
+        },
+        {
+          "s": "A",
+          "t": "Ordusunu ikiye ayırdı. General Tarkhaneiotes'i ordunun önemli bir kısmıyla Ahlat'a gönderdi. Kendisi de Malazgirt'e yürüdü."
+        },
+        {
+          "s": "B",
+          "t": "Ordusunu ikiye bölmek riskli değil miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Çok riskliydi. Üstelik Tarkhaneiotes'in birlikleri savaşa hiç katılmadı. Romanos ise bunu bilmiyordu."
+        },
+        {
+          "s": "A",
+          "t": "23 Ağustos'ta Malazgirt'i kolayca aldı. Ertesi gün erzak toplayan birlikler Selçuklu ana ordusuyla karşılaştı ve geri çekildi."
+        },
+        {
+          "s": "B",
+          "t": "Romanos bunun gerçek ordu olduğunu anlamadı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Anlamadı. Ermeni general Basilakes'i bir süvari birliğiyle gönderdi. Bu birlik dağıtıldı ve Basilakes esir düştü."
+        },
+        {
+          "s": "B",
+          "t": "Sonraki gün neler oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Selçuklu kuvvetleri geceyi yakındaki tepelerde saklanarak geçirdi. 25 Ağustos'ta Romanos'un ordusundaki bazı Türk paralı askerler Selçuklu soydaşlarıyla temas kurdu ve saf değiştirdi."
+        },
+        {
+          "s": "A",
+          "t": "Aynı gün Selçuklulardan bir barış elçisi geldi. Romanos teklifi reddetti. Doğu sorununu kesin bir zaferle çözmek istiyordu; yeni bir ordu toplamanın zor ve pahalı olacağını biliyordu."
+        },
+        {
+          "s": "A",
+          "t": "Tarkhaneiotes'i geri çağırmaya çalıştı, ama o birlikler artık bölgede değildi."
+        }
+      ]
+    },
+    {
+      "heading": "26 Ağustos 1071",
+      "city": "Muş",
+      "image_queries": [
+        "Battle of Manzikert painting",
+        "Seljuk horse archer",
+        "Malazgirt plain"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Ve büyük gün geldi."
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklara göre Alp Arslan o sabah ordusuna, kefene benzeyen beyaz bir giysi içinde seslendi. Bu, savaşta ölmeye hazır olduğunun mesajıydı."
+        },
+        {
+          "s": "A",
+          "t": "26 Ağustos'ta Bizans ordusu savaş düzenine girdi. Sol kanatta Bryennios, sağ kanatta Theodoros Alyates, merkezde imparatorun kendisi vardı. Arkadaki yedek kuvvetlerin başında ise Andronikos Dukas bulunuyordu."
+        },
+        {
+          "s": "B",
+          "t": "Dukas ailesinin sadakati tartışmalıyken onu arkaya koymak..."
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklar bunu imparatorun büyük bir hatası olarak görüyor. Selçuklular yaklaşık dört kilometre ileride hilal biçiminde dizilmişti."
+        },
+        {
+          "s": "A",
+          "t": "Atlı okçular saldırdı; hilalin ortası sürekli geri çekilirken kanatlar Bizans ordusunu sarmaya çalıştı. Selçuklu süvarisi doğrudan çarpışmaya girmekten kaçınıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Bizanslılar ilerlemeyi sürdürdü ve öğleden sonra Alp Arslan'ın kampını ele geçirdi. Ama kanatlar oklarla yıpranmıştı."
+        },
+        {
+          "s": "B",
+          "t": "Ve akşam olunca?"
+        },
+        {
+          "s": "A",
+          "t": "Romanos geri çekilme emri verdi. Sağ kanat emri yanlış anladı. Andronikos Dukas ise çekilmeyi koruma emrini bilerek yok saydı ve doğrudan karargâha döndü."
+        },
+        {
+          "s": "A",
+          "t": "Kafası karışan Bizans ordusuna Selçuklular saldırdı. Sağ kanat neredeyse hemen dağıldı, sol kanat da kısa süre sonra bozuldu."
+        },
+        {
+          "s": "B",
+          "t": "Romanos ne yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "Varang Muhafızları ve Ermeni piyadelerle birlikte merkezde kuşatıldı. Yaralandı ve esir alındı. Bu, bir Bizans imparatorunun bir Müslüman komutana esir düştüğü tek olay oldu."
+        }
+      ]
+    },
+    {
+      "heading": "Sultan ve İmparator",
+      "city": "Muş",
+      "image_queries": [
+        "Alp Arslan Romanos miniature",
+        "Romanos IV Diogenes coin",
+        "Seljuk"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Alp Arslan esir imparatora nasıl davrandı?"
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklar, iki hükümdar arasında bir görüşme olduğunu ve Alp Arslan'ın Romanos'a saygılı davrandığını anlatıyor."
+        },
+        {
+          "s": "A",
+          "t": "Barış şartları konuşuldu. Sultan önce fidye olarak on milyon altın istedi. Romanos bunu çok yüksek bulunca, ilk ödeme bir buçuk milyon altına indirildi, ayrıca her yıl üç yüz altmış bin altın ödenecekti."
+        },
+        {
+          "s": "A",
+          "t": "Alp Arslan'ın oğlu ile Romanos'un kızı arasında bir evlilik de planlandı. Romanos yaklaşık bir hafta sonra serbest bırakıldı."
+        },
+        {
+          "s": "B",
+          "t": "Yani savaş bir anlaşmayla bitti."
+        },
+        {
+          "s": "A",
+          "t": "Selçuklular kaçan Bizanslıları takip etmedi, hatta o sırada Malazgirt'i bile geri almadı."
+        }
+      ]
+    },
+    {
+      "heading": "Asıl Yenilgi İstanbul'da",
+      "city": "Istanbul",
+      "image_queries": [
+        "Constantinople Byzantine",
+        "Michael VII Doukas coin",
+        "Prince Islands"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Romanos Konstantinopolis'e döndüğünde ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Ne yazık ki onun için kötü. Andronikos Dukas çoktan başkente dönmüş, bir darbeyle Romanos'u devirmiş ve kuzeni VII. Mihail'i imparator ilan etmişti."
+        },
+        {
+          "s": "A",
+          "t": "Romanos sadık birlikler toplamaya çalıştı ama Dukas ailesine karşı üç kez yenildi. Tahttan indirildi, gözleri kör edildi ve Prens Adaları'ndan birine sürüldü. Kısa süre sonra yaralarının yol açtığı enfeksiyonla öldü."
+        },
+        {
+          "s": "B",
+          "t": "Yani Bizans'ı asıl yıkan iç savaş oldu."
+        },
+        {
+          "s": "A",
+          "t": "Modern tarihçiler de bunu vurguluyor. Malazgirt, eskiden düşünüldüğü gibi büyük bir katliam değildi. Bizans'ın kayıpları görece azdı, birçok birlik birkaç ay sonra başka cephelerde savaşıyordu ve esirlerin çoğu serbest bırakıldı."
+        },
+        {
+          "s": "A",
+          "t": "Ama ardından gelen iç kargaşa ve antlaşmanın uygulanmaması, Bizans'ın doğu sınırını savunmasız bıraktı."
+        }
+      ]
+    },
+    {
+      "heading": "Anadolu'nun Kapısı",
+      "image_queries": [
+        "Anatolia landscape",
+        "Seljuk caravanserai",
+        "Malazgirt castle"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Malazgirt neden bu kadar önemli sayılıyor?"
+        },
+        {
+          "s": "A",
+          "t": "Bizans'ın Anadolu ve Ermenistan'daki otoritesini sarstı ve Anadolu'nun zamanla Türkleşmesinin önünü açtı."
+        },
+        {
+          "s": "A",
+          "t": "On birinci yüzyılda batıya doğru göç eden birçok Türk, Malazgirt zaferini Anadolu'ya açılan bir kapı olarak gördü."
+        },
+        {
+          "s": "B",
+          "t": "Ve sonraki yüzyılda benzer bir savaş daha oldu."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Yüz yıldan fazla sonra Miryokefalon Savaşı da Bizans'ın gerilemesinde bir dönüm noktası olarak Malazgirt'le karşılaştırılıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Muş",
+      "image_queries": [
+        "Malazgirt",
+        "Malazgirt castle"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: bölünmüş bir ordu, savaş alanından çekilen bir rakip ve esir düşen bir imparator."
+        },
+        {
+          "s": "A",
+          "t": "Ve en büyük darbe, imparatorun kendi başkentinden geldi."
+        },
+        {
+          "s": "B",
+          "t": "Sence Malazgirt'i asıl kim kaybetti? Romanos mu, yoksa Andronikos Dukas mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

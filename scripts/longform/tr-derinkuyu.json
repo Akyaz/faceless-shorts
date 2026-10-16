@@ -1,0 +1,398 @@
+{
+  "lang": "tr",
+  "topic": "Derinkuyu Yeraltı Şehri",
+  "era": "Frig döneminden Bizans'a, Kapadokya",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Derinkuyu: Bir Evin Bodrumundan Çıkan Yeraltı Şehri",
+  "description": "1963'te Nevşehir'in Derinkuyu ilçesinde bir adam evini onarırken bodrum duvarını yıktı ve arkasında gizli bir oda buldu. Oda, yerin onlarca metre altına inen dev bir yeraltı şehrine açılıyordu. Derinkuyu nasıl ve neden kazıldı, binlerce kişi orada nasıl yaşadı? Bilinenleri ve tahminleri ayırarak anlatıyoruz.",
+  "hashtags": [
+    "derinkuyu",
+    "kapadokya",
+    "tarih"
+  ],
+  "tags": [
+    "derinkuyu",
+    "yeraltı şehri",
+    "kapadokya",
+    "nevşehir",
+    "kaymaklı",
+    "bizans",
+    "tarih",
+    "arkeoloji"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Derinkuyu underground city, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Derinkuyu_underground_city"
+    },
+    {
+      "title": "Derinkuyu Yeraltı Şehri, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Derinkuyu_Yeralt%C4%B1_%C5%9Eehri"
+    },
+    {
+      "title": "Derinkuyu: Mysterious underground city in Turkey found in man's basement, Freethink",
+      "url": "https://www.freethink.com/culture/derinkuyu-underground-city"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Derinkuyu underground city",
+        "Derinkuyu tunnel",
+        "Cappadocia"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, evini tamir ederken bodrumda bir duvar yıktığını düşün. Arkasında bilmediğin bir oda çıkıyor."
+        },
+        {
+          "s": "B",
+          "t": "Korkarım. Ama merak da ederim. İçinde ne var?"
+        },
+        {
+          "s": "A",
+          "t": "Bir tünel. Tünelin ucunda başka odalar, merdivenler, havalandırma bacaları. Yerin onlarca metre altına inen koca bir şehir."
+        },
+        {
+          "s": "B",
+          "t": "Bu Derinkuyu'nun hikâyesi, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. 1963'te Nevşehir'in Derinkuyu ilçesinde tam olarak bu yaşandı. Bugün Türkiye'de kazılmış en büyük yeraltı şehrinden söz ediyoruz."
+        },
+        {
+          "s": "B",
+          "t": "Peki bu şehri kim, neden kazdı?"
+        },
+        {
+          "s": "A",
+          "t": "Kesin bir cevap yok. Ama kaynakların söylediklerini ve tahmin edilenleri ayırarak anlatalım."
+        }
+      ]
+    },
+    {
+      "heading": "Yumuşak Taşın Ülkesi",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Cappadocia tuff landscape",
+        "Cappadocia fairy chimneys",
+        "Derinkuyu town"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Derinkuyu, Nevşehir'e otuz kilometre uzaklıkta, Nevşehir-Niğde yolu üzerinde bir ilçe. Yer üstünde sıradan bir Anadolu kasabası gibi görünüyor."
+        },
+        {
+          "s": "B",
+          "t": "Ama altında başka bir dünya var."
+        },
+        {
+          "s": "B",
+          "t": "Neden Kapadokya? Neden burada bu kadar yeraltı şehri var?"
+        },
+        {
+          "s": "A",
+          "t": "Cevap kayanın kendisinde. Bölgedeki kaya, volkanik külün sıkışmasıyla oluşan tüf. Kolay oyulabilen, ama oyulduktan sonra sağlam kalan bir taş."
+        },
+        {
+          "s": "A",
+          "t": "Derinkuyu da büyük ölçüde bu tüfün içine oyulmuş. Kapadokya'da onun gibi başka yeraltı kompleksleri de var."
+        },
+        {
+          "s": "B",
+          "t": "Adı nereden geliyor?"
+        },
+        {
+          "s": "A",
+          "t": "Derinkuyu, adını yerleşime ve üstündeki kasabaya su sağlayan derin kuyulardan alıyor. Bölgenin Rumca konuşan halkı ise ona Malakopia diyordu. Bu adın yumuşak anlamına gelen bir Yunanca kelimeyle, yani kolay oyulan taşla ilgili olduğu düşünülüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Yerin Altında Bir Şehir",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Derinkuyu underground city room",
+        "Derinkuyu stone door",
+        "Derinkuyu ventilation shaft"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "İçeride neler var?"
+        },
+        {
+          "s": "A",
+          "t": "Önce şunu söyleyelim: burası tek bir büyük salon değil. Katlar, dar koridorlar ve tünellerle birbirine bağlanan çok sayıda oda."
+        },
+        {
+          "s": "A",
+          "t": "Yaşamak için gereken hemen her şey. Şarap ve yağ presleri, ahırlar, mahzenler, depolar, yemekhaneler ve şapeller."
+        },
+        {
+          "s": "A",
+          "t": "Mutfaklarda tandır denen fırınlar var. Bu fırınlar Kapadokya köylerinde bugün de kullanılıyor."
+        },
+        {
+          "s": "A",
+          "t": "İkinci katta tonozlu tavanı olan geniş bir oda bulunuyor. Bu odanın bir din okulu olarak kullanıldığı, yanındaki odaların da çalışma odası olduğu aktarılıyor."
+        },
+        {
+          "s": "B",
+          "t": "Ve en altta bir kilise."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Üçüncü ve dördüncü katlar arasından başlayan merdivenler en alt kattaki bir kiliseye iniyor."
+        },
+        {
+          "s": "B",
+          "t": "Peki bu kadar derinde nasıl nefes alıyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "İşte en etkileyici kısım. Şehirde çok sayıda dikey havalandırma bacası var. Küçük hava delikleri odaları geniş merkez bacalara bağlıyor."
+        },
+        {
+          "s": "A",
+          "t": "Yaklaşık üç metreye üç metrelik ana baca birkaç katı birbirine bağlıyor. İki farklı kattaki açıklıkları hiçbir zaman üst üste gelmiyor. Bu düzenin hava akışını en iyi hâle getirmek için bilinçli tasarlandığı düşünülüyor."
+        },
+        {
+          "s": "A",
+          "t": "Elli beş metrelik bir baca da kuyu olarak kullanılmış. Hem yukarıdaki köylülere hem de saklanan insanlara su sağlıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yani su, hava ve yiyecek aynı anda düşünülmüş."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Uzun süre saklanacak bir topluluğun üç temel ihtiyacı. Kuyu suyu, bacalar havayı, depolar ve ahırlar da yiyeceği karşılıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Bir de inanç. En altta bir kilise, ikinci katta bir okul."
+        },
+        {
+          "s": "A",
+          "t": "Bu da bize şunu söylüyor: burası sadece birkaç günlük bir saklanma yeri değil, gerektiğinde günlük hayatın devam ettiği bir yerdi."
+        }
+      ]
+    },
+    {
+      "heading": "Taş Kapılar",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Derinkuyu rolling stone door",
+        "Kaymaklı underground city",
+        "Derinkuyu corridor"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bir saldırı olursa ne yapıyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "Şehir içeriden büyük, tekerlek biçimli taş kapılarla kapatılabiliyordu. Her kat ayrı ayrı kapatılabiliyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yani saldırgan bir koridoru geçse bile diğer kata ulaşamıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Bu tasarım sadece saklanmayı değil, bölümleri birbirinden ayırmayı, içeride hareket etmeyi ve bir bölüm ele geçirilirse karşı saldırı yapmayı bile mümkün kılıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Başka yeraltı şehirleriyle bağlantısı var mı?"
+        },
+        {
+          "s": "A",
+          "t": "Bazı kaynaklara göre Derinkuyu, yakındaki Kaymaklı yeraltı şehrine sekiz dokuz kilometrelik tünellerle bağlanıyordu. Ama bu bağlantıyı doğrulayan kaynak sayısı az; ihtiyatla yaklaşmak gerekiyor."
+        },
+        {
+          "s": "B",
+          "t": "Kaç kişi yaşayabiliyordu?"
+        },
+        {
+          "s": "A",
+          "t": "En çok tekrar edilen rakam yirmi bin kişi, hayvanları ve erzaklarıyla birlikte. Ama bu bir tahmin. Gerçek nüfusu bilmiyoruz."
+        }
+      ]
+    },
+    {
+      "heading": "Kim Kazdı?",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Phrygian rock-cut monument",
+        "Cappadocia Byzantine church fresco",
+        "Derinkuyu church"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Peki şehri kim kazdı?"
+        },
+        {
+          "s": "A",
+          "t": "Tam olarak bilinmiyor. İngilizce kaynaklara göre ilk tüneller ve odalar MÖ sekizinci ve yedinci yüzyılda Frigler tarafından açılmış olabilir."
+        },
+        {
+          "s": "A",
+          "t": "Türkçe kaynaklarda ise erken Hristiyanların Roma'nın baskısından kaçarak bölgeye geldiği ve yeraltı şehirlerini kurduğu görüşü de geçiyor. Kesin tarihi kimse bilmiyor."
+        },
+        {
+          "s": "B",
+          "t": "Ama sonrasında büyüdüğü kesin."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Geç Roma döneminde Hristiyan halk mağaralarını genişleterek çok katlı yapılar hâline getirdi, şapeller ve Yunanca yazıtlar ekledi. Şehir Bizans döneminde tam şeklini aldı."
+        },
+        {
+          "s": "A",
+          "t": "Arap-Bizans savaşları sırasında, yaklaşık 780 ile 1180 arasında önemli ölçüde genişletildi. Emevî ve Abbasi akınlarına karşı yerel Hristiyan halka sığınak oldu. Nüfusun en kalabalık hâline büyük ihtimalle bu dönemde ulaştığı düşünülüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Sığınağın Uzun Hikâyesi",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Cappadocia rock-cut church",
+        "Derinkuyu underground city",
+        "Cappadocia village"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bizans döneminden sonra da kullanıldı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. On birinci yüzyılda Selçuklu akınları sırasında ve on dördüncü yüzyılda Timur'un seferleri sırasında da Kapadokya'nın yeraltı şehirleri korunmak için kullanıldı."
+        },
+        {
+          "s": "A",
+          "t": "Osmanlı döneminde de bölgedeki Hristiyan halk tehlike anlarında bu şehirlere sığınmayı sürdürdü."
+        },
+        {
+          "s": "B",
+          "t": "Bunu nereden biliyoruz?"
+        },
+        {
+          "s": "A",
+          "t": "Kısmen yerinde yapılan araştırmalardan. Cambridge'li dilbilimci Richard Dawkins, 1909 ile 1911 arasında bölgede Rumca konuşan halk üzerine çalıştı ve insanların gece yerin altında kaldığı bir olayı kaydetti."
+        },
+        {
+          "s": "B",
+          "t": "Yani bu şehirler binlerce yıl boyunca aynı işe yaradı."
+        },
+        {
+          "s": "A",
+          "t": "Aynen öyle. Değişen sadece kimden saklanıldığıydı. Mimari ise aynı mantıkla yüzyıllarca kullanıldı: sakla, kapat, hava al, su bul."
+        },
+        {
+          "s": "B",
+          "t": "Bence en etkileyici yanı da bu. Bu şehri tek bir mimar değil, nesiller boyunca orada yaşayan insanlar şekillendirmiş."
+        }
+      ]
+    },
+    {
+      "heading": "Unutuluş ve Keşif",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Derinkuyu entrance",
+        "Derinkuyu town houses",
+        "Derinkuyu underground city"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Şehir sonra ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Yüzyıllar boyunca tehlike anlarında kullanılmaya devam etti. Barış zamanlarında halk yer üstünde yaşıyor, tehlike geldiğinde yeraltına dönüyordu."
+        },
+        {
+          "s": "A",
+          "t": "Bölgenin Hristiyan halkı, 1923'teki Türk-Yunan nüfus mübadelesiyle bölgeden ayrıldı. Bunun ardından yeraltı şehri terk edildi."
+        },
+        {
+          "s": "B",
+          "t": "Ve unutuldu."
+        },
+        {
+          "s": "A",
+          "t": "Ta ki 1963'e kadar. Bir bölge sakini evini onarırken bodrum duvarını yıktı ve arkasında gizemli bir oda buldu. Devam eden kazılar tünel ağına ulaştı."
+        },
+        {
+          "s": "A",
+          "t": "Bugüne kadar komplekse açılan altı yüzden fazla giriş bulundu. Bazıları kasabadaki evlerin bodrumlarında gizliydi."
+        },
+        {
+          "s": "B",
+          "t": "Ne zaman ziyarete açıldı?"
+        },
+        {
+          "s": "A",
+          "t": "1967'de. Bugün sekiz katı temizlenmiş ve ziyarete açık. Tamamı temizlenirse derinliğinin seksen beş metreye kadar ulaşabileceği tahmin ediliyor. Bazı kaynaklar daha düşük bir derinlik veriyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Nevşehir",
+      "image_queries": [
+        "Derinkuyu underground city",
+        "Cappadocia"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: yumuşak bir taş, yüzyıllar boyunca genişletilen bir sığınak ve bir evin bodrumundan yeniden ortaya çıkan bir şehir."
+        },
+        {
+          "s": "A",
+          "t": "Bence Derinkuyu'yu bu kadar etkileyici yapan, onu gördüğünde hissettiğin şey. Yerin altında, dar bir koridorda, yüzyıllar önce aynı yerden geçen insanları düşünüyorsun."
+        },
+        {
+          "s": "B",
+          "t": "Ve hepsi bir evin bodrumundaki tek bir duvarla yeniden ortaya çıktı."
+        },
+        {
+          "s": "A",
+          "t": "Ve hâlâ cevabı tam bilinmeyen sorular: ilk kim kazdı, kaç kişi yaşadı, tüneller nereye kadar uzanıyor?"
+        },
+        {
+          "s": "B",
+          "t": "Sen olsan böyle bir yeraltı şehrinde kaç gün yaşayabilirdin?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

@@ -210,6 +210,10 @@
         },
         {
           "s": "A",
+          "t": "Snow, cold, constant fighting and the loss of animals wore down the soldiers' morale. Many of them came from the warm lands of Spain and North Africa."
+        },
+        {
+          "s": "A",
           "t": "The local tribes were not friendly. In one narrow valley, the Centrones waited on the slopes above and rolled boulders down onto the column, killing many pack animals."
         },
         {
@@ -262,6 +266,22 @@
         {
           "s": "A",
           "t": "The Romans were caught off guard. The consul Publius Scipio had been ordered to stop Hannibal in Spain, but he moved slowly, and Hannibal was already past him."
+        },
+        {
+          "s": "B",
+          "t": "Did he have any friends in Italy?"
+        },
+        {
+          "s": "A",
+          "t": "He hoped so. The Romans had treated recently conquered Gauls in northern Italy harshly, giving their land to Roman colonists. Hannibal counted on that anger to win allies."
+        },
+        {
+          "s": "A",
+          "t": "Rome also faced an uprising in the Po valley just as Hannibal was coming down from the mountains. The timing could hardly have been better for him."
+        },
+        {
+          "s": "B",
+          "t": "So the crossing wasn't just a physical feat. It was a political gamble."
         },
         {
           "s": "A",

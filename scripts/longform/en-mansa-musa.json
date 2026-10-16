@@ -1,0 +1,388 @@
+{
+  "lang": "en",
+  "topic": "Mansa Musa of Mali",
+  "era": "Mali Empire, early 14th century",
+  "country": "Mali",
+  "label": "HISTORY",
+  "mood": "umutlu",
+  "title": "Mansa Musa: Was He Really the Richest Man Who Ever Lived?",
+  "description": "In 1324, the ruler of the Mali Empire set out for Mecca with a vast caravan and so much gold that, according to Arabic writers, its value fell in Cairo. Online lists call him the richest person in history, worth 400 billion dollars. Historians say that number is pure speculation. Here is what the sources actually tell us about Mansa Musa.",
+  "hashtags": [
+    "mansamusa",
+    "history",
+    "africanhistory"
+  ],
+  "tags": [
+    "mansa musa",
+    "mali empire",
+    "richest man in history",
+    "timbuktu",
+    "african history",
+    "history",
+    "documentary",
+    "catalan atlas"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Mansa Musa, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mansa_Musa"
+    },
+    {
+      "title": "Is Mansa Musa the richest man who ever lived?, BBC News",
+      "url": "https://bbc.in/2TuHsI3"
+    },
+    {
+      "title": "Mansa Musa: the richest person in history?, History (UK)",
+      "url": "https://history.co.uk/articles/mansa-musa-the-richest-person-in-history"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Catalan Atlas Mansa Musa",
+        "Djinguereber Mosque",
+        "Timbuktu"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, who do you think was the richest person in history?"
+        },
+        {
+          "s": "B",
+          "t": "Someone like Rockefeller? Or one of today's tech billionaires?"
+        },
+        {
+          "s": "A",
+          "t": "If you search online, you'll often find a different answer: a fourteenth-century king from West Africa, supposedly worth four hundred billion dollars."
+        },
+        {
+          "s": "B",
+          "t": "Mansa Musa."
+        },
+        {
+          "s": "A",
+          "t": "Mansa Musa, ruler of the Mali Empire. On his way to Mecca, he reportedly gave away so much gold in Cairo that its value fell."
+        },
+        {
+          "s": "B",
+          "t": "That's an incredible story. But is that four hundred billion figure real?"
+        },
+        {
+          "s": "A",
+          "t": "That's exactly what we'll find out. The truth is more interesting than the internet number."
+        }
+      ]
+    },
+    {
+      "heading": "The Mali Empire",
+      "image_queries": [
+        "Mali Empire map",
+        "Niger River",
+        "Sahel landscape"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Let's start with Mali. How big was it?"
+        },
+        {
+          "s": "A",
+          "t": "At its height, under Musa and his brother Sulayman, the Mali Empire covered much of the Sudan-Sahel region of West Africa."
+        },
+        {
+          "s": "A",
+          "t": "Its land stretched across parts of today's Guinea, Senegal, Mauritania, the Gambia and the modern state of Mali, around one point three million square kilometres."
+        },
+        {
+          "s": "B",
+          "t": "And Musa was its ruler."
+        },
+        {
+          "s": "A",
+          "t": "He was the ninth mansa, which means king or emperor. He lived from around 1280 to around 1337. His reign is often seen as the high point of Mali's power and prestige."
+        },
+        {
+          "s": "A",
+          "t": "He wasn't the founder's son. According to the historian Djibril Tamsir Niane, Musa's grandfather was a brother of Sunjata, the first mansa of Mali."
+        },
+        {
+          "s": "B",
+          "t": "Where did the wealth come from?"
+        },
+        {
+          "s": "A",
+          "t": "Mostly from controlling and taxing trade, especially in salt from the north and gold. It's estimated that two thirds of the gold circulating in the medieval Mediterranean came from West Africa."
+        }
+      ]
+    },
+    {
+      "heading": "The Road to Mecca",
+      "country": "Egypt",
+      "city": "Cairo",
+      "image_queries": [
+        "Cairo Mamluk mosque",
+        "Sahara caravan camels",
+        "Qarafa Cairo"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In 1324, Musa set out on the hajj, the pilgrimage to Mecca. He travelled with an enormous entourage and a vast supply of gold."
+        },
+        {
+          "s": "B",
+          "t": "And he stopped in Cairo."
+        },
+        {
+          "s": "A",
+          "t": "Yes. Egypt was ruled at the time by the Mamluk sultan al-Nasir Muhammad. And their first meeting was a little awkward."
+        },
+        {
+          "s": "B",
+          "t": "Why?"
+        },
+        {
+          "s": "A",
+          "t": "Al-Nasir expected Musa to prostrate himself before him. Musa initially refused. When he finally bowed, he said he was doing it for God alone."
+        },
+        {
+          "s": "A",
+          "t": "Despite that, the two rulers got along well and exchanged gifts. Musa stayed in the Qarafa district of Cairo for about three months, and left with the official caravan to Mecca on the eighteenth of October."
+        },
+        {
+          "s": "B",
+          "t": "And the gold?"
+        },
+        {
+          "s": "A",
+          "t": "Musa and his entourage gave and spent freely. According to Arabic writers, his generosity was so great that it noticeably lowered the value of gold in Egypt."
+        }
+      ]
+    },
+    {
+      "heading": "Out of Money",
+      "country": "Egypt",
+      "city": "Cairo",
+      "image_queries": [
+        "medieval gold dinar",
+        "Cairo medieval",
+        "Mamluk Cairo"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So he simply had unlimited gold?"
+        },
+        {
+          "s": "A",
+          "t": "Here is the twist. According to the historians Ibn Khaldun and al-Umari, Musa ran out of money on the journey."
+        },
+        {
+          "s": "A",
+          "t": "On his way back, he had to sell property and borrow from Egyptian merchants at high interest."
+        },
+        {
+          "s": "B",
+          "t": "The richest man in history, borrowing money?"
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Al-Umari and Ibn Khaldun say the lenders were never repaid, or only partly. Other sources disagree about whether they were eventually compensated in full."
+        },
+        {
+          "s": "A",
+          "t": "And Musa may have encouraged the image of endless wealth himself. He spread the story that in his kingdom, gold grew like a plant."
+        }
+      ]
+    },
+    {
+      "heading": "Timbuktu",
+      "city": "Timbuktu",
+      "image_queries": [
+        "Djinguereber Mosque",
+        "Timbuktu",
+        "Sankore Mosque"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did the hajj change anything back home?"
+        },
+        {
+          "s": "A",
+          "t": "It brought Mali to the attention of the wider Muslim world. Musa sought closer ties with the Mamluk Sultanate in Egypt and the Marinid Sultanate in Morocco."
+        },
+        {
+          "s": "A",
+          "t": "He brought scholars from across the Muslim world to Mali, including the Andalusian poet Abu Ishaq al-Sahili."
+        },
+        {
+          "s": "A",
+          "t": "He expanded the empire, bringing the cities of Gao and Timbuktu under its control, and helped establish Timbuktu as a centre of Islamic learning."
+        },
+        {
+          "s": "B",
+          "t": "And the famous mosque?"
+        },
+        {
+          "s": "A",
+          "t": "His reign is associated with many construction projects, including part of the Djinguereber Mosque in Timbuktu."
+        }
+      ]
+    },
+    {
+      "heading": "How Do We Know?",
+      "country": "",
+      "image_queries": [
+        "Arabic manuscript medieval",
+        "Timbuktu manuscripts",
+        "Ibn Battuta"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How do we know all of this? Did Mali keep written records?"
+        },
+        {
+          "s": "A",
+          "t": "Most of what we know comes from Arabic sources written after his hajj, especially the historians al-Umari and Ibn Khaldun."
+        },
+        {
+          "s": "A",
+          "t": "In Cairo, Musa befriended the governor of the district where he stayed, Ibn Amir Hajib. He learned a great deal about Mali from Musa and later passed that knowledge on to historians like al-Umari."
+        },
+        {
+          "s": "A",
+          "t": "More details come from two seventeenth-century manuscripts written in Timbuktu, and from the traveller Ibn Battuta, who visited Mali during the reign of Musa's brother Sulayman."
+        },
+        {
+          "s": "B",
+          "t": "So outsiders wrote most of his story."
+        },
+        {
+          "s": "A",
+          "t": "Largely, yes. And interestingly, in the oral traditions of the Mandé people, performed by griots, Musa is less celebrated than some of his predecessors."
+        },
+        {
+          "s": "B",
+          "t": "Do we at least know when he died?"
+        },
+        {
+          "s": "A",
+          "t": "Not exactly. Some sources suggest 1337. Al-Umari, writing about twelve years after the hajj, says Musa returned intending to abdicate and live in Mecca, but died before he could. That would place his death even earlier."
+        }
+      ]
+    },
+    {
+      "heading": "A King on a European Map",
+      "country": "",
+      "image_queries": [
+        "Catalan Atlas",
+        "Catalan Atlas Mansa Musa",
+        "Angelino Dulcert map"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How did Europeans hear about him?"
+        },
+        {
+          "s": "A",
+          "t": "His hajj made him famous far beyond Africa. Mapmakers began to show a wealthy West African king on their maps."
+        },
+        {
+          "s": "A",
+          "t": "This tradition goes back to Angelino Dulcert's map of 1339 and, most famously, to the Catalan Atlas of 1375."
+        },
+        {
+          "s": "A",
+          "t": "On the Catalan Atlas, Musa is shown seated on a throne, wearing a crown and holding a large gold nugget."
+        },
+        {
+          "s": "B",
+          "t": "So a single journey turned him into a symbol."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. He became, in the words of one description, a symbol of fabulous wealth."
+        }
+      ]
+    },
+    {
+      "heading": "The 400 Billion Dollar Myth",
+      "country": "",
+      "image_queries": [
+        "gold nugget",
+        "Catalan Atlas Mansa Musa",
+        "medieval gold coin"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So, was he the richest person who ever lived?"
+        },
+        {
+          "s": "A",
+          "t": "Many online articles in the twenty-first century say so. The four hundred billion dollar figure became popular after a celebrity wealth website estimated it in 2012."
+        },
+        {
+          "s": "A",
+          "t": "But historians such as Hadrien Collet argue that Musa's wealth is impossible to calculate accurately. Economic historians agree that it can't be pinned down to a number."
+        },
+        {
+          "s": "B",
+          "t": "Then why did medieval writers describe him as so rich?"
+        },
+        {
+          "s": "A",
+          "t": "Contemporary Arabic writers may have been trying to say that Musa had more gold than they thought possible, not giving an exact figure."
+        },
+        {
+          "s": "A",
+          "t": "As one historian put it in a Time magazine interview, there is really no way to put an accurate number on his wealth."
+        },
+        {
+          "s": "A",
+          "t": "And there's another subtlety. Musa's reign may look like Mali's golden age partly because it is the best recorded in Arabic sources, not necessarily because he was the richest or most powerful mansa."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "Djinguereber Mosque",
+        "Catalan Atlas"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So: a real empire built on gold and salt, a pilgrimage that shook Cairo's gold market, and a king who still had to borrow money on the way home."
+        },
+        {
+          "s": "A",
+          "t": "And a modern internet number that historians say no one can actually prove."
+        },
+        {
+          "s": "B",
+          "t": "Do you think anyone can be called the richest person ever, when wealth meant such different things in different times?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

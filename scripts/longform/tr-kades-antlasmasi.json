@@ -7,132 +7,419 @@
   "mood": "notr",
   "title": "Dünyanın Bilinen En Eski Barış Antlaşması İstanbul'da: Kadeş'in Hikâyesi",
   "description": "Hititler ile Mısırlılar yıllarca savaştı, sonra bugün bilinen en eski barış antlaşmasını imzaladı. Antlaşmanın Hitit kopyası 1906'da Boğazköy'de bulundu ve bugün İstanbul Arkeoloji Müzeleri'nde. Bir kopyası da Birleşmiş Milletler'de asılı. Kadeş Savaşı'ndan barışa uzanan hikâyeyi anlatıyoruz.",
-  "hashtags": ["kadeşantlaşması", "hititler", "tarih", "arkeoloji"],
-  "tags": ["kadeş antlaşması", "hititler", "hattuşa", "boğazköy", "ii. ramses", "iii. hattuşili", "barış antlaşması", "tarih"],
+  "hashtags": [
+    "kadeşantlaşması",
+    "hititler",
+    "tarih",
+    "arkeoloji"
+  ],
+  "tags": [
+    "kadeş antlaşması",
+    "hititler",
+    "hattuşa",
+    "boğazköy",
+    "ii. ramses",
+    "iii. hattuşili",
+    "barış antlaşması",
+    "tarih"
+  ],
   "speakers": {
-    "A": {"name": "Elif", "voice": "female"},
-    "B": {"name": "Kerem", "voice": "male"}
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
   },
   "sources": [
-    {"title": "Kadeş Antlaşması, Vikipedi (Türkçe)", "url": "https://tr.wikipedia.org/wiki/Kade%C5%9F_Antla%C5%9Fmas%C4%B1"},
-    {"title": "Egyptian–Hittite peace treaty, Wikipedia (İngilizce)", "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"},
-    {"title": "Replica of Peace Treaty between Hattusilis and Ramses II, Birleşmiş Milletler hediye kaydı", "url": "https://www.un.org/ungifts/node/615"},
-    {"title": "3,300-year-old fragment of world's oldest surviving peace treaty identified in Turkey, Ynetnews", "url": "https://www.ynetnews.com/environment/article/skpvmh85gg"}
+    {
+      "title": "Kadeş Antlaşması, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Kade%C5%9F_Antla%C5%9Fmas%C4%B1"
+    },
+    {
+      "title": "Egyptian–Hittite peace treaty, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+    },
+    {
+      "title": "Replica of Peace Treaty between Hattusilis and Ramses II, Birleşmiş Milletler hediye kaydı",
+      "url": "https://www.un.org/ungifts/node/615"
+    },
+    {
+      "title": "3,300-year-old fragment of world's oldest surviving peace treaty identified in Turkey, Ynetnews",
+      "url": "https://www.ynetnews.com/environment/article/skpvmh85gg"
+    }
   ],
   "chapters": [
     {
       "heading": "Giriş",
       "city": "Istanbul",
-      "image_queries": ["Treaty of Kadesh tablet", "Istanbul Archaeology Museums", "Hattusa"],
+      "image_queries": [
+        "Treaty of Kadesh tablet",
+        "Istanbul Archaeology Museums",
+        "Hattusa"
+      ],
       "lines": [
-        {"s": "A", "t": "Kerem, sence dünyanın bilinen en eski barış antlaşması nerede duruyor?"},
-        {"s": "B", "t": "Mısır'da bir müzede olabilir. Ya da Londra'da, British Museum'da."},
-        {"s": "A", "t": "İstanbul'da. Arkeoloji Müzeleri'nde, kil bir tablet üzerinde."},
-        {"s": "B", "t": "Gerçekten mi? Peki kim kiminle barış yapmış?"},
-        {"s": "A", "t": "Anadolu'nun Hititleri ile Mısır firavunları. Yaklaşık üç bin iki yüz yetmiş yıl önce, iki süper gücün yıllarca süren savaşının sonunda."},
-        {"s": "B", "t": "Ve bu antlaşmanın bir kopyası bugün Birleşmiş Milletler binasında asılı, değil mi?"},
-        {"s": "A", "t": "Evet. Ama önce, bu barışa giden yolun ne kadar kanlı olduğunu anlatmamız gerekiyor."}
+        {
+          "s": "A",
+          "t": "Kerem, sence dünyanın bilinen en eski barış antlaşması nerede duruyor?"
+        },
+        {
+          "s": "B",
+          "t": "Mısır'da bir müzede olabilir. Ya da Londra'da, British Museum'da."
+        },
+        {
+          "s": "A",
+          "t": "İstanbul'da. Arkeoloji Müzeleri'nde, kil bir tablet üzerinde."
+        },
+        {
+          "s": "B",
+          "t": "Gerçekten mi? Peki kim kiminle barış yapmış?"
+        },
+        {
+          "s": "A",
+          "t": "Anadolu'nun Hititleri ile Mısır firavunları. Yaklaşık üç bin iki yüz yetmiş yıl önce, iki süper gücün yıllarca süren savaşının sonunda."
+        },
+        {
+          "s": "B",
+          "t": "Ve bu antlaşmanın bir kopyası bugün Birleşmiş Milletler binasında asılı, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ama önce, bu barışa giden yolun ne kadar kanlı olduğunu anlatmamız gerekiyor."
+        }
       ]
     },
     {
       "heading": "İki İmparatorluk",
-      "image_queries": ["Hattusa Lion Gate", "Hittite relief", "Ramesses II statue"],
+      "image_queries": [
+        "Hattusa Lion Gate",
+        "Hittite relief",
+        "Ramesses II statue"
+      ],
       "lines": [
-        {"s": "B", "t": "Hititler ve Mısırlılar neden savaşıyordu?"},
-        {"s": "A", "t": "İki imparatorluk, doğu Akdeniz kıyısındaki toprakların hâkimiyeti için iki yüzyıldan fazla mücadele etmişti. Bugünkü Suriye ve Lübnan'ın bulunduğu bölge aralarındaki ana savaş alanıydı."},
-        {"s": "A", "t": "Hititlerin başkenti Hattuşa, bugün Çorum'daki Boğazköy'dü. Mısır'ın başında ise tarihin en ünlü firavunlarından biri vardı: II. Ramses."},
-        {"s": "B", "t": "Ve bu iki güç sonunda karşı karşıya geldi."},
-        {"s": "A", "t": "Evet. Hitit tarafında kral II. Muvatalli vardı. Mısır'ın bölgedeki eski üstünlüğünü yeniden kurmak isteyen Ramses kuzeye doğru büyük bir sefere çıktı."}
+        {
+          "s": "B",
+          "t": "Hititler ve Mısırlılar neden savaşıyordu?"
+        },
+        {
+          "s": "A",
+          "t": "İki imparatorluk, doğu Akdeniz kıyısındaki toprakların hâkimiyeti için iki yüzyıldan fazla mücadele etmişti. Bugünkü Suriye ve Lübnan'ın bulunduğu bölge aralarındaki ana savaş alanıydı."
+        },
+        {
+          "s": "A",
+          "t": "Hititlerin başkenti Hattuşa, bugün Çorum'daki Boğazköy'dü. Mısır'ın başında ise tarihin en ünlü firavunlarından biri vardı: II. Ramses."
+        },
+        {
+          "s": "B",
+          "t": "Ve bu iki güç sonunda karşı karşıya geldi."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Hitit tarafında kral II. Muvatalli vardı. Mısır'ın bölgedeki eski üstünlüğünü yeniden kurmak isteyen Ramses kuzeye doğru büyük bir sefere çıktı."
+        },
+        {
+          "s": "B",
+          "t": "Hititler o dönemde ne kadar güçlüydü?"
+        },
+        {
+          "s": "A",
+          "t": "Anadolu'nun büyük bölümünü yöneten, Suriye'deki şehir devletlerini de etkisi altına alan bir imparatorluktu. Mısır'la eşit bir güç olarak görülüyordu."
+        },
+        {
+          "s": "A",
+          "t": "İlginç olan şu: Hititler uzun süre unutulmuştu. Mısır tapınaklarındaki Kadeş yazıtlarını ilk olarak Fransız dilbilimci Champollion çevirdi. Ama bu metinlerdeki halkın İncil'de adı geçen Hititler olduğu ancak 1858'de anlaşılabildi."
+        }
       ]
     },
     {
       "heading": "Kadeş Savaşı",
       "country": "",
-      "image_queries": ["Battle of Kadesh relief", "Abu Simbel Kadesh relief", "Hittite chariot"],
+      "image_queries": [
+        "Battle of Kadesh relief",
+        "Abu Simbel Kadesh relief",
+        "Hittite chariot"
+      ],
       "lines": [
-        {"s": "A", "t": "MÖ 1274'te Mısır ordusu, bugün Suriye'de bulunan, Asi Nehri kıyısındaki Kadeş şehrine yöneldi."},
-        {"s": "A", "t": "Kaynaklara göre Ramses ordusunun geri kalanından fazla uzaklaştı. Esir alınan iki kişiden gelen yanlış bilgilere güvenerek kamp kurdu."},
-        {"s": "B", "t": "Yani bir tuzağa yürüdü."},
-        {"s": "A", "t": "Öyle görünüyor. Hitit ordusu saldırdı ve savaş iki taraf için de ağır kayıplarla sonuçlandı. Ne savaşta ne de savaşın genelinde kesin bir galip çıktı."},
-        {"s": "B", "t": "Ama Mısır tapınaklarında bu savaş büyük bir zafer gibi anlatılıyor."},
-        {"s": "A", "t": "Doğru. Ramses, Kadeş'i tapınak duvarlarına kabartmalar ve uzun metinlerle işletti. Tarihçiler bu anlatımların propaganda yönünü de dikkate alıyor."},
-        {"s": "A", "t": "Savaştan sonra da çatışmalar yıllarca sürdü. Ramses, hükümdarlığının sekizinci yılında başka bir sefer düzenledi ve Dapur şehrini aldı."}
+        {
+          "s": "B",
+          "t": "Bu savaşı nereden biliyoruz?"
+        },
+        {
+          "s": "A",
+          "t": "Esas olarak Mısır kaynaklarından. Bülten adı verilen resmî bir kayıt, Şiir denen uzun bir anlatı ve tapınak duvarlarındaki resimli kabartmalar."
+        },
+        {
+          "s": "A",
+          "t": "Yani elimizdeki anlatının büyük kısmı tek bir tarafın, Mısır'ın gözünden yazılmış. Bunu akılda tutmak gerekiyor."
+        },
+        {
+          "s": "A",
+          "t": "MÖ 1274'te Mısır ordusu, bugün Suriye'de bulunan, Asi Nehri kıyısındaki Kadeş şehrine yöneldi."
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklara göre Ramses ordusunun geri kalanından fazla uzaklaştı. Esir alınan iki kişiden gelen yanlış bilgilere güvenerek kamp kurdu."
+        },
+        {
+          "s": "B",
+          "t": "Yani bir tuzağa yürüdü."
+        },
+        {
+          "s": "A",
+          "t": "Öyle görünüyor. Hitit ordusu saldırdı ve savaş iki taraf için de ağır kayıplarla sonuçlandı. Ne savaşta ne de savaşın genelinde kesin bir galip çıktı."
+        },
+        {
+          "s": "B",
+          "t": "Ama Mısır tapınaklarında bu savaş büyük bir zafer gibi anlatılıyor."
+        },
+        {
+          "s": "A",
+          "t": "Doğru. Ramses, Kadeş'i tapınak duvarlarına kabartmalar ve uzun metinlerle işletti. Tarihçiler bu anlatımların propaganda yönünü de dikkate alıyor."
+        },
+        {
+          "s": "A",
+          "t": "Savaştan sonra da çatışmalar yıllarca sürdü. Ramses, hükümdarlığının sekizinci yılında başka bir sefer düzenledi ve Dapur şehrini aldı."
+        }
       ]
     },
     {
       "heading": "Taht Kavgası ve Barış",
-      "image_queries": ["Hattusa", "Hittite king relief", "Hattusa ruins"],
+      "image_queries": [
+        "Hattusa",
+        "Hittite king relief",
+        "Hattusa ruins"
+      ],
       "lines": [
-        {"s": "B", "t": "Peki savaşan iki taraf nasıl oldu da barış masasına oturdu?"},
-        {"s": "A", "t": "Hitit tarafında işler karışıktı. III. Hattuşili, tahtı yeğeni Urhi-Teşup'tan almıştı ama birçok kişi onu gaspçı olarak görüyordu."},
-        {"s": "A", "t": "Urhi-Teşup tahtı geri almaya kararlıydı ve bu durum Hitit İmparatorluğu'nu hem içeride hem dışarıda istikrarsız hale getirdi."},
-        {"s": "B", "t": "Yani Hattuşili'nin meşruiyete ihtiyacı vardı."},
-        {"s": "A", "t": "Kesinlikle. Mısır'la yapılacak bir antlaşma hem dış tehdidi azaltacak hem de onun krallığını uluslararası alanda tanınır kılacaktı."},
-        {"s": "A", "t": "Sonunda II. Ramses ile III. Hattuşili antlaşmayı imzaladı. En çok kabul gören tarih MÖ 1259 civarı. Bazı kaynaklar ise MÖ 1269'u veriyor."}
+        {
+          "s": "B",
+          "t": "Peki savaşan iki taraf nasıl oldu da barış masasına oturdu?"
+        },
+        {
+          "s": "A",
+          "t": "Hitit tarafında işler karışıktı. III. Hattuşili, tahtı yeğeni Urhi-Teşup'tan almıştı ama birçok kişi onu gaspçı olarak görüyordu."
+        },
+        {
+          "s": "A",
+          "t": "Urhi-Teşup tahtı geri almaya kararlıydı ve bu durum Hitit İmparatorluğu'nu hem içeride hem dışarıda istikrarsız hale getirdi."
+        },
+        {
+          "s": "B",
+          "t": "Yani Hattuşili'nin meşruiyete ihtiyacı vardı."
+        },
+        {
+          "s": "A",
+          "t": "Kesinlikle. Mısır'la yapılacak bir antlaşma hem dış tehdidi azaltacak hem de onun krallığını uluslararası alanda tanınır kılacaktı."
+        },
+        {
+          "s": "A",
+          "t": "Sonunda II. Ramses ile III. Hattuşili antlaşmayı imzaladı. En çok kabul gören tarih MÖ 1259 civarı. Bazı kaynaklar ise MÖ 1269'u veriyor."
+        },
+        {
+          "s": "B",
+          "t": "Ramses için antlaşmanın anlamı neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Yıllar süren seferler kesin bir sonuç vermemişti. Barış, Mısır'ın kuzey sınırını güvenceye alıyor ve büyük inşaat projelerine kaynak ayırmasına imkân tanıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yani iki taraf da kazançlı çıkıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Tam olarak öyle. Bu yüzden antlaşma, gücün değil dengenin belgesi olarak görülüyor."
+        }
       ]
     },
     {
       "heading": "Antlaşmada Neler Yazıyor?",
-      "image_queries": ["Treaty of Kadesh tablet", "Hittite cuneiform tablet", "Karnak temple wall inscription"],
+      "image_queries": [
+        "Treaty of Kadesh tablet",
+        "Hittite cuneiform tablet",
+        "Karnak temple wall inscription"
+      ],
       "lines": [
-        {"s": "B", "t": "Antlaşmanın maddeleri neler?"},
-        {"s": "A", "t": "İki taraf birbirine saldırmamayı ve dostluğu sürdürmeyi taahhüt ediyor. Birine dışarıdan saldırılırsa diğeri yardım edecek."},
-        {"s": "A", "t": "Çok modern bir madde de var: siyasi mültecilerin ülkelerine iade edilmesi. İki kral, birbirinin topraklarına kaçanları geri göndermeyi kabul ediyor."},
-        {"s": "B", "t": "Ve Hattuşili'nin taht sorunu da işin içinde, değil mi?"},
-        {"s": "A", "t": "Evet. Hitit versiyonunda Ramses, Hattuşili'nin haleflerinin tahtını rakiplere karşı destekleyeceğini kabul ediyor."},
-        {"s": "A", "t": "En sonda iki ülkenin tanrıları antlaşmaya tanık olarak çağrılıyor. Antlaşmaya uymayanlara lanetler, uyanlara ise kutsamalar diliyorlar."},
-        {"s": "B", "t": "Birleşmiş Milletler de bu maddeleri modern ilkelere benzetiyor."},
-        {"s": "A", "t": "Evet. BM'nin kaydına göre antlaşmada kalıcı dostluk, toprak bütünlüğü, saldırmazlık, iade ve karşılıklı yardım ilkeleri var."}
+        {
+          "s": "B",
+          "t": "Antlaşmanın maddeleri neler?"
+        },
+        {
+          "s": "A",
+          "t": "İki taraf birbirine saldırmamayı ve dostluğu sürdürmeyi taahhüt ediyor. Birine dışarıdan saldırılırsa diğeri yardım edecek."
+        },
+        {
+          "s": "A",
+          "t": "Çok modern bir madde de var: siyasi mültecilerin ülkelerine iade edilmesi. İki kral, birbirinin topraklarına kaçanları geri göndermeyi kabul ediyor."
+        },
+        {
+          "s": "B",
+          "t": "Ve Hattuşili'nin taht sorunu da işin içinde, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Hitit versiyonunda Ramses, Hattuşili'nin haleflerinin tahtını rakiplere karşı destekleyeceğini kabul ediyor."
+        },
+        {
+          "s": "A",
+          "t": "En sonda iki ülkenin tanrıları antlaşmaya tanık olarak çağrılıyor. Antlaşmaya uymayanlara lanetler, uyanlara ise kutsamalar diliyorlar."
+        },
+        {
+          "s": "B",
+          "t": "Birleşmiş Milletler de bu maddeleri modern ilkelere benzetiyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. BM'nin kaydına göre antlaşmada kalıcı dostluk, toprak bütünlüğü, saldırmazlık, iade ve karşılıklı yardım ilkeleri var."
+        }
       ]
     },
     {
       "heading": "İki Dil, İki Kopya",
       "city": "Istanbul",
-      "image_queries": ["Treaty of Kadesh tablet Istanbul", "Ramesseum", "Karnak temple"],
+      "image_queries": [
+        "Treaty of Kadesh tablet Istanbul",
+        "Ramesseum",
+        "Karnak temple"
+      ],
       "lines": [
-        {"s": "B", "t": "Antlaşmayı özel yapan şey ne?"},
-        {"s": "A", "t": "Antik Yakın Doğu'da her iki tarafın versiyonunun da günümüze ulaştığı tek antlaşma bu. Aynı zamanda bilinen en eski barış antlaşması."},
-        {"s": "A", "t": "Asıl antlaşma gümüş tabletlere yazılmış ve iki tarafa verilmişti. Bu yüzden Gümüş Antlaşma olarak da biliniyor. Ama o gümüş tabletler kayıp."},
-        {"s": "B", "t": "O zaman bugün elimizdeki ne?"},
-        {"s": "A", "t": "Mısır versiyonu, Ramses'in Teb'deki iki tapınağının, Ramesseum'un ve Karnak'taki Amon-Ra tapınağının duvarlarına hiyerogliflerle kazınmış."},
-        {"s": "A", "t": "Hitit versiyonu ise Hattuşa'daki saray arşivlerinde, pişmiş kil tabletler üzerinde bulundu. Dönemin diplomasi dili olan Akadca ile çivi yazısıyla yazılmış."},
-        {"s": "B", "t": "Bu tabletler nasıl bulundu?"},
-        {"s": "A", "t": "1906'da Alman araştırmacı Hugo Winckler'in Boğazköy'deki kazılarında. Winckler, Mısır metniyle örtüşen tabletleri görünce hayatının bütün başarılarının bu bulgunun yanında önemsizleştiğini yazmıştı."}
+        {
+          "s": "B",
+          "t": "Antlaşmayı özel yapan şey ne?"
+        },
+        {
+          "s": "A",
+          "t": "Antik Yakın Doğu'da her iki tarafın versiyonunun da günümüze ulaştığı tek antlaşma bu. Aynı zamanda bilinen en eski barış antlaşması."
+        },
+        {
+          "s": "A",
+          "t": "Asıl antlaşma gümüş tabletlere yazılmış ve iki tarafa verilmişti. Bu yüzden Gümüş Antlaşma olarak da biliniyor. Ama o gümüş tabletler kayıp."
+        },
+        {
+          "s": "B",
+          "t": "O zaman bugün elimizdeki ne?"
+        },
+        {
+          "s": "A",
+          "t": "Mısır versiyonu, Ramses'in Teb'deki iki tapınağının, Ramesseum'un ve Karnak'taki Amon-Ra tapınağının duvarlarına hiyerogliflerle kazınmış."
+        },
+        {
+          "s": "A",
+          "t": "Metni duvara kazıyan Mısırlı yazıcılar, Hititlerin teslim ettiği tabletin üzerindeki figürleri ve mühürleri de tarif etmişler. Yani gümüş tableti görmüş birinin gözünden bir açıklama da var."
+        },
+        {
+          "s": "A",
+          "t": "Hitit versiyonu ise Hattuşa'daki saray arşivlerinde, pişmiş kil tabletler üzerinde bulundu. Dönemin diplomasi dili olan Akadca ile çivi yazısıyla yazılmış."
+        },
+        {
+          "s": "B",
+          "t": "Bu tabletler nasıl bulundu?"
+        },
+        {
+          "s": "A",
+          "t": "1906'da Alman araştırmacı Hugo Winckler'in Boğazköy'deki kazılarında. Winckler, Mısır metniyle örtüşen tabletleri görünce hayatının bütün başarılarının bu bulgunun yanında önemsizleştiğini yazmıştı."
+        }
       ]
     },
     {
       "heading": "İstanbul'dan New York'a",
-      "image_queries": ["Istanbul Archaeology Museums", "Museum of the Ancient Orient Istanbul", "United Nations Headquarters"],
+      "image_queries": [
+        "Istanbul Archaeology Museums",
+        "Museum of the Ancient Orient Istanbul",
+        "United Nations Headquarters"
+      ],
       "country": "",
       "lines": [
-        {"s": "B", "t": "Peki tabletler bugün nerede?"},
-        {"s": "A", "t": "Hitit tabletlerinden ikisi İstanbul Arkeoloji Müzeleri'ne bağlı Eski Şark Eserleri Müzesi'nde. Üçüncüsü Berlin Devlet Müzeleri'nde."},
-        {"s": "A", "t": "Türkiye 1970'te Birleşmiş Milletler'e antlaşmanın bakırdan bir kopyasını hediye etti. Kopyayı heykeltıraş Sadi Çalık hazırladı."},
-        {"s": "B", "t": "Ve bu kopya hâlâ orada."},
-        {"s": "A", "t": "Evet, New York'taki BM Genel Merkezi'nde. Üç bin yıllık bir barış metni, bugünün diplomatlarının önünde duruyor."},
-        {"s": "A", "t": "Hikâye de bitmiş değil. Kısa süre önce Hattuşa'daki Büyükkale kazılarında antlaşmanın kopyalarından birine ait yeni bir parçanın tespit edildiği açıklandı. Araştırmalar sürüyor."}
+        {
+          "s": "B",
+          "t": "Peki tabletler bugün nerede?"
+        },
+        {
+          "s": "A",
+          "t": "Hitit tabletlerinden ikisi İstanbul Arkeoloji Müzeleri'ne bağlı Eski Şark Eserleri Müzesi'nde. Üçüncüsü Berlin Devlet Müzeleri'nde."
+        },
+        {
+          "s": "A",
+          "t": "Türkiye 1970'te Birleşmiş Milletler'e antlaşmanın bakırdan bir kopyasını hediye etti. Kopyayı heykeltıraş Sadi Çalık hazırladı."
+        },
+        {
+          "s": "B",
+          "t": "Ve bu kopya hâlâ orada."
+        },
+        {
+          "s": "A",
+          "t": "Evet, New York'taki BM Genel Merkezi'nde. Üç bin yıllık bir barış metni, bugünün diplomatlarının önünde duruyor."
+        },
+        {
+          "s": "A",
+          "t": "Hikâye de bitmiş değil. Kısa süre önce Hattuşa'daki Büyükkale kazılarında antlaşmanın kopyalarından birine ait yeni bir parçanın tespit edildiği açıklandı. Araştırmalar sürüyor."
+        }
       ]
     },
     {
       "heading": "Barış Kalıcı Oldu mu?",
-      "image_queries": ["Hattusa", "Abu Simbel", "Hittite relief"],
+      "image_queries": [
+        "Hattusa",
+        "Abu Simbel",
+        "Hittite relief"
+      ],
       "lines": [
-        {"s": "B", "t": "Antlaşmadan sonra gerçekten barış geldi mi?"},
-        {"s": "A", "t": "Kaynaklar antlaşmanın tek başına barışı getirmediğini, bir süre daha düşmanlık havasının sürdüğünü söylüyor. Ama zamanla ilişkiler gerçekten düzeldi."},
-        {"s": "A", "t": "Ramses'in hükümdarlığının otuz dördüncü yılında bir Hitit prensesiyle evlendiğine dair kanıtlar var. Bu evlilik, iki aile arasındaki bağları güçlendirdi."},
-        {"s": "B", "t": "Ve sonrasında?"},
-        {"s": "A", "t": "İlişkilerin bozulduğuna dair bir metin yok. Hatti ile Mısır arasındaki barışçıl ilişkiler, Ramses'in hükümdarlığının sonuna kadar sürdü."}
+        {
+          "s": "B",
+          "t": "Antlaşmadan sonra gerçekten barış geldi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklar antlaşmanın tek başına barışı getirmediğini, bir süre daha düşmanlık havasının sürdüğünü söylüyor. Ama zamanla ilişkiler gerçekten düzeldi."
+        },
+        {
+          "s": "A",
+          "t": "Ramses'in hükümdarlığının otuz dördüncü yılında bir Hitit prensesiyle evlendiğine dair kanıtlar var. Bu evlilik, iki aile arasındaki bağları güçlendirdi."
+        },
+        {
+          "s": "B",
+          "t": "Ve sonrasında?"
+        },
+        {
+          "s": "A",
+          "t": "İlişkilerin bozulduğuna dair bir metin yok. Hatti ile Mısır arasındaki barışçıl ilişkiler, Ramses'in hükümdarlığının sonuna kadar sürdü."
+        }
       ]
     },
     {
       "heading": "Kapanış",
       "city": "Istanbul",
-      "image_queries": ["Treaty of Kadesh tablet", "Istanbul Archaeology Museums"],
+      "image_queries": [
+        "Treaty of Kadesh tablet",
+        "Istanbul Archaeology Museums"
+      ],
       "lines": [
-        {"s": "B", "t": "Toparlarsak: kanlı bir savaş, taht kavgası, iki dilde yazılmış bir antlaşma ve sonunda bir kraliyet düğünü."},
-        {"s": "A", "t": "Ve bu hikâyenin en önemli belgesi, İstanbul'da bir müze vitrininde duruyor."},
-        {"s": "B", "t": "Sence bu antlaşmayı mümkün kılan neydi? Savaş yorgunluğu mu, yoksa Hattuşili'nin taht sorunu mu?"},
-        {"s": "A", "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."}
+        {
+          "s": "B",
+          "t": "Toparlarsak: kanlı bir savaş, taht kavgası, iki dilde yazılmış bir antlaşma ve sonunda bir kraliyet düğünü."
+        },
+        {
+          "s": "B",
+          "t": "Bence en şaşırtıcı yanı, metnin bugün bile anlaşılır olması. Saldırmazlık, yardımlaşma, iade."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Üç bin yıl önce yazılmış bir metin, bugünün uluslararası ilişkilerinde hâlâ karşılığı olan ilkeler içeriyor."
+        },
+        {
+          "s": "A",
+          "t": "Ve bu hikâyenin en önemli belgesi, İstanbul'da bir müze vitrininde duruyor."
+        },
+        {
+          "s": "B",
+          "t": "Sence bu antlaşmayı mümkün kılan neydi? Savaş yorgunluğu mu, yoksa Hattuşili'nin taht sorunu mu?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
       ]
     }
   ]

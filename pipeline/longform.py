@@ -14,10 +14,11 @@ from pathlib import Path
 from . import images, music, render
 from .tts import synthesize
 
-RATE = "+0%"  # uzun anlatımda Shorts temposu yorar
+RATE = "-5%"  # belgesel temposu: Shorts hızı uzun anlatımda yorar
 MUSIC_GAIN_DB = -21  # konuşma uzun; müzik Shorts'takinden daha geride
-CHAPTER_CARD_SECONDS = 2.5
+CHAPTER_CARD_SECONDS = 3.5
 LINES_PER_IMAGE = 2  # görsel her iki konuşmada bir değişir
+PAUSE = 0.45  # konuşmalar arasında nefes payı
 TEXT = {
     "tr": {"intro": "Giriş", "subscribe": "Tarihin az bilinen hikâyelerini kaçırmamak için kanala abone ol.",
            "sources": "Kaynaklar:", "images": "Görseller (Wikimedia Commons):",
@@ -95,13 +96,13 @@ def build(script, out):
                                    "speaker": who["name"], "speaker_index": order.index(line["s"])},
                                   c, card, background, lang=lang)
             parts.append((card, audio, words))
-            clock += render.audio_duration(audio) + 0.25
+            clock += render.audio_duration(audio) + PAUSE
 
     clips = []
     for n, (card, audio, words) in enumerate(parts):
         ass, clip = work / f"p{n}.ass", work / f"p{n}.mp4"
         render.write_ass(words, ass, wide=True)
-        render.render_segment(card, audio, ass, clip, pad=0.25, zoom_out=n % 2 == 1, size=render.WIDE)
+        render.render_segment(card, audio, ass, clip, pad=PAUSE if words else 0, zoom_out=n % 2 == 1, size=render.WIDE)
         clips.append(clip)
     render.concat(clips, work / "voice.mp4")
     music_credit = music.add(work / "voice.mp4", script.get("mood", "notr"), out / "video.mp4", MUSIC_GAIN_DB)

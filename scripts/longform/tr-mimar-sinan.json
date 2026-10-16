@@ -1,0 +1,402 @@
+{
+  "lang": "tr",
+  "topic": "Mimar Sinan",
+  "era": "16. yüzyıl Osmanlı klasik mimarisi",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "umutlu",
+  "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
+  "description": "Kayseri'nin bir köyünde doğan Sinan, devşirme olarak İstanbul'a geldi, yeniçeri oldu, savaşlarda köprüler kurdu. Elli yaşına yaklaşırken mimarbaşı oldu ve kırk dokuz yıl boyunca Süleymaniye'den Selimiye'ye üç yüzü aşkın büyük yapı inşa etti. Çıraklık, kalfalık ve ustalık eserlerini, belgelere dayanarak anlatıyoruz.",
+  "hashtags": [
+    "mimarsinan",
+    "tarih",
+    "osmanlı",
+    "mimari"
+  ],
+  "tags": [
+    "mimar sinan",
+    "selimiye camii",
+    "süleymaniye camii",
+    "şehzade camii",
+    "osmanlı mimarisi",
+    "edirne",
+    "istanbul",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Mimar Sinan, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Mimar_Sinan"
+    },
+    {
+      "title": "Mimar Sinan, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Mimar_Sinan"
+    },
+    {
+      "title": "Süleymaniye Mosque, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/S%C3%BCleymaniye_Mosque"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Edirne",
+      "image_queries": [
+        "Selimiye Mosque",
+        "Süleymaniye Mosque",
+        "Mimar Sinan statue"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, seksenli yaşlarında hayatının eserini yapan bir mimar düşünebiliyor musun?"
+        },
+        {
+          "s": "B",
+          "t": "Seksen yaşında mı? Çoğu insan o yaşta çoktan emekli olmuştur."
+        },
+        {
+          "s": "A",
+          "t": "Mimar Sinan, Edirne'deki Selimiye Camii'ni seksenli yaşlarında tamamladı ve ona ustalık eserim dedi."
+        },
+        {
+          "s": "B",
+          "t": "Ustalık eseri? Peki çıraklık ve kalfalık eserleri hangileri?"
+        },
+        {
+          "s": "A",
+          "t": "İşte bu videonun konusu. Bir köyden devşirme olarak gelen, yeniçeri olarak savaşlara katılan ve sonunda üç yüzü aşkın büyük yapıya imza atan bir adamın hikâyesi."
+        },
+        {
+          "s": "B",
+          "t": "Başlayalım. Sinan kimdi?"
+        }
+      ]
+    },
+    {
+      "heading": "Ağırnas'tan İstanbul'a",
+      "city": "Kayseri",
+      "image_queries": [
+        "Ağırnas",
+        "Kayseri",
+        "Janissary miniature"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Sinan, 1488 ile 1490 arasında, Kayseri'nin Ağırnas köyünde, Hristiyan bir ailede doğdu. Babası bir taş ustasıydı. Ailesinin kökeni konusunda tarihçiler arasında farklı görüşler var."
+        },
+        {
+          "s": "A",
+          "t": "1511'de Yavuz Sultan Selim döneminde devşirme olarak İstanbul'a getirildi ve Yeniçeri Ocağı'na alındı."
+        },
+        {
+          "s": "B",
+          "t": "Mimarlıkla nasıl tanıştı?"
+        },
+        {
+          "s": "A",
+          "t": "Teknik eğitim aldı ve askerî mühendis oldu. Kendi anlattığına göre gençliğinde padişah hizmetinde Arap ve Acem diyarlarını gezdi, her saray kubbesinden ve her harabeden bir şeyler öğrendi."
+        },
+        {
+          "s": "B",
+          "t": "Yani mimarlığı savaş yollarında öğrendi."
+        },
+        {
+          "s": "A",
+          "t": "Bir bakıma evet. 1514'te Çaldıran, 1517'de Ridaniye savaşlarına katıldı. Kanuni döneminde Belgrad ve Rodos seferlerinde, Mohaç Muharebesi'nde görev aldı."
+        },
+        {
+          "s": "A",
+          "t": "Bu askerî mühendislik eğitimi, onun mimarlığa kuramdan çok deneyimle, uygulamayla yaklaşmasını sağladı. Tarihçiler bunu Sinan'ın en belirgin özelliklerinden biri olarak görüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Mimarbaşı",
+      "city": "Istanbul",
+      "image_queries": [
+        "Haseki Sultan Complex",
+        "Husrev Pasha Mosque Aleppo",
+        "Çoban Mustafa Pasha Complex Gebze"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Ne zaman mimarbaşı oldu?"
+        },
+        {
+          "s": "A",
+          "t": "1539'da, ellili yaşlarına yaklaşırken. Bu görevi Kanuni Sultan Süleyman, II. Selim ve III. Murad dönemlerinde tam kırk dokuz yıl sürdürdü."
+        },
+        {
+          "s": "A",
+          "t": "Mimarbaşı olmadan önce bile dikkat çeken eserleri vardı: Halep'teki Hüsreviye Külliyesi, Gebze'deki Çoban Mustafa Paşa Külliyesi ve İstanbul'daki Haseki Külliyesi."
+        },
+        {
+          "s": "B",
+          "t": "Haseki Külliyesi, Hürrem Sultan için yapılan değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. İçinde cami, medrese, sıbyan mektebi, imaret, darüşşifa ve çeşme var. Sinan'ın İstanbul'daki ilk eseri olarak biliniyor."
+        },
+        {
+          "s": "A",
+          "t": "Külliye, Osmanlı'da sadece bir yapı değil, bir mahallenin ihtiyaçlarını karşılayan bir yapılar topluluğuydu. Sinan bu topluluğu bir bütün olarak tasarlıyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Çıraklık: Şehzade Camii",
+      "city": "Istanbul",
+      "image_queries": [
+        "Şehzade Mosque",
+        "Şehzade Mosque interior",
+        "Şehzade Mosque dome"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Sinan kendi eserlerini nasıl sınıflandırıyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Ünlü bir benzetmesi var. Üç büyük eserini çıraklık, kalfalık ve ustalık eserleri olarak görüyordu."
+        },
+        {
+          "s": "A",
+          "t": "Çıraklık eseri, İstanbul'daki Şehzade Camii. Ortada büyük bir kubbe ve onu dört yandan destekleyen dört yarım kubbe."
+        },
+        {
+          "s": "B",
+          "t": "Bu düzen neden önemli?"
+        },
+        {
+          "s": "A",
+          "t": "Çünkü Şehzade Camii, sonraki pek çok caminin örnek aldığı bir plan oluşturdu. Merkezî kubbe fikri Sinan'ın mimarlığının temeli oldu."
+        },
+        {
+          "s": "B",
+          "t": "Şehzade Camii kimin için yapıldı?"
+        },
+        {
+          "s": "A",
+          "t": "Adından da anlaşılacağı gibi bir şehzade için; Kanuni'nin genç yaşta ölen oğlu Şehzade Mehmed'in anısına. Sinan'ın mimarbaşı olduktan sonraki ilk büyük işi oldu."
+        }
+      ]
+    },
+    {
+      "heading": "Kalfalık: Süleymaniye",
+      "city": "Istanbul",
+      "image_queries": [
+        "Süleymaniye Mosque",
+        "Süleymaniye Mosque interior",
+        "Süleymaniye complex"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Ve kalfalık eseri Süleymaniye."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Kitabesine göre temeli 1550'de atıldı, 1557'de açıldı; külliyedeki çalışmalar muhtemelen birkaç yıl daha sürdü. İstanbul'un Üçüncü Tepesi'nde, Haliç'e bakan bir noktada yükseliyor."
+        },
+        {
+          "s": "A",
+          "t": "Süleymaniye, Ayasofya'ya tasarımıyla göndermeler yapıyor. Yarım kubbe fikri Ayasofya'dan geliyor; ama Sinan bu fikri kendi yorumuyla geliştirdi."
+        },
+        {
+          "s": "A",
+          "t": "Bir efsaneye göre Ayasofya'yı tamamlayan İmparator Justinianus, Ey Süleyman, seni geçtim, demişti. Kanuni Süleyman'ın camisinin Ayasofya'ya göndermeleri bu yüzden ayrıca anlamlı bulunuyor."
+        },
+        {
+          "s": "B",
+          "t": "Süleymaniye sadece bir cami değil, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Diğer büyük Osmanlı vakıfları gibi bir külliyenin parçası: medreseler, halka yemek veren bir imaret ve bir darüşşifa, yani hastane bunların arasında."
+        },
+        {
+          "s": "A",
+          "t": "Caminin kıble duvarının arkasında Kanuni Sultan Süleyman'ın ve eşi Hürrem Sultan'ın sekizgen türbeleri var."
+        },
+        {
+          "s": "B",
+          "t": "Yapı yüzyıllar boyunca hiç zarar görmedi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Gördü. 1660'taki büyük yangında hasar gördü ve IV. Mehmed döneminde onarıldı. 1766 depreminde kubbenin bir kısmı çöktü. Yani bugün gördüğümüz yapı, defalarca onarılmış bir eser."
+        },
+        {
+          "s": "A",
+          "t": "Son temizlik çalışmaları, Sinan'ın kubbede önce maviyle denemeler yaptığını, sonra kırmızıyı ana renk olarak seçtiğini ortaya çıkardı."
+        },
+        {
+          "s": "A",
+          "t": "Sinan'ın kendisi de bugün Süleymaniye Camii'nin yanında, kendi yaptığı sade bir türbede yatıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Ustalık: Selimiye",
+      "city": "Edirne",
+      "image_queries": [
+        "Selimiye Mosque Edirne",
+        "Selimiye Mosque interior dome",
+        "Selimiye Mosque minarets"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Ve ustalık eseri."
+        },
+        {
+          "s": "A",
+          "t": "Edirne'deki Selimiye Camii, II. Selim için yapıldı ve 1575'te tamamlandı. Türkçe kaynaklara göre Sinan bu eseri seksen altı yaşında yaptı ve ona ustalık eserim dedi."
+        },
+        {
+          "s": "B",
+          "t": "Seksenli yaşlarda böyle bir eser. Gerçekten etkileyici."
+        },
+        {
+          "s": "A",
+          "t": "Selimiye, Osmanlı klasik mimarisinin doruk noktası olarak görülüyor. Sinan'ın çıraklıktan bu yana denediği merkezî kubbe fikri, burada en olgun hâline ulaşıyor."
+        },
+        {
+          "s": "B",
+          "t": "Yani üç eser, aslında aynı fikrin üç aşaması."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bir mimarın kırk yıl boyunca aynı soruya, büyük ve tek bir iç mekânı nasıl örteceğine, verdiği cevapların hikâyesi."
+        }
+      ]
+    },
+    {
+      "heading": "Köprüler, Su Yolları, Ayasofya",
+      "image_queries": [
+        "Mehmed Paša Sokolović Bridge Višegrad",
+        "Büyükçekmece bridge Mimar Sinan",
+        "Kırkçeşme aqueduct Maglova"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "Sinan sadece cami mi yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Medreseler, külliyeler, hamamlar ve köprüler de tasarladı. Büyükçekmece'deki Kanuni Sultan Süleyman Köprüsü ve Bosna'nın Višegrad kentindeki Sokullu Mehmed Paşa Köprüsü bunlardan."
+        },
+        {
+          "s": "A",
+          "t": "Višegrad'daki köprü bugün UNESCO Dünya Mirası Listesi'nde."
+        },
+        {
+          "s": "A",
+          "t": "1560'larda İstanbul için Kırkçeşme su yollarını yaptı. Bu sistem yaklaşık elli beş kilometre uzunluğunda ve otuz beş su kemerini içeriyor. Bazı kemerlerin yüksekliği otuz beş metreye ulaşıyor."
+        },
+        {
+          "s": "B",
+          "t": "Ayasofya'yla da ilgilendiği söylenir."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Mimarbaşı olarak eski yapıları da onardı. En büyük çabasını Ayasofya için harcadı. 1573'te kubbesini onararak çevresine destek duvarları yaptı. Bu duvarlar, yapının bugünlere sağlam ulaşmasına katkıda bulundu."
+        },
+        {
+          "s": "B",
+          "t": "Mimarbaşının başka görevleri de var mıydı?"
+        },
+        {
+          "s": "A",
+          "t": "Vardı. Eski eserlerin ve anıtların yakınına yapılıp görünümlerini bozan yapıların yıkılması da onun sorumluluğundaydı. Kaynaklara göre Zeyrek Camii ve Rumeli Hisarı çevresindeki bazı ev ve dükkânlar bu yüzden kaldırıldı."
+        },
+        {
+          "s": "B",
+          "t": "Yani bugünkü anlamda bir koruma anlayışı."
+        },
+        {
+          "s": "A",
+          "t": "Bir bakıma. Sinan sadece yeni yapılar yapmadı; şehrin dokusunu ve eski anıtları da korumaya çalıştı."
+        }
+      ]
+    },
+    {
+      "heading": "Ardında Bıraktıkları",
+      "city": "Istanbul",
+      "image_queries": [
+        "Sultan Ahmed Mosque",
+        "Stari Most Mostar",
+        "Mimar Sinan tomb"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Sinan'ın öğrencileri de var, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. İstanbul'daki Sultanahmet Camii'ni ve Mostar'daki ünlü Mostar Köprüsü'nü, onun yetiştirdiği mimarlar inşa etti."
+        },
+        {
+          "s": "A",
+          "t": "Sinan 17 Temmuz 1588'de İstanbul'da hayatını kaybetti. Hayatını ve eserlerini, şair Sai Mustafa Çelebi'nin yazıya geçirdiği anılarından, Tezkiretü'l-Bünyan'dan öğreniyoruz."
+        },
+        {
+          "s": "B",
+          "t": "Batı'da da tanınıyor mu?"
+        },
+        {
+          "s": "A",
+          "t": "Osmanlı klasik mimarisinin en büyük ustası kabul ediliyor ve sık sık Michelangelo ile karşılaştırılıyor."
+        },
+        {
+          "s": "A",
+          "t": "Sinan hakkında pek çok efsane de anlatılıyor. Biz bu videoda yalnızca belgelere dayanan bilgileri aktardık."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Edirne",
+      "image_queries": [
+        "Selimiye Mosque",
+        "Süleymaniye Mosque"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: bir taş ustasının oğlu, bir yeniçeri, bir askerî mühendis ve kırk dokuz yıl mimarbaşı."
+        },
+        {
+          "s": "A",
+          "t": "Çıraklıkta Şehzade, kalfalıkta Süleymaniye, ustalıkta Selimiye."
+        },
+        {
+          "s": "B",
+          "t": "Sence Sinan'ın en etkileyici eseri hangisi? Bir cami mi, bir köprü mü, yoksa su yolları mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

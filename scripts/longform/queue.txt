@@ -16,3 +16,4 @@ scripts/longform/en-mansa-musa.json
 scripts/longform/en-library-of-alexandria.json
 scripts/longform/en-hannibal.json
 scripts/longform/tr-derinkuyu.json
+scripts/longform/tr-mimar-sinan.json

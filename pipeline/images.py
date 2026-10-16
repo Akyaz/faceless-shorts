@@ -125,11 +125,53 @@ Seçme:
 Birbirinden farklı görünenleri tercih et. En fazla 5 aday seç. Kurallara uyan aday yoksa boş liste döndür.
 Sadece JSON döndür, en uygun olan başta: {{"pick": [3, 1, 7]}}
 """
+HISTORY_RULES = """Tarih belgeseli için arka plan görseli seçiyorsun. Aşağıda numaralı adayların dosya adı ve açıklaması,
+ardından aynı sırayla görsellerin kendisi var. Görsele bakarak karar ver.
+
+Konu: {topic}
+Dönem: {era}
+Yer: {where}
+
+Seç: bu konuyu, dönemi ve yeri gerçekten gösteren görseller: o döneme ait tablolar, gravürler, minyatürler,
+haritalar, el yazmaları, müzedeki eserler, arkeolojik alanın ve yapıların fotoğrafları, dönemin fotoğrafları.
+Siyah beyaz ve eski görseller uygundur.
+
+Seçme:
+- Başka bir olaya, döneme ya da yere ait olanlar (örnek: Osmanlı konusu için Roma mozaiği).
+- Film, dizi, oyun görüntüleri; afişler; fantastik ya da yapay zekâ ile üretilmiş canlandırmalar.
+- Konuyla ilgisi zayıf modern fotoğraflar; turistlerin, yakın plan kişilerin öne çıktığı fotoğraflar.
+- Yazının görseli kapladığı belgeler, grafikler, logolar; bulanık, çok karanlık ya da çok küçük görseller.
+- Dikey ya da kare görseller yatay videoda kırpılınca konusu kadraj dışında kalacaksa.
+
+Birbirinden farklı görünenleri tercih et, en uygun olan başta. En fazla 8 aday seç; uygun aday yoksa boş liste dön.
+Sadece JSON döndür: {{"pick": [3, 1, 7]}}
+"""
 PLACE_RULE = ("Haber {where} ile ilgili. İçinde insan, sokak, bina, okul, taşıt ya da manzara olan her fotoğraf "
               "{where} içinde çekilmiş olmalı. Dosya adından, açıklamasından ya da görüntüsünden (yazılar, tabelalar, "
               "bayraklar, mimari, insanlar) başka bir ülkede ya da şehirde çekildiği anlaşılan fotoğrafı seçme; "
               "nerede çekildiği anlaşılmayan insan fotoğrafını da seçme.")
-NO_PLACE_RULE = ("Haber belirli bir ülkeyle ilgili değil. Belirli bir ülkeyi ya da halkı temsil eden insan ve sokak "
+NO_HISTORY_RULES = """Tarih belgeseli için arka plan görseli seçiyorsun. Aşağıda numaralı adayların dosya adı ve açıklaması,
+ardından aynı sırayla görsellerin kendisi var. Görsele bakarak karar ver.
+
+Konu: {topic}
+Dönem: {era}
+Yer: {where}
+
+Seç: bu konuyu, dönemi ve yeri gerçekten gösteren görseller: o döneme ait tablolar, gravürler, minyatürler,
+haritalar, el yazmaları, müzedeki eserler, arkeolojik alanın ve yapıların fotoğrafları, dönemin fotoğrafları.
+Siyah beyaz ve eski görseller uygundur.
+
+Seçme:
+- Başka bir olaya, döneme ya da yere ait olanlar (örnek: Osmanlı konusu için Roma mozaiği).
+- Film, dizi, oyun görüntüleri; afişler; fantastik ya da yapay zekâ ile üretilmiş canlandırmalar.
+- Konuyla ilgisi zayıf modern fotoğraflar; turistlerin, yakın plan kişilerin öne çıktığı fotoğraflar.
+- Yazının görseli kapladığı belgeler, grafikler, logolar; bulanık, çok karanlık ya da çok küçük görseller.
+- Dikey ya da kare görseller yatay videoda kırpılınca konusu kadraj dışında kalacaksa.
+
+Birbirinden farklı görünenleri tercih et, en uygun olan başta. En fazla 8 aday seç; uygun aday yoksa boş liste dön.
+Sadece JSON döndür: {{"pick": [3, 1, 7]}}
+"""
+PLACE_RULE = ("Haber belirli bir ülkeyle ilgili değil. Belirli bir ülkeyi ya da halkı temsil eden insan ve sokak "
                  "fotoğraflarını seçme; konuyu gösteren nesne, cihaz, doğa ve uzay fotoğraflarını tercih et.")
 PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
 # Ücretsiz kota model başına sayılıyor: görsel eleme hafif modele gider, iyi model metin yazımına kalır
@@ -156,7 +198,10 @@ def _select(plan, candidates):
             print(f"Önizleme alınamadı: {exc}")
     listing = "\n".join(f"{i}. {'[nesne] ' if c.get('neutral') else ''}{c['about']}" for i, c in enumerate(shown, 1))
     where = _where(plan)
-    rules = SELECT_RULES.format(place_rule=PLACE_RULE.format(where=where) if where else NO_PLACE_RULE)
+    if plan.get("kind") == "history":
+        rules = HISTORY_RULES.format(topic=plan["title"], era=plan.get("era", ""), where=where or "-")
+    else:
+        rules = SELECT_RULES.format(place_rule=PLACE_RULE.format(where=where) if where else NO_PLACE_RULE)
     prompt = f"{rules}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
         picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews, SELECT_MODELS))["pick"]

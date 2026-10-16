@@ -1,0 +1,2 @@
+# Yayın sırası: her gün sıradaki yayınlanmamış dosya üretilir
+scripts/longform/tr-gobeklitepe.json

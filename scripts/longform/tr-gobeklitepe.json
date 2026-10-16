@@ -1,0 +1,143 @@
+{
+  "lang": "tr",
+  "topic": "Göbeklitepe",
+  "era": "Çanak Çömleksiz Neolitik Çağ, MÖ 9500-8000",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
+  "description": "Stonehenge'den 6.000 yıldan fazla, Mısır piramitlerinden yaklaşık 7.000 yıl önce Şanlıurfa'da bir tepeye beş metrelik taş sütunlar dikildi. Göbeklitepe nasıl bulundu, ne zaman yapıldı, bir tapınak mıydı yoksa bir köy mü? Bilinenleri ve hâlâ tartışılanları anlatıyoruz.",
+  "hashtags": ["göbeklitepe", "tarih", "arkeoloji", "şanlıurfa"],
+  "tags": ["göbeklitepe", "göbekli tepe", "tarih", "arkeoloji", "neolitik", "şanlıurfa", "taş tepeler", "karahantepe"],
+  "speakers": {
+    "A": {"name": "Elif", "voice": "female"},
+    "B": {"name": "Kerem", "voice": "male"}
+  },
+  "sources": [
+    {"title": "Göbekli Tepe, Wikipedia (İngilizce)", "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe"},
+    {"title": "Göbekli Tepe, Vikipedi (Türkçe)", "url": "https://tr.wikipedia.org/wiki/G%C3%B6bekli_Tepe"},
+    {"title": "The Tepe Telegrams, Alman Arkeoloji Enstitüsü (DAI) Göbekli Tepe Araştırma Projesi", "url": "https://www.dainst.blog/the-tepe-telegrams/"},
+    {"title": "The Archaeological Site of Göbeklitepe, UNESCO Dünya Mirası Listesi", "url": "https://whc.unesco.org/en/list/1572/"}
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Şanlıurfa",
+      "image_queries": ["Göbekli Tepe", "Göbekli Tepe pillar", "Göbekli Tepe excavation"],
+      "lines": [
+        {"s": "A", "t": "Kerem, sence insanlar önce tapınak mı yaptı, yoksa önce köy mü kurdu?"},
+        {"s": "B", "t": "Bu kolay. Önce tarım, sonra köy, en son tapınak. Ders kitaplarında böyle anlatılır."},
+        {"s": "A", "t": "Peki sana, tarımdan önce, çömleği bile bilmeyen insanların beş metrelik taş sütunlar diktiğini söylesem?"},
+        {"s": "B", "t": "Bu mümkün mü? Hem de o kadar eski bir dönemde?"},
+        {"s": "A", "t": "Şanlıurfa'da bir tepe var. Stonehenge'den altı bin yıldan fazla, Mısır piramitlerinden yaklaşık yedi bin yıl önce yapılmış."},
+        {"s": "B", "t": "Göbeklitepe'den bahsediyorsun."},
+        {"s": "A", "t": "Evet. Ve hikâyenin en ilginç yanı şu: onu kimlerin, neden yaptığını hâlâ tam olarak bilmiyoruz."},
+        {"s": "B", "t": "O zaman baştan başlayalım. Bu taşlar nasıl bulundu?"}
+      ]
+    },
+    {
+      "heading": "Bir Tepedeki Garip Taşlar",
+      "city": "Şanlıurfa",
+      "image_queries": ["Göbekli Tepe", "Göbekli Tepe hill", "Harran plain"],
+      "lines": [
+        {"s": "A", "t": "Göbeklitepe, Şanlıurfa'nın Örencik köyü yakınında, Harran Ovası'na bakan kireçtaşı bir platonun üzerinde."},
+        {"s": "A", "t": "Yaklaşık on beş metre yüksekliğinde bir tepe bu. Adını da üzerinde bulunan ve yöre halkının ziyaret ettiği bir yatırdan alıyor."},
+        {"s": "B", "t": "Peki bilim insanları buraya ilk ne zaman dikkat etti?"},
+        {"s": "A", "t": "1963'te. İstanbul Üniversitesi ve Chicago Üniversitesi, Halet Çambel ve Robert Braidwood yönetiminde bölgede bir yüzey araştırması yaptı."},
+        {"s": "A", "t": "Ekip tepede binlerce çakmaktaşı alet topladı. Ama alanın asıl önemi o zaman anlaşılmadı."},
+        {"s": "B", "t": "Yani taşlar otuz yıl daha toprağın altında bekledi."},
+        {"s": "A", "t": "Aynen öyle. 1994'te Alman arkeolog Klaus Schmidt, bölgedeki benzer yerleri araştırırken bu tepeye yeniden baktı."},
+        {"s": "A", "t": "Toprağın altında sıradan bir yerleşim değil, anıtsal bir yapı olduğunu fark etti. Kazılar 1995'te Şanlıurfa Müzesi ve Alman Arkeoloji Enstitüsü ile başladı."},
+        {"s": "B", "t": "Ve ortaya çıkanlar herkesi şaşırttı."}
+      ]
+    },
+    {
+      "heading": "11 Bin 500 Yıl Önce",
+      "image_queries": ["Göbekli Tepe enclosure", "Göbekli Tepe T-shaped pillar", "Stonehenge"],
+      "lines": [
+        {"s": "B", "t": "Bu yapılar tam olarak ne kadar eski?"},
+        {"s": "A", "t": "Radyokarbon tarihlemelerine göre en eski yapılar MÖ 9500 ile 9000 arasında inşa edilmiş. Yani bugünden yaklaşık on bir bin beş yüz yıl önce."},
+        {"s": "A", "t": "Alan sonraki bin beş yüz yıl boyunca genişletilmiş ve en az MÖ 8000'e kadar kullanılmış."},
+        {"s": "B", "t": "Bunu bir yere oturtmak için karşılaştıralım. Stonehenge yaklaşık beş bin yıllık. Piramitler dört buçuk bin yıllık."},
+        {"s": "A", "t": "Göbeklitepe ise yazının icadından, tekerlekten, metalden ve hatta çanak çömlekten önce yapılmış. Bu dönemin adı da buradan geliyor: Çanak Çömleksiz Neolitik Çağ."},
+        {"s": "B", "t": "Yani bu insanlar avcı toplayıcıydı."},
+        {"s": "A", "t": "Büyük ölçüde evet. Çevrede yabani buğday, arpa ve geniş bozkırlarda ceylan, yaban koyunu ve yaban eşeği sürüleri vardı."},
+        {"s": "A", "t": "İnsanlığın yerleşik hayata ve tarıma geçmeye başladığı bir eşikte, bu tepede anıtsal yapılar yükseldi."}
+      ]
+    },
+    {
+      "heading": "T Biçimli Dev Taşlar",
+      "city": "Şanlıurfa",
+      "image_queries": ["Göbekli Tepe pillar relief", "Göbekli Tepe fox relief", "Şanlıurfa Archaeology Museum Göbekli Tepe"],
+      "lines": [
+        {"s": "B", "t": "Peki bu yapılar neye benziyor?"},
+        {"s": "A", "t": "Yuvarlak ya da oval planlı büyük alanlar düşün. Duvarların içine T biçiminde kireçtaşı dikilitaşlar yerleştirilmiş."},
+        {"s": "A", "t": "Her yapının ortasında karşılıklı duran iki büyük dikilitaş var. D Yapısı'nın merkezindeki taşlar yaklaşık beş buçuk metre yüksekliğinde."},
+        {"s": "B", "t": "Neden T biçimi?"},
+        {"s": "A", "t": "Kazı ekibine göre bu taşlar insanı temsil ediyor. Bazılarının yanlarında kollar ve öne doğru uzanan eller, belinde kemer ve kuşak oyulmuş."},
+        {"s": "A", "t": "Yani T'nin üst kısmı baş, gövdesi ise bedenmiş gibi düşünülmüş. Dev, stilize insan figürleri."},
+        {"s": "B", "t": "Üzerlerinde başka neler var?"},
+        {"s": "A", "t": "Bir hayvanat bahçesi. Yılanlar, tilkiler, yaban domuzları, ceylanlar, yaban koyunları, ördekler, akrepler ve özellikle akbabalar."},
+        {"s": "A", "t": "Yapılara göre hayvanlar da değişiyor. A Yapısı'nda yılanlar, B Yapısı'nda tilkiler öne çıkıyor. Daha geç bir yapıda ise aslan kabartmaları var."},
+        {"s": "B", "t": "Hepsi taşa oyulmuş, metal alet olmadan."},
+        {"s": "A", "t": "Evet. Taş aletlerle, kabartma ve oyma tekniğiyle. Bazı yapıların tabanı da sönmüş kireçten yapılmış, sertleşmiş bir sıvayla kaplanmış."}
+      ]
+    },
+    {
+      "heading": "Tapınak mı, Köy mü?",
+      "city": "Şanlıurfa",
+      "image_queries": ["Göbekli Tepe", "Göbekli Tepe enclosure D", "Göbekli Tepe cistern"],
+      "lines": [
+        {"s": "B", "t": "Göbeklitepe için hep dünyanın ilk tapınağı deniyor. Bu doğru mu?"},
+        {"s": "A", "t": "Bu fikrin arkasında Klaus Schmidt var. Ona göre burası, çevredeki avcı toplayıcı grupların belirli zamanlarda toplandığı bir kült merkeziydi."},
+        {"s": "A", "t": "Schmidt'in ünlü bir sözü var: önce tapınak yapıldı, ardından şehir kuruldu."},
+        {"s": "B", "t": "Kulağa çok çarpıcı geliyor."},
+        {"s": "A", "t": "Öyle. Ama 2019'da yayımlanan bulgular tabloyu değiştirdi. Tepede konutlar, yoğun tahıl işleme izleri ve gündelik hayata ait aletler bulundu."},
+        {"s": "A", "t": "Ayrıca ana kayaya oyulmuş sarnıçlar var. Bunlar en az yüz elli metreküp yağmur suyu toplayabiliyordu."},
+        {"s": "B", "t": "Yani burada insanlar yaşıyormuş da."},
+        {"s": "A", "t": "Yeni yoruma göre evet. Bugün araştırmacılar Göbeklitepe'yi sadece bir tapınak olarak değil, insanların yaşadığı ve büyük yapıların da bulunduğu bir yerleşim olarak tartışıyor."},
+        {"s": "A", "t": "Dikilitaşlı yapıların gerçek işlevi ise hâlâ kesin olarak bilinmiyor. Dürüst cevap bu."}
+      ]
+    },
+    {
+      "heading": "Bu Taşları Kaç Kişi Dikti?",
+      "image_queries": ["Göbekli Tepe quarry", "Göbekli Tepe pillar", "Göbekli Tepe excavation"],
+      "lines": [
+        {"s": "B", "t": "Tonlarca ağırlıktaki taşları kesmek, taşımak ve dikmek için çok insan gerekmiştir."},
+        {"s": "A", "t": "Schmidt ve ekibi de böyle düşündü. Taşların kesilip yarım kilometreye yakın taşınması ve yapıların kurulması için en az beş yüz kişinin çalışmış olması gerektiğini öne sürdüler."},
+        {"s": "A", "t": "Ama daha sonra alanda yapılan deneyler farklı bir sonuç verdi. Buna göre ortaya çıkarılan daha geç yapıların tamamı, on iki ile yirmi dört kişilik bir grupla dört aydan kısa sürede yapılabilirmiş."},
+        {"s": "B", "t": "İki tahmin arasında büyük fark var."},
+        {"s": "A", "t": "Evet ve ikisi de bilimsel tartışmanın parçası. Kesin olan şu: bu insanlar taş ocaklarında dikilitaşları ana kayadan çıkarmayı ve yerine oturtmayı biliyordu."},
+        {"s": "A", "t": "Yapılar sık sık heyelanlardan zarar görmüş, sonra onarılmış ya da yeniden yapılmış. D Yapısı da bu kaymalardan biriyle molozla dolmuş."}
+      ]
+    },
+    {
+      "heading": "Taş Tepeler ve Bugün",
+      "city": "Şanlıurfa",
+      "image_queries": ["Karahan Tepe", "Göbekli Tepe visitor center", "Göbekli Tepe protective roof"],
+      "lines": [
+        {"s": "B", "t": "Göbeklitepe tek başına mı? Yoksa benzerleri de var mı?"},
+        {"s": "A", "t": "Uzun süre eşsiz sanıldı. Ama 2019'da Karahantepe'deki ayrıntılı çalışmalardan sonra bölgede benzer pek çok yer olduğu anlaşıldı."},
+        {"s": "A", "t": "2021'de Göbeklitepe'nin de içinde olduğu bu alanlar topluluğuna Taş Tepeler adı verildi. Nevali Çori, Hamzan Tepe ve Sefer Tepe de aynı tür dikilitaşların görüldüğü yerlerden."},
+        {"s": "B", "t": "Peki Göbeklitepe'nin ne kadarı kazıldı?"},
+        {"s": "A", "t": "2021 itibarıyla yaklaşık yüzde onu. Jeofizik taramalar, tepenin içinde en az yirmi büyük yapı daha olduğunu gösteriyor."},
+        {"s": "A", "t": "Göbeklitepe 2018'de UNESCO Dünya Mirası Listesi'ne girdi. UNESCO onu insan yapımı anıtsal mimarinin ilk örneklerinden biri olarak tanımlıyor."},
+        {"s": "A", "t": "Klaus Schmidt 2014'te hayatını kaybetti. Kazılar bugün İstanbul Üniversitesi, Şanlıurfa Müzesi ve Alman Arkeoloji Enstitüsü'nün ortak projesi olarak, Prof. Dr. Necmi Karul yönetiminde sürüyor."},
+        {"s": "B", "t": "Ve alanı her yıl yüz binlerce kişi ziyaret ediyor."},
+        {"s": "A", "t": "2024'te ziyaretçi sayısı yedi yüz dokuz bini buldu."}
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Şanlıurfa",
+      "image_queries": ["Göbekli Tepe", "Göbekli Tepe pillar"],
+      "lines": [
+        {"s": "B", "t": "Toparlarsak: on bir bin beş yüz yıl önce, çömleği bile bilmeyen insanlar beş metrelik taşları oyup diktiler."},
+        {"s": "A", "t": "Ve biz bu tepenin henüz sadece küçük bir bölümünü görebildik. Toprağın altında hâlâ yirmiden fazla yapı bekliyor."},
+        {"s": "B", "t": "Bence asıl soru şu: bu taşları neden diktiler?"},
+        {"s": "A", "t": "Sen ne düşünüyorsun? Bir tapınak mı, bir buluşma yeri mi, yoksa bir köyün kalbi mi? Yorumlara yaz."},
+        {"s": "B", "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı unutma."}
+      ]
+    }
+  ]
+}

@@ -125,6 +125,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: short
+          retention-days: 14  # depolama kotası sınırlı; yeniden yükleme için iki hafta yeter
           path: |
             out/short.mp4
             out/metadata.json

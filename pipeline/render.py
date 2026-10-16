@@ -109,6 +109,9 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     img.save(out_path)
 
 
+SPEAKER_COLORS = [(30, 136, 229), (229, 57, 53)]
+
+
 def draw_wide_card(segment, idx, out_path, background=None, subscribe=False, lang="tr"):
     """Yatay kart (haftalık derleme, uzun özel metin): üstte etiket ve başlık, altyazı altta kalır."""
     w, h = WIDE
@@ -125,12 +128,25 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False, lan
     d.rounded_rectangle([(w - lw) / 2 - 32, 76, (w + lw) / 2 + 32, 164], radius=44, fill=accent)
     d.text((w / 2, 120), label, font=bold, fill="white", anchor="mm")
 
-    if segment.get("heading"):
-        font = ImageFont.truetype(_font_path(True), 76)
-        y = 270
+    if segment.get("chapter_card"):  # bölüm açılışı: başlık ortada ve büyük
+        font = ImageFont.truetype(_font_path(True), 104)
+        lines = _wrap(d, segment["heading"], font, w - 300)
+        y = h / 2 - (len(lines) - 1) * 62
+        for line in lines:
+            d.text((w / 2, y), line, font=font, fill=(255, 214, 0), anchor="mm", stroke_width=6, stroke_fill="black")
+            y += 124
+    elif segment.get("heading"):
+        size = 76 if not segment.get("small_heading") else 50
+        font = ImageFont.truetype(_font_path(True), size)
+        y = 270 if size == 76 else 235
         for line in _wrap(d, segment["heading"], font, w - 300):
             d.text((w / 2, y), line, font=font, fill=(255, 214, 0), anchor="mm", stroke_width=5, stroke_fill="black")
-            y += 94
+            y += size + 18
+    if segment.get("speaker"):  # diyalogda konuşanın adı, altyazının hemen üstünde
+        name, color = segment["speaker"], SPEAKER_COLORS[segment.get("speaker_index", 0) % len(SPEAKER_COLORS)]
+        nw = d.textlength(name, font=bold)
+        d.rounded_rectangle([w / 2 - nw / 2 - 30, h - 330, w / 2 + nw / 2 + 30, h - 250], radius=40, fill=color)
+        d.text((w / 2, h - 290), name, font=bold, fill="white", anchor="mm")
     if subscribe:
         text = TEXTS[lang]["subscribe"]
         tw = d.textlength(text, font=bold)

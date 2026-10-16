@@ -1,0 +1,72 @@
+name: Tarih videosu
+
+# 8-12 dakikalık yatay tarih videoları. Metinler scripts/longform/ altında elle yazılır;
+# zamanlanmış çalışma queue.txt'deki sıradaki yayınlanmamış metni üretip yükler (günde bir).
+on:
+  schedule:
+    - cron: "0 18 * * *"  # 21:00 Türkiye saati
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Metin dosyası (örnek: scripts/longform/tr-gobeklitepe.json); boşsa sıradaki"
+        type: string
+        default: ""
+      upload:
+        description: "Üretilen videoyu kanala da yükle"
+        type: boolean
+        default: true
+
+jobs:
+  longform:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write  # sonuç kaydı panel-data dalına yazılır
+    env:
+      MODE: longform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sistem paketleri
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Python paketleri
+        run: pip install -r requirements.txt
+      - name: Metni seç
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SCRIPT_INPUT: ${{ inputs.script }}
+        run: |
+          script="${SCRIPT_INPUT:-$(python -m pipeline.longform --next)}"
+          if [ -z "$script" ]; then echo "Sırada yayınlanmamış metin yok."; exit 0; fi
+          echo "Metin: $script"
+          echo "SCRIPT_PATH=$script" >> "$GITHUB_ENV"
+      - name: Videoyu üret
+        if: ${{ env.SCRIPT_PATH != '' }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m pipeline.longform "$SCRIPT_PATH" --out out
+      - name: YouTube'a yükle
+        if: ${{ env.SCRIPT_PATH != '' && (github.event_name == 'schedule' || inputs.upload) }}
+        env:
+          YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m pipeline.upload out/video.mp4 out/metadata.json
+      # Videonun kendisi saklanmaz (uzun videolar depolama kotasını doldurur); yüklenemezse yeniden üretilir
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() && env.SCRIPT_PATH != '' }}
+        with:
+          name: longform
+          path: out/metadata.json
+          retention-days: 30
+      - name: Sonucu bildir
+        if: ${{ always() && env.SCRIPT_PATH != '' }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m pipeline.report out

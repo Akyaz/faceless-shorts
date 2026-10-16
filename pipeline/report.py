@@ -113,6 +113,8 @@ def main():
              "run": os.environ.get("SOURCE_RUN_ID") or run,
              "event": os.environ.get("GITHUB_EVENT_NAME", ""), "mode": os.environ.get("MODE", ""), "status": status,
              "link": f"https://github.com/{repo}/actions/runs/{run}", "videos": videos}
+    if os.environ.get("SCRIPT_PATH"):  # uzun video: panel yeniden üretmek için metin dosyasını bilmeli
+        entry["script"] = os.environ["SCRIPT_PATH"]
     for name, step in (("Kayıt", lambda: append_feed(entry)), ("Telegram", lambda: telegram(message(entry)))):
         try:
             step()

@@ -18,12 +18,12 @@ TRACKS = {
 GAIN_DB = -15  # seslendirmenin yaklaşık 17 LU altı: duyulur ama konuşmayı bastırmaz
 
 
-def add(video, mood, out_path):
+def add(video, mood, out_path, gain_db=GAIN_DB):
     """Müziği videoya karıştırır, açıklamaya eklenecek kaynak satırını döner."""
     mood = mood if mood in TRACKS else "notr"
     dur = render.audio_duration(video)
     fade = max(dur - 1.5, 0)
-    mix = (f"[1:a]volume={GAIN_DB}dB,afade=t=in:d=1,afade=t=out:st={fade:.2f}:d=1.5[m];"
+    mix = (f"[1:a]volume={gain_db}dB,afade=t=in:d=1,afade=t=out:st={fade:.2f}:d=1.5[m];"
            f"[0:a][m]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]")
     subprocess.run([
         "ffmpeg", "-y", "-loglevel", "error", "-i", str(video),

@@ -157,6 +157,18 @@
         {
           "s": "A",
           "t": "Evet. Haritanın batı kenarında Orta Çağ kitaplarından tanıdık yaratıklar çizilmiş. Güney Amerika'nın dağları arasında başsız bir adam bile var."
+        },
+        {
+          "s": "B",
+          "t": "Bu yaratıkların bir anlamı var mı?"
+        },
+        {
+          "s": "A",
+          "t": "Tarihçi Karen Pinto'ya göre var. Orta Çağ İslam düşüncesinde bilinen dünyanın çevresinde aşılamaz bir okyanus olduğu düşünülüyordu."
+        },
+        {
+          "s": "A",
+          "t": "Piri Reis'in haritası ise bu okyanusun ötesinde, Amerika'da yeni topraklar ve yaratıklar gösteriyor. Pinto bunu eski dünya görüşünden bir kopuş olarak yorumluyor."
         }
       ]
     },
@@ -249,6 +261,10 @@
         },
         {
           "s": "A",
+          "t": "1950'lerde amatör araştırmacı Arlington Mallery haritanın buzsuz bir Antarktika kıyısını gösterdiğini öne sürdü. Bazı bilim insanları da o dönemde bu fikre ilgi gösterdi."
+        },
+        {
+          "s": "A",
           "t": "Bu iddia 1950'lerde ortaya çıktı. 1966'da tarihçi Charles Hapgood, Eski Deniz Krallarının Haritaları adlı kitabında, bu haritaların bilinmeyen eski bir uygarlığın keşiflerine dayandığını ileri sürdü."
         },
         {
@@ -297,6 +313,18 @@
         {
           "s": "A",
           "t": "Birincisi, Güney Amerika'yı kendi dönemi için oldukça ayrıntılı ve doğru gösteriyor. Brezilya ile Afrika arasındaki mesafe yaklaşık olarak doğru."
+        },
+        {
+          "s": "B",
+          "t": "Peki hatalar nerede?"
+        },
+        {
+          "s": "A",
+          "t": "Karayipler oldukça karışık çizilmiş. Haritadaki bazı yerler ise hayalî adalar ya da kesin olarak tanımlanamayan yerler. Örneğin efsanevi Antilia adası da haritada geçiyor."
+        },
+        {
+          "s": "A",
+          "t": "Atlantik'teki adalar ise dönemin Avrupa portolan haritalarıyla uyumlu çizilmiş. Yani Piri Reis güvenilir kaynaklarla belirsiz bilgileri yan yana koymuş."
         },
         {
           "s": "A",

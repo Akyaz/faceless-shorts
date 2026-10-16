@@ -1,2 +1,4 @@
-# Yayın sırası: her gün sıradaki yayınlanmamış dosya üretilir
+# Yayın sırası: her gün 21:00'de sıradaki yayınlanmamış dosya üretilip yüklenir
 scripts/longform/tr-gobeklitepe.json
+scripts/longform/en-krakatoa.json
+scripts/longform/tr-istanbulun-fethi.json

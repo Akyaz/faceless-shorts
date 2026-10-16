@@ -1,0 +1,138 @@
+{
+  "lang": "tr",
+  "topic": "İstanbul'un Fethi",
+  "era": "1453, Osmanlı ve Bizans",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "gergin",
+  "title": "İstanbul'un Fethi: 53 Gün, 72 Gemi ve Karadan Yürüyen Donanma",
+  "description": "1453'te 21 yaşındaki II. Mehmed, bin yılı aşkın süre ayakta kalan Konstantinopolis surlarının önüne geldi. Rumeli Hisarı, dev toplar, Haliç'e gerilen zincir ve bir gecede karadan yürütülen gemiler: 53 günlük kuşatmayı kaynakların anlattığı ve tartıştığı yönleriyle anlatıyoruz.",
+  "hashtags": ["istanbulunfethi", "tarih", "fatihsultanmehmed", "1453"],
+  "tags": ["istanbul'un fethi", "1453", "fatih sultan mehmed", "konstantinopolis", "bizans", "osmanlı", "tarih", "rumeli hisarı"],
+  "speakers": {
+    "A": {"name": "Elif", "voice": "female"},
+    "B": {"name": "Kerem", "voice": "male"}
+  },
+  "sources": [
+    {"title": "İstanbul'un Fethi, Vikipedi (Türkçe)", "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul%27un_Fethi"},
+    {"title": "Fall of Constantinople, Wikipedia (İngilizce)", "url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"}
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Istanbul",
+      "image_queries": ["Fausto Zonaro Mehmed II", "Theodosian Walls", "Golden Horn"],
+      "lines": [
+        {"s": "A", "t": "Kerem, bin yıldan uzun süre hiçbir ordunun karadan aşamadığı surları düşünebiliyor musun?"},
+        {"s": "B", "t": "Konstantinopolis surları. Haçlılar bile şehre karadan değil, deniz tarafından girmişti."},
+        {"s": "A", "t": "Şimdi bu surların önüne yirmi bir yaşında bir padişah geliyor. Yanında dönemin en büyük toplarından biri var."},
+        {"s": "B", "t": "Ve bir gece, savaş gemilerini karadan yürütüyor."},
+        {"s": "A", "t": "Tam elli üç gün süren bir kuşatma. 6 Nisan'da başlıyor, 29 Mayıs 1453 sabahı bitiyor."},
+        {"s": "B", "t": "Bugün bunu İstanbul'un Fethi olarak biliyoruz. Ama kaynaklar bu günleri birbirinden çok farklı anlatıyor."},
+        {"s": "A", "t": "O zaman başlayalım. Bu hikâye aslında kuşatmadan bir yıl önce, Boğaz'ın en dar noktasında başlıyor."}
+      ]
+    },
+    {
+      "heading": "Boğaz'ı Kesen Hisar",
+      "city": "Istanbul",
+      "image_queries": ["Rumelihisarı", "Anadoluhisarı", "Bosphorus"],
+      "lines": [
+        {"s": "B", "t": "Kuşatmadan önce ne oldu?"},
+        {"s": "A", "t": "II. Mehmed, şehrin deniz bağlantısını kesmek ve kuşatma sırasında dışarıdan yardım gelmesini önlemek istedi."},
+        {"s": "A", "t": "Bunun için Boğaz'ın Avrupa yakasında bir hisar yaptırdı. Rumeli Hisarı'nın inşaatı 1452 Nisan'ında başladı."},
+        {"s": "B", "t": "Karşı kıyıda zaten bir hisar vardı, değil mi?"},
+        {"s": "A", "t": "Evet. Yıldırım Bayezid'in yaptırdığı Anadolu Hisarı tam karşısındaydı. İki hisar birlikte Boğaz'ı kontrol edebiliyordu."},
+        {"s": "A", "t": "Kaynaklara göre hisarın yapımında beş ya da altı bin işçi çalıştı."},
+        {"s": "B", "t": "Bizans bunu görünce ne yaptı?"},
+        {"s": "A", "t": "İmparator XI. Konstantin elçiler gönderdi ama sonuç alamadı. Sonunda şehrin kapılarını kapattı. Gerginlik artık açık bir savaşa dönüşmek üzereydi."}
+      ]
+    },
+    {
+      "heading": "Dev Toplar ve İki Ordu",
+      "city": "Istanbul",
+      "image_queries": ["Ottoman cannon", "Theodosian Walls", "Ottoman army miniature"],
+      "lines": [
+        {"s": "A", "t": "Osmanlı hazırlıklarının en dikkat çeken parçası toplardı. Urban adlı bir usta, dönemine göre dev bir top döktü."},
+        {"s": "A", "t": "Bu şahi topunun uzunluğu yaklaşık sekiz metreydi. Tek bir güllesi beş yüz elli kilogram civarındaydı."},
+        {"s": "B", "t": "Bu topu oraya taşımak bile başlı başına bir iş olmalı."},
+        {"s": "A", "t": "Taşıma işini Rumeli Beylerbeyi Dayı Karaca Paşa üstlendi. Bazı kaynaklara göre bu toplardan biri daha sonra kuşatma sırasında patladı ve Urban da hayatını kaybetti."},
+        {"s": "B", "t": "Peki ordular ne kadar büyüktü?"},
+        {"s": "A", "t": "Burada kaynaklar çok farklı. Dönemin yazarlarından Barbaro yüz altmış bin, Dukas iki yüz bin diyor. Tarihçi Hammer ise iki yüz elli bin rakamını veriyor."},
+        {"s": "A", "t": "Osmanlı arşiv belgelerine dayanan yeni çalışmalar ise elli bin ile seksen bin arasında bir ordudan söz ediyor."},
+        {"s": "B", "t": "Ya şehri savunanlar?"},
+        {"s": "A", "t": "Yaklaşık yedi bin kişi. Bunların iki bini yabancıydı. Ocak 1453'te Cenevizli komutan Giovanni Giustiniani yedi yüz askerle gelmiş ve savunmanın başına getirilmişti."},
+        {"s": "B", "t": "Yani çok küçük bir savunma gücü, ama çok güçlü surlar."},
+        {"s": "A", "t": "Evet. Kara surlarının önünde on sekiz metre genişliğinde hendekler vardı. Şehrin deniz kıyısı da baştan sona surlarla çevriliydi."}
+      ]
+    },
+    {
+      "heading": "Haliç'teki Zincir",
+      "city": "Istanbul",
+      "image_queries": ["Golden Horn chain", "Golden Horn", "Galata Tower"],
+      "lines": [
+        {"s": "B", "t": "Denizden saldırmak daha kolay değil miydi?"},
+        {"s": "A", "t": "Bizans bunu biliyordu. 1204'te Dördüncü Haçlı Seferi'nin orduları şehre Haliç tarafındaki surlardan girmişti."},
+        {"s": "A", "t": "Bu yüzden Bizans, Haliç'in girişine dövme demirden büyük bir zincir gerdi. Zincir, gemilerin Haliç'e girmesini engelliyordu."},
+        {"s": "B", "t": "Osmanlı donanması ne yapabildi?"},
+        {"s": "A", "t": "Baltaoğlu Süleyman Paşa komutasındaki donanma zinciri aşamadı. Sayısı da kaynaklara göre değişiyor: Dukas üç yüz, başka bir kaynak yüz altmış gemiden söz ediyor."},
+        {"s": "A", "t": "Haliç kapalı kaldıkça, şehrin bu tarafındaki surlara saldırmak mümkün değildi. Savunmacılar da güçlerini kara surlarında toplayabiliyordu."},
+        {"s": "B", "t": "O zaman başka bir yol bulmak gerekiyordu."}
+      ]
+    },
+    {
+      "heading": "Karadan Yürüyen Gemiler",
+      "city": "Istanbul",
+      "image_queries": ["Ottoman ships overland 1453 painting", "Galata", "Golden Horn"],
+      "lines": [
+        {"s": "A", "t": "21 Nisan'ı 22 Nisan'a bağlayan gece, kuşatmanın en ünlü olayı yaşandı."},
+        {"s": "A", "t": "Osmanlı gemileri Galata'nın arkasındaki tepelerden karadan çekilerek Haliç'e indirildi."},
+        {"s": "B", "t": "Bizanslılar bunu nasıl fark etmedi?"},
+        {"s": "A", "t": "Dikkatleri başka yöne çekildi. Aynı sırada Topkapı yakınlarındaki surlarda büyük bir gedik açıldı ve şehirdekiler o gece bu gediği kapatmaya uğraştı."},
+        {"s": "A", "t": "Sabah olduğunda yetmiş iki Osmanlı savaş gemisi Haliç'teydi. İngilizce kaynaklarda bu sayı yaklaşık yetmiş olarak geçiyor."},
+        {"s": "B", "t": "Zincir artık işe yaramıyordu."},
+        {"s": "A", "t": "Evet. Savunmacılar artık Haliç surlarını da korumak zorundaydı. Zaten az olan asker sayısı iki cepheye bölündü."},
+        {"s": "B", "t": "Bu, kuşatmanın dönüm noktalarından biri oldu."}
+      ]
+    },
+    {
+      "heading": "29 Mayıs Sabahı",
+      "city": "Istanbul",
+      "image_queries": ["Fall of Constantinople painting", "Theodosian Walls Topkapı", "Hagia Sophia"],
+      "lines": [
+        {"s": "A", "t": "Haftalar boyunca toplar surları dövdü. Mayıs sonunda Osmanlı ordusu genel bir saldırıya hazırlandı."},
+        {"s": "A", "t": "28 Mayıs gecesi şehirde halk ve soylular Ayasofya'da bir ayin için toplandı. Gün boyunca kilise çanları çaldı."},
+        {"s": "B", "t": "Son saldırı nasıl gelişti?"},
+        {"s": "A", "t": "29 Mayıs sabahı saldırı başladı. Çarpışmaların en kritik anında Giustiniani ağır yaralandı ve tedavi için limana götürüldü."},
+        {"s": "A", "t": "Komutanın yaralandığı haberi savunmacılar arasında moral bozukluğuna yol açtı."},
+        {"s": "B", "t": "Kerkoporta hikâyesi de burada mı?"},
+        {"s": "A", "t": "Evet. Dukas'ın anlatımına göre küçük bir kapı olan Kerkoporta açık bırakılmış ve bir grup Osmanlı askeri buradan içeri girmişti. Bazı tarihçiler bu anlatımın ayrıntılarını tartışıyor."},
+        {"s": "A", "t": "Sonunda şehir sabah saatlerinde Osmanlı ordusunun eline geçti. İmparator XI. Konstantin'in son çarpışmada hayatını kaybettiği kabul ediliyor."}
+      ]
+    },
+    {
+      "heading": "Bir Çağın Sonu",
+      "city": "Istanbul",
+      "image_queries": ["Hagia Sophia", "Topkapı Palace", "Istanbul old map"],
+      "lines": [
+        {"s": "B", "t": "Fetihten sonra neler değişti?"},
+        {"s": "A", "t": "II. Mehmed, Fatih unvanıyla anıldı ve başkenti Edirne'den İstanbul'a taşıdı."},
+        {"s": "A", "t": "Bin yılı aşkın süre yaşayan Bizans İmparatorluğu sona erdi. Pek çok tarihçi bu olayı Orta Çağ'ın sonunu belirleyen dönüm noktalarından biri olarak görüyor."},
+        {"s": "B", "t": "Ve Ayasofya camiye dönüştürüldü."},
+        {"s": "A", "t": "Evet. Şehir de yeniden imar edilerek yüzyıllar boyunca Osmanlı İmparatorluğu'nun başkenti oldu."},
+        {"s": "B", "t": "Bu hikâyede beni en çok şaşırtan, sayıların bu kadar farklı olması."},
+        {"s": "A", "t": "Çünkü kaynakların çoğu ya kuşatmanın içindeydi ya da yıllar sonra yazıldı. Tarih yazarken hangi kaynağın neyi neden söylediğini sormak gerekiyor."}
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Istanbul",
+      "image_queries": ["Rumelihisarı", "Istanbul skyline Golden Horn"],
+      "lines": [
+        {"s": "B", "t": "Toparlarsak: bir yıl önce yapılan bir hisar, dev toplar, Haliç'teki zincir ve bir gecede karadan yürüyen gemiler."},
+        {"s": "A", "t": "Ve elli üç günün sonunda, bin yıllık bir şehir yeni bir dönemin başkenti oldu."},
+        {"s": "B", "t": "Sence kuşatmayı asıl kazandıran neydi? Toplar mı, gemiler mi, yoksa Giustiniani'nin yaralanması mı?"},
+        {"s": "A", "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."}
+      ]
+    }
+  ]
+}

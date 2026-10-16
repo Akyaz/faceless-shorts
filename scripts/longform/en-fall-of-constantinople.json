@@ -1,0 +1,366 @@
+{
+  "lang": "en",
+  "topic": "Fall of Constantinople",
+  "era": "1453, Ottoman Empire and Byzantine Empire",
+  "country": "Turkey",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "The Last Day of the Roman Empire: The Fall of Constantinople, 1453",
+  "description": "For more than a thousand years, the walls of Constantinople held. In 1453 a 21-year-old sultan arrived with giant cannons, blocked the Bosphorus, and dragged warships over land into the Golden Horn. Here is the 53-day siege that ended the Byzantine Empire, including where the sources disagree.",
+  "hashtags": [
+    "constantinople",
+    "history",
+    "byzantine"
+  ],
+  "tags": [
+    "fall of constantinople",
+    "1453",
+    "byzantine empire",
+    "ottoman empire",
+    "mehmed ii",
+    "constantine xi",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Fall of Constantinople, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+    },
+    {
+      "title": "İstanbul'un Fethi, Turkish Wikipedia",
+      "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul%27un_Fethi"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "city": "Istanbul",
+      "image_queries": [
+        "Fausto Zonaro Mehmed II",
+        "Theodosian Walls",
+        "Golden Horn"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, imagine walls that no army had broken from the land side for over a thousand years."
+        },
+        {
+          "s": "B",
+          "t": "The walls of Constantinople. Even the Crusaders in 1204 got in from the harbour side, not over the land walls."
+        },
+        {
+          "s": "A",
+          "t": "Now a twenty-one-year-old sultan arrives in front of them, with one of the largest cannons of his age."
+        },
+        {
+          "s": "B",
+          "t": "And one night, he moves his warships over land."
+        },
+        {
+          "s": "A",
+          "t": "A siege of fifty-three days. It began on the sixth of April and ended on the morning of the twenty-ninth of May, 1453."
+        },
+        {
+          "s": "B",
+          "t": "The day the Roman Empire, in its eastern form, came to an end."
+        },
+        {
+          "s": "A",
+          "t": "And the sources still disagree on many of the details. Let's go through them."
+        }
+      ]
+    },
+    {
+      "heading": "A Fortress on the Bosphorus",
+      "city": "Istanbul",
+      "image_queries": [
+        "Rumelihisarı",
+        "Anadoluhisarı",
+        "Bosphorus"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Who was this young sultan?"
+        },
+        {
+          "s": "A",
+          "t": "Mehmed the Second. He first came to the throne as a child, but turmoil in Edirne and pressure from senior statesmen forced him to step aside, and his father Murad the Second returned."
+        },
+        {
+          "s": "A",
+          "t": "After his father's death, Mehmed took the throne for the last time in 1451. His first great goal was clear: Constantinople."
+        },
+        {
+          "s": "B",
+          "t": "How did he prepare?"
+        },
+        {
+          "s": "A",
+          "t": "He wanted to cut the city's sea link and stop any help from arriving. So in April 1452 he began building a fortress on the European shore of the Bosphorus."
+        },
+        {
+          "s": "A",
+          "t": "It stood opposite an older fortress built by his ancestor Bayezid the First. Together, the two castles could control the strait. Sources say five or six thousand workers built it."
+        },
+        {
+          "s": "B",
+          "t": "And the Byzantines just watched?"
+        },
+        {
+          "s": "A",
+          "t": "Emperor Constantine the Eleventh sent envoys, without success. In the end he closed the city gates. The tension was about to become open war."
+        }
+      ]
+    },
+    {
+      "heading": "Giant Guns and Two Armies",
+      "city": "Istanbul",
+      "image_queries": [
+        "Ottoman cannon",
+        "Theodosian Walls",
+        "Ottoman army miniature"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The most striking part of the Ottoman preparations was artillery. A founder named Urban cast a cannon that was enormous for its time."
+        },
+        {
+          "s": "A",
+          "t": "According to Turkish sources, it was about eight metres long and fired a stone ball of around five hundred and fifty kilograms."
+        },
+        {
+          "s": "B",
+          "t": "How big were the armies?"
+        },
+        {
+          "s": "A",
+          "t": "This is where the sources really disagree. Contemporary writers gave huge numbers: Barbaro said one hundred and sixty thousand, Doukas two hundred thousand. A later historian, Hammer, gave two hundred and fifty thousand."
+        },
+        {
+          "s": "A",
+          "t": "Recent studies using Ottoman archival data put the army at around fifty to eighty thousand soldiers, including five to ten thousand Janissaries and about seventy cannons."
+        },
+        {
+          "s": "B",
+          "t": "And the defenders?"
+        },
+        {
+          "s": "A",
+          "t": "About seven thousand men, two thousand of them foreigners. In January 1453, the Genoese commander Giovanni Giustiniani had arrived with seven hundred soldiers and was put in charge of the land defences."
+        },
+        {
+          "s": "A",
+          "t": "They had to defend a wall roughly twelve miles long. Inside, probably fewer than fifty thousand people were living, including refugees."
+        }
+      ]
+    },
+    {
+      "heading": "The Chain in the Golden Horn",
+      "city": "Istanbul",
+      "image_queries": [
+        "Golden Horn chain",
+        "Golden Horn",
+        "Galata Tower"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Wasn't the sea the easier way in?"
+        },
+        {
+          "s": "A",
+          "t": "The Byzantines knew that. In 1204 the Fourth Crusade had broken in through the walls facing the Golden Horn, the city's harbour."
+        },
+        {
+          "s": "A",
+          "t": "So they stretched a great iron chain across the entrance of the Golden Horn, blocking ships from entering."
+        },
+        {
+          "s": "B",
+          "t": "Could the Ottoman fleet break it?"
+        },
+        {
+          "s": "A",
+          "t": "No. The fleet under Baltoghlu Suleiman Pasha could not get past the chain. And on the twentieth of April, four Christian ships fought their way through the Ottoman fleet into the harbour."
+        },
+        {
+          "s": "A",
+          "t": "It lifted the defenders' morale and embarrassed the sultan. Baltoghlu was probably wounded in the eye in the fighting, and Mehmed punished him and stripped him of his property."
+        },
+        {
+          "s": "B",
+          "t": "So Mehmed needed another way."
+        }
+      ]
+    },
+    {
+      "heading": "Ships Over Land",
+      "city": "Istanbul",
+      "image_queries": [
+        "Ottoman ships overland 1453 painting",
+        "Galata",
+        "Golden Horn"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "On the night of the twenty-first to the twenty-second of April came the most famous move of the siege."
+        },
+        {
+          "s": "A",
+          "t": "Ottoman ships were hauled over the hills behind Galata and lowered into the Golden Horn, behind the chain."
+        },
+        {
+          "s": "B",
+          "t": "How did the Byzantines not notice?"
+        },
+        {
+          "s": "A",
+          "t": "Their attention was elsewhere. Ottoman guns opened a large breach near the Saint Romanus Gate, and that night the defenders were busy trying to close it."
+        },
+        {
+          "s": "A",
+          "t": "By morning, around seventy Ottoman warships were inside the Golden Horn. Turkish sources give the number as seventy-two."
+        },
+        {
+          "s": "B",
+          "t": "And the chain became useless."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Now the defenders also had to guard the harbour walls. Their small force was split across two fronts."
+        }
+      ]
+    },
+    {
+      "heading": "The Final Assault",
+      "city": "Istanbul",
+      "image_queries": [
+        "Fall of Constantinople painting",
+        "Theodosian Walls Topkapı",
+        "Hagia Sophia"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Was there fighting underground too?"
+        },
+        {
+          "s": "A",
+          "t": "Yes. From mid-May until the twenty-fifth, the Ottomans dug tunnels under the walls. Many of the diggers were Serbian miners from Novo Brdo."
+        },
+        {
+          "s": "A",
+          "t": "An engineer with the Genoese, Johannes Grant, had counter-tunnels dug, and the defenders found and destroyed the Ottoman tunnels one by one."
+        },
+        {
+          "s": "B",
+          "t": "Did everyone in the Ottoman camp want to keep going?"
+        },
+        {
+          "s": "A",
+          "t": "No. The veteran vizier Halil Pasha urged the sultan to lift the siege. Zagan Pasha argued for an immediate attack. Mehmed sided with Zagan and prepared for a final assault."
+        },
+        {
+          "s": "A",
+          "t": "On the night of the twenty-eighth of May, people gathered in Hagia Sophia for a service, and church bells rang through the day."
+        },
+        {
+          "s": "A",
+          "t": "The assault began early on the twenty-ninth. At a critical moment, Giustiniani was badly wounded and carried to the harbour for treatment. The news shook the defenders."
+        },
+        {
+          "s": "B",
+          "t": "And the Kerkoporta story?"
+        },
+        {
+          "s": "A",
+          "t": "According to the chronicler Doukas, a small gate called the Kerkoporta had been left open, and Ottoman soldiers entered through it. Some historians question the details of this account."
+        },
+        {
+          "s": "A",
+          "t": "By morning the city was in Ottoman hands. Emperor Constantine the Eleventh is generally believed to have died in the final fighting."
+        }
+      ]
+    },
+    {
+      "heading": "The End of an Era",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia",
+        "Topkapı Palace",
+        "Istanbul old map"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What changed after the conquest?"
+        },
+        {
+          "s": "A",
+          "t": "Mehmed became known as the Conqueror. He made Constantinople the new Ottoman capital, replacing Edirne."
+        },
+        {
+          "s": "A",
+          "t": "The Byzantine Empire, which had survived for more than a thousand years, was gone. Many historians see this as a watershed that marks the end of the Middle Ages."
+        },
+        {
+          "s": "B",
+          "t": "And Hagia Sophia became a mosque."
+        },
+        {
+          "s": "A",
+          "t": "Yes. The city was rebuilt and remained the Ottoman capital for centuries."
+        },
+        {
+          "s": "B",
+          "t": "What strikes me most is how much the numbers vary."
+        },
+        {
+          "s": "A",
+          "t": "Because many sources were either written inside the siege, or years later. Good history means asking who is telling us what, and why."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "city": "Istanbul",
+      "image_queries": [
+        "Rumelihisarı",
+        "Istanbul skyline Golden Horn"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So: a fortress built a year earlier, giant guns, a chain across the harbour, and a fleet that crossed land overnight."
+        },
+        {
+          "s": "A",
+          "t": "On one side a determined young sultan with a large army. On the other an emperor defending thousand-year-old walls with about seven thousand men."
+        },
+        {
+          "s": "B",
+          "t": "What do you think decided the siege? The cannons, the ships, or Giustiniani's wound?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

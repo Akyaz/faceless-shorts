@@ -1,0 +1,420 @@
+{
+  "lang": "en",
+  "topic": "Göbekli Tepe",
+  "era": "Pre-Pottery Neolithic, 9500-8000 BCE",
+  "country": "Turkey",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "Göbekli Tepe: Older Than Stonehenge by 6,000 Years. Who Built It?",
+  "description": "Around 11,500 years ago, people who had not yet invented pottery raised carved stone pillars five metres tall on a hill in south-eastern Turkey. How was Göbekli Tepe found, how old is it really, and was it a temple or a village? Here is what archaeologists know, and what they are still debating.",
+  "hashtags": [
+    "gobeklitepe",
+    "history",
+    "archaeology"
+  ],
+  "tags": [
+    "gobekli tepe",
+    "göbekli tepe",
+    "archaeology",
+    "neolithic",
+    "ancient history",
+    "documentary",
+    "turkey",
+    "karahan tepe"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Göbekli Tepe, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe"
+    },
+    {
+      "title": "Göbekli Tepe, Turkish Wikipedia",
+      "url": "https://tr.wikipedia.org/wiki/G%C3%B6bekli_Tepe"
+    },
+    {
+      "title": "The Tepe Telegrams, German Archaeological Institute (DAI) Göbekli Tepe Research Project",
+      "url": "https://www.dainst.blog/the-tepe-telegrams/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Göbekli Tepe",
+        "Göbekli Tepe pillar",
+        "Göbekli Tepe excavation"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, what came first: the temple or the village?"
+        },
+        {
+          "s": "B",
+          "t": "The village, surely. First farming, then villages, then temples. That's the order we learned at school."
+        },
+        {
+          "s": "A",
+          "t": "What if I told you that people who had not even invented pottery raised carved stone pillars five metres tall?"
+        },
+        {
+          "s": "B",
+          "t": "When?"
+        },
+        {
+          "s": "A",
+          "t": "More than six thousand years before Stonehenge, and around seven thousand years before the pyramids of Giza."
+        },
+        {
+          "s": "B",
+          "t": "You're talking about Göbekli Tepe."
+        },
+        {
+          "s": "A",
+          "t": "I am. And the most fascinating part is that we still don't fully know who built it, or why."
+        },
+        {
+          "s": "B",
+          "t": "Then let's start at the beginning. How was it found?"
+        }
+      ]
+    },
+    {
+      "heading": "Strange Stones on a Hill",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Göbekli Tepe",
+        "Göbekli Tepe hill",
+        "Harran plain"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Göbekli Tepe lies near the village of Örencik in Şanlıurfa province, in south-eastern Turkey. It sits on a limestone plateau overlooking the Harran plain."
+        },
+        {
+          "s": "A",
+          "t": "It is a mound about fifteen metres high. Its name means Potbelly Hill in Turkish, and a small shrine on the hill was visited by local people."
+        },
+        {
+          "s": "B",
+          "t": "When did archaeologists first notice it?"
+        },
+        {
+          "s": "A",
+          "t": "In 1963, during a survey led by Halet Çambel of Istanbul University and Robert Braidwood of the University of Chicago. They collected thousands of flint tools on the surface."
+        },
+        {
+          "s": "A",
+          "t": "But the true importance of the site wasn't recognised at the time."
+        },
+        {
+          "s": "B",
+          "t": "So the stones waited another thirty years."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. In 1994, the German archaeologist Klaus Schmidt, who had worked at a similar site called Nevalı Çori, re-examined the hill."
+        },
+        {
+          "s": "A",
+          "t": "He realised that under the soil there was something monumental. Excavations began the following year, with the Şanlıurfa Museum and the German Archaeological Institute."
+        },
+        {
+          "s": "B",
+          "t": "And what they found surprised everyone."
+        }
+      ]
+    },
+    {
+      "heading": "11,500 Years Ago",
+      "image_queries": [
+        "Göbekli Tepe enclosure",
+        "Göbekli Tepe T-shaped pillar",
+        "Stonehenge"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How old are these structures, exactly?"
+        },
+        {
+          "s": "A",
+          "t": "Radiocarbon dating shows the earliest structures were built between 9500 and 9000 BCE. That's roughly eleven and a half thousand years ago."
+        },
+        {
+          "s": "A",
+          "t": "The site was expanded over the following centuries and used until at least 8000 BCE."
+        },
+        {
+          "s": "B",
+          "t": "Let's put that in perspective. Stonehenge is about five thousand years old. The pyramids, about four and a half thousand."
+        },
+        {
+          "s": "A",
+          "t": "Göbekli Tepe was built before writing, before the wheel, before metal, and even before pottery. That's why archaeologists call this period the Pre-Pottery Neolithic."
+        },
+        {
+          "s": "B",
+          "t": "So these people were hunter-gatherers."
+        },
+        {
+          "s": "A",
+          "t": "Largely, yes. The hill was surrounded by open grassland with wild wheat and barley, and herds of gazelle, wild sheep and wild donkeys."
+        },
+        {
+          "s": "B",
+          "t": "How do we know the dates are right?"
+        },
+        {
+          "s": "A",
+          "t": "The first samples were confusing. Soil from inside the structures gave dates five hundred to a thousand years younger than expected."
+        },
+        {
+          "s": "A",
+          "t": "So researchers dated organic material trapped in the plaster of the walls instead. That method confirmed the structures really were built very early."
+        }
+      ]
+    },
+    {
+      "heading": "The Giant T-Shaped Pillars",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Göbekli Tepe pillar relief",
+        "Göbekli Tepe fox relief",
+        "Şanlıurfa Archaeology Museum Göbekli Tepe"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What do these structures look like?"
+        },
+        {
+          "s": "A",
+          "t": "Picture large round or oval enclosures. Set into their walls are T-shaped limestone pillars."
+        },
+        {
+          "s": "A",
+          "t": "In the centre of each enclosure stand two larger pillars facing each other. In Enclosure D, the central pillars are about five and a half metres tall."
+        },
+        {
+          "s": "B",
+          "t": "Why the T shape?"
+        },
+        {
+          "s": "A",
+          "t": "The excavators believe the pillars represent people. Some have arms and hands carved along their sides, and belts and loincloths."
+        },
+        {
+          "s": "A",
+          "t": "So the top of the T is the head, and the shaft is the body. Giant, stylised human figures."
+        },
+        {
+          "s": "B",
+          "t": "What else is carved on them?"
+        },
+        {
+          "s": "A",
+          "t": "A whole bestiary. Snakes, foxes, wild boars, gazelles, wild sheep, ducks, scorpions, and especially vultures."
+        },
+        {
+          "s": "A",
+          "t": "Different enclosures favour different animals. Snakes dominate in Enclosure A, foxes in Enclosure B. A later building even has lion reliefs."
+        },
+        {
+          "s": "B",
+          "t": "All carved without metal tools."
+        },
+        {
+          "s": "A",
+          "t": "With stone tools, in relief and engraving. Some floors were even made of burnt lime, hardened into a polished surface."
+        }
+      ]
+    },
+    {
+      "heading": "Temple or Village?",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Göbekli Tepe",
+        "Göbekli Tepe enclosure D",
+        "Göbekli Tepe cistern"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Göbekli Tepe is often called the world's first temple. Is that true?"
+        },
+        {
+          "s": "A",
+          "t": "That idea comes from Klaus Schmidt. He believed it was a ritual centre where hunter-gatherer groups from across the region gathered at certain times."
+        },
+        {
+          "s": "A",
+          "t": "In his view, they met here, held great feasts, built together, and then scattered again."
+        },
+        {
+          "s": "A",
+          "t": "Large numbers of butchered animal bones, gazelle, wild boar and deer, seemed to support this. Gazelles were only around seasonally, which suggests gatherings at particular times of year."
+        },
+        {
+          "s": "A",
+          "t": "Schmidt even summed it up in a famous line: first came the temple, then the city."
+        },
+        {
+          "s": "B",
+          "t": "That's a powerful idea."
+        },
+        {
+          "s": "A",
+          "t": "It is. But findings published in 2019 changed the picture. Excavators found houses, extensive cereal processing, and tools of everyday life."
+        },
+        {
+          "s": "A",
+          "t": "There are also cisterns cut into the bedrock that could collect at least one hundred and fifty cubic metres of rainwater."
+        },
+        {
+          "s": "B",
+          "t": "So people actually lived here."
+        },
+        {
+          "s": "A",
+          "t": "That's the newer interpretation. Today, researchers discuss Göbekli Tepe as a settlement that also had monumental buildings, not just a sanctuary for visiting nomads."
+        },
+        {
+          "s": "A",
+          "t": "What the pillared enclosures were really used for is still not known for certain. That's the honest answer."
+        }
+      ]
+    },
+    {
+      "heading": "How Many People Did It Take?",
+      "image_queries": [
+        "Göbekli Tepe quarry",
+        "Göbekli Tepe pillar",
+        "Göbekli Tepe excavation"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Cutting, moving and raising pillars that heavy must have needed a lot of people."
+        },
+        {
+          "s": "A",
+          "t": "Schmidt's team thought so. They estimated that at least five hundred people were needed to quarry the pillars, move them nearly half a kilometre, and build the enclosures."
+        },
+        {
+          "s": "A",
+          "t": "But later experiments at the site gave a very different answer. They suggested that all of the later structures uncovered so far could have been built by twelve to twenty-four people in less than four months."
+        },
+        {
+          "s": "B",
+          "t": "That's a huge difference."
+        },
+        {
+          "s": "A",
+          "t": "And both are part of a genuine scientific debate. What is certain is that these people knew how to cut pillars from the bedrock and set them upright."
+        },
+        {
+          "s": "A",
+          "t": "The buildings were often damaged by landslides, then repaired or rebuilt. Enclosure D was eventually filled with rubble by one of those slides."
+        },
+        {
+          "s": "B",
+          "t": "So it wasn't built once and forgotten."
+        },
+        {
+          "s": "A",
+          "t": "No. Over centuries, walls were added, spaces were changed, and some enclosures were made smaller. It was a place that was lived in and reshaped for a very long time."
+        }
+      ]
+    },
+    {
+      "heading": "The Stone Hills Today",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Karahan Tepe",
+        "Göbekli Tepe protective roof",
+        "Göbekli Tepe visitor center"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Is Göbekli Tepe unique?"
+        },
+        {
+          "s": "A",
+          "t": "For a long time it seemed to be. But after detailed work at nearby Karahan Tepe in 2019, it became clear there are many similar sites in the region."
+        },
+        {
+          "s": "A",
+          "t": "In 2021 this group of sites was named Taş Tepeler, the Stone Hills. Nevalı Çori, Hamzan Tepe and Sefer Tepe are among the places with the same kind of pillars."
+        },
+        {
+          "s": "B",
+          "t": "How much of Göbekli Tepe has been excavated?"
+        },
+        {
+          "s": "A",
+          "t": "As of 2021, only about ten percent. Geophysical surveys suggest there are at least twenty large enclosures inside the mound."
+        },
+        {
+          "s": "A",
+          "t": "In 2018 it became a UNESCO World Heritage Site, recognised as one of the first manifestations of human-made monumental architecture."
+        },
+        {
+          "s": "A",
+          "t": "Klaus Schmidt died in 2014. Excavations continue as a joint project of Istanbul University, the Şanlıurfa Museum and the German Archaeological Institute, led by the Turkish prehistorian Necmi Karul."
+        },
+        {
+          "s": "B",
+          "t": "And it has become a major destination."
+        },
+        {
+          "s": "A",
+          "t": "In 2024, about seven hundred and nine thousand people visited the site."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "city": "Şanlıurfa",
+      "image_queries": [
+        "Göbekli Tepe",
+        "Göbekli Tepe pillar"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So, eleven and a half thousand years ago, people without pottery carved and raised five-metre stones."
+        },
+        {
+          "s": "A",
+          "t": "And we have only seen a small part of the hill. More than twenty enclosures are still waiting under the soil."
+        },
+        {
+          "s": "B",
+          "t": "To me the real question is: why did they build them?"
+        },
+        {
+          "s": "A",
+          "t": "What do you think? A temple, a gathering place, or the heart of a village? Tell us in the comments."
+        },
+        {
+          "s": "B",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

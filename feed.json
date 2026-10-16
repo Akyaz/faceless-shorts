@@ -482,5 +482,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T12:45:50Z",
+  "run": "38902431579",
+  "event": "workflow_dispatch",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38902431579",
+  "videos": [
+   {
+    "title": "Ramesses II Statues Found After Egyptian Man Spots Carved Stone",
+    "url": null
+   }
+  ]
  }
 ]

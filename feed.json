@@ -510,5 +510,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T15:39:51Z",
+  "run": "38925287843",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38925287843",
+  "videos": [
+   {
+    "title": "Napolyon'un Şifresi ve Yapay Zekayla Dönüş | Bilim Özeti",
+    "url": null
+   }
+  ]
  }
 ]

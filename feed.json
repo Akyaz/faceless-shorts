@@ -566,5 +566,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T20:11:48Z",
+  "run": "38960235262",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38960235262",
+  "videos": [
+   {
+    "title": "İstanbul'da Sağanak Yağış Alarmı: Turuncu Alarm Verildi",
+    "url": null
+   }
+  ]
  }
 ]

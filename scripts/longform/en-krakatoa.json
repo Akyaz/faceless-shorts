@@ -1,0 +1,415 @@
+{
+  "lang": "en",
+  "topic": "1883 eruption of Krakatoa",
+  "era": "1883, Dutch East Indies",
+  "country": "Indonesia",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
+  "description": "In August 1883 a volcano in the Sunda Strait produced the loudest sound ever recorded. It was heard 4,800 kilometres away, its pressure wave circled the planet several times, and its ash turned sunsets red around the world. Here is what happened, hour by hour, and how we know.",
+  "hashtags": [
+    "krakatoa",
+    "history",
+    "volcano"
+  ],
+  "tags": [
+    "krakatoa",
+    "krakatau",
+    "1883",
+    "loudest sound",
+    "volcano",
+    "history",
+    "documentary",
+    "indonesia"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "1883 eruption of Krakatoa, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa"
+    },
+    {
+      "title": "The Sound So Loud That It Circled the Earth Four Times, Nautilus",
+      "url": "https://nautil.us/the-sound-so-loud-that-it-circled-the-earth-four-times-235101/"
+    },
+    {
+      "title": "Loudest recorded noise, BBC Wildlife (Discover Wildlife)",
+      "url": "https://www.discoverwildlife.com/environment/loudest-recorded-noise"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Krakatoa eruption 1883",
+        "Krakatau volcano",
+        "Sunda Strait"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, what's the loudest thing you've ever heard?"
+        },
+        {
+          "s": "B",
+          "t": "Probably a jet taking off. Or fireworks right over my head."
+        },
+        {
+          "s": "A",
+          "t": "Now imagine a sound so loud that people heard it nearly five thousand kilometres away, and thought it was cannon fire."
+        },
+        {
+          "s": "B",
+          "t": "Five thousand kilometres? That's further than from London to Cairo."
+        },
+        {
+          "s": "A",
+          "t": "And the pressure wave from that sound travelled around the entire planet. More than three times."
+        },
+        {
+          "s": "B",
+          "t": "That can't be real."
+        },
+        {
+          "s": "A",
+          "t": "It's one of the best documented events of the nineteenth century. Instruments on several continents recorded it. It happened on the twenty-seventh of August, 1883."
+        },
+        {
+          "s": "B",
+          "t": "Krakatoa."
+        },
+        {
+          "s": "A",
+          "t": "Krakatoa. And the sound was only the beginning of the story."
+        }
+      ]
+    },
+    {
+      "heading": "A Volcano Wakes Up",
+      "image_queries": [
+        "Krakatoa 1883",
+        "Krakatau island",
+        "Sunda Strait"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Where exactly is Krakatoa?"
+        },
+        {
+          "s": "A",
+          "t": "It's a volcanic island in the Sunda Strait, between Java and Sumatra. In 1883 the area was part of the Dutch East Indies, today's Indonesia."
+        },
+        {
+          "s": "A",
+          "t": "In the years before the eruption, the region was shaking. Earthquakes were felt as far away as northern Australia."
+        },
+        {
+          "s": "B",
+          "t": "So there were warning signs."
+        },
+        {
+          "s": "A",
+          "t": "There were. On the twentieth of May, 1883, the island started venting steam and ash from Perboewatan, the northernmost of its three cones."
+        },
+        {
+          "s": "A",
+          "t": "Ash rose about six kilometres into the sky. Explosions were heard in Batavia, today's Jakarta, around one hundred and sixty kilometres away. Windows and doors rattled."
+        },
+        {
+          "s": "B",
+          "t": "Did anyone go and take a look?"
+        },
+        {
+          "s": "A",
+          "t": "Yes. A small excursion party visited the island on the twenty-sixth of May. They found it covered in fine white ash."
+        },
+        {
+          "s": "A",
+          "t": "Through June and July new vents opened, and the eruptions grew stronger. Ships began reporting large masses of floating pumice in the Indian Ocean."
+        },
+        {
+          "s": "B",
+          "t": "And nobody evacuated?"
+        },
+        {
+          "s": "A",
+          "t": "For weeks it looked like an ordinary, if noisy, eruption. Nobody knew what was building up beneath the island."
+        }
+      ]
+    },
+    {
+      "heading": "The Final Day",
+      "image_queries": [
+        "Krakatoa eruption lithograph",
+        "Krakatoa 1883 eruption",
+        "volcanic ash cloud"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "By the twenty-fifth of August, the eruptions were intensifying. At about one in the afternoon on the twenty-sixth, the volcano entered its climactic phase."
+        },
+        {
+          "s": "A",
+          "t": "By two o'clock, a black ash cloud stood twenty-seven kilometres high. Explosions came roughly every ten minutes. By five, they could be heard all over Java."
+        },
+        {
+          "s": "B",
+          "t": "And then came the twenty-seventh."
+        },
+        {
+          "s": "A",
+          "t": "On the morning of the twenty-seventh, a series of eleven enormous explosions marked the climax of the eruption. The first came at five thirty in the morning."
+        },
+        {
+          "s": "A",
+          "t": "The third explosion, at two minutes past ten, is the one that made history. It remains the loudest sound ever known."
+        },
+        {
+          "s": "B",
+          "t": "What happened to the island itself?"
+        },
+        {
+          "s": "A",
+          "t": "More than seventy percent of the island and its surrounding archipelago was destroyed. The island collapsed into a caldera, a huge basin, as the magma chamber beneath it emptied."
+        },
+        {
+          "s": "A",
+          "t": "Scientists rate the eruption at six on the Volcanic Explosivity Index. That makes it one of the deadliest and most destructive volcanic events in recorded history."
+        },
+        {
+          "s": "B",
+          "t": "How fast was all of this happening?"
+        },
+        {
+          "s": "A",
+          "t": "Verbeek and other researchers believe the final major eruption was a sideways blast. Material shot out of the volcano at about two and a half thousand kilometres per hour."
+        },
+        {
+          "s": "A",
+          "t": "Hot ash and gas raced across the surrounding sea, reaching parts of the Sunda Strait and the coast of Sumatra."
+        }
+      ]
+    },
+    {
+      "heading": "The Loudest Sound",
+      "image_queries": [
+        "barograph",
+        "Batavia 1880s",
+        "Rodrigues island"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Let's talk about the sound. How far away did people really hear it?"
+        },
+        {
+          "s": "A",
+          "t": "In Perth, Western Australia, three thousand one hundred kilometres away, people heard it. On the island of Rodrigues, near Mauritius, almost four thousand eight hundred kilometres away, officials thought it was the distant roar of heavy guns."
+        },
+        {
+          "s": "B",
+          "t": "And closer to the volcano?"
+        },
+        {
+          "s": "B",
+          "t": "Wait. If it was that far away, when did they actually hear it?"
+        },
+        {
+          "s": "A",
+          "t": "Sound travels at a limited speed. On those distant islands, people probably heard Krakatoa around four hours after the explosion."
+        },
+        {
+          "s": "A",
+          "t": "A British ship, the Norham Castle, was about sixty-four kilometres away. The blast ruptured the eardrums of sailors on board."
+        },
+        {
+          "s": "A",
+          "t": "In Batavia, one hundred and sixty kilometres away, the pressure gauge at the city's gasworks shot up so fast it went off the scale. The air wave burst windows and cracked walls."
+        },
+        {
+          "s": "B",
+          "t": "That's how they could measure it."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Calculations based on that reading put the sound at about one hundred and eighty decibels, a hundred and sixty kilometres from the volcano."
+        },
+        {
+          "s": "A",
+          "t": "And then something remarkable showed up in weather stations around the world. Barographs, instruments that record air pressure, picked up a sudden jump."
+        },
+        {
+          "s": "B",
+          "t": "The same wave?"
+        },
+        {
+          "s": "A",
+          "t": "The same wave, passing again and again. Several barographs recorded it seven times as it travelled back and forth around the planet. In total, it circled the globe more than three times."
+        }
+      ]
+    },
+    {
+      "heading": "The Waves",
+      "image_queries": [
+        "Anyer",
+        "Sunda Strait coast",
+        "Krakatoa tsunami 1883"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "The sound was terrifying, but it wasn't what caused most of the damage, was it?"
+        },
+        {
+          "s": "A",
+          "t": "No. As the island collapsed, it pushed enormous volumes of water into the sea. The resulting tsunamis were estimated to be more than thirty metres high in places."
+        },
+        {
+          "s": "A",
+          "t": "They struck the coasts of Java and Sumatra on both sides of the strait. Towns and villages along the shore were swept away."
+        },
+        {
+          "s": "B",
+          "t": "How many people died?"
+        },
+        {
+          "s": "A",
+          "t": "At least thirty-six thousand four hundred and seventeen deaths are attributed to the eruption and the tsunamis it created. Most of them were caused by the waves."
+        },
+        {
+          "s": "A",
+          "t": "On Sumatra, flows of hot ash and gas also crossed the water. About a thousand people died in an area that became known as the Burning Ashes of Ketimbang."
+        },
+        {
+          "s": "B",
+          "t": "Some places never recovered."
+        },
+        {
+          "s": "A",
+          "t": "Part of the land in Banten, about eighty kilometres south, was never repopulated. It returned to jungle, and today it is part of Ujung Kulon National Park."
+        }
+      ]
+    },
+    {
+      "heading": "A Planet Changes Colour",
+      "image_queries": [
+        "William Ascroft Krakatoa sunset",
+        "red sunset sky",
+        "Bishop's ring"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "You said the effects were felt worldwide. In what way?"
+        },
+        {
+          "s": "A",
+          "t": "The ash and gases spread high in the atmosphere. Ash fell two and a half thousand kilometres away, and the sky darkened around the world for years."
+        },
+        {
+          "s": "A",
+          "t": "For months, sunsets were spectacularly red. In New York, Poughkeepsie and New Haven, fire engines were called out because people thought the glow on the horizon was a huge fire."
+        },
+        {
+          "s": "B",
+          "t": "That's incredible."
+        },
+        {
+          "s": "A",
+          "t": "In England, the artist William Ascroft made thousands of colour sketches of those strange sunsets, half a world away from the volcano."
+        },
+        {
+          "s": "A",
+          "t": "People also saw a ring of light around the sun during the day, now called a Bishop's Ring, and a purple glow at twilight."
+        },
+        {
+          "s": "B",
+          "t": "Did it change the weather too?"
+        },
+        {
+          "s": "A",
+          "t": "It caused a volcanic winter. In the year after the eruption, average summer temperatures in the Northern Hemisphere fell by about zero point four degrees Celsius."
+        },
+        {
+          "s": "A",
+          "t": "The earthquakes connected to the eruption even moved enough mass to shift the Earth's figure axis by roughly seventeen centimetres."
+        },
+        {
+          "s": "A",
+          "t": "There is even a hypothesis, proposed by an astronomer in 2004, that the blood red sky in Edvard Munch's painting The Scream was inspired by these sunsets. It is a theory, not a proven fact."
+        }
+      ]
+    },
+    {
+      "heading": "News at Telegraph Speed",
+      "image_queries": [
+        "telegraph 1880s",
+        "Krakatoa 1883 illustration",
+        "Batavia harbour"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How did the rest of the world find out?"
+        },
+        {
+          "s": "A",
+          "t": "This is one of the reasons Krakatoa is so famous. By 1883 telegraph cables already connected much of the world."
+        },
+        {
+          "s": "A",
+          "t": "News of the eruption spread faster than earlier major events, such as the assassination of Abraham Lincoln."
+        },
+        {
+          "s": "B",
+          "t": "So it became one of the first truly global news stories."
+        },
+        {
+          "s": "A",
+          "t": "Yes. And because instruments in many countries recorded the same pressure wave, scientists could study one eruption with measurements from around the world."
+        },
+        {
+          "s": "A",
+          "t": "The Dutch engineer Rogier Verbeek led a detailed investigation. Seismic activity continued until February 1884, but his study concluded that later reports were not linked to the eruption."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "Krakatau volcano",
+        "Sunda Strait"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So, in one morning, a volcanic island disappeared, a sound crossed oceans, and sunsets changed colour around the world."
+        },
+        {
+          "s": "A",
+          "t": "And tens of thousands of people lost their lives. It is a reminder of how much power sits beneath our feet."
+        },
+        {
+          "s": "B",
+          "t": "What surprised you the most? The sound, the waves, or the red skies over New York?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

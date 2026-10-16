@@ -1,20 +1,22 @@
-# Yayın sırası: her gün 21:00'de sıradaki yayınlanmamış dosya üretilip yüklenir
+# Yayın sırası: her gün 21:00'de sıradaki yayınlanmamış dosya üretilip yüklenir.
+# Türkçe ve İngilizce sırayla; aynı konunun iki dili arka arkaya gelmesin.
 scripts/longform/tr-gobeklitepe.json
 scripts/longform/en-krakatoa.json
 scripts/longform/tr-istanbulun-fethi.json
 scripts/longform/en-pompeii.json
 scripts/longform/tr-kades-antlasmasi.json
-scripts/longform/en-gobekli-tepe.json
-scripts/longform/en-fall-of-constantinople.json
-scripts/longform/tr-piri-reis.json
-scripts/longform/tr-truva.json
-scripts/longform/en-bronze-age-collapse.json
 scripts/longform/en-titanic.json
+scripts/longform/tr-piri-reis.json
+scripts/longform/en-bronze-age-collapse.json
+scripts/longform/tr-truva.json
+scripts/longform/en-gobekli-tepe.json
 scripts/longform/tr-malazgirt.json
 scripts/longform/en-antikythera.json
-scripts/longform/en-mansa-musa.json
-scripts/longform/en-library-of-alexandria.json
-scripts/longform/en-hannibal.json
 scripts/longform/tr-derinkuyu.json
+scripts/longform/en-mansa-musa.json
 scripts/longform/tr-mimar-sinan.json
+scripts/longform/en-library-of-alexandria.json
 scripts/longform/tr-preveze.json
+scripts/longform/en-hannibal.json
+scripts/longform/tr-kapalicarsi.json
+scripts/longform/en-fall-of-constantinople.json

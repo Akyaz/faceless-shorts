@@ -1,0 +1,377 @@
+{
+  "lang": "tr",
+  "topic": "Kapalıçarşı",
+  "era": "1455'ten bugüne, Osmanlı İstanbulu",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "umutlu",
+  "title": "Kapalıçarşı: 570 Yıllık Dev Çarşının Bilinmeyen Hikâyesi",
+  "description": "Fetihten hemen sonra, 1455-56 kışında, II. Mehmed kumaş ve mücevher ticareti için bir bedesten yaptırdı. Etrafında zamanla 61 sokaklı, 4.000'i aşkın dükkânlı bir çarşı büyüdü. Gece kapıları kilitlenen, esnaf loncalarının bekçi tuttuğu, defalarca yanıp yeniden kurulan Kapalıçarşı'nın hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "kapalıçarşı",
+    "istanbul",
+    "tarih"
+  ],
+  "tags": [
+    "kapalıçarşı",
+    "grand bazaar",
+    "istanbul",
+    "bedesten",
+    "fatih sultan mehmed",
+    "osmanlı",
+    "çarşı",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Grand Bazaar, Istanbul, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Grand_Bazaar,_Istanbul"
+    },
+    {
+      "title": "Kapalıçarşı, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Kapal%C4%B1%C3%A7ar%C5%9F%C4%B1"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar Istanbul",
+        "Grand Bazaar Istanbul interior",
+        "Kapalıçarşı"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, her gün yüz binlerce kişinin girip çıktığı, beş yüz yılı aşkın süredir ticaret yapılan bir yapı düşün."
+        },
+        {
+          "s": "B",
+          "t": "Bir alışveriş merkezi gibi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Bazı kaynaklar onu dünyanın ilk alışveriş merkezlerinden biri olarak görüyor. Altmış bir kapalı sokak, dört binden fazla dükkân."
+        },
+        {
+          "s": "B",
+          "t": "Kapalıçarşı."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ama Kapalıçarşı her zaman bu kadar büyük, hatta her zaman kapalı değildi. Hikâyesi tek bir binayla başlıyor."
+        },
+        {
+          "s": "B",
+          "t": "O zaman o binadan başlayalım."
+        }
+      ]
+    },
+    {
+      "heading": "Fetihten Sonra İlk Taş",
+      "city": "Istanbul",
+      "image_queries": [
+        "Cevahir Bedesten",
+        "Grand Bazaar old bedesten",
+        "Fatih Sultan Mehmed portrait"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "İstanbul'un fethinden kısa süre sonra, 1455-56 kışında, II. Mehmed şehrin ekonomisini canlandırmak için geniş bir girişim başlattı."
+        },
+        {
+          "s": "A",
+          "t": "Bunun bir parçası olarak sarayının yakınında kumaş ve mücevher ticaretine ayrılmış bir yapı yaptırdı. Adı Cevâhir Bedesteni'ydi, yani mücevherlerin bedesteni."
+        },
+        {
+          "s": "B",
+          "t": "Bedesten ne demek?"
+        },
+        {
+          "s": "A",
+          "t": "Farsça bezestan kelimesinden geliyor. Bez, yani kumaş kelimesinden türemiş; kumaş satıcılarının pazarı anlamına geliyor. Bu yapı bugün İç Bedesten, Eski Bedesten ya da Antik Bedesten olarak da biliniyor."
+        },
+        {
+          "s": "B",
+          "t": "Kuruluş yılı olarak neden 1460 da söylenir?"
+        },
+        {
+          "s": "A",
+          "t": "Türkçe kaynaklarda inşaatın başladığı yıl olarak 1460 kabul ediliyor. Yani tarihler kaynağa göre birkaç yıl değişebiliyor."
+        },
+        {
+          "s": "A",
+          "t": "Kapalıçarşı, İstanbul'un üçüncü tepesinin yamacında, bugün Beyazıt ile Nuruosmaniye camileri arasındaki alanda uzanıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Bizans'tan Kalan İzler",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar Kuyumcular gate",
+        "Byzantine eagle relief",
+        "Forum of Constantine Istanbul"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bu bölge daha önce de ticaret yeri miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bizans döneminde de buralar önemli bir pazar alanıydı. Yakındaki Uzun Çarşı, Bizans'ın Makros Embolos denen uzun revaklı çarşısına karşılık geliyor."
+        },
+        {
+          "s": "A",
+          "t": "Bu çarşı, Konstantin Forumu'ndan Haliç'e doğru inen, şehrin ana ticaret alanlarından biriydi."
+        },
+        {
+          "s": "B",
+          "t": "Bedestenin kendisi Bizans yapısı olabilir mi?"
+        },
+        {
+          "s": "A",
+          "t": "Bazı araştırmacılar bunu tartıştı. İç Bedesten'in doğu kapısı Kuyumcular Kapısı'nın üstünde hâlâ Bizans dönemine ait bir kartal kabartması duruyor. Ama yapının on beşinci yüzyılda Osmanlılar tarafından inşa edildiği genel kabul görüyor."
+        },
+        {
+          "s": "A",
+          "t": "Bedestenin yakınındaki Esir Pazarı'nda köle ticareti yapılıyordu. Bu kullanım da Bizans döneminden devralınmıştı."
+        }
+      ]
+    },
+    {
+      "heading": "Bir Çarşı Mahallesi Doğuyor",
+      "city": "Istanbul",
+      "image_queries": [
+        "Sandal Bedesten",
+        "Grand Bazaar street",
+        "Grand Bazaar 19th century"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Tek bir binadan nasıl dev bir çarşı oluştu?"
+        },
+        {
+          "s": "A",
+          "t": "Kendiliğinden. Bir süre sonra ikinci bir kapalı çarşı yapıldı: Sandal Bedesteni. Adını Bursa'da dokunan, sandal ağacı renginde bir iplikten alıyor."
+        },
+        {
+          "s": "A",
+          "t": "Bu ikinci bedestenin kim tarafından yapıldığı da tartışmalı. Bazı kaynaklar II. Mehmed diyor, bazıları 1545'te Kanuni Sultan Süleyman."
+        },
+        {
+          "s": "B",
+          "t": "Ve sonra?"
+        },
+        {
+          "s": "A",
+          "t": "On altıncı yüzyılda yaşayan Fransız gezgin Pierre Gilles'e göre bedestenler başlangıçta ayrı duruyordu; aralarında kilise kalıntıları ve büyük bir sarnıç vardı."
+        },
+        {
+          "s": "A",
+          "t": "Ama kısa süre içinde pek çok satıcı bu yapıların arasında ve çevresinde dükkân açtı. Böylece tamamen ticarete ayrılmış koca bir mahalle doğdu."
+        },
+        {
+          "s": "A",
+          "t": "On yedinci yüzyılın başında Kapalıçarşı son şeklini almıştı."
+        }
+      ]
+    },
+    {
+      "heading": "Üç Kıtanın Malları",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar carpets",
+        "Grand Bazaar jewellery",
+        "Ottoman merchants painting"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Çarşı neden bu kadar zenginleşti?"
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklar bunu Osmanlı İmparatorluğu'nun büyüklüğüne bağlıyor. Üç kıtaya yayılan bir imparatorluk ve onun ticaret yolları, mallarını İstanbul'a, özellikle de bu çarşıya taşıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Avrupalı gezginlerin tarifine göre çarşının kare biçiminde bir planı vardı. Ortada birbirini dik kesen iki ana yol, dışarıda da çevreyi dolaşan üçüncü bir yol."
+        },
+        {
+          "s": "A",
+          "t": "Çarşıda altmış yedi yol vardı ve her biri orada satılan malın satıcılarının adını taşıyordu. Bugün İç Bedesten'in doğu kapısına verilen Kuyumcular Kapısı adı da bu geleneğin izini taşıyor."
+        },
+        {
+          "s": "B",
+          "t": "Bugün sokak sayısı altmış bir deniyor, bazı kaynaklar altmış altı diyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet, sayılar kaynağa ve neyin sokak sayıldığına göre değişiyor. Ama hepsi aynı şeyi anlatıyor: bir binadan başlayıp şehir içinde bir şehre dönüşen bir çarşı."
+        },
+        {
+          "s": "B",
+          "t": "Türkçe kaynaklar bir de Kanuni dönemine dikkat çekiyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Türkçe kaynaklara göre asıl büyük çarşıyı, ahşap olarak Kanuni Sultan Süleyman inşa ettirdi. Yani bugünkü dev yapının temelleri on altıncı yüzyılda atıldı."
+        }
+      ]
+    },
+    {
+      "heading": "Gece Kapanan Şehir",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar gate",
+        "Grand Bazaar Istanbul night",
+        "Ottoman guild"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Çarşının kendi kuralları var mıydı?"
+        },
+        {
+          "s": "A",
+          "t": "Çok sıkı kuralları vardı. Kapılar her gece kapatılıyordu ve çarşı, esnaf loncalarının ücretini ödediği bekçiler tarafından korunuyordu."
+        },
+        {
+          "s": "A",
+          "t": "Gece çarşıya girmek için padişahın fermanı gerekiyordu."
+        },
+        {
+          "s": "B",
+          "t": "Hiç gece açıldığı olmadı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Tarihinde resmî olarak tek bir kez: 1867'de, Sultan Abdülaziz'in Mısır dönüşü için düzenlenen kutlamalarda. Padişah, ışıklarla süslenmiş çarşının içinden geçti."
+        },
+        {
+          "s": "A",
+          "t": "Avrupalı gezginlerin anlattıklarına göre on dokuzuncu yüzyılın ilk yarısına kadar çarşı, ürünlerinin bolluğu, çeşitliliği ve kalitesi bakımından Avrupa'da rakipsizdi. Her sokak, orada satılan ürünün adını taşıyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Yangınlar ve Depremler",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar 1894 earthquake",
+        "Sahaflar Çarşısı",
+        "Beyazıt Mosque"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bu kadar eski bir yapı nasıl ayakta kaldı?"
+        },
+        {
+          "s": "A",
+          "t": "Kaldı, ama defalarca yanarak ve yıkılarak. İlk büyük yangın 1515'te oldu, sonra 1548'de. Ardından 1588, 1618, 1645, 1652, 1658, 1660, 1687 ve 1688'de yeni yangınlar geldi. 1618 yangınında Bit Pazarı yok oldu, 1660 yangınında ise bütün şehir harap oldu."
+        },
+        {
+          "s": "B",
+          "t": "Bu kadar yangına rağmen her seferinde yeniden kurulması inanılmaz."
+        },
+        {
+          "s": "A",
+          "t": "Çünkü çarşı sadece bir bina değildi; binlerce esnafın geçimi, şehrin ekonomik kalbiydi. Yıkıldıkça yeniden yapıldı."
+        },
+        {
+          "s": "A",
+          "t": "1894 İstanbul depremi de çarşıya büyük zarar verdi. Bugün Beyazıt Camii'nin yanındaki Sahaflar Çarşısı, yani kitapçılar, ancak bu depremden sonra bugünkü yerine taşındı."
+        },
+        {
+          "s": "B",
+          "t": "Ve yakın tarihte?"
+        },
+        {
+          "s": "A",
+          "t": "Son yangınlar 1943 ve 1954'te yaşandı. Ardından yapılan onarımlar 1959'da tamamlandı. Son büyük restorasyon 1980'de yapıldı; o sırada çarşının etrafındaki reklam afişleri de kaldırıldı."
+        }
+      ]
+    },
+    {
+      "heading": "Bugün Kapalıçarşı",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar Istanbul",
+        "Grand Bazaar Istanbul shops",
+        "Grand Bazaar lamps"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bugün nasıl bir yer?"
+        },
+        {
+          "s": "A",
+          "t": "Dünyanın en büyük ve en eski kapalı çarşılarından biri. Otuz bin yedi yüz metrekarelik bir alanda altmış bir kapalı sokak ve dört binden fazla dükkân var."
+        },
+        {
+          "s": "A",
+          "t": "Her gün iki yüz elli bin ile dört yüz bin arasında ziyaretçi ağırlıyor. 2014'te yıllık doksan bir milyonu aşan ziyaretçiyle dünyanın en çok ziyaret edilen turistik yeri olarak listelendi."
+        },
+        {
+          "s": "B",
+          "t": "Ve hâlâ İç Bedesten merkezde."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Yaklaşık kırk üç metreye otuz metrelik dikdörtgen bir yapı. Beş yüz yılı aşkın süredir aynı işi yapıyor: ticaret."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Istanbul",
+      "image_queries": [
+        "Grand Bazaar Istanbul interior",
+        "Kapalıçarşı"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: fetihten sonra yapılan tek bir bedesten, onun etrafında büyüyen bir ticaret mahallesi, gece kilitlenen kapılar ve defalarca yeniden kurulan bir çarşı."
+        },
+        {
+          "s": "A",
+          "t": "Bence Kapalıçarşı'yı özel kılan, bir müze değil, hâlâ yaşayan bir yer olması. Beş yüz yıl önce kurulan bir sistem, bugün de aynı işi yapıyor."
+        },
+        {
+          "s": "B",
+          "t": "Ve her yangından, her depremden sonra yeniden açılan dükkânlar. Bu çarşı, İstanbul'un dayanıklılığının da bir simgesi."
+        },
+        {
+          "s": "A",
+          "t": "Ve beş yüz yıl sonra hâlâ aynı yerde, aynı ses ve aynı kalabalık."
+        },
+        {
+          "s": "B",
+          "t": "Sen Kapalıçarşı'ya gittiğinde ilk hangi sokağa girersin? Kuyumcular mı, halıcılar mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

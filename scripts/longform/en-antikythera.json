@@ -1,0 +1,370 @@
+{
+  "lang": "en",
+  "topic": "Antikythera mechanism",
+  "era": "Ancient Greece, 2nd century BC",
+  "country": "Greece",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "The Antikythera Mechanism: A 2,000-Year-Old Computer Found in a Shipwreck",
+  "description": "In 1901, sponge divers pulled a corroded lump of bronze from a Roman-era shipwreck off a small Greek island. More than a century later, X-ray scans revealed gears, dials and tiny inscriptions: an ancient Greek device that could predict eclipses decades in advance. Here is how it was found, how it worked, and why nothing like it appears again for well over a thousand years.",
+  "hashtags": [
+    "antikythera",
+    "history",
+    "ancientgreece"
+  ],
+  "tags": [
+    "antikythera mechanism",
+    "ancient computer",
+    "ancient greece",
+    "archaeology",
+    "history",
+    "documentary",
+    "astronomy",
+    "shipwreck"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Antikythera mechanism, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Antikythera_mechanism"
+    },
+    {
+      "title": "Freeth et al., Decoding the ancient Greek astronomical calculator known as the Antikythera Mechanism, Nature (2006)",
+      "url": "https://www.nature.com/articles/nature05357"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Antikythera mechanism",
+        "Antikythera mechanism fragment",
+        "National Archaeological Museum Athens"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, what's the oldest computer you can think of?"
+        },
+        {
+          "s": "B",
+          "t": "Something from the 1940s? Those huge machines that filled entire rooms?"
+        },
+        {
+          "s": "A",
+          "t": "Try two thousand years older. A hand-powered device with bronze gears that could predict eclipses decades in advance."
+        },
+        {
+          "s": "B",
+          "t": "From ancient Greece? That sounds like science fiction."
+        },
+        {
+          "s": "A",
+          "t": "It's real, and you can see it today in a museum in Athens. It's called the Antikythera mechanism, and it is the oldest known example of an analogue computer."
+        },
+        {
+          "s": "B",
+          "t": "And it was found in a shipwreck, right?"
+        },
+        {
+          "s": "A",
+          "t": "By sponge divers, more than a century ago. For decades, nobody understood what they had found."
+        }
+      ]
+    },
+    {
+      "heading": "The Shipwreck",
+      "city": "Antikythera",
+      "image_queries": [
+        "Antikythera island",
+        "Antikythera shipwreck",
+        "Symi sponge divers"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How was it discovered?"
+        },
+        {
+          "s": "A",
+          "t": "In early 1900, Captain Dimitrios Kontos and a crew of sponge divers from the island of Symi discovered a wreck off the small Greek island of Antikythera."
+        },
+        {
+          "s": "A",
+          "t": "It was a Roman-era cargo ship, lying about forty-five metres deep. With help from the Greek navy, they recovered artefacts in 1900 and 1901."
+        },
+        {
+          "s": "A",
+          "t": "The wreck lay off Point Glyphadia on Antikythera. Diving at that depth with the equipment of the time was extremely dangerous work."
+        },
+        {
+          "s": "B",
+          "t": "And the mechanism was among them?"
+        },
+        {
+          "s": "A",
+          "t": "Yes, but nobody noticed it at first. It looked like a corroded lump of bronze and wood."
+        },
+        {
+          "s": "A",
+          "t": "In 1902, a Greek politician, Spyridon Stais, visiting the National Archaeological Museum in Athens, noticed that one fragment contained a gear wheel."
+        },
+        {
+          "s": "B",
+          "t": "A gear, in an ancient shipwreck."
+        },
+        {
+          "s": "A",
+          "t": "His cousin, Valerios Stais, the museum's director, began the first study of the fragment. Even then, some suspected it was an astronomical calculator."
+        }
+      ]
+    },
+    {
+      "heading": "Eighty-Two Fragments",
+      "city": "Athens",
+      "image_queries": [
+        "Antikythera mechanism fragment A",
+        "Antikythera mechanism gears",
+        "Antikythera mechanism National Archaeological Museum"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What does it actually look like?"
+        },
+        {
+          "s": "A",
+          "t": "It was found as a single lump, the remains of a wooden case roughly thirty-four by eighteen by nine centimetres, about the size of a shoebox. It later separated into three main pieces, and after conservation it is now in eighty-two separate fragments."
+        },
+        {
+          "s": "A",
+          "t": "Four of the fragments contain gears, and many others carry inscriptions. The largest gear is about thirteen centimetres across and originally had two hundred and twenty-three teeth."
+        },
+        {
+          "s": "B",
+          "t": "Two hundred and twenty-three. That number must mean something."
+        },
+        {
+          "s": "A",
+          "t": "It does, and we'll come back to it. All the fragments are kept at the National Archaeological Museum in Athens, together with reconstructions that show how the device may have worked."
+        },
+        {
+          "s": "B",
+          "t": "How old is it?"
+        },
+        {
+          "s": "A",
+          "t": "It is generally dated to the second century BC. That makes it more than two thousand years old."
+        }
+      ]
+    },
+    {
+      "heading": "Seeing Inside",
+      "image_queries": [
+        "Antikythera mechanism X-ray",
+        "Antikythera mechanism reconstruction",
+        "Antikythera mechanism model"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How did researchers figure out what it did, if it was all corroded?"
+        },
+        {
+          "s": "A",
+          "t": "Slowly. Investigations stalled for decades. Then in 1951, the British science historian Derek de Solla Price, a professor at Yale, became interested."
+        },
+        {
+          "s": "A",
+          "t": "In 1971, Price and the Greek nuclear physicist Charalampos Karakalos made X-ray and gamma-ray images of the fragments. Price published his findings in 1974."
+        },
+        {
+          "s": "B",
+          "t": "And then?"
+        },
+        {
+          "s": "A",
+          "t": "The big breakthrough came in 2005. A team from Cardiff University, led by Mike Edmunds, used computer X-ray tomography and high-resolution surface scanning."
+        },
+        {
+          "s": "A",
+          "t": "For the first time, they could see the gears inside the crust, and read faint inscriptions that once covered the outer casing. They published their results in the journal Nature in 2006."
+        },
+        {
+          "s": "B",
+          "t": "So the inscriptions were basically a user manual."
+        },
+        {
+          "s": "A",
+          "t": "In a way, yes. They describe what the dials showed. More inscriptions were deciphered in 2016."
+        },
+        {
+          "s": "B",
+          "t": "That's a century between finding it and really reading it."
+        },
+        {
+          "s": "A",
+          "t": "And the work isn't finished. Researchers are still debating details of the gear trains, and every new scan or reading adds something."
+        },
+        {
+          "s": "A",
+          "t": "That's why it is such a good example of how archaeology works: a discovery can take generations to understand."
+        }
+      ]
+    },
+    {
+      "heading": "How It Worked",
+      "image_queries": [
+        "Antikythera mechanism front dial reconstruction",
+        "Antikythera mechanism back dial",
+        "zodiac dial"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So what could it actually do?"
+        },
+        {
+          "s": "A",
+          "t": "You turned a handle, and the gears moved pointers on its dials. On the front was a ring showing the ecliptic, the path of the sun through the sky, divided into the twelve signs of the zodiac."
+        },
+        {
+          "s": "A",
+          "t": "Each sign took up an equal thirty-degree sector of the circle. That matches the Babylonian custom of giving one twelfth of the ecliptic to each sign. Greek engineering, built on Babylonian astronomy."
+        },
+        {
+          "s": "A",
+          "t": "It modelled the movements of the sun and the moon. It even reproduced the moon's changing speed, faster at some points in its orbit and slower at others."
+        },
+        {
+          "s": "B",
+          "t": "That's sophisticated."
+        },
+        {
+          "s": "A",
+          "t": "That irregular motion was studied in the second century BC by the astronomer Hipparchus of Rhodes, and he may have been consulted when the machine was designed."
+        },
+        {
+          "s": "A",
+          "t": "On the back were spiral dials. One tracked a calendar cycle. Another predicted eclipses. Remember the gear with two hundred and twenty-three teeth?"
+        },
+        {
+          "s": "B",
+          "t": "The eclipse gear?"
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Two hundred and twenty-three lunar months is an ancient eclipse cycle, known today as the Saros. The device could predict eclipses decades ahead."
+        },
+        {
+          "s": "A",
+          "t": "It could also track the four-year cycle of athletic games, including the ancient Olympic Games."
+        }
+      ]
+    },
+    {
+      "heading": "Who Built It?",
+      "image_queries": [
+        "Syracuse ancient Greek theatre",
+        "Archimedes",
+        "Rhodes ancient"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "Do we know who made it?"
+        },
+        {
+          "s": "A",
+          "t": "No. There are clues, but no name. The research team found that the calendar on one of the dials seems to come from Corinth, or one of its colonies in north-western Greece or Sicily."
+        },
+        {
+          "s": "A",
+          "t": "Syracuse in Sicily was a Corinthian colony and the home of Archimedes. In 2008 the research project suggested this might point to a connection with the school of Archimedes."
+        },
+        {
+          "s": "B",
+          "t": "Archimedes himself?"
+        },
+        {
+          "s": "A",
+          "t": "That's speculation. Archimedes died decades before the generally accepted date of the device. A connection to his tradition is possible, but not proven."
+        },
+        {
+          "s": "A",
+          "t": "There is also speculation that a missing part of the mechanism showed the positions of the five planets known at the time."
+        }
+      ]
+    },
+    {
+      "heading": "Lost Knowledge",
+      "image_queries": [
+        "medieval astronomical clock",
+        "Antikythera mechanism",
+        "ancient Greek bronze"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "Why don't we see machines like this from other periods?"
+        },
+        {
+          "s": "A",
+          "t": "That's one of the biggest mysteries. Devices of comparable complexity do not appear again until the fourteenth century, in western Europe, with astronomical clocks."
+        },
+        {
+          "s": "A",
+          "t": "Either very few were made, or the others were lost. Bronze was valuable and often melted down for reuse. This one survived only because it sank."
+        },
+        {
+          "s": "A",
+          "t": "Ancient writers did describe devices that modelled the heavens. But this is the only one of its kind that has physically survived."
+        },
+        {
+          "s": "B",
+          "t": "So a shipwreck preserved a piece of lost technology."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Divers returned to the wreck site in 2012 and 2015 and found more objects, but no second mechanism so far."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "Antikythera mechanism",
+        "Antikythera mechanism reconstruction"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So: sponge divers, a corroded lump, eighty-two fragments, and a computer that predicted eclipses two thousand years ago."
+        },
+        {
+          "s": "A",
+          "t": "And we still don't know who built it, or how many others once existed."
+        },
+        {
+          "s": "B",
+          "t": "What do you think? Was it a one-of-a-kind masterpiece, or the last survivor of a lost tradition?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

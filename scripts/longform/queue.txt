@@ -11,3 +11,4 @@ scripts/longform/tr-truva.json
 scripts/longform/en-bronze-age-collapse.json
 scripts/longform/en-titanic.json
 scripts/longform/tr-malazgirt.json
+scripts/longform/en-antikythera.json

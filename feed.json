@@ -372,20 +372,6 @@
   ]
  },
  {
-  "time": "2026-10-15T12:17:08Z",
-  "run": "38732679079",
-  "event": "schedule",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38732679079",
-  "videos": [
-   {
-    "title": "Selde Zarar Gören Araçlar İçin Süre Verildi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:02Z",
   "run": "38801187914",
   "event": "workflow_dispatch",
@@ -452,6 +438,20 @@
    {
     "title": "Fenerbahçe 6-0 Kaybetti, Arda Turan Tarih Yazdı!",
     "url": "https://youtu.be/xO0yDGOloSk"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-16T04:35:13Z",
+  "run": "38732679079",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851371208",
+  "videos": [
+   {
+    "title": "Selde Zarar Gören Araçlar İçin Süre Verildi",
+    "url": "https://youtu.be/KNFf89xPZbQ"
    }
   ]
  }

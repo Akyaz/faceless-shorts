@@ -552,5 +552,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T20:05:52Z",
+  "run": "38958714639",
+  "event": "schedule",
+  "mode": "digest",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38958714639",
+  "videos": [
+   {
+    "title": "İstanbul'da sel felaketi ve günün öne çıkan haberleri",
+    "url": null
+   }
+  ]
  }
 ]

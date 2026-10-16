@@ -1,0 +1,364 @@
+{
+  "lang": "en",
+  "topic": "Sinking of the Titanic",
+  "era": "April 1912, North Atlantic",
+  "country": "",
+  "label": "HISTORY",
+  "mood": "huzunlu",
+  "title": "Titanic: The Last 160 Minutes, and the Myths We Still Believe",
+  "description": "At 11:40 p.m. on 14 April 1912, the largest ship in the world struck an iceberg. Two hours and forty minutes later she was gone. What happened minute by minute, why so few lifeboats left full, what the band really did, and how the disaster changed safety at sea forever. Told with respect for the more than 1,500 people who died.",
+  "hashtags": [
+    "titanic",
+    "history",
+    "1912"
+  ],
+  "tags": [
+    "titanic",
+    "rms titanic",
+    "1912",
+    "titanic sinking",
+    "history",
+    "documentary",
+    "carpathia",
+    "lifeboats"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Sinking of the Titanic, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
+    },
+    {
+      "title": "Photos of the Titanic Tragedy From 101 Years Ago, Smithsonian Magazine",
+      "url": "https://www.smithsonianmag.com/history/photos-of-the-titanic-tragedy-from-101-years-ago-19446446/"
+    },
+    {
+      "title": "Titanic Inquiry Project (transcripts of the 1912 inquiries)",
+      "url": "https://titanicinquiry.org/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "RMS Titanic 1912",
+        "Titanic Southampton",
+        "Titanic photograph"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, how long do you think it took for the biggest ship in the world to sink?"
+        },
+        {
+          "s": "B",
+          "t": "A few minutes? Big ships go down fast, don't they?"
+        },
+        {
+          "s": "A",
+          "t": "Titanic took two hours and forty minutes. One hundred and sixty minutes between the iceberg and the moment she disappeared."
+        },
+        {
+          "s": "B",
+          "t": "That's a long time. Long enough to save everyone?"
+        },
+        {
+          "s": "A",
+          "t": "That's the painful question. There was time, but not enough lifeboats, and not enough of the lifeboats were filled."
+        },
+        {
+          "s": "B",
+          "t": "And there are a lot of myths about that night too."
+        },
+        {
+          "s": "A",
+          "t": "There are. So let's go through what actually happened, minute by minute, and separate the facts from the legends. With respect for the people who were there."
+        }
+      ]
+    },
+    {
+      "heading": "The Largest Ship in the World",
+      "country": "United Kingdom",
+      "city": "Southampton",
+      "image_queries": [
+        "RMS Titanic Southampton",
+        "Olympic-class ocean liner",
+        "Titanic leaving Southampton"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Let's start with the ship."
+        },
+        {
+          "s": "A",
+          "t": "When she entered service on the second of April 1912, Titanic was the largest ship in the world. She was the second of three Olympic-class liners, and almost one and a half times the size of the previous record holders."
+        },
+        {
+          "s": "A",
+          "t": "Her maiden voyage began shortly after noon on the tenth of April, from Southampton, bound for New York."
+        },
+        {
+          "s": "B",
+          "t": "Was she full?"
+        },
+        {
+          "s": "A",
+          "t": "No. She carried eight hundred and ninety-two crew and one thousand three hundred and twenty passengers. That was only about half her passenger capacity, because it was low season and a coal strike had disrupted shipping."
+        },
+        {
+          "s": "A",
+          "t": "The passengers were a cross-section of Edwardian society, from millionaires like John Jacob Astor and Benjamin Guggenheim to emigrants hoping for a new life in America."
+        },
+        {
+          "s": "B",
+          "t": "Was there any sign of trouble at the start?"
+        },
+        {
+          "s": "A",
+          "t": "Minutes after leaving Southampton, she nearly collided with another moored liner. And a fire had been burning in one of her coal bunkers since before departure. It was put out during the voyage."
+        }
+      ]
+    },
+    {
+      "heading": "11:40 p.m.",
+      "image_queries": [
+        "iceberg North Atlantic",
+        "Titanic crow's nest",
+        "Titanic bridge"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did they know there was ice ahead?"
+        },
+        {
+          "s": "A",
+          "t": "Yes. Titanic's wireless operators received seven warnings of sea ice before the night of the fourteenth of April. Yet she was travelling at about twenty-two knots."
+        },
+        {
+          "s": "A",
+          "t": "It was a clear night with no moon, and the sea was completely calm. One survivor wrote that it was like glass. With no waves breaking against the ice, the icebergs were very hard to see."
+        },
+        {
+          "s": "B",
+          "t": "And the famous missing binoculars?"
+        },
+        {
+          "s": "A",
+          "t": "Because of a mix-up at Southampton, the lookouts had none. But the darkness was so complete that binoculars probably would not have helped much."
+        },
+        {
+          "s": "A",
+          "t": "At 11:40 p.m., the lookouts Frederick Fleet and Reginald Lee spotted an iceberg. The ship could not turn fast enough."
+        },
+        {
+          "s": "B",
+          "t": "Was it a huge gash in the hull?"
+        },
+        {
+          "s": "A",
+          "t": "That's one of the myths. It was a glancing blow. It buckled the steel plates on the starboard side and opened six of her sixteen compartments to the sea."
+        },
+        {
+          "s": "A",
+          "t": "Titanic was designed to stay afloat with up to four forward compartments flooded. With six, she was doomed."
+        },
+        {
+          "s": "B",
+          "t": "Why did people believe it was a huge gash?"
+        },
+        {
+          "s": "A",
+          "t": "Robert Ballard, who later found the wreck, put it this way: nobody could believe that the great ship was sunk by a little sliver. Faults in the hull's materials may also have played a part."
+        }
+      ]
+    },
+    {
+      "heading": "Not Enough Boats",
+      "image_queries": [
+        "Titanic lifeboat",
+        "Titanic lifeboat photograph Carpathia",
+        "Titanic boat deck"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "At 12:05 a.m., Captain Edward Smith ordered the lifeboats uncovered and the passengers gathered."
+        },
+        {
+          "s": "B",
+          "t": "How many lifeboats were there?"
+        },
+        {
+          "s": "A",
+          "t": "Only enough for about half the people on board. Following the practice of the time, lifeboats were meant to ferry people to rescue ships, not to hold everyone at once."
+        },
+        {
+          "s": "A",
+          "t": "And the first boats left nearly empty. At 12:45, lifeboat number seven was rowed away with about twenty-eight people on board. Its capacity was sixty-five."
+        },
+        {
+          "s": "A",
+          "t": "The next boat, number six, also left with about twenty-eight people. Among them was Margaret Brown, later remembered as the unsinkable Molly Brown."
+        },
+        {
+          "s": "B",
+          "t": "Why so few?"
+        },
+        {
+          "s": "A",
+          "t": "In the first hour, many passengers didn't believe the ship was in danger. The tilt increased slowly, which gave a false sense of hope that she would stay afloat until help came."
+        },
+        {
+          "s": "A",
+          "t": "The crew also had little time to train. The officers and able seamen made up only around five percent of the crew, and many had joined at Southampton."
+        }
+      ]
+    },
+    {
+      "heading": "Calling for Help",
+      "image_queries": [
+        "Marconi wireless room",
+        "RMS Carpathia",
+        "SS Californian"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did they call for help?"
+        },
+        {
+          "s": "A",
+          "t": "Constantly. Distress rockets were fired every few minutes. The radio operators, Jack Phillips and Harold Bride, sent the distress call CQD again and again."
+        },
+        {
+          "s": "A",
+          "t": "Bride suggested using the newer SOS signal too, joking that it might be the last chance to send it. In fact SOS was not new. It had been used many times before."
+        },
+        {
+          "s": "B",
+          "t": "Was anyone close enough?"
+        },
+        {
+          "s": "A",
+          "t": "The closest ship was the SS Californian. She had only one wireless operator, and he had gone to bed. She missed Titanic's calls."
+        },
+        {
+          "s": "A",
+          "t": "The liner Carpathia heard the call and raced towards the position. But she was hours away."
+        }
+      ]
+    },
+    {
+      "heading": "2:20 a.m.",
+      "image_queries": [
+        "Titanic sinking painting",
+        "North Atlantic night sea",
+        "Titanic stern"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "By 1:30, the front of the ship was sinking faster. Shortly after two, water began pouring through deck hatches into parts of the ship that had stayed dry."
+        },
+        {
+          "s": "B",
+          "t": "And the band played until the end?"
+        },
+        {
+          "s": "A",
+          "t": "The band did play, outside the ship's gymnasium. Titanic actually had two separate groups of musicians, one led by Wallace Hartley. Exactly what they played last is still debated."
+        },
+        {
+          "s": "A",
+          "t": "At 2:20 a.m., two hours and forty minutes after striking the iceberg, Titanic disappeared from view. Around one thousand five hundred people were still on board."
+        },
+        {
+          "s": "B",
+          "t": "What about the people in the water?"
+        },
+        {
+          "s": "A",
+          "t": "The water was about minus two degrees Celsius. One survivor, Officer Charles Lightoller, described it as a thousand knives driven into his body."
+        },
+        {
+          "s": "A",
+          "t": "Almost everyone in the water died within minutes from cold shock and hypothermia. Only about forty were pulled into lifeboats."
+        }
+      ]
+    },
+    {
+      "heading": "Rescue and Reckoning",
+      "image_queries": [
+        "RMS Carpathia",
+        "Titanic survivors Carpathia",
+        "Titanic inquiry 1912"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Carpathia arrived about an hour and a half after the sinking. By 9:15 in the morning she had picked up all the survivors, around seven hundred and ten people. Some sources give seven hundred and five."
+        },
+        {
+          "s": "B",
+          "t": "And the death toll?"
+        },
+        {
+          "s": "A",
+          "t": "Up to one thousand six hundred and thirty-five people died, depending on the source. It remains one of the deadliest peacetime maritime disasters in history."
+        },
+        {
+          "s": "A",
+          "t": "The world was shocked. There was outrage over the shortage of lifeboats, over the ignored ice warnings, and over the Californian."
+        },
+        {
+          "s": "B",
+          "t": "Did anything change?"
+        },
+        {
+          "s": "A",
+          "t": "A lot. The inquiries led to the International Convention for the Safety of Life at Sea, known as SOLAS, in 1914. It still governs maritime safety today."
+        },
+        {
+          "s": "A",
+          "t": "An International Ice Patrol was created to monitor icebergs in the North Atlantic, and the rival radio companies of the time were required to handle each other's calls."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "RMS Titanic 1912",
+        "Titanic memorial"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So, a glancing blow, not a huge gash. Enough time, but not enough boats. And a band that really did play."
+        },
+        {
+          "s": "A",
+          "t": "And more than fifteen hundred lives lost on a calm, starry night. The lessons of that night still protect people at sea today."
+        },
+        {
+          "s": "B",
+          "t": "Which part of the story surprised you most?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "lang": "tr",
+  "topic": "Truva ve Schliemann",
+  "era": "Tunç Çağı Truva ve 19. yüzyıl kazıları",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Truva: Efsane mi Gerçek mi? Hazineyi Kaçıran Adamın Skandalı",
+  "description": "Homeros'un destanındaki Truva gerçekten var mıydı? Çanakkale'deki Hisarlık tepesinde üst üste dokuz şehir bulundu. Kazıyı yapan Heinrich Schliemann ise buluntuların bir kısmını Osmanlı topraklarından kaçırdı, hikâyeler uydurdu ve 'Priamos'un Hazinesi'ni yanlış katmana bağladı. Efsaneyi, arkeolojiyi ve skandalı anlatıyoruz.",
+  "hashtags": [
+    "truva",
+    "tarih",
+    "arkeoloji",
+    "çanakkale"
+  ],
+  "tags": [
+    "truva",
+    "troya",
+    "schliemann",
+    "priamos hazinesi",
+    "hisarlık",
+    "çanakkale",
+    "arkeoloji",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Troy, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Troy"
+    },
+    {
+      "title": "Troya, Vikipedi (Türkçe)",
+      "url": "https://tr.wikipedia.org/wiki/Troya"
+    },
+    {
+      "title": "Heinrich Schliemann, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Heinrich_Schliemann"
+    },
+    {
+      "title": "Priam's Treasure, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Priam%27s_Treasure"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Troy archaeological site",
+        "Trojan Horse replica Çanakkale",
+        "Troy walls"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, Truva savaşı gerçekten yaşandı mı?"
+        },
+        {
+          "s": "B",
+          "t": "Homeros'un İlyada destanından biliyoruz. Tahta at, Akhilleus, Hektor. Bana hep efsane gibi gelmiştir."
+        },
+        {
+          "s": "A",
+          "t": "Peki ya o efsanevi şehrin kalıntılarının bugün Çanakkale'de, bir tepenin içinde olduğunu söylesem? Hem de tek bir şehir değil, üst üste dokuz şehir."
+        },
+        {
+          "s": "B",
+          "t": "Dokuz şehir mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ve onu bulan adam, buluntuların bir kısmını Osmanlı topraklarından kaçırdı, sonra da ünlü bir hikâye uydurduğunu itiraf etti."
+        },
+        {
+          "s": "B",
+          "t": "Bu artık bir arkeoloji hikâyesi değil, bir skandal hikâyesi."
+        },
+        {
+          "s": "A",
+          "t": "İkisi birden. Başlayalım."
+        }
+      ]
+    },
+    {
+      "heading": "Efsanenin Şehri",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Troy archaeological site",
+        "Homer bust",
+        "Troy ruins"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Truva, bugünkü Çanakkale'de, Hisarlık denen bir tepede bulunuyor. Antik Yunanca'da şehrin iki adı var: Troia ve İlion. İlyada adı da buradan geliyor."
+        },
+        {
+          "s": "B",
+          "t": "Şehir ne kadar eski?"
+        },
+        {
+          "s": "A",
+          "t": "Truva'ya ilk olarak MÖ 3600 civarında yerleşilmiş. Dört bin yıllık yerleşim boyunca defalarca yıkılmış ve yeniden kurulmuş."
+        },
+        {
+          "s": "A",
+          "t": "Her yeni şehir bir öncekinin kalıntıları üzerine yapıldığı için tepe katman katman yükselmiş. Arkeologlar dokuz ana katman tespit etti ve bunlara Truva I'den Truva IX'a kadar numara verdi."
+        },
+        {
+          "s": "B",
+          "t": "Hititlerle de bağlantısı var, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Geç Tunç Çağı'nda Truva, Hitit kayıtlarında Wilusa adıyla geçiyor ve Hitit İmparatorluğu'na bağlı bir krallıktı. İlion adının da bu Wilusa adıyla bağlantılı olduğu düşünülüyor."
+        },
+        {
+          "s": "A",
+          "t": "En üstteki katmanlar, Truva VIII ve IX, Yunan ve Roma şehirleri. Bu dönemde Truva, efsanesi sayesinde bir ziyaret ve inanç merkeziydi."
+        }
+      ]
+    },
+    {
+      "heading": "Calvert ve Schliemann",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Heinrich Schliemann",
+        "Frank Calvert",
+        "Hisarlık"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Truva'yı kim buldu?"
+        },
+        {
+          "s": "A",
+          "t": "Genelde Heinrich Schliemann denir. Ama hikâyenin unutulan bir kahramanı var: Frank Calvert."
+        },
+        {
+          "s": "A",
+          "t": "Calvert, bölgeyi iyi bilen İngiliz bir amatör arkeologdu. Hisarlık'ın Truva olduğunu tespit eden ve Schliemann'a orada kazı yapmasını öneren oydu. Üstelik kazı yapılacak arazinin bir kısmı Calvert ailesine aitti."
+        },
+        {
+          "s": "B",
+          "t": "Schliemann hemen ikna oldu mu?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Önce başka bir tepede, Pınarbaşı'nda deneme kazıları yaptı ve hayal kırıklığına uğradı. Sonra Calvert onu Hisarlık'a ikna etti."
+        },
+        {
+          "s": "A",
+          "t": "Schliemann 1870'te tepede bir hendek açmaya başladı ve büyük kazılar 1871'de başladı. 1873'e kadar üst üste gömülü şehirleri ortaya çıkardı."
+        },
+        {
+          "s": "B",
+          "t": "Schliemann aslında kimdi?"
+        },
+        {
+          "s": "A",
+          "t": "Ticaretle zengin olmuş bir Alman iş insanı. Homeros'a tutkuyla bağlıydı ve destanlardaki yerleri bulmaya kararlıydı."
+        },
+        {
+          "s": "A",
+          "t": "Truva'yı aramadan önce Yunanistan ve Osmanlı topraklarındaki antik yerleri gezdi ve bunları anlatan bir kitap yazdı. 1869'da bu çalışmayla Rostock Üniversitesi'nden doktora unvanı aldı."
+        },
+        {
+          "s": "B",
+          "t": "Peki kazıda neler buldu?"
+        },
+        {
+          "s": "A",
+          "t": "Bakır aletler, metal kalıplar, kalkanlar, vazolar ve alt katmanlarda baykuş başlı olarak tarif edilen çok sayıda küçük figür. Truva II katmanı özellikle zenginliği ve görkemli yapılarıyla dikkat çekiyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Priamos'un Hazinesi",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Priam's Treasure",
+        "Sophia Schliemann jewels",
+        "Troy gold"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kazının bitmesine bir gün kala, 15 Haziran 1873'te Schliemann altın buldu."
+        },
+        {
+          "s": "B",
+          "t": "Ne kadar derindeydi?"
+        },
+        {
+          "s": "A",
+          "t": "Kazılarda önemli buluntular yaklaşık sekiz buçuk ila dokuz metre derinlikten çıkıyordu. Schliemann'ın ekibi tepeyi neredeyse ortasından yarmıştı."
+        },
+        {
+          "s": "A",
+          "t": "Bunun destandaki Truva Kralı Priamos'un hazinesi olduğuna inandı ve ona Priamos'un Hazinesi adını verdi."
+        },
+        {
+          "s": "B",
+          "t": "Bu hazineyle ilgili ünlü bir hikâye yok muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Var. Schliemann, işçileri gönderip hazineyi eşi Sophia ile birlikte kendileri çıkardıklarını ve Sophia'nın şalına sarıp taşıdıklarını yazdı."
+        },
+        {
+          "s": "A",
+          "t": "Ama bu hikâye doğru değildi. Schliemann daha sonra bunu uydurduğunu kabul etti. O sırada Sophia, babasının ölümü nedeniyle Atina'da ailesinin yanındaydı."
+        },
+        {
+          "s": "B",
+          "t": "Peki hazine Priamos'a mı aitti?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Hazine Truva II katmanında bulundu, yani Erken Tunç Çağı'nda. Destandaki Priamos'un şehrinden yüzlerce yıl daha eski."
+        },
+        {
+          "s": "A",
+          "t": "Frank Calvert, daha 1872'de çanak çömleklere bakarak Truva II'nin destandaki Truva olamayacak kadar eski olduğunu görmüştü."
+        }
+      ]
+    },
+    {
+      "heading": "Kaçakçılık ve Mahkeme",
+      "city": "Istanbul",
+      "image_queries": [
+        "Istanbul Archaeology Museums",
+        "Pushkin Museum",
+        "Priam's Treasure"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Hazine sonra ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Schliemann hazineyi Osmanlı İmparatorluğu'ndan Yunanistan'a kaçırdı."
+        },
+        {
+          "s": "A",
+          "t": "Osmanlı devleti Schliemann'a Yunan mahkemesinde dava açtı. Mahkeme Schliemann'ı on bin altın ödemeye mahkûm etti."
+        },
+        {
+          "s": "A",
+          "t": "Sonunda İstanbul'daki İmparatorluk Müzesi'ne elli bin altın frank gönderdi ve karşılığında Hisarlık'ta yeniden kazı izni aldı."
+        },
+        {
+          "s": "B",
+          "t": "Yani hazinenin bir kısmı İstanbul'a geldi."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bir kısmı bugün İstanbul Arkeoloji Müzesi'nde. Geri kalanını ise 1881'de Berlin'deki Kraliyet Müzeleri aldı."
+        },
+        {
+          "s": "B",
+          "t": "Berlin'deki kısım bugün hâlâ orada mı?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. İkinci Dünya Savaşı'nın sonunda, 1945'te Sovyetler Birliği hazineyi Berlin'den Moskova'ya götürdü. Bugün Moskova'daki Puşkin Müzesi'nde. Müze, koleksiyonun elinde olduğunu ancak 1994'te kabul etti."
+        }
+      ]
+    },
+    {
+      "heading": "Arkeolojiye Verilen Zarar",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Schliemann's Trench Troy",
+        "Troy walls",
+        "Troy VI walls"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Schliemann'ın kazı yöntemleri de eleştiriliyor, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Kendi döneminde bile tartışmalıydı. Önemsiz saydığı kalıntıları önce incelemeden ve kayda geçirmeden kaldırıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Tepenin ortasından derinlere doğru açtığı büyük hendek bugün Schliemann Hendeği olarak biliniyor. Bu hendek, katmanların bir kısmının bilgisini kalıcı olarak yok etti."
+        },
+        {
+          "s": "B",
+          "t": "Destandaki Truva'yı yanlış yerde mi aradı?"
+        },
+        {
+          "s": "A",
+          "t": "Schliemann, Truva II'nin destandaki şehir olduğunu ileri sürdü. Ama sonraki araştırmalar bunun doğru olmadığını gösterdi."
+        },
+        {
+          "s": "A",
+          "t": "1890'da Truva VI'da Miken çanak çömleğinin bulunmasıyla, Truva II'nin çok daha erken olduğu kanıtlandı. Schliemann'ın da özel olarak Truva VI'nın destandaki şehir olması gerektiğini kabul ettiği, ama bunu hiç yayımlamadığı biliniyor."
+        },
+        {
+          "s": "B",
+          "t": "Schliemann sonra ne yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "1876'da Yunanistan'da Miken'de kazı yaptı ve orada da ünlü mezarları buldu. Truva'ya ise defalarca döndü; 1882 ve 1890 kazılarında yanında mimar Wilhelm Dörpfeld vardı."
+        },
+        {
+          "s": "A",
+          "t": "1891'de yeni bir kazı sezonu planlıyordu, ama Aralık 1890'da hayatını kaybetti."
+        }
+      ]
+    },
+    {
+      "heading": "Efsane ile Gerçek Arasında",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Troy archaeological site",
+        "Troy VI walls",
+        "Troy Museum Çanakkale"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Schliemann'dan sonra kazılar devam etti mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Wilhelm Dörpfeld onunla çalışmıştı. 1932 ile 1938 arasında Cincinnati Üniversitesi'nden Carl Blegen kazıları yönetti ve daha profesyonel yöntemler getirdi."
+        },
+        {
+          "s": "A",
+          "t": "1988 ile 2005 arasında ise Tübingen ve Cincinnati üniversitelerinden bir ekip, Manfred Korfmann yönetiminde kazılar yaptı."
+        },
+        {
+          "s": "A",
+          "t": "Blegen, Schliemann'ın izinden gitse de katmanları çok daha dikkatli inceledi ve tepede en az dokuz ana dönem olduğunu gösterdi."
+        },
+        {
+          "s": "B",
+          "t": "Peki sonunda Truva Savaşı gerçek miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Kesin bir cevap yok. Ama bazı katmanların edebi tasvirlere benzemesi, bazı araştırmacıları efsanenin altında gerçek bir çekirdek olduğu sonucuna götürdü."
+        },
+        {
+          "s": "A",
+          "t": "Truva 1998'de UNESCO Dünya Mirası Listesi'ne girdi ve bugün ziyarete açık bir ören yeri."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Troy archaeological site",
+        "Trojan Horse replica Çanakkale"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: dört bin yıllık bir tepe, dokuz şehir, unutulan Frank Calvert ve hazineyi kaçıran bir arkeolog."
+        },
+        {
+          "s": "A",
+          "t": "Ve bugün o hazinenin parçaları iki farklı ülkede duruyor: bir kısmı İstanbul'da, büyük kısmı Moskova'da."
+        },
+        {
+          "s": "B",
+          "t": "Sence Schliemann bir kahraman mıydı, yoksa bir hazine avcısı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

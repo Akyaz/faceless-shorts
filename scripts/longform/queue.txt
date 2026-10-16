@@ -6,3 +6,4 @@ scripts/longform/en-pompeii.json
 scripts/longform/tr-kades-antlasmasi.json
 scripts/longform/en-gobekli-tepe.json
 scripts/longform/en-fall-of-constantinople.json
+scripts/longform/tr-piri-reis.json

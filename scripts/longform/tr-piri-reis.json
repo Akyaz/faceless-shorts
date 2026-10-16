@@ -1,0 +1,346 @@
+{
+  "lang": "tr",
+  "topic": "Piri Reis haritası",
+  "era": "1513, Osmanlı denizciliği ve Keşifler Çağı",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Piri Reis Haritası: Gerçekten Antarktika'yı mı Gösteriyor?",
+  "description": "1513'te Osmanlı denizcisi Piri Reis, ceylan derisine bir dünya haritası çizdi. Haritanın üçte biri 1929'da Topkapı Sarayı'nda bulundu ve kayıp bir Kolomb haritasının izlerini taşıdığı için dünya gündemine oturdu. Sonra da Antarktika iddiası geldi. Haritanın gerçek hikâyesini ve bu iddianın neden çürütüldüğünü anlatıyoruz.",
+  "hashtags": [
+    "pirireis",
+    "tarih",
+    "osmanlı"
+  ],
+  "tags": [
+    "piri reis",
+    "piri reis haritası",
+    "1513",
+    "kolomb",
+    "antarktika",
+    "topkapı sarayı",
+    "osmanlı",
+    "tarih"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Piri Reis map, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Piri_Reis_map"
+    },
+    {
+      "title": "Gregory C. McIntosh, The Piri Reis Map of 1513, University of Georgia Press",
+      "url": "https://ugapress.org/book/9780820321578/the-piri-reis-map-of-1513/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Istanbul",
+      "image_queries": [
+        "Piri Reis map",
+        "Piri Reis",
+        "Topkapı Palace"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, internette bir harita dolaşıyor. Beş yüz yıldan eski, ama buzla kaplı olmayan bir Antarktika gösterdiği iddia ediliyor."
+        },
+        {
+          "s": "B",
+          "t": "Piri Reis haritası. Belgesellerde, komplo videolarında hep karşıma çıkıyor."
+        },
+        {
+          "s": "A",
+          "t": "Bazıları kayıp bir uygarlığın, hatta uzaylıların bilgisinin bu haritaya aktarıldığını söylüyor."
+        },
+        {
+          "s": "B",
+          "t": "Peki gerçek ne?"
+        },
+        {
+          "s": "A",
+          "t": "Gerçek, bu iddiadan çok daha ilginç. Harita, kayıp bir Kolomb haritasının kopyasını içeriyor olabilir ve bir Osmanlı denizcisinin elinden çıktı."
+        },
+        {
+          "s": "B",
+          "t": "O zaman önce Piri Reis'i tanıyalım."
+        }
+      ]
+    },
+    {
+      "heading": "Korsanlıktan Kaptanlığa",
+      "city": "Gelibolu",
+      "image_queries": [
+        "Gallipoli harbour",
+        "Kemal Reis",
+        "Ottoman galley"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Piri Reis'in hayatının büyük kısmını, kendi haritalarından ve kitabından biliyoruz. Gençliğinde amcası Kemal Reis ile birlikte Akdeniz'de korsanlık yaptı."
+        },
+        {
+          "s": "A",
+          "t": "1495'te Kemal Reis Osmanlı donanmasında resmî bir göreve getirildi. Piri Reis de amcasıyla birlikte deniz savaşlarına katıldı."
+        },
+        {
+          "s": "B",
+          "t": "Kolomb'la bağlantısı nereden geliyor?"
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklara göre bir deniz savaşında Kolomb'un seferlerine katılmış bir İspanyol'u esir aldılar. Bu adamın elinde Amerika kıyılarına ait erken bir harita olması muhtemel."
+        },
+        {
+          "s": "B",
+          "t": "Ve bu harita Piri Reis'in eline geçti."
+        },
+        {
+          "s": "A",
+          "t": "Muhtemelen. Amcası öldükten sonra Piri Reis bir süre Gelibolu'ya döndü ve 1511'de ilk dünya haritasını çizmeye başladı."
+        },
+        {
+          "s": "A",
+          "t": "Haritanın üzerindeki tarih, Hicri 919 yılının Muharrem ayı. Bu da 1513 yılına denk geliyor."
+        }
+      ]
+    },
+    {
+      "heading": "Yirmi Haritadan Bir Harita",
+      "image_queries": [
+        "Piri Reis map detail",
+        "portolan chart",
+        "Ptolemy world map"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "Piri Reis bu haritayı nasıl çizdi?"
+        },
+        {
+          "s": "A",
+          "t": "Kendi notlarına göre pek çok kaynağı bir araya getirerek. Haritanın üzerindeki açıklamada kullandığı kaynakları tek tek sayıyor."
+        },
+        {
+          "s": "A",
+          "t": "Yirmi kadar harita ve dünya haritası, sekiz tane Batlamyus geleneğine ait coğrafya haritası, Hindistan'ı gösteren bir Arap haritası, dört yeni Portekiz haritası ve Kolomb'un batı topraklarını gösteren bir haritası."
+        },
+        {
+          "s": "B",
+          "t": "Yani dönemin en güncel bilgilerini birleştirmiş."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bu, İslam haritacılığı geleneğinde alışılmadık bir şeydi; çünkü pek çok Müslüman olmayan kaynak kullanılıyordu."
+        },
+        {
+          "s": "A",
+          "t": "Harita bir portolan haritası. Yani denizciler için çizilmiş; boylam ve enlem çizgileri yerine pusula gülleri ve yön çizgileri var. Notların çoğu Osmanlı Türkçesiyle yazılmış."
+        },
+        {
+          "s": "B",
+          "t": "Ve üzerinde masal yaratıkları da var, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Haritanın batı kenarında Orta Çağ kitaplarından tanıdık yaratıklar çizilmiş. Güney Amerika'nın dağları arasında başsız bir adam bile var."
+        }
+      ]
+    },
+    {
+      "heading": "Sultan'a Hediye",
+      "city": "Istanbul",
+      "image_queries": [
+        "Selim I portrait",
+        "Topkapı Palace library",
+        "Cairo 16th century"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Harita sonra ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Piri Reis, Osmanlı'nın 1517'deki Mısır seferine katıldı. Zaferden sonra haritayı Yavuz Sultan Selim'e sundu."
+        },
+        {
+          "s": "A",
+          "t": "Selim'in haritayı nasıl kullandığı, hatta kullanıp kullanmadığı bilinmiyor. Harita yüzyıllar boyunca tarihten kayboldu."
+        },
+        {
+          "s": "B",
+          "t": "Piri Reis başka harita çizdi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. 1521'de denizcilik kitabı Kitab-ı Bahriye'yi tamamladı. 1528'de çizdiği ikinci dünya haritası ise Yeni Dünya'yı daha ayrıntılı ve daha doğru gösteriyordu."
+        }
+      ]
+    },
+    {
+      "heading": "1929: Topkapı'daki Keşif",
+      "city": "Istanbul",
+      "image_queries": [
+        "Topkapı Palace",
+        "Topkapı Palace library",
+        "Piri Reis map"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Harita nasıl yeniden ortaya çıktı?"
+        },
+        {
+          "s": "A",
+          "t": "1929'da, Topkapı Sarayı müzeye dönüştürülürken. Müzeler Müdürü Halil Edhem, Alman ilahiyatçı Gustav Adolf Deissmann'ı saray kütüphanesini incelemeye davet etti."
+        },
+        {
+          "s": "A",
+          "t": "Halil Edhem, gözden kaçmış belgeler arasında alışılmadık bir parşömen harita buldu. Haritayı inceleyen doğubilimci Paul Kahle, bunun Piri Reis'in eseri olduğunu ve Kolomb'un bir haritasını kaynak gösterdiğini tespit etti."
+        },
+        {
+          "s": "B",
+          "t": "Bu neden bu kadar büyük haber oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Çünkü Kolomb'un kendi çizdiği haritalar kayıptı. Bu parça, kayıp bir Kolomb haritasının izlerini taşıyordu. Dünya basını bunu manşetlere taşıdı."
+        },
+        {
+          "s": "A",
+          "t": "Mustafa Kemal Atatürk de haritayla ilgilendi ve tıpkıbasımlarının yayımlanması ile araştırılması için çalışmalar başlattı."
+        },
+        {
+          "s": "B",
+          "t": "Haritanın kendisi nasıl bir şey?"
+        },
+        {
+          "s": "A",
+          "t": "Ceylan derisinden yapılmış bir parşömen. Yaklaşık seksen yedi santime altmış üç santim. Ve orijinal dünya haritasının sadece batıdaki üçte biri günümüze ulaşmış."
+        }
+      ]
+    },
+    {
+      "heading": "Antarktika İddiası",
+      "country": "",
+      "image_queries": [
+        "Piri Reis map south",
+        "Antarctica coast",
+        "South America coast map"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Şimdi asıl soruya gelelim. Bu harita Antarktika'yı gösteriyor mu?"
+        },
+        {
+          "s": "A",
+          "t": "Bu iddia 1950'lerde ortaya çıktı. 1966'da tarihçi Charles Hapgood, Eski Deniz Krallarının Haritaları adlı kitabında, bu haritaların bilinmeyen eski bir uygarlığın keşiflerine dayandığını ileri sürdü."
+        },
+        {
+          "s": "A",
+          "t": "Kitap, kanıt eksikliği ve kutupların yer değiştirmesi gibi tartışmalı bir fikre dayanması nedeniyle şüpheyle karşılandı. Hapgood kendisi de haritadaki yazıları ve bazı kara parçalarının yerini görmezden geldiğini kabul etti."
+        },
+        {
+          "s": "B",
+          "t": "Peki haritanın altındaki kara parçası ne?"
+        },
+        {
+          "s": "A",
+          "t": "Haritacılık tarihçisi Gregory McIntosh'a göre bu, Antarktika değil; Güney Amerika'nın doğu kıyısı. Kıyı, aynı parşömene sığsın diye doğuya doğru kıvrılarak çizilmiş."
+        },
+        {
+          "s": "A",
+          "t": "Ayrıca o dönemin haritalarında güneyde varsayımsal bir kıta çizmek zaten yaygındı. Bu fikir, Antik Çağ coğrafyacısı Batlamyus'a kadar uzanıyor."
+        },
+        {
+          "s": "B",
+          "t": "Yani buzsuz Antarktika iddiası çürütülmüş."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bilim dünyasında bu fikir, popüler ama çürütülmüş bir hipotez olarak görülüyor."
+        },
+        {
+          "s": "A",
+          "t": "McIntosh bir iddiayı daha düzeltiyor: haritanın Kolomb'un üçüncü değil, ikinci seferine dayanan bir kaynağı kullandığını gösteriyor."
+        }
+      ]
+    },
+    {
+      "heading": "Haritanın Gerçek Değeri",
+      "city": "Istanbul",
+      "image_queries": [
+        "Piri Reis map",
+        "Kitab-ı Bahriye",
+        "Piri Reis statue"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Peki Antarktika değilse, bu haritayı değerli kılan ne?"
+        },
+        {
+          "s": "A",
+          "t": "Birincisi, Güney Amerika'yı kendi dönemi için oldukça ayrıntılı ve doğru gösteriyor. Brezilya ile Afrika arasındaki mesafe yaklaşık olarak doğru."
+        },
+        {
+          "s": "A",
+          "t": "İkincisi, Avrupa'daki en yeni keşif bilgilerinin bir Osmanlı denizcisinin elinde nasıl toplandığını gösteriyor. Güney Amerika'daki notlar yakın tarihli Portekiz seferlerine atıf yapıyor."
+        },
+        {
+          "s": "B",
+          "t": "Ve kayıp Kolomb haritasının izleri."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ama McIntosh'un vurguladığı bir nokta da var: Piri Reis haritası on altıncı yüzyılın en doğru haritası değil. Kendi döneminin haritalarıyla karşılaştırıldığında birçok yanlış ve hayalî ada içeriyor."
+        },
+        {
+          "s": "A",
+          "t": "Onu özel yapan şey mükemmelliği değil, hikâyesi: farklı dünyaların bilgisini bir araya getiren bir belge olması."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Istanbul",
+      "image_queries": [
+        "Piri Reis map",
+        "Topkapı Palace"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Toparlarsak: bir korsanlıktan gelen denizci, yirmi kaynak, kayıp bir Kolomb haritası ve dört yüz yıl sonra Topkapı'da bulunan bir parşömen."
+        },
+        {
+          "s": "A",
+          "t": "Ve uydurma bir Antarktika hikâyesinin gölgesinde kalan, ama kendi başına çok değerli bir belge."
+        },
+        {
+          "s": "B",
+          "t": "Sen bu haritanın hangi yanını daha ilginç buluyorsun? Kolomb bağlantısını mı, yoksa Antarktika tartışmasını mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "lang": "en",
+  "topic": "Pompeii and the eruption of Mount Vesuvius",
+  "era": "Roman Empire, 79 AD",
+  "country": "Italy",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Pompeii: The City That Froze in a Single Day (And Why We Still Argue About the Date)",
+  "description": "In 79 AD, Mount Vesuvius buried Pompeii under ash and pumice. An eyewitness letter survived, a charcoal scribble found in 2018 reopened the debate about the date, and plaster casts still show the city's last moments. Here is what we know, and what historians still argue about.",
+  "hashtags": [
+    "pompeii",
+    "history",
+    "ancientrome"
+  ],
+  "tags": [
+    "pompeii",
+    "vesuvius",
+    "79 ad",
+    "ancient rome",
+    "history",
+    "documentary",
+    "pliny",
+    "herculaneum"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Pompeii, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pompeii"
+    },
+    {
+      "title": "Eruption of Mount Vesuvius in 79 AD, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD"
+    },
+    {
+      "title": "Inscription suggests Pompeii eruption in Oct not Aug, ANSA",
+      "url": "https://corporate.ansa.it/english/news/2018/10/16/inscription-suggests-pompeii-eruption-in-oct-not-aug_edd82d1f-7e54-4ae4-bc5c-c83cc6d5599f.html"
+    },
+    {
+      "title": "Pompeii eruption may have happened later than thought, CNN",
+      "url": "https://edition.cnn.com/style/article/pompeii-eruption-inscription-date-intl"
+    },
+    {
+      "title": "Summer or autumn, when was Pompeii buried? Debate reignites, The Jerusalem Post",
+      "url": "https://stgmobile.jpost.com/archaeology/archaeology-around-the-world/article-833650"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Pompeii Vesuvius",
+        "Pompeii ruins",
+        "Pompeii street"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, if a city disappeared in a single day, how long do you think it would take the world to find it again?"
+        },
+        {
+          "s": "B",
+          "t": "A few years? Maybe a decade?"
+        },
+        {
+          "s": "A",
+          "t": "Pompeii vanished under volcanic ash in 79 AD. People were still uncovering its streets, houses and paintings more than one and a half thousand years later."
+        },
+        {
+          "s": "B",
+          "t": "And everything was still there?"
+        },
+        {
+          "s": "A",
+          "t": "Bakeries, temples, an amphitheatre, wall paintings, even scribbles on walls. One of those scribbles, found in 2018, may have changed the date of the disaster."
+        },
+        {
+          "s": "B",
+          "t": "Wait. We don't know when Pompeii was destroyed?"
+        },
+        {
+          "s": "A",
+          "t": "We know the year. The day is still being argued about. And that's just one of the surprises in this story."
+        },
+        {
+          "s": "B",
+          "t": "Then let's go back to the city before the volcano."
+        }
+      ]
+    },
+    {
+      "heading": "A City by the Bay",
+      "image_queries": [
+        "Pompeii Forum",
+        "Amphitheatre of Pompeii",
+        "Pompeii fresco"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Pompeii was a Roman town near the Bay of Naples, in the shadow of Mount Vesuvius. It sat at an important crossroads between the towns of Cumae, Nola and Stabiae."
+        },
+        {
+          "s": "A",
+          "t": "By the first century it was a lively regional centre. It had a forum, public baths, theatres and an amphitheatre built around 70 BC."
+        },
+        {
+          "s": "B",
+          "t": "So people came there for entertainment."
+        },
+        {
+          "s": "A",
+          "t": "They did, sometimes too enthusiastically. In 59 AD a riot broke out in the amphitheatre between people from Pompeii and the neighbouring town of Nuceria."
+        },
+        {
+          "s": "A",
+          "t": "The fighting was so serious that the Roman Senate sent troops to restore order and banned events there for ten years. The riot was even painted in a fresco that survived."
+        },
+        {
+          "s": "B",
+          "t": "How many people lived in Pompeii?"
+        },
+        {
+          "s": "A",
+          "t": "Estimates vary. Together with the nearby town of Herculaneum, which was also destroyed, the population was more than twenty thousand."
+        }
+      ]
+    },
+    {
+      "heading": "Warning Signs",
+      "image_queries": [
+        "Pompeii earthquake relief",
+        "Pompeii ruins Vesuvius",
+        "Bay of Naples"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did anyone see it coming?"
+        },
+        {
+          "s": "A",
+          "t": "Not in the way we would today. But there were warnings. On the fifth of February, 62 AD, a major earthquake caused widespread destruction around the Bay of Naples, and Pompeii was hit hard."
+        },
+        {
+          "s": "A",
+          "t": "Seventeen years later, when the volcano erupted, some of that damage had still not been repaired. Another, smaller earthquake struck in 64 AD."
+        },
+        {
+          "s": "B",
+          "t": "And people didn't connect those earthquakes to the volcano?"
+        },
+        {
+          "s": "A",
+          "t": "The people of the area were used to tremors. Pliny the Younger later wrote that earth tremors were not particularly alarming because they were frequent in that region."
+        }
+      ]
+    },
+    {
+      "heading": "The Eruption",
+      "image_queries": [
+        "Vesuvius eruption painting",
+        "Plinian eruption",
+        "Pompeii ash layer"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In the early afternoon, Vesuvius erupted violently. A huge column of ash and pumice shot high into the sky, and then began to fall over the surrounding area."
+        },
+        {
+          "s": "A",
+          "t": "Ash and stones piled up on roofs until many of them collapsed. Over the next hours, some people managed to escape, and rescues were attempted. Earthquakes made walls fall."
+        },
+        {
+          "s": "B",
+          "t": "That sounds terrifying, but survivable."
+        },
+        {
+          "s": "A",
+          "t": "For many, the most dangerous phase came later. The eruption also produced pyroclastic surges, fast moving clouds of extremely hot gas and ash that swept down the mountain."
+        },
+        {
+          "s": "A",
+          "t": "Pompeii and Herculaneum were buried under these surges and under deep deposits of ash. Several other Roman towns and settlements in the area were destroyed as well."
+        },
+        {
+          "s": "B",
+          "t": "Do we know how many people died?"
+        },
+        {
+          "s": "A",
+          "t": "No. The total death toll remains unknown. The remains of more than one and a half thousand people have been found at Pompeii and Herculaneum so far."
+        },
+        {
+          "s": "A",
+          "t": "Volcanologists even named a type of eruption after this one. A Plinian eruption, with a towering column of gas and ash reaching the upper atmosphere, is named after the man who described it."
+        }
+      ]
+    },
+    {
+      "heading": "Two Men Named Pliny",
+      "image_queries": [
+        "Pliny the Younger",
+        "Misenum",
+        "Stabiae"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Who was this Pliny?"
+        },
+        {
+          "s": "A",
+          "t": "There were two. Pliny the Younger was a young man staying at Misenum, across the bay, about twenty-nine kilometres from the volcano. He watched the eruption with his own eyes."
+        },
+        {
+          "s": "A",
+          "t": "Years later he described it in two letters to the historian Tacitus. They are the only detailed eyewitness account of the eruption that has survived."
+        },
+        {
+          "s": "B",
+          "t": "And the other Pliny?"
+        },
+        {
+          "s": "A",
+          "t": "His uncle, Pliny the Elder, a famous writer and commander of the fleet at Misenum. When he saw the eruption, he launched ships to rescue people, including a friend on the far side of the bay."
+        },
+        {
+          "s": "A",
+          "t": "According to his nephew, when the helmsman advised turning back, he replied: fortune favours the brave. He continued to Stabiae, about four and a half kilometres from Pompeii."
+        },
+        {
+          "s": "B",
+          "t": "Did he make it back?"
+        },
+        {
+          "s": "A",
+          "t": "No. He died at Stabiae. His nephew suggested poisonous fumes, but Stabiae was about sixteen kilometres from the vent and his companions seem to have been unaffected. Many historians think another cause is more likely."
+        },
+        {
+          "s": "A",
+          "t": "From Misenum, Pliny the Younger described flames on the mountain, darkness in the middle of the day, and people trying to flee."
+        }
+      ]
+    },
+    {
+      "heading": "When Did It Happen?",
+      "image_queries": [
+        "Pompeii inscription",
+        "Pompeii Regio V",
+        "Pompeii house wall"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Now tell me about the date. Why is it a mystery?"
+        },
+        {
+          "s": "A",
+          "t": "For centuries, the accepted date was the twenty-fourth of August, 79 AD. It comes from Pliny the Younger's letters."
+        },
+        {
+          "s": "A",
+          "t": "But no Roman copies of those letters survive. We only have medieval manuscript copies, and they don't all agree. Manuscript experts think Pliny's original date may have been one of several, from late August to November."
+        },
+        {
+          "s": "B",
+          "t": "So there was room for doubt."
+        },
+        {
+          "s": "A",
+          "t": "There was other evidence too, like autumn fruits and coins found at the site. Then, in October 2018, archaeologists working in a house in Pompeii found a charcoal inscription on a wall."
+        },
+        {
+          "s": "A",
+          "t": "It referred to the sixteenth day before the first of November. In our calendar, that is the seventeenth of October. It was probably written by a worker renovating the house."
+        },
+        {
+          "s": "B",
+          "t": "So the eruption was in October?"
+        },
+        {
+          "s": "A",
+          "t": "That's what many researchers concluded. A study in 2022 proposed a date between the twenty-fourth of October and the first of November."
+        },
+        {
+          "s": "A",
+          "t": "But the Pompeii Archaeological Park later tested how long such charcoal writing can last. They found it can survive for many months. So the scribble might have been written a year earlier."
+        },
+        {
+          "s": "A",
+          "t": "The park concluded there is not enough evidence to rule out the traditional August date. Right now, the honest answer is: it's still debated."
+        }
+      ]
+    },
+    {
+      "heading": "Finding Pompeii Again",
+      "image_queries": [
+        "Pompeii plaster casts",
+        "Giuseppe Fiorelli",
+        "Pompeii excavation 19th century"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How was Pompeii rediscovered?"
+        },
+        {
+          "s": "A",
+          "t": "For a long time the site was simply known as La Civita, the city, because of shapes in the ground. In 1592, the architect Domenico Fontana dug an underground water channel straight through the buried city."
+        },
+        {
+          "s": "A",
+          "t": "His workers ran into ancient walls covered with paintings and inscriptions, but nobody realised what they had found. Systematic excavations only began in the eighteenth century."
+        },
+        {
+          "s": "B",
+          "t": "And the famous casts of people?"
+        },
+        {
+          "s": "A",
+          "t": "Those came from the archaeologist Giuseppe Fiorelli. He noticed that the ash had hardened around victims and left empty spaces where their bodies had been."
+        },
+        {
+          "s": "A",
+          "t": "By pouring plaster into those spaces, his team recorded the exact positions of people in their final moments. They are still among the most moving objects from the ancient world."
+        }
+      ]
+    },
+    {
+      "heading": "Pompeii Today",
+      "image_queries": [
+        "Pompeii ruins Vesuvius",
+        "Pompeii street",
+        "Pompeii fresco"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Today Pompeii is a UNESCO World Heritage Site and one of the most popular tourist attractions in Italy, with about two and a half million visitors a year."
+        },
+        {
+          "s": "A",
+          "t": "Because so much was preserved, it gives us one of the most complete pictures of daily life in an ancient Roman city: what people ate, how they shopped, what they wrote on walls."
+        },
+        {
+          "s": "B",
+          "t": "So in one day, a city was lost. And because it was lost so suddenly, we know it better than almost any other."
+        },
+        {
+          "s": "A",
+          "t": "That's the strange gift of Pompeii."
+        },
+        {
+          "s": "B",
+          "t": "What do you think: August or October? Tell us in the comments."
+        },
+        {
+          "s": "A",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

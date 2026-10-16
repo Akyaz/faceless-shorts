@@ -2,3 +2,4 @@
 scripts/longform/tr-gobeklitepe.json
 scripts/longform/en-krakatoa.json
 scripts/longform/tr-istanbulun-fethi.json
+scripts/longform/en-pompeii.json

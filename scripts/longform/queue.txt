@@ -13,3 +13,4 @@ scripts/longform/en-titanic.json
 scripts/longform/tr-malazgirt.json
 scripts/longform/en-antikythera.json
 scripts/longform/en-mansa-musa.json
+scripts/longform/en-library-of-alexandria.json

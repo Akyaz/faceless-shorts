@@ -1,0 +1,378 @@
+{
+  "lang": "en",
+  "topic": "Library of Alexandria",
+  "era": "Ptolemaic and Roman Egypt, 3rd century BC to 4th century AD",
+  "country": "Egypt",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "The Library of Alexandria: Did It Really Burn in a Single Day?",
+  "description": "The Library of Alexandria is remembered as the greatest library of the ancient world, destroyed in one tragic fire. The real story is slower and stranger: confiscated books from ships, a catalogue of all knowledge, a purge of scholars, Caesar's fire, Aurelian's war and the end of the Serapeum. Here is how the library really disappeared.",
+  "hashtags": [
+    "libraryofalexandria",
+    "history",
+    "ancientegypt"
+  ],
+  "tags": [
+    "library of alexandria",
+    "alexandria",
+    "ancient history",
+    "ptolemy",
+    "julius caesar",
+    "history",
+    "documentary",
+    "egypt"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Library of Alexandria, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria"
+    },
+    {
+      "title": "Who burned the Library of Alexandria?, National Geographic",
+      "url": "https://www.nationalgeographic.com/history/article/who-burned-library-of-alexandria-egypt"
+    },
+    {
+      "title": "The fate of the Library of Alexandria, Encyclopaedia Britannica",
+      "url": "https://britannica.com/topic/Library-of-Alexandria/The-fate-of-the-Library-of-Alexandria"
+    },
+    {
+      "title": "The Library of Alexandria, The Open University (OpenLearn)",
+      "url": "https://www.open.edu/openlearn/history-the-arts/library-alexandria/content-section-3"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "city": "Alexandria",
+      "image_queries": [
+        "Library of Alexandria illustration",
+        "Alexandria Egypt",
+        "Bibliotheca Alexandrina"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, how do you picture the end of the Library of Alexandria?"
+        },
+        {
+          "s": "B",
+          "t": "A huge fire. Flames, scrolls burning, all the knowledge of the ancient world lost in one night."
+        },
+        {
+          "s": "A",
+          "t": "That's the picture most people have. And according to most historians, that's not what happened."
+        },
+        {
+          "s": "B",
+          "t": "So it didn't burn?"
+        },
+        {
+          "s": "A",
+          "t": "Parts of it may have burned, more than once. But the library seems to have faded away over several centuries, through politics, wars and neglect."
+        },
+        {
+          "s": "B",
+          "t": "That's almost sadder."
+        },
+        {
+          "s": "A",
+          "t": "It is. But to understand how it ended, we need to see how extraordinary it was at the start."
+        }
+      ]
+    },
+    {
+      "heading": "A Library for All Knowledge",
+      "city": "Alexandria",
+      "image_queries": [
+        "Ptolemy II Philadelphus",
+        "Ptolemaic Alexandria",
+        "papyrus scroll"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Who built it?"
+        },
+        {
+          "s": "A",
+          "t": "The idea may have come from Demetrius of Phalerum, an exiled Athenian statesman living in Alexandria. He may have proposed it to King Ptolemy the First, a former general of Alexander the Great."
+        },
+        {
+          "s": "A",
+          "t": "But the library itself was probably built under his son, Ptolemy the Second, in the third century BC."
+        },
+        {
+          "s": "A",
+          "t": "It was part of a larger research institution called the Mouseion, dedicated to the Muses, the nine goddesses of the arts. That's where our word museum comes from."
+        },
+        {
+          "s": "B",
+          "t": "How many books did it have?"
+        },
+        {
+          "s": "A",
+          "t": "Nobody knows. Estimates range from forty thousand to seven hundred thousand scrolls. That huge range tells you how uncertain the numbers are."
+        },
+        {
+          "s": "A",
+          "t": "Alexandria came to be regarded as the capital of knowledge and learning in the Greek world."
+        }
+      ]
+    },
+    {
+      "heading": "Books Taken From Ships",
+      "city": "Alexandria",
+      "image_queries": [
+        "ancient Greek ship mosaic",
+        "Alexandria harbour",
+        "papyrus manuscript"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How did they collect so many books?"
+        },
+        {
+          "s": "A",
+          "t": "Aggressively. The Ptolemaic kings had well-funded policies for acquiring texts. They bought books at the book fairs of Rhodes and Athens."
+        },
+        {
+          "s": "A",
+          "t": "And according to the Greek medical writer Galen, Ptolemy the Second decreed that any books found on ships arriving in the port should be taken to the library."
+        },
+        {
+          "s": "B",
+          "t": "Confiscated?"
+        },
+        {
+          "s": "A",
+          "t": "Copied. Official scribes made copies. The library kept the original, and the owners received the copies."
+        },
+        {
+          "s": "A",
+          "t": "The library was especially eager to collect manuscripts of Homer's poems, the foundation of Greek education."
+        }
+      ]
+    },
+    {
+      "heading": "The Scholars",
+      "city": "Alexandria",
+      "image_queries": [
+        "Eratosthenes",
+        "Hero of Alexandria aeolipile",
+        "Callimachus"
+      ],
+      "country": "",
+      "lines": [
+        {
+          "s": "B",
+          "t": "Who worked there?"
+        },
+        {
+          "s": "A",
+          "t": "Some of the greatest minds of the ancient world. Zenodotus of Ephesus worked to standardise the texts of Homer."
+        },
+        {
+          "s": "A",
+          "t": "Callimachus wrote the Pinakes, sometimes considered the world's first library catalogue."
+        },
+        {
+          "s": "A",
+          "t": "Eratosthenes of Cyrene calculated the circumference of the Earth to within a few hundred kilometres."
+        },
+        {
+          "s": "A",
+          "t": "Hero of Alexandria documented the first recorded steam engine. Aristophanes of Byzantium invented the system of accents used in written Greek."
+        },
+        {
+          "s": "B",
+          "t": "So it wasn't just storage. It was a research centre."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Under Ptolemy the Third, a second, daughter library was even founded in the Serapeum, a temple to the god Serapis."
+        }
+      ]
+    },
+    {
+      "heading": "The Slow Decline Begins",
+      "city": "Alexandria",
+      "image_queries": [
+        "Ptolemy VIII",
+        "Pergamon library",
+        "Alexandria ancient ruins"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "When did things start to go wrong?"
+        },
+        {
+          "s": "A",
+          "t": "Long before any famous fire. In 145 BC, King Ptolemy the Eighth purged intellectuals from Alexandria."
+        },
+        {
+          "s": "A",
+          "t": "The head librarian, Aristarchus of Samothrace, resigned and went into exile on Cyprus. Many other scholars fled to other cities, where they kept teaching."
+        },
+        {
+          "s": "B",
+          "t": "So the knowledge spread out."
+        },
+        {
+          "s": "A",
+          "t": "Yes. One historian of the time joked sarcastically that Alexandria had become the teacher of all Greeks and barbarians alike. Rival centres, like Pergamum, grew stronger."
+        },
+        {
+          "s": "A",
+          "t": "From the middle of the second century BC, Ptolemaic rule in Egypt became less and less stable."
+        }
+      ]
+    },
+    {
+      "heading": "Caesar's Fire",
+      "city": "Alexandria",
+      "image_queries": [
+        "Julius Caesar bust",
+        "Alexandria harbour",
+        "Cleopatra"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Now the famous fire."
+        },
+        {
+          "s": "A",
+          "t": "In 48 BC, during his civil war, Julius Caesar was trapped in Alexandria. His forces set fire to ships in the harbour, and the fire spread."
+        },
+        {
+          "s": "A",
+          "t": "The library, or part of its collection, burned. But it is unclear how much was destroyed. Ancient writers disagree."
+        },
+        {
+          "s": "A",
+          "t": "Plutarch says the great library burned. Seneca quotes a lost work saying forty thousand scrolls were destroyed. Other writers say only ships and some houses near the sea burned."
+        },
+        {
+          "s": "B",
+          "t": "And afterwards?"
+        },
+        {
+          "s": "A",
+          "t": "The institution seems to have survived, or been rebuilt soon after. The geographer Strabo visited the Mouseion around 20 BC, and scholars kept working there."
+        },
+        {
+          "s": "A",
+          "t": "There's even a story, told by Plutarch, that Mark Antony gave Cleopatra two hundred thousand scrolls from the library of Pergamum. Plutarch himself warned that his source might be unreliable."
+        }
+      ]
+    },
+    {
+      "heading": "War, Riots and Legends",
+      "city": "Alexandria",
+      "image_queries": [
+        "Aurelian coin",
+        "Serapeum Alexandria",
+        "Pompey's Pillar Alexandria"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So when did it actually disappear?"
+        },
+        {
+          "s": "A",
+          "t": "The last known references to scholars belonging to the Mouseion date to the 260s AD."
+        },
+        {
+          "s": "A",
+          "t": "In 272, Emperor Aurelian fought to recapture Alexandria from the forces of Queen Zenobia of Palmyra. His troops destroyed the Brucheion, the quarter where the main library stood."
+        },
+        {
+          "s": "B",
+          "t": "And the daughter library in the Serapeum?"
+        },
+        {
+          "s": "A",
+          "t": "In 391, under the anti-pagan policies of Emperor Theodosius the First, the Serapeum was demolished on the orders of Bishop Theophilus of Alexandria."
+        },
+        {
+          "s": "A",
+          "t": "Whether many books were still there by then is debated."
+        },
+        {
+          "s": "B",
+          "t": "What about the story that the Arabs burned it?"
+        },
+        {
+          "s": "A",
+          "t": "Alexandria was taken by an Arab army in 642. Several Arabic sources written centuries later claim the caliph ordered the library destroyed. Historians generally treat that story as legend."
+        }
+      ]
+    },
+    {
+      "heading": "A New Library",
+      "city": "Alexandria",
+      "image_queries": [
+        "Bibliotheca Alexandrina",
+        "Bibliotheca Alexandrina interior",
+        "Alexandria corniche"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Is anything left today?"
+        },
+        {
+          "s": "A",
+          "t": "Almost nothing of the original library survives. But Alexandria has a new one."
+        },
+        {
+          "s": "A",
+          "t": "The idea of reviving it was first proposed in 1974. UNESCO became involved, an international architecture competition was held in 1989, and the Norwegian firm Snøhetta won."
+        },
+        {
+          "s": "A",
+          "t": "The Bibliotheca Alexandrina was completed in 2002. Today it is a modern library and cultural centre, commemorating the ancient one."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "city": "Alexandria",
+      "image_queries": [
+        "Bibliotheca Alexandrina",
+        "Library of Alexandria illustration"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So, no single fire. Purges, civil wars, Caesar's flames, Aurelian's war, and the end of the Serapeum."
+        },
+        {
+          "s": "A",
+          "t": "A library doesn't need to burn to disappear. It just needs to stop being cared for."
+        },
+        {
+          "s": "B",
+          "t": "Which of these do you think did the most damage?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

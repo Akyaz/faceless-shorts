@@ -1,0 +1,390 @@
+{
+  "lang": "en",
+  "topic": "Late Bronze Age collapse",
+  "era": "Late Bronze Age, around 1200-1150 BC, eastern Mediterranean",
+  "country": "",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "1177 BC: The Year Civilization Collapsed. What Really Happened?",
+  "description": "Around 1200 BC, the connected world of the eastern Mediterranean fell apart. The Hittite Empire vanished, Mycenaean palaces burned, Ugarit was destroyed, and Egypt barely survived. Was it the mysterious Sea Peoples, a drought, earthquakes, or all of them at once? Here is what the evidence says, and what historians still debate.",
+  "hashtags": [
+    "bronzeagecollapse",
+    "history",
+    "ancienthistory"
+  ],
+  "tags": [
+    "bronze age collapse",
+    "1177 bc",
+    "sea peoples",
+    "hittites",
+    "mycenae",
+    "ancient history",
+    "documentary",
+    "eric cline"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Late Bronze Age collapse, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse"
+    },
+    {
+      "title": "Sea Peoples, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Sea_Peoples"
+    },
+    {
+      "title": "Eric H. Cline, 1177 B.C.: The Year Civilization Collapsed, Princeton University Press",
+      "url": "https://press.princeton.edu/books/paperback/9780691208015/1177-bc"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Medinet Habu Sea Peoples relief",
+        "Hattusa ruins",
+        "Mycenae Lion Gate"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, could our connected world just fall apart? Trade, cities, writing, all within a few decades?"
+        },
+        {
+          "s": "B",
+          "t": "That sounds like the plot of a disaster film."
+        },
+        {
+          "s": "A",
+          "t": "It happened. Around 1200 BC, the great powers of the eastern Mediterranean were linked by trade and diplomacy. Then, within roughly fifty years, much of that world collapsed."
+        },
+        {
+          "s": "B",
+          "t": "Which powers are we talking about?"
+        },
+        {
+          "s": "A",
+          "t": "The Hittite Empire in Anatolia disappeared. Mycenaean palaces in Greece burned. The rich trading city of Ugarit was destroyed. Egypt survived, but weakened."
+        },
+        {
+          "s": "B",
+          "t": "And who was responsible?"
+        },
+        {
+          "s": "A",
+          "t": "That's the great mystery. Egyptian inscriptions blame invaders they called the peoples of the sea. Modern researchers think the truth is more complicated."
+        },
+        {
+          "s": "B",
+          "t": "Let's start with the world before the fall."
+        }
+      ]
+    },
+    {
+      "heading": "A Connected World",
+      "image_queries": [
+        "Uluburun shipwreck",
+        "Ugarit ruins",
+        "Mycenaean palace"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Between about 1550 and 1200 BC, the Late Bronze Age, advanced civilizations with complex institutions and extensive trade networks dominated the region."
+        },
+        {
+          "s": "A",
+          "t": "Egypt's New Kingdom, the Hittites in Anatolia, the Mycenaeans in Greece, the kingdoms of Mesopotamia, and wealthy trading cities like Ugarit on the Syrian coast."
+        },
+        {
+          "s": "B",
+          "t": "They traded with each other?"
+        },
+        {
+          "s": "A",
+          "t": "They traded, they married into each other's royal families, and they signed treaties. The peace treaty between the Hittites and Ramesses the Second is from this era."
+        },
+        {
+          "s": "A",
+          "t": "Bronze itself depended on trade. It is made of copper and tin, which were rarely found in the same place. Metals, grain, luxury goods and ideas moved across the sea."
+        },
+        {
+          "s": "B",
+          "t": "So when one part broke, the others felt it."
+        },
+        {
+          "s": "A",
+          "t": "That is the key idea behind many modern explanations."
+        }
+      ]
+    },
+    {
+      "heading": "The Fall",
+      "image_queries": [
+        "Hattusa",
+        "Mycenae ruins",
+        "Ugarit"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What actually happened?"
+        },
+        {
+          "s": "A",
+          "t": "Historians once believed that within forty to fifty years, almost every significant city between Pylos in Greece and Gaza was violently destroyed, and many were abandoned."
+        },
+        {
+          "s": "A",
+          "t": "Among them were Hattusa, the Hittite capital, Mycenae in Greece, and Ugarit in Syria."
+        },
+        {
+          "s": "B",
+          "t": "Is that picture still accepted?"
+        },
+        {
+          "s": "A",
+          "t": "More recent research is more cautious. Some sites suffered destruction, others declined slowly, and some argue the collapse may not have been as widespread as once thought."
+        },
+        {
+          "s": "A",
+          "t": "But the overall result is clear. The Hittite Empire collapsed. In Greece, palace economies broke apart into small, isolated village cultures for centuries, a period often called the Greek Dark Ages."
+        },
+        {
+          "s": "A",
+          "t": "Egypt's New Kingdom and the Middle Assyrian Empire survived, but in weakened forms."
+        }
+      ]
+    },
+    {
+      "heading": "The Sea Peoples",
+      "country": "Egypt",
+      "image_queries": [
+        "Medinet Habu",
+        "Medinet Habu Sea Peoples relief",
+        "Ramesses III"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Tell me about the Sea Peoples."
+        },
+        {
+          "s": "A",
+          "t": "They were groups of raiders who attacked Egypt and other regions of the eastern Mediterranean around 1200 BC. Some are well attested, like the Lukka and the Peleset. Others, like the Weshesh, remain a mystery."
+        },
+        {
+          "s": "A",
+          "t": "Our main source is the mortuary temple of Ramesses the Third at Medinet Habu in Egypt. Its walls show his battles against them."
+        },
+        {
+          "s": "A",
+          "t": "An inscription from the eighth year of his reign, about 1175 BC, says no land could stand before their arms, naming Hatti, Carchemish, Arzawa and Alashiya, which is probably Cyprus."
+        },
+        {
+          "s": "B",
+          "t": "So the Egyptians blamed them for everything."
+        },
+        {
+          "s": "A",
+          "t": "Interestingly, the name Sea Peoples is modern. Nineteenth-century Egyptologists coined it. Many of these groups seem to have travelled by land as well as by sea."
+        },
+        {
+          "s": "A",
+          "t": "And the Hittitologist Trevor Bryce stresses that these were not only military campaigns, but movements of large populations looking for new lands to settle."
+        }
+      ]
+    },
+    {
+      "heading": "Who Were They?",
+      "country": "",
+      "image_queries": [
+        "Sherden warriors relief",
+        "Medinet Habu prisoners relief",
+        "Nuraghe Sardinia"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Do we know where the Sea Peoples came from?"
+        },
+        {
+          "s": "A",
+          "t": "For some groups we have clues, for others almost nothing. Take the Sherden. They appear in Egyptian records long before the collapse."
+        },
+        {
+          "s": "A",
+          "t": "In the second year of Ramesses the Second, a Sherden attack on the Nile Delta was pushed back. Later, captured Sherden fought for the pharaoh himself, including at the Battle of Kadesh."
+        },
+        {
+          "s": "B",
+          "t": "So yesterday's enemy became today's soldier."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Some researchers link the Sherden to Sardinia. Twelfth-century pottery from Sardinia's Nuragic culture has even been found at a fortified settlement on Cyprus."
+        },
+        {
+          "s": "A",
+          "t": "Another group, the Shekelesh, appear in an earlier inscription at Karnak as auxiliary troops of a Libyan ruler called Meryey."
+        },
+        {
+          "s": "B",
+          "t": "And the Weshesh?"
+        },
+        {
+          "s": "A",
+          "t": "They are the least known of all. They appear only in documents from the reign of Ramesses the Third, and no image of them has ever been identified."
+        },
+        {
+          "s": "A",
+          "t": "The term itself comes from the French Egyptologist Emmanuel de Rougé, a curator at the Louvre. In 1855 he described prisoners on the walls of Medinet Habu as peuples de la mer, peoples of the sea, based on photographs of the temple."
+        }
+      ]
+    },
+    {
+      "heading": "Victims or Villains?",
+      "image_queries": [
+        "Medinet Habu Sea Peoples relief",
+        "Philistine pottery",
+        "Ashkelon"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Were the Sea Peoples the cause of the collapse?"
+        },
+        {
+          "s": "A",
+          "t": "Early scholars thought so. But recent work tends to see them as refugees, people fleeing a crisis that was already under way."
+        },
+        {
+          "s": "A",
+          "t": "Some of them settled in the Levant. The Peleset are generally linked to the later Philistines. Pottery and genetic evidence suggest newcomers from Europe settled at sites such as Ashkelon at the start of the Iron Age."
+        },
+        {
+          "s": "B",
+          "t": "And they integrated?"
+        },
+        {
+          "s": "A",
+          "t": "Both genetic and archaeological evidence suggest the newcomers quickly mixed and intermarried with local populations."
+        },
+        {
+          "s": "A",
+          "t": "So the Sea Peoples may be as much a symptom of the collapse as its cause."
+        }
+      ]
+    },
+    {
+      "heading": "Drought, Earthquakes and Fire",
+      "image_queries": [
+        "Dead Sea",
+        "juniper tree Anatolia",
+        "Mycenae citadel"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What other explanations are there?"
+        },
+        {
+          "s": "A",
+          "t": "Many. Climate change, volcanic eruptions, drought, disease, economic disruption, the spread of iron, and changes in warfare that ended the dominance of chariots."
+        },
+        {
+          "s": "A",
+          "t": "There is real evidence for drought. Tree rings from juniper trees in Anatolia show a severe dry period around 1198 to 1196 BC."
+        },
+        {
+          "s": "A",
+          "t": "In the Dead Sea region, underground water levels dropped by more than fifty metres towards the end of the second millennium BC. That implies very little rain."
+        },
+        {
+          "s": "B",
+          "t": "And earthquakes?"
+        },
+        {
+          "s": "A",
+          "t": "Mycenae was badly damaged by an earthquake around 1250 BC, then rebuilt, and destroyed again by major fires around 1190 BC."
+        },
+        {
+          "s": "A",
+          "t": "A similar story comes from Tiryns, not far from Mycenae, where an earthquake around 1200 BC destroyed much of the city, including its palace."
+        },
+        {
+          "s": "A",
+          "t": "Some historians suggest those fires came from an attack. But Eric Cline points out there is little archaeological evidence for one. Recent research also suggests earthquakes were less influential than once believed."
+        }
+      ]
+    },
+    {
+      "heading": "A Perfect Storm",
+      "image_queries": [
+        "Late Bronze Age map",
+        "Hattusa walls",
+        "Mycenae Lion Gate"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So which one was it?"
+        },
+        {
+          "s": "A",
+          "t": "None of the explanations has reached a consensus. Most researchers now think a combination of factors was responsible."
+        },
+        {
+          "s": "A",
+          "t": "This idea is called systems collapse. When societies are tightly connected, a drought, a famine, a war or a broken trade route can trigger failures that spread from one kingdom to the next."
+        },
+        {
+          "s": "B",
+          "t": "Like dominoes."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Eric Cline, whose book gave this period its famous date, argues that no single cause explains it. The year 1177 BC in his title is tied to Ramesses the Third's war with the Sea Peoples. It is a symbolic marker, not the single day everything ended."
+        },
+        {
+          "s": "A",
+          "t": "After the collapse, new metalworking techniques spread, and the region slowly moved into the Iron Age."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "Medinet Habu",
+        "Hattusa ruins"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So in a few decades, empires disappeared, palaces burned, and in many places literacy declined for centuries."
+        },
+        {
+          "s": "A",
+          "t": "And historians still argue about why. That's what makes the Bronze Age collapse so fascinating, and a little unsettling."
+        },
+        {
+          "s": "B",
+          "t": "Do you think our connected world could face something similar? Or are we more resilient?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

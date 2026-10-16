@@ -8,3 +8,4 @@ scripts/longform/en-gobekli-tepe.json
 scripts/longform/en-fall-of-constantinople.json
 scripts/longform/tr-piri-reis.json
 scripts/longform/tr-truva.json
+scripts/longform/en-bronze-age-collapse.json

@@ -1,0 +1,337 @@
+{
+  "lang": "en",
+  "topic": "Hannibal's crossing of the Alps",
+  "era": "218 BC, Second Punic War",
+  "country": "",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Hannibal Crosses the Alps: Elephants, Ambushes and a Route Nobody Can Find",
+  "description": "In 218 BC, the Carthaginian general Hannibal marched an army, cavalry and war elephants from Spain over the Pyrenees, across the Rhône and through the Alps to attack Rome. It became one of the most celebrated feats in ancient warfare. Here is what the ancient sources say, how the elephants crossed a river, and why historians still argue about the exact pass.",
+  "hashtags": [
+    "hannibal",
+    "history",
+    "ancientrome"
+  ],
+  "tags": [
+    "hannibal",
+    "hannibal crossing the alps",
+    "carthage",
+    "punic wars",
+    "ancient rome",
+    "elephants",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Hannibal's crossing of the Alps, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hannibal%27s_crossing_of_the_Alps"
+    },
+    {
+      "title": "Hannibal in the Alps, Livius.org (Jona Lendering)",
+      "url": "https://www.livius.org/articles/person/hannibal-3-barca/hannibal-in-the-alps"
+    },
+    {
+      "title": "Hannibal crosses the Alps, History.com",
+      "url": "https://www.history.com/articles/hannibal-crosses-alps"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "image_queries": [
+        "Hannibal crossing the Alps painting",
+        "Alps mountain pass",
+        "Hannibal bust"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, if you wanted to attack Rome from Spain, how would you go?"
+        },
+        {
+          "s": "B",
+          "t": "By sea, obviously. It's the shortest route."
+        },
+        {
+          "s": "A",
+          "t": "Rome controlled the sea. So in 218 BC, the Carthaginian general Hannibal chose the route nobody expected: over the Pyrenees, across the Rhône and straight through the Alps."
+        },
+        {
+          "s": "B",
+          "t": "With an army?"
+        },
+        {
+          "s": "A",
+          "t": "With infantry, cavalry, pack animals, and war elephants. It became one of the most celebrated achievements of any army in the ancient world."
+        },
+        {
+          "s": "B",
+          "t": "And we know exactly how he did it?"
+        },
+        {
+          "s": "A",
+          "t": "That's the twist. We know he did it. We still don't know exactly where."
+        }
+      ]
+    },
+    {
+      "heading": "A War Between Two Powers",
+      "country": "Spain",
+      "city": "Cartagena",
+      "image_queries": [
+        "Cartagena Roman theatre",
+        "Carthage ruins",
+        "Saguntum castle"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Why were Carthage and Rome fighting?"
+        },
+        {
+          "s": "A",
+          "t": "Carthage, a powerful city in North Africa, had lost the First Punic War to Rome. Hannibal's father, Hamilcar Barca, wanted to make up for those losses, and the family built up Carthaginian power in Spain."
+        },
+        {
+          "s": "A",
+          "t": "Rome set the Ebro river as the limit of Carthaginian expansion. When Hannibal besieged and took the city of Saguntum, which had turned to Rome for protection, war broke out again."
+        },
+        {
+          "s": "B",
+          "t": "The Second Punic War."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. Hannibal spent the winter in Cartagena, in today's Spain. He sent his troops home to rest, hoping to raise their morale for what he knew would be a hard campaign."
+        },
+        {
+          "s": "A",
+          "t": "Then he planned the unthinkable: to take the war directly into Italy, avoiding Roman garrisons and Roman control of the sea."
+        }
+      ]
+    },
+    {
+      "heading": "Over the Pyrenees",
+      "country": "",
+      "image_queries": [
+        "Pyrenees mountains",
+        "Ebro river",
+        "Carthaginian army"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How big was his army?"
+        },
+        {
+          "s": "A",
+          "t": "The numbers in the sources vary. According to one detailed reconstruction, after leaving forces behind in Spain and sending others home, his main force numbered about fifty thousand infantry and nine thousand cavalry."
+        },
+        {
+          "s": "A",
+          "t": "Crossing the Pyrenees was not just a matter of mountains. Hannibal spent two months fighting hostile tribes along the way, and it was costly. He lost around thirteen thousand men."
+        },
+        {
+          "s": "B",
+          "t": "And he hadn't even reached the Alps yet."
+        },
+        {
+          "s": "A",
+          "t": "No. He left one of his generals, Hanno, with ten thousand infantry and a thousand cavalry to hold the new territory, and pushed on towards the Rhône."
+        }
+      ]
+    },
+    {
+      "heading": "Elephants on Rafts",
+      "country": "France",
+      "image_queries": [
+        "Rhône river",
+        "war elephant",
+        "Hannibal elephants Rhône painting"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How do you get elephants across a big river?"
+        },
+        {
+          "s": "A",
+          "t": "Carefully. First, Hannibal sent a detachment under Hanno upstream, where an island split the Rhône into two smaller streams. They built rafts from trees, crossed, and prepared to attack the local tribes from behind."
+        },
+        {
+          "s": "A",
+          "t": "For the elephants, the Carthaginians built two large piers, about thirty metres long, and tied them to large rafts."
+        },
+        {
+          "s": "A",
+          "t": "They covered the piers and rafts with soil, so that the elephants thought they were still walking on land as they were led onto the river."
+        },
+        {
+          "s": "B",
+          "t": "Clever. Did it work?"
+        },
+        {
+          "s": "A",
+          "t": "Mostly. Some rafts capsized when elephants panicked. But the river was shallow enough there that they could wade to the far side, keeping their trunks above water."
+        },
+        {
+          "s": "A",
+          "t": "Modern historians generally agree on where Hannibal camped on the western bank of the Rhône, and see the crossing as well planned and well executed."
+        }
+      ]
+    },
+    {
+      "heading": "Into the Mountains",
+      "country": "",
+      "image_queries": [
+        "Alps snow pass",
+        "Col de Clapier",
+        "Little St Bernard Pass"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "And then the Alps."
+        },
+        {
+          "s": "A",
+          "t": "Yes. By the end of October the weather was snowy. The army had been marching for more than five months and had shrunk greatly."
+        },
+        {
+          "s": "A",
+          "t": "The local tribes were not friendly. In one narrow valley, the Centrones waited on the slopes above and rolled boulders down onto the column, killing many pack animals."
+        },
+        {
+          "s": "B",
+          "t": "That must have been chaos."
+        },
+        {
+          "s": "A",
+          "t": "It was. But Hannibal's heavily armed rearguard held back from entering the pass, which forced the attackers to come down and fight, and the army got through."
+        },
+        {
+          "s": "A",
+          "t": "Hannibal also knew the descent into Italy would be steeper than the ascent. That's one reason he wanted allies among the Gauls on the Italian side."
+        },
+        {
+          "s": "B",
+          "t": "What about the famous story of breaking rocks with fire and vinegar?"
+        },
+        {
+          "s": "A",
+          "t": "That story comes from the Roman historian Livy. Many later writers have doubted it. Even Jonathan Swift joked in Gulliver's Travels that it was probably a myth."
+        }
+      ]
+    },
+    {
+      "heading": "Arriving in Italy",
+      "country": "Italy",
+      "image_queries": [
+        "Po Valley",
+        "Battle of the Trebia",
+        "Roman legionaries"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "How many made it?"
+        },
+        {
+          "s": "A",
+          "t": "According to Polybius, Hannibal arrived in Italy with about twenty thousand infantry and six thousand cavalry. Livy gives a crossing of about sixteen days."
+        },
+        {
+          "s": "B",
+          "t": "And the elephants?"
+        },
+        {
+          "s": "A",
+          "t": "Most accounts say he set out with thirty-seven. How many survived the crossing itself is debated, and different sources give different numbers."
+        },
+        {
+          "s": "A",
+          "t": "The Romans were caught off guard. The consul Publius Scipio had been ordered to stop Hannibal in Spain, but he moved slowly, and Hannibal was already past him."
+        },
+        {
+          "s": "A",
+          "t": "Within months Hannibal defeated Roman armies in Italy, beginning a campaign that lasted for years."
+        }
+      ]
+    },
+    {
+      "heading": "Which Pass?",
+      "country": "",
+      "image_queries": [
+        "Col de la Traversette",
+        "Mont Cenis",
+        "Col de Montgenèvre"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So which pass did he use?"
+        },
+        {
+          "s": "A",
+          "t": "Nobody knows for sure. There are only two main ancient sources: Polybius, born about twenty years after the crossing, and Livy, born about a hundred and sixty years after it."
+        },
+        {
+          "s": "A",
+          "t": "The Alps were poorly documented at the time, and no archaeological evidence has confirmed a route. Every modern theory depends on interpreting a few place names in those texts."
+        },
+        {
+          "s": "A",
+          "t": "Candidates include the Little Saint Bernard Pass, the Col de Clapier, the Col de la Traversette, the Col de Montgenèvre, and a pass near Mont Cenis."
+        },
+        {
+          "s": "B",
+          "t": "Historians must have strong opinions."
+        },
+        {
+          "s": "A",
+          "t": "They do. One nineteenth-century writer argued for the Little Saint Bernard. The modern historian John Lazenby concluded it was the Col de Clapier."
+        },
+        {
+          "s": "A",
+          "t": "And in a 2022 book, the Dutch historian Jona Lendering concluded that the ancient sources give too little accurate information to identify the route at all."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "image_queries": [
+        "Hannibal crossing the Alps painting",
+        "Alps"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So: an army, elephants on floating soil, boulders from the cliffs, and a route that still can't be found."
+        },
+        {
+          "s": "A",
+          "t": "And a march that made Hannibal's name famous for more than two thousand years. Even Napoleon's famous portrait crossing the Alps carries Hannibal's name carved in the rock."
+        },
+        {
+          "s": "B",
+          "t": "Which pass do you think he used? Or does it even matter?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

@@ -524,5 +524,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T17:01:44Z",
+  "run": "38936218267",
+  "event": "schedule",
+  "mode": "world",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38936218267",
+  "videos": [
+   {
+    "title": "Japan Leader Says Makeup and Chores Cost Hours",
+    "url": null
+   }
+  ]
  }
 ]

@@ -50,20 +50,6 @@
   ]
  },
  {
-  "time": "2026-10-14T04:21:21Z",
-  "run": "38473637121",
-  "event": "workflow_dispatch",
-  "mode": "digest",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38510938840",
-  "videos": [
-   {
-    "title": "Trump'tan Erdoğan Açıklaması ve Karadeniz'de İHA Saldırısı",
-    "url": "https://youtu.be/_3ZtNIk-0AM"
-   }
-  ]
- },
- {
   "time": "2026-10-14T04:22:02Z",
   "run": "38378123073",
   "event": "workflow_dispatch",
@@ -452,6 +438,20 @@
    {
     "title": "14 İle Yağış Uyarısı Geldi! 6 İlde Okullar Tatil Edildi",
     "url": "https://youtu.be/g4RxfdI8DJs"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-16T05:18:31Z",
+  "run": "38473637121",
+  "event": "workflow_dispatch",
+  "mode": "digest",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38855073009",
+  "videos": [
+   {
+    "title": "Trump'tan Erdoğan Açıklaması ve Karadeniz'de İHA Saldırısı",
+    "url": "https://youtu.be/su4a4Pj-c08"
    }
   ]
  }

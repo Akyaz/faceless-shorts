@@ -428,20 +428,6 @@
   ]
  },
  {
-  "time": "2026-10-15T17:59:57Z",
-  "run": "38781265839",
-  "event": "schedule",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38781265839",
-  "videos": [
-   {
-    "title": "İstanbul ve 48 il için şiddetli yağış uyarısı",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:02Z",
   "run": "38801187914",
   "event": "workflow_dispatch",
@@ -452,6 +438,20 @@
    {
     "title": "İstanbul'da okullar tatil edildi ve Hakan Fidan'dan tepki",
     "url": "https://youtu.be/BMOZLHI0qfw"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-16T04:34:12Z",
+  "run": "38781265839",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851282962",
+  "videos": [
+   {
+    "title": "İstanbul ve 48 il için şiddetli yağış uyarısı",
+    "url": "https://youtu.be/ECxTydtVA7E"
    }
   ]
  }

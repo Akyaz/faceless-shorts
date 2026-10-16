@@ -538,5 +538,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-16T17:45:24Z",
+  "run": "38941731231",
+  "event": "schedule",
+  "mode": "story",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38941731231",
+  "videos": [
+   {
+    "title": "Günün Öne Çıkan Haberleri",
+    "url": null
+   }
+  ]
  }
 ]

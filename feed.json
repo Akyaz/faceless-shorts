@@ -400,20 +400,6 @@
   ]
  },
  {
-  "time": "2026-10-15T15:49:57Z",
-  "run": "38763325935",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38763325935",
-  "videos": [
-   {
-    "title": "Uzaydan sinyal ve saatlerden saniye kaldırılıyor!",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:02Z",
   "run": "38801187914",
   "event": "workflow_dispatch",
@@ -452,6 +438,20 @@
    {
     "title": "Brazil Abolishes Six-Day Workweek in Major Win for Lula",
     "url": "https://youtu.be/D2aZvcv2Fnk"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-16T04:34:55Z",
+  "run": "38763325935",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851345855",
+  "videos": [
+   {
+    "title": "Uzaydan sinyal ve saatlerden saniye kaldırılıyor!",
+    "url": "https://youtu.be/EVAGWKAq6s4"
    }
   ]
  }

@@ -1,0 +1,21 @@
+name: TTS deneme (geçici)
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Modelleri listele ve dene
+        env:
+          KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          curl -s "https://generativelanguage.googleapis.com/v1beta/models?pageSize=200" -H "x-goog-api-key: $KEY" | python3 -c "
+          import json,sys
+          for m in json.load(sys.stdin).get('models',[]):
+              if 'tts' in m['name'].lower() or 'audio' in m.get('description','').lower(): print(m['name'], m.get('supportedGenerationMethods'))"
+          for model in gemini-2.5-flash-preview-tts gemini-2.5-flash-lite-preview-tts gemini-2.5-pro-preview-tts; do
+            code=$(curl -s -o out.json -w "%{http_code}" "https://generativelanguage.googleapis.com/v1beta/models/$model:generateContent" \
+              -H "x-goog-api-key: $KEY" -H "Content-Type: application/json" -d '{
+              "contents":[{"parts":[{"text":"Göbeklitepe, Stonehenge den altı bin yıl daha eski."}]}],
+              "generationConfig":{"responseModalities":["AUDIO"],"speechConfig":{"voiceConfig":{"prebuiltVoiceConfig":{"voiceName":"Charon"}}}}}')
+            echo "$model -> $code"; head -c 400 out.json | grep -v '"data"' ; echo
+          done

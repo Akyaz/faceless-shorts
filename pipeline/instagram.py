@@ -15,7 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "v21.0"
+VERSION = os.environ.get("IG_API_VERSION") or "v23.0"
 CAPTION_LIMIT = 2200  # Instagram açıklama sınırı
 HASHTAG_LIMIT = 30
 

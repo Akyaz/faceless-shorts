@@ -948,18 +948,17 @@
   ]
  },
  {
-  "time": "2026-10-17T11:42:17Z",
+  "time": "2026-10-17T12:16:20Z",
   "run": "39028780876",
   "event": "workflow_dispatch",
   "mode": "longform",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39028780876",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39031853970",
   "videos": [
    {
     "title": "İstanbul'un Sel Tarihi: 1811'den 14 Ekim 2026'ya Aynı Dereler, Aynı Semtler",
-    "url": null
+    "url": "https://youtu.be/s1u64ewcbLk"
    }
-  ],
-  "script": "scripts/longform/tr-istanbul-selleri.json"
+  ]
  }
 ]

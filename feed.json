@@ -818,5 +818,15 @@
    }
   ],
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-10-17T09:44:10Z",
+  "run": "39021924002",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "cancelled",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39021924002",
+  "videos": [],
+  "script": "scripts/longform/tr-gobeklitepe.json"
  }
 ]

@@ -126,7 +126,12 @@ def _create_container(user, video_path, meta):
         if not os.environ.get("MEDIA_TOKEN"):
             raise RuntimeError("Instagram ile giriş anahtarında video herkese açık bir adresten verilmeli; "
                                "MEDIA_TOKEN secret'ı (panel deposuna yazma izni olan GitHub anahtarı) gerekli.")
-        url, remove = _host_video(video_path)
+        try:
+            url, remove = _host_video(video_path)
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f"Geçici video panel deposuna konamadı (GitHub HTTP {exc.code}): "
+                               f"{exc.read().decode('utf-8', 'replace')[:200]}. MEDIA_TOKEN'ın "
+                               f"{MEDIA_REPO} deposunda Contents: Read and write izni olmalı.")
         try:
             return _post(f"{user}/media", {**params, "video_url": url}), remove
         except Exception:
@@ -174,6 +179,8 @@ def main():
         return
     try:
         url = upload(video_path, meta)
+    except RuntimeError as exc:
+        sys.exit(str(exc))
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", "replace")
         if "OAuthException" in body and ("expired" in body.lower() or "session" in body.lower()):

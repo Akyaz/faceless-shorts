@@ -701,16 +701,16 @@
   ]
  },
  {
-  "time": "2026-10-17T09:04:37Z",
+  "time": "2026-10-17T09:07:47Z",
   "run": "39018373212",
   "event": "workflow_dispatch",
   "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019740402",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019936654",
   "videos": [
    {
     "title": "Otoyol Açılıyor: 2,5 Saatlik Yol 18 Dakikaya Düşüyor",
-    "url": null
+    "url": "https://youtu.be/aij6Yk5WCYE"
    }
   ]
  }

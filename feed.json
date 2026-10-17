@@ -631,20 +631,6 @@
   "script": "scripts/longform/tr-gobeklitepe.json"
  },
  {
-  "time": "2026-10-17T09:07:47Z",
-  "run": "39018373212",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019936654",
-  "videos": [
-   {
-    "title": "Otoyol Açılıyor: 2,5 Saatlik Yol 18 Dakikaya Düşüyor",
-    "url": "https://youtu.be/aij6Yk5WCYE"
-   }
-  ]
- },
- {
   "time": "2026-10-17T09:08:01Z",
   "run": "39016909048",
   "event": "workflow_dispatch",
@@ -711,6 +697,20 @@
    {
     "title": "Japan Leader Says Makeup and Chores Cost Hours",
     "url": "https://youtu.be/kX8xU8tTl-M"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T09:08:47Z",
+  "run": "39018373212",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019998139",
+  "videos": [
+   {
+    "title": "Otoyol Açılıyor: 2,5 Saatlik Yol 18 Dakikaya Düşüyor",
+    "url": "https://youtu.be/lF0BgeAQ20o"
    }
   ]
  }

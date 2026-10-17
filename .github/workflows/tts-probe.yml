@@ -24,9 +24,9 @@ jobs:
                       out = json.load(urllib.request.urlopen(req, timeout=120))
                       pcm = base64.b64decode(out["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
                       name = f"samples/{model}-{voice}"
-                      open(name + ".pcm", "wb").write(pcm)
-                      subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", name + ".pcm", name + ".mp3"], check=True)
-                      os.remove(name + ".pcm")
+                      import wave
+                      with wave.open(name + ".wav", "wb") as w:
+                          w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000); w.writeframes(pcm)
                       print(model, voice, "OK", round(len(pcm) / 48000, 1), "sn")
                   except urllib.error.HTTPError as e:
                       msg = e.read().decode()

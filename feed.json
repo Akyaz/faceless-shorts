@@ -889,5 +889,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-17T10:47:13Z",
+  "run": "39026062229",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39026062229",
+  "videos": [
+   {
+    "title": "Cenk Tosun'dan Olay İtiraf! Kaan Ayhan Ayrılıyor mu?",
+    "url": null
+   }
+  ]
  }
 ]

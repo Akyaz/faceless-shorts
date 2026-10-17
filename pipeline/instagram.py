@@ -55,10 +55,13 @@ def _send_file(url, video_path):
 
 
 def _user_id():
-    if os.environ.get("IG_USER_ID"):
-        return os.environ["IG_USER_ID"]
-    me = _get("me", {"fields": "user_id,id"})
-    return me.get("user_id") or me["id"]
+    """Instagram ile giriş anahtarında hesap kimliği anahtardan okunur (IG_USER_ID yanlış girilse de çalışsın);
+    Facebook anahtarında Instagram işletme hesabının kimliği IG_USER_ID'den gelir."""
+    if _host() == "graph.instagram.com" or not os.environ.get("IG_USER_ID"):
+        me = _get("me", {"fields": "user_id,username"})
+        print(f"Instagram hesabı: @{me.get('username')}")
+        return me.get("user_id") or me["id"]
+    return os.environ["IG_USER_ID"]
 
 
 def caption(meta):

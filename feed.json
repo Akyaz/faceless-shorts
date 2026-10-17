@@ -847,5 +847,19 @@
     "url": "https://youtu.be/wD8ADKp_o2k"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T10:34:45Z",
+  "run": "39025270306",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39025270306",
+  "videos": [
+   {
+    "title": "Cenk Tosun'dan Fenerbahçe İtirafı ve Beşiktaş'ın EuroLeague Zaferi!",
+    "url": null
+   }
+  ]
  }
 ]

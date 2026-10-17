@@ -903,5 +903,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-17T11:02:07Z",
+  "run": "39026961661",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39026961661",
+  "videos": [
+   {
+    "title": "Kripto Vurgununda Dev Operasyon: Richard Heart Yakalandı",
+    "url": null
+   }
+  ]
  }
 ]

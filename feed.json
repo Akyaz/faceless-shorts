@@ -1077,5 +1077,20 @@
     "instagram": "https://www.instagram.com/reel/Dem3HlGD9-6/"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T20:00:40Z",
+  "run": "39064634029",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39064634029",
+  "videos": [
+   {
+    "title": "Kelly Clarkson vs. a Brooklyn Shop: The $15,000 Bird Now Priced at $15 Million",
+    "url": "https://youtu.be/iZfI2n0gu1Y",
+    "instagram": "https://www.instagram.com/reel/Dem6oiBkdzV/"
+   }
+  ]
  }
 ]

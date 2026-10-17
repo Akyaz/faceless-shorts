@@ -3,11 +3,11 @@ name: Short üret
 on:
   # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
-    # Günde 9 otomatik video: YouTube kanala günde yaklaşık 10 yüklemeye izin veriyor, biri elle yüklemeye kalır.
+    # Günde 8 otomatik Shorts: YouTube kanala günde 9-10 yüklemeye izin veriyor; biri her gün 21:00'deki tarih videosuna kalır.
     # 07:15: sabah özeti
     - cron: "5 4 * * *"
-    # 10, 12, 17 ve 19: birer gündem haberi
-    - cron: "50 6,8,13,15 * * *"
+    # 10, 12 ve 19: birer gündem haberi
+    - cron: "50 6,8,15 * * *"
     # 15:00: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
     - cron: "50 11 * * *"
     # 16:00: dünya gündeminden İngilizce bir haber (ABD'de sabah)

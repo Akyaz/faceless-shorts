@@ -13,7 +13,7 @@ Kendi metninle video: `scripts/custom/` altındaki JSON dosyası iş akışını
 
 Video türleri (`--mode`): `story` tek bir gündem haberini anlatır, `world` dünya gündeminden tek bir haberi tamamen İngilizce anlatır (metin, ekran yazıları, başlık ve açıklama), `trend` bilim ve teknolojiden merak uyandıran 4 gelişmeyi özetler, `digest` günün öne çıkan 5 haberini, `sports` spor gündeminden 4 başlığı özetler.
 
-Zamanlama (Türkiye saati, günde 9 video): 07:15 sabah özeti; 10:00, 12:00, 17:00 ve 19:00'da birer gündem haberi; 13:30 spor gündemi; 15:00 trend; 16:00 İngilizce dünya haberi; 20:30 günün özeti. YouTube kanala günde yaklaşık 10 yüklemeye izin verdiği için sayı bununla sınırlı. GitHub zamanlanmış işleri geciktirebilir ya da atlayabilir.
+Zamanlama (Türkiye saati, günde 8 Shorts ve 1 tarih videosu): 07:15 sabah özeti; 10:00, 12:00 ve 19:00'da birer gündem haberi; 13:30 spor gündemi; 15:00 trend; 16:00 İngilizce dünya haberi; 20:30 günün özeti; 21:00 sıradaki tarih videosu. YouTube kanala günde 9-10 yüklemeye izin verdiği için sayı bununla sınırlı. GitHub zamanlanmış işleri geciktirebilir ya da atlayabilir.
 
 Maç programı: `python -m pipeline.fixtures` (iş akışında `ucl` türü) Şampiyonlar Ligi'nde o günün maçlarını ve Türkiye saatiyle başlama saatlerini tek bir tabloda gösteren 12 saniyelik bir video üretir; o gün maç yoksa video çıkmaz. `--results` (iş akışında "results") önce bir önceki günün sonuçlarını skorlar tek tek gelecek şekilde gösterir; `--emphasize` seçilen takımların maçını kırmızı çerçeveye alır. Veri ESPN'in açık skor tablosundan alınır.
 

@@ -1047,5 +1047,20 @@
     "instagram": "https://www.instagram.com/reel/DemvrV3CMbs/"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T18:33:12Z",
+  "run": "39058328139",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39058328139",
+  "videos": [
+   {
+    "title": "Fenerbahçe 3-0 Alanyaspor: Kaçan Penaltı, İptal Edilen Gol ve 6-0'ın Rövanşı",
+    "url": "https://youtu.be/_JGwAof_130",
+    "instagram": "https://www.instagram.com/reel/DemwoGRlHWD/"
+   }
+  ]
  }
 ]

@@ -8,6 +8,7 @@ Kullanım: python -m pipeline.instagram out/short.mp4 out/metadata.json
 """
 import json
 import os
+from pathlib import Path
 import re
 import sys
 import time
@@ -69,7 +70,8 @@ def caption(meta):
     text = meta["description"]
     # YouTube'a özel satırlar çıkar; #shorts yerine #reels
     lines = [line for line in text.splitlines() if "abone ol" not in line.lower() and "subscribe" not in line.lower()]
-    text = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).replace("#shorts", "#reels")
+    lines.insert(1, "\nYouTube: https://www.youtube.com/@QuickRecapChannel")
+    text = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).replace("#shorts", "#reels #quickrecapchannel")
     tags = [w for w in text.split() if w.startswith("#")]
     for extra in tags[HASHTAG_LIMIT:]:
         text = text.replace(" " + extra, "")
@@ -189,7 +191,11 @@ def main():
         print(f"Instagram'da zaten var: {meta['instagram_url']}")
         return
     try:
-        url = upload(video_path, meta)
+        # Instagram kopyasında YouTube kanalının adresi videonun altında görünür (açıklamadaki bağlantı tıklanmıyor)
+        from . import render
+        linked = str(Path(video_path).with_suffix(".instagram.mp4"))
+        render.add_link(video_path, linked)
+        url = upload(linked, meta)
     except RuntimeError as exc:
         sys.exit(str(exc))
     except urllib.error.HTTPError as exc:

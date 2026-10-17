@@ -24,6 +24,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # Instagram kopyasına kanal adresi yazılır: ffmpeg ve Pillow gerekli
+      - name: Sistem paketleri
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Python paketleri
+        run: pip install -r requirements.txt
       - uses: actions/download-artifact@v4
         with:
           name: short

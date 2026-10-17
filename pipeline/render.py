@@ -52,12 +52,29 @@ def _wrap(draw, text, font, max_width):
     return lines + [line] if line else lines
 
 
+BRAND_TAG = "#quickrecapchannel"
+
+
 def _brand(img):
-    """Sol üst köşede küçük kanal logosu."""
+    """Sol üst köşede küçük kanal logosu, altında okunabilecek kadar küçük kanal etiketi.
+    Etiketin sağ kenarını döner: ortadaki etiket kutusu bununla çakışmasın."""
     size = 128
     logo = Image.open(LOGO).convert("RGBA").resize((size, size), Image.LANCZOS)
     # Kenardan pay: video boyunca %6 yakınlaşınca logo kadrajın dışına taşmasın
     img.paste(logo, (60, 76), logo)
+    d = ImageDraw.Draw(img)
+    font = ImageFont.truetype(_font_path(False), 22)
+    d.text((60, 76 + size + 10), BRAND_TAG, font=font, fill=(235, 235, 235), stroke_width=2, stroke_fill="black")
+    return 60 + d.textlength(BRAND_TAG, font=font)
+
+
+def _fit_label(d, text, size, left_limit, pad):
+    """Ortadaki etiket kutusu kanal etiketine değmeyecek kadar küçülür."""
+    while True:
+        font = ImageFont.truetype(_font_path(True), size)
+        if (W - d.textlength(text, font=font)) / 2 - pad >= left_limit or size <= 30:
+            return font
+        size -= 2
 
 
 SUBSCRIBE_RED = (229, 57, 53)
@@ -127,6 +144,39 @@ def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_
     last.unlink()
 
 
+CHANNEL_URL = "youtube.com/@QuickRecapChannel"
+
+
+def _link_layer(path, text=CHANNEL_URL):
+    """Instagram kopyası için şeffaf katman: altta kırmızı oynat işaretli kanal adresi."""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    font = ImageFont.truetype(_font_path(True), 40)
+    tw, ph, icon = d.textlength(text, font=font), 76, 30
+    pw = tw + icon + 90
+    x0, y0 = (W - pw) / 2, 1450  # Instagram'ın alttaki açıklama bölgesinin üstünde, kaynak satırının üstünde
+    d.rounded_rectangle([x0, y0, x0 + pw, y0 + ph], radius=ph / 2, fill=(0, 0, 0, 170))
+    ix, cy = x0 + 34, y0 + ph / 2
+    d.rounded_rectangle([ix - 8, cy - 20, ix + icon + 4, cy + 20], radius=10, fill=SUBSCRIBE_RED + (255,))
+    d.polygon([(ix + 6, cy - 10), (ix + 6, cy + 10), (ix + icon - 6, cy)], fill="white")
+    d.text((ix + icon + 22, cy), text, font=font, fill="white", anchor="lm")
+    img.save(path)
+
+
+def add_link(video, out_path, text=CHANNEL_URL):
+    """Kanal adresi videonun tamamında altta görünür; ses aynen kopyalanır."""
+    layer = Path(out_path).with_suffix(".link.png")
+    _link_layer(layer, text)
+    subprocess.run([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-loop", "1", "-framerate", "30",
+        "-t", f"{audio_duration(video):.2f}", "-i", str(layer),
+        "-filter_complex", "[0:v][1:v]overlay=shortest=1[v]", "-map", "[v]", "-map", "0:a?",
+        "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30", "-c:a", "copy",
+        "-movflags", "+faststart", str(out_path),
+    ], check=True)
+    layer.unlink()
+
+
 def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False, lang="tr"):
     """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer."""
     accent = ACCENTS[idx % len(ACCENTS)]
@@ -136,12 +186,13 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     bold = ImageFont.truetype(_font_path(True), 56)
     regular = ImageFont.truetype(_font_path(False), 44)
 
-    _brand(img)
+    edge = _brand(img)
     label = segment.get("label") or label
     hook_title = segment.get("heading") or hook_title
-    lw = d.textlength(label, font=bold)
+    label_font = _fit_label(d, label, 56, edge + 20, 36)
+    lw = d.textlength(label, font=label_font)
     d.rounded_rectangle([(W - lw) / 2 - 36, 180, (W + lw) / 2 + 36, 280], radius=50, fill=accent)
-    d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
+    d.text((W / 2, 230), label, font=label_font, fill="white", anchor="mm")
 
     if hook_title:  # merak başlığı her kartta üstte sabit durur
         hook_font = ImageFont.truetype(_font_path(True), 78)
@@ -213,8 +264,8 @@ def draw_match_card(card, match, out_path, label="SPOR", source=""):
     img = _pitch()
     d = ImageDraw.Draw(img)
     font = lambda size, bold=True: ImageFont.truetype(_font_path(bold), size)  # noqa: E731
-    _brand(img)
-    _pill(d, label, 230, font(56), ACCENTS[0], pad=36, height=100)
+    edge = _brand(img)
+    _pill(d, label, 230, _fit_label(d, label, 56, edge + 20, 36), ACCENTS[0], pad=36, height=100)
     kind = card["type"]
     team = _hex(match["home_color"] if card.get("team", "home") == "home" else match["away_color"])
 
@@ -280,6 +331,8 @@ def draw_wide_card(segment, idx, out_path, background=None, subscribe=False, lan
 
     logo = Image.open(LOGO).convert("RGBA").resize((120, 120), Image.LANCZOS)
     img.paste(logo, (70, 60), logo)
+    d.text((70, 60 + 120 + 8), BRAND_TAG, font=ImageFont.truetype(_font_path(False), 22), fill=(235, 235, 235),
+           stroke_width=2, stroke_fill="black")
     label = segment.get("label") or "HAFTANIN ÖZETİ"
     lw = d.textlength(label, font=bold)
     d.rounded_rectangle([(w - lw) / 2 - 32, 76, (w + lw) / 2 + 32, 164], radius=44, fill=accent)
@@ -336,12 +389,13 @@ def draw_fixture_card(title, date_label, groups, out_path, label, highlight=(), 
     d.line([70, H / 2 + 40, W - 70, H / 2 + 40], fill=line, width=5)
     d.ellipse([W / 2 - 210, H / 2 - 170, W / 2 + 210, H / 2 + 250], outline=line, width=5)
 
-    _brand(img)
+    edge = _brand(img)
     bold = ImageFont.truetype(_font_path(True), 50)
     regular = ImageFont.truetype(_font_path(False), 40)
-    lw = d.textlength(label, font=bold)
+    label_font = _fit_label(d, label, 50, edge + 20, 36)
+    lw = d.textlength(label, font=label_font)
     d.rounded_rectangle([(W - lw) / 2 - 36, 184, (W + lw) / 2 + 36, 276], radius=46, fill=ACCENTS[1])
-    d.text((W / 2, 230), label, font=bold, fill="white", anchor="mm")
+    d.text((W / 2, 230), label, font=label_font, fill="white", anchor="mm")
     size = 84  # uzun başlık çerçeveye sığana kadar küçülür
     while d.textlength(title, font=ImageFont.truetype(_font_path(True), size)) > W - 200 and size > 50:
         size -= 2

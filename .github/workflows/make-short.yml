@@ -120,6 +120,21 @@ jobs:
             python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
           done
           exit $failed
+      # Instagram'ın yükleme sınırı YouTube'dan ayrı: YouTube sınıra takılsa da Reels paylaşılır.
+      # IG_ACCESS_TOKEN secret'ı yoksa adım hiçbir şey yapmaz.
+      - name: Instagram'a yükle
+        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) }}
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_GRAPH_HOST: ${{ vars.IG_GRAPH_HOST }}
+        run: |
+          failed=0
+          for meta in out/metadata.json out/*/metadata.json; do
+            [ -f "$meta" ] || continue
+            python -m pipeline.instagram "$(dirname "$meta")/short.mp4" "$meta" || failed=1
+          done
+          exit $failed
       # Yüklemeden sonra saklanır: metadata.json'da YouTube bağlantısı da olur, yeniden yükleme bunu atlar
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

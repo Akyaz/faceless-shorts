@@ -1,0 +1,41 @@
+name: Instagram'a yükle
+
+# Daha önce üretilmiş bir çalışmanın dikey videolarını Instagram'a Reels olarak yükler
+# (ilk deneme, anahtar değişikliği sonrası tekrar). Aynı çalışma için iki kez çalıştırılırsa
+# Instagram'a iki kez yüklenir: bağlantı çalışmanın kaydına geri yazılamıyor.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Videoları üreten çalışmanın numarası (Actions linkindeki sayı)"
+        required: true
+
+jobs:
+  instagram:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: short
+          path: out
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Instagram'a yükle
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_GRAPH_HOST: ${{ vars.IG_GRAPH_HOST }}
+        run: |
+          [ -n "$IG_ACCESS_TOKEN" ] || { echo "IG_ACCESS_TOKEN secret'ı yok"; exit 1; }
+          failed=0
+          for meta in out/metadata.json out/*/metadata.json; do
+            [ -f "$meta" ] || continue
+            python -m pipeline.instagram "$(dirname "$meta")/short.mp4" "$meta" || failed=1
+          done
+          exit $failed

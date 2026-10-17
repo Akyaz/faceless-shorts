@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
       - uses: actions/download-artifact@v4
         with:
-          pattern: "{short,weekly}"
+          pattern: "{short,weekly,longform,longform-video}"  # tarih videosunun önizlemesi de yüklenebilir
           merge-multiple: true
           path: out
           run-id: ${{ inputs.run_id }}
@@ -43,7 +43,9 @@ jobs:
           failed=0
           for meta in out/metadata.json out/*/metadata.json; do
             [ -f "$meta" ] || continue
-            python -m pipeline.upload "$(dirname "$meta")/short.mp4" "$meta" || failed=1
+            dir=$(dirname "$meta")
+            video="$dir/short.mp4"; [ -f "$video" ] || video="$dir/video.mp4"
+            python -m pipeline.upload "$video" "$meta" || failed=1
           done
           exit $failed
       - name: Sonucu bildir

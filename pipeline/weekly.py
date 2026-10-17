@@ -13,7 +13,7 @@ from pathlib import Path
 
 from . import images, music, render, script
 from .news import is_sensitive
-from .tts import synthesize
+from .tts import RATE, speak_all
 
 MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım",
           "Aralık"]
@@ -137,10 +137,12 @@ def main():
         backgrounds[i] = [path for path, _ in found]
         credits += [credit for _, credit in found]
 
+    spoken = speak_all([{"text": seg["text"], "out": work / f"seg{n}.mp3", "lang": "tr", "speaker": "male",
+                         "rate": RATE, "pronounce": None} for n, seg in enumerate(segments)])
     parts, chapters, clock, shown = [], [], 0.0, {}
     for n, seg in enumerate(segments):
         audio, card, ass, part = (work / f"seg{n}.{ext}" for ext in ("mp3", "png", "ass", "mp4"))
-        words = synthesize(seg["text"], audio)
+        words = spoken[n]
         # Giriş ilk haberin, kapanış son haberin görsellerini kullanır
         item = seg.get("item", 0 if n == 0 else len(picked) - 1)
         pool = backgrounds[item]

@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 from . import images, music, render
-from .tts import synthesize
+from .tts import speak_all
 
 RATE = "+8%"  # akıcı belgesel temposu; Shorts'taki +%15'ten biraz yavaş
 MUSIC_GAIN_DB = -21  # konuşma uzun; müzik Shorts'takinden daha geride
@@ -64,6 +64,12 @@ def build(script, out):
     speakers = script["speakers"]
     order = list(speakers)  # konuşmacı sırası rengini belirler
 
+    # Önce bütün konuşmalar: bir konuşmacının sesi ortada değişirse önceki cümleleri de yeni sesle okunur
+    spoken = speak_all([{"text": line["t"], "out": work / f"c{c}l{i}.mp3", "lang": lang,
+                         "speaker": speakers[line["s"]]["voice"], "rate": RATE, "pronounce": script.get("pronounce")}
+                        for c, chapter in enumerate(script["chapters"]) for i, line in enumerate(chapter["lines"])])
+    spoken = iter(spoken)
+
     parts, chapters, credits, clock, used, earlier = [], [], [], 0.0, set(), []
     for c, chapter in enumerate(script["chapters"]):
         lines = chapter["lines"]
@@ -92,7 +98,7 @@ def build(script, out):
         for i, line in enumerate(lines):
             who = speakers[line["s"]]
             audio = work / f"c{c}l{i}.mp3"
-            words = synthesize(line["t"], audio, lang, who["voice"], RATE, pronounce=script.get("pronounce"))
+            words = next(spoken)
             card = work / f"c{c}l{i}.png"
             background = pool[(i // LINES_PER_IMAGE) % len(pool)] if pool else None
             render.draw_wide_card({"label": script["label"], "heading": chapter["heading"], "small_heading": True,

@@ -241,15 +241,20 @@ def main():
         backgrounds, credits = find_images(plan, work)
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
+    # Önce bütün sesler: anlatıcının sesi ortada değişirse önceki parçalar da yeni sesle okunur
+    if args.offline:
+        spoken = [_offline_audio(seg["text"], work / f"seg{i}.mp3") for i, seg in enumerate(segments)]
+    else:
+        from .tts import RATE, speak_all
+        spoken = speak_all([{"text": seg["text"], "out": work / f"seg{i}.mp3", "lang": plan.get("lang", "tr"),
+                             "speaker": "male", "rate": RATE, "pronounce": plan.get("pronounce")}
+                            for i, seg in enumerate(segments)])
+
     parts, chapters, clock = [], [], 0.0
     wide = plan.get("wide")
     for i, seg in enumerate(segments):
         audio = work / f"seg{i}.mp3"
-        if args.offline:
-            words = _offline_audio(seg["text"], audio)
-        else:
-            from .tts import synthesize
-            words = synthesize(seg["text"], audio, plan.get("lang", "tr"), pronounce=plan.get("pronounce"))
+        words = spoken[i]
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
         last = i == len(segments) - 1 and plan.get("subscribe", True)

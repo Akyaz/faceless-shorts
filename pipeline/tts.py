@@ -4,9 +4,11 @@ Ses sırası: Gemini (en doğal; ücretsiz kotası var) -> Microsoft Edge -> Pip
 Bir konuşmacının sesi video ortasında değişmez: kullandığı ses düşerse o konuşmacının o ana kadarki bütün
 cümleleri yeni sesle baştan okunur (speak_all). Cinsiyet her basamakta korunur.
 """
+import array
 import asyncio
 import base64
 import json
+import math
 import os
 import re
 import subprocess
@@ -146,25 +148,34 @@ def _rate_factor(rate):
     return 1 + int(rate.strip("%+") or 0) / 100
 
 
-def _gemini(text, out_path, model, speaker, rate):
+GEMINI_RATE_HZ = 24000
+BATCH_CHARS = 1400  # tek istekte okunacak en fazla metin; uzun ses bölünürken kayma riski artar
+
+
+def _gemini_request(text, model, voices):
+    """voices: {konuşmacı etiketi: ses adı}. Tek ses ya da iki kişilik diyalog; ham PCM döner."""
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         raise VoiceDown("GEMINI_API_KEY yok")
+    if len(voices) == 1:
+        speech = {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": next(iter(voices.values()))}}}
+    else:
+        speech = {"multiSpeakerVoiceConfig": {"speakerVoiceConfigs": [
+            {"speaker": label, "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": name}}}
+            for label, name in voices.items()]}}
     body = {"contents": [{"parts": [{"text": text}]}],
-            "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
-                "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": GEMINI_VOICES[speaker]}}}}}
+            "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": speech}}
     for attempt in range(4):
         req = urllib.request.Request(
             f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
             data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=180) as resp:
+            with urllib.request.urlopen(req, timeout=300) as resp:
                 out = json.load(resp)
-            part = out["candidates"][0]["content"]["parts"][0]
-            pcm = base64.b64decode(part["inlineData"]["data"])
+            pcm = base64.b64decode(out["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
             if len(pcm) < 4800:  # 0,1 saniyeden kısa: ses gelmedi
                 raise ValueError("boş ses")
-            break
+            return pcm
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", "replace")
             wait = re.search(r'"retryDelay":\s*"(\d+)', detail)
@@ -175,24 +186,122 @@ def _gemini(text, out_path, model, speaker, rate):
             if exc.code >= 500 and attempt < 2:
                 time.sleep(5)
                 continue
-            raise VoiceDown(f"HTTP {exc.code}: {detail[:200]}")
+            quota = re.findall(r'"quotaId":\s*"([^"]+)"[^}]*?"quotaValue":\s*"(\d+)"', detail, re.S)
+            reason = "; ".join(f"{q} sınırı {v}" for q, v in quota) or detail[:200]
+            raise VoiceDown(f"HTTP {exc.code}: {reason}")
         except (KeyError, IndexError, ValueError) as exc:
             if attempt < 2:
                 continue
             raise VoiceDown(f"ses gelmedi ({exc})")
-    rate_hz = 24000
+
+
+def _write_pcm(pcm, text, out_path, rate):
     wav_path = Path(out_path).with_suffix(".wav")
     with wave.open(str(wav_path), "wb") as wav:
         wav.setnchannels(1)
         wav.setsampwidth(2)
-        wav.setframerate(rate_hz)
+        wav.setframerate(GEMINI_RATE_HZ)
         wav.writeframes(pcm)
     factor = _rate_factor(rate)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav_path), "-af",
                     f"atempo={factor:.3f},loudnorm=I=-17:TP=-1.5", "-ar", "24000", "-c:a", "libmp3lame",
                     "-b:a", "96k", str(out_path)], check=True)
     wav_path.unlink()
-    return _estimate_words(text, len(pcm) / 2 / rate_hz / factor)
+    return _estimate_words(text, len(pcm) / 2 / GEMINI_RATE_HZ / factor)
+
+
+def _silences(pcm, frame=480, min_frames=8):
+    """20 ms'lik pencerelerde sessiz aralıklar: [(başlangıç örneği, bitiş örneği)]."""
+    samples = array.array("h", pcm[: len(pcm) // 2 * 2])
+    levels = []
+    for i in range(0, len(samples) - frame, frame):
+        chunk = samples[i:i + frame]
+        levels.append(math.sqrt(sum(x * x for x in chunk[::4]) / len(chunk[::4])))
+    loud = sorted(levels)[int(len(levels) * 0.9)] if levels else 0
+    quiet = [lvl < max(120, loud * 0.06) for lvl in levels]
+    runs, n = [], 0
+    while n < len(quiet):
+        if quiet[n]:
+            m = n
+            while m < len(quiet) and quiet[m]:
+                m += 1
+            if m - n >= min_frames:
+                runs.append((n * frame, m * frame))
+            n = m
+        else:
+            n += 1
+    return runs
+
+
+def _split(pcm, texts):
+    """Tek parça sesi metinlere böler: beklenen sınırı (harf oranı) en yakın sessizliğe oturtur.
+    Uygun sessizlik bulunamazsa None (o parça cümle cümle okunur)."""
+    total = len(pcm) // 2
+    weights = [len(t) + 8 for t in texts]
+    runs = _silences(pcm)
+    cuts, used, acc = [0], set(), 0
+    for k in range(len(texts) - 1):
+        acc += weights[k]
+        expected = total * acc / sum(weights)
+        window = max(1.6 * GEMINI_RATE_HZ, total * weights[k] / sum(weights) * 0.45)
+        # Yakın ve uzun sessizlik öne çıkar: cümle içindeki kısa duraklama paragraf arasıyla karışmasın
+        options = [(abs((a + b) / 2 - expected) / window - (b - a) / (0.5 * GEMINI_RATE_HZ), i)
+                   for i, (a, b) in enumerate(runs)
+                   if i not in used and (a + b) / 2 > cuts[-1] and abs((a + b) / 2 - expected) <= window]
+        if not options:
+            return None
+        _, i = min(options)
+        used.add(i)
+        cuts.append(int(sum(runs[i]) / 2))
+    cuts.append(total)
+    pad = GEMINI_RATE_HZ // 10  # parça başında ve sonunda 0,1 sn nefes payı kalır
+    pieces = []
+    for a, b in zip(cuts, cuts[1:]):
+        lo, hi = a, b
+        for x, y in runs:  # kenardaki sessizlik kırpılır
+            if x <= lo < y:
+                lo = max(lo, y - pad)
+            if x < hi <= y:
+                hi = min(hi, x + pad)
+        pieces.append(pcm[lo * 2:hi * 2])
+    return pieces
+
+
+def _gemini_batch(items, model):
+    """Bir grubun (kısa video ya da tarih videosunun bir bölümü) cümlelerini tek istekte okur."""
+    labels = list(dict.fromkeys(item.get("name") or item["speaker"] for item in items))
+    voices = {label: GEMINI_VOICES[next(i["speaker"] for i in items if (i.get("name") or i["speaker"]) == label)]
+              for label in labels}
+    if len(voices) > 2 or len(set(voices.values())) < len(voices):
+        return [_gemini_one(item, model) for item in items]  # Gemini en fazla iki farklı sesle diyalog okur
+    if len(voices) == 1:
+        text = "\n\n".join(item["text"] for item in items)
+    else:
+        text = "\n".join(f"{item.get('name') or item['speaker']}: {item['text']}" for item in items)
+    pieces = _split(_gemini_request(text, model, voices), [item["text"] for item in items])
+    if pieces is None:
+        print(f"Gemini sesi cümlelere bölünemedi ({len(items)} cümle); cümle cümle okunuyor")
+        return [_gemini_one(item, model) for item in items]
+    return [_write_pcm(piece, item["text"], item["out"], item["rate"]) for piece, item in zip(pieces, items)]
+
+
+def _gemini_one(item, model):
+    label = item.get("name") or item["speaker"]
+    pcm = _gemini_request(item["text"], model, {label: GEMINI_VOICES[item["speaker"]]})
+    return _write_pcm(pcm, item["text"], item["out"], item["rate"])
+
+
+def _batches(items):
+    """Aynı gruptaki ardışık cümleler, BATCH_CHARS'ı aşmayacak parçalar hâlinde: [[sıra no]]."""
+    batches, current, size = [], [], 0
+    for n, item in enumerate(items):
+        same = current and items[current[-1]].get("group", 0) == item.get("group", 0)
+        if current and (not same or size + len(item["text"]) > BATCH_CHARS):
+            batches.append(current)
+            current, size = [], 0
+        current.append(n)
+        size += len(item["text"])
+    return batches + ([current] if current else [])
 
 
 def _estimate_words(text, duration):
@@ -209,16 +318,13 @@ def _estimate_words(text, duration):
 
 
 def _tiers(lang, speaker):
-    """Bu konuşmacı için denenecek sesler, sırayla."""
-    return ([("gemini", m) for m in GEMINI_MODELS] + [("edge", v) for v in EDGE_VOICES[lang][speaker]]
-            + [("piper", PIPER_VOICES[(lang, speaker)])])
+    """Gemini düştükten sonra bu konuşmacı için denenecek sesler, sırayla."""
+    return [("edge", v) for v in EDGE_VOICES[lang][speaker]] + [("piper", PIPER_VOICES[(lang, speaker)])]
 
 
 def _speak(tier, item):
     engine, name = tier
     text, out, lang, speaker, rate = item["text"], item["out"], item["lang"], item["speaker"], item["rate"]
-    if engine == "gemini":  # Gemini yabancı isimleri kendisi doğru okur; okunuş yazımı gerekmez
-        return _gemini(text, out, name, speaker, rate)
     spoken, back = _respell(text, lang, item.get("pronounce") if lang == "tr" else None)
     if engine == "edge":
         try:
@@ -232,9 +338,32 @@ def _speak(tier, item):
     return _restore(_synthesize_piper(spoken, out, lang, speaker, pace), back)
 
 
+def _speak_gemini(items):
+    """Bütün video aynı Gemini modeliyle okunur; model düşerse sıradakiyle baştan. Hiçbiri olmazsa None.
+    Gemini yabancı isimleri kendisi doğru okur; okunuş yazımı gerekmez."""
+    for model in GEMINI_MODELS:
+        if ("gemini", model) in _down:
+            continue
+        try:
+            results = [None] * len(items)
+            for batch in _batches(items):
+                for n, words in zip(batch, _gemini_batch([items[n] for n in batch], model)):
+                    results[n] = words
+            print(f"Seslendirme: gemini {model} ({len(_batches(items))} parça)")
+            return results
+        except VoiceDown as exc:
+            print(f"Ses kullanılamadı (gemini {model}: {exc}); video sıradaki sesle baştan okunuyor")
+            _down.add(("gemini", model))
+    return None
+
+
 def speak_all(items):
-    """items: [{text, out, lang, speaker, rate, pronounce}] -> her biri için kelime listesi.
-    Her konuşmacı (dil + cinsiyet) baştan sona tek sesle okunur."""
+    """items: [{text, out, lang, speaker, rate, pronounce, name?, group?}] -> her biri için kelime listesi.
+    name: diyalogda konuşmacının adı; group: birlikte okunabilecek cümleler (ör. aynı bölüm).
+    Her konuşmacı baştan sona tek sesle okunur."""
+    results = _speak_gemini(items)
+    if results is not None:
+        return results
     results = [None] * len(items)
     used = {}  # konuşmacı -> önceki cümlelerinin okunduğu basamak
     for n, item in enumerate(items):
@@ -260,8 +389,8 @@ def speak_all(items):
                     raise
                 print(f"Ses kullanılamadı ({tiers[index][0]} {tiers[index][1]}: {exc}); sıradaki sese geçiliyor")
                 _down.add(tiers[index])
-    for key, index in sorted(_choice.items()):
-        engine, name = _tiers(*key)[index]
+    for key in dict.fromkeys((i["lang"], i["speaker"]) for i in items):
+        engine, name = _tiers(*key)[_choice[key]]
         print(f"Seslendirme {key[0]}/{key[1]}: {engine} {name}")
     return results
 

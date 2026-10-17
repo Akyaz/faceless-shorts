@@ -66,7 +66,8 @@ def build(script, out):
 
     # Önce bütün konuşmalar: bir konuşmacının sesi ortada değişirse önceki cümleleri de yeni sesle okunur
     spoken = speak_all([{"text": line["t"], "out": work / f"c{c}l{i}.mp3", "lang": lang,
-                         "speaker": speakers[line["s"]]["voice"], "rate": RATE, "pronounce": script.get("pronounce")}
+                         "speaker": speakers[line["s"]]["voice"], "name": speakers[line["s"]]["name"],
+                         "group": c, "rate": RATE, "pronounce": script.get("pronounce")}
                         for c, chapter in enumerate(script["chapters"]) for i, line in enumerate(chapter["lines"])])
     spoken = iter(spoken)
 

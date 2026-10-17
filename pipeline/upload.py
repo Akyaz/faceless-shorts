@@ -70,7 +70,11 @@ def main():
         video_id = upload(video_path, meta)
     except urllib.error.HTTPError as exc:
         # YouTube ret sebebini yanıtın gövdesinde söyler (kota, günlük yükleme sınırı, geçersiz alan...)
-        sys.exit(f"YouTube yüklemeyi reddetti (HTTP {exc.code}): {exc.read().decode('utf-8', 'replace')[:800]}")
+        body = exc.read().decode("utf-8", "replace")
+        if "invalid_grant" in body:  # yükleme değil, Google izni reddedildi
+            sys.exit("YouTube izni geçersiz: refresh token'ın süresi dolmuş ya da iptal edilmiş. "
+                     "KURULUM.md'deki 2. ve 4. adımlarla yeni token alıp YT_REFRESH_TOKEN secret'ını güncelleyin.")
+        sys.exit(f"YouTube yüklemeyi reddetti (HTTP {exc.code}): {body[:800]}")
     # Bildirim ve yönetim paneli bağlantıyı buradan okur
     meta["youtube_url"] = f"https://youtu.be/{video_id}"
     with open(meta_path, "w", encoding="utf-8") as f:

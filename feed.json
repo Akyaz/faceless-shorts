@@ -745,21 +745,6 @@
   ]
  },
  {
-  "time": "2026-10-17T09:15:09Z",
-  "run": "39019292454",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019292454",
-  "videos": [
-   {
-    "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/en-krakatoa.json"
- },
- {
   "time": "2026-10-17T09:25:46Z",
   "run": "39019976583",
   "event": "workflow_dispatch",
@@ -843,5 +828,20 @@
    }
   ],
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-10-17T10:09:00Z",
+  "run": "39019292454",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019292454",
+  "videos": [
+   {
+    "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
+    "url": "https://youtu.be/uEIm8Ldd_Xw"
+   }
+  ],
+  "script": "scripts/longform/en-krakatoa.json"
  }
 ]

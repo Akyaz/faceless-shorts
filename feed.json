@@ -917,5 +917,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-17T11:16:35Z",
+  "run": "39027727540",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39027727540",
+  "videos": [
+   {
+    "title": "Çocuk Güzellik Yarışmasına Bakanlıktan Suç Duyurusu Geldi",
+    "url": null
+   }
+  ]
  }
 ]

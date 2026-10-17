@@ -891,20 +891,6 @@
   ]
  },
  {
-  "time": "2026-10-17T11:02:07Z",
-  "run": "39026961661",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39026961661",
-  "videos": [
-   {
-    "title": "Kripto Vurgununda Dev Operasyon: Richard Heart Yakalandı",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-17T11:28:38Z",
   "run": "39027233763",
   "event": "workflow_dispatch",
@@ -944,6 +930,20 @@
    {
     "title": "Çocuk Güzellik Yarışmasına Bakanlıktan Suç Duyurusu Geldi",
     "url": "https://youtu.be/G12cEyaGgwI"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T11:38:42Z",
+  "run": "39026961661",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39029471988",
+  "videos": [
+   {
+    "title": "Kripto Vurgununda Dev Operasyon: Richard Heart Yakalandı",
+    "url": "https://youtu.be/zvMrj7uNNI4"
    }
   ]
  }

@@ -1,0 +1,141 @@
+{
+  "lang": "tr",
+  "topic": "İstanbul'un büyük selleri",
+  "era": "Osmanlı döneminden 2026'ya İstanbul",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "huzunlu",
+  "subscribe": false,
+  "title": "İstanbul'un Sel Tarihi: 1811'den 14 Ekim 2026'ya Aynı Dereler, Aynı Semtler",
+  "description": "14-15 Ekim 2026'da İstanbul'u vuran sağanak ve taşkınlar kentin hafızasındaki en ağır sellerden biri oldu. İstanbul ilk kez böyle bir felaket yaşamıyor: Kâğıthane Deresi, Balat ve Ayamama, iki yüz yılı aşan kayıtlarda tekrar tekrar karşımıza çıkıyor. Bu videoda arşiv kayıtları ve resmî açıklamalarla İstanbul'un büyük sellerini anlatıyoruz. Hayatını kaybedenlere rahmet, yakınlarına başsağlığı diliyoruz.",
+  "hashtags": ["istanbul", "sel", "tarih"],
+  "tags": ["istanbul sel", "istanbul selleri", "sel tarihi", "kağıthane deresi", "ayamama", "2009 sel", "beykoz", "akom", "istanbul tarihi"],
+  "speakers": {
+    "A": {"name": "Elif", "voice": "female"},
+    "B": {"name": "Kerem", "voice": "male"}
+  },
+  "sources": [
+    {"title": "Fatma Şensoy, The Impact of Floods on the Topography of Istanbul from 1453 to the Present, İstanbul Tarihi", "url": "https://istanbultarihi.ist/395-the-impact-of-floods-on-the-topography-of-istanbul-from-1453-to-the-present"},
+    {"title": "İstanbul'un sel tarihi: 1951'den bugüne büyük felaketler, Milli Gazete", "url": "https://www.milligazete.com.tr/istanbulun-sel-tarihi-1951den-bugune-buyuk-felaketler"},
+    {"title": "İstanbul'da 84 yılın rekor felaketi, Dünya", "url": "https://www.dunya.com/gundem/istanbulda-84-yilin-rekor-felaketi-haberi-844053"},
+    {"title": "İstanbul sel can kaybı: sel felaketinde son durum (17 Ekim 2026), Habertürk", "url": "https://www.haberturk.com/gundem/son-dakika-haberi-istanbul-sel-can-kaybi-sel-felaketinde-son-durum-3920394"},
+    {"title": "İstanbul: Selde can kaybı 4'e yükseldi, 5 kişi de kayıp, bianet", "url": "https://bianet.org/haber/istanbul-selde-can-kaybi-4-e-yukseldi-5-kisi-de-kayip-324464"}
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "city": "Istanbul",
+      "image_queries": ["Kağıthane Creek", "Sadabad Kağıthane", "Ayazağa"],
+      "lines": [
+        {"s": "A", "t": "Kerem, 14 Ekim sabahı İstanbul'da başlayan yağış, kentin uzun yıllardır yaşadığı en ağır sel felaketlerinden birine dönüştü."},
+        {"s": "B", "t": "Önce hayatını kaybedenleri anmak istiyorum. Rahmet diliyorum, yakınlarına başsağlığı."},
+        {"s": "A", "t": "Biz de. 17 Ekim itibarıyla açıklanan bilgilere göre İstanbul'da beş kişi hayatını kaybetti, kayıp olarak aranan kişiler var."},
+        {"s": "B", "t": "Peki İstanbul daha önce böyle seller yaşadı mı?"},
+        {"s": "A", "t": "Yaşadı. Hem de defalarca. Arşiv kayıtlarına bakınca aynı derelerin, aynı semtlerin iki yüz yılı aşkın süredir tekrar tekrar sular altında kaldığını görüyoruz."},
+        {"s": "B", "t": "Kâğıthane, Balat, Ayamama gibi mi?"},
+        {"s": "A", "t": "Evet. Bu videoda İstanbul'un büyük sellerini tarih sırasıyla, kaynaklara dayanarak anlatacağız."}
+      ]
+    },
+    {
+      "heading": "Osmanlı İstanbul'unda Seller",
+      "city": "Istanbul",
+      "image_queries": ["Kağıthane Creek", "Golden Horn Ottoman", "Alibeyköy"],
+      "lines": [
+        {"s": "B", "t": "En eski kayıtlar nereye kadar gidiyor?"},
+        {"s": "A", "t": "Tarihçi Fatma Şensoy'un İstanbul'un sel tarihi üzerine çalışması, Osmanlı kayıtlarında çok sayıda sel olduğunu gösteriyor."},
+        {"s": "A", "t": "Örneğin 1811 yazında geceden başlayan bir yağış, Kâğıthane'de pek çok yapıyı ve köprüyü yıktı. Beşiktaş sular altında kaldı, can kayıpları yaşandı."},
+        {"s": "B", "t": "Kâğıthane Deresi o zaman da sorun mu çıkarıyordu?"},
+        {"s": "A", "t": "Hem de sık sık. 1884'te Kâğıthane Deresi bir yıl içinde üç kez taştı; tarlalar ve hayvanlar zarar gördü."},
+        {"s": "A", "t": "1888 Aralığında günlerce süren yağışlardan sonra sular, Çırpıcı Çayırı'nı kapladı ve basmahane fabrikasının yanındaki tuğla köprünün üstüne kadar çıktı."},
+        {"s": "B", "t": "Peki bu dönemin en ağır seli hangisiydi?"},
+        {"s": "A", "t": "Kayıtlarda öne çıkanlardan biri 1891 Ağustosu. Kâğıthane Deresi yine taştı ve Alibeyköy Köprüsü yıkıldı."},
+        {"s": "A", "t": "Aksaray, Cibali ve Halıcılar'da evlerin duvarları ve çatıları çöktü. Fener, Balat ve Eyüp'te evler, dükkânlar ve bostanlar sular altında kaldı."},
+        {"s": "A", "t": "Boğaz'ın iki yakasında da büyük hasar ve can kaybı yaşandı. Zarar görenlere bir fermanla yardım yapıldı."}
+      ]
+    },
+    {
+      "heading": "1950'ler: Ayasofya'dan Bentlere",
+      "city": "Istanbul",
+      "image_queries": ["Arnavutköy Bebek", "Hagia Sophia 1950s", "Elmalı dam"],
+      "lines": [
+        {"s": "B", "t": "Cumhuriyet döneminde durum değişti mi?"},
+        {"s": "A", "t": "Seller devam etti. 1951 yazında haziran, temmuz ve ağustos yağışları can ve mal kaybına yol açtı."},
+        {"s": "A", "t": "Yalnızca temmuzdaki selde on kişi hayatını kaybetti, dokuz kişi yaralandı. O yaz iki bin ev su altında kaldı, Arnavutköy ile Bebek arası çamurla kaplandı ve Ayasofya Müzesi de zarar gördü."},
+        {"s": "B", "t": "Ayasofya bile mi?"},
+        {"s": "A", "t": "Evet. 18 Ağustos 1955'te ise Karagümrük, Samatya, Balat, Eyüp ve Kasımpaşa gibi semtler sular altında kaldı."},
+        {"s": "A", "t": "18 Mart 1958'deki şiddetli yağışta Elmalı ve Bahçeköy bentleri taştı. Su tahliye edilemeyince bin beş yüz evin sakinleri evlerini boşaltmak zorunda kaldı."}
+      ]
+    },
+    {
+      "heading": "1960'lardan 1990'lara",
+      "city": "Istanbul",
+      "image_queries": ["Fener Balat", "Kağıthane", "Zeytinburnu"],
+      "lines": [
+        {"s": "B", "t": "Sonraki yıllarda hangi semtler etkilendi?"},
+        {"s": "A", "t": "1961'in ilk günündeki yağış, özellikle Zeytinburnu'nun alçak kesimlerindeki evleri su altında bıraktı. 1965'in kasım ve aralık aylarında caddeler ve meydanlar suyla doldu."},
+        {"s": "A", "t": "20 Ağustos 1968'de Fener, Balat, Cibali, Eminönü, Kumkapı, Kasımpaşa ve Sirkeci'yi su bastı."},
+        {"s": "B", "t": "Balat yine listede."},
+        {"s": "A", "t": "Haliç kıyısındaki bu semtler kayıtlarda defalarca geçiyor. Mayıs 1974'te iki gün süren yağışla Kâğıthane Deresi taştı. Binden fazla ev su altında kaldı, üç kişi hayatını kaybetti."},
+        {"s": "A", "t": "Kandilli kayıtlarına göre 10 Eylül 1981'de günlük 136,1 milimetre yağış ölçüldü ve bu, o güne kadarki günlük rekor oldu."},
+        {"s": "B", "t": "Ya seksenler?"},
+        {"s": "A", "t": "1987 yazındaki yağışlarda iki kişi selde boğularak hayatını kaybetti. Feriköy Deresi'nde ve Gaziosmanpaşa'da kanalizasyon kolektörleri patladı, sokaklar bir buçuk metre suyla doldu."},
+        {"s": "A", "t": "Telefon ve elektrik şebekesi çöktü. İtfaiyenin yanında Devlet Su İşleri, Köy Hizmetleri ve askerî birlikler de yardıma geldi."},
+        {"s": "A", "t": "Temmuz 1995'te ise bin iki yüz seksen dört ev ve işyeri su altında kaldı. Ayamama, Küçüksu ve Kurbağalıdere taştı; Halkalı'da bir kadın hayatını kaybetti."}
+      ]
+    },
+    {
+      "heading": "Eylül 2009: Ayamama",
+      "city": "Istanbul",
+      "image_queries": ["İkitelli", "Halkalı", "Ayamama"],
+      "lines": [
+        {"s": "B", "t": "Yakın tarihte en çok hatırlanan sel 2009'daki, değil mi?"},
+        {"s": "A", "t": "Evet. 8 Eylül 2009'da Silivri ve Çatalca'da başlayan sel, 9 Eylül'de İstanbul'a ulaştı. İki gün içinde otuz bir kişi hayatını kaybetti."},
+        {"s": "A", "t": "Ayamama Deresi taştı, çevresindeki fabrikalar su altında kaldı. İkitelli'deki tır garajında araçlar sürüklendi ve derenin ağzını tıkadı."},
+        {"s": "A", "t": "Basın Ekspres Yolu göle döndü. Araçlarında uyuyan sürücüler de dahil on kişi burada hayatını kaybetti; bir servis aracındaki yedi kadın da kurtarılamadı."},
+        {"s": "B", "t": "Ne kadar yağış düşmüştü?"},
+        {"s": "A", "t": "İkitelli'de dört günde metrekareye 262 kilogram yağış ölçüldü. Karşılaştırma için, önceki seksen yılda eylül ayının ortalaması metrekareye 50 kilogramdı."},
+        {"s": "A", "t": "Selden 3.401 bina etkilendi, bunlardan 60'ı yıkıldı. Sonraki dönemde yüzden fazla işyeri ve fabrika yıkıldı."}
+      ]
+    },
+    {
+      "heading": "14-15 Ekim 2026",
+      "city": "Istanbul",
+      "image_queries": ["Beykoz", "Ayazağa", "Sadabad Kağıthane"],
+      "lines": [
+        {"s": "B", "t": "Gelelim bu haftaya. 14 Ekim'de neler yaşandı?"},
+        {"s": "A", "t": "Yağış 14 Ekim sabahı başladı ve ertesi güne kadar sürdü. AKOM'un açıkladığı verilere göre Beykoz'da metrekareye 270 kilogramın üzerinde yağış düştü."},
+        {"s": "A", "t": "Bu değer, 1942'den bu yana istasyonlarda kaydedilen en yüksek yağış olarak açıklandı. Sarıyer'de yaklaşık 212, Eyüpsultan'da yaklaşık 204 kilogram ölçüldü."},
+        {"s": "B", "t": "Normalde ekimde ne kadar yağış düşer?"},
+        {"s": "A", "t": "İstanbul'da ekim ayının uzun yıllar ortalaması metrekareye 66 kilogram civarında. Yani Beykoz'a iki günde, normalde bir ekim ayında düşenin dört katından fazlası yağdı."},
+        {"s": "A", "t": "Kâğıthane Deresi yine taştı. Ayazağa'da su bazı noktalarda iki metreyi aştı, çok sayıda araç sürüklendi."},
+        {"s": "A", "t": "İstanbul Havalimanı'nda elli bir uçuş başka havalimanlarına yönlendirildi, on dokuz sefer iptal edildi. İstanbul ve Kocaeli'de okullara ara verildi."},
+        {"s": "B", "t": "Can kaybı konusunda son bilgi ne?"},
+        {"s": "A", "t": "17 Ekim'de açıklanan bilgilere göre İstanbul'da beş, Kocaeli'de bir kişi hayatını kaybetti. İstanbul'da üç kişi için arama çalışmaları sürüyor."}
+      ]
+    },
+    {
+      "heading": "Aynı Dereler, Aynı Semtler",
+      "city": "Istanbul",
+      "image_queries": ["Kağıthane Creek", "Golden Horn", "Balat Istanbul"],
+      "lines": [
+        {"s": "B", "t": "Bu kadar kaydı yan yana koyunca dikkatimi çeken şey, isimlerin hiç değişmemesi."},
+        {"s": "A", "t": "Haklısın. Kâğıthane Deresi 1811'de, 1884'te, 1888'de, 1891'de, 1974'te ve bu hafta taştı. Balat 1891'de, 1955'te, 1968'de ve bu hafta yine kayıtlarda."},
+        {"s": "B", "t": "Neden hep aynı yerler?"},
+        {"s": "A", "t": "Şensoy'un çalışmasına göre Osmanlı döneminin afet bölgeleri bugün de aynı riski taşıyor. Dereler taşma eğiliminde; selin getirdiği kum ve moloz dere yataklarını dolduruyor."},
+        {"s": "A", "t": "Şehir büyüdükçe vadiler yerleşime açıldı, hava ve su koridorları kapandı. Dere kenarlarındaki yapılaşma suyun doğal akışını daralttı ve bu bölgeleri sele karşı daha savunmasız hâle getirdi."},
+        {"s": "A", "t": "Bazı dereler yer altı kanallarına alındı. Aynı çalışma, iklim değişikliğiyle birlikte kısa sürede düşen ani ve yoğun yağışların sel riskini artırdığını da vurguluyor."}
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "city": "Istanbul",
+      "image_queries": ["Kağıthane Creek", "Bosphorus", "Istanbul skyline"],
+      "lines": [
+        {"s": "B", "t": "Yani İstanbul'un sel hafızası aslında çok uzun."},
+        {"s": "A", "t": "Öyle. Aynı dereler, aynı semtler ve neredeyse aynı tablo. Bu hafta yaşananlar da o hafızaya eklendi."},
+        {"s": "B", "t": "Yeni yağış uyarıları için AKOM'un ve Valiliğin açıklamalarını takip etmek önemli."},
+        {"s": "A", "t": "Kaynakların tamamı açıklamada. Hayatını kaybedenlere bir kez daha rahmet, yakınlarına sabır diliyoruz."}
+      ]
+    }
+  ]
+}

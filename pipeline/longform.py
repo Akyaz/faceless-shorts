@@ -115,15 +115,19 @@ def build(script, out):
         render.render_segment(card, audio, ass, clip, pad=PAUSE if words else 0, zoom_out=n % 2 == 1, size=render.WIDE)
         clips.append(clip)
     render.concat(clips, work / "voice.mp4")
-    render.add_subscribe(work / "voice.mp4", work / "voice_sub.mp4", lang, wide=True)
-    music_credit = music.add(work / "voice_sub.mp4", script.get("mood", "notr"), out / "video.mp4", MUSIC_GAIN_DB)
+    voice = work / "voice.mp4"
+    if script.get("subscribe", True):  # can kaybı içeren konularda abone çağrısı yapılmaz
+        render.add_subscribe(voice, work / "voice_sub.mp4", lang, wide=True)
+        voice = work / "voice_sub.mp4"
+    music_credit = music.add(voice, script.get("mood", "notr"), out / "video.mp4", MUSIC_GAIN_DB)
     duration = render.audio_duration(out / "video.mp4")
 
     if lang == "en":
         music_credit = music_credit.replace("Müzik: ", "Music: ")
     sources = "\n".join(f"- {s['title']}: {s['url']}" for s in script["sources"])
     image_lines = _credits(credits, lang)
-    description = (f"{script['description']}\n\n{text['subscribe']}\n\n" + "\n".join(chapters)
+    call = f"{text['subscribe']}\n\n" if script.get("subscribe", True) else ""
+    description = (f"{script['description']}\n\n{call}" + "\n".join(chapters)
                    + f"\n\n{text['sources']}\n{sources}\n\n{music_credit}\n\n"
                    + " ".join(f"#{t}" for t in script.get("hashtags", [])))
     # Görsel künyeleri sığdığı kadar eklenir; YouTube açıklaması 5000 karakterle sınırlı

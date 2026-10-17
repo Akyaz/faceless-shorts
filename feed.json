@@ -1108,5 +1108,20 @@
    }
   ],
   "script": "scripts/longform/tr-istanbulun-fethi.json"
+ },
+ {
+  "time": "2026-10-17T20:17:29Z",
+  "run": "39065682725",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39065682725",
+  "videos": [
+   {
+    "title": "Runway Dresses Made From Pickleballs, Socks and Grandma's Tablecloth",
+    "url": "https://youtu.be/-jliDDlF9fc",
+    "instagram": "https://www.instagram.com/reel/Dem8kA9glg9/"
+   }
+  ]
  }
 ]

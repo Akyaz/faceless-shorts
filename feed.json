@@ -1062,5 +1062,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-17T19:29:48Z",
+  "run": "39062320898",
+  "event": "schedule",
+  "mode": "digest",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39062320898",
+  "videos": [
+   {
+    "title": "Kripto Balinası İstanbul'da Yakalandı, Kocaeli'de Motokurye Yasağı",
+    "url": "https://youtu.be/vaELSgdrnTg",
+    "instagram": "https://www.instagram.com/reel/Dem3HlGD9-6/"
+   }
+  ]
  }
 ]

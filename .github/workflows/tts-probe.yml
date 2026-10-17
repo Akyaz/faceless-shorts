@@ -13,9 +13,9 @@ jobs:
           import base64, json, os, subprocess, urllib.request, urllib.error
           key = os.environ["KEY"]
           text = "Kerem, sence insanlar önce tapınak mı yaptı, yoksa önce köy mü kurdu? Stonehenge'den altı bin yıl daha eski bir yer var."
-          for model in ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts"]:
+          for model in ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"]:
               for voice in ["Kore", "Charon"]:
-                  body = {"contents": [{"parts": [{"text": "Doğal, akıcı ve sakin bir belgesel anlatıcısı gibi Türkçe oku: " + text}]}],
+                  body = {"contents": [{"parts": [{"text": text}]}],
                           "generationConfig": {"responseModalities": ["AUDIO"],
                                                "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
                   req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",

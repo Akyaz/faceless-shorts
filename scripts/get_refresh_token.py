@@ -1,12 +1,15 @@
 """YouTube yükleme izni için bir kerelik refresh token alır. Kendi bilgisayarında çalıştır.
 
-python3 scripts/get_refresh_token.py CLIENT_ID CLIENT_SECRET
+python3 scripts/get_refresh_token.py CLIENT_ID CLIENT_SECRET [--save]
 
 Tarayıcı açılır, kanalın bağlı olduğu Google hesabıyla izin ver.
 Çıkan refresh token'ı GitHub'da YT_REFRESH_TOKEN secret'ı olarak kaydet.
+--save verilirse token ekrana yazılmaz; client id/secret ile birlikte doğrudan
+gh CLI üzerinden GitHub secret'larına kaydedilir (kopyalama hatası olmaz).
 """
 import http.server
 import json
+import subprocess
 import sys
 import urllib.parse
 import urllib.request
@@ -14,6 +17,7 @@ import webbrowser
 
 SCOPE = "https://www.googleapis.com/auth/youtube.upload"
 PORT = 8765
+REPO = "Akyaz/faceless-shorts"
 
 
 def main():
@@ -50,7 +54,14 @@ def main():
     }).encode()
     with urllib.request.urlopen("https://oauth2.googleapis.com/token", data=body) as resp:
         tokens = json.load(resp)
-    print("\nYT_REFRESH_TOKEN:\n" + tokens["refresh_token"])
+    if "--save" not in sys.argv:
+        print("\nYT_REFRESH_TOKEN:\n" + tokens["refresh_token"])
+        return
+    # Üçü aynı istemciden gelmeli; biri eskiyse Google invalid_grant döner
+    for name, value in [("YT_CLIENT_ID", client_id), ("YT_CLIENT_SECRET", client_secret),
+                        ("YT_REFRESH_TOKEN", tokens["refresh_token"])]:
+        subprocess.run(["gh", "secret", "set", name, "-R", REPO], input=value.encode(), check=True)
+    print("Secret'lar GitHub'a kaydedildi.")
 
 
 if __name__ == "__main__":

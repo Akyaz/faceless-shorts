@@ -79,22 +79,81 @@ def caption(meta):
     return text[:CAPTION_LIMIT]
 
 
-def upload(video_path, meta):
-    user = _user_id()
-    container = _post(f"{user}/media", {"media_type": "REELS", "upload_type": "resumable",
-                                        "caption": caption(meta), "share_to_feed": "true"})
+# Instagram ile giriş anahtarında Instagram videoyu kendisi indirir: dosya, herkese açık panel deposunda geçici
+# bir sürüm dosyası olarak durur ve video işlendikten sonra silinir.
+MEDIA_REPO = os.environ.get("MEDIA_REPO") or "Akyaz/faceless-shorts-panel"
+MEDIA_TAG = "instagram-temp"
+
+
+def _github(method, url, data=None, headers=None):
+    req = urllib.request.Request(url, data=data, method=method, headers={
+        "Authorization": f"Bearer {os.environ['MEDIA_TOKEN']}", "Accept": "application/vnd.github+json",
+        **(headers or {})})
+    with urllib.request.urlopen(req, timeout=600) as resp:
+        body = resp.read()
+    return json.loads(body) if body else None
+
+
+def _host_video(video_path):
+    """(herkese açık adres, silme işlevi) döner."""
+    api = f"https://api.github.com/repos/{MEDIA_REPO}/releases"
+    try:
+        release = _github("GET", f"{api}/tags/{MEDIA_TAG}")
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404:
+            raise
+        release = _github("POST", api, json.dumps({
+            "tag_name": MEDIA_TAG, "name": "Instagram geçici dosyaları", "prerelease": True,
+            "body": "Reels yüklenirken videolar burada birkaç dakika durur ve sonra silinir."}).encode(),
+            {"Content-Type": "application/json"})
+    name = f"reel-{int(time.time())}.mp4"
+    with open(video_path, "rb") as f:
+        asset = _github("POST", f"https://uploads.github.com/repos/{MEDIA_REPO}/releases/{release['id']}/assets"
+                                f"?name={name}", f.read(), {"Content-Type": "video/mp4"})
+
+    def remove():
+        try:
+            _github("DELETE", f"{api}/assets/{asset['id']}")
+        except urllib.error.HTTPError as exc:
+            print(f"Geçici video silinemedi ({exc.code}); {name} elle silinmeli")
+    return asset["browser_download_url"], remove
+
+
+def _create_container(user, video_path, meta):
+    """Yayın kabı ve (varsa) geçici dosyayı silme işlevi."""
+    params = {"media_type": "REELS", "caption": caption(meta), "share_to_feed": "true"}
+    if _host() == "graph.instagram.com":
+        if not os.environ.get("MEDIA_TOKEN"):
+            raise RuntimeError("Instagram ile giriş anahtarında video herkese açık bir adresten verilmeli; "
+                               "MEDIA_TOKEN secret'ı (panel deposuna yazma izni olan GitHub anahtarı) gerekli.")
+        url, remove = _host_video(video_path)
+        try:
+            return _post(f"{user}/media", {**params, "video_url": url}), remove
+        except Exception:
+            remove()
+            raise
+    container = _post(f"{user}/media", {**params, "upload_type": "resumable"})
     _send_file(container.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{VERSION}/{container['id']}",
                video_path)
-    # Instagram videoyu işledikten sonra yayınlanabilir
-    for _ in range(60):
-        status = _get(container["id"], {"fields": "status_code,status"})
-        if status.get("status_code") == "FINISHED":
-            break
-        if status.get("status_code") in ("ERROR", "EXPIRED"):
-            raise RuntimeError(f"Instagram videoyu işleyemedi: {status}")
-        time.sleep(10)
-    else:
-        raise RuntimeError("Instagram videoyu 10 dakikada işlemedi")
+    return container, lambda: None
+
+
+def upload(video_path, meta):
+    user = _user_id()
+    container, remove = _create_container(user, video_path, meta)
+    try:
+        # Instagram videoyu işledikten sonra yayınlanabilir
+        for _ in range(60):
+            status = _get(container["id"], {"fields": "status_code,status"})
+            if status.get("status_code") == "FINISHED":
+                break
+            if status.get("status_code") in ("ERROR", "EXPIRED"):
+                raise RuntimeError(f"Instagram videoyu işleyemedi: {status}")
+            time.sleep(10)
+        else:
+            raise RuntimeError("Instagram videoyu 10 dakikada işlemedi")
+    finally:
+        remove()
     media = _post(f"{user}/media_publish", {"creation_id": container["id"]})
     link = _get(media["id"], {"fields": "permalink"})
     return link.get("permalink") or media["id"]

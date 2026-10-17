@@ -128,6 +128,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_GRAPH_HOST: ${{ vars.IG_GRAPH_HOST }}
+          MEDIA_TOKEN: ${{ secrets.MEDIA_TOKEN }}
         run: |
           failed=0
           for meta in out/metadata.json out/*/metadata.json; do

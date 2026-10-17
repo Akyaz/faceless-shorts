@@ -32,6 +32,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_GRAPH_HOST: ${{ vars.IG_GRAPH_HOST }}
+          MEDIA_TOKEN: ${{ secrets.MEDIA_TOKEN }}
         run: |
           [ -n "$IG_ACCESS_TOKEN" ] || { echo "IG_ACCESS_TOKEN secret'ı yok"; exit 1; }
           failed=0

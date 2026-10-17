@@ -1,0 +1,33 @@
+[
+  {
+    "lang": "en",
+    "label": "FASHION",
+    "mood": "umutlu",
+    "category": "24",
+    "title": "Runway Dresses Made From Pickleballs, Socks and Grandma's Tablecloth",
+    "hook_title": "Trash to Couture",
+    "hashtags": ["sustainablefashion", "upcycling", "fashion"],
+    "country": "United States",
+    "city": "",
+    "image_files": [
+      "File:Pickleball ball.jpg",
+      "File:A pickleball paddle with two pickleballs.jpg",
+      "File:Pickleball Paddle 2025.jpg",
+      "File:Austin Texas Skyline.jpg",
+      "File:Tablecloth Superstar.jpg",
+      "File:Socks for sale in Tokyo.jpg"
+    ],
+    "paragraphs": [
+      "This runway dress is decorated with flowers made from cracked pickleballs.",
+      "Designer Joan Cabarrus, a nurse from Round Rock, Texas, collects broken balls from local courts, because pickleballs can't be recycled.",
+      "She softens them in a panini press for about forty-five seconds, then shapes them into neon pink and yellow flowers. Her purse is two pickleball paddles.",
+      "She is one of about forty designers in Austin Creative Reuse's Reuse on the Runway show. Others used antivenom vial tops and beads rolled from magazines.",
+      "In Sedona, Arizona, Jesselynn Desmond was named Sustainable Designer of the Year. She turned her grandmother's tablecloth, her only heirloom from her, into a couture-style look.",
+      "Her second look was a skirt made from thirteen men's diabetic socks. Her prize: one thousand dollars and four thousand in design credits. Which would you wear?"
+    ],
+    "sources": [
+      {"title": "Designer turns trash into art for Reuse on the Runway show", "source": "KUT"},
+      {"title": "Fashion show brings imagination to runway", "source": "Sedona Red Rock News"}
+    ]
+  }
+]

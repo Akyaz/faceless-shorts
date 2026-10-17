@@ -1,0 +1,36 @@
+[
+  {
+    "lang": "tr",
+    "label": "SPOR",
+    "mood": "umutlu",
+    "category": "17",
+    "title": "Galatasaray 88'de Güldü: Deniz Gül Golü, Leão Sakatlığı ve Buruk'un Zemin Tepkisi",
+    "hook_title": "Ankara'da 88. Dakika Sevinci",
+    "hashtags": ["galatasaray", "denizgül", "süperlig"],
+    "country": "Turkey",
+    "city": "Ankara",
+    "image_files": [
+      "File:Ankara Eryaman Stadyumu2.jpg",
+      "File:FC Salzburg gegen FC Porto (2025-09-25 UEFA Euro League ) 36.jpg",
+      "File:Osimhen30Sep2025.jpg",
+      "File:Nikola Vlasic Rafael Leao Croatia v Portugal 2 July 2026-115.jpg",
+      "File:Okan Buruk 20250511.jpg",
+      "File:Galatasaray-fans.jpg"
+    ],
+    "pronounce": {"Leão": "Leao", "Osimhen": "Osimen", "Lille": "Lil"},
+    "paragraphs": [
+      "88. dakika. Galatasaray, Eryaman'da Gençlerbirliği'ni 1-0 yendi ve zirvedeki yerini korudu.",
+      "Golü Deniz Gül attı. Sağdan ceza sahasına girdi, şutu savunmaya çarparak ağlara gitti.",
+      "Öncesinde Osimhen'in iki kafa vuruşunu kaleci İrfan Can çıkardı. Uğurcan da Gençlerbirliği'nin şutlarında kalesini korudu.",
+      "Kötü haber de var. 61. dakikada oyuna giren Rafael Leão, kayan zeminde sakatlandı ve 77. dakikada oyundan çıktı.",
+      "Okan Buruk zemine tepki gösterdi: \"Bu zeminlerin kontrolü Türkiye Futbol Federasyonunda olması gerekiyor.\" Özeleştiri de yaptı: \"Çok daha iyisini yapmamız gerekiyor.\"",
+      "Galatasaray 19 puanla lider. Sırada Lille deplasmanı ve Fenerbahçe derbisi var. Sence derbiyi kim kazanır?"
+    ],
+    "sources": [
+      {"title": "Gençlerbirliği 0-1 Galatasaray (Süper Lig maçı özeti)", "source": "Hürriyet"},
+      {"title": "Okan Buruk: \"Çok daha iyisini yapmamız gerekiyor\"", "source": "Sabah"},
+      {"title": "Gençlerbirliği-Galatasaray maçında Rafael Leao neden oyundan çıktı?", "source": "Alanya Postası"},
+      {"title": "Okan Buruk'tan maç sonu TFF'ye çağrı: 'Saha yüzünden sakatlık verdik'", "source": "Hürriyet"}
+    ]
+  }
+]

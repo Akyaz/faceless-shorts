@@ -1,0 +1,29 @@
+name: Medya anahtarı denemesi (geçici)
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          T: ${{ secrets.MEDIA_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os, urllib.request, urllib.error
+          t = os.environ["T"].strip()
+          print("anahtar:", t[:11] + "…", len(t), "karakter")
+          def call(method, url, body=None):
+              req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, method=method,
+                    headers={"Authorization": f"Bearer {t}", "Accept": "application/vnd.github+json"})
+              try:
+                  with urllib.request.urlopen(req) as r:
+                      return r.status, r.read()[:200]
+              except urllib.error.HTTPError as e:
+                  return e.code, (e.headers.get("X-Accepted-GitHub-Permissions"), e.read()[:200])
+          repo = "https://api.github.com/repos/Akyaz/faceless-shorts-panel"
+          print("depo:", call("GET", repo)[0])
+          s, r = call("PUT", repo + "/contents/probe-delete-me.txt", {"message": "deneme", "content": base64.b64encode(b"x").decode()})
+          print("dosya yazma:", s, r)
+          if s in (200, 201):
+              sha = json.loads(r if isinstance(r, bytes) and r.endswith(b"}") else b"{}").get("content", {}).get("sha")
+          print("sürümler:", call("GET", repo + "/releases")[0])
+          PY

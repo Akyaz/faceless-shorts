@@ -87,6 +87,7 @@ def build_metadata(plan, mode="story"):
     return {
         "title": plan["title"][:100],
         "description": f"{plan['title']}\n\n"
+                       + f"{render.channel_line(lang, plan.get('subscribe', True))}\n\n"
                        + (f"{text['summary']}\n{summary}\n\n" if summary else "")
                        + f"{text['subscribe_long' if wide else 'subscribe']}\n\n"
                        + (f"{text['chapters']}\n" + "\n".join(chapters) + "\n\n" if chapters else "")

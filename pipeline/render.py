@@ -147,6 +147,15 @@ def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_
 CHANNEL_URL = "youtube.com/@QuickRecapChannel"
 
 
+def channel_line(lang="tr", subscribe=True):
+    """Açıklamanın ilk satırlarında kanal adresi. Abone çağrısı yapılan videolarda bağlantı abone olma
+    penceresini açar; acı haberlerde yalnızca adres yazılır."""
+    url = f"https://www.youtube.com/@QuickRecapChannel{'?sub_confirmation=1' if subscribe else ''}"
+    if lang == "en":
+        return f"{'Subscribe' if subscribe else 'Our channel'}: {url}"
+    return f"{'Abone ol' if subscribe else 'Kanalımız'}: {url}"
+
+
 def _link_layer(path, text=CHANNEL_URL):
     """Instagram kopyası için şeffaf katman: altta kırmızı oynat işaretli kanal adresi."""
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))

@@ -70,7 +70,9 @@ def caption(meta):
     text = meta["description"]
     # YouTube'a özel satırlar çıkar; #shorts yerine #reels
     lines = [line for line in text.splitlines() if "abone ol" not in line.lower() and "subscribe" not in line.lower()]
-    lines.insert(1, "\nYouTube: https://www.youtube.com/@QuickRecapChannel")
+    # YouTube açıklamasındaki kanal satırı zaten başlığın altında; eski videolarda yoksa eklenir
+    if not any("youtube.com/@QuickRecapChannel" in line for line in lines):
+        lines.insert(1, "\nYouTube: https://www.youtube.com/@QuickRecapChannel")
     text = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).replace("#shorts", "#reels #quickrecapchannel")
     tags = [w for w in text.split() if w.startswith("#")]
     for extra in tags[HASHTAG_LIMIT:]:

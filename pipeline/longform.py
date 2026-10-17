@@ -127,7 +127,8 @@ def build(script, out):
     sources = "\n".join(f"- {s['title']}: {s['url']}" for s in script["sources"])
     image_lines = _credits(credits, lang)
     call = f"{text['subscribe']}\n\n" if script.get("subscribe", True) else ""
-    description = (f"{script['description']}\n\n{call}" + "\n".join(chapters)
+    channel = render.channel_line(lang, script.get("subscribe", True))
+    description = (f"{script['description']}\n\n{channel}\n\n{call}" + "\n".join(chapters)
                    + f"\n\n{text['sources']}\n{sources}\n\n{music_credit}\n\n"
                    + " ".join(f"#{t}" for t in script.get("hashtags", [])))
     # Görsel künyeleri sığdığı kadar eklenir; YouTube açıklaması 5000 karakterle sınırlı

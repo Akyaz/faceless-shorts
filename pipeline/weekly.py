@@ -163,7 +163,7 @@ def main():
     image_credit = "\n".join(dict.fromkeys(credits))
     meta = {
         "title": title[:100],
-        "description": f"{title}\n\nGünün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.\n\n"
+        "description": f"{title}\n\n{render.channel_line()}\n\nGünün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.\n\n"
                        + "\n".join(chapters) + f"\n\nKaynaklar:\n{sources}\n"
                        + (f"\nGörseller temsilidir.\n{image_credit}\n" if image_credit else "")
                        + f"\n{music_credit}\n\n#gündem #haber #haftanınözeti",

@@ -129,9 +129,15 @@ def _create_container(user, video_path, meta):
         try:
             url, remove = _host_video(video_path)
         except urllib.error.HTTPError as exc:
+            needed = exc.headers.get("X-Accepted-GitHub-Permissions", "?")
+            try:  # anahtarın bu depodaki izinleri (secret'a doğru anahtar mı kaydedilmiş?)
+                perms = _github("GET", f"https://api.github.com/repos/{MEDIA_REPO}").get("permissions")
+            except urllib.error.HTTPError as inner:
+                perms = f"depo okunamadı (HTTP {inner.code})"
             raise RuntimeError(f"Geçici video panel deposuna konamadı (GitHub HTTP {exc.code}): "
-                               f"{exc.read().decode('utf-8', 'replace')[:200]}. MEDIA_TOKEN'ın "
-                               f"{MEDIA_REPO} deposunda Contents: Read and write izni olmalı.")
+                               f"{exc.read().decode('utf-8', 'replace')[:160]}. GitHub'ın beklediği izin: {needed}; "
+                               f"anahtarın {MEDIA_REPO} izinleri: {perms}. MEDIA_TOKEN'ın bu depoda "
+                               f"Contents: Read and write izni olmalı.")
         try:
             return _post(f"{user}/media", {**params, "video_url": url}), remove
         except Exception:

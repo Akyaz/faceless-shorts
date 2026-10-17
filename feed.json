@@ -1034,21 +1034,6 @@
   ]
  },
  {
-  "time": "2026-10-17T18:07:22Z",
-  "run": "39056495963",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39056495963",
-  "videos": [
-   {
-    "title": "Galatasaray 88'de Güldü: Deniz Gül Golü, Leão Sakatlığı ve Buruk'un Zemin Tepkisi",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DemvrV3CMbs/"
-   }
-  ]
- },
- {
   "time": "2026-10-17T18:33:12Z",
   "run": "39058328139",
   "event": "workflow_dispatch",
@@ -1060,6 +1045,21 @@
     "title": "Fenerbahçe 3-0 Alanyaspor: Kaçan Penaltı, İptal Edilen Gol ve 6-0'ın Rövanşı",
     "url": "https://youtu.be/_JGwAof_130",
     "instagram": "https://www.instagram.com/reel/DemwoGRlHWD/"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T18:34:34Z",
+  "run": "39056495963",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39058689808",
+  "videos": [
+   {
+    "title": "Galatasaray 88'de Güldü: Deniz Gül Golü, Leão Sakatlığı ve Buruk'un Zemin Tepkisi",
+    "url": "https://youtu.be/ZaxhpnHj7ss",
+    "instagram": null
    }
   ]
  }

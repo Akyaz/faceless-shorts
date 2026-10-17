@@ -828,5 +828,20 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39021924002",
   "videos": [],
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-10-17T10:01:37Z",
+  "run": "39022218151",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39022218151",
+  "videos": [
+   {
+    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
+    "url": null
+   }
+  ],
+  "script": "scripts/longform/tr-gobeklitepe.json"
  }
 ]

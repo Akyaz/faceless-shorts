@@ -988,5 +988,14 @@
     "url": "https://youtu.be/ZVWpmiFwRBw"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T14:28:59Z",
+  "run": "39040866976",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39040866976",
+  "videos": []
  }
 ]

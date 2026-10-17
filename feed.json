@@ -875,5 +875,19 @@
     "url": null
    }
   ]
+ },
+ {
+  "time": "2026-10-17T10:43:33Z",
+  "run": "39025838514",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39025838514",
+  "videos": [
+   {
+    "title": "Cenk Tosun'dan Fenerbahçe İtirafı! Cengiz Ünder Frikikle Döndü",
+    "url": null
+   }
+  ]
  }
 ]

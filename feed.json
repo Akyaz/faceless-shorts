@@ -997,5 +997,19 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39040866976",
   "videos": []
+ },
+ {
+  "time": "2026-10-17T16:01:46Z",
+  "run": "39047344329",
+  "event": "schedule",
+  "mode": "world",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39047344329",
+  "videos": [
+   {
+    "title": "Alberta Secession Referendum Draws Huge Early Voting Turnout",
+    "url": "https://youtu.be/_oZG9GSYR5c"
+   }
+  ]
  }
 ]

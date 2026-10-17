@@ -974,5 +974,19 @@
     "url": "https://youtu.be/r9OB2mATMkk"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T13:51:52Z",
+  "run": "39038086739",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39038086739",
+  "videos": [
+   {
+    "title": "Beşiktaş Hoffenheim'ı Devirdi! Ferrari'de Genç Türk Pilot",
+    "url": "https://youtu.be/ZVWpmiFwRBw"
+   }
+  ]
  }
 ]

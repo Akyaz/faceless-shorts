@@ -1,0 +1,35 @@
+[
+  {
+    "lang": "en",
+    "label": "ENTERTAINMENT",
+    "mood": "notr",
+    "category": "24",
+    "title": "Kelly Clarkson vs. a Brooklyn Shop: The $15,000 Bird Now Priced at $15 Million",
+    "hook_title": "The $15 Million Bird",
+    "hashtags": ["kellyclarkson", "celebritynews", "brooklyn"],
+    "country": "United States",
+    "city": "New York",
+    "image_files": [
+      "File:Kelly Clarkson 57th Presidential Inauguration-cropped.jpg",
+      "File:Montague Street Brooklyn heights july2006b.jpg",
+      "File:Kelly Clarkson 2018 DoD Warrior Games Opening Ceremony 11.jpg",
+      "File:Kelly Clarkson 2010-02-13.jpg",
+      "File:Kelly Clarkson Jiffy Lube 2012.jpg",
+      "File:Kelly-clarkson-live-in-geelong.JPG"
+    ],
+    "paragraphs": [
+      "Kelly Clarkson walked into a Brooklyn shop to buy a bird. Now that bird is priced at fifteen million dollars.",
+      "The shop is Art of Play, a curiosity store in Brooklyn Heights. She wanted Molly, a mechanical bird that sings.",
+      "Clarkson says staff looked at her as if she couldn't afford it. She posted a fifteen thousand dollar price tag and said the shop just lost a huge sale.",
+      "The store says Molly was never for sale. It says the tag was for a near-identical bird by its maker, and staff offered her a two thousand dollar one.",
+      "Security footage shows her inside for about five minutes, but it has no sound, so it doesn't settle who is right. Clarkson's reply: you're not only rude, you're also a liar.",
+      "Now a new sign prices Molly at fifteen million dollars. The co-owner says the feud brought threats to the shop. Whose side are you on?"
+    ],
+    "sources": [
+      {"title": "Kelly Clarkson 'has put us in danger,' Brooklyn store owner claims as bird's price tag soars to $15M", "source": "Fox News"},
+      {"title": "Kelly Clarkson's $15,000 bird feud with a Brooklyn shop shows why winning the argument can cost you customers", "source": "Fortune"},
+      {"title": "Kelly Clarkson security footage reveals truth about her store fight", "source": "The Daily Beast"},
+      {"title": "Behind Kelly Clarkson's \"hazel eyes\": A $15K bird", "source": "Salon"}
+    ]
+  }
+]

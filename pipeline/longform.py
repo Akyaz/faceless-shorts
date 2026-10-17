@@ -92,7 +92,7 @@ def build(script, out):
         for i, line in enumerate(lines):
             who = speakers[line["s"]]
             audio = work / f"c{c}l{i}.mp3"
-            words = synthesize(line["t"], audio, lang, who["voice"], RATE)
+            words = synthesize(line["t"], audio, lang, who["voice"], RATE, pronounce=script.get("pronounce"))
             card = work / f"c{c}l{i}.png"
             background = pool[(i // LINES_PER_IMAGE) % len(pool)] if pool else None
             render.draw_wide_card({"label": script["label"], "heading": chapter["heading"], "small_heading": True,

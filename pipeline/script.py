@@ -149,6 +149,13 @@ Return only JSON:
 {"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
 """
 
+# Seslendirme yabancı isimleri bu okunuşla söyler, altyazıda orijinal yazım kalır (tts.PRONOUNCE)
+PRONOUNCE_FIELD = """- pronounce: metindeki Türkçe olmayan özel isimlerin (kişi, kulüp, şirket, yer, marka) Türkçe harflerle okunuşu
+  (örnek: {"Osimhen": "Osimhen", "Chelsea": "Çelsi", "Microsoft": "Maykrosoft", "Bordeaux": "Bordo"}).
+  Yalnızca Türkçe yazıldığı gibi okununca yanlış çıkacak isimleri yaz; yoksa boş bırak. Metinde isimlerin
+  orijinal yazımını kullan.
+"""
+
 STORY_RULES = """
 Metin kuralları:
 1. İlk cümle en fazla 10 kelime: şaşırtıcı bir tezat ya da doğrudan izleyiciye soru. Selam, giriş, "bugün" yok.
@@ -168,9 +175,9 @@ Ek alanlar:
   "huzunlu" (kayıp, yas, üzücü olay).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz (örnek: "deprem", "istanbul", "emekli").
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
-
+""" + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}}
 """
 
 DIGEST_RULES = """Görev: YouTube Shorts için Türkçe {subject}. Aşağıdaki haberlerden birbirinden farklı {count} tanesini
@@ -189,10 +196,10 @@ Alanlar:
 - outro: izleyiciye yorum yaptıracak kısa bir soru (örnek: "{outro_example}").
 - title: YouTube başlığı, en fazla 70 karakter; en dikkat çekici iki haberi ansın.
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
-
+""" + PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """
 """ + ACCURACY + """
 Sadece JSON döndür:
-{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "country": "...", "city": "", "image_queries": ["..."], "object_query": ""}}], "outro": "...", "title": "...", "hashtags": ["..."]}}
+{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "country": "...", "city": "", "image_queries": ["..."], "object_query": ""}}], "outro": "...", "title": "...", "hashtags": ["..."], "pronounce": {{}}}}
 """
 
 # Toplu özet türleri: ekran etiketi, istem ayrıntıları ve dil modeli yokken kullanılacak yedekler
@@ -288,6 +295,14 @@ def _image_fields(out):
             "place": {"country": (out.get("country") or "").strip(), "city": (out.get("city") or "").strip()}}
 
 
+def _pronounce(out):
+    """Modelin verdiği okunuşlar; bozuk yanıtta seslendirme yine çalışsın."""
+    value = out.get("pronounce")
+    if not isinstance(value, dict):
+        return {}
+    return {str(k).strip(): str(v).strip() for k, v in value.items() if str(k).strip() and str(v).strip()}
+
+
 def _tags(values):
     return [t for t in (re.sub(r"[^\w]", "", str(v)).lower() for v in values or []) if t][:3]
 
@@ -310,7 +325,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
             "lang": spec.get("lang", "tr"), "segments": segments,
             "sources": [headline], **_image_fields(out),
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
-            "image_prompt": out.get("image_prompt", "")}
+            "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out)}
 
 
 def _digest_plan(kind, title, intro, items, outro, hashtags=()):
@@ -341,7 +356,8 @@ def digest_script(headlines, kind, count=14):
             if sensitive_headline(headline):  # acı haber ünlemle verilmez
                 heading, text = heading.replace("!", ""), text.replace("!", ".")
             items.append((headline, heading, text, _image_fields(item)))
-    return _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
+    plan = _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
+    return {**plan, "pronounce": _pronounce(out)}
 
 
 def plain_digest(headlines, kind="digest", count=3):
@@ -384,7 +400,8 @@ def custom_plan(item):
             "segments": segments, "sources": [headline], **_image_fields(item),
             "image_files": item.get("image_files") or [], "mood": item.get("mood", "notr"),
             "hashtags": _tags(item.get("hashtags")) + (["news"] if english else ["gündem", "haber"]),
-            "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": ""}
+            "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": "",
+            "pronounce": item.get("pronounce") or {}}
 
 
 def build_script(headlines, mode="story", recent=()):

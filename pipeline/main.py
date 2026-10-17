@@ -233,7 +233,7 @@ def main():
             words = _offline_audio(seg["text"], audio)
         else:
             from .tts import synthesize
-            words = synthesize(seg["text"], audio, plan.get("lang", "tr"))
+            words = synthesize(seg["text"], audio, plan.get("lang", "tr"), pronounce=plan.get("pronounce"))
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
         last = i == len(segments) - 1 and plan.get("subscribe", True)

@@ -43,10 +43,14 @@ PRONOUNCE = {"tr": {
 }}
 
 
-def _respell(text, lang):
-    """(okunacak metin, {okunuş kelimesi: orijinal kelime}) döner."""
+def _respell(text, lang, extra=None):
+    """(okunacak metin, {okunuş kelimesi: orijinal kelime}) döner. extra: videoya özel okunuşlar."""
     back = {}
-    for original, spoken in PRONOUNCE.get(lang, {}).items():
+    # Uzun isim önce: "New York" içindeki "York" ayrıca değiştirilmesin
+    pairs = {**PRONOUNCE.get(lang, {}), **(extra or {})}
+    for original, spoken in sorted(pairs.items(), key=lambda kv: -len(kv[0])):
+        if not original or not spoken or original == spoken:
+            continue
         if re.search(rf"\b{re.escape(original)}\b", text):
             text = re.sub(rf"\b{re.escape(original)}\b", spoken, text)
             back.update(zip(spoken.split(), original.split()))
@@ -122,11 +126,11 @@ def _synthesize_piper(text, out_path, lang, speaker="male", pace=PIPER_PACE):
     return [w for w in words if w["text"]]
 
 
-def synthesize(text, out_path, lang="tr", speaker="male", rate=RATE):
+def synthesize(text, out_path, lang="tr", speaker="male", rate=RATE, pronounce=None):
     """Sesi out_path'e yazar, [{text, start, end}] kelime listesini döner (saniye).
     speaker: "male" ya da "female"; rate: Edge hızı ("+0%" uzun anlatım için daha rahat)."""
     voice = VOICES[lang][speaker]
-    text, back = _respell(text, lang)
+    text, back = _respell(text, lang, pronounce if lang == "tr" else None)
     if voice not in _edge_down:
         try:
             words = asyncio.run(_synthesize(text, out_path, voice, rate))

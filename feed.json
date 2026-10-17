@@ -597,21 +597,6 @@
   "script": "scripts/longform/tr-gobeklitepe.json"
  },
  {
-  "time": "2026-10-16T21:16:58Z",
-  "run": "38966052777",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38966052777",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-16T21:17:54Z",
   "run": "38966070537",
   "event": "workflow_dispatch",
@@ -625,5 +610,20 @@
    }
   ],
   "script": "scripts/longform/en-krakatoa.json"
+ },
+ {
+  "time": "2026-10-17T05:20:43Z",
+  "run": "38966052777",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38966052777",
+  "videos": [
+   {
+    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
+    "url": null
+   }
+  ],
+  "script": "scripts/longform/tr-gobeklitepe.json"
  }
 ]

@@ -685,5 +685,19 @@
    }
   ],
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-10-17T08:21:56Z",
+  "run": "39016909048",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39016909048",
+  "videos": [
+   {
+    "title": "45 İle Sağanak Uyarısı ve Yol Süresi 18 Dakikaya Düşüyor",
+    "url": null
+   }
+  ]
  }
 ]

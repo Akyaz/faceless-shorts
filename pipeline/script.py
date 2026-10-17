@@ -134,6 +134,9 @@ Script rules:
    ("stay tuned", "only time will tell", "all eyes are on").
 4. The last sentence is a short question that invites a comment.
 5. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
+6. Leave nothing unresolved. Anything the title, on-screen title or script makes the viewer curious about must be
+   answered clearly in the script: if you say "a surprise decision", say what the decision is. If the answer is not
+   in the headlines (including the other sources), do not pick that story.
 
 """ + ACCURACY_EN + """
 Other fields:
@@ -164,6 +167,9 @@ Metin kuralları:
    ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
 4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
 5. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
+6. Belirsizlik bırakma. Başlıkta, ekran başlığında ya da metinde merak uyandırdığın her şeyin cevabı metinde açıkça
+   olsun: "ilk 11'de sürpriz" diyorsan sürprizin ne olduğunu (hangi oyuncu, kimin yerine) söyle; "şok karar"
+   diyorsan kararın ne olduğunu söyle. Cevap verilen başlıklarda (diğer kaynaklar dahil) yoksa o haberi seçme.
 
 """ + ACCURACY + """
 Ek alanlar:
@@ -191,7 +197,10 @@ Alanlar:
 - items: seçtiğin her haber için, önem sırasıyla:
   - pick: haberin numarası
   - heading: ekranda yazacak en fazla 5 kelimelik başlık
-  - text: 1-2 kısa cümle, en fazla 22 kelime; haberin özü, konuşur gibi
+  - text: 1-2 kısa cümle, en fazla 22 kelime; haberin özü, konuşur gibi. Belirsizlik bırakma: başlıkta merak
+    uyandırdığın şeyin cevabı metinde olsun ("ilk 11'de sürpriz" diyorsan hangi oyuncu olduğunu söyle).
+    Ne olduğunu söylemeyen ("sürpriz karar", "flaş gelişme", "herkes bunu konuşuyor") ve cevabı verilen
+    başlıklarda bulunmayan haberleri seçme.
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
 - outro: izleyiciye yorum yaptıracak kısa bir soru (örnek: "{outro_example}").
 - title: YouTube başlığı, en fazla 70 karakter; en dikkat çekici iki haberi ansın.

@@ -45,10 +45,10 @@ def save_history(path, history, plan):
 
 CATEGORIES = {"sports": "17", "trend": "28"}  # Spor, Bilim ve Teknoloji; diğerleri 25: Haber ve Politika
 DESCRIPTION = {
-    "tr": {"subscribe": "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.",
+    "tr": {"summary": "Videoda:", "subscribe": "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.",
            "subscribe_long": "Yeni videoları kaçırmamak için kanala abone ol.", "chapters": "Bölümler:",
            "sources": "Kaynaklar:", "images": "Görseller temsilidir.", "tags": ["son dakika", "türkiye", "shorts"]},
-    "en": {"subscribe": "World news in under a minute, every day. Subscribe so you don't miss it.",
+    "en": {"summary": "In this video:", "subscribe": "World news in under a minute, every day. Subscribe so you don't miss it.",
            "subscribe_long": "Subscribe so you don't miss the next one.", "chapters": "Chapters:",
            "sources": "Sources:", "images": "Images are illustrative.", "tags": ["breaking news", "world", "shorts"]},
 }
@@ -62,6 +62,17 @@ def _credit(line, lang):
             .replace("yapay zekâ ile üretilmiş temsili illüstrasyon", "AI-generated illustration"))
 
 
+def _summary(plan):
+    """Videoda söylenenler açıklamaya da yazılır: izleyici cevabı açıklamada da bulabilsin."""
+    lines = []
+    for seg in plan["segments"]:
+        if seg.get("kind") == "item":
+            lines.append(f"• {seg['heading']}: {seg['text']}" if seg.get("heading") else f"• {seg['text']}")
+        elif seg.get("kind") == "story":
+            lines.append(seg["text"])
+    return "\n".join(lines)
+
+
 def build_metadata(plan, mode="story"):
     lang = plan.get("lang", "tr")
     text = DESCRIPTION[lang]
@@ -72,9 +83,12 @@ def build_metadata(plan, mode="story"):
     image_credit, music_credit = _credit(plan.get("image_credit"), lang), _credit(plan.get("music_credit"), lang)
     wide = plan.get("wide")  # yatay uzun video Short değildir: #shorts etiketi ve "bir dakikada" vaadi yok
     chapters = plan.get("chapters") or []
+    summary = "" if wide else _summary(plan)  # uzun videoda bölüm listesi aynı işi görür
     return {
         "title": plan["title"][:100],
-        "description": f"{plan['title']}\n\n{text['subscribe_long' if wide else 'subscribe']}\n\n"
+        "description": f"{plan['title']}\n\n"
+                       + (f"{text['summary']}\n{summary}\n\n" if summary else "")
+                       + f"{text['subscribe_long' if wide else 'subscribe']}\n\n"
                        + (f"{text['chapters']}\n" + "\n".join(chapters) + "\n\n" if chapters else "")
                        + f"{text['sources']}\n{sources}\n"
                        + (f"\n{text['images']}\n{image_credit}\n" if image_credit else "")

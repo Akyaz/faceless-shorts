@@ -743,5 +743,20 @@
     "url": "https://youtu.be/gvaHLlsQpvY"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T09:15:09Z",
+  "run": "39019292454",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019292454",
+  "videos": [
+   {
+    "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
+    "url": null
+   }
+  ],
+  "script": "scripts/longform/en-krakatoa.json"
  }
 ]

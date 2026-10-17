@@ -1032,5 +1032,20 @@
     "url": "https://youtu.be/GHJpj8n-YJw"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T18:07:22Z",
+  "run": "39056495963",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39056495963",
+  "videos": [
+   {
+    "title": "Galatasaray 88'de Güldü: Deniz Gül Golü, Leão Sakatlığı ve Buruk'un Zemin Tepkisi",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

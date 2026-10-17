@@ -1018,5 +1018,19 @@
     "instagram": "https://www.instagram.com/reel/Demr-8GicYe/"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T18:02:41Z",
+  "run": "39055982036",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39055982036",
+  "videos": [
+   {
+    "title": "Kocaeli'nde Şiddetli Yağış Nedeniyle Motokuryelere Yasak Getirildi",
+    "url": "https://youtu.be/GHJpj8n-YJw"
+   }
+  ]
  }
 ]

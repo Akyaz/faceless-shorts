@@ -55,6 +55,13 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python -m pipeline.upload out/video.mp4 out/metadata.json
+      # Yüklenmeyen deneme üretimi kısa süre saklanır ki yayından önce izlenebilsin
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() && env.SCRIPT_PATH != '' && github.event_name != 'schedule' && !inputs.upload }}
+        with:
+          name: longform-video
+          path: out/video.mp4
+          retention-days: 2
       # Videonun kendisi saklanmaz (uzun videolar depolama kotasını doldurur); yüklenemezse yeniden üretilir
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() && env.SCRIPT_PATH != '' }}

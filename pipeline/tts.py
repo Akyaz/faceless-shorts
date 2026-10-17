@@ -21,7 +21,9 @@ PIPER_VOICES = {("tr", "male"): "tr_TR-dfki-medium", ("tr", "female"): "tr_TR-df
 PIPER_PITCH = {("tr", "female"): 1.12}
 PIPER_DIR = Path.home() / ".cache" / "faceless-shorts" / "piper"
 PIPER_PACE = 0.87  # Edge'deki +%15 hıza denk
-_edge_down = False  # bir kez reddedildiyse aynı çalışmada yeniden denenmez; video tek sesle çıksın
+# Reddedilen ses aynı çalışmada yeniden denenmez; böylece her konuşmacı video boyunca tek sesle konuşur.
+# Ses bazında tutulur: Edge bir sesi (ör. tr-TR-AhmetNeural) kapatınca diğer konuşmacı Edge'de kalabilsin.
+_edge_down = set()
 _piper = {}
 
 
@@ -87,15 +89,15 @@ def _synthesize_piper(text, out_path, lang, speaker="male", pace=PIPER_PACE):
 def synthesize(text, out_path, lang="tr", speaker="male", rate=RATE):
     """Sesi out_path'e yazar, [{text, start, end}] kelime listesini döner (saniye).
     speaker: "male" ya da "female"; rate: Edge hızı ("+0%" uzun anlatım için daha rahat)."""
-    global _edge_down
-    if not _edge_down:
+    voice = VOICES[lang][speaker]
+    if voice not in _edge_down:
         try:
-            words = asyncio.run(_synthesize(text, out_path, VOICES[lang][speaker], rate))
+            words = asyncio.run(_synthesize(text, out_path, voice, rate))
             if words:
                 return words
             raise RuntimeError("kelime zamanı gelmedi")
         except Exception as exc:
-            _edge_down = True
-            print(f"Edge TTS kullanılamadı ({type(exc).__name__}: {str(exc)[:80]}); yedek sese geçiliyor")
+            _edge_down.add(voice)
+            print(f"Edge TTS {voice} kullanılamadı ({type(exc).__name__}: {str(exc)[:80]}); bu ses için yedek sese geçiliyor")
     pace = PIPER_PACE * (1 + 0.15) / (1 + int(rate.strip("%+") or 0) / 100)  # Edge hızına denk
     return _synthesize_piper(text, out_path, lang, speaker, pace)

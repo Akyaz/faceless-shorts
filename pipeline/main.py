@@ -217,6 +217,8 @@ def main():
     for seg in plan["segments"]:
         heading = f"{seg['heading']}: " if seg.get("heading") else ""
         print(f"  [{seg['kind']}] {heading}{seg['text']}")
+    if plan.get("pronounce"):
+        print("Okunuşlar: " + ", ".join(f"{k} -> {v}" for k, v in plan["pronounce"].items()))
 
     segments = plan["segments"]
     if args.offline:

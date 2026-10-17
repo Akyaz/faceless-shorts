@@ -21,6 +21,13 @@ HASHTAG_LIMIT = 30
 
 
 def _host():
+    """Instagram ile giriş anahtarı (IGAA...) graph.instagram.com'a, Facebook anahtarı (EAA...) graph.facebook.com'a
+    gider; yanlış adres "Cannot parse access token" hatası verir."""
+    token = os.environ["IG_ACCESS_TOKEN"]
+    if token.startswith("IG"):
+        return "graph.instagram.com"
+    if token.startswith("EA"):
+        return "graph.facebook.com"
     return os.environ.get("IG_GRAPH_HOST") or "graph.instagram.com"
 
 
@@ -94,7 +101,11 @@ def main():
     if not os.environ.get("IG_ACCESS_TOKEN"):
         print("IG_ACCESS_TOKEN yok; Instagram atlanıyor.")
         return
-    video_path, meta_path = sys.argv[1], sys.argv[2]
+    token = os.environ["IG_ACCESS_TOKEN"].strip()
+    os.environ["IG_ACCESS_TOKEN"] = token  # kopyalarken gelen boşluk ve satır sonu anahtarı bozar
+    # Teşhis için yalnızca anahtarın türünü gösteren ilk karakterler yazılır
+    print(f"Instagram anahtarı: {token[:4]}… ({len(token)} karakter), adres: {_host()}")
+        video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
     if meta.get("instagram_url"):  # aynı video iki kez paylaşılmasın
         print(f"Instagram'da zaten var: {meta['instagram_url']}")

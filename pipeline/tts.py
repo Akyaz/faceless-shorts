@@ -26,6 +26,42 @@ PIPER_PACE = 0.87  # Edge'deki +%15 hıza denk
 _edge_down = set()
 _piper = {}
 
+# Türkçe seslendirmede yabancı isimler Türkçe harf kurallarıyla okunmasın diye okunuşlarıyla söylenir.
+# Altyazıda orijinal yazım kalır: kelime zamanları gelince okunuş geri çevrilir.
+PRONOUNCE = {"tr": {
+    "Stonehenge": "Stonhenç", "Schmidt": "Şmit", "Braidwood": "Breydvud", "Chicago": "Şikago",
+    "Schliemann": "Şliman", "Heinrich": "Haynrih", "Sophia": "Sofiya", "Wilhelm": "Vilhelm",
+    "Dörpfeld": "Dörpfelt", "Calvert": "Kalvırt", "Korfmann": "Korfman", "Rostock": "Rostok",
+    "Cincinnati": "Sinsinati", "Hapgood": "Hepgud", "McIntosh": "Mekintoş", "Mallery": "Meleri",
+    "Gregory": "Gregori", "Charles": "Çarlz", "Arlington": "Arlingtın", "Dawkins": "Dokins",
+    "Richard": "Riçırd", "Winckler": "Vinkler", "New York": "Nyu York", "UNESCO": "Yunesko",
+    "Champollion": "Şampolyon", "Deissmann": "Daysman", "Michelangelo": "Mikelancelo",
+    "Giustiniani": "Custinyani", "Giovanni": "Covanni", "Doria": "Dorya", "Condalmiero": "Kondalmiyero",
+    "Venezia": "Venesya", "Galeone": "Galeone", "Gilles": "Jil", "Pierre": "Piyer", "Johannes": "Yohannes",
+    "Kahle": "Kale", "Paul": "Pol", "Karen": "Keren", "British Museum": "Britiş Myuziyım",
+    "Wilusa": "Vilusa", "Tübingen": "Tübingın", "Blegen": "Blegın",
+}}
+
+
+def _respell(text, lang):
+    """(okunacak metin, {okunuş kelimesi: orijinal kelime}) döner."""
+    back = {}
+    for original, spoken in PRONOUNCE.get(lang, {}).items():
+        if re.search(rf"\b{re.escape(original)}\b", text):
+            text = re.sub(rf"\b{re.escape(original)}\b", spoken, text)
+            back.update(zip(spoken.split(), original.split()))
+    return text, back
+
+
+def _restore(words, back):
+    for w in words:
+        for spoken, original in back.items():
+            # ekler korunur (Stonhenç'den -> Stonehenge'den); "Kalesi" gibi kelimeler Kahle'ye dönmez
+            if w["text"] == spoken or w["text"].startswith((spoken + "'", spoken + "’")):
+                w["text"] = original + w["text"][len(spoken):]
+                break
+    return words
+
 
 async def _synthesize(text, out_path, voice, rate):
     try:
@@ -90,14 +126,15 @@ def synthesize(text, out_path, lang="tr", speaker="male", rate=RATE):
     """Sesi out_path'e yazar, [{text, start, end}] kelime listesini döner (saniye).
     speaker: "male" ya da "female"; rate: Edge hızı ("+0%" uzun anlatım için daha rahat)."""
     voice = VOICES[lang][speaker]
+    text, back = _respell(text, lang)
     if voice not in _edge_down:
         try:
             words = asyncio.run(_synthesize(text, out_path, voice, rate))
             if words:
-                return words
+                return _restore(words, back)
             raise RuntimeError("kelime zamanı gelmedi")
         except Exception as exc:
             _edge_down.add(voice)
             print(f"Edge TTS {voice} kullanılamadı ({type(exc).__name__}: {str(exc)[:80]}); bu ses için yedek sese geçiliyor")
     pace = PIPER_PACE * (1 + 0.15) / (1 + int(rate.strip("%+") or 0) / 100)  # Edge hızına denk
-    return _synthesize_piper(text, out_path, lang, speaker, pace)
+    return _restore(_synthesize_piper(text, out_path, lang, speaker, pace), back)

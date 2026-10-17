@@ -14,11 +14,11 @@ from pathlib import Path
 from . import images, music, render
 from .tts import synthesize
 
-RATE = "-5%"  # belgesel temposu: Shorts hızı uzun anlatımda yorar
+RATE = "+8%"  # akıcı belgesel temposu; Shorts'taki +%15'ten biraz yavaş
 MUSIC_GAIN_DB = -21  # konuşma uzun; müzik Shorts'takinden daha geride
 CHAPTER_CARD_SECONDS = 3.5
 LINES_PER_IMAGE = 2  # görsel her iki konuşmada bir değişir
-PAUSE = 0.45  # konuşmalar arasında nefes payı
+PAUSE = 0.3  # konuşmalar arasında nefes payı
 TEXT = {
     "tr": {"intro": "Giriş", "subscribe": "Tarihin az bilinen hikâyelerini kaçırmamak için kanala abone ol.",
            "sources": "Kaynaklar:", "images": "Görseller (Wikimedia Commons):",

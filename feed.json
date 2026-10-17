@@ -512,20 +512,6 @@
   ]
  },
  {
-  "time": "2026-10-16T15:39:51Z",
-  "run": "38925287843",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38925287843",
-  "videos": [
-   {
-    "title": "Napolyon'un Şifresi ve Yapay Zekayla Dönüş | Bilim Özeti",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T17:01:44Z",
   "run": "38936218267",
   "event": "schedule",
@@ -711,6 +697,20 @@
    {
     "title": "Günün Öne Çıkan Haberleri",
     "url": "https://youtu.be/o_UkBIxHbB0"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T09:08:40Z",
+  "run": "38925287843",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019992034",
+  "videos": [
+   {
+    "title": "Napolyon'un Şifresi ve Yapay Zekayla Dönüş | Bilim Özeti",
+    "url": "https://youtu.be/nsd-FLgteko"
    }
   ]
  }

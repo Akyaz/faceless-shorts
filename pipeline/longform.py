@@ -114,7 +114,8 @@ def build(script, out):
         render.render_segment(card, audio, ass, clip, pad=PAUSE if words else 0, zoom_out=n % 2 == 1, size=render.WIDE)
         clips.append(clip)
     render.concat(clips, work / "voice.mp4")
-    music_credit = music.add(work / "voice.mp4", script.get("mood", "notr"), out / "video.mp4", MUSIC_GAIN_DB)
+    render.add_subscribe(work / "voice.mp4", work / "voice_sub.mp4", lang, wide=True)
+    music_credit = music.add(work / "voice_sub.mp4", script.get("mood", "notr"), out / "video.mp4", MUSIC_GAIN_DB)
     duration = render.audio_duration(out / "video.mp4")
 
     if lang == "en":

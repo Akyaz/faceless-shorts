@@ -147,8 +147,8 @@ def main():
     render.concat(clips, work / "voice.mp4")
     if results:
         _overlay(work / "voice.mp4", intro, work / "voiced.mp4")
-    music_credit = music.add(work / ("voiced.mp4" if results else "voice.mp4"), "gergin" if results else "umutlu",
-                             out / "short.mp4")
+    render.add_subscribe(work / ("voiced.mp4" if results else "voice.mp4"), work / "voice_sub.mp4")
+    music_credit = music.add(work / "voice_sub.mp4", "gergin" if results else "umutlu", out / "short.mp4")
 
     teams = [t for _, home, away, *_ in results + matches for t in (home, away)]
     locals_ = list(dict.fromkeys(t for t in teams if t in TURKISH))

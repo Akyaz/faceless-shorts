@@ -257,18 +257,17 @@ def main():
         words = spoken[i]
         card = work / f"card{i}.png"
         ass = work / f"seg{i}.ass"
-        last = i == len(segments) - 1 and plan.get("subscribe", True)
         part = work / f"seg{i}.mp4"
         if wide:
             # Bölüm başlığı yoksa (giriş) videonun ekran başlığı yazar; renk bölüm boyunca aynı kalır
             card_seg = {**seg, "label": plan.get("label"), "heading": seg.get("heading") or plan.get("hook_title", "")}
-            render.draw_wide_card(card_seg, 0 if seg.get("section") is None else seg["section"] + 1, card, backgrounds[i], subscribe=last,
+            render.draw_wide_card(card_seg, 0 if seg.get("section") is None else seg["section"] + 1, card, backgrounds[i],
                                   lang=plan.get("lang", "tr"))
             render.write_ass(words, ass, wide=True)
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, size=render.WIDE)
         else:
             render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
-                             subscribe=last, lang=plan.get("lang", "tr"))
+                             lang=plan.get("lang", "tr"))
             render.write_ass(words, ass)
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
         if seg.get("chapter"):
@@ -283,7 +282,11 @@ def main():
         plan["chapters"] = chapters if len(chapters) >= 3 else []
 
     render.concat(parts, work / "voice.mp4")
-    plan["music_credit"] = music.add(work / "voice.mp4", plan.get("mood"), out / "short.mp4")
+    voice = work / "voice.mp4"
+    if plan.get("subscribe", True):  # acı haberde abone çağrısı yapılmaz
+        render.add_subscribe(voice, work / "voice_sub.mp4", plan.get("lang", "tr"), wide=bool(wide))
+        voice = work / "voice_sub.mp4"
+    plan["music_credit"] = music.add(voice, plan.get("mood"), out / "short.mp4")
     meta = build_metadata(plan, args.mode)
     for seg in segments:  # haberin tamamı zaten plan["sources"] içinde
         seg.pop("headline", None)

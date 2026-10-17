@@ -77,6 +77,56 @@ def _subscribe(d, bold, regular, texts):
     d.text((W / 2, 1385), text, font=bold, fill="white", anchor="mm")
 
 
+def _subscribe_layer(path, lang, wide, promise):
+    """Şeffaf katman: kırmızı abone düğmesi (dikeyde altyazının altında, yatayda sağ üst köşede)."""
+    w, h = WIDE if wide else (W, H)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    bold = ImageFont.truetype(_font_path(True), 46 if wide else 58)
+    text = TEXTS[lang]["subscribe"]
+    tw, ph = d.textlength(text, font=bold), (88 if wide else 112)
+    icon = ph * 0.42  # metnin solunda beyaz "oynat" üçgeni
+    pw = tw + icon + (110 if wide else 130)
+    x0 = w - 70 - pw if wide else (w - pw) / 2
+    y0 = 76 if wide else 1330
+    d.rounded_rectangle([x0 + 6, y0 + 8, x0 + pw + 6, y0 + ph + 8], radius=ph / 2, fill=(0, 0, 0, 110))  # gölge
+    d.rounded_rectangle([x0, y0, x0 + pw, y0 + ph], radius=ph / 2, fill=SUBSCRIBE_RED + (255,),
+                        outline=(255, 255, 255, 255), width=4)
+    ix, cy = x0 + (44 if wide else 52), y0 + ph / 2
+    d.polygon([(ix, cy - icon / 2), (ix, cy + icon / 2), (ix + icon * 0.9, cy)], fill="white")
+    d.text((ix + icon + (18 if wide else 22), cy), text, font=bold, fill="white", anchor="lm")
+    if promise and not wide:
+        regular = ImageFont.truetype(_font_path(False), 44)
+        d.text((w / 2, 1270), TEXTS[lang]["promise"], font=regular, fill="white", anchor="mm",
+               stroke_width=3, stroke_fill="black")
+    img.save(path)
+
+
+def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_seconds=4.5):
+    """Abone düğmesi videonun ilk ve son saniyelerinde yumuşakça belirip kaybolur. Ses aynen kopyalanır."""
+    dur = audio_duration(video)
+    first, last = Path(out_path).with_suffix(".sub1.png"), Path(out_path).with_suffix(".sub2.png")
+    _subscribe_layer(first, lang, wide, promise=False)
+    _subscribe_layer(last, lang, wide, promise=True)
+    a, b = start
+    e = max(b + 1, dur - end_seconds)  # kısa videoda iki görünüm üst üste binmesin
+    fade = 0.3
+    graph = (f"[1:v]format=rgba,fade=in:st={a}:d={fade}:alpha=1,fade=out:st={b - fade}:d={fade}:alpha=1[s1];"
+             f"[2:v]format=rgba,fade=in:st={e:.2f}:d={fade}:alpha=1[s2];"
+             f"[0:v][s1]overlay=enable='between(t,{a},{b})'[v1];"
+             f"[v1][s2]overlay=enable='gte(t,{e:.2f})'[v]")
+    subprocess.run([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", str(video),
+        "-loop", "1", "-framerate", "30", "-t", f"{dur:.2f}", "-i", str(first),
+        "-loop", "1", "-framerate", "30", "-t", f"{dur:.2f}", "-i", str(last),
+        "-filter_complex", graph, "-map", "[v]", "-map", "0:a?",
+        "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30", "-c:a", "copy",
+        str(out_path),
+    ], check=True)
+    first.unlink()
+    last.unlink()
+
+
 def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False, lang="tr"):
     """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer."""
     accent = ACCENTS[idx % len(ACCENTS)]

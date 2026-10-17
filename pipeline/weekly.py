@@ -147,8 +147,7 @@ def main():
         item = seg.get("item", 0 if n == 0 else len(picked) - 1)
         pool = backgrounds[item]
         shown[item] = shown.get(item, -1) + 1
-        render.draw_wide_card(seg, item, card, pool[shown[item] % len(pool)] if pool else None,
-                              subscribe=n == len(segments) - 1)
+        render.draw_wide_card(seg, item, card, pool[shown[item] % len(pool)] if pool else None)
         render.write_ass(words, ass, wide=True)
         render.render_segment(card, audio, ass, part, zoom_out=n % 2 == 1, size=render.WIDE)
         if seg.get("chapter"):
@@ -157,7 +156,8 @@ def main():
         parts.append(part)
 
     render.concat(parts, work / "voice.mp4")
-    music_credit = music.add(work / "voice.mp4", "notr", out / "short.mp4")
+    render.add_subscribe(work / "voice.mp4", work / "voice_sub.mp4", wide=True)
+    music_credit = music.add(work / "voice_sub.mp4", "notr", out / "short.mp4")
 
     sources = "\n".join(f"- {p['sources'][0]['title']} ({p['sources'][0]['source']})" for p in picked)
     image_credit = "\n".join(dict.fromkeys(credits))

@@ -60,7 +60,18 @@ def upload(video_path, meta):
     return video["id"]
 
 
+def check():
+    """Sadece izni dener; video üretmeden secret'ların doğru olup olmadığını gösterir."""
+    try:
+        access_token()
+    except urllib.error.HTTPError as exc:
+        sys.exit(f"YouTube izni çalışmıyor (HTTP {exc.code}): {exc.read().decode('utf-8', 'replace')[:300]}")
+    print("YouTube izni çalışıyor.")
+
+
 def main():
+    if sys.argv[1:] == ["--check"]:
+        return check()
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
     if meta.get("youtube_url"):  # yeniden yükleme denemesinde aynı video iki kez çıkmasın
@@ -73,7 +84,8 @@ def main():
         body = exc.read().decode("utf-8", "replace")
         if "invalid_grant" in body:  # yükleme değil, Google izni reddedildi
             sys.exit("YouTube izni geçersiz: refresh token'ın süresi dolmuş ya da iptal edilmiş. "
-                     "KURULUM.md'deki 2. ve 4. adımlarla yeni token alıp YT_REFRESH_TOKEN secret'ını güncelleyin.")
+                     "KURULUM.md'deki 2. ve 4. adımlarla yeni token alıp YT_REFRESH_TOKEN secret'ını güncelleyin. "
+                     f"Google yanıtı: {body[:300]}")
         sys.exit(f"YouTube yüklemeyi reddetti (HTTP {exc.code}): {body[:800]}")
     # Bildirim ve yönetim paneli bağlantıyı buradan okur
     meta["youtube_url"] = f"https://youtu.be/{video_id}"

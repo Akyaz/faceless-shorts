@@ -905,20 +905,6 @@
   ]
  },
  {
-  "time": "2026-10-17T11:16:35Z",
-  "run": "39027727540",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39027727540",
-  "videos": [
-   {
-    "title": "Çocuk Güzellik Yarışmasına Bakanlıktan Suç Duyurusu Geldi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-17T11:28:38Z",
   "run": "39027233763",
   "event": "workflow_dispatch",
@@ -944,6 +930,20 @@
    {
     "title": "Cenk Tosun'dan Flaş İtiraf! Beşiktaş'tan EuroLeague Zaferi",
     "url": "https://youtu.be/hQC4k3jJ_y8"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T11:38:38Z",
+  "run": "39027727540",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39029469020",
+  "videos": [
+   {
+    "title": "Çocuk Güzellik Yarışmasına Bakanlıktan Suç Duyurusu Geldi",
+    "url": "https://youtu.be/G12cEyaGgwI"
    }
   ]
  }

@@ -105,7 +105,7 @@ def main():
     os.environ["IG_ACCESS_TOKEN"] = token  # kopyalarken gelen boşluk ve satır sonu anahtarı bozar
     # Teşhis için yalnızca anahtarın türünü gösteren ilk karakterler yazılır
     print(f"Instagram anahtarı: {token[:4]}… ({len(token)} karakter), adres: {_host()}")
-        video_path, meta_path = sys.argv[1], sys.argv[2]
+    video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
     if meta.get("instagram_url"):  # aynı video iki kez paylaşılmasın
         print(f"Instagram'da zaten var: {meta['instagram_url']}")

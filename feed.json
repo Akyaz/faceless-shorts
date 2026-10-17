@@ -554,20 +554,6 @@
   ]
  },
  {
-  "time": "2026-10-16T20:05:52Z",
-  "run": "38958714639",
-  "event": "schedule",
-  "mode": "digest",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38958714639",
-  "videos": [
-   {
-    "title": "İstanbul'da sel felaketi ve günün öne çıkan haberleri",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T20:11:48Z",
   "run": "38960235262",
   "event": "workflow_dispatch",
@@ -711,6 +697,20 @@
    {
     "title": "45 İle Sağanak Uyarısı ve Yol Süresi 18 Dakikaya Düşüyor",
     "url": "https://youtu.be/U2r8-AM0S6w"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-17T09:08:33Z",
+  "run": "38958714639",
+  "event": "workflow_dispatch",
+  "mode": "digest",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019983350",
+  "videos": [
+   {
+    "title": "İstanbul'da sel felaketi ve günün öne çıkan haberleri",
+    "url": "https://youtu.be/uqOmzhjJ-qk"
    }
   ]
  }

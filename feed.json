@@ -960,5 +960,19 @@
     "url": "https://youtu.be/s1u64ewcbLk"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T12:30:18Z",
+  "run": "39032560502",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39032560502",
+  "videos": [
+   {
+    "title": "Sağanak Uyarısı: 45 İlde Alarm Verildi",
+    "url": "https://youtu.be/r9OB2mATMkk"
+   }
+  ]
  }
 ]

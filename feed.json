@@ -1092,5 +1092,21 @@
     "instagram": "https://www.instagram.com/reel/Dem6oiBkdzV/"
    }
   ]
+ },
+ {
+  "time": "2026-10-17T20:13:32Z",
+  "run": "39063935511",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39063935511",
+  "videos": [
+   {
+    "title": "İstanbul'un Fethi: 53 Gün, 72 Gemi ve Karadan Yürüyen Donanma",
+    "url": "https://youtu.be/AqDtZRX_OCY",
+    "instagram": null
+   }
+  ],
+  "script": "scripts/longform/tr-istanbulun-fethi.json"
  }
 ]

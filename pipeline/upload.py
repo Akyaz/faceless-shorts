@@ -69,12 +69,26 @@ def check():
     print("YouTube izni çalışıyor.")
 
 
+def uploaded_before(meta):
+    """Aynı çalışmanın aynı videosu panel kaydında YouTube bağlantısıyla duruyorsa o bağlantı.
+    Yeniden yükleme çalışmanın kendi dosyasını güncelleyemediği için tekrar yüklemeyi bu kayıt önler."""
+    run = os.environ.get("SOURCE_RUN_ID") or os.environ.get("GITHUB_RUN_ID")
+    if not (run and os.environ.get("GITHUB_TOKEN") and os.environ.get("GITHUB_REPOSITORY")):
+        return None
+    from .report import find_link
+    return find_link(run, meta.get("title"), "url")
+
+
 def main():
     if sys.argv[1:] == ["--check"]:
         return check()
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
+    if not meta.get("youtube_url"):
+        meta["youtube_url"] = uploaded_before(meta)
     if meta.get("youtube_url"):  # yeniden yükleme denemesinde aynı video iki kez çıkmasın
+        with open(meta_path, "w", encoding="utf-8") as f:  # bildirim bağlantıyı buradan okur
+            json.dump(meta, f, ensure_ascii=False, indent=2)
         print(f"Zaten yüklenmiş: {meta['youtube_url']}")
         return
     try:

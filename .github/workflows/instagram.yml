@@ -1,8 +1,7 @@
 name: Instagram'a yükle
 
-# Daha önce üretilmiş bir çalışmanın dikey videolarını Instagram'a Reels olarak yükler
-# (ilk deneme, anahtar değişikliği sonrası tekrar). Aynı çalışma için iki kez çalıştırılırsa
-# Instagram'a iki kez yüklenir: bağlantı çalışmanın kaydına geri yazılamıyor.
+# Daha önce üretilmiş bir çalışmanın dikey videolarını Instagram'a Reels olarak yükler.
+# Paylaşılan videonun bağlantısı panel kaydına yazılır; tekrar çalıştırılırsa o video atlanır.
 on:
   workflow_dispatch:
     inputs:
@@ -10,12 +9,16 @@ on:
         description: "Videoları üreten çalışmanın numarası (Actions linkindeki sayı)"
         required: true
 
+concurrency:
+  group: instagram-${{ inputs.run_id }}
+  cancel-in-progress: false
+
 jobs:
   instagram:
     runs-on: ubuntu-latest
     permissions:
       actions: read
-      contents: read
+      contents: write  # Instagram bağlantısı panel-data kaydına yazılır
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,6 +36,8 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_GRAPH_HOST: ${{ vars.IG_GRAPH_HOST }}
           MEDIA_TOKEN: ${{ secrets.MEDIA_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.run_id }}
         run: |
           [ -n "$IG_ACCESS_TOKEN" ] || { echo "IG_ACCESS_TOKEN secret'ı yok"; exit 1; }
           failed=0

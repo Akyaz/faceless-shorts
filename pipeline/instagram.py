@@ -180,6 +180,11 @@ def main():
     print(f"Instagram anahtarı: {token[:4]}… ({len(token)} karakter), adres: {_host()}")
     video_path, meta_path = sys.argv[1], sys.argv[2]
     meta = json.loads(open(meta_path, encoding="utf-8").read())
+    run = os.environ.get("SOURCE_RUN_ID") or os.environ.get("GITHUB_RUN_ID")
+    can_record = bool(run and os.environ.get("GITHUB_TOKEN") and os.environ.get("GITHUB_REPOSITORY"))
+    if not meta.get("instagram_url") and can_record:  # elle tekrar tetiklenince de kayda bakılır
+        from .report import find_link
+        meta["instagram_url"] = find_link(run, meta.get("title"), "instagram")
     if meta.get("instagram_url"):  # aynı video iki kez paylaşılmasın
         print(f"Instagram'da zaten var: {meta['instagram_url']}")
         return
@@ -194,6 +199,12 @@ def main():
                      f"Instagram yanıtı: {body[:300]}")
         sys.exit(f"Instagram yüklemeyi reddetti (HTTP {exc.code}): {body[:800]}")
     meta["instagram_url"] = url
+    if can_record and os.environ.get("SOURCE_RUN_ID"):  # elle yüklemede kayıt bu çalışmanın raporuyla yazılmaz
+        from .report import add_link
+        try:
+            add_link(run, meta.get("title"), "instagram", url)
+        except Exception as exc:  # kayıt yazılamasa da paylaşım yapıldı
+            print(f"Instagram bağlantısı panel kaydına yazılamadı: {exc}")
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print(f"Instagram'a yüklendi: {url}")

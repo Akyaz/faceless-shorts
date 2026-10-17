@@ -12,6 +12,12 @@ on:
         description: "public, unlisted veya private"
         default: public
 
+# Aynı çalışmanın videoları için iki yükleme aynı anda çalışmasın: ikincisi bekler ve kayıtta
+# bağlantıyı görünce yüklemeyi atlar (panel ve elle tetikleme çakışınca video iki kez çıkmıştı)
+concurrency:
+  group: upload-${{ inputs.run_id }}
+  cancel-in-progress: false
+
 jobs:
   upload:
     runs-on: ubuntu-latest
@@ -39,6 +45,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           YT_PRIVACY: ${{ inputs.privacy }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           failed=0
           for meta in out/metadata.json out/*/metadata.json; do

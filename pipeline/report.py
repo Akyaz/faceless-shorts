@@ -29,7 +29,8 @@ def collect(out_dir):
             meta = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError):
             continue
-        videos.append({"title": meta.get("title", ""), "url": meta.get("youtube_url")})
+        videos.append({"title": meta.get("title", ""), "url": meta.get("youtube_url"),
+                       "instagram": meta.get("instagram_url")})
     return videos
 
 
@@ -74,6 +75,47 @@ def append_feed(entry):
             if exc.code not in (409, 422):
                 raise
     raise RuntimeError("feed.json güncellenemedi")
+
+
+def read_feed():
+    repo = os.environ["GITHUB_REPOSITORY"]
+    current = _github("GET", f"/repos/{repo}/contents/{FEED}?ref={BRANCH}")
+    return json.loads(base64.b64decode(current["content"])), current["sha"]
+
+
+def find_link(run, title, key):
+    """Panel kaydında bu çalışmanın bu videosu için kayıtlı bağlantı (key: "url" YouTube, "instagram")."""
+    try:
+        feed, _ = read_feed()
+    except (KeyError, urllib.error.HTTPError):
+        return None
+    for entry in feed:
+        if str(entry.get("run")) == str(run):
+            for video in entry.get("videos", []):
+                if video.get("title") == title and video.get(key):
+                    return video[key]
+    return None
+
+
+def add_link(run, title, key, url):
+    """Kayıttaki videoya bağlantı ekler; çalışmanın kaydını baştan yazmaz (diğer bağlantılar kaybolmasın)."""
+    repo = os.environ["GITHUB_REPOSITORY"]
+    for _ in range(4):
+        feed, sha = read_feed()
+        for entry in feed:
+            if str(entry.get("run")) == str(run):
+                for video in entry.get("videos", []):
+                    if video.get("title") == title:
+                        video[key] = url
+        content = json.dumps(feed, ensure_ascii=False, indent=1)
+        try:
+            _github("PUT", f"/repos/{repo}/contents/{FEED}", {
+                "message": f"feed: {run} {key}", "branch": BRANCH, "sha": sha,
+                "content": base64.b64encode(content.encode()).decode()})
+            return
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (409, 422):
+                raise
 
 
 def telegram(text):

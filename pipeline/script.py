@@ -428,7 +428,8 @@ def custom_plan(item):
             text = p["text"]
         else:
             text = p
-        segments.append({"kind": "story", "text": text, **current})
+        card = p.get("card") if isinstance(p, dict) else None  # maç kartı: fotoğraf yerine o güne ait grafik
+        segments.append({"kind": "story", "text": text, **current, **({"card": card} if card else {})})
         current = {k: v for k, v in current.items() if k != "chapter"}  # zaman damgası yalnız bölümün ilk paragrafında
     return {"title": item["title"], "hook_title": item.get("hook_title", ""),
             "wide": bool(item.get("wide")), "sections": sections,
@@ -437,7 +438,7 @@ def custom_plan(item):
             "image_files": item.get("image_files") or [], "mood": item.get("mood", "notr"),
             "hashtags": _tags(item.get("hashtags")) + (["news"] if english else ["gündem", "haber"]),
             "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": "",
-            "pronounce": item.get("pronounce") or {}}
+            "pronounce": item.get("pronounce") or {}, "match": item.get("match")}
 
 
 def build_script(headlines, mode="story", recent=()):

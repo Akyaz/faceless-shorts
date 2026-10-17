@@ -1,0 +1,39 @@
+[
+  {
+    "lang": "tr",
+    "label": "SÜPER LİG · 8. HAFTA",
+    "mood": "umutlu",
+    "category": "17",
+    "title": "Fenerbahçe 3-0 Alanyaspor: Kaçan Penaltı, İptal Edilen Gol ve 6-0'ın Rövanşı",
+    "hook_title": "Kadıköy'de 3 Gol",
+    "hashtags": ["fenerbahçe", "alanyaspor", "süperlig"],
+    "country": "Turkey",
+    "city": "Istanbul",
+    "match": {"home": "Fenerbahçe", "away": "Alanyaspor", "home_color": "#1B2A6B", "away_color": "#F47A20"},
+    "pronounce": {"Greenwood": "Grinvud", "Victor": "Viktor", "Lukaku": "Lukaku", "Kanté": "Kante", "Archie Brown": "Arçi Bravn", "Muriqi": "Muriçi", "Aston Villa": "Astın Villa"},
+    "paragraphs": [
+      {"text": "Fenerbahçe, Kadıköy'de Alanyaspor'u 3-0 yendi. Üstelik maçta bir penaltı kaçtı, iki gol de iptal edildi.",
+       "card": {"type": "score", "score": "3 - 0", "note": "17 Ekim 2026 · Kadıköy"}},
+      {"text": "18. dakikada Greenwood'un penaltısını kaleci Victor kurtardı. Dönen topu ağlara gönderen İrfan Can ofsaytta kaldı.",
+       "card": {"type": "event", "title": "PENALTI KURTARILDI", "minute": "18'", "player": "Greenwood", "detail": "Dönen topla gelen gol ofsayt", "score_after": "0 - 0"}},
+      {"text": "40. dakikada Levent Mercan ortaladı, Lukaku tek vuruşla ağlara gönderdi.",
+       "card": {"type": "goal", "minute": "40'", "player": "Lukaku", "detail": "Asist: Levent Mercan", "score_after": "1 - 0"}},
+      {"text": "İkinci yarının başında İrfan Can'ın golü, VAR incelemesinde Kanté'nin faulü nedeniyle iptal edildi.",
+       "card": {"type": "event", "title": "VAR: GOL İPTAL", "minute": "47'", "player": "İrfan Can", "detail": "Atak başında Kanté'nin faulü", "score_after": "1 - 0"}},
+      {"text": "71. dakikada Kanté'nin pasıyla Kerem Aktürkoğlu farkı ikiye çıkardı.",
+       "card": {"type": "goal", "minute": "71'", "player": "Kerem Aktürkoğlu", "detail": "Asist: Kanté", "score_after": "2 - 0"}},
+      {"text": "87. dakikada Archie Brown'ın ortasında Muriqi skoru 3-0 yaptı.",
+       "card": {"type": "goal", "minute": "87'", "player": "Muriqi", "detail": "Asist: Archie Brown", "score_after": "3 - 0"}},
+      {"text": "Hafta içinde Şampiyonlar Ligi'nde Aston Villa'ya 6-0 yenilmişlerdi. İsmail Kartal o maçtan sonra şöyle demişti: Alanyaspor maçını kazanıp bunu unutturacağız.",
+       "card": {"type": "quote", "text": "Alanyaspor maçını kazanıp bunu unutturacağız.", "who": "İsmail Kartal, Aston Villa yenilgisinin ardından"}},
+      {"text": "Fenerbahçe 16 puanla liderin 3 puan gerisinde. Gelecek hafta Galatasaray deplasmanı var. Sence derbiyi kim kazanır?",
+       "card": {"type": "table", "rows": [{"name": "Galatasaray", "value": "19 puan", "color": "#E30613"}, {"name": "Fenerbahçe", "value": "16 puan", "color": "#1B2A6B"}, {"name": "Alanyaspor", "value": "12 puan", "color": "#F47A20"}], "next": "Sıradaki: Galatasaray - Fenerbahçe"}}
+    ],
+    "sources": [
+      {"title": "Fenerbahçe 3-0 Alanyaspor (Süper Lig maçı özeti)", "source": "Hürriyet"},
+      {"title": "Fenerbahçe 3-0 Alanyaspor maç sonucu, FB ALY maçı özeti ve golleri", "source": "Habertürk"},
+      {"title": "İsmail Kartal: \"Alanyaspor maçını kazanıp bunu unutturacağız\"", "source": "Sporx"},
+      {"title": "İsmail Kartal: 'Hakkı bu değildi, kabul edilir değil!'", "source": "Hürriyet"}
+    ]
+  }
+]

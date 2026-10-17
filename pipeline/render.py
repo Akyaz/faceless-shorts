@@ -159,6 +159,113 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     img.save(out_path)
 
 
+# Maç kartları: o maçın bilgileriyle çizilir (ajans fotoğrafı ve yayın görüntüsü telifli; başka tarihlerin
+# fotoğrafı da o günü anlatmaz). Kulüp armaları tescilli olduğu için yalnızca takım adı ve renkleri kullanılır.
+# Altyazı ekranın ortasında çıktığı için 880-1100 arası boş bırakılır.
+def _hex(color):
+    color = color.lstrip("#")
+    return tuple(int(color[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def _ink(color):
+    """Takım renginin üstünde okunacak yazı rengi."""
+    r, g, b = color
+    return (20, 20, 20) if r * 0.299 + g * 0.587 + b * 0.114 > 160 else (255, 255, 255)
+
+
+def _pitch():
+    """Koyu çim zemin: dikey şeritler ve silik saha çizgileri."""
+    img = Image.new("RGB", (W, H), (14, 48, 30))
+    d = ImageDraw.Draw(img)
+    for i in range(0, H, 160):
+        d.rectangle([0, i, W, i + 80], fill=(17, 56, 35))
+    line = (40, 84, 60)
+    d.rectangle([60, 120, W - 60, H - 120], outline=line, width=4)
+    d.line([60, H / 2, W - 60, H / 2], fill=line, width=4)
+    d.ellipse([W / 2 - 170, H / 2 - 170, W / 2 + 170, H / 2 + 170], outline=line, width=4)
+    return Image.blend(img, Image.new("RGB", (W, H)), 0.35)
+
+
+def _centered(d, text, y, font, fill="white", stroke=0):
+    d.text((W / 2, y), text, font=font, fill=fill, anchor="mm", stroke_width=stroke, stroke_fill="black")
+
+
+def _pill(d, text, y, font, color, pad=40, height=96):
+    tw = d.textlength(text, font=font)
+    d.rounded_rectangle([(W - tw) / 2 - pad, y - height / 2, (W + tw) / 2 + pad, y + height / 2],
+                        radius=height / 2, fill=color)
+    d.text((W / 2, y), text, font=font, fill=_ink(color), anchor="mm")
+
+
+def _scoreline(d, match, score, y, font):
+    """Alt bölümde küçük skor tabelası: ev sahibi rengi | skor | konuk rengi."""
+    home, away = _hex(match["home_color"]), _hex(match["away_color"])
+    d.rounded_rectangle([90, y - 60, W - 90, y + 60], radius=30, fill=(10, 10, 10))
+    d.rounded_rectangle([90, y - 60, 130, y + 60], radius=12, fill=home)
+    d.rounded_rectangle([W - 130, y - 60, W - 90, y + 60], radius=12, fill=away)
+    d.text((160, y), match["home"], font=font, fill="white", anchor="lm")
+    d.text((W - 160, y), match["away"], font=font, fill="white", anchor="rm")
+    d.text((W / 2, y), score, font=font, fill=(255, 214, 0), anchor="mm")
+
+
+def draw_match_card(card, match, out_path, label="SPOR", source=""):
+    """card: {"type": score|goal|event|quote|table, ...}; match: {home, away, home_color, away_color, ...}."""
+    img = _pitch()
+    d = ImageDraw.Draw(img)
+    font = lambda size, bold=True: ImageFont.truetype(_font_path(bold), size)  # noqa: E731
+    _brand(img)
+    _pill(d, label, 230, font(56), ACCENTS[0], pad=36, height=100)
+    kind = card["type"]
+    team = _hex(match["home_color"] if card.get("team", "home") == "home" else match["away_color"])
+
+    if kind == "score":
+        for x0, name, color in ((70, match["home"], _hex(match["home_color"])),
+                                (W / 2 + 20, match["away"], _hex(match["away_color"]))):
+            d.rounded_rectangle([x0, 360, x0 + W / 2 - 90, 470], radius=24, fill=color)
+            size = 56 if len(name) <= 11 else 46
+            d.text((x0 + (W / 2 - 90) / 2, 415), name, font=font(size), fill=_ink(color), anchor="mm")
+        _centered(d, card["score"], 640, font(230), fill=(255, 214, 0), stroke=6)
+        if card.get("note"):
+            _centered(d, card["note"], 810, font(42, False), fill=(230, 230, 230))
+    elif kind in ("goal", "event"):
+        _pill(d, card.get("title", "GOL"), 360, font(60), team if kind == "goal" else (60, 60, 60), height=104)
+        _centered(d, card["minute"], 540, font(200), fill=(255, 214, 0), stroke=6)
+        if card.get("player"):
+            _centered(d, card["player"], 720, font(80), stroke=4)
+        if card.get("detail"):
+            y = 800 if card.get("player") else 730
+            for line in _wrap(d, card["detail"], font(42, False), W - 200)[:2]:
+                _centered(d, line, y, font(42, False), fill=(230, 230, 230), stroke=2)
+                y += 52
+    elif kind == "quote":
+        _centered(d, "“", 420, font(220), fill=(255, 214, 0))
+        quote_font = font(60)
+        lines = _wrap(d, card["text"], quote_font, W - 180)[:4]
+        y = 560 if len(lines) > 2 else 620
+        for line in lines:
+            _centered(d, line, y, quote_font, stroke=3)
+            y += 76
+        _centered(d, card["who"], 1200, font(46, False), fill=(230, 230, 230), stroke=2)
+    elif kind == "table":
+        y = 380
+        for row in card["rows"][:4]:
+            color = _hex(row.get("color", "#FFD600"))
+            d.rounded_rectangle([90, y - 52, W - 90, y + 52], radius=20, fill=(10, 10, 10))
+            d.rounded_rectangle([90, y - 52, 120, y + 52], radius=8, fill=color)
+            d.text((150, y), row["name"], font=font(52), fill="white", anchor="lm")
+            d.text((W - 130, y), row["value"], font=font(52), fill=(255, 214, 0), anchor="rm")
+            y += 128
+        if card.get("next"):
+            _pill(d, card["next"], 1200, font(46), (255, 255, 255), height=90)
+
+    if card.get("score_after"):
+        _scoreline(d, match, card["score_after"], 1200, font(50))
+    if source:
+        d.text((W / 2, 1560), f"{TEXTS['tr']['source']}: {source}", font=font(44, False), fill=(230, 230, 230),
+               anchor="mm", stroke_width=3, stroke_fill="black")
+    img.save(out_path)
+
+
 SPEAKER_COLORS = [(30, 136, 229), (229, 57, 53)]
 
 

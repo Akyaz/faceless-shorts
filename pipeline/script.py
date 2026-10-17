@@ -15,6 +15,16 @@ import urllib.request
 
 from .news import sensitive_headline
 
+# Cevabı vermeyen içi boş kalıplar: model kurala uymazsa kod yakalar (izleyici cevabı videoda bulmalı)
+VAGUE = re.compile(r"\b(hakkında|ilişkin|ile ilgili|konusunda)\s+(resmi\s+|yeni\s+|önemli\s+)?(bir\s+)?"
+                   r"(açıklama|bilgi|paylaşım|güncelleme)(de|da)?\s+(yaptı|verdi|bulundu|geldi)"
+                   r"|merak edilen|herkes(in)? bunu konuşuyor|ortalığı karıştıran"
+                   r"|\b(made|issued|gave) an? (official )?(statement|update) (on|about)\b", re.I)
+
+
+def vague(text):
+    return bool(VAGUE.search(text or ""))
+
 # Yoğunlukta 503 dönebiliyor; sırayla denenir
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
 _out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
@@ -169,7 +179,8 @@ Metin kuralları:
 5. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
 6. Belirsizlik bırakma. Başlıkta, ekran başlığında ya da metinde merak uyandırdığın her şeyin cevabı metinde açıkça
    olsun: "ilk 11'de sürpriz" diyorsan sürprizin ne olduğunu (hangi oyuncu, kimin yerine) söyle; "şok karar"
-   diyorsan kararın ne olduğunu söyle. Cevap verilen başlıklarda (diğer kaynaklar dahil) yoksa o haberi seçme.
+   diyorsan kararın ne olduğunu söyle; "X hakkında açıklama yaptı" yetmez, ne dendiğini söyle. Cevap verilen
+   başlıklarda (diğer kaynaklar dahil) yoksa o haberi seçme.
 
 """ + ACCURACY + """
 Ek alanlar:
@@ -199,6 +210,7 @@ Alanlar:
   - heading: ekranda yazacak en fazla 5 kelimelik başlık
   - text: 1-2 kısa cümle, en fazla 22 kelime; haberin özü, konuşur gibi. Belirsizlik bırakma: başlıkta merak
     uyandırdığın şeyin cevabı metinde olsun ("ilk 11'de sürpriz" diyorsan hangi oyuncu olduğunu söyle).
+    "X hakkında açıklama yaptı", "durumu hakkında bilgi verdi" demek yetmez: açıklamada ne dendiğini söyle.
     Ne olduğunu söylemeyen ("sürpriz karar", "flaş gelişme", "herkes bunu konuşuyor") ve cevabı verilen
     başlıklarda bulunmayan haberleri seçme.
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
@@ -328,6 +340,16 @@ def story_script(headlines, kind="story", count=10, recent=()):
         prompt += "\n".join(f"- {t}" for t in recent) + "\n"
     prompt += ("\nStories:\n" if english else "\nHaberler:\n") + "\n".join(_blocks(headlines, english))
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
+    unclear = [p for p in out["paragraphs"] if vague(p)]
+    if unclear:  # bir kez düzelttir; yine olmazsa video belirsiz çıkmasın diye hata verir
+        print(f"Cevabı vermeyen cümle, yeniden yazdırılıyor: {unclear}")
+        note = ("\nThe following sentences do not give the answer; say exactly what was said or decided, or pick "
+                "another story: " if english else
+                "\nŞu cümleler cevabı vermiyor; ne dendiğini ya da ne karar verildiğini açıkça söyle, "
+                "yoksa başka bir haber seç: ")
+        out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
+        if any(vague(p) for p in out["paragraphs"]):
+            raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
@@ -359,12 +381,17 @@ def digest_script(headlines, kind, count=14):
     items, seen = [], set()
     for item in out["items"]:
         headline = _pick(headlines, item.get("pick", 1))
+        if vague(item.get("text")):
+            print(f"Cevabı vermeyen madde çıkarıldı: {item.get('text')}")
+            continue
         if headline["title"] not in seen:
             seen.add(headline["title"])
             heading, text = item.get("heading", ""), item["text"]
             if sensitive_headline(headline):  # acı haber ünlemle verilmez
                 heading, text = heading.replace("!", ""), text.replace("!", ".")
             items.append((headline, heading, text, _image_fields(item)))
+    if len(items) < 2:
+        raise RuntimeError("Özette yeterli net madde kalmadı")
     plan = _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
     return {**plan, "pronounce": _pronounce(out)}
 

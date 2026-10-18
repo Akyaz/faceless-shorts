@@ -1162,5 +1162,21 @@
     "instagram": "https://www.instagram.com/reel/DeoQEDjj8o9/"
    }
   ]
+ },
+ {
+  "time": "2026-10-18T08:43:40Z",
+  "run": "39112230291",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39112230291",
+  "videos": [
+   {
+    "title": "18 İle Fırtına Alarmı ve Fransa'da Şiddetli Protestolar",
+    "url": "https://youtu.be/cSxXtsI_MPE",
+    "instagram": "https://www.instagram.com/reel/DeoR9IOFF7y/"
+   }
+  ],
+  "slot": "07:15"
  }
 ]

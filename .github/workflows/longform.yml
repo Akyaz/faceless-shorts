@@ -5,6 +5,7 @@ name: Tarih videosu
 on:
   schedule:
     - cron: "0 18 * * *"  # 21:00 Türkiye saati
+    - cron: "30 18 * * *"  # yedek: asıl çalışma başlamadıysa (pipeline/slots.py)
   workflow_dispatch:
     inputs:
       script:
@@ -17,13 +18,34 @@ on:
         default: true
 
 jobs:
+  slot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      slot: ${{ steps.decide.outputs.slot }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: decide
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SCHEDULE: ${{ github.event.schedule }}
+          WORKFLOW_FILE: longform.yml
+        run: python3 -m pipeline.slots
+
   longform:
+    needs: slot
+    if: ${{ needs.slot.outputs.run == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     permissions:
       contents: write  # sonuç kaydı panel-data dalına yazılır
     env:
       MODE: longform
+      SLOT: ${{ needs.slot.outputs.slot }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

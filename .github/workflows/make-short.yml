@@ -4,18 +4,31 @@ on:
   # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
     # Günde 8 otomatik Shorts: YouTube kanala günde 9-10 yüklemeye izin veriyor; biri her gün 21:00'deki tarih videosuna kalır.
+    # GitHub zamanlanmış çalışmaları bazen hiç başlatmıyor: her saatin 25 dakika sonrasında bir yedek var.
+    # Yedek, o saatin videosu kayda geçtiyse hiçbir şey üretmeden kapanır (pipeline/slots.py; saat-tür eşleşmesi orada).
     # 07:15: sabah özeti
     - cron: "5 4 * * *"
+    - cron: "30 4 * * *"
     # 10, 12 ve 19: birer gündem haberi
-    - cron: "50 6,8,15 * * *"
+    # (her saat ayrı satırda: GitHub hangi satırın tetiklendiğini bildiriyor, birleşik satırda saat ayırt edilemez)
+    - cron: "50 6 * * *"
+    - cron: "15 7 * * *"
+    - cron: "50 8 * * *"
+    - cron: "15 9 * * *"
+    - cron: "50 15 * * *"
+    - cron: "15 16 * * *"
     # 15:00: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
     - cron: "50 11 * * *"
+    - cron: "15 12 * * *"
     # 16:00: dünya gündeminden İngilizce bir haber (ABD'de sabah)
     - cron: "50 12 * * *"
+    - cron: "15 13 * * *"
     # 13:30: spor gündemi özeti
     - cron: "20 10 * * *"
+    - cron: "45 10 * * *"
     # 20:30: günün öne çıkan haberleri özeti
     - cron: "20 17 * * *"
+    - cron: "45 17 * * *"
   workflow_dispatch:
     inputs:
       upload:
@@ -49,14 +62,39 @@ on:
         default: story
 
 jobs:
+  # Hangi saatin videosu, bugün zaten üretildi mi? Paket kurmadan birkaç saniyede karar verir.
+  slot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45  # asıl çalışma sürüyorsa bitmesi beklenir
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      mode: ${{ steps.decide.outputs.mode }}
+      slot: ${{ steps.decide.outputs.slot }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: decide
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ inputs.mode }}
+          CUSTOM: ${{ (inputs.script || inputs.script_json) && '1' || '' }}
+          WORKFLOW_FILE: make-short.yml
+        run: python3 -m pipeline.slots
+
   make:
+    needs: slot
+    if: ${{ needs.slot.outputs.run == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     permissions:
       contents: write  # sonuç kaydı panel-data dalına yazılır
     env:
       COUNT: ${{ inputs.count || 1 }}
-      MODE: ${{ (inputs.script || inputs.script_json) && 'custom' || github.event.schedule == '20 10 * * *' && 'sports' || github.event.schedule == '20 17 * * *' && 'digest' || github.event.schedule == '5 4 * * *' && 'morning' || github.event.schedule == '50 11 * * *' && 'trend' || github.event.schedule == '50 12 * * *' && 'world' || inputs.mode || 'story' }}
+      MODE: ${{ needs.slot.outputs.mode }}
+      SLOT: ${{ needs.slot.outputs.slot }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

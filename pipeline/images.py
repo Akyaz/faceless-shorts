@@ -155,28 +155,7 @@ PLACE_RULE = ("Haber {where} ile ilgili. İçinde insan, sokak, bina, okul, taş
               "{where} içinde çekilmiş olmalı. Dosya adından, açıklamasından ya da görüntüsünden (yazılar, tabelalar, "
               "bayraklar, mimari, insanlar) başka bir ülkede ya da şehirde çekildiği anlaşılan fotoğrafı seçme; "
               "nerede çekildiği anlaşılmayan insan fotoğrafını da seçme.")
-NO_HISTORY_RULES = """Tarih belgeseli için arka plan görseli seçiyorsun. Aşağıda numaralı adayların dosya adı ve açıklaması,
-ardından aynı sırayla görsellerin kendisi var. Görsele bakarak karar ver.
-
-Konu: {topic}
-Dönem: {era}
-Yer: {where}
-
-Seç: bu konuyu, dönemi ve yeri gerçekten gösteren görseller: o döneme ait tablolar, gravürler, minyatürler,
-haritalar, el yazmaları, müzedeki eserler, arkeolojik alanın ve yapıların fotoğrafları, dönemin fotoğrafları.
-Siyah beyaz ve eski görseller uygundur.
-
-Seçme:
-- Başka bir olaya, döneme ya da yere ait olanlar (örnek: Osmanlı konusu için Roma mozaiği).
-- Film, dizi, oyun görüntüleri; afişler; fantastik ya da yapay zekâ ile üretilmiş canlandırmalar.
-- Konuyla ilgisi zayıf modern fotoğraflar; turistlerin, yakın plan kişilerin öne çıktığı fotoğraflar.
-- Yazının görseli kapladığı belgeler, grafikler, logolar; bulanık, çok karanlık ya da çok küçük görseller.
-- Dikey ya da kare görseller yatay videoda kırpılınca konusu kadraj dışında kalacaksa.
-
-Birbirinden farklı görünenleri tercih et, en uygun olan başta. En fazla 8 aday seç; uygun aday yoksa boş liste dön.
-Sadece JSON döndür: {{"pick": [3, 1, 7]}}
-"""
-PLACE_RULE = ("Haber belirli bir ülkeyle ilgili değil. Belirli bir ülkeyi ya da halkı temsil eden insan ve sokak "
+NO_PLACE_RULE = ("Haber belirli bir ülkeyle ilgili değil. Belirli bir ülkeyi ya da halkı temsil eden insan ve sokak "
                  "fotoğraflarını seçme; konuyu gösteren nesne, cihaz, doğa ve uzay fotoğraflarını tercih et.")
 PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
 # Ücretsiz kota model başına sayılıyor: görsel eleme hafif modele gider, iyi model metin yazımına kalır

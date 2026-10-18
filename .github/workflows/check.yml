@@ -1,0 +1,17 @@
+name: Kod kontrolü
+
+# Tanımsız isim, kullanılmayan içe aktarma gibi hatalar videolar üretilirken değil, kod gönderilince yakalansın
+# (16 Ekim'de yanlış uygulanan bir isim değişikliği görsel seçim kuralını iki gün boyunca bozdu).
+on:
+  push:
+    paths: ["pipeline/**", "scripts/**.py", ".github/workflows/check.yml"]
+
+jobs:
+  pyflakes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pyflakes && python -m pyflakes pipeline scripts/*.py

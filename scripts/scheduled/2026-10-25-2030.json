@@ -1,0 +1,138 @@
+[
+ {
+  "lang": "tr",
+  "label": "DERBİ",
+  "mood": "gergin",
+  "category": "17",
+  "country": "Turkey",
+  "city": "Istanbul",
+  "match": {
+   "home": "Galatasaray",
+   "away": "Fenerbahçe",
+   "home_color": "#A90432",
+   "away_color": "#1B2A6B"
+  },
+  "pronounce": {
+   "Osimhen": "Osimen",
+   "Torreira": "Torreyra",
+   "RAMS Park": "Rams Park"
+  },
+  "title": "Derbiye Bir Gün Kala: Tarih Fenerbahçe'den, Bu Sezon Galatasaray'dan Yana",
+  "hook_title": "Skor Tahminin Ne?",
+  "hashtags": [
+   "derbi",
+   "galatasaray",
+   "fenerbahçe"
+  ],
+  "sources": [
+   {
+    "title": "Galatasaray 3-0 Fenerbahçe (Süper Lig derbi maçı özeti)",
+    "source": "Hürriyet"
+   },
+   {
+    "title": "The Intercontinental Derby (football)",
+    "source": "Wikipedia"
+   },
+   {
+    "title": "Galatasaray-Fenerbahçe derbisinin tarihi belli oldu",
+    "source": "Fanatik"
+   },
+   {
+    "title": "Galatasaray Fenerbahçe maçı 26 Ekim Pazartesi RAMS Park'ta",
+    "source": "İstanbul Post"
+   },
+   {
+    "title": "Gençlerbirliği 0-1 Galatasaray (Süper Lig maçı özeti)",
+    "source": "Hürriyet"
+   },
+   {
+    "title": "Fenerbahçe 3-0 Alanyaspor (Süper Lig maçı özeti)",
+    "source": "Hürriyet"
+   }
+  ],
+  "paragraphs": [
+   {
+    "text": "Yarın akşam 21:30'da RAMS Park'ta Galatasaray ile Fenerbahçe karşılaşıyor.",
+    "card": {
+     "type": "score",
+     "score": "YARIN",
+     "note": "26 Ekim Pazartesi · 21:30 · RAMS Park"
+    }
+   },
+   {
+    "text": "Tarih Fenerbahçe'den yana. Vikipedi'deki kayda göre iki takım 284 resmi maçta karşılaştı. Fenerbahçe 102, Galatasaray 89 kez kazandı, 93 maç berabere bitti.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Fenerbahçe galibiyeti",
+       "value": "102",
+       "color": "#1B2A6B"
+      },
+      {
+       "name": "Galatasaray galibiyeti",
+       "value": "89",
+       "color": "#A90432"
+      },
+      {
+       "name": "Beraberlik",
+       "value": "93",
+       "color": "#888888"
+      }
+     ],
+     "next": "284 resmi maç · Nisan 2026'ya kadar"
+    }
+   },
+   {
+    "text": "Ama bu sezon lider Galatasaray. Sekiz haftada 19 puan topladı, Fenerbahçe'nin üç puan önünde.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Galatasaray",
+       "value": "19 puan",
+       "color": "#A90432"
+      },
+      {
+       "name": "Fenerbahçe",
+       "value": "16 puan",
+       "color": "#1B2A6B"
+      }
+     ],
+     "next": "Süper Lig · 8 hafta sonunda"
+    }
+   },
+   {
+    "text": "Galatasaray kazanırsa fark altıya çıkacak. Fenerbahçe kazanırsa puanlar eşitlenecek.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Galatasaray kazanırsa",
+       "value": "Fark 6",
+       "color": "#A90432"
+      },
+      {
+       "name": "Berabere",
+       "value": "Fark 3",
+       "color": "#888888"
+      },
+      {
+       "name": "Fenerbahçe kazanırsa",
+       "value": "Eşit",
+       "color": "#1B2A6B"
+      }
+     ]
+    }
+   },
+   {
+    "text": "Skor tahminin ne? Yorumlara yaz.",
+    "card": {
+     "type": "quote",
+     "text": "Skor tahminin ne?",
+     "who": "Yorumlara yaz"
+    }
+   }
+  ]
+ }
+]

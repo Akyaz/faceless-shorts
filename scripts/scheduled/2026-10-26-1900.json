@@ -1,0 +1,101 @@
+[
+ {
+  "lang": "tr",
+  "label": "DERBİ",
+  "mood": "gergin",
+  "category": "17",
+  "country": "Turkey",
+  "city": "Istanbul",
+  "match": {
+   "home": "Galatasaray",
+   "away": "Fenerbahçe",
+   "home_color": "#A90432",
+   "away_color": "#1B2A6B"
+  },
+  "pronounce": {
+   "Osimhen": "Osimen",
+   "Torreira": "Torreyra",
+   "RAMS Park": "Rams Park"
+  },
+  "title": "Derbi Günü: Galatasaray-Fenerbahçe Bu Akşam 21:30'da",
+  "hook_title": "Derbi Bu Akşam",
+  "hashtags": [
+   "derbi",
+   "galatasaray",
+   "fenerbahçe"
+  ],
+  "sources": [
+   {
+    "title": "Galatasaray 3-0 Fenerbahçe (Süper Lig derbi maçı özeti)",
+    "source": "Hürriyet"
+   },
+   {
+    "title": "The Intercontinental Derby (football)",
+    "source": "Wikipedia"
+   },
+   {
+    "title": "Galatasaray-Fenerbahçe derbisinin tarihi belli oldu",
+    "source": "Fanatik"
+   },
+   {
+    "title": "Galatasaray Fenerbahçe maçı 26 Ekim Pazartesi RAMS Park'ta",
+    "source": "İstanbul Post"
+   }
+  ],
+  "paragraphs": [
+   {
+    "text": "Derbi günü geldi. Galatasaray ile Fenerbahçe bu akşam 21:30'da RAMS Park'ta karşılaşıyor.",
+    "card": {
+     "type": "score",
+     "score": "21:30",
+     "note": "Bu akşam · RAMS Park"
+    }
+   },
+   {
+    "text": "Lider Galatasaray 19, Fenerbahçe 16 puanda. Galatasaray kazanırsa fark altıya çıkacak, Fenerbahçe kazanırsa puanlar eşitlenecek.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Galatasaray",
+       "value": "19 puan",
+       "color": "#A90432"
+      },
+      {
+       "name": "Fenerbahçe",
+       "value": "16 puan",
+       "color": "#1B2A6B"
+      }
+     ],
+     "next": "Süper Lig 9. hafta"
+    }
+   },
+   {
+    "text": "Son derbiyi Galatasaray 3-0 kazanmıştı. Ondan önceki Süper Kupa finalinde ise Fenerbahçe 2-0 galip gelmişti.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Nisan 2026 · Lig",
+       "value": "GS 3-0 FB",
+       "color": "#A90432"
+      },
+      {
+       "name": "Ocak 2026 · Süper Kupa",
+       "value": "GS 0-2 FB",
+       "color": "#1B2A6B"
+      }
+     ]
+    }
+   },
+   {
+    "text": "Maç bitmeden tahminini yaz: sence kim kazanır, skor ne olur?",
+    "card": {
+     "type": "quote",
+     "text": "Sence kim kazanır, skor ne olur?",
+     "who": "Maç bitmeden yorumlara yaz"
+    }
+   }
+  ]
+ }
+]

@@ -307,14 +307,17 @@ def draw_match_card(card, match, out_path, label="SPOR", source=""):
             y += 76
         _centered(d, card["who"], 1200, font(46, False), fill=(230, 230, 230), stroke=2)
     elif kind == "table":
-        y = 380
-        for row in card["rows"][:4]:
+        rows = card["rows"][:5]
+        # 5 satır altyazı bölgesine (880 sonrası) taşmasın diye sıklaşır
+        step, half, size = (128, 52, 52) if len(rows) <= 4 else (100, 44, 44)
+        y = 380 if len(rows) <= 4 else 360
+        for row in rows:
             color = _hex(row.get("color", "#FFD600"))
-            d.rounded_rectangle([90, y - 52, W - 90, y + 52], radius=20, fill=(10, 10, 10))
-            d.rounded_rectangle([90, y - 52, 120, y + 52], radius=8, fill=color)
-            d.text((150, y), row["name"], font=font(52), fill="white", anchor="lm")
-            d.text((W - 130, y), row["value"], font=font(52), fill=(255, 214, 0), anchor="rm")
-            y += 128
+            d.rounded_rectangle([90, y - half, W - 90, y + half], radius=20, fill=(10, 10, 10))
+            d.rounded_rectangle([90, y - half, 120, y + half], radius=8, fill=color)
+            d.text((150, y), row["name"], font=font(size, False), fill="white", anchor="lm")
+            d.text((W - 130, y), row["value"], font=font(size), fill=(255, 214, 0), anchor="rm")
+            y += step
         if card.get("next"):
             _pill(d, card["next"], 1200, font(46), (255, 255, 255), height=90)
 

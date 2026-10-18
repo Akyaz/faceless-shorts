@@ -1,0 +1,119 @@
+[
+ {
+  "lang": "tr",
+  "label": "DERBİ",
+  "mood": "gergin",
+  "category": "17",
+  "country": "Turkey",
+  "city": "Istanbul",
+  "match": {
+   "home": "Galatasaray",
+   "away": "Fenerbahçe",
+   "home_color": "#A90432",
+   "away_color": "#1B2A6B"
+  },
+  "pronounce": {
+   "Osimhen": "Osimen",
+   "Torreira": "Torreyra",
+   "RAMS Park": "Rams Park"
+  },
+  "title": "Galatasaray-Fenerbahçe: Son 5 Derbide Ne Oldu? Pazartesi Dev Maç",
+  "hook_title": "Son 5 Derbi",
+  "hashtags": [
+   "derbi",
+   "galatasaray",
+   "fenerbahçe"
+  ],
+  "sources": [
+   {
+    "title": "Galatasaray 3-0 Fenerbahçe (Süper Lig derbi maçı özeti)",
+    "source": "Hürriyet"
+   },
+   {
+    "title": "The Intercontinental Derby (football)",
+    "source": "Wikipedia"
+   },
+   {
+    "title": "Galatasaray-Fenerbahçe derbisinin tarihi belli oldu",
+    "source": "Fanatik"
+   },
+   {
+    "title": "Galatasaray Fenerbahçe maçı 26 Ekim Pazartesi RAMS Park'ta",
+    "source": "İstanbul Post"
+   }
+  ],
+  "paragraphs": [
+   {
+    "text": "Pazartesi akşamı dev derbi var. Galatasaray, RAMS Park'ta Fenerbahçe'yi ağırlıyor. Peki son beş derbide ne oldu?",
+    "card": {
+     "type": "score",
+     "score": "21:30",
+     "note": "26 Ekim Pazartesi · RAMS Park"
+    }
+   },
+   {
+    "text": "Son derbi nisanda oynandı. Galatasaray; Osimhen, Barış Alper Yılmaz ve Torreira'nın golleriyle 3-0 kazandı.",
+    "card": {
+     "type": "event",
+     "title": "SON DERBİ",
+     "minute": "3 - 0",
+     "player": "Galatasaray",
+     "detail": "Osimhen, Barış Alper, Torreira · 26 Nisan 2026"
+    }
+   },
+   {
+    "text": "Ocaktaki Süper Kupa finalinde ise Fenerbahçe, Galatasaray'ı 2-0 yendi ve kupayı kaldırdı.",
+    "card": {
+     "type": "event",
+     "title": "SÜPER KUPA FİNALİ",
+     "minute": "0 - 2",
+     "player": "Fenerbahçe",
+     "detail": "10 Ocak 2026 · Atatürk Olimpiyat Stadı"
+    }
+   },
+   {
+    "text": "Aralıkta Kadıköy'deki lig maçı 1-1 bitti. 2025 baharında ise Galatasaray kupada Kadıköy'de 2-1 kazandı, ligde 0-0 berabere kalındı.",
+    "card": {
+     "type": "event",
+     "title": "2025 VE ARALIK",
+     "minute": "1 - 1",
+     "player": "Kadıköy, Aralık 2025",
+     "detail": "Kupada FB 1-2 GS · Ligde GS 0-0 FB"
+    }
+   },
+   {
+    "text": "Son beş derbide Galatasaray iki, Fenerbahçe bir kez kazandı; iki maç berabere bitti. Sence pazartesi kim kazanır?",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Nisan 2026 · Lig",
+       "value": "GS 3-0 FB",
+       "color": "#A90432"
+      },
+      {
+       "name": "Ocak 2026 · Süper Kupa",
+       "value": "GS 0-2 FB",
+       "color": "#1B2A6B"
+      },
+      {
+       "name": "Aralık 2025 · Lig",
+       "value": "FB 1-1 GS",
+       "color": "#888888"
+      },
+      {
+       "name": "Nisan 2025 · Kupa",
+       "value": "FB 1-2 GS",
+       "color": "#A90432"
+      },
+      {
+       "name": "Şubat 2025 · Lig",
+       "value": "GS 0-0 FB",
+       "color": "#888888"
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

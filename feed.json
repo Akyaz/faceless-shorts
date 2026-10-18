@@ -1132,5 +1132,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39111163692",
   "videos": []
+ },
+ {
+  "time": "2026-10-18T08:26:46Z",
+  "run": "39111156757",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39111156757",
+  "videos": [
+   {
+    "title": "Karadeniz Gazı Müjdesi: 2028'de Her 4 Evden 3'ünde Yanacak",
+    "url": "https://youtu.be/fIB9f8Jdh1A",
+    "instagram": "https://www.instagram.com/reel/DeoQBbYlgXa/"
+   }
+  ]
  }
 ]

@@ -15,7 +15,10 @@
   "pronounce": {
    "Osimhen": "Osimen",
    "Torreira": "Torreyra",
-   "RAMS Park": "Rams Park"
+   "RAMS Park": "Rams Park",
+   "Küçükandonyadis": "Küçükandonyadis",
+   "Alex de Souza": "Aleks dö Suza",
+   "Hagi": "Hacı"
   },
   "title": "Derbiye Bir Gün Kala: Tarih Fenerbahçe'den, Bu Sezon Galatasaray'dan Yana",
   "hook_title": "Skor Tahminin Ne?",
@@ -84,6 +87,32 @@
     }
    },
    {
+    "text": "Fenerbahçe tarafında efsaneler arasında Lefter Küçükandonyadis ve yıllarca kaptanlık yapan Alex de Souza var.",
+    "card": {
+     "type": "names",
+     "team": "away",
+     "title": "FENERBAHÇE EFSANELERİ",
+     "names": [
+      "Lefter",
+      "Alex de Souza"
+     ],
+     "detail": "Derbinin unutulmaz isimlerinden"
+    }
+   },
+   {
+    "text": "Galatasaray'da ise Taçsız Kral Metin Oktay ve 2000'de UEFA Kupası'nı kazanan takımın yıldızı Hagi.",
+    "card": {
+     "type": "names",
+     "team": "home",
+     "title": "GALATASARAY EFSANELERİ",
+     "names": [
+      "Metin Oktay",
+      "Gheorghe Hagi"
+     ],
+     "detail": "Derbinin unutulmaz isimlerinden"
+    }
+   },
+   {
     "text": "Ama bu sezon lider Galatasaray. Sekiz haftada 19 puan topladı, Fenerbahçe'nin üç puan önünde.",
     "card": {
      "type": "table",
@@ -133,6 +162,15 @@
      "who": "Yorumlara yaz"
     }
    }
+  ],
+  "image_files": [
+   "File:Daikin, Official Sponsor of Galatasaray SK,.JPG",
+   "File:Galatasaray-Fenerbahçe match in 23 February 1934.JPG",
+   "File:Turks voetbalelftal in Amsterdam Lefter Küçükandonyadis, Bestanddeelnr 909-5326.jpg",
+   "File:Metin Oktay forması.jpg",
+   "File:Galatasaray-hamburg 2009-4.jpg",
+   "File:Anastasios Bakasetas vs Fenerbahçe fans 20220306.jpg",
+   "File:Galatasaray-hamburg 2009-2.jpg"
   ]
  }
 ]

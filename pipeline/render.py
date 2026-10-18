@@ -268,9 +268,10 @@ def _scoreline(d, match, score, y, font):
     d.text((W / 2, y), score, font=font, fill=(255, 214, 0), anchor="mm")
 
 
-def draw_match_card(card, match, out_path, label="SPOR", source=""):
-    """card: {"type": score|goal|event|quote|table, ...}; match: {home, away, home_color, away_color, ...}."""
-    img = _pitch()
+def draw_match_card(card, match, out_path, label="SPOR", source="", background=None):
+    """card: {"type": score|goal|event|quote|table|names, ...}; match: {home, away, home_color, away_color, ...}.
+    background: varsa kart, karartılmış fotoğrafın (tribün, stat, efsane futbolcu) üzerine çizilir."""
+    img = Image.blend(_photo(background), Image.new("RGB", (W, H)), 0.3) if background else _pitch()
     d = ImageDraw.Draw(img)
     font = lambda size, bold=True: ImageFont.truetype(_font_path(bold), size)  # noqa: E731
     edge = _brand(img)
@@ -306,6 +307,14 @@ def draw_match_card(card, match, out_path, label="SPOR", source=""):
             _centered(d, line, y, quote_font, stroke=3)
             y += 76
         _centered(d, card["who"], 1200, font(46, False), fill=(230, 230, 230), stroke=2)
+    elif kind == "names":  # efsaneler, kadrolar: başlık ve alt alta büyük isimler
+        _pill(d, card.get("title", ""), 360, font(56), team, height=100)
+        y = 500
+        for name in card["names"][:3]:
+            _centered(d, name, y, font(70), stroke=5)
+            y += 110
+        if card.get("detail"):
+            _centered(d, card["detail"], 1200, font(44, False), fill=(235, 235, 235), stroke=3)
     elif kind == "table":
         rows = card["rows"][:5]
         # 5 satır altyazı bölgesine (880 sonrası) taşmasın diye sıklaşır

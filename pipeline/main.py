@@ -282,7 +282,8 @@ def main():
             render.write_ass(words, ass, wide=True)
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, size=render.WIDE)
         elif seg.get("card") and plan.get("match"):
-            render.draw_match_card(seg["card"], plan["match"], card, plan.get("label", "SPOR"), seg.get("source", ""))
+            render.draw_match_card(seg["card"], plan["match"], card, plan.get("label", "SPOR"), seg.get("source", ""),
+                                   backgrounds[i])
             render.write_ass(words, ass)
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
         else:

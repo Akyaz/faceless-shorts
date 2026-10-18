@@ -136,7 +136,9 @@ kulübün transfer kararı, bir uygulamanın ücretli olması).
 Seçme: olayın doğal ve zorunlu sonucu olan kararlar (büyük felaket sonrası okul tatili, fırtınada sefer iptali,
 yangında tahliye gibi; bunların "doğru mu?" diye sorulması tepki çeker); can kaybı, yaralanma, suç ve mağdur içeren
 haberler; bir kişinin suçlu olup olmadığı; parti ve seçim çekişmesi; din, etnik köken ve kimlik konuları; magazin.
-Uygun haber yoksa {"skip": true} döndür. Seçtiğin haberin numarasını "pick" alanına yaz.
+Çoğu gün en az bir uygun haber vardır: ücretler, fiyatlar, yeni kurallar, okul ve trafik düzenlemeleri, transfer ve
+teknik direktör kararları, uygulamaların yeni kuralları gibi. {"skip": true} yalnızca hiçbiri gerçekten uymuyorsa.
+Seçtiğin haberin numarasını "pick" alanına yaz.
 """,
     },
     "world": {
@@ -512,7 +514,7 @@ def build_script(headlines, mode="story", recent=()):
         try:
             if mode in STORIES:
                 try:
-                    return story_script(headlines, mode, recent=recent)
+                    return story_script(headlines, mode, count=30 if mode == "debate" else 10, recent=recent)
                 except NoSuitableStory as exc:
                     if mode != "debate":
                         raise

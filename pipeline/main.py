@@ -182,6 +182,10 @@ def news_plan(args):
         if args.mode == "trend":  # iki akış sırayla karıştırılır, ikisinde de çıkan haber bir kez alınır
             mixed = [h for pair in zip(fetch_headlines(20, "science"), fetch_headlines(20, "technology")) for h in pair]
             headlines = list({h["title"]: h for h in mixed}.values())
+        elif args.mode == "debate":  # tartışılacak bir tercih için geniş havuz: gündem, spor, teknoloji
+            feeds = [fetch_headlines(15, t) for t in ("top", "sports", "technology")]
+            mixed = [h for group in zip(*feeds) for h in group]
+            headlines = list({h["title"]: h for h in mixed}.values())
         else:
             headlines = fetch_headlines(limit=30, topic=args.mode if args.mode in ("sports", "world") else "top")
     single = args.mode in script.STORIES

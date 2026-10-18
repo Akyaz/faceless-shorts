@@ -1,0 +1,127 @@
+[
+ {
+  "lang": "tr",
+  "label": "TAHMİN ET",
+  "mood": "notr",
+  "category": "25",
+  "country": "Turkey",
+  "city": "Istanbul",
+  "title": "Asgari Ücretle 2016'da mı, Bugün mü Daha Çok Ekmek Alınıyor? Cevap Şaşırtıcı",
+  "hook_title": "2016 mı, 2026 mı?",
+  "hashtags": [
+   "asgariücret",
+   "ekmek",
+   "tahminet"
+  ],
+  "match": {
+   "home": "2016",
+   "away": "2026",
+   "home_color": "#5C6BC0",
+   "away_color": "#E53935"
+  },
+  "paragraphs": [
+   {
+    "text": "Asgari ücretle 2016'da mı, yoksa bugün mü daha çok ekmek alınıyor? Tahmin et, cevap sonda.",
+    "card": {
+     "type": "quote",
+     "text": "Asgari ücretle hangi yıl daha çok ekmek alınıyor?",
+     "who": "Tahmin et, cevap sonda"
+    }
+   },
+   {
+    "text": "2016'da net asgari ücret 1.300 lira 99 kuruştu. İstanbul'da Halk Ekmek'in 300 gramlık ekmeği 75 kuruştu.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Net asgari ücret",
+       "value": "1.300,99 TL",
+       "color": "#5C6BC0"
+      },
+      {
+       "name": "Halk Ekmek (300 g)",
+       "value": "0,75 TL",
+       "color": "#5C6BC0"
+      }
+     ],
+     "next": "2016"
+    }
+   },
+   {
+    "text": "2026'da net asgari ücret 28.075 lira 50 kuruş. Halk Ekmek'in 250 gramlık ekmeği mayısta 12 buçuk liraya çıktı.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Net asgari ücret",
+       "value": "28.075,50 TL",
+       "color": "#E53935"
+      },
+      {
+       "name": "Halk Ekmek (250 g)",
+       "value": "12,50 TL",
+       "color": "#E53935"
+      }
+     ],
+     "next": "2026"
+    }
+   },
+   {
+    "text": "Cevap: 2016'da bir asgari ücret yaklaşık 1.734 ekmek ediyordu. Bugün yaklaşık 2.246 ekmek ediyor.",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "2016",
+       "value": "≈1.734 ekmek",
+       "color": "#5C6BC0"
+      },
+      {
+       "name": "2026",
+       "value": "≈2.246 ekmek",
+       "color": "#E53935"
+      }
+     ],
+     "next": "Bir aylık net asgari ücretle"
+    }
+   },
+   {
+    "text": "Ama ekmek küçüldü: kiloya bakınca fark azalıyor, 520 kilodan 561 kiloya. Üstelik bu belediyenin ucuz ekmeği, fırınlarda fiyat daha yüksek. Sence asgari ücretin alım gücü arttı mı?",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "2016",
+       "value": "≈520 kg",
+       "color": "#5C6BC0"
+      },
+      {
+       "name": "2026",
+       "value": "≈561 kg",
+       "color": "#E53935"
+      }
+     ],
+     "next": "Halk Ekmek fiyatıyla · fırında daha pahalı"
+    }
+   }
+  ],
+  "sources": [
+   {
+    "title": "2026 asgari ücret Resmi Gazete'de yayımlandı",
+    "source": "CNN Türk"
+   },
+   {
+    "title": "Yıllara göre asgari ücret",
+    "source": "Hürriyet"
+   },
+   {
+    "title": "İBB'den Halk Ekmek ürünlerine yüzde 25 zam yapıldı",
+    "source": "En Son Haber"
+   },
+   {
+    "title": "Ekmek fiyatlarına gizli zam (Halk Ekmek gramajı 300 gramdan 250 grama)",
+    "source": "Borsanın Gündemi"
+   }
+  ]
+ }
+]

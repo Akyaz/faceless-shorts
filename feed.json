@@ -1147,5 +1147,20 @@
     "instagram": "https://www.instagram.com/reel/DeoQBbYlgXa/"
    }
   ]
+ },
+ {
+  "time": "2026-10-18T08:27:05Z",
+  "run": "39111148744",
+  "event": "workflow_dispatch",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39111148744",
+  "videos": [
+   {
+    "title": "18 İle Fırtına Uyarısı | İBB Davasında 7 Tahliye",
+    "url": "https://youtu.be/RNuascUzIlI",
+    "instagram": "https://www.instagram.com/reel/DeoQEDjj8o9/"
+   }
+  ]
  }
 ]

@@ -1208,5 +1208,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-18T08:53:06Z",
+  "run": "39112945288",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39112945288",
+  "videos": [
+   {
+    "title": "Fenerbahçe'de Penaltıcı Değişmeli mi? Greenwood Kararı Tartışılıyor",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

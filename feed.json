@@ -1193,5 +1193,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-18T08:48:33Z",
+  "run": "39112706170",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39112706170",
+  "videos": [
+   {
+    "title": "Trafik Cezası Şoku: Alkollü ve Ehliyetsiz Sürücüye 265 Bin TL",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

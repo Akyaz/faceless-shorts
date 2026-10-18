@@ -1364,5 +1364,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-18T19:30:44Z",
+  "run": "39158718214",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39158718214",
+  "videos": [
+   {
+    "title": "Slavia Prag'da Kriz: Yıldız İsim Kadro Dışı Kalmalı mı?",
+    "url": "https://youtu.be/2uykM5tMero",
+    "instagram": "https://www.instagram.com/reel/Depb_EyjaKW/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

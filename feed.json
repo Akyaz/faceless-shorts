@@ -1300,5 +1300,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-18T14:07:55Z",
+  "run": "39134286700",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39134286700",
+  "videos": [
+   {
+    "title": "Asensio Ameliyat Oluyor, Leao Derbide Yok mu?",
+    "url": "https://youtu.be/zIBKMaG1B74",
+    "instagram": "https://www.instagram.com/reel/Deo3EXXAvpk/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

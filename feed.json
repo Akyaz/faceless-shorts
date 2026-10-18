@@ -1380,5 +1380,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-18T20:22:31Z",
+  "run": "39160418789",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39160418789",
+  "videos": [
+   {
+    "title": "Pompeii: The City That Froze in a Single Day (And Why We Still Argue About the Date)",
+    "url": "https://youtu.be/tetemNgJBi4",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-pompeii.json"
  }
 ]

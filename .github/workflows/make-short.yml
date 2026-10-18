@@ -6,7 +6,7 @@ on:
     # Günde 8 otomatik Shorts: YouTube kanala günde 9-10 yüklemeye izin veriyor; biri her gün 21:00'deki tarih videosuna kalır.
     # GitHub zamanlanmış çalışmaları bazen hiç başlatmıyor: her saatin 25 dakika sonrasında bir yedek var.
     # Yedek, o saatin videosu kayda geçtiyse hiçbir şey üretmeden kapanır (pipeline/slots.py; saat-tür eşleşmesi orada).
-    # 07:15: sabah özeti
+    # 07:15: sabah özeti (bugün seni etkileyecek 3 şey)
     - cron: "5 4 * * *"
     - cron: "30 4 * * *"
     # 10, 12 ve 19: birer gündem haberi
@@ -26,7 +26,7 @@ on:
     # 13:30: spor gündemi özeti
     - cron: "20 10 * * *"
     - cron: "45 10 * * *"
-    # 20:30: günün öne çıkan haberleri özeti
+    # 20:30: "Sen ne dersin?" tartışma videosu (günün özeti yorum getirmiyordu)
     - cron: "20 17 * * *"
     - cron: "45 17 * * *"
   workflow_dispatch:
@@ -56,9 +56,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, ucl]
         default: story
 
 jobs:
@@ -73,6 +73,7 @@ jobs:
       run: ${{ steps.decide.outputs.run }}
       mode: ${{ steps.decide.outputs.mode }}
       slot: ${{ steps.decide.outputs.slot }}
+      script: ${{ steps.decide.outputs.script }}
     steps:
       - uses: actions/checkout@v4
       - id: decide
@@ -114,7 +115,7 @@ jobs:
       - name: Videoları üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SCRIPT: ${{ inputs.script }}
+          SCRIPT: ${{ inputs.script || needs.slot.outputs.script }}
           SCRIPT_JSON: ${{ inputs.script_json }}
           UCL_RESULTS: ${{ inputs.results }}
           UCL_EMPHASIZE: ${{ inputs.emphasize }}

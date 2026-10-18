@@ -9,6 +9,7 @@ trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
 """
 import argparse
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -73,6 +74,14 @@ def _summary(plan):
     return "\n".join(lines)
 
 
+def _closing_question(plan):
+    """Videonun son cümlesi soruysa o soru."""
+    last = plan["segments"][-1]["text"].strip() if plan["segments"] else ""
+    sentences = [x.strip() for x in re.split(r"(?<=[.!?])\s+", last) if x.strip()]
+    questions = [x for x in sentences if x.endswith("?")]
+    return questions[-1] if questions else ""
+
+
 def build_metadata(plan, mode="story"):
     lang = plan.get("lang", "tr")
     text = DESCRIPTION[lang]
@@ -97,6 +106,8 @@ def build_metadata(plan, mode="story"):
                        + "\n" + " ".join(f"#{t}" for t in tags + ([] if wide else ["shorts"])),
         "tags": tags + [t for t in text["tags"] if not (wide and t == "shorts")],
         "category": plan.get("category") or CATEGORIES.get(mode, "25"),
+        # Videodaki soru kanal adına ilk yorum olarak yazılır (acı haberde soru ve çağrı yok)
+        "comment": _closing_question(plan) if plan.get("subscribe", True) else "",
         "language": lang,
     }
 
@@ -174,7 +185,7 @@ def news_plan(args):
         else:
             headlines = fetch_headlines(limit=30, topic=args.mode if args.mode in ("sports", "world") else "top")
     single = args.mode in script.STORIES
-    if args.mode in ("story", "world", "trend") and not args.offline:
+    if args.mode in ("story", "world", "trend", "debate") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
@@ -186,7 +197,7 @@ def news_plan(args):
         print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
         headlines = rich if len(rich) >= 3 else headlines
     # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
-    use_history = bool(args.history) and args.mode in ("story", "world", "trend")
+    use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]
@@ -202,7 +213,7 @@ def news_plan(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")

@@ -15,7 +15,8 @@ import urllib.parse
 import urllib.request
 import webbrowser
 
-SCOPE = "https://www.googleapis.com/auth/youtube.upload"
+# upload: video yükleme; force-ssl: videonun altına kanal adına ilk yorumu (videodaki soru) yazma
+SCOPE = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl"
 PORT = 8765
 REPO = "Akyaz/faceless-shorts"
 

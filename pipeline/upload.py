@@ -69,6 +69,24 @@ def check():
     print("YouTube izni çalışıyor.")
 
 
+def post_comment(video_id, text):
+    """Videonun altına kanal adına ilk yorum: videodaki soru (yorum başlatır). Sabitleme API'de yok, Studio'dan yapılır.
+    Anahtarda yorum izni (youtube.force-ssl) yoksa sessizce atlanır; yükleme başarılı sayılır."""
+    body = json.dumps({"snippet": {"videoId": video_id, "topLevelComment": {"snippet": {"textOriginal": text}}}})
+    req = urllib.request.Request("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet",
+                                 data=body.encode(), method="POST", headers={
+                                     "Authorization": f"Bearer {access_token()}", "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60):
+            print(f"Yorum yazıldı: {text}")
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", "replace")
+        if exc.code == 403 and ("insufficient" in detail.lower() or "scope" in detail.lower()):
+            print("Yorum atlandı: YouTube anahtarında yorum izni yok (get_refresh_token.py ile yeniden izin verilmeli)")
+        else:
+            print(f"Yorum yazılamadı (HTTP {exc.code}): {detail[:300]}")
+
+
 def uploaded_before(meta):
     """Aynı çalışmanın aynı videosu panel kaydında YouTube bağlantısıyla duruyorsa o bağlantı.
     Yeniden yükleme çalışmanın kendi dosyasını güncelleyemediği için tekrar yüklemeyi bu kayıt önler."""
@@ -103,6 +121,8 @@ def main():
         sys.exit(f"YouTube yüklemeyi reddetti (HTTP {exc.code}): {body[:800]}")
     # Bildirim ve yönetim paneli bağlantıyı buradan okur
     meta["youtube_url"] = f"https://youtu.be/{video_id}"
+    if meta.get("comment"):
+        post_comment(video_id, meta["comment"])
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print(f"Yüklendi: {meta['youtube_url']}")

@@ -76,6 +76,20 @@ ACCURACY = """KESİN kurallar (başlık, ekran yazısı ve metin için aynen ge�
   "ekipler sevk edildi", "trafik etkilendi" gibi ayrıntılar ekleme.
 """
 
+# İzleyiciye sorulan soru: yalnızca gerçekten bir tercih ya da insiyatif içeren konularda görüş sorulur.
+# Olayın doğal ve zorunlu sonucunu sorgulatmak tepki çeker (kanal sahibinin örneği: büyük sel felaketinden sonra
+# okulların tatil edilmesi "kadar normal bir şey yok").
+QUESTION_RULE = """Soru filtresi: Soruyu yazmadan önce karar ver: bu bir tercih, insiyatif ya da gerçekten iki tarafı
+   olan bir karar mı, yoksa olayın doğal ve zorunlu sonucu mu? Doğal sonuçları (felaket sonrası okul tatili,
+   yangında tahliye, fırtınada sefer iptali gibi) "doğru mu?" diye sorgulatma. Can kaybı olan olaylarda görüş
+   sorma. Böyle bir durumda izleyiciye kendi deneyimini ya da bilgisini sor (örnek: "Senin bölgende durum
+   nasıl?"); tartışılacak bir tercih varsa onu sor (örnek: "Sence zam yeterli mi?")."""
+QUESTION_RULE_EN = """Question filter: before writing the question decide whether this is a genuine choice, a
+   discretionary decision or a real two-sided issue, or simply the natural, necessary consequence of an event.
+   Never ask whether a natural consequence was right (closing schools after a disaster, evacuating during a fire,
+   cancelling flights in a storm). Never ask for opinions on events with loss of life. In those cases ask about the
+   viewer's own experience instead; if there is a real choice, ask about it."""
+
 # Görsel alanları. Yer adı aramaya kodda eklenir: böylece insan, sokak ve bina fotoğrafları yalnızca haberin
 # geçtiği ülkeden ya da şehirden aranır.
 IMAGE_FIELDS = """- country: haberin geçtiği ülkenin İngilizce adı (örnek: "Turkey", "France"). Haber belirli bir ülkede
@@ -110,13 +124,30 @@ tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; maga
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
+    # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
+    "debate": {
+        "label": "SEN NE DERSİN?", "hashtags": ["tartışma", "gündem"],
+        "brief": """Görev: YouTube Shorts için Türkçe "Sen ne dersin?" tartışma videosu. Amaç izleyicinin görüşünü yoruma
+yazması: konu, makul insanların gerçekten farklı düşünebileceği bir tercih ya da karar olmalı.
+
+Haber seçimi: Gündelik hayata dokunan, insiyatifle alınmış ya da tartışılan bir karar, düzenleme, yasak, zam, ücret,
+uygulama, kural, spor ya da teknoloji kararı seç (örnek: okullarda telefon yasağı, yeni bir trafik cezası, bir
+kulübün transfer kararı, bir uygulamanın ücretli olması).
+Seçme: olayın doğal ve zorunlu sonucu olan kararlar (büyük felaket sonrası okul tatili, fırtınada sefer iptali,
+yangında tahliye gibi; bunların "doğru mu?" diye sorulması tepki çeker); can kaybı, yaralanma, suç ve mağdur içeren
+haberler; bir kişinin suçlu olup olmadığı; parti ve seçim çekişmesi; din, etnik köken ve kimlik konuları; magazin.
+Uygun haber yoksa {"skip": true} döndür. Seçtiğin haberin numarasını "pick" alanına yaz.
+""",
+    },
     "world": {
         "label": "WORLD", "hashtags": ["worldnews", "news"], "lang": "en",
         "brief": """Task: write the English voice-over for a YouTube Short about one world news story. The channel's promise
 is "world news in under a minute". The goal is that the viewer watches to the end and learns something real.
 
-Story selection: pick the story a general international audience will care about most today: major diplomacy,
-economy and markets, technology, science, climate and weather, health, or a decision that affects many people.
+Story selection: pick the story a general international audience will care about most today and want to share:
+world-famous people, brands and institutions (the Pope, Apple, NASA, a global star), surprising or unusual events,
+big money and prices people feel, technology and science that changes daily life, or a decision that affects many
+people. Avoid niche regional politics and procedural diplomacy that most viewers do not recognise.
 Do not pick: stories centred on deaths, attacks or violence; accusations against or arrests of named private people;
 celebrity and entertainment news; opinion pieces; live blogs. Put the number of the story you picked in "pick".
 """,
@@ -143,6 +174,7 @@ Script rules:
 3. Short sentences (at most 14 words), conversational, addressing the viewer as "you". No filler
    ("stay tuned", "only time will tell", "all eyes are on").
 4. The last sentence is a short question that invites a comment.
+   """ + QUESTION_RULE_EN + """
 5. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
 6. Leave nothing unresolved. Anything the title, on-screen title or script makes the viewer curious about must be
    answered clearly in the script: if you say "a surprise decision", say what the decision is. If the answer is not
@@ -176,6 +208,7 @@ Metin kuralları:
 3. Cümleler kısa (en fazla 12 kelime), konuşur gibi, "sen" diye hitap et. Tekrar ve dolgu cümle yok
    ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
 4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
+   """ + QUESTION_RULE + """
 5. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
 6. Belirsizlik bırakma. Başlıkta, ekran başlığında ya da metinde merak uyandırdığın her şeyin cevabı metinde açıkça
    olsun: "ilk 11'de sürpriz" diyorsan sürprizin ne olduğunu (hangi oyuncu, kimin yerine) söyle; "şok karar"
@@ -197,6 +230,30 @@ Sadece JSON döndür:
 {"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}}
 """
 
+DEBATE_RULES = """
+Metin kuralları:
+1. İlk paragraf tek bir soru: tartışılan tercihi en fazla 10 kelimeyle sor (örnek: "Okullarda telefon tamamen yasaklanmalı mı?").
+2. İkinci paragraf haberin somut bilgisi: ne karar verildi ya da ne tartışılıyor, kim, ne zaman, kimleri etkiliyor.
+3. Üçüncü paragraf "Destekleyenler" diye başlar: bu tarafın en güçlü bir-iki gerekçesi.
+4. Dördüncü paragraf "Karşı çıkanlar" diye başlar: diğer tarafın en güçlü bir-iki gerekçesi.
+   İki taraf yaklaşık eşit uzunlukta ve saygılı olsun; sen taraf tutma, "doğrusu şu" deme.
+5. Son paragraf: "Sen hangi taraftasın? Yorumlara yaz." gibi kısa bir çağrı; iki seçeneği adıyla an.
+6. Toplam 75-95 kelime, cümleler kısa (en fazla 14 kelime), "sen" diye hitap et.
+Gerekçeler genel ve makul olsun: başlıklarda olmayan rakam, kurum, araştırma ya da alıntı uydurma; somut bilgiler
+yalnızca başlıklardan gelsin.
+
+""" + ACCURACY + """
+Ek alanlar:
+- hook_title: ekranda yazacak soru, en fazla 6 kelime, soru işaretiyle biter.
+- title: YouTube başlığı, en fazla 70 karakter; soru biçiminde ve konunun anahtar kelimesi başta.
+""" + IMAGE_FIELDS.format(n=4) + """
+- mood: "notr" ya da "gergin" (konuya göre).
+- hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
+""" + PRONOUNCE_FIELD + """
+Sadece JSON döndür:
+{"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}}
+"""
+
 DIGEST_RULES = """Görev: YouTube Shorts için Türkçe {subject}. Aşağıdaki haberlerden birbirinden farklı {count} tanesini
 seç ve her birini çok kısa anlat. İzleyici bir dakikadan kısa sürede günün özetini almış olmalı.
 
@@ -215,6 +272,7 @@ Alanlar:
     başlıklarda bulunmayan haberleri seçme.
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
 - outro: izleyiciye yorum yaptıracak kısa bir soru (örnek: "{outro_example}").
+  """ + QUESTION_RULE.replace("{", "{{").replace("}", "}}") + """
 - title: YouTube başlığı, en fazla 70 karakter; en dikkat çekici iki haberi ansın.
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
 """ + PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """
@@ -238,12 +296,13 @@ DIGESTS = {
     },
     # Sabah özeti: YouTube'un günlük yükleme sınırı yüzünden üç ayrı sabah videosunun yerini tek video aldı
     "morning": {
-        "label": "SABAH ÖZETİ", "count": 5, "mood": "notr", "hashtags": ["gündem", "haber"],
-        "subject": "sabah haber özeti (güne başlarken bilinmesi gerekenler)",
+        # 5 haber bir dakikaya sıkışınca hiçbiri akılda kalmıyordu (izlenmeler düşük); 3 haber, her biri net
+        "label": "SABAH ÖZETİ", "count": 3, "mood": "notr", "hashtags": ["gündem", "haber"],
+        "subject": "sabah haber özeti: bugün seni etkileyecek 3 şey",
         "selection": "Geceden sabaha Türkiye'de öne çıkan ve izleyicinin o gününü etkileyen haberler: yeni düzenleme ve "
                      "kararlar, zam ve ödemeler, hava ve yol durumu, resmi uyarılar; konular çeşitli olsun.",
         "avoid": "seçim ve parti çekişmesi; magazin.",
-        "intro_example": "Güne başlarken bilmen gereken beş haber.",
+        "intro_example": "Bugün seni etkileyecek 3 şey.",
         "outro_example": "Bugün seni en çok hangisi etkileyecek?",
         "fallback_title": "Sabah Haber Özeti", "fallback_intro": "Güne başlarken öne çıkan haberler.",
         "fallback_outro": "Bugün seni en çok hangisi etkileyecek?",
@@ -328,11 +387,16 @@ def _tags(values):
     return [t for t in (re.sub(r"[^\w]", "", str(v)).lower() for v in values or []) if t][:3]
 
 
+class NoSuitableStory(Exception):
+    """Model bu türe uygun haber bulamadı (ör. tartışılacak gerçek bir tercih yok)."""
+
+
 def story_script(headlines, kind="story", count=10, recent=()):
     spec = STORIES[kind]
     english = spec.get("lang") == "en"
     headlines = headlines[:count]
-    prompt = spec["brief"] + (STORY_RULES_EN if english else STORY_RULES)
+    rules = DEBATE_RULES if kind == "debate" else STORY_RULES_EN if english else STORY_RULES
+    prompt = spec["brief"] + rules
     if recent:
         # Aynı olay farklı başlıkla yeniden gelebiliyor; başlık eşleşmesi yetmez
         prompt += ("\nTopics covered in recent videos (do not pick a story about the same event):\n" if english
@@ -340,6 +404,8 @@ def story_script(headlines, kind="story", count=10, recent=()):
         prompt += "\n".join(f"- {t}" for t in recent) + "\n"
     prompt += ("\nStories:\n" if english else "\nHaberler:\n") + "\n".join(_blocks(headlines, english))
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
+    if out.get("skip") or not out.get("paragraphs"):
+        raise NoSuitableStory(f"{kind}: uygun haber yok")
     unclear = [p for p in out["paragraphs"] if vague(p)]
     if unclear:  # bir kez düzelttir; yine olmazsa video belirsiz çıkmasın diye hata verir
         print(f"Cevabı vermeyen cümle, yeniden yazdırılıyor: {unclear}")
@@ -445,7 +511,13 @@ def build_script(headlines, mode="story", recent=()):
     if os.environ.get("GEMINI_API_KEY"):
         try:
             if mode in STORIES:
-                return story_script(headlines, mode, recent=recent)
+                try:
+                    return story_script(headlines, mode, recent=recent)
+                except NoSuitableStory as exc:
+                    if mode != "debate":
+                        raise
+                    print(f"{exc}; bu saat gündem haberine dönüyor")
+                    return story_script(headlines, "story", recent=recent)
             return digest_script(headlines, mode)
         except Exception as exc:  # dil modeli düşerse o saatin videosu yine çıksın
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")

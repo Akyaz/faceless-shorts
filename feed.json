@@ -1223,5 +1223,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-18T08:59:15Z",
+  "run": "39113404019",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39113404019",
+  "videos": [
+   {
+    "title": "Derbiye Bir Gün Kala: Tarih Fenerbahçe'den, Bu Sezon Galatasaray'dan Yana",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

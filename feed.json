@@ -1316,5 +1316,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-18T14:57:40Z",
+  "run": "39137973597",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39137973597",
+  "videos": [
+   {
+    "title": "OpenAI Robot Geliştiriyor, Gençleştiren Enzim Bulundu",
+    "url": "https://youtu.be/-Jezn_aOlwA",
+    "instagram": "https://www.instagram.com/reel/Deo8wbxCQlf/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -1348,5 +1348,21 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-18T18:22:57Z",
+  "run": "39153521525",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39153521525",
+  "videos": [
+   {
+    "title": "Fon Tasfiyesinde Kritik Karar: O Kişilere Ödeme Yapılmayacak",
+    "url": "https://youtu.be/sye4fFccYwQ",
+    "instagram": "https://www.instagram.com/reel/DepUPZxjXVw/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

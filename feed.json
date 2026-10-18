@@ -1268,5 +1268,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-18T12:30:46Z",
+  "run": "39126284841",
+  "event": "schedule",
+  "mode": "weekly",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39126284841",
+  "videos": [
+   {
+    "title": "Sigarada T.C. Kimlik Şartı ve Öğrencilere Günlük 1.375 TL",
+    "url": "https://youtu.be/gr_iIPzPDhA",
+    "instagram": null
+   }
+  ],
+  "slot": "pazar 11:00"
  }
 ]

@@ -1195,21 +1195,6 @@
   ]
  },
  {
-  "time": "2026-10-18T08:48:33Z",
-  "run": "39112706170",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39112706170",
-  "videos": [
-   {
-    "title": "Trafik Cezası Şoku: Alkollü ve Ehliyetsiz Sürücüye 265 Bin TL",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-18T08:59:15Z",
   "run": "39113404019",
   "event": "workflow_dispatch",
@@ -1394,6 +1379,21 @@
    {
     "title": "Fenerbahçe'de Penaltıcı Değişmeli mi? Greenwood Kararı Tartışılıyor",
     "url": "https://youtu.be/CTPzphwQo5g",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-10-19T08:46:15Z",
+  "run": "39112706170",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225117502",
+  "videos": [
+   {
+    "title": "Trafik Cezası Şoku: Alkollü ve Ehliyetsiz Sürücüye 265 Bin TL",
+    "url": "https://youtu.be/zOb_DP_L_L8",
     "instagram": null
    }
   ]

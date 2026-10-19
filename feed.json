@@ -1210,21 +1210,6 @@
   ]
  },
  {
-  "time": "2026-10-18T08:53:06Z",
-  "run": "39112945288",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39112945288",
-  "videos": [
-   {
-    "title": "Fenerbahçe'de Penaltıcı Değişmeli mi? Greenwood Kararı Tartışılıyor",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-18T08:59:15Z",
   "run": "39113404019",
   "event": "workflow_dispatch",
@@ -1394,6 +1379,21 @@
    {
     "title": "Asgari Ücretle 2016'da mı, Bugün mü Daha Çok Ekmek Alınıyor? Cevap Şaşırtıcı",
     "url": "https://youtu.be/xSW62peYG7I",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-10-19T08:45:36Z",
+  "run": "39112945288",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225041640",
+  "videos": [
+   {
+    "title": "Fenerbahçe'de Penaltıcı Değişmeli mi? Greenwood Kararı Tartışılıyor",
+    "url": "https://youtu.be/CTPzphwQo5g",
     "instagram": null
    }
   ]

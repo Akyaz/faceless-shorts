@@ -1524,5 +1524,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-19T21:37:45Z",
+  "run": "39328244693",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39328244693",
+  "videos": [
+   {
+    "title": "Lille-Galatasaray Maçı Ertelenmeli mi? UEFA Başvurusu Gündemde",
+    "url": "https://youtu.be/azWJADR8Qqs",
+    "instagram": "https://www.instagram.com/reel/DesPWDBEbCg/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

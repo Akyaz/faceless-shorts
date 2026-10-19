@@ -1460,5 +1460,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-19T17:07:53Z",
+  "run": "39290637216",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39290637216",
+  "videos": [
+   {
+    "title": "1. Lig'de 7 gollü maç! Beşiktaş'tan U19 derbisinde farklı galibiyet",
+    "url": "https://youtu.be/S5K5-wFt8dU",
+    "instagram": "https://www.instagram.com/reel/DerwcDjD5PS/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

@@ -1540,5 +1540,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-19T22:17:06Z",
+  "run": "39330357497",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39330357497",
+  "videos": [
+   {
+    "title": "Dünyanın Bilinen En Eski Barış Antlaşması İstanbul'da: Kadeş'in Hikâyesi",
+    "url": "https://youtu.be/M9B4XHV6zR8",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-kades-antlasmasi.json"
  }
 ]

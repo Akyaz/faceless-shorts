@@ -1508,5 +1508,21 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-19T20:50:21Z",
+  "run": "39321818674",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39321818674",
+  "videos": [
+   {
+    "title": "Borsa Çakıldı: SPK Başkanı ve Bakan Yardımcısı İstifa Etti",
+    "url": "https://youtu.be/7d_k8okK4K4",
+    "instagram": "https://www.instagram.com/reel/DesJ6yYgp1n/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

@@ -1397,5 +1397,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-19T08:51:48Z",
+  "run": "39225185673",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225185673",
+  "videos": [
+   {
+    "title": "Çalışma Süresi 40 Saate Düşmeli mi? Mesai Tartışması",
+    "url": "https://youtu.be/TtzvKZYQEIQ",
+    "instagram": "https://www.instagram.com/reel/Deq3sYzlNkw/"
+   }
+  ]
  }
 ]

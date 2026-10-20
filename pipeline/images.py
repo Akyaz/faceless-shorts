@@ -243,7 +243,8 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
             return fixed
         # Olayın sayfasındaki bir-iki fotoğraf yetmezse geri kalanı aramayla tamamlanır (tarihte bugün)
         rest = find_backgrounds({**plan, "image_files": []}, out_dir / "search", count - len(fixed), per_query, exclude)
-        return fixed + rest
+        known = {credit for _, credit in fixed}  # aynı dosya aramada da çıkabiliyor; iki kez gösterilmesin
+        return fixed + [(path, credit) for path, credit in rest if credit not in known]
     pools = []
     for query, neutral in _searches(plan):
         try:

@@ -1588,5 +1588,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-20T12:25:03Z",
+  "run": "39421410733",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39421410733",
+  "videos": [
+   {
+    "title": "Fon Rehberi Ertelenmeyecek: 10 Milyon TL Üzeri Kazançlara İnceleme",
+    "url": "https://youtu.be/NeRaBxmSF8c",
+    "instagram": "https://www.instagram.com/reel/Det04xukfeE/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

@@ -1604,5 +1604,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-10-20T13:57:57Z",
+  "run": "39434039149",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39434039149",
+  "videos": [
+   {
+    "title": "Üsküdar Belediyesi Başkanvekili Muhammed Emin Sarıoğlu Oldu",
+    "url": "https://youtu.be/H6hNJPh9P4o",
+    "instagram": "https://www.instagram.com/reel/Det_gtWDtTq/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

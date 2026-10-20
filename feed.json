@@ -1620,5 +1620,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-20T15:19:15Z",
+  "run": "39446193697",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39446193697",
+  "videos": [
+   {
+    "title": "Milli Takımda Sergen Yalçın Dönemi! Toprak Razgatlıoğlu Sezonu Kapattı",
+    "url": "https://youtu.be/bHhMH2W752c",
+    "instagram": "https://www.instagram.com/reel/DeuI0EHiN3s/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

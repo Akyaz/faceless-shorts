@@ -1700,5 +1700,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-20T21:36:09Z",
+  "run": "39496444862",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39496444862",
+  "videos": [
+   {
+    "title": "Titanic: The Last 160 Minutes, and the Myths We Still Believe",
+    "url": "https://youtu.be/Ma7bKX5HT-k",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-titanic.json"
  }
 ]

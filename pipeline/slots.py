@@ -23,7 +23,8 @@ SLOTS = {
     "50 8 * * *": ("12:00", "story"), "15 9 * * *": ("12:00", "story"),
     "20 10 * * *": ("13:30", "sports"), "45 10 * * *": ("13:30", "sports"),
     "50 11 * * *": ("15:00", "trend"), "15 12 * * *": ("15:00", "trend"),
-    "50 12 * * *": ("16:00", "world"), "15 13 * * *": ("16:00", "world"),
+    # 16:00 İngilizce dünya haberleri az izleniyordu: yerine İngilizce "On This Day" (Wikipedia tarihte bugün)
+    "50 12 * * *": ("16:00", "onthisday"), "15 13 * * *": ("16:00", "onthisday"),
     "50 15 * * *": ("19:00", "story"), "15 16 * * *": ("19:00", "story"),
     # 20:30 günün özeti yorum getirmiyordu: yerine "Sen ne dersin?" tartışma videosu
     "20 17 * * *": ("20:30", "debate"), "45 17 * * *": ("20:30", "debate"),

@@ -20,7 +20,7 @@ on:
     # 15:00: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
     - cron: "50 11 * * *"
     - cron: "15 12 * * *"
-    # 16:00: dünya gündeminden İngilizce bir haber (ABD'de sabah)
+    # 16:00: İngilizce "On This Day": Wikipedia'dan tarihte bugün (ABD'de sabah)
     - cron: "50 12 * * *"
     - cron: "15 13 * * *"
     # 13:30: spor gündemi özeti
@@ -56,9 +56,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, ucl]
         default: story
 
 jobs:

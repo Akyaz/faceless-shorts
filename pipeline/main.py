@@ -13,7 +13,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import images, music, render, script
+from . import images, music, onthisday, render, script
 
 
 def _offline_audio(text, out_path):
@@ -87,7 +87,7 @@ def build_metadata(plan, mode="story"):
     text = DESCRIPTION[lang]
     # Haber kümesindeki bütün yayınlar: metin yalnızca en üstteki başlığa dayanmıyor
     cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:6]]
-    sources = "\n".join(f"- {x['title']} ({x['source']})" for x in cluster)
+    sources = "\n".join(f"- {x['title']} ({x['source']})" + (f": {x['link']}" if x.get("link") else "") for x in cluster)
     tags = list(dict.fromkeys(plan.get("hashtags") or ["gündem", "haber"]))
     image_credit, music_credit = _credit(plan.get("image_credit"), lang), _credit(plan.get("music_credit"), lang)
     wide = plan.get("wide")  # yatay uzun video Short değildir: #shorts etiketi ve "bir dakikada" vaadi yok
@@ -217,7 +217,7 @@ def news_plan(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
@@ -236,7 +236,7 @@ def main():
         if args.history:  # otomatik videolar aynı konuyu yeniden işlemesin
             save_history(args.history, load_history(args.history), plan)
     else:
-        plan = news_plan(args)
+        plan = onthisday.plan() if args.mode == "onthisday" else news_plan(args)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):

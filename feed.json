@@ -1668,5 +1668,21 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-20T19:44:23Z",
+  "run": "39485320081",
+  "event": "schedule",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39485320081",
+  "videos": [
+   {
+    "title": "Asgari Ücretle 2016'da mı, Bugün mü Daha Çok Ekmek Alınıyor? Cevap Şaşırtıcı",
+    "url": "https://youtu.be/mh0BGbVrwEs",
+    "instagram": "https://www.instagram.com/reel/DeunKC-kVUu/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

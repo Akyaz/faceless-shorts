@@ -1636,5 +1636,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-20T15:58:54Z",
+  "run": "39452227692",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39452227692",
+  "videos": [
+   {
+    "title": "Hücreler 60 Yıl Gençleşti! Ormanda Dev Mantar Keşfi",
+    "url": "https://youtu.be/SuLmH0vLuEg",
+    "instagram": "https://www.instagram.com/reel/DeuNWwCDKIn/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -1572,5 +1572,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-20T09:23:09Z",
+  "run": "39399177733",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39399177733",
+  "videos": [
+   {
+    "title": "Vize Şirketlerine Bot Operasyonu ve Tasfiye Edilen 66 Fon",
+    "url": "https://youtu.be/qUoyDFAAUSc",
+    "instagram": "https://www.instagram.com/reel/DetgEBslOEB/"
+   }
+  ],
+  "slot": "07:15"
  }
 ]

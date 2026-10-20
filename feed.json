@@ -1684,5 +1684,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-20T20:42:12Z",
+  "run": "39493287897",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39493287897",
+  "videos": [
+   {
+    "title": "MHK Başkanı Anthony Taylor Oldu: Yabancı Kararı Doğru mu?",
+    "url": "https://youtu.be/HpjZsEXSbjE",
+    "instagram": "https://www.instagram.com/reel/DeutyPMlVbX/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

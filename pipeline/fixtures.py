@@ -166,7 +166,7 @@ def main():
     tags = ["ucl", "şampiyonlarligi"] + [t.lower() for t in locals_] + ["maçprogramı"]
     meta = {
         "title": title[:100],
-        "description": f"{title}\n\n{render.channel_line()}\n\n{body}Saatler Türkiye saatiyledir. Kaynak: ESPN.\n\n"
+        "description": f"{title}\n\n{render.date_line()}\n{render.channel_line()}\n\n{body}Saatler Türkiye saatiyledir. Kaynak: ESPN.\n\n"
                        "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.\n\n"
                        f"{music_credit}\n\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
         "tags": tags + ["şampiyonlar ligi", "maç sonuçları", "maç programı", "shorts"],

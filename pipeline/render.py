@@ -147,6 +147,18 @@ def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_
 CHANNEL_URL = "youtube.com/@QuickRecapChannel"
 
 
+TR_MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+
+
+def date_line(lang="tr"):
+    """Açıklamada haberin tarihi (Türkiye saatine göre bugün): eski bir haberi izleyen bunu hemen görsün."""
+    import datetime
+    today = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=3)
+    if lang == "en":
+        return f"📅 {today:%B} {today.day}, {today.year}"
+    return f"📅 {today.day} {TR_MONTHS[today.month - 1]} {today.year}"
+
+
 def channel_line(lang="tr", subscribe=True):
     """Açıklamanın ilk satırlarında kanal adresi. Abone çağrısı yapılan videolarda bağlantı abone olma
     penceresini açar; acı haberlerde yalnızca adres yazılır."""

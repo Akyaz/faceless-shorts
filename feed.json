@@ -1860,5 +1860,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-21T21:31:51Z",
+  "run": "39674860985",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39674860985",
+  "videos": [
+   {
+    "title": "Piri Reis Haritası: Gerçekten Antarktika'yı mı Gösteriyor?",
+    "url": "https://youtu.be/48t7MGuYxjc",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-piri-reis.json"
  }
 ]

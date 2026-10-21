@@ -1765,5 +1765,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-21T15:29:06Z",
+  "run": "39625131090",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39625131090",
+  "videos": [
+   {
+    "title": "Fenerbahçe'de Çifte Sakatlık ve Sergen Yalçın Kararı",
+    "url": "https://youtu.be/vxY9O6DX1v4",
+    "instagram": "https://www.instagram.com/reel/Dewuv0ADbEw/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

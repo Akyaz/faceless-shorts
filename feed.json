@@ -1797,5 +1797,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-21T17:46:19Z",
+  "run": "39645965325",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39645965325",
+  "videos": [
+   {
+    "title": "The Mysterious Vanishing Over Bass Strait in 1978",
+    "url": "https://youtu.be/MZK361cxo28",
+    "instagram": "https://www.instagram.com/reel/Dew-c2ZgBbG/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

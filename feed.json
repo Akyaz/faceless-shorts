@@ -1733,5 +1733,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-21T12:34:22Z",
+  "run": "39599954634",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39599954634",
+  "videos": [
+   {
+    "title": "Fon Ödemeleri Hızlanıyor: Erdoğan'dan Soruşturma Açıklaması",
+    "url": "https://youtu.be/x-J6GOR-8Vc",
+    "instagram": "https://www.instagram.com/reel/Dewavv4iVej/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

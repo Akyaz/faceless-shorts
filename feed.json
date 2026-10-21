@@ -1844,5 +1844,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-21T20:43:50Z",
+  "run": "39671951814",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39671951814",
+  "videos": [
+   {
+    "title": "Sergen Yalçın Milli Takım için doğru tercih mi?",
+    "url": "https://youtu.be/g4u2SPZgstw",
+    "instagram": "https://www.instagram.com/reel/DexSwnbDoYm/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

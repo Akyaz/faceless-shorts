@@ -1893,5 +1893,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-22T12:38:53Z",
+  "run": "39779111849",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39779111849",
+  "videos": [
+   {
+    "title": "Meteoroloji Uyarısı: Marmara ve Ege için Kuvvetli Sağanak Yağış",
+    "url": "https://youtu.be/FwL9ZzI6DCA",
+    "instagram": "https://www.instagram.com/reel/DezAC4Rjst5/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

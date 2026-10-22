@@ -1957,5 +1957,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-22T16:20:28Z",
+  "run": "39807123865",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39807123865",
+  "videos": [
+   {
+    "title": "Arda Güler'den İlk Gol ve Derbinin Hakemi Belli Oldu!",
+    "url": "https://youtu.be/UhlgVXO315g",
+    "instagram": "https://www.instagram.com/reel/DezZaLCjTjy/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

@@ -1909,5 +1909,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-10-22T14:12:07Z",
+  "run": "39792886593",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39792886593",
+  "videos": [
+   {
+    "title": "e-Devlet Siber Güvenlik Uyarısı: PHP Açığı Açıklandı",
+    "url": "https://youtu.be/JFYH_8QFwJ8",
+    "instagram": "https://www.instagram.com/reel/DezKukJggpn/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

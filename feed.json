@@ -1941,5 +1941,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-22T16:14:25Z",
+  "run": "39810891044",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39810891044",
+  "videos": [
+   {
+    "title": "Yapay Zekâ Virüsü ve Cıvadan Altın İddiası!",
+    "url": "https://youtu.be/urLOuYxpRKg",
+    "instagram": "https://www.instagram.com/reel/DezYsEajJ32/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

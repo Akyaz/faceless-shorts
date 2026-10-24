@@ -2034,5 +2034,25 @@
     "instagram": "https://www.instagram.com/reel/De3_aKzDbHl/"
    }
   ]
+ },
+ {
+  "time": "2026-10-24T11:13:33Z",
+  "run": "40088460553",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40088460553",
+  "videos": [
+   {
+    "title": "Günün Öne Çıkan Haberleri",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De3_vYSFZ54/"
+   },
+   {
+    "title": "Meteoroloji Uyardı: Balkanlardan Gelen Sağanak Tüm Yurdu Saracak",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De3_44SjPvb/"
+   }
+  ]
  }
 ]

@@ -2146,5 +2146,20 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-24T16:26:47Z",
+  "run": "40111448755",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40111448755",
+  "videos": [
+   {
+    "title": "Cumhuriyet Bayramımız Kutlu Olsun: Türkiye Cumhuriyeti 103 Yaşında",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

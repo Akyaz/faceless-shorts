@@ -2054,5 +2054,22 @@
     "instagram": "https://www.instagram.com/reel/De3_44SjPvb/"
    }
   ]
+ },
+ {
+  "time": "2026-10-24T11:25:11Z",
+  "run": "40027694000",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40027694000",
+  "videos": [
+   {
+    "title": "1177 BC: The Year Civilization Collapsed. What Really Happened?",
+    "url": null,
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-bronze-age-collapse.json"
  }
 ]

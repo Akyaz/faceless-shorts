@@ -263,6 +263,8 @@ def _centered(d, text, y, font, fill="white", stroke=0):
 
 
 def _pill(d, text, y, font, color, pad=40, height=96):
+    while d.textlength(text, font=font) > W - 160 - 2 * pad and font.size > 26:  # uzun yazı ekrandan taşmasın
+        font = ImageFont.truetype(font.path, font.size - 2)
     tw = d.textlength(text, font=font)
     d.rounded_rectangle([(W - tw) / 2 - pad, y - height / 2, (W + tw) / 2 + pad, y + height / 2],
                         radius=height / 2, fill=color)

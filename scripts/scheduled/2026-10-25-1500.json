@@ -1,0 +1,92 @@
+[
+ {
+  "lang": "tr",
+  "label": "29 EKİM",
+  "mood": "umutlu",
+  "category": "27",
+  "country": "Turkey",
+  "city": "Ankara",
+  "match": {
+   "home": "Türkiye",
+   "away": "Cumhuriyet",
+   "home_color": "#E30A17",
+   "away_color": "#E30A17"
+  },
+  "title": "'Yarın Cumhuriyeti İlan Edeceğiz': 28 Ekim 1923 Gecesi Çankaya'da",
+  "hook_title": "Yarın Cumhuriyet!",
+  "hashtags": [
+   "29ekim",
+   "cumhuriyet",
+   "atatürk"
+  ],
+  "sources": [
+   {
+    "title": "Cumhuriyetin İlanı (Atatürk İnkılapları)",
+    "source": "MEB"
+   },
+   {
+    "title": "Cumhuriyet nasıl ilan edildi?",
+    "source": "Cumhuriyet"
+   },
+   {
+    "title": "Dönem fotoğrafları ve gazeteleri",
+    "source": "Wikimedia Commons"
+   }
+  ],
+  "image_files": [
+   "File:Atatürk Kemal.jpg",
+   "File:I.-Türkiye-Büyük-Millet-Meclisi-Ankara-1920.jpg",
+   "File:Kurtuluş Savaşı Müzesi (I. Türkiye Büyük Millet Meclisi Binası), 2023 14.jpg",
+   "File:Mustafa Kemal Pasha in Izmir (September 10, 1922).jpg",
+   "File:1923 11 03 Resimli Gazete Cumhuriyetin Ilani.jpg"
+  ],
+  "paragraphs": [
+   {
+    "text": "28 Ekim 1923 akşamı, Ankara'da Çankaya. Mustafa Kemal Paşa sofradaki arkadaşlarına tek bir cümle söyledi.",
+    "card": {
+     "type": "event",
+     "title": "28 EKİM 1923",
+     "minute": "Çankaya",
+     "detail": "Ankara · akşam yemeği"
+    }
+   },
+   {
+    "text": "Nutuk'ta anlattığına göre o cümle şuydu: Yarın Cumhuriyeti ilan edeceğiz.",
+    "card": {
+     "type": "quote",
+     "text": "Yarın Cumhuriyeti ilan edeceğiz.",
+     "who": "Mustafa Kemal Paşa, 28 Ekim 1923"
+    }
+   },
+   {
+    "text": "Ertesi gün Meclis toplandı. Akşam 20.30'da Cumhuriyet, oturuma katılan 158 milletvekilinin tamamının oyuyla kabul edildi.",
+    "card": {
+     "type": "event",
+     "title": "29 EKİM 1923",
+     "minute": "20.30",
+     "detail": "158 milletvekilinin tamamının oyuyla"
+    }
+   },
+   {
+    "text": "Aynı gece yapılan oylamada Gazi Mustafa Kemal, 158 oyun tamamını alarak ilk cumhurbaşkanı seçildi.",
+    "card": {
+     "type": "names",
+     "title": "İLK CUMHURBAŞKANI",
+     "names": [
+      "Gazi",
+      "Mustafa Kemal"
+     ],
+     "detail": "158 oyun tamamı"
+    }
+   },
+   {
+    "text": "3 Kasım 1923 tarihli Resimli Gazete de haberi böyle duyurdu: Cumhuriyetin İlanı. Bu anıyı daha önce duymuş muydun?",
+    "card": {
+     "type": "quote",
+     "text": "Cumhuriyetin İlanı",
+     "who": "Resimli Gazete, 3 Kasım 1923"
+    }
+   }
+  ]
+ }
+]

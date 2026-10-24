@@ -1,0 +1,86 @@
+[
+ {
+  "lang": "tr",
+  "label": "29 EKİM",
+  "mood": "umutlu",
+  "category": "27",
+  "country": "Turkey",
+  "city": "Ankara",
+  "match": {
+   "home": "Türkiye",
+   "away": "Cumhuriyet",
+   "home_color": "#E30A17",
+   "away_color": "#E30A17"
+  },
+  "title": "Başöğretmen Atatürk: Kara Tahta Başındaki Cumhurbaşkanı (1928)",
+  "hook_title": "Kara Tahta Başında",
+  "hashtags": [
+   "29ekim",
+   "atatürk",
+   "harfdevrimi"
+  ],
+  "sources": [
+   {
+    "title": "Harf Devrimi",
+    "source": "Vikipedi"
+   },
+   {
+    "title": "Dönem fotoğrafları ve gazeteleri",
+    "source": "Wikimedia Commons"
+   }
+  ],
+  "image_files": [
+   "File:Ataturk-September 20, 1928.jpg",
+   "File:1928 09 21 Hakimiyeti Milliye.jpg",
+   "File:Mustafa Kemal harf devriminde.jpg",
+   "File:Atatürk Kemal.jpg"
+  ],
+  "paragraphs": [
+   {
+    "text": "Bu fotoğraftaki adam, kara tahta başında harf öğretiyor. Ama sıradan bir öğretmen değil: Cumhurbaşkanı Mustafa Kemal.",
+    "card": {
+     "type": "event",
+     "title": "BAŞÖĞRETMEN",
+     "minute": "1928",
+     "detail": "Kayseri, 20 Eylül 1928"
+    }
+   },
+   {
+    "text": "1928'de yeni Türk harfleri hazırlandı. Gazeteler bir süre eski ve yeni harfleri yan yana bastı; Hâkimiyet-i Milliye'nin 21 Eylül 1928 sayısı gibi.",
+    "card": {
+     "type": "quote",
+     "text": "Eski ve yeni harfler bir arada",
+     "who": "Hâkimiyet-i Milliye, 21 Eylül 1928"
+    }
+   },
+   {
+    "text": "Mustafa Kemal yeni harfleri yurt gezilerinde halka bizzat anlattı. Bu kare 20 Eylül 1928'de Kayseri'de çekildi.",
+    "card": {
+     "type": "event",
+     "title": "YURT GEZİSİ",
+     "minute": "Kayseri",
+     "detail": "Yeni harfleri halka anlatırken"
+    }
+   },
+   {
+    "text": "1 Kasım 1928'de Meclis, 1353 sayılı kanunla yeni Türk harflerini kabul etti. Sen okuma yazmayı ilk kimden öğrendin?",
+    "card": {
+     "type": "table",
+     "rows": [
+      {
+       "name": "Kanun",
+       "value": "1353 sayılı",
+       "color": "#E30A17"
+      },
+      {
+       "name": "Kabul",
+       "value": "1 Kasım 1928",
+       "color": "#E30A17"
+      }
+     ],
+     "next": "Türk Harflerinin Kabul ve Tatbiki Hakkında Kanun"
+    }
+   }
+  ]
+ }
+]

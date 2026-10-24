@@ -1,0 +1,87 @@
+[
+ {
+  "lang": "tr",
+  "label": "29 EKİM",
+  "mood": "umutlu",
+  "category": "27",
+  "country": "Turkey",
+  "city": "Ankara",
+  "match": {
+   "home": "Türkiye",
+   "away": "Cumhuriyet",
+   "home_color": "#E30A17",
+   "away_color": "#E30A17"
+  },
+  "title": "Onuncu Yıl Nutku: Atatürk'ün 1933'te Söylediği Unutulmaz Sözler",
+  "hook_title": "Onuncu Yıl Nutku",
+  "hashtags": [
+   "29ekim",
+   "atatürk",
+   "onuncuyıl"
+  ],
+  "sources": [
+   {
+    "title": "Onuncu Yıl Nutku",
+    "source": "Vikipedi"
+   },
+   {
+    "title": "Dönem fotoğrafları ve gazeteleri",
+    "source": "Wikimedia Commons"
+   }
+  ],
+  "image_files": [
+   "File:10th Anniversary Speech.jpg",
+   "File:Atatürk Kemal.jpg",
+   "File:Turkey. Ankara. An old parliament building. Bus in front LOC matpc.16726.jpg",
+   "File:10th Anniversary Speech.jpg",
+   "File:Closeup-shot-waving-flag-turkey-with-interesting-textures.jpg"
+  ],
+  "paragraphs": [
+   {
+    "text": "29 Ekim 1933. Cumhuriyet on yaşında. Mustafa Kemal, Ankara'da tarihe geçen bir konuşma yaptı.",
+    "card": {
+     "type": "event",
+     "title": "ONUNCU YIL",
+     "minute": "1933",
+     "detail": "29 Ekim 1933 · Ankara"
+    }
+   },
+   {
+    "text": "Konuşmanın en bilinen hedefi şuydu: Millî kültürümüzü muasır medeniyet seviyesinin üstüne çıkaracağız.",
+    "card": {
+     "type": "quote",
+     "text": "Millî kültürümüzü muasır medeniyet seviyesinin üstüne çıkaracağız.",
+     "who": "Onuncu Yıl Nutku, 1933"
+    }
+   },
+   {
+    "text": "Türk milletini de şöyle anlattı: Türk milletinin karakteri yüksektir; Türk milleti çalışkandır, Türk milleti zekidir.",
+    "card": {
+     "type": "quote",
+     "text": "Türk milleti çalışkandır, Türk milleti zekidir.",
+     "who": "Onuncu Yıl Nutku, 1933"
+    }
+   },
+   {
+    "text": "Ve konuşmasını şu sözlerle bitirdi: Ne mutlu Türküm diyene!",
+    "card": {
+     "type": "quote",
+     "text": "Ne mutlu Türküm diyene!",
+     "who": "Mustafa Kemal Atatürk, 29 Ekim 1933"
+    }
+   },
+   {
+    "text": "Aynı yıl Onuncu Yıl Marşı da yazıldı; sözleri Behçet Kemal Çağlar ve Faruk Nafiz Çamlıbel'in, bestesi Cemal Reşit Rey'in. Nutuktaki hangi söz sana en çok dokunuyor?",
+    "card": {
+     "type": "names",
+     "title": "ONUNCU YIL MARŞI",
+     "names": [
+      "Behçet Kemal Çağlar",
+      "Faruk Nafiz Çamlıbel"
+     ],
+     "detail": "Beste: Cemal Reşit Rey"
+    }
+   }
+  ]
+ }
+]

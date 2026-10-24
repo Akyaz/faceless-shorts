@@ -1,0 +1,80 @@
+[
+ {
+  "lang": "tr",
+  "label": "29 EKİM",
+  "mood": "umutlu",
+  "category": "27",
+  "country": "Turkey",
+  "city": "Ankara",
+  "match": {
+   "home": "Türkiye",
+   "away": "Cumhuriyet",
+   "home_color": "#E30A17",
+   "away_color": "#E30A17"
+  },
+  "title": "Cumhuriyet'in İlk Bayramı: 1924'te 101 Pare Top Atışıyla Kutlandı",
+  "hook_title": "İlk Cumhuriyet Bayramı",
+  "hashtags": [
+   "29ekim",
+   "cumhuriyetbayramı",
+   "tarih"
+  ],
+  "sources": [
+   {
+    "title": "Türkiye Cumhuriyeti 102 yaşında",
+    "source": "CNN Türk"
+   },
+   {
+    "title": "Cumhuriyet nasıl ilan edildi?",
+    "source": "Cumhuriyet"
+   },
+   {
+    "title": "Dönem fotoğrafları ve gazeteleri",
+    "source": "Wikimedia Commons"
+   }
+  ],
+  "image_files": [
+   "File:Turkey. Ankara. An old parliament building. Bus in front LOC matpc.16726.jpg",
+   "File:I.-Türkiye-Büyük-Millet-Meclisi-Ankara-1920.jpg",
+   "File:Cumhuriyet Bayramı töreni 01.jpg",
+   "File:Turkish flag waving in the sky.jpg"
+  ],
+  "paragraphs": [
+   {
+    "text": "Cumhuriyet ilk yaş gününü nasıl kutladı? 29 Ekim 1924'te.",
+    "card": {
+     "type": "event",
+     "title": "İLK YIL DÖNÜMÜ",
+     "minute": "1924",
+     "detail": "29 Ekim 1924"
+    }
+   },
+   {
+    "text": "26 Ekim 1924'te yayımlanan kararnameyle Cumhuriyet'in ilanının 101 pare top atışı ve çeşitli etkinliklerle kutlanmasına karar verildi.",
+    "card": {
+     "type": "event",
+     "title": "KARARNAME",
+     "minute": "101",
+     "detail": "pare top atışı · 26 Ekim 1924"
+    }
+   },
+   {
+    "text": "Kutlamalar 29 Ekim 1924'teki etkinliklerle başladı. O günden bu yana 29 Ekim her yıl bayram olarak kutlanıyor.",
+    "card": {
+     "type": "quote",
+     "text": "29 Ekim her yıl bayram",
+     "who": "1924'ten bu yana"
+    }
+   },
+   {
+    "text": "Bu yıl Cumhuriyet'in 103. yıl dönümü. Senin şehrinde 29 Ekim nasıl kutlanıyor?",
+    "card": {
+     "type": "event",
+     "title": "BU YIL",
+     "minute": "103",
+     "detail": "1923 - 2026"
+    }
+   }
+  ]
+ }
+]

@@ -2057,21 +2057,6 @@
   ]
  },
  {
-  "time": "2026-10-24T16:10:15Z",
-  "run": "40095978152",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110290046",
-  "videos": [
-   {
-    "title": "İstanbul Trafiğinde Yol Kapanması: Vatan Caddesi İki Gün Kapalı",
-    "url": "https://youtu.be/araolPYPYIA",
-    "instagram": "https://www.instagram.com/reel/De4MI54jj0n/"
-   }
-  ]
- },
- {
   "time": "2026-10-24T16:10:19Z",
   "run": "39992105647",
   "event": "workflow_dispatch",
@@ -2128,6 +2113,21 @@
     "title": "Icelandic Women's Strike of 1975: The Day Iceland Stood Still",
     "url": "https://youtu.be/8X-uvm7C6Hg",
     "instagram": "https://www.instagram.com/reel/De3_FgrAVSB/"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-24T16:10:47Z",
+  "run": "40095978152",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110337779",
+  "videos": [
+   {
+    "title": "İstanbul Trafiğinde Yol Kapanması: Vatan Caddesi İki Gün Kapalı",
+    "url": "https://youtu.be/araolPYPYIA",
+    "instagram": "https://www.instagram.com/reel/De4MI54jj0n/"
    }
   ]
  }

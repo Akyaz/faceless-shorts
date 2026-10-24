@@ -2177,5 +2177,21 @@
    }
   ],
   "script": "scripts/longform/en-bronze-age-collapse.json"
+ },
+ {
+  "time": "2026-10-24T18:29:14Z",
+  "run": "40120462266",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40120462266",
+  "videos": [
+   {
+    "title": "Zincir Marketlerde Tepki Çeken Çanta Bantlama Uygulaması Son Buldu",
+    "url": "https://youtu.be/7iBXDdrY8aY",
+    "instagram": "https://www.instagram.com/reel/De4xvQFjEXU/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

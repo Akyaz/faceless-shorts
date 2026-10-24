@@ -1973,5 +1973,20 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-24T11:00:10Z",
+  "run": "40087943340",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40087943340",
+  "videos": [
+   {
+    "title": "Sosyal Medya Yaş Doğrulaması Düzenlemesi Öncesi Dolandırıcılık Uyarısı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

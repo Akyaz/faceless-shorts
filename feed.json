@@ -1988,5 +1988,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-24T11:05:33Z",
+  "run": "40080286428",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40080286428",
+  "videos": [
+   {
+    "title": "Sosyal Medyaya Yeni Düzenleme ve Tüm Yurtta Sağanak Yağış Uyarısı",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De3-926jVTm/"
+   }
+  ],
+  "slot": "07:15"
  }
 ]

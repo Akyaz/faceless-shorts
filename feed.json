@@ -2193,5 +2193,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-24T19:32:35Z",
+  "run": "40125499823",
+  "event": "schedule",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40125499823",
+  "videos": [
+   {
+    "title": "Galatasaray-Fenerbahçe: Son 5 Derbide Ne Oldu? Pazartesi Dev Maç",
+    "url": "https://youtu.be/PkGMVfH4ejc",
+    "instagram": "https://www.instagram.com/reel/De44_P0ge5y/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

@@ -2004,5 +2004,20 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-24T11:06:30Z",
+  "run": "40088157527",
+  "event": "workflow_dispatch",
+  "mode": "onthisday",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40088157527",
+  "videos": [
+   {
+    "title": "Icelandic Women's Strike of 1975: The Day Iceland Stood Still",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De3_FgrAVSB/"
+   }
+  ]
  }
 ]

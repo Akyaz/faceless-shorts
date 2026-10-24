@@ -2073,22 +2073,6 @@
   "script": "scripts/longform/en-bronze-age-collapse.json"
  },
  {
-  "time": "2026-10-24T11:49:19Z",
-  "run": "39992105647",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39992105647",
-  "videos": [
-   {
-    "title": "Cıva Altına Dönüştürüldü! Türkiye'de Uzaktan Ameliyat Yapıldı",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/De4D-E2E2-s/"
-   }
-  ],
-  "slot": "15:00"
- },
- {
   "time": "2026-10-24T11:57:37Z",
   "run": "40090820300",
   "event": "schedule",
@@ -2131,6 +2115,21 @@
     "title": "İstanbul Trafiğinde Yol Kapanması: Vatan Caddesi İki Gün Kapalı",
     "url": "https://youtu.be/araolPYPYIA",
     "instagram": "https://www.instagram.com/reel/De4MI54jj0n/"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-24T16:10:19Z",
+  "run": "39992105647",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110299370",
+  "videos": [
+   {
+    "title": "Cıva Altına Dönüştürüldü! Türkiye'de Uzaktan Ameliyat Yapıldı",
+    "url": "https://youtu.be/N3gLes9EsNI",
+    "instagram": "https://www.instagram.com/reel/De4D-E2E2-s/"
    }
   ]
  }

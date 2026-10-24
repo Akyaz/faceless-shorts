@@ -2119,5 +2119,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-24T14:08:51Z",
+  "run": "40100756284",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40100756284",
+  "videos": [
+   {
+    "title": "Galatasaray'dan 22-0'lık Skor, Fenerbahçe Atina'da Kazandı",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De4T85oiQgR/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

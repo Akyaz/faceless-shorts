@@ -2088,21 +2088,6 @@
  },
  {
   "time": "2026-10-24T16:10:47Z",
-  "run": "40088157527",
-  "event": "workflow_dispatch",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110339130",
-  "videos": [
-   {
-    "title": "Icelandic Women's Strike of 1975: The Day Iceland Stood Still",
-    "url": "https://youtu.be/8X-uvm7C6Hg",
-    "instagram": "https://www.instagram.com/reel/De3_FgrAVSB/"
-   }
-  ]
- },
- {
-  "time": "2026-10-24T16:10:47Z",
   "run": "40095978152",
   "event": "workflow_dispatch",
   "mode": "story",
@@ -2128,6 +2113,21 @@
     "title": "Galatasaray'dan 22-0'lık Skor, Fenerbahçe Atina'da Kazandı",
     "url": "https://youtu.be/6PUEUeFmjEY",
     "instagram": "https://www.instagram.com/reel/De4T85oiQgR/"
+   }
+  ]
+ },
+ {
+  "time": "2026-10-24T16:10:56Z",
+  "run": "40088157527",
+  "event": "workflow_dispatch",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110350912",
+  "videos": [
+   {
+    "title": "Icelandic Women's Strike of 1975: The Day Iceland Stood Still",
+    "url": "https://youtu.be/8X-uvm7C6Hg",
+    "instagram": "https://www.instagram.com/reel/De3_FgrAVSB/"
    }
   ]
  }

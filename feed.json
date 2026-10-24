@@ -2103,5 +2103,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-10-24T13:01:03Z",
+  "run": "40095978152",
+  "event": "schedule",
+  "mode": "story",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40095978152",
+  "videos": [
+   {
+    "title": "İstanbul Trafiğinde Yol Kapanması: Vatan Caddesi İki Gün Kapalı",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/De4MI54jj0n/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

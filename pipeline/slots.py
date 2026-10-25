@@ -28,6 +28,8 @@ SLOTS = {
     "50 15 * * *": ("19:00", "story"), "15 16 * * *": ("19:00", "story"),
     # 20:30 günün özeti yorum getirmiyordu: yerine "Sen ne dersin?" tartışma videosu
     "20 17 * * *": ("20:30", "debate"), "45 17 * * *": ("20:30", "debate"),
+    # 13:00: yalnızca önceden zamanlanmış video varsa (ör. bayram tebriği); yoksa hiçbir şey üretilmez
+    "0 10 * * *": ("13:00", "scheduled"), "25 10 * * *": ("13:00", "scheduled"),
     # Tarih videosu ve haftalık derleme kendi iş akışlarında
     "0 18 * * *": ("21:00", "longform"), "30 18 * * *": ("21:00", "longform"),
     "50 7 * * 0": ("pazar 11:00", "weekly"), "15 8 * * 0": ("pazar 11:00", "weekly"),
@@ -96,6 +98,9 @@ def decide():
     if script:
         print(f"{slot} için önceden yazılmış metin: {script}")
         return True, "custom", slot, script
+    if mode == "scheduled":  # bu saatin kendi otomatik videosu yok
+        print(f"{slot} için bugün zamanlanmış video yok.")
+        return False, mode, slot, ""
     return True, mode, slot, ""
 
 

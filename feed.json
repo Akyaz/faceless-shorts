@@ -2257,5 +2257,20 @@
    }
   ],
   "slot": "pazar 11:00"
+ },
+ {
+  "time": "2026-10-25T13:14:05Z",
+  "run": "40196467781",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40196467781",
+  "videos": [
+   {
+    "title": "'Efendiler, Yarın Cumhuriyeti İlan Edeceğiz': Bir Milletin Mücadelesiyle Kazanılan Cumhuriyet",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

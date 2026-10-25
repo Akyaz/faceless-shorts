@@ -2304,5 +2304,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-25T15:08:34Z",
+  "run": "40205158293",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40205158293",
+  "videos": [
+   {
+    "title": "2 saatlik yol 7 dakikaya düşüyor ve elektrikte yerli kaynak rekoru!",
+    "url": "https://youtu.be/dg9juVbJEag",
+    "instagram": "https://www.instagram.com/reel/De6_kX0FO7g/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

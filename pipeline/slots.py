@@ -29,7 +29,7 @@ SLOTS = {
     # 20:30 günün özeti yorum getirmiyordu: yerine "Sen ne dersin?" tartışma videosu
     "20 17 * * *": ("20:30", "debate"), "45 17 * * *": ("20:30", "debate"),
     # 13:00: yalnızca önceden zamanlanmış video varsa (ör. bayram tebriği); yoksa hiçbir şey üretilmez
-    "0 10 * * *": ("13:00", "scheduled"), "25 10 * * *": ("13:00", "scheduled"),
+    "0 10 * * *": ("13:00", "scheduled"), "25 10 * * *": ("13:00", "scheduled"), "55 10 * * *": ("13:00", "scheduled"),
     # Tarih videosu ve haftalık derleme kendi iş akışlarında
     "0 18 * * *": ("21:00", "longform"), "30 18 * * *": ("21:00", "longform"),
     "50 7 * * 0": ("pazar 11:00", "weekly"), "15 8 * * 0": ("pazar 11:00", "weekly"),
@@ -72,6 +72,14 @@ def wait_for_running():
 SCHEDULED_DIR = "scripts/scheduled"
 
 
+def skipped(slot):
+    """scripts/scheduled/YYYY-AA-GG-SSDD.skip varsa o gün o saatin otomatik videosu iptal (yükleme sınırına yer açmak için)."""
+    if not slot[:1].isdigit():
+        return False
+    turkey = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=3)
+    return os.path.exists(f"{SCHEDULED_DIR}/{turkey:%Y-%m-%d}-{slot.replace(':', '')}.skip")
+
+
 def scheduled_script(slot):
     """Bu saat için önceden yazılmış metin dosyası (yoksa boş)."""
     if not slot[:1].isdigit():
@@ -93,6 +101,9 @@ def decide():
         print(f"Süren çalışmalar okunamadı: {exc}")
     if done_today(slot):
         print(f"{slot} videosu bugün zaten üretildi; bu tetikleme atlanıyor.")
+        return False, mode, slot, ""
+    if skipped(slot):
+        print(f"{slot} videosu bugün için iptal edildi (.skip dosyası).")
         return False, mode, slot, ""
     script = scheduled_script(slot)
     if script:

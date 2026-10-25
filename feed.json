@@ -2320,5 +2320,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-25T16:54:45Z",
+  "run": "40213629686",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40213629686",
+  "videos": [
+   {
+    "title": "Dirk Hartog's Pewter Plate in Australia, 1616",
+    "url": "https://youtu.be/XOvKZQaowRs",
+    "instagram": "https://www.instagram.com/reel/De7LuPklKXM/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

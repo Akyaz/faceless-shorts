@@ -2209,5 +2209,21 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-25T09:03:03Z",
+  "run": "40178800004",
+  "event": "schedule",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40178800004",
+  "videos": [
+   {
+    "title": "KPSS Heyecanı Başladı | İstanbul'a Kuvvetli Sağanak Uyarısı",
+    "url": "https://youtu.be/o_Kx_pT3fMA",
+    "instagram": "https://www.instagram.com/reel/De6VvneCCxc/"
+   }
+  ],
+  "slot": "07:15"
  }
 ]

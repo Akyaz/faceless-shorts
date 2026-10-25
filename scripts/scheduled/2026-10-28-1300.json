@@ -12,7 +12,7 @@
    "home_color": "#E30A17",
    "away_color": "#E30A17"
   },
-  "title": "'Efendiler, Yarın Cumhuriyeti İlan Edeceğiz': 28 Ekim 1923'te Çankaya'da",
+  "title": "'Efendiler, Yarın Cumhuriyeti İlan Edeceğiz': Bir Milletin Mücadelesiyle Kazanılan Cumhuriyet",
   "hook_title": "Efendiler, Yarın…",
   "hashtags": [
    "29ekim",
@@ -36,13 +36,15 @@
   "image_files": [
    "File:Atatürk Kemal.jpg",
    "File:I.-Türkiye-Büyük-Millet-Meclisi-Ankara-1920.jpg",
-   "File:Kurtuluş Savaşı Müzesi (I. Türkiye Büyük Millet Meclisi Binası), 2023 14.jpg",
    "File:Mustafa Kemal Pasha in Izmir (September 10, 1922).jpg",
-   "File:1923 11 03 Resimli Gazete Cumhuriyetin Ilani.jpg"
+   "File:Kurtuluş Savaşı Müzesi (I. Türkiye Büyük Millet Meclisi Binası), 2023 14.jpg",
+   "File:Turkey. Ankara. An old parliament building. Bus in front LOC matpc.16726.jpg",
+   "File:1923 11 03 Resimli Gazete Cumhuriyetin Ilani.jpg",
+   "File:Closeup-shot-waving-flag-turkey-with-interesting-textures.jpg"
   ],
   "paragraphs": [
    {
-    "text": "Efendiler, yarın Cumhuriyeti ilan edeceğiz. Bu sözler tam 103 yıl önce, 28 Ekim 1923 akşamı Ankara'da, Çankaya'da söylendi.",
+    "text": "Efendiler, yarın Cumhuriyeti ilan edeceğiz. Mustafa Kemal Paşa bu sözleri 28 Ekim 1923 akşamı, Çankaya'da söyledi.",
     "card": {
      "type": "quote",
      "text": "Efendiler, yarın Cumhuriyeti ilan edeceğiz.",
@@ -50,16 +52,53 @@
     }
    },
    {
-    "text": "Mustafa Kemal Paşa bu cümleyi akşam yemeğinde, sofradaki arkadaşlarına söyledi. Bu anıyı Nutuk'ta kendisi anlatır.",
+    "text": "Bu cümleye kolay gelinmedi. Ülke işgal altındayken 19 Mayıs 1919'da Samsun'da başlayan Millî Mücadele, dört yıl sürdü.",
     "card": {
-     "type": "event",
-     "title": "28 EKİM 1923",
-     "minute": "Çankaya",
-     "detail": "Ankara · akşam yemeği · Nutuk'tan"
+     "type": "table",
+     "rows": [
+      {
+       "name": "Samsun",
+       "value": "19 Mayıs 1919",
+       "color": "#E30A17"
+      },
+      {
+       "name": "Meclis açıldı",
+       "value": "23 Nisan 1920",
+       "color": "#E30A17"
+      },
+      {
+       "name": "Sakarya",
+       "value": "1921",
+       "color": "#E30A17"
+      },
+      {
+       "name": "Büyük Taarruz",
+       "value": "26 Ağustos 1922",
+       "color": "#E30A17"
+      }
+     ],
+     "next": "Millî Mücadele"
     }
    },
    {
-    "text": "Ertesi gün Meclis toplandı. Akşam 20.30'da Cumhuriyet, oturuma katılan 158 milletvekilinin tamamının oyuyla kabul edildi.",
+    "text": "Askeriyle, köylüsüyle, kadınıyla bütün bir millet bu mücadelenin içindeydi. Eylül 1922'de İzmir kurtuldu.",
+    "card": {
+     "type": "event",
+     "title": "MİLLÎ MÜCADELE",
+     "minute": "1922",
+     "detail": "Mustafa Kemal Paşa İzmir'de, 10 Eylül 1922"
+    }
+   },
+   {
+    "text": "23 Nisan 1920'de Ankara'da açılan Meclis, egemenliğin millete ait olduğunu ilan etmişti: Egemenlik kayıtsız şartsız milletindir.",
+    "card": {
+     "type": "quote",
+     "text": "Egemenlik kayıtsız şartsız milletindir.",
+     "who": "Türkiye Büyük Millet Meclisi"
+    }
+   },
+   {
+    "text": "29 Ekim 1923 akşamı 20.30'da Meclis, Cumhuriyeti 158 milletvekilinin oyuyla kabul etti. Mustafa Kemal ilk cumhurbaşkanı seçildi.",
     "card": {
      "type": "event",
      "title": "29 EKİM 1923",
@@ -68,23 +107,20 @@
     }
    },
    {
-    "text": "Aynı gece yapılan oylamada Gazi Mustafa Kemal, 158 oyun tamamını alarak ilk cumhurbaşkanı seçildi.",
+    "text": "Cumhuriyet, bir milletin kendi geleceğini kendisinin belirlemesidir. Bu hakkı bize bu mücadele kazandırdı.",
     "card": {
-     "type": "names",
-     "title": "İLK CUMHURBAŞKANI",
-     "names": [
-      "Gazi",
-      "Mustafa Kemal"
-     ],
-     "detail": "158 oyun tamamı"
+     "type": "quote",
+     "text": "Cumhuriyet, milletin kendi geleceğini kendisinin belirlemesidir.",
+     "who": "1923'ten bugüne"
     }
    },
    {
-    "text": "3 Kasım 1923 tarihli Resimli Gazete de haberi böyle duyurdu: Cumhuriyetin İlanı. Yarın Cumhuriyet 103 yaşında.",
+    "text": "Yarın Cumhuriyetimiz 103 yaşında. Bu mücadeleyi verenleri saygı ve minnetle anıyoruz. Cumhuriyet Bayramımız kutlu olsun!",
     "card": {
-     "type": "quote",
-     "text": "Cumhuriyetin İlanı",
-     "who": "Resimli Gazete, 3 Kasım 1923"
+     "type": "event",
+     "title": "YARIN 29 EKİM",
+     "minute": "103",
+     "detail": "1923 - 2026"
     }
    }
   ]

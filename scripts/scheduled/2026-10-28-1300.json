@@ -12,11 +12,11 @@
    "home_color": "#E30A17",
    "away_color": "#E30A17"
   },
-  "title": "Cumhuriyet Bayramımız Kutlu Olsun: Türkiye Cumhuriyeti 103 Yaşında",
-  "hook_title": "Cumhuriyet 103 Yaşında",
+  "title": "'Efendiler, Yarın Cumhuriyeti İlan Edeceğiz': 28 Ekim 1923'te Çankaya'da",
+  "hook_title": "Efendiler, Yarın…",
   "hashtags": [
    "29ekim",
-   "cumhuriyetbayramı",
+   "cumhuriyet",
    "atatürk"
   ],
   "sources": [
@@ -25,8 +25,8 @@
     "source": "MEB"
    },
    {
-    "title": "Türkiye Cumhuriyeti 102 yaşında",
-    "source": "CNN Türk"
+    "title": "Cumhuriyet nasıl ilan edildi?",
+    "source": "Cumhuriyet"
    },
    {
     "title": "Dönem fotoğrafları ve gazeteleri",
@@ -34,57 +34,57 @@
    }
   ],
   "image_files": [
-   "File:Closeup-shot-waving-flag-turkey-with-interesting-textures.jpg",
-   "File:I.-Türkiye-Büyük-Millet-Meclisi-Ankara-1920.jpg",
-   "File:1923 11 03 Resimli Gazete Cumhuriyetin Ilani.jpg",
    "File:Atatürk Kemal.jpg",
-   "File:Cumhuriyet Bayramı töreni 01.jpg"
+   "File:I.-Türkiye-Büyük-Millet-Meclisi-Ankara-1920.jpg",
+   "File:Kurtuluş Savaşı Müzesi (I. Türkiye Büyük Millet Meclisi Binası), 2023 14.jpg",
+   "File:Mustafa Kemal Pasha in Izmir (September 10, 1922).jpg",
+   "File:1923 11 03 Resimli Gazete Cumhuriyetin Ilani.jpg"
   ],
   "paragraphs": [
    {
-    "text": "Cumhuriyet Bayramımız kutlu olsun! Bayram bugün öğleden sonra başlıyor; yarın Türkiye Cumhuriyeti 103 yaşında.",
+    "text": "Efendiler, yarın Cumhuriyeti ilan edeceğiz. Bu sözler tam 103 yıl önce, 28 Ekim 1923 akşamı Ankara'da, Çankaya'da söylendi.",
     "card": {
-     "type": "event",
-     "title": "29 EKİM",
-     "minute": "103",
-     "detail": "1923 - 2026"
+     "type": "quote",
+     "text": "Efendiler, yarın Cumhuriyeti ilan edeceğiz.",
+     "who": "Mustafa Kemal Paşa · Çankaya, 28 Ekim 1923"
     }
    },
    {
-    "text": "29 Ekim 1923 akşamı Meclis'te Cumhuriyet ilan edildi ve Gazi Mustafa Kemal ilk cumhurbaşkanı seçildi.",
+    "text": "Mustafa Kemal Paşa bu cümleyi akşam yemeğinde, sofradaki arkadaşlarına söyledi. Bu anıyı Nutuk'ta kendisi anlatır.",
+    "card": {
+     "type": "event",
+     "title": "28 EKİM 1923",
+     "minute": "Çankaya",
+     "detail": "Ankara · akşam yemeği · Nutuk'tan"
+    }
+   },
+   {
+    "text": "Ertesi gün Meclis toplandı. Akşam 20.30'da Cumhuriyet, oturuma katılan 158 milletvekilinin tamamının oyuyla kabul edildi.",
     "card": {
      "type": "event",
      "title": "29 EKİM 1923",
      "minute": "20.30",
-     "detail": "Türkiye Büyük Millet Meclisi · Ankara"
+     "detail": "158 milletvekilinin tamamının oyuyla"
     }
    },
    {
-    "text": "Mustafa Kemal o gün Meclis kürsüsündeki konuşmasını şu sözlerle bitirdi: Türkiye Cumhuriyeti mesut, muvaffak ve muzaffer olacaktır.",
-    "card": {
-     "type": "quote",
-     "text": "Türkiye Cumhuriyeti mesut, muvaffak ve muzaffer olacaktır.",
-     "who": "Mustafa Kemal, 29 Ekim 1923"
-    }
-   },
-   {
-    "text": "Cumhuriyetimizin kurucusu Ulu Önder Mustafa Kemal Atatürk'ü ve silah arkadaşlarını saygı ve minnetle anıyoruz.",
+    "text": "Aynı gece yapılan oylamada Gazi Mustafa Kemal, 158 oyun tamamını alarak ilk cumhurbaşkanı seçildi.",
     "card": {
      "type": "names",
-     "title": "SAYGI VE MİNNETLE",
+     "title": "İLK CUMHURBAŞKANI",
      "names": [
-      "Mustafa Kemal",
-      "Atatürk"
+      "Gazi",
+      "Mustafa Kemal"
      ],
-     "detail": "1881 - 1938"
+     "detail": "158 oyun tamamı"
     }
    },
    {
-    "text": "Bayramını yorumlarda kutla. Cumhuriyet Bayramımız kutlu olsun!",
+    "text": "3 Kasım 1923 tarihli Resimli Gazete de haberi böyle duyurdu: Cumhuriyetin İlanı. Yarın Cumhuriyet 103 yaşında.",
     "card": {
      "type": "quote",
-     "text": "Cumhuriyet Bayramımız kutlu olsun!",
-     "who": "Quick Recap Channel"
+     "text": "Cumhuriyetin İlanı",
+     "who": "Resimli Gazete, 3 Kasım 1923"
     }
    }
   ]

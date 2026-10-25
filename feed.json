@@ -2225,5 +2225,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-25T12:11:56Z",
+  "run": "40191691069",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40191691069",
+  "videos": [
+   {
+    "title": "Kış Saati Başladı: Türkiye ile Saat Farkı Açıldı",
+    "url": "https://youtu.be/zH9jhEP4VKc",
+    "instagram": "https://www.instagram.com/reel/De6rWh6kZZN/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

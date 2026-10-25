@@ -2272,5 +2272,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-25T13:26:32Z",
+  "run": "40197290831",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40197290831",
+  "videos": [
+   {
+    "title": "Meteoroloji'den Sağanak Uyarısı: Sıcaklıklar Düşüyor",
+    "url": "https://youtu.be/u-O--931_2w",
+    "instagram": "https://www.instagram.com/reel/De6z5IxkcQ3/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -2288,5 +2288,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-25T14:31:54Z",
+  "run": "40202290560",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40202290560",
+  "videos": [
+   {
+    "title": "VakıfBank Derbide Güldü, Güreşte Final Coşkusu!",
+    "url": "https://youtu.be/vgCUcjqZD54",
+    "instagram": "https://www.instagram.com/reel/De67Xq-CkTD/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

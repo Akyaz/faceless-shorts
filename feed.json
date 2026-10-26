@@ -2465,5 +2465,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-26T18:57:05Z",
+  "run": "40381649732",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40381649732",
+  "videos": [
+   {
+    "title": "When Pan Am Launched the Jet Age in 1958 #OnThisDay",
+    "url": "https://youtu.be/izj2LEycw2o",
+    "instagram": "https://www.instagram.com/reel/De9-g8LDrJB/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

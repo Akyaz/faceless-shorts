@@ -2433,5 +2433,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-26T16:55:33Z",
+  "run": "40362878872",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40362878872",
+  "videos": [
+   {
+    "title": "Futbolda Yeni Yabancı Kuralı ve Real Madrid'in El Clasico Zaferi",
+    "url": "https://youtu.be/WuVMf3yz948",
+    "instagram": "https://www.instagram.com/reel/De9wnNFgj5f/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

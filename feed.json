@@ -2449,5 +2449,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-26T17:50:19Z",
+  "run": "40370764406",
+  "event": "schedule",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40370764406",
+  "videos": [
+   {
+    "title": "Başöğretmen Atatürk: Kara Tahta Başındaki Cumhurbaşkanı (1928)",
+    "url": "https://youtu.be/qYgDUSHdeuc",
+    "instagram": "https://www.instagram.com/reel/De922B_DGTE/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

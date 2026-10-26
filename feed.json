@@ -2497,5 +2497,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-26T21:45:00Z",
+  "run": "40406049800",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40406049800",
+  "videos": [
+   {
+    "title": "İzmir için 20 milyar dolarlık sıfır karbon hedefi konulmalı mı?",
+    "url": "https://youtu.be/87foT6HIEjk",
+    "instagram": "https://www.instagram.com/reel/De-RvBeiaBR/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

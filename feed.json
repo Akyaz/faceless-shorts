@@ -2481,5 +2481,21 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-26T20:49:25Z",
+  "run": "40398587464",
+  "event": "schedule",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40398587464",
+  "videos": [
+   {
+    "title": "Derbi Günü: Galatasaray-Fenerbahçe Bu Akşam 21:30'da",
+    "url": "https://youtu.be/QafaIKoAlJ8",
+    "instagram": "https://www.instagram.com/reel/De-LYBEDirf/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

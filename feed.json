@@ -2652,5 +2652,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-27T21:50:14Z",
+  "run": "40587736782",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40587736782",
+  "videos": [
+   {
+    "title": "Malazgirt 1071: Bir İmparatorun Esir Düştüğü Gün",
+    "url": "https://youtu.be/bRxS3UdiaX4",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-malazgirt.json"
  }
 ]

@@ -2546,5 +2546,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-27T12:50:34Z",
+  "run": "40506354586",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40506354586",
+  "videos": [
+   {
+    "title": "Yatırım Fonları İçin Yeni Düzenleme: Ödeme Esasları Açıklandı",
+    "url": "https://youtu.be/z7VTBY0g-oY",
+    "instagram": "https://www.instagram.com/reel/De_5XLOFD1v/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

@@ -2730,5 +2730,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-28T13:44:24Z",
+  "run": "40697905381",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40697905381",
+  "videos": [
+   {
+    "title": "Emekli zammı ne zaman yatacak? Refah payı formülü açıklandı",
+    "url": "https://youtu.be/TrfMHCrV2JQ",
+    "instagram": "https://www.instagram.com/reel/DfCkUgujhmC/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

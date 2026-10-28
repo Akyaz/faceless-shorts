@@ -2778,5 +2778,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-28T21:44:37Z",
+  "run": "40773711631",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40773711631",
+  "videos": [
+   {
+    "title": "Fenerbahçe'ye Montella mı Yerli Hoca mı Gelmeli?",
+    "url": "https://youtu.be/_FRAfi-zc-k",
+    "instagram": "https://www.instagram.com/reel/DfDbR7ijSVx/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

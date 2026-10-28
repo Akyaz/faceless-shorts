@@ -2762,5 +2762,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-28T20:42:23Z",
+  "run": "40764810952",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40764810952",
+  "videos": [
+   {
+    "title": "Muğla'da Sağanak Alarmı: Yollar Göle Döndü, Evleri Su Bastı",
+    "url": "https://youtu.be/OwfhzPz4hBI",
+    "instagram": "https://www.instagram.com/reel/DfDUHgbClC4/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

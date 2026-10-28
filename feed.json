@@ -2715,5 +2715,20 @@
     "instagram": "https://www.instagram.com/reel/DfCc6OfDiIp/"
    }
   ]
+ },
+ {
+  "time": "2026-10-28T12:42:52Z",
+  "run": "40689816817",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40689816817",
+  "videos": [
+   {
+    "title": "Cumhuriyet Bayramımız Kutlu Olsun: Türkiye Cumhuriyeti 103 Yaşında",
+    "url": "https://youtu.be/nQS1_GL0FBk",
+    "instagram": null
+   }
+  ]
  }
 ]

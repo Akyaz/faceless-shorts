@@ -2746,5 +2746,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-10-28T16:49:40Z",
+  "run": "40728733370",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40728733370",
+  "videos": [
+   {
+    "title": "Barcelona'ya Transfer Cezası ve Arsenal'e Kupa Şoku!",
+    "url": "https://youtu.be/FRkaeE2Ifm4",
+    "instagram": "https://www.instagram.com/reel/DfC5hl1DtWS/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

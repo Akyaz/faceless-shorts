@@ -2685,5 +2685,20 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-28T12:38:23Z",
+  "run": "40689069422",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40689069422",
+  "videos": [
+   {
+    "title": "Onuncu Yıl Nutku: Atatürk'ün 1933'te Söylediği Unutulmaz Sözler",
+    "url": "https://youtu.be/kL5AvOKMnFY",
+    "instagram": "https://www.instagram.com/reel/DfCcww7CYxP/"
+   }
+  ]
  }
 ]

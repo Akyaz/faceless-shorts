@@ -2700,5 +2700,20 @@
     "instagram": "https://www.instagram.com/reel/DfCcww7CYxP/"
    }
   ]
+ },
+ {
+  "time": "2026-10-28T12:39:41Z",
+  "run": "40689054548",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40689054548",
+  "videos": [
+   {
+    "title": "'Efendiler, Yarın Cumhuriyeti İlan Edeceğiz': Bir Milletin Mücadelesiyle Kazanılan Cumhuriyet",
+    "url": "https://youtu.be/GU4Q269U2Uw",
+    "instagram": "https://www.instagram.com/reel/DfCc6OfDiIp/"
+   }
+  ]
  }
 ]

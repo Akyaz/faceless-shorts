@@ -42,6 +42,11 @@ def upload(video_path, meta):
             "selfDeclaredMadeForKids": False,
         },
     }
+    if os.environ.get("YT_PUBLISH_AT"):
+        # YouTube'un kendi zamanlayıcısı: video özel yüklenir, verilen anda (UTC, ISO 8601) herkese açılır.
+        # GitHub zamanlaması saatlerce gecikebildiği için kesin saatli videolar (bayram tebriği) böyle yüklenir.
+        resource["status"].update({"privacyStatus": "private", "publishAt": os.environ["YT_PUBLISH_AT"]})
+        print(f"Yayın zamanı: {os.environ['YT_PUBLISH_AT']}")
     size = os.path.getsize(video_path)
     init = urllib.request.Request(UPLOAD_URL, data=json.dumps(resource).encode(), method="POST", headers={
         "Authorization": f"Bearer {token}",

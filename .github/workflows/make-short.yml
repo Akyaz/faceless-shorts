@@ -59,6 +59,10 @@ on:
         description: "Maç programı (ucl): kırmızı çerçeveye alınacak takımlar, virgülle (örnek: Bayern Münih)"
         type: string
         default: ""
+      publish_at:
+        description: "YouTube'da yayın zamanı (UTC, örnek 2026-10-29T07:00:00Z = 10:00 TSİ); doluysa video özel yüklenir, o anda açılır, Instagram'a yüklenmez"
+        type: string
+        default: ""
       mode:
         description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
@@ -156,6 +160,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_PUBLISH_AT: ${{ inputs.publish_at }}
         run: |
           failed=0
           for meta in out/metadata.json out/*/metadata.json; do
@@ -166,7 +171,8 @@ jobs:
       # Instagram'ın yükleme sınırı YouTube'dan ayrı: YouTube sınıra takılsa da Reels paylaşılır.
       # IG_ACCESS_TOKEN secret'ı yoksa adım hiçbir şey yapmaz.
       - name: Instagram'a yükle
-        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) }}
+        # Zamanlanmış YouTube yayınında Instagram ayrıca yayın günü yüklenir (Instagram API zamanlamayı desteklemiyor)
+        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) && !inputs.publish_at }}
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}

@@ -2794,5 +2794,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-28T22:20:43Z",
+  "run": "40776178108",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40776178108",
+  "videos": [
+   {
+    "title": "The Antikythera Mechanism: A 2,000-Year-Old Computer Found in a Shipwreck",
+    "url": "https://youtu.be/Un1bT5kIZB4",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-antikythera.json"
  }
 ]

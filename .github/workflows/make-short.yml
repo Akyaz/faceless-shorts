@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45  # asıl çalışma sürüyorsa bitmesi beklenir
     permissions:
-      actions: read
+      actions: write  # zamanlanmış Instagram paylaşımını başlatır
       contents: read
     outputs:
       run: ${{ steps.decide.outputs.run }}
@@ -92,6 +92,18 @@ jobs:
           CUSTOM: ${{ (inputs.script || inputs.script_json) && '1' || '' }}
           WORKFLOW_FILE: make-short.yml
         run: python3 -m pipeline.slots
+      # YouTube'a önceden zamanlı yüklenen videonun Instagram paylaşımı (Instagram API zamanlamayı desteklemiyor):
+      # scripts/scheduled/TARİH-SAAT.instagram dosyasında videoyu üreten çalışmanın numarası durur
+      - name: Zamanlanmış Instagram paylaşımı
+        if: ${{ github.event_name == 'schedule' && steps.decide.outputs.slot != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLOT: ${{ steps.decide.outputs.slot }}
+        run: |
+          file="scripts/scheduled/$(TZ=Europe/Istanbul date +%Y-%m-%d)-${SLOT/:/}.instagram"
+          [ -f "$file" ] || exit 0
+          gh workflow run instagram.yml -R "$GITHUB_REPOSITORY" -f run_id="$(tr -d '[:space:]' < "$file")"
+          echo "Instagram paylaşımı başlatıldı: $(cat "$file")"
 
   make:
     needs: slot

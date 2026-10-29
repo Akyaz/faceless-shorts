@@ -2875,5 +2875,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-29T18:45:57Z",
+  "run": "40932895711",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40932895711",
+  "videos": [
+   {
+    "title": "When Galileo Became the First Spacecraft to Visit an Asteroid in 1991",
+    "url": "https://youtu.be/vp7ycRy8wVE",
+    "instagram": "https://www.instagram.com/reel/DfFroLZib3a/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

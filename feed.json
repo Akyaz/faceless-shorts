@@ -2827,5 +2827,21 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-29T15:40:34Z",
+  "run": "40902820668",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40902820668",
+  "videos": [
+   {
+    "title": "Sağanak Yağış Uyarısı: 19 İl İçin Sarı ve Turuncu Kodlu Alarm",
+    "url": "https://youtu.be/BDYSzN6UA-4",
+    "instagram": "https://www.instagram.com/reel/DfFWZJziZ68/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

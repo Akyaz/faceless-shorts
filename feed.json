@@ -2907,5 +2907,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-29T21:54:08Z",
+  "run": "40960916038",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40960916038",
+  "videos": [
+   {
+    "title": "Marcus Rashford Manchester United'dan Ayrılmalı mı?",
+    "url": "https://youtu.be/AkLSe3LFALg",
+    "instagram": "https://www.instagram.com/reel/DfGBKIVjdp5/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

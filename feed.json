@@ -2923,5 +2923,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-10-29T22:25:11Z",
+  "run": "40963562781",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40963562781",
+  "videos": [
+   {
+    "title": "Derinkuyu: Bir Evin Bodrumundan Çıkan Yeraltı Şehri",
+    "url": "https://youtu.be/dGU8hcpJ5iM",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-derinkuyu.json"
  }
 ]

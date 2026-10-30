@@ -3017,5 +3017,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T14:35:35Z",
+  "run": "41072092958",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41072092958",
+  "videos": [
+   {
+    "title": "Galatasaray'da Victor Osimhen Kararı: Konya'da Oynayacak mı?",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

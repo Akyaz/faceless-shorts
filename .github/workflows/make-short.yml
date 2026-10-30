@@ -3,7 +3,7 @@ name: Short üret
 on:
   # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
-    # Günde 5 Shorts (maç günü 6): az ama güçlü video; çok sayıda zayıf video kanalın bütün videolarının gösterimini düşürüyor.
+    # Günde 6 Shorts (maç günü 7): az ama güçlü video; çok sayıda zayıf video kanalın bütün videolarının gösterimini düşürüyor.
     # GitHub zamanlanmış çalışmaları bazen hiç başlatmıyor: her saatin 25 dakika sonrasında bir yedek var.
     # Yedek, o saatin videosu kayda geçtiyse hiçbir şey üretmeden kapanır (pipeline/slots.py; saat-tür eşleşmesi orada).
     # 10: gündem haberi; 12: eskimeyen "Biliyor muydun?"; 19: spor haberi (tek konu)
@@ -17,6 +17,9 @@ on:
     # 15:00: eskimeyen "Biliyor muydun?" (önceden trend; tür eşleşmesi pipeline/slots.py'de)
     - cron: "50 11 * * *"
     - cron: "15 12 * * *"
+    # 17:00: magazin ve kültür-sanat haberi
+    - cron: "50 13 * * *"
+    - cron: "15 14 * * *"
     # 13:30: maç programı (Süper Lig, yoksa Türk takımlarının Avrupa maçları); maç olmayan gün video yok
     - cron: "20 10 * * *"
     - cron: "45 10 * * *"
@@ -58,9 +61,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, matchday, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, culture, matchday, ucl]
         default: story
 
 jobs:

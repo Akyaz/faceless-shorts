@@ -144,6 +144,24 @@ Son soru taraftarı taraf seçmeye ya da tahmin yapmaya çağırsın (örnek: "S
 "Derbiyi kim kazanır?", "Penaltı kararı doğru muydu?"). "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
+    # Magazin ve kültür-sanat: günde bir video. Ünlülerin özel hayatı yerine kendi açıkladıkları ve kamuya açık
+    # işleri (film, dizi, konser, ödül, gişe) anlatılır; dedikodu ve söylenti yok.
+    "culture": {
+        "label": "KÜLTÜR SANAT", "hashtags": ["magazin", "kültürsanat"], "category": "24",
+        "brief": """Görev: YouTube Shorts için Türkçe magazin ve kültür-sanat haberi. Amaç izleyicinin sonuna kadar izlemesi,
+videoyu bir arkadaşına göndermesi ve yorumlara görüşünü yazması.
+
+Haber seçimi: Türkiye'de en çok konuşulacak haberi seç: yeni film ve diziler (vizyon, fragman, final, yeni sezon,
+reyting ve gişe), ödüller ve festivaller (Altın Portakal, Oscar, Cannes gibi), konserler ve albümler, tiyatro
+oyunları ve prömiyerler, sergiler ve müzeler, kitaplar, ünlülerin kendi açıkladığı yeni projeler, rekorlar ve
+başarılar, Türk sanatçıların dünyadaki başarıları.
+Seçme: ünlülerin özel hayatına dair söylenti ve dedikodular (ilişki, ayrılık, boşanma iddiaları) — kişinin kendisi
+açıklamadıysa; sağlık durumu, hastalık ve ölüm haberleri; kavga, gözaltı, dava ve suçlama haberleri; çocukların yer
+aldığı haberler; siyasi polemikler; yalnızca bir sosyal medya paylaşımına tepki haberleri.
+Son soru izleyiciyi görüş bildirmeye çağırsın (örnek: "Sen bu filmi sinemada izler misin?", "Sence ödülü hak etti mi?",
+"Dizinin finalini beğendin mi?"). "pick" alanına seçtiğin haberin numarasını yaz.
+""",
+    },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
         "label": "SEN NE DERSİN?", "hashtags": ["tartışma", "gündem"],

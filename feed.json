@@ -3092,5 +3092,21 @@
     "instagram": "https://www.instagram.com/reel/DfH4KZDGw_A/"
    }
   ]
+ },
+ {
+  "time": "2026-10-30T15:25:20Z",
+  "run": "41079926592",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41079926592",
+  "videos": [
+   {
+    "title": "İstanbul Elektrik Kesintisi: 15 İlçede 8 Saat Elektrik Olmayacak",
+    "url": "https://youtu.be/-ImmTCHvMFc",
+    "instagram": "https://www.instagram.com/reel/DfH5dxhlf26/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

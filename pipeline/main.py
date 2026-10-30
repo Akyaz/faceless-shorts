@@ -271,6 +271,10 @@ def main():
         backgrounds, credits = [args.background] * len(segments), []
     else:
         backgrounds, credits = find_images(plan, work)
+        # Görselsiz (yalnızca renkli zemin) video kaydırılıp geçiliyor: hiç görsel bulunamadıysa video üretilmez.
+        # Maç kartları kendi grafiğini çizdiği için hariç.
+        if not plan.get("match") and not any(backgrounds):
+            raise RuntimeError("Hiç görsel bulunamadı; görselsiz video üretilmiyor, bu saat atlanıyor.")
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
     # Önce bütün sesler: anlatıcının sesi ortada değişirse önceki parçalar da yeni sesle okunur

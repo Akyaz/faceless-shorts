@@ -19,6 +19,9 @@ from .news import sensitive_headline
 VAGUE = re.compile(r"\b(hakkında|ilişkin|ile ilgili|konusunda)\s+(resmi\s+|yeni\s+|önemli\s+)?(bir\s+)?"
                    r"(açıklama|bilgi|paylaşım|güncelleme)(de|da)?\s+(yaptı|verdi|bulundu|geldi)"
                    r"|merak edilen|herkes(in)? bunu konuşuyor|ortalığı karıştıran"
+                   # Kimden ya da hangi eserden söz edildiğini söylemeyen ifadeler (isimsiz video tepki çekiyor)
+                   r"|\bünlü (bir )?(isim|oyuncu|şarkıcı|sanatçı|futbolcu)\b|\bo sahne|\biki (oyuncu|isim|ünlü)\b"
+                   r"|\b(sürpriz|gizemli) (isim|aşk|ilişki)\b|\bkim oldu\?|\bzirvenin sahibi\b"
                    r"|\b(made|issued|gave) an? (official )?(statement|update) (on|about)\b", re.I)
 
 
@@ -160,6 +163,12 @@ açıklamadıysa; sağlık durumu, hastalık ve ölüm haberleri; kavga, gözalt
 aldığı haberler; siyasi polemikler; yalnızca bir sosyal medya paylaşımına tepki haberleri; kilo, diyet, görünüm,
 estetik ve kıyafet haberleri; televizyon programlarındaki anlık sohbet ve şakalar. Haberin merkezinde bir eser ya da iş
 (film, dizi, şarkı, albüm, oyun, sergi, kitap, ödül, konser, gişe, reyting) olmalı; yoksa seçme.
+İsim kuralı (çok önemli): Haberdeki dizi, film, oyun, albüm adını ve sözü edilen her oyuncu, karakter ve sanatçının
+adını açıkça söyle. "İki oyuncu", "ünlü isim", "o sahne", "yasak aşk ortaya çıktı" gibi kimin ya da neyin söz konusu
+olduğunu söylemeyen ifadeler yasak. Başlıklarda (diğer kaynaklar dahil) isimler yoksa o haberi seçme.
+Başlık ve ekran başlığı asıl bilgiyi versin: "Zirvenin sahibi kim oldu?" değil "Reytinglerde zirve Kızılcık Şerbeti'nin".
+Görsel aramaları: oyuncu fotoğrafı kullanılmaz; image_queries'e konunun geçtiği ortamı yaz (örnek: "film set",
+"television studio", "theatre stage", "concert stage", "cinema hall", "film festival red carpet", "art gallery").
 Son soru izleyiciyi görüş bildirmeye çağırsın (örnek: "Sen bu filmi sinemada izler misin?", "Sence ödülü hak etti mi?",
 "Dizinin finalini beğendin mi?"). "pick" alanına seçtiğin haberin numarasını yaz.
 """,
@@ -448,7 +457,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     if out.get("skip") or not out.get("paragraphs"):
         raise NoSuitableStory(f"{kind}: uygun haber yok")
-    unclear = [p for p in out["paragraphs"] if vague(p)]
+    unclear = [p for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")] if vague(p)]
     if unclear:  # bir kez düzelttir; yine olmazsa video belirsiz çıkmasın diye hata verir
         print(f"Cevabı vermeyen cümle, yeniden yazdırılıyor: {unclear}")
         note = ("\nThe following sentences do not give the answer; say exactly what was said or decided, or pick "
@@ -456,7 +465,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
                 "\nŞu cümleler cevabı vermiyor; ne dendiğini ya da ne karar verildiğini açıkça söyle, "
                 "yoksa başka bir haber seç: ")
         out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
-        if any(vague(p) for p in out["paragraphs"]):
+        if any(vague(p) for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")]):
             raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]

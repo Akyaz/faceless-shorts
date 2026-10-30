@@ -3172,5 +3172,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-30T21:34:06Z",
+  "run": "41131483941",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41131483941",
+  "videos": [
+   {
+    "title": "Fenerbahçe Yabancı Hoca Getirmeli mi? Jose Luis Mendilibar İddiası",
+    "url": "https://youtu.be/z8F0QhAc-jA",
+    "instagram": "https://www.instagram.com/reel/DfIjqgeiTwx/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

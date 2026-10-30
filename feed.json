@@ -3188,5 +3188,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T22:00:02Z",
+  "run": "41134617934",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41134617934",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti Dizisinde Murat Aygen Ayrılıyor",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

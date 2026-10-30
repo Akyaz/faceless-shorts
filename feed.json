@@ -2956,5 +2956,20 @@
    }
   ],
   "slot": "07:15"
+ },
+ {
+  "time": "2026-10-30T13:46:32Z",
+  "run": "41064153989",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41064153989",
+  "videos": [
+   {
+    "title": "Oshimen Konyaspor maçında olacak mı",
+    "url": "https://youtu.be/1ak_G3fSewU",
+    "instagram": "https://www.instagram.com/reel/DfHuFE4iA2x/"
+   }
+  ]
  }
 ]

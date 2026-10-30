@@ -3203,5 +3203,22 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T22:08:44Z",
+  "run": "41133430152",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41133430152",
+  "videos": [
+   {
+    "title": "Mansa Musa: Was He Really the Richest Man Who Ever Lived?",
+    "url": "https://youtu.be/n0FjPyZQZKQ",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-mansa-musa.json"
  }
 ]

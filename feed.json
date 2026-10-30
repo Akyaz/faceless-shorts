@@ -3002,5 +3002,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T14:29:54Z",
+  "run": "41071837209",
+  "event": "workflow_dispatch",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41071837209",
+  "videos": [
+   {
+    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 30 Ekim Maç Programı ve Saatleri",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

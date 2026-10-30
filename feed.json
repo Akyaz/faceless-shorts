@@ -3108,5 +3108,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-30T16:51:22Z",
+  "run": "41092582786",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41092582786",
+  "videos": [
+   {
+    "title": "Osimhen 11'de Başladı, Kerem İçin Benfica'ya 1 Milyon Euro Ödeme!",
+    "url": "https://youtu.be/lGOamW1E9Y0",
+    "instagram": "https://www.instagram.com/reel/DfIDUKxlLQn/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

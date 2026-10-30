@@ -124,6 +124,26 @@ tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; maga
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
+    # Spor tek haber: Türkiye'de en çok etkileşim alan konu. Özet (4 başlık) hiçbirini akılda bırakmıyordu;
+    # tek konu, taraftarı yorum yazmaya iten bir soruyla biter.
+    "sportstory": {
+        "label": "SPOR", "hashtags": ["spor", "futbol"], "category": "17",
+        "brief": """Görev: YouTube Shorts için Türkçe spor haberi. Amaç taraftarın kaydırmadan sonuna kadar izlemesi ve
+yorumlara görüşünü yazması: Türkiye'de spor en çok tartışılan konudur.
+
+Haber seçimi: Türkiye'de en çok konuşulacak ve taraftarı tartıştıracak haberi seç. Öncelik sırası:
+1. Galatasaray, Fenerbahçe, Beşiktaş ve Trabzonspor: derbiler, kritik maç sonuçları, transferler ve ayrılıklar,
+   teknik direktör kararları, hakem kararları ve VAR tartışmaları, kadro ve sakatlık haberleri.
+2. Türk takımlarının Avrupa maçları; A Milli Takım ve millî oyuncular (yurt dışında oynayan yıldız Türk oyuncular).
+3. Süper Lig'de puan durumunu değiştiren sonuçlar ve sürprizler; basketbol ve voleybolda büyük başarılar.
+Somut bilgisi olan haberi seç (skor, golü atan, transfer ücreti, kim ne dedi). Söylenti ve "iddia" haberlerini ancak
+kaynakları açıkça söylüyorsa seç ve "iddiaya göre" diye anlat.
+Seçme: sakatlığın ayrıntısı öne çıkan acı haberler; taraftar olayları, kavga ve şiddet; bahis; canlı anlatım ve
+muhtemel on birler; yalnızca bir yorumcunun görüşünü aktaran haberler.
+Son soru taraftarı taraf seçmeye ya da tahmin yapmaya çağırsın (örnek: "Sence bu transfer doğru mu?",
+"Derbiyi kim kazanır?", "Penaltı kararı doğru muydu?"). "pick" alanına seçtiğin haberin numarasını yaz.
+""",
+    },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
         "label": "SEN NE DERSİN?", "hashtags": ["tartışma", "gündem"],
@@ -424,6 +444,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
             "lang": spec.get("lang", "tr"), "segments": segments,
             "sources": [headline], **_image_fields(out),
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
+            "category": spec.get("category"),
             "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out)}
 
 
@@ -525,4 +546,5 @@ def build_script(headlines, mode="story", recent=()):
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
     if STORIES.get(mode, {}).get("lang") == "en":
         raise RuntimeError("İngilizce video dil modeli olmadan yazılamıyor; bu saatin videosu atlanıyor.")
-    return plain_digest(headlines, "digest" if mode in STORIES else mode)
+    fallback = "sports" if mode == "sportstory" else "digest" if mode in STORIES else mode
+    return plain_digest(headlines, fallback)

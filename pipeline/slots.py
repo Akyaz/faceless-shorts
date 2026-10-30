@@ -18,15 +18,16 @@ import urllib.request
 
 # cron -> (saat adı, video türü). Saatler UTC; Türkiye saati = UTC+3. Her saatin ikinci satırı yedektir.
 SLOTS = {
-    "5 4 * * *": ("07:15", "morning"), "30 4 * * *": ("07:15", "morning"),
+    # Günde 5 Shorts (maç günü 6). 07:15 sabah özeti ve 16:00 İngilizce "On This Day" kaldırıldı: özetler akılda
+    # kalmıyordu, İngilizce video Türkçe kitleyi karıştırıyordu.
     "50 6 * * *": ("10:00", "story"), "15 7 * * *": ("10:00", "story"),
     # 12:00 ve 15:00: eskimeyen "Biliyor muydun?" (haber birkaç saatte eskiyor, bu videolar aylarca önerilebilir)
     "50 8 * * *": ("12:00", "fact"), "15 9 * * *": ("12:00", "fact"),
-    "20 10 * * *": ("13:30", "sports"), "45 10 * * *": ("13:30", "sports"),
+    # 13:30: maç programı; Süper Lig maçı yoksa Türk takımlarının Avrupa maçları, o da yoksa video çıkmaz
+    "20 10 * * *": ("13:30", "matchday"), "45 10 * * *": ("13:30", "matchday"),
     "50 11 * * *": ("15:00", "fact"), "15 12 * * *": ("15:00", "fact"),
-    # 16:00 İngilizce dünya haberleri az izleniyordu: yerine İngilizce "On This Day" (Wikipedia tarihte bugün)
-    "50 12 * * *": ("16:00", "onthisday"), "15 13 * * *": ("16:00", "onthisday"),
-    "50 15 * * *": ("19:00", "story"), "15 16 * * *": ("19:00", "story"),
+    # 19:00: tek konulu spor haberi (taraftarı yoruma çağıran soruyla biter)
+    "50 15 * * *": ("19:00", "sportstory"), "15 16 * * *": ("19:00", "sportstory"),
     # 20:30 günün özeti yorum getirmiyordu: yerine "Sen ne dersin?" tartışma videosu
     "20 17 * * *": ("20:30", "debate"), "45 17 * * *": ("20:30", "debate"),
     # 13:00: yalnızca önceden zamanlanmış video varsa (ör. bayram tebriği); yoksa hiçbir şey üretilmez

@@ -3,13 +3,10 @@ name: Short üret
 on:
   # Saatler Türkiye saatiyle (UTC+3). GitHub zamanlamayı geciktirebildiği için 10 dakika erken başlar.
   schedule:
-    # Günde 8 otomatik Shorts: YouTube kanala günde 9-10 yüklemeye izin veriyor; biri her gün 21:00'deki tarih videosuna kalır.
+    # Günde 5 Shorts (maç günü 6): az ama güçlü video; çok sayıda zayıf video kanalın bütün videolarının gösterimini düşürüyor.
     # GitHub zamanlanmış çalışmaları bazen hiç başlatmıyor: her saatin 25 dakika sonrasında bir yedek var.
     # Yedek, o saatin videosu kayda geçtiyse hiçbir şey üretmeden kapanır (pipeline/slots.py; saat-tür eşleşmesi orada).
-    # 07:15: sabah özeti (bugün seni etkileyecek 3 şey)
-    - cron: "5 4 * * *"
-    - cron: "30 4 * * *"
-    # 10 ve 19: birer gündem haberi; 12: eskimeyen "Biliyor muydun?"
+    # 10: gündem haberi; 12: eskimeyen "Biliyor muydun?"; 19: spor haberi (tek konu)
     # (her saat ayrı satırda: GitHub hangi satırın tetiklendiğini bildiriyor, birleşik satırda saat ayırt edilemez)
     - cron: "50 6 * * *"
     - cron: "15 7 * * *"
@@ -20,10 +17,7 @@ on:
     # 15:00: eskimeyen "Biliyor muydun?" (önceden trend; tür eşleşmesi pipeline/slots.py'de)
     - cron: "50 11 * * *"
     - cron: "15 12 * * *"
-    # 16:00: İngilizce "On This Day": Wikipedia'dan tarihte bugün (ABD'de sabah)
-    - cron: "50 12 * * *"
-    - cron: "15 13 * * *"
-    # 13:30: spor gündemi özeti
+    # 13:30: maç programı (Süper Lig, yoksa Türk takımlarının Avrupa maçları); maç olmayan gün video yok
     - cron: "20 10 * * *"
     - cron: "45 10 * * *"
     # 13:00: yalnızca scripts/scheduled/ altında o güne video varsa (bayram tebriği gibi)
@@ -64,9 +58,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, matchday, ucl]
         default: story
 
 jobs:
@@ -152,6 +146,8 @@ jobs:
             dir=out; [ "$i" -gt 1 ] && dir="out/$i"
             if [ -n "$SCRIPT" ]; then
               python -m pipeline.main --script "$SCRIPT" --item "$i" --out "$dir" --history state/history.json || failed=1
+            elif [ "$MODE" = "matchday" ]; then
+              python -m pipeline.fixtures --out "$dir" --auto --emphasize "$UCL_EMPHASIZE" || failed=1
             elif [ "$MODE" = "ucl" ]; then
               extra=(); [ "$UCL_RESULTS" = "true" ] && extra+=(--results)
               python -m pipeline.fixtures --out "$dir" --emphasize "$UCL_EMPHASIZE" "${extra[@]}" || failed=1

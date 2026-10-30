@@ -189,9 +189,10 @@ def news_plan(args):
             mixed = [h for group in zip(*feeds) for h in group]
             headlines = list({h["title"]: h for h in mixed}.values())
         else:
-            headlines = fetch_headlines(limit=30, topic=args.mode if args.mode in ("sports", "world") else "top")
+            topic = "sports" if args.mode in ("sports", "sportstory") else "world" if args.mode == "world" else "top"
+            headlines = fetch_headlines(limit=30, topic=topic)
     single = args.mode in script.STORIES
-    if args.mode in ("story", "world", "trend", "debate") and not args.offline:
+    if args.mode in ("story", "world", "trend", "debate", "sportstory") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
@@ -203,7 +204,7 @@ def news_plan(args):
         print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
         headlines = rich if len(rich) >= 3 else headlines
     # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
-    use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate")
+    use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate", "sportstory")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]
@@ -219,7 +220,8 @@ def news_plan(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact", "sportstory"],
+                    default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")

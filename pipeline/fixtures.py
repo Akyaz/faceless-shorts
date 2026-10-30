@@ -1,6 +1,9 @@
-"""Şampiyonlar Ligi'nde günün maç programı videosu: takımlar ve saatler ekranda, seslendirme tek cümle.
+"""Günün maç programı videosu: takımlar ve saatler ekranda, seslendirme tek cümle.
 
-Kullanım: python -m pipeline.fixtures [--out out] [--date YYYYAAGG] [--results] [--emphasize "Takım,Takım"]
+Kullanım: python -m pipeline.fixtures [--out out] [--date YYYYAAGG] [--league ucl|uel|uecl|superlig] [--auto]
+          [--results] [--emphasize "Takım,Takım"]
+--league hangi turnuvanın programı (varsayılan Şampiyonlar Ligi).
+--auto o gün Süper Lig maçı varsa Süper Lig programını, yoksa Türk takımlarının Avrupa maçlarını gösterir.
 --results önce bir önceki günün sonuçlarını (skorlar tek tek gelir), ardından günün programını gösterir.
 --emphasize verilen takımların maçını kırmızı çerçeveye alır; Türk takımlarının maçı zaten sarı yazılır.
 O gün maç yoksa video üretmeden çıkar. Veri ESPN'in açık skor tablosundan alınır; saatler Türkiye saatidir.
@@ -9,13 +12,22 @@ import subprocess
 import argparse
 import datetime
 import json
+import unicodedata
 import urllib.request
 from pathlib import Path
 
 from . import music, render
 from .tts import synthesize
 
-SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard?dates={date}"
+SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard?dates={date}"
+# kısa ad -> (ESPN kodu, ekran etiketi, cümle içindeki adı, etiket)
+LEAGUES = {
+    "ucl": ("uefa.champions", "ŞAMPİYONLAR LİGİ", "Şampiyonlar Ligi", "şampiyonlarligi"),
+    "uel": ("uefa.europa", "AVRUPA LİGİ", "Avrupa Ligi", "avrupaligi"),
+    "uecl": ("uefa.europa.conf", "KONFERANS LİGİ", "Konferans Ligi", "konferansligi"),
+    "superlig": ("tur.1", "SÜPER LİG", "Süper Lig", "süperlig"),
+}
+EUROPE = ("ucl", "uel", "uecl")
 TR = datetime.timezone(datetime.timedelta(hours=3))
 MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım",
           "Aralık"]
@@ -32,17 +44,45 @@ NAMES = {
     "LASK Linz": "LASK", "AEK Athens": "AEK", "VfB Stuttgart": "Stuttgart", "Borussia Dortmund": "Dortmund",
     "Bayer Leverkusen": "Leverkusen", "AC Milan": "Milan", "Olympiacos": "Olympiakos", "Dinamo Zagreb": "Dinamo Zagreb",
 }
-TURKISH = {"Galatasaray", "Fenerbahçe", "Beşiktaş", "Trabzonspor", "Başakşehir", "Samsunspor"}
+# Türk kulüpleri: ESPN adları İngilizce harflerle geliyor ("Fenerbahce", "Istanbul Basaksehir"); harfleri sadeleştirilmiş
+# ad bu anahtarlardan birini içeriyorsa Türkçe adı yazılır
+TURKISH_CLUBS = {
+    "galatasaray": "Galatasaray", "fenerbahce": "Fenerbahçe", "besiktas": "Beşiktaş", "trabzonspor": "Trabzonspor",
+    "basaksehir": "Başakşehir", "samsunspor": "Samsunspor", "goztepe": "Göztepe", "kasimpasa": "Kasımpaşa",
+    "antalyaspor": "Antalyaspor", "alanyaspor": "Alanyaspor", "konyaspor": "Konyaspor", "kayserispor": "Kayserispor",
+    "gaziantep": "Gaziantep FK", "rizespor": "Rizespor", "eyupspor": "Eyüpspor", "genclerbirligi": "Gençlerbirliği",
+    "kocaelispor": "Kocaelispor", "karagumruk": "Karagümrük", "sivasspor": "Sivasspor", "hatayspor": "Hatayspor",
+    "bodrum": "Bodrum FK", "adana demirspor": "Adana Demirspor", "ankaragucu": "Ankaragücü",
+}
+TURKISH = set(TURKISH_CLUBS.values())
+BIG = {"Galatasaray", "Fenerbahçe", "Beşiktaş", "Trabzonspor"}  # Süper Lig tablosunda sarı yazılır
+
+
+def _fold(text):
+    text = text.lower().translate(str.maketrans("çğıöşü", "cgiosu"))
+    return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+
+
+def _in(name):
+    """Bulunma eki: "Şampiyonlar Ligi'nde", "Süper Lig'de"."""
+    return f"{name}'nde" if name.endswith("i") else f"{name}'de"
+
+
+def team_name(espn):
+    if espn in NAMES:
+        return NAMES[espn]
+    folded = _fold(espn)
+    return next((tr for key, tr in TURKISH_CLUBS.items() if key in folded), espn)
 MIN_SECONDS = 12  # tablo okunabilsin diye seslendirme bitse de görüntü ekranda kalır
 
 
-def fetch(day, finished=False):
+def fetch(day, finished=False, league="ucl"):
     """O günün maçları: [(Türkiye saatiyle başlama zamanı, ev sahibi, deplasman)], saat sırasıyla.
     finished=True: yalnızca bitmiş maçlar, sonlarına skor eklenir ("1 - 4")."""
     matches = []
     # Gece yarısından sonra başlayan maç ESPN'de bir önceki günün listesinde olabilir; iki gün de sorulur
     for query in (day - datetime.timedelta(days=1), day):
-        req = urllib.request.Request(SCOREBOARD.format(date=query.strftime("%Y%m%d")),
+        req = urllib.request.Request(SCOREBOARD.format(league=LEAGUES[league][0], date=query.strftime("%Y%m%d")),
                                      headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=30) as resp:
             events = json.load(resp).get("events", [])
@@ -54,8 +94,7 @@ def fetch(day, finished=False):
             if finished and state not in ("STATUS_FULL_TIME", "STATUS_FINAL", "STATUS_FINAL_AET", "STATUS_FINAL_PEN"):
                 continue
             sides = {c["homeAway"]: c for c in event["competitions"][0]["competitors"]}
-            home, away = (NAMES.get(sides[k]["team"]["displayName"], sides[k]["team"]["displayName"])
-                          for k in ("home", "away"))
+            home, away = (team_name(sides[k]["team"]["displayName"]) for k in ("home", "away"))
             score = (f"{sides['home'].get('score', '?')} - {sides['away'].get('score', '?')}",) if finished else ()
             matches.append((start, home, away, *score))
     return sorted(set(matches))
@@ -89,14 +128,30 @@ def main():
     ap.add_argument("--date", help="YYYYAAGG; verilmezse bugün (Türkiye saati)")
     ap.add_argument("--results", action="store_true", help="önce bir önceki günün sonuçlarını göster")
     ap.add_argument("--emphasize", default="", help="kırmızı çerçeveye alınacak takımlar, virgülle")
+    ap.add_argument("--league", choices=list(LEAGUES), default="ucl")
+    ap.add_argument("--auto", action="store_true",
+                    help="Süper Lig maçı varsa Süper Lig, yoksa Türk takımlarının Avrupa maçları")
     args = ap.parse_args()
     day = (datetime.datetime.strptime(args.date, "%Y%m%d").date() if args.date
            else datetime.datetime.now(TR).date())
     emphasize = {t.strip() for t in args.emphasize.split(",") if t.strip()}
-    matches = fetch(day)
-    results = fetch(day - datetime.timedelta(days=1), finished=True) if args.results else []
+    league, turks_abroad = args.league, False
+    if args.auto:
+        matches = fetch(day, league="superlig")
+        league = "superlig"
+        if not matches:  # Avrupa gecesi: yalnızca Türk takımlarının maçları
+            turks_abroad = True
+            matches = sorted({m for lg in EUROPE for m in fetch(day, league=lg) if {m[1], m[2]} & TURKISH})
+    else:
+        matches = fetch(day, league=league)
+    _, label, name, league_tag = LEAGUES[league]
+    if turks_abroad:
+        label, name, league_tag = "AVRUPA'DA TÜRKLER", "Avrupa kupaları", "avrupakupaları"
+    highlight = BIG if league == "superlig" and not turks_abroad else TURKISH
+    results = (fetch(day - datetime.timedelta(days=1), finished=True, league=league)
+               if args.results and not args.auto else [])
     if not matches and not results:
-        print(f"{day}: Şampiyonlar Ligi'nde maç yok, video üretilmedi.")
+        print(f"{day}: {name} için maç yok, video üretilmedi.")
         return
 
     out = Path(args.out)
@@ -119,8 +174,8 @@ def main():
         print("Sonuçlar |", "; ".join(f"{h} {sc} {a}" for h, a, sc in rows))
         draw = lambda n, path: render.draw_fixture_card(  # noqa: E731
             "Sürprizlerle Dolu Gece", f"{yesterday.day} {MONTHS[yesterday.month - 1]} Sonuçları", [(None, rows)],
-            path, "ŞAMPİYONLAR LİGİ", highlight=TURKISH, emphasize=emphasize, visible=n)
-        synthesize("Şampiyonlar Ligi'nde dün gece neler oldu? İşte sonuçlar.", intro)
+            path, label, highlight=highlight, emphasize=emphasize, visible=n)
+        synthesize(f"{_in(name)} dün gece neler oldu? İşte sonuçlar.", intro)
         # Boş tablo yalnızca bir an görünür; seslendirme skorlar gelirken üstüne eklenir
         draw(0, work / "results0.png")
         parts.append((work / "results0.png", _silence(0.8, work / "tick0.mp3"), 0.0, False))
@@ -130,10 +185,17 @@ def main():
         parts.append((work / f"results{len(rows)}.png", _silence(3.0, work / "hold.mp3"), 0.0, False))
     if matches:
         card, voice = work / "card.png", work / "voice.mp3"
-        render.draw_fixture_card("Günün Maçları", _label(day), list(groups.items()), card, "ŞAMPİYONLAR LİGİ",
-                                 highlight=TURKISH, note="Saatler Türkiye saatiyle")
-        synthesize("Ve bugünün programı." if results
-                   else f"Şampiyonlar Ligi'nde bugün {_count(len(matches))} maç var. İşte günün programı.", voice)
+        render.draw_fixture_card("Günün Maçları", _label(day), list(groups.items()), card, label,
+                                 highlight=highlight, note="Saatler Türkiye saatiyle")
+        if results:
+            spoken = "Ve bugünün programı."
+        elif turks_abroad:
+            spoken = (f"Türk takımları bugün Avrupa'da {_count(len(matches))} maça çıkıyor. "
+                      "Sence kaç galibiyet gelir? Yorumlara yaz.")
+        else:
+            spoken = (f"{_in(name)} bugün {_count(len(matches))} maç var. "
+                      "Sence hangi maç sürpriz yapar? Yorumlara yaz.")
+        synthesize(spoken, voice)
         hold = max(0.35, MIN_SECONDS - render.audio_duration(voice)) if not results else 5.0
         parts.append((card, voice, hold, True))
 
@@ -155,22 +217,30 @@ def main():
     listing = "\n".join(f"{start:%H:%M}  {home} - {away}" for start, home, away in matches)
     if results:
         yesterday = day - datetime.timedelta(days=1)
-        title = (f"Bu Şampiyonlar Ligi Haftasında Neler Oldu?! 😱 {yesterday.day} {MONTHS[yesterday.month - 1]} "
+        title = (f"Bu {name} Haftasında Neler Oldu?! 😱 {yesterday.day} {MONTHS[yesterday.month - 1]} "
                  f"Sonuçları ve {day.day} {MONTHS[day.month - 1]} Dev Maç Programı!")
         scores = "\n".join(f"{home} {score} {away}" for _, home, away, score in results)
         body = f"{yesterday.day} {MONTHS[yesterday.month - 1]} sonuçları:\n{scores}\n\n" + (
             f"{day.day} {MONTHS[day.month - 1]} programı:\n{listing}\n\n" if listing else "")
     else:
-        title = f"Şampiyonlar Ligi'nde Bugün Hangi Maçlar Var? {day.day} {MONTHS[day.month - 1]} Maç Programı"
+        when = f"{day.day} {MONTHS[day.month - 1]}"
+        if turks_abroad:
+            title = f"Türk Takımlarının Avrupa Maçları Bugün Saat Kaçta? {when} Maç Programı"
+        else:
+            title = f"{_in(name)} Bugün Hangi Maçlar Var? {when} Maç Programı ve Saatleri"
         body = f"{listing}\n\n"
-    tags = ["ucl", "şampiyonlarligi"] + [t.lower() for t in locals_] + ["maçprogramı"]
+    tags = ([] if turks_abroad or league == "superlig" else [league]) + [league_tag] \
+        + ["".join(t.lower().split()) for t in locals_][:4] + ["maçprogramı"]
     meta = {
         "title": title[:100],
         "description": f"{title}\n\n{render.date_line()}\n{render.channel_line()}\n\n{body}Saatler Türkiye saatiyledir. Kaynak: ESPN.\n\n"
                        "Günün haberleri her gün kısa ve net. Kaçırmamak için kanala abone ol.\n\n"
                        f"{music_credit}\n\n" + " ".join(f"#{t}" for t in tags + ["shorts"]),
-        "tags": tags + ["şampiyonlar ligi", "maç sonuçları", "maç programı", "shorts"],
+        "tags": tags + [name.lower(), "maç sonuçları", "maç programı", "bugün hangi maçlar var", "shorts"],
         "category": "17",
+        # kanal adına ilk yorum: yorum getirsin diye videodaki soru
+        "comment": "" if results else ("Sence Türk takımlarından kaç galibiyet gelir?" if turks_abroad
+                                       else "Sence bugün hangi maç sürpriz yapar?"),
         "language": "tr",
     }
     (out / "metadata.json").write_text(json.dumps(

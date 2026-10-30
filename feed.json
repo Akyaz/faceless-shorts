@@ -3047,5 +3047,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T14:58:07Z",
+  "run": "41075613832",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41075613832",
+  "videos": [
+   {
+    "title": "Haysiyet Dizisinde Yasak Aşk Ortaya Çıktı: O Sahneye Yorum Yağdı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

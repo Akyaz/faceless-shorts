@@ -3140,5 +3140,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-30T18:20:04Z",
+  "run": "41105317554",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41105317554",
+  "videos": [
+   {
+    "title": "Jean Shrimpton's Accidental Minidress in 1965",
+    "url": "https://youtu.be/7ufncvqK-t0",
+    "instagram": "https://www.instagram.com/reel/DfINdK-Gjvg/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

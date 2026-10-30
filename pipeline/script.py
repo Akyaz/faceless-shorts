@@ -157,7 +157,9 @@ oyunları ve prömiyerler, sergiler ve müzeler, kitaplar, ünlülerin kendi aç
 başarılar, Türk sanatçıların dünyadaki başarıları.
 Seçme: ünlülerin özel hayatına dair söylenti ve dedikodular (ilişki, ayrılık, boşanma iddiaları) — kişinin kendisi
 açıklamadıysa; sağlık durumu, hastalık ve ölüm haberleri; kavga, gözaltı, dava ve suçlama haberleri; çocukların yer
-aldığı haberler; siyasi polemikler; yalnızca bir sosyal medya paylaşımına tepki haberleri.
+aldığı haberler; siyasi polemikler; yalnızca bir sosyal medya paylaşımına tepki haberleri; kilo, diyet, görünüm,
+estetik ve kıyafet haberleri; televizyon programlarındaki anlık sohbet ve şakalar. Haberin merkezinde bir eser ya da iş
+(film, dizi, şarkı, albüm, oyun, sergi, kitap, ödül, konser, gişe, reyting) olmalı; yoksa seçme.
 Son soru izleyiciyi görüş bildirmeye çağırsın (örnek: "Sen bu filmi sinemada izler misin?", "Sence ödülü hak etti mi?",
 "Dizinin finalini beğendin mi?"). "pick" alanına seçtiğin haberin numarasını yaz.
 """,

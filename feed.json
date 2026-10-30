@@ -2971,5 +2971,21 @@
     "instagram": "https://www.instagram.com/reel/DfHuFE4iA2x/"
    }
   ]
+ },
+ {
+  "time": "2026-10-30T13:47:05Z",
+  "run": "41065076277",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41065076277",
+  "videos": [
+   {
+    "title": "LGS 2027 Tarihi Açıklandı! Sınav Ne Zaman Yapılacak?",
+    "url": "https://youtu.be/wydlvtDZnwM",
+    "instagram": "https://www.instagram.com/reel/DfHuNsnjxOP/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

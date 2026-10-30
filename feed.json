@@ -3156,5 +3156,21 @@
    }
   ],
   "slot": "16:00"
+ },
+ {
+  "time": "2026-10-30T20:19:47Z",
+  "run": "41121217719",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41121217719",
+  "videos": [
+   {
+    "title": "Doğalgaz Limitleri Güncellendi: 2,8 Milyon Abonenin Faturası Artabilir",
+    "url": "https://youtu.be/mmSqy82GnJI",
+    "instagram": "https://www.instagram.com/reel/DfIbHlxD3LN/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

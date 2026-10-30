@@ -1,5 +1,7 @@
 """Kartları çizer, altyazıları yakar ve videoyu birleştirir: dikey Short ya da yatay haftalık derleme."""
+import hashlib
 import json
+import random
 import subprocess
 from pathlib import Path
 
@@ -9,6 +11,51 @@ W, H = 1080, 1920
 WIDE = (1920, 1080)  # haftalık derleme
 LOGO = Path(__file__).resolve().parent.parent / "assets" / "logo.png"
 ACCENTS = [(229, 57, 53), (30, 136, 229), (67, 160, 71), (251, 140, 0), (142, 36, 170)]
+
+# Şablon çeşitliliği: her dikey video başlığından türetilen kendi görünümüyle çıkar (renk, başlık, altyazı, hareket,
+# ses). Hep aynı kalıpta video YouTube'un "seri üretim" (inauthentic content) değerlendirmesine takılabiliyor;
+# izleyici de art arda gelen aynı görünümlü videoları daha kolay kaydırıyor. Seçilen stil metadata.json'a yazılır:
+# hangi stilin daha çok izlendiği sonradan karşılaştırılabilir.
+PALETTES = {
+    "klasik": ACCENTS,
+    "okyanus": [(0, 121, 107), (2, 119, 189), (40, 53, 147), (0, 131, 143), (21, 101, 192)],
+    "gunbatimi": [(216, 67, 21), (194, 24, 91), (123, 31, 162), (239, 108, 0), (173, 20, 87)],
+    "orman": [(46, 125, 50), (85, 139, 47), (0, 105, 92), (130, 119, 23), (27, 94, 32)],
+}
+HOOK_COLORS = {"sari": (255, 214, 0), "beyaz": (255, 255, 255), "turkuaz": (0, 229, 255), "turuncu": (255, 160, 0)}
+HIGHLIGHTS = {"yok": None, "sari": (255, 214, 0), "yesil": (0, 230, 118), "turkuaz": (0, 229, 255)}
+STYLE_CHOICES = {
+    "palette": list(PALETTES),
+    "hook_color": list(HOOK_COLORS),
+    "hook_box": [False, True],  # başlığın arkasında koyu kutu
+    "caption_size": [84, 92, 104],
+    "caption_words": [2, 3, 4],
+    "caption_pos": ["orta", "alt"],
+    "caption_bg": ["kontur", "kutu"],
+    "highlight": list(HIGHLIGHTS),  # konuşulan kelime renkli
+    "upper": [False, True],
+    "motion": ["sirayla", "yakinlas", "uzaklas", "kaydir"],
+    "motion_amount": [0.05, 0.08, 0.10],
+    "dim": [0.4, 0.5, 0.55],  # fotoğrafın ne kadar karartılacağı
+    "speaker": ["male", "female"],
+    "rate": ["+8%", "+12%", "+15%"],
+}
+
+
+def make_style(seed, lang="tr"):
+    """seed (ör. video başlığı) aynı kaldıkça aynı stil çıkar: yeniden denemede video aynı görünür."""
+    rng = random.Random(int(hashlib.sha256(str(seed).encode("utf-8")).hexdigest(), 16))
+    style = {key: rng.choice(values) for key, values in STYLE_CHOICES.items()}
+    if style["highlight"] != "yok" and style["caption_words"] == 2:  # iki kelimede vurgu gözü yoruyor
+        style["caption_words"] = 3
+    style["lang"] = lang
+    return style
+
+
+def _upper(text, lang="tr"):
+    if lang == "tr":
+        text = text.replace("i", "İ").replace("ı", "I")
+    return text.upper()
 
 
 def _font_path(bold=True):
@@ -29,7 +76,7 @@ def _gradient(accent, size=(W, H)):
     return img
 
 
-def _photo(path, size=(W, H)):
+def _photo(path, size=(W, H), dim=0.5):
     """Görseli kadraja kırpar ve altyazı okunsun diye karartır."""
     w, h = size
     src = Image.open(path).convert("RGB")
@@ -37,7 +84,7 @@ def _photo(path, size=(W, H)):
     src = src.resize((round(src.width * scale), round(src.height * scale)), Image.LANCZOS)
     left, top = (src.width - w) // 2, (src.height - h) // 2
     img = src.crop((left, top, left + w, top + h))
-    return Image.blend(img, Image.new("RGB", size), 0.5)
+    return Image.blend(img, Image.new("RGB", size), dim)
 
 
 def _wrap(draw, text, font, max_width):
@@ -94,7 +141,7 @@ def _subscribe(d, bold, regular, texts):
     d.text((W / 2, 1385), text, font=bold, fill="white", anchor="mm")
 
 
-def _subscribe_layer(path, lang, wide, promise):
+def _subscribe_layer(path, lang, wide, promise, promise_text=None):
     """Şeffaf katman: kırmızı abone düğmesi (dikeyde altyazının altında, yatayda sağ üst köşede)."""
     w, h = WIDE if wide else (W, H)
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
@@ -114,17 +161,17 @@ def _subscribe_layer(path, lang, wide, promise):
     d.text((ix + icon + (18 if wide else 22), cy), text, font=bold, fill="white", anchor="lm")
     if promise and not wide:
         regular = ImageFont.truetype(_font_path(False), 44)
-        d.text((w / 2, 1270), TEXTS[lang]["promise"], font=regular, fill="white", anchor="mm",
+        d.text((w / 2, 1270), promise_text or TEXTS[lang]["promise"], font=regular, fill="white", anchor="mm",
                stroke_width=3, stroke_fill="black")
     img.save(path)
 
 
-def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_seconds=4.5):
+def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_seconds=4.5, promise=None):
     """Abone düğmesi videonun ilk ve son saniyelerinde yumuşakça belirip kaybolur. Ses aynen kopyalanır."""
     dur = audio_duration(video)
     first, last = Path(out_path).with_suffix(".sub1.png"), Path(out_path).with_suffix(".sub2.png")
     _subscribe_layer(first, lang, wide, promise=False)
-    _subscribe_layer(last, lang, wide, promise=True)
+    _subscribe_layer(last, lang, wide, promise=True, promise_text=promise)
     a, b = start
     e = max(b + 1, dur - end_seconds)  # kısa videoda iki görünüm üst üste binmesin
     fade = 0.3
@@ -198,10 +245,17 @@ def add_link(video, out_path, text=CHANNEL_URL):
     layer.unlink()
 
 
-def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False, lang="tr"):
-    """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer."""
-    accent = ACCENTS[idx % len(ACCENTS)]
-    img = _photo(background) if background else _gradient(accent)
+def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜNDEM", subscribe=False, lang="tr",
+              style=None):
+    """segment'teki label ve heading, videonun genel etiketinin ve başlığının yerine geçer.
+    style: make_style() çıktısı; verilmezse eski tek görünüm."""
+    style = style or {}
+    palette = PALETTES.get(style.get("palette"), ACCENTS)
+    accent = palette[idx % len(palette)]
+    base = _photo(background, dim=style.get("dim", 0.5)) if background else _gradient(accent)
+    # Stilli kartta yazılar ayrı şeffaf katmana çizilir: video hareket ederken yalnızca fotoğraf kayar,
+    # logo, etiket ve başlık yerinde durur (kayınca kadraj dışına taşmasın)
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0)) if style else base
 
     d = ImageDraw.Draw(img)
     bold = ImageFont.truetype(_font_path(True), 56)
@@ -218,9 +272,15 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     if hook_title:  # merak başlığı her kartta üstte sabit durur
         hook_font = ImageFont.truetype(_font_path(True), 78)
         lines = _wrap(d, hook_title, hook_font, W - 140)
+        color = HOOK_COLORS.get(style.get("hook_color"), HOOK_COLORS["sari"])
+        if style.get("hook_box"):  # koyu yarı saydam kutu: açık renkli fotoğrafta da okunur (img burada şeffaf katman)
+            widest = max(d.textlength(line, font=hook_font) for line in lines)
+            d.rounded_rectangle(
+                [(W - widest) / 2 - 40, 400 - 64, (W + widest) / 2 + 40, 400 + 96 * (len(lines) - 1) + 64],
+                radius=36, fill=(0, 0, 0, 165))
         y = 400
         for line in lines:
-            d.text((W / 2, y), line, font=hook_font, fill=(255, 214, 0), anchor="mm",
+            d.text((W / 2, y), line, font=hook_font, fill=color, anchor="mm",
                    stroke_width=5, stroke_fill="black")
             y += 96
     if subscribe:
@@ -228,6 +288,11 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     if segment.get("source"):
         d.text((W / 2, 1560), f"{TEXTS[lang]['source']}: {segment['source']}", font=regular, fill=(230, 230, 230),
                anchor="mm", stroke_width=3, stroke_fill="black")
+    if style:
+        out_path = Path(out_path)
+        base.save(out_path.with_suffix(".bg.png"))
+        img.save(out_path.with_suffix(".overlay.png"))
+        img = Image.alpha_composite(base.convert("RGBA"), img).convert("RGB")  # tek parça kart (önizleme için)
     img.save(out_path)
 
 
@@ -484,12 +549,30 @@ def _ts(sec):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def write_ass(words, out_path, words_per_line=3, wide=False):
+def _caption_style(look):
+    """make_style() çıktısından dikey altyazının ASS stil satırı."""
+    size = look.get("caption_size", 92)
+    box = look.get("caption_bg") == "kutu"
+    # BorderStyle 3: düz kutu (rengi OutlineColour); 1: kontur ve gölge
+    border, outline, shadow = (3, 16, 0) if box else (1, 7, 2)
+    outline_colour = "&H20000000" if box else "&H00000000"
+    align, margin = (2, 700) if look.get("caption_pos") == "alt" else (5, 0)
+    return (f"{size},&H00FFFFFF,&H00FFFFFF,{outline_colour},&H64000000,-1,0,0,0,100,100,0,0,"
+            f"{border},{outline},{shadow},{align},80,80,{margin},1")
+
+
+def write_ass(words, out_path, words_per_line=3, wide=False, look=None):
+    """look: make_style() çıktısı (yalnızca dikey video); kelime sayısı, boyut, yer, kutu ve kelime vurgusu."""
     w, h = WIDE if wide else (W, H)
+    look = None if wide else look
     # Dikeyde altyazı ortada ve iri; yatayda altta, satır daha uzun
     style = "64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,5,2,2,120,120,150,1" if wide \
+        else _caption_style(look) if look \
         else "92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,2,5,80,80,0,1"
-    words_per_line = 6 if wide else words_per_line
+    words_per_line = 6 if wide else (look or {}).get("caption_words", words_per_line)
+    highlight = HIGHLIGHTS.get((look or {}).get("highlight"))
+    lang = (look or {}).get("lang", "tr")
+    shown = (lambda t: _upper(t, lang)) if (look or {}).get("upper") else (lambda t: t)
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {w}
@@ -508,8 +591,19 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     for i, chunk in enumerate(chunks):
         start = chunk[0]["start"]
         end = chunks[i + 1][0]["start"] if i + 1 < len(chunks) else chunk[-1]["end"] + 0.3
-        text = _ass_escape(" ".join(w["text"] for w in chunk))
-        lines.append(f"Dialogue: 0,{_ts(start)},{_ts(end)},Main,,0,0,0,,{text}")
+        texts = [_ass_escape(shown(w["text"])) for w in chunk]
+        if not highlight:
+            lines.append(f"Dialogue: 0,{_ts(start)},{_ts(end)},Main,,0,0,0,,{' '.join(texts)}")
+            continue
+        # Konuşulan kelime renkli: satır her kelimede yeniden yazılır, yalnızca o kelimenin rengi değişir
+        on, off = "&H{2:02X}{1:02X}{0:02X}".format(*highlight), "&HFFFFFF"
+        for j, word in enumerate(chunk):
+            a = start if j == 0 else word["start"]
+            b = chunk[j + 1]["start"] if j + 1 < len(chunk) else end
+            if b <= a:
+                continue
+            text = " ".join(f"{{\\c{on}&}}{t}{{\\c{off}&}}" if k == j else t for k, t in enumerate(texts))
+            lines.append(f"Dialogue: 0,{_ts(a)},{_ts(b)},Main,,0,0,0,,{text}")
     Path(out_path).write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -519,15 +613,49 @@ def audio_duration(path):
     return float(json.loads(out.stdout)["format"]["duration"])
 
 
-def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W, H), motion=True):
-    """motion=False: görüntü kıpırdamaz (art arda gelen kartlarda sıçrama olmasın diye)."""
+def _move(look, idx, progress):
+    """make_style() hareketi: (zoom, x, y) ifadeleri; kadraj ortadan yakınlaşır ya da yana kayar."""
+    a = look.get("motion_amount", 0.06)
+    kind = look.get("motion", "sirayla")
+    center_x, center_y = "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
+    if kind == "kaydir":  # sabit yakınlıkta soldan sağa, sonraki parçada sağdan sola
+        p = progress if idx % 2 == 0 else f"(1-{progress})"
+        return f"{1 + a}", f"(iw-iw/zoom)*{p}", center_y
+    zoom_out = kind == "uzaklas" or (kind == "sirayla" and idx % 2 == 1)
+    zoom = f"{1 + a}-{a}*{progress}" if zoom_out else f"1+{a}*{progress}"
+    return zoom, center_x, center_y
+
+
+def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W, H), motion=True, look=None, idx=0):
+    """motion=False: görüntü kıpırdamaz (art arda gelen kartlarda sıçrama olmasın diye).
+    look: make_style() çıktısı; hareketin türünü ve miktarını belirler (idx: parçanın sırası)."""
     w, h = size
     dur = audio_duration(audio) + pad
-    # Hafif hareket: görüntü boyunca %6 yakınlaşır ya da uzaklaşır
     progress = f"on/({dur}*30)"
-    zoom = "1" if not motion else f"1.06-0.06*{progress}" if zoom_out else f"1+0.06*{progress}"
-    vf = (f"scale={w}:{h},zoompan=z='{zoom}':d=1:s={w}x{h}:fps=30,"
-          f"ass={ass}")
+    bg, overlay = Path(card).with_suffix(".bg.png"), Path(card).with_suffix(".overlay.png")
+    if look and motion:
+        layered = bg.exists() and overlay.exists()
+        if not layered:  # yazılar fotoğrafla birlikte hareket ediyor: kenardaki logo taşmasın diye hafif hareket
+            look = {**look, "motion": "sirayla" if look.get("motion") == "kaydir" else look.get("motion"),
+                    "motion_amount": min(look.get("motion_amount", 0.06), 0.06)}
+        # Görüntü iki kat büyütülüp hareket ettirilir: küçük çözünürlükte zoompan titriyor
+        zoom, x, y = _move(look, idx, progress)
+        moving = f"[0:v]scale={2 * w}:{2 * h},zoompan=z='{zoom}':x='{x}':y='{y}':d=1:s={w}x{h}:fps=30"
+        graph = (f"{moving}[bg];[bg][2:v]overlay=format=yuv420,ass={ass}[v]" if layered else f"{moving},ass={ass}[v]")
+        subprocess.run([
+            "ffmpeg", "-y", "-loglevel", "error",
+            "-loop", "1", "-framerate", "30", "-i", str(bg if layered else card), "-i", str(audio),
+            *(["-i", str(overlay)] if layered else []),  # tek kare: overlay son kareyi tekrarlar
+            "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-af", f"apad=pad_dur={pad}", "-t", f"{dur:.2f}",
+            "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
+            "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "128k", str(out_path),
+        ], check=True)
+        return
+    else:
+        # Hafif hareket: görüntü boyunca %6 yakınlaşır ya da uzaklaşır
+        zoom = "1" if not motion else f"1.06-0.06*{progress}" if zoom_out else f"1+0.06*{progress}"
+        vf = (f"scale={w}:{h},zoompan=z='{zoom}':d=1:s={w}x{h}:fps=30,"
+              f"ass={ass}")
     subprocess.run([
         "ffmpeg", "-y", "-loglevel", "error",
         "-loop", "1", "-framerate", "30", "-i", str(card), "-i", str(audio),

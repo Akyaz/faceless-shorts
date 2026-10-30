@@ -9,7 +9,7 @@ on:
     # 07:15: sabah özeti (bugün seni etkileyecek 3 şey)
     - cron: "5 4 * * *"
     - cron: "30 4 * * *"
-    # 10, 12 ve 19: birer gündem haberi
+    # 10 ve 19: birer gündem haberi; 12: eskimeyen "Biliyor muydun?"
     # (her saat ayrı satırda: GitHub hangi satırın tetiklendiğini bildiriyor, birleşik satırda saat ayırt edilemez)
     - cron: "50 6 * * *"
     - cron: "15 7 * * *"
@@ -17,7 +17,7 @@ on:
     - cron: "15 9 * * *"
     - cron: "50 15 * * *"
     - cron: "15 16 * * *"
-    # 15:00: bilim ve teknolojiden merak uyandıran gelişmeler (trend)
+    # 15:00: eskimeyen "Biliyor muydun?" (önceden trend; tür eşleşmesi pipeline/slots.py'de)
     - cron: "50 11 * * *"
     - cron: "15 12 * * *"
     # 16:00: İngilizce "On This Day": Wikipedia'dan tarihte bugün (ABD'de sabah)
@@ -64,9 +64,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, onthisday, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, ucl]
         default: story
 
 jobs:

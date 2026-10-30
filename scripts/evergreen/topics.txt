@@ -1,0 +1,68 @@
+# "Biliyor muydun?" serisinin konuları (pipeline/evergreen.py), yukarıdan aşağı sırayla işlenir.
+# Biçim: Türkçe Vikipedi araması | İngilizce Vikipedi araması (Türkçe sayfa kısaysa bu kullanılır)
+# Satır eklemek yeterli; işlenen konular state/evergreen.json'da tutulur, liste bitince en eskiden yeniden başlar.
+# Konular eskimeyen, herkesin anlayabileceği ve "vay be" dedirten şeyler olmalı; ölüm, savaş ve felaket ağırlıklı konular yok.
+Derinkuyu Yeraltı Şehri | Derinkuyu underground city
+Göbeklitepe | Göbekli Tepe
+Piri Reis haritası | Piri Reis map
+Antikythera düzeneği | Antikythera mechanism
+Ahtapot | Octopus
+Tardigrad | Tardigrade
+Çatalhöyük | Çatalhöyük
+Zeugma Antik Kenti | Zeugma (Commagene)
+Voyager 1 | Voyager 1
+Nemrut Dağı | Mount Nemrut
+Pamukkale | Pamukkale
+Kara delik | Black hole
+Ölümsüz denizanası | Turritopsis dohrnii
+Yerebatan Sarayı | Basilica Cistern
+Hezarfen Ahmed Çelebi | Hezârfen Ahmed Çelebi
+Uluburun batığı | Uluburun shipwreck
+Mavi balina | Blue whale
+Ayasofya | Hagia Sophia
+Kapadokya | Cappadocia
+Bal | Honey
+Uluslararası Uzay İstasyonu | International Space Station
+Efes | Ephesus
+Ağrı Dağı | Mount Ararat
+Kuyruklu yıldız | Comet
+Cezeri | Ismail al-Jazari
+Truva | Troy
+Dünyanın en yaşlı ağaçları | Methuselah (tree)
+Sümela Manastırı | Sümela Monastery
+Ay | Moon
+Kelebek göçü | Monarch butterfly migration
+Topkapı Sarayı | Topkapı Palace
+Mars | Mars
+Ani Harabeleri | Ani
+Yunus | Dolphin
+Takiyüddin Rasathanesi | Constantinople observatory of Taqi ad-Din
+Sardes | Sardis
+Kutup ışıkları | Aurora
+Kızkulesi | Maiden's Tower
+Bukalemun | Chameleon
+Hattuşa | Hattusa
+Satürn | Saturn
+Mimar Sinan | Mimar Sinan
+Arı | Honey bee
+Tuz Gölü | Lake Tuz
+Hubble Uzay Teleskobu | Hubble Space Telescope
+Kapalıçarşı | Grand Bazaar, Istanbul
+Fil | Elephant
+Aspendos | Aspendos
+Şimşek | Lightning
+Galata Kulesi | Galata Tower
+Baykuş | Owl
+Uzungöl | Uzungöl
+Jüpiter | Jupiter
+Süleymaniye Camii | Süleymaniye Mosque
+Ahtamar Adası | Akdamar Island
+Karınca | Ant
+Ölüdeniz | Ölüdeniz
+James Webb Uzay Teleskobu | James Webb Space Telescope
+Safranbolu | Safranbolu
+Kartal | Eagle
+Likya Yolu | Lycian Way
+Venüs | Venus
+Ahi Evran | Ahi Evren
+Köpek balığı | Shark

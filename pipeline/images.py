@@ -151,6 +151,26 @@ Seçme:
 Birbirinden farklı görünenleri tercih et, en uygun olan başta. En fazla 8 aday seç; uygun aday yoksa boş liste dön.
 Sadece JSON döndür: {{"pick": [3, 1, 7]}}
 """
+FACT_RULES = """Kısa bir "Biliyor muydun?" videosunun dikey arka planı için fotoğraf seçiyorsun. Aşağıda numaralı adayların
+dosya adı ve açıklaması, ardından aynı sırayla fotoğrafların kendisi var. Fotoğrafa bakarak karar ver.
+
+Konu: {topic}
+Yer: {where}
+
+Seç: konunun kendisini açıkça ve çarpıcı biçimde gösteren, renkli, net, iyi çekilmiş fotoğraflar: hayvanın ya da
+bitkinin kendisi, yapının ya da antik kentin kendisi, gök cisminin görüntüsü, müzedeki eser, doğal alanın manzarası.
+İlk sıradaki görsel videonun ilk karesi olur: en göz alıcı olanı başa koy.
+
+Seçme:
+- Başka bir konuya, türe ya da yere ait olanlar; konuyla ilgisi zayıf olanlar. Emin değilsen seçme.
+- Harita, grafik, şema, logo, belge ve yazı ağırlıklı görseller.
+- Bulanık, karanlık, çok küçük ya da özensiz çekilmiş fotoğraflar; turistlerin ya da bir kişinin yüzünün öne çıktığı fotoğraflar.
+- Film, dizi, oyun görüntüleri; yapay zekâ ile üretilmiş canlandırmalar.
+- Dikey videoda ortası kırpılınca konusu kadraj dışında kalacak fotoğraflar.
+
+Birbirinden farklı görünenleri tercih et. En fazla 6 aday seç; uygun aday yoksa boş liste dön.
+Sadece JSON döndür, en uygun olan başta: {{"pick": [3, 1, 7]}}
+"""
 PLACE_RULE = ("Haber {where} ile ilgili. İçinde insan, sokak, bina, okul, taşıt ya da manzara olan her fotoğraf "
               "{where} içinde çekilmiş olmalı. Dosya adından, açıklamasından ya da görüntüsünden (yazılar, tabelalar, "
               "bayraklar, mimari, insanlar) başka bir ülkede ya da şehirde çekildiği anlaşılan fotoğrafı seçme; "
@@ -182,7 +202,9 @@ def _select(plan, candidates):
             print(f"Önizleme alınamadı: {exc}")
     listing = "\n".join(f"{i}. {'[nesne] ' if c.get('neutral') else ''}{c['about']}" for i, c in enumerate(shown, 1))
     where = _where(plan)
-    if plan.get("kind") == "history":
+    if plan.get("kind") == "fact":
+        rules = FACT_RULES.format(topic=plan["title"], where=where or "-")
+    elif plan.get("kind") == "history":
         rules = HISTORY_RULES.format(topic=plan["title"], era=plan.get("era", ""), where=where or "-")
     else:
         rules = SELECT_RULES.format(place_rule=PLACE_RULE.format(where=where) if where else NO_PLACE_RULE)

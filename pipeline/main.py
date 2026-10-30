@@ -1,8 +1,9 @@
 """Gündem Short'u üretir: haber -> metin -> ses -> video.
 
-Kullanım: python -m pipeline.main [--mode story|world|trend|digest|morning|sports] [--out out] [--offline] [--history dosya.json]
+Kullanım: python -m pipeline.main [--mode story|world|trend|digest|morning|sports|fact] [--out out] [--offline] [--history dosya.json]
 --mode story tek gündem haberini anlatır (varsayılan), world dünya gündeminden bir haberi İngilizce anlatır; digest günün öne çıkan haberlerini, sports spor gündemini,
-trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler.
+trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler; fact eskimeyen bir "Biliyor muydun?" konusu anlatır
+(scripts/evergreen/topics.txt).
 --offline ağ olmadan sahte haber ve sessiz ses ile render'ı dener.
 --script ile metni elle yazılmış bir video üretilir (bkz. scripts/custom/); haber çekilmez.
 --history story, world ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
@@ -13,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import images, music, onthisday, render, script
+from . import evergreen, images, music, onthisday, render, script
 
 
 def _offline_audio(text, out_path):
@@ -84,7 +85,7 @@ def _closing_question(plan):
 
 def build_metadata(plan, mode="story"):
     lang = plan.get("lang", "tr")
-    text = DESCRIPTION[lang]
+    text = {**DESCRIPTION[lang], **(plan.get("texts") or {})}  # türün kendi abone cümlesi ve etiketleri
     # Haber kümesindeki bütün yayınlar: metin yalnızca en üstteki başlığa dayanmıyor
     cluster = [x for h in plan["sources"] for x in [h] + h.get("related", [])[:6]]
     sources = "\n".join(f"- {x['title']} ({x['source']})" + (f": {x['link']}" if x.get("link") else "") for x in cluster)
@@ -96,7 +97,8 @@ def build_metadata(plan, mode="story"):
     return {
         "title": plan["title"][:100],
         "description": f"{plan['title']}\n\n"
-                       + f"{render.date_line(lang)}\n{render.channel_line(lang, plan.get('subscribe', True))}\n\n"
+                       + (f"{render.date_line(lang)}\n" if plan.get("dated", True) else "")  # eskimeyen videoda tarih yok
+                       + f"{render.channel_line(lang, plan.get('subscribe', True))}\n\n"
                        + (f"{text['summary']}\n{summary}\n\n" if summary else "")
                        + f"{text['subscribe_long' if wide else 'subscribe']}\n\n"
                        + (f"{text['chapters']}\n" + "\n".join(chapters) + "\n\n" if chapters else "")
@@ -104,7 +106,7 @@ def build_metadata(plan, mode="story"):
                        + (f"\n{text['images']}\n{image_credit}\n" if image_credit else "")
                        + (f"\n{music_credit}\n" if music_credit else "")
                        + "\n" + " ".join(f"#{t}" for t in tags + ([] if wide else ["shorts"])),
-        "tags": tags + [t for t in text["tags"] if not (wide and t == "shorts")],
+        "tags": list(dict.fromkeys(tags + [t for t in text["tags"] if not (wide and t == "shorts")])),
         "category": plan.get("category") or CATEGORIES.get(mode, "25"),
         # Videodaki soru kanal adına ilk yorum olarak yazılır (acı haberde soru ve çağrı yok)
         "comment": _closing_question(plan) if plan.get("subscribe", True) else "",
@@ -217,7 +219,7 @@ def news_plan(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday"], default="story")
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact"], default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--background", help="--offline ile denenecek arka plan görseli")
@@ -236,7 +238,12 @@ def main():
         if args.history:  # otomatik videolar aynı konuyu yeniden işlemesin
             save_history(args.history, load_history(args.history), plan)
     else:
-        plan = onthisday.plan() if args.mode == "onthisday" else news_plan(args)
+        if args.mode == "onthisday":
+            plan = onthisday.plan()
+        elif args.mode == "fact":
+            plan = evergreen.plan(Path(args.history).parent / "evergreen.json" if args.history else evergreen.STATE)
+        else:
+            plan = news_plan(args)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):
@@ -251,6 +258,12 @@ def main():
         print("Okunuşlar: " + ", ".join(f"{k} -> {v}" for k, v in plan["pronounce"].items()))
 
     segments = plan["segments"]
+    wide = plan.get("wide")
+    # Dikey videolar başlıktan türetilen kendi görünümü ve sesiyle çıkar (render.make_style)
+    look = None if wide else render.make_style(plan["title"], plan.get("lang", "tr"))
+    if look:
+        plan["style"] = look
+        print("Stil: " + ", ".join(f"{k}={v}" for k, v in look.items() if k != "lang"))
     if args.offline:
         backgrounds, credits = [args.background] * len(segments), []
     else:
@@ -263,11 +276,11 @@ def main():
     else:
         from .tts import RATE, speak_all
         spoken = speak_all([{"text": seg["text"], "out": work / f"seg{i}.mp3", "lang": plan.get("lang", "tr"),
-                             "speaker": "male", "rate": RATE, "pronounce": plan.get("pronounce")}
+                             "speaker": (look or {}).get("speaker", "male"), "rate": (look or {}).get("rate", RATE),
+                             "pronounce": plan.get("pronounce")}
                             for i, seg in enumerate(segments)])
 
     parts, chapters, clock = [], [], 0.0
-    wide = plan.get("wide")
     for i, seg in enumerate(segments):
         audio = work / f"seg{i}.mp3"
         words = spoken[i]
@@ -284,13 +297,13 @@ def main():
         elif seg.get("card") and plan.get("match"):
             render.draw_match_card(seg["card"], plan["match"], card, plan.get("label", "SPOR"), seg.get("source", ""),
                                    backgrounds[i])
-            render.write_ass(words, ass)
-            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
+            render.write_ass(words, ass, look=look)
+            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, look=look, idx=i)
         else:
             render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
-                             lang=plan.get("lang", "tr"))
-            render.write_ass(words, ass)
-            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1)
+                             lang=plan.get("lang", "tr"), style=look)
+            render.write_ass(words, ass, look=look)
+            render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, look=look, idx=i)
         if seg.get("chapter"):
             chapters.append(f"{_clock(clock)} {seg['chapter']}")
         clock += render.audio_duration(part)
@@ -305,7 +318,8 @@ def main():
     render.concat(parts, work / "voice.mp4")
     voice = work / "voice.mp4"
     if plan.get("subscribe", True):  # acı haberde abone çağrısı yapılmaz
-        render.add_subscribe(voice, work / "voice_sub.mp4", plan.get("lang", "tr"), wide=bool(wide))
+        render.add_subscribe(voice, work / "voice_sub.mp4", plan.get("lang", "tr"), wide=bool(wide),
+                             promise=plan.get("promise"))
         voice = work / "voice_sub.mp4"
     plan["music_credit"] = music.add(voice, plan.get("mood"), out / "short.mp4")
     meta = build_metadata(plan, args.mode)

@@ -20,9 +20,10 @@ import urllib.request
 SLOTS = {
     "5 4 * * *": ("07:15", "morning"), "30 4 * * *": ("07:15", "morning"),
     "50 6 * * *": ("10:00", "story"), "15 7 * * *": ("10:00", "story"),
-    "50 8 * * *": ("12:00", "story"), "15 9 * * *": ("12:00", "story"),
+    # 12:00 ve 15:00: eskimeyen "Biliyor muydun?" (haber birkaç saatte eskiyor, bu videolar aylarca önerilebilir)
+    "50 8 * * *": ("12:00", "fact"), "15 9 * * *": ("12:00", "fact"),
     "20 10 * * *": ("13:30", "sports"), "45 10 * * *": ("13:30", "sports"),
-    "50 11 * * *": ("15:00", "trend"), "15 12 * * *": ("15:00", "trend"),
+    "50 11 * * *": ("15:00", "fact"), "15 12 * * *": ("15:00", "fact"),
     # 16:00 İngilizce dünya haberleri az izleniyordu: yerine İngilizce "On This Day" (Wikipedia tarihte bugün)
     "50 12 * * *": ("16:00", "onthisday"), "15 13 * * *": ("16:00", "onthisday"),
     "50 15 * * *": ("19:00", "story"), "15 16 * * *": ("19:00", "story"),

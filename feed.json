@@ -3062,5 +3062,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-30T15:07:25Z",
+  "run": "41076926184",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41076926184",
+  "videos": [
+   {
+    "title": "Göbeklitepe: İnsanlığın En Eski Tapınağındaki Büyük Gizem",
+    "url": "https://youtu.be/NY2EmUJr2PU",
+    "instagram": "https://www.instagram.com/reel/DfH3aVPAlhB/"
+   }
+  ]
  }
 ]

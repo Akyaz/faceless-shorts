@@ -3124,5 +3124,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-10-30T17:47:59Z",
+  "run": "41097183398",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41097183398",
+  "videos": [
+   {
+    "title": "Selfie ile Ömür Tahmini ve Okyanustaki 29 Bin Sarı Ördek",
+    "url": "https://youtu.be/yHtf8v5ot6A",
+    "instagram": "https://www.instagram.com/reel/DfIJyKpmHsq/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

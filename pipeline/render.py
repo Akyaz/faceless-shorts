@@ -28,15 +28,16 @@ STYLE_CHOICES = {
     "palette": list(PALETTES),
     "hook_color": list(HOOK_COLORS),
     "hook_box": [False, True],  # başlığın arkasında koyu kutu
-    "caption_size": [84, 92, 104],
-    "caption_words": [2, 3, 4],
-    "caption_pos": ["orta", "alt"],
+    # Altyazı alt üçte birde ve orta boyda: yüz ve konu ekranın ortasında görünür kalsın
+    "caption_size": [66, 72, 78],
+    "caption_words": [2, 3],
+    "caption_pos": ["alt", "ust"],  # alt: 1400'de biter, ust: 1320'de
     "caption_bg": ["kontur", "kutu"],
     "highlight": list(HIGHLIGHTS),  # konuşulan kelime renkli
     "upper": [False, True],
     "motion": ["sirayla", "yakinlas", "uzaklas", "kaydir"],
     "motion_amount": [0.05, 0.08, 0.10],
-    "dim": [0.4, 0.5, 0.55],  # fotoğrafın ne kadar karartılacağı
+    "dim": [0.1, 0.18, 0.25],  # fotoğrafın genel karartması; yazıların arkası ayrıca degradeyle koyulaşır
     "speaker": ["male", "female"],
     "rate": ["+8%", "+12%", "+15%"],
 }
@@ -146,39 +147,47 @@ def _subscribe_layer(path, lang, wide, promise, promise_text=None):
     w, h = WIDE if wide else (W, H)
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    bold = ImageFont.truetype(_font_path(True), 46 if wide else 58)
+    bold = ImageFont.truetype(_font_path(True), 46 if wide else 42)
     text = TEXTS[lang]["subscribe"]
-    tw, ph = d.textlength(text, font=bold), (88 if wide else 112)
+    tw, ph = d.textlength(text, font=bold), (88 if wide else 84)
     icon = ph * 0.42  # metnin solunda beyaz "oynat" üçgeni
-    pw = tw + icon + (110 if wide else 130)
+    pw = tw + icon + (110 if wide else 100)
     x0 = w - 70 - pw if wide else (w - pw) / 2
-    y0 = 76 if wide else 1330
+    y0 = 76 if wide else 1060  # dikeyde altyazının üstünde, fotoğrafın alt kısmında
     d.rounded_rectangle([x0 + 6, y0 + 8, x0 + pw + 6, y0 + ph + 8], radius=ph / 2, fill=(0, 0, 0, 110))  # gölge
     d.rounded_rectangle([x0, y0, x0 + pw, y0 + ph], radius=ph / 2, fill=SUBSCRIBE_RED + (255,),
                         outline=(255, 255, 255, 255), width=4)
-    ix, cy = x0 + (44 if wide else 52), y0 + ph / 2
+    ix, cy = x0 + (44 if wide else 40), y0 + ph / 2
     d.polygon([(ix, cy - icon / 2), (ix, cy + icon / 2), (ix + icon * 0.9, cy)], fill="white")
     d.text((ix + icon + (18 if wide else 22), cy), text, font=bold, fill="white", anchor="lm")
     if promise and not wide:
-        regular = ImageFont.truetype(_font_path(False), 44)
-        d.text((w / 2, 1270), promise_text or TEXTS[lang]["promise"], font=regular, fill="white", anchor="mm",
+        regular = ImageFont.truetype(_font_path(False), 34)
+        d.text((w / 2, y0 - 40), promise_text or TEXTS[lang]["promise"], font=regular, fill="white", anchor="mm",
                stroke_width=3, stroke_fill="black")
     img.save(path)
 
 
 def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_seconds=4.5, promise=None):
-    """Abone düğmesi videonun ilk ve son saniyelerinde yumuşakça belirip kaybolur. Ses aynen kopyalanır."""
+    """Abone düğmesi videonun son saniyelerinde yumuşakça belirir (yatay videoda başta da). Ses aynen kopyalanır.
+    Dikey videoda ilk saniyeler izleyicinin kalıp kalmayacağına karar verdiği an: orada düğme konuyu kapatmasın."""
     dur = audio_duration(video)
+    if not wide:
+        start = (0, 0)
     first, last = Path(out_path).with_suffix(".sub1.png"), Path(out_path).with_suffix(".sub2.png")
     _subscribe_layer(first, lang, wide, promise=False)
     _subscribe_layer(last, lang, wide, promise=True, promise_text=promise)
     a, b = start
     e = max(b + 1, dur - end_seconds)  # kısa videoda iki görünüm üst üste binmesin
     fade = 0.3
-    graph = (f"[1:v]format=rgba,fade=in:st={a}:d={fade}:alpha=1,fade=out:st={b - fade}:d={fade}:alpha=1[s1];"
-             f"[2:v]format=rgba,fade=in:st={e:.2f}:d={fade}:alpha=1[s2];"
-             f"[0:v][s1]overlay=enable='between(t,{a},{b})'[v1];"
-             f"[v1][s2]overlay=enable='gte(t,{e:.2f})'[v]")
+    if b > a:
+        graph = (f"[1:v]format=rgba,fade=in:st={a}:d={fade}:alpha=1,fade=out:st={b - fade}:d={fade}:alpha=1[s1];"
+                 f"[2:v]format=rgba,fade=in:st={e:.2f}:d={fade}:alpha=1[s2];"
+                 f"[0:v][s1]overlay=enable='between(t,{a},{b})'[v1];"
+                 f"[v1][s2]overlay=enable='gte(t,{e:.2f})'[v]")
+    else:
+        e = max(1.0, dur - end_seconds)
+        graph = (f"[2:v]format=rgba,fade=in:st={e:.2f}:d={fade}:alpha=1[s2];"
+                 f"[0:v][s2]overlay=enable='gte(t,{e:.2f})'[v]")
     subprocess.run([
         "ffmpeg", "-y", "-loglevel", "error", "-i", str(video),
         "-loop", "1", "-framerate", "30", "-t", f"{dur:.2f}", "-i", str(first),
@@ -255,7 +264,9 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     base = _photo(background, dim=style.get("dim", 0.5)) if background else _gradient(accent)
     # Stilli kartta yazılar ayrı şeffaf katmana çizilir: video hareket ederken yalnızca fotoğraf kayar,
     # logo, etiket ve başlık yerinde durur (kayınca kadraj dışına taşmasın)
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0)) if style else base
+    if style:
+        return _compact_card(segment, idx, Path(out_path), base, accent, hook_title, label, lang, style)
+    img = base
 
     d = ImageDraw.Draw(img)
     bold = ImageFont.truetype(_font_path(True), 56)
@@ -294,6 +305,69 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
         img.save(out_path.with_suffix(".overlay.png"))
         img = Image.alpha_composite(base.convert("RGBA"), img).convert("RGB")  # tek parça kart (önizleme için)
     img.save(out_path)
+
+
+def _shade(size=(W, H)):
+    """Üstte ve altta koyulaşan şeffaf degrade: yazılar okunur, ortadaki fotoğraf (yüz, konu) karartılmaz."""
+    w, h = size
+    col = Image.new("L", (1, h))
+    for y in range(h):
+        top = max(0.0, 1 - y / 640) ** 1.6 * 190
+        bottom = max(0.0, (y - 1080) / (h - 1080)) ** 1.3 * 215
+        col.putpixel((0, y), int(max(top, bottom)))
+    shade = Image.new("RGBA", size, (0, 0, 0, 255))
+    shade.putalpha(col.resize(size))
+    return shade
+
+
+def _compact_card(segment, idx, out_path, base, accent, hook_title, label, lang, style):
+    """Sade yerleşim (1080x1920, Shorts arayüzü payları gözetilerek):
+    - 0-150 Shorts'un üst çubuğu: boş
+    - 170-254 küçük logo ve yanında küçük etiket
+    - 300-450 en fazla iki satır başlık
+    - 480-1150 fotoğraf serbest (konunun yüzü burada görünür)
+    - 1150-1400 altyazı (ASS tarafında), 1460 küçük kaynak satırı
+    - 1560 sonrası ve sağ kenar Shorts'un açıklama ve düğmeleri: boş"""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    img.alpha_composite(_shade())
+    d = ImageDraw.Draw(img)
+
+    size = 84
+    logo = Image.open(LOGO).convert("RGBA").resize((size, size), Image.LANCZOS)
+    img.alpha_composite(logo, (56, 170))
+    label = segment.get("label") or label
+    label_font = ImageFont.truetype(_font_path(True), 32)
+    lw = d.textlength(label, font=label_font)
+    x0, cy = 56 + size + 22, 170 + size / 2
+    d.rounded_rectangle([x0, cy - 28, x0 + lw + 44, cy + 28], radius=28, fill=accent + (255,))
+    d.text((x0 + 22, cy), label, font=label_font, fill="white", anchor="lm")
+
+    hook_title = segment.get("heading") or hook_title
+    if hook_title:
+        color = HOOK_COLORS.get(style.get("hook_color"), HOOK_COLORS["sari"])
+        size = 60
+        while True:  # en fazla iki satır
+            hook_font = ImageFont.truetype(_font_path(True), size)
+            lines = _wrap(d, hook_title, hook_font, W - 150)
+            if len(lines) <= 2 or size <= 44:
+                break
+            size -= 4
+        step = size + 14
+        top = 300 + size / 2
+        if style.get("hook_box"):
+            widest = max(d.textlength(line, font=hook_font) for line in lines)
+            d.rounded_rectangle([(W - widest) / 2 - 30, top - size / 2 - 22, (W + widest) / 2 + 30,
+                                 top + step * (len(lines) - 1) + size / 2 + 22], radius=24, fill=(0, 0, 0, 150))
+        for n, line in enumerate(lines[:2]):
+            d.text((W / 2, top + n * step), line, font=hook_font, fill=color, anchor="mm",
+                   stroke_width=3, stroke_fill="black")
+    if segment.get("source"):
+        d.text((W / 2, 1462), f"{TEXTS[lang]['source']}: {segment['source']}",
+               font=ImageFont.truetype(_font_path(False), 28), fill=(215, 215, 215, 255), anchor="mm",
+               stroke_width=2, stroke_fill="black")
+    base.save(out_path.with_suffix(".bg.png"))
+    img.save(out_path.with_suffix(".overlay.png"))
+    Image.alpha_composite(base.convert("RGBA"), img).convert("RGB").save(out_path)  # tek parça kart (önizleme)
 
 
 # Maç kartları: o maçın bilgileriyle çizilir (ajans fotoğrafı ve yayın görüntüsü telifli; başka tarihlerin
@@ -554,11 +628,13 @@ def _caption_style(look):
     size = look.get("caption_size", 92)
     box = look.get("caption_bg") == "kutu"
     # BorderStyle 3: düz kutu (rengi OutlineColour); 1: kontur ve gölge
-    border, outline, shadow = (3, 16, 0) if box else (1, 7, 2)
+    border, outline, shadow = (3, 16, 0) if box else (1, 7, 2)  # outline aşağıda yeniden ayarlanır
     outline_colour = "&H20000000" if box else "&H00000000"
-    align, margin = (2, 700) if look.get("caption_pos") == "alt" else (5, 0)
+    # Alt-orta hizalı; sağ kenarda Shorts'un beğen/yorum düğmeleri olduğu için sağ pay daha geniş
+    margin = 600 if look.get("caption_pos") == "ust" else 520
+    outline = 12 if box else 5
     return (f"{size},&H00FFFFFF,&H00FFFFFF,{outline_colour},&H64000000,-1,0,0,0,100,100,0,0,"
-            f"{border},{outline},{shadow},{align},80,80,{margin},1")
+            f"{border},{outline},{shadow},2,100,170,{margin},1")
 
 
 def write_ass(words, out_path, words_per_line=3, wide=False, look=None):

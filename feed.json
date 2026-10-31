@@ -3379,21 +3379,6 @@
   ]
  },
  {
-  "time": "2026-10-31T21:50:15Z",
-  "run": "41219202219",
-  "event": "workflow_dispatch",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41245418875",
-  "videos": [
-   {
-    "title": "Canlı Hücreli Robot Köpek ve 4,1 Milyar Yıllık Mars Taşı",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
-   }
-  ]
- },
- {
   "time": "2026-10-31T22:13:32Z",
   "run": "41240354685",
   "event": "schedule",
@@ -3409,5 +3394,20 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/tr-mimar-sinan.json"
+ },
+ {
+  "time": "2026-10-31T22:13:35Z",
+  "run": "41219202219",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41245418875",
+  "videos": [
+   {
+    "title": "Canlı Hücreli Robot Köpek ve 4,1 Milyar Yıllık Mars Taşı",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
+   }
+  ]
  }
 ]

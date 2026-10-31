@@ -3254,21 +3254,6 @@
   ]
  },
  {
-  "time": "2026-10-31T14:13:33Z",
-  "run": "41208899595",
-  "event": "workflow_dispatch",
-  "mode": "culture",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41208899595",
-  "videos": [
-   {
-    "title": "Antalya Kültür Yolu Festivali: 9 Günde 440'tan Fazla Etkinlik",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-31T14:17:39Z",
   "run": "41209168931",
   "event": "workflow_dispatch",
@@ -3279,6 +3264,21 @@
    {
     "title": "Alperen Şengün'ün Yokluğunda Houston Rockets İlk Kez Kaybetti",
     "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-10-31T14:20:23Z",
+  "run": "41208899595",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41209650466",
+  "videos": [
+   {
+    "title": "Antalya Kültür Yolu Festivali: 9 Günde 440'tan Fazla Etkinlik",
+    "url": "https://youtu.be/OiTzoqCgSug",
     "instagram": null
    }
   ]

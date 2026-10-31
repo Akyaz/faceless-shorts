@@ -3252,5 +3252,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-31T14:13:33Z",
+  "run": "41208899595",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41208899595",
+  "videos": [
+   {
+    "title": "Antalya Kültür Yolu Festivali: 9 Günde 440'tan Fazla Etkinlik",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

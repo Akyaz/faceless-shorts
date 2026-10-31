@@ -3190,21 +3190,6 @@
   ]
  },
  {
-  "time": "2026-10-30T22:00:02Z",
-  "run": "41134617934",
-  "event": "workflow_dispatch",
-  "mode": "culture",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41134617934",
-  "videos": [
-   {
-    "title": "Kızılcık Şerbeti Dizisinde Murat Aygen Ayrılıyor",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-30T22:08:44Z",
   "run": "41133430152",
   "event": "schedule",
@@ -3252,5 +3237,20 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-10-31T14:01:54Z",
+  "run": "41134617934",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41208213839",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti Dizisinde Murat Aygen Ayrılıyor",
+    "url": "https://youtu.be/ga8Q6qrchu8",
+    "instagram": null
+   }
+  ]
  }
 ]

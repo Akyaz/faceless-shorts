@@ -3345,5 +3345,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-10-31T17:28:54Z",
+  "run": "41224209897",
+  "event": "schedule",
+  "mode": "onthisday",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41224209897",
+  "videos": [
+   {
+    "title": "When the ISS Got Its First Crew in 2000",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfKsWasjr6E/"
+   }
+  ],
+  "slot": "16:00"
  }
 ]

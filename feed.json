@@ -3282,5 +3282,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-10-31T14:49:26Z",
+  "run": "41211639637",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41211639637",
+  "videos": [
+   {
+    "title": "Sosyal Medyada Yaş Sınırı Başlıyor: Hesabın Kapatılabilir",
+    "url": "https://youtu.be/TU7DmPrEvaY",
+    "instagram": "https://www.instagram.com/reel/DfKaJkEkVOJ/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

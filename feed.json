@@ -3298,5 +3298,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-10-31T15:55:53Z",
+  "run": "41216547757",
+  "event": "schedule",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41216547757",
+  "videos": [
+   {
+    "title": "La Liga'da Hakem Kararı ve Alperen'siz Houston'ın İlk Yenilgisi",
+    "url": "https://youtu.be/a9H_C1-l22s",
+    "instagram": "https://www.instagram.com/reel/DfKhwAaEkRz/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

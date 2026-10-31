@@ -3329,5 +3329,21 @@
     "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
    }
   ]
+ },
+ {
+  "time": "2026-10-31T17:21:31Z",
+  "run": "41223564879",
+  "event": "schedule",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41223564879",
+  "videos": [
+   {
+    "title": "Tarantula Zehrinden ABD'ye, Sam Altman'dan RAM Çıkışı",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfKrhGzis1L/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -3316,19 +3316,18 @@
   "slot": "13:30"
  },
  {
-  "time": "2026-10-31T16:41:08Z",
+  "time": "2026-10-31T16:50:50Z",
   "run": "41219202219",
-  "event": "schedule",
+  "event": "workflow_dispatch",
   "mode": "trend",
   "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41219202219",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41221626727",
   "videos": [
    {
     "title": "Canlı Hücreli Robot Köpek ve 4,1 Milyar Yıllık Mars Taşı",
     "url": null,
     "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
    }
-  ],
-  "slot": "15:00"
+  ]
  }
 ]

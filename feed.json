@@ -3377,5 +3377,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-10-31T20:32:53Z",
+  "run": "41238987218",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41238987218",
+  "videos": [
+   {
+    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

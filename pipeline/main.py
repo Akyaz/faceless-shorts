@@ -119,6 +119,16 @@ def find_images(plan, work):
     segments = plan["segments"]
     if any(plan.get("sections") or []):
         return _section_images(plan, work)
+    if plan.get("subject_files"):
+        # Haberde adı geçen kişinin ya da eserin kendi fotoğrafı ilk karede ve her iki paragrafta bir görünür;
+        # aradaki paragraflarda konuyla ilgili destek görselleri
+        own = images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
+                                      work / "subject", len(plan["subject_files"]))
+        rest = images.find_backgrounds({**plan, "image_files": []}, work / "support", max(1, len(segments) // 2))
+        mine, other = [p for p, _ in own], [p for p, _ in rest] or [p for p, _ in own]
+        backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
+                       if mine else None for i in range(len(segments))]
+        return backgrounds, [c for _, c in own + rest]
     if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
         # Tek haber: görseller paragraflar arasında sırayla döner
         found = images.find_backgrounds(plan, work, len(segments))
@@ -174,8 +184,8 @@ def _clock(seconds):
     return f"{seconds // 60}:{seconds % 60:02d}"
 
 
-def news_plan(args):
-    """Haber akışından o saatin videosunu planlar."""
+def news_plan(args, exclude=()):
+    """Haber akışından o saatin videosunu planlar. exclude: bu çalışmada elenmiş haberlerin başlıkları."""
     if args.offline:
         headlines = [{"title": f"Örnek haber başlığı numara {i} burada yer alıyor", "source": "Örnek Kaynak",
                       "link": ""} for i in range(1, 4)]
@@ -205,6 +215,7 @@ def news_plan(args):
         print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
         headlines = rich if len(rich) >= 3 else headlines
     # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
+    headlines = [h for h in headlines if h["title"] not in exclude] or headlines
     use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate", "sportstory", "culture")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
@@ -217,6 +228,29 @@ def news_plan(args):
     if use_history:
         save_history(args.history, history, plan)
     return plan
+
+
+# Bu türlerde haber bir kişi ya da eser hakkında: onu göstermeyen video (kanal binası, genel set fotoğrafı)
+# izleyiciyi yanıltıyor. Konunun kendi serbest lisanslı fotoğrafı yoksa sıradaki haber denenir.
+SUBJECT_REQUIRED = {"culture", "sportstory"}
+SUBJECT_TRIES = 4
+
+
+def with_subject_photos(args):
+    """news_plan + haberde adı geçenlerin kendi fotoğrafları (plan["subject_files"])."""
+    tried = []
+    for attempt in range(SUBJECT_TRIES):
+        plan = news_plan(args, exclude=tried)
+        if args.offline or not plan.get("subjects"):
+            files = []
+        else:
+            files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
+        plan["subject_files"] = files
+        if files or args.mode not in SUBJECT_REQUIRED or args.offline:
+            return plan
+        tried += [h["title"] for h in plan["sources"]]
+        print(f"Konunun kendi fotoğrafı yok ({', '.join(plan.get('subjects') or ['isim yok'])}); başka haber deneniyor")
+    raise RuntimeError("Konusunun fotoğrafı bulunan haber çıkmadı; bu saatin videosu atlanıyor.")
 
 
 def main():
@@ -246,7 +280,7 @@ def main():
         elif args.mode == "fact":
             plan = evergreen.plan(Path(args.history).parent / "evergreen.json" if args.history else evergreen.STATE)
         else:
-            plan = news_plan(args)
+            plan = with_subject_photos(args)
     for src in plan["sources"]:
         print(f"Kaynak başlık: {src['title']} ({src['source']})")
         for r in src.get("related", []):

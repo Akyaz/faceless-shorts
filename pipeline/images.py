@@ -82,6 +82,45 @@ def commons_files(titles):
     return found
 
 
+def _fold(text):
+    import unicodedata
+    text = text.lower().translate(str.maketrans("çğıöşüâî", "cgiosuai"))
+    return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+
+
+def _wiki(lang, **params):
+    query = urllib.parse.urlencode({"format": "json", "formatversion": 2, **params})
+    return _get_json(f"https://{lang}.wikipedia.org/w/api.php?{query}")
+
+
+def subject_file(name):
+    """Haberde adı geçen kişinin, eserin ya da yerin kendi fotoğrafı: Vikipedi sayfasının ana görseli,
+    yalnızca Commons'taysa (serbest lisanslı). Sayfa başlığı ismin bütün kelimelerini içermeli (yanlış kişi olmasın).
+    Ajans fotoğrafı, dizi karesi ve afiş (adil kullanım dosyaları) hiçbir zaman alınmaz. Bulunamazsa boş."""
+    words = _fold(name).split()
+    for lang in ("tr", "en"):
+        try:
+            hits = _wiki(lang, action="query", list="search", srsearch=name, srlimit=3)["query"]["search"]
+            for hit in hits:
+                if not all(w in _fold(hit["title"]).split() for w in words):
+                    continue
+                page = _wiki(lang, action="query", prop="pageimages", titles=hit["title"], redirects=1,
+                             piprop="original")["query"]["pages"][0]
+                source = (page.get("original") or {}).get("source", "").split("?", 1)[0]
+                if "/wikipedia/commons/" not in source:
+                    break  # sayfa doğru ama görseli yok ya da adil kullanım: diğer dile bak
+                parts = source.split("/")
+                file = urllib.parse.unquote(parts[-2] if "/thumb/" in source else parts[-1]).replace("_", " ")
+                if file.lower().endswith((".jpg", ".jpeg")):  # png/svg çoğunlukla logo ve arma
+                    print(f"Konu görseli ({name}): {lang}:{hit['title']} -> {file}")
+                    return "File:" + file
+                break
+        except Exception as exc:
+            print(f"Konu görseli aranamadı ({name}, {lang}): {exc}")
+    print(f"Konu görseli yok: {name}")
+    return ""
+
+
 def _download(url, out_path):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as resp, open(out_path, "wb") as f:

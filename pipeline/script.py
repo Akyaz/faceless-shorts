@@ -167,7 +167,8 @@ estetik ve kıyafet haberleri; televizyon programlarındaki anlık sohbet ve şa
 adını açıkça söyle. "İki oyuncu", "ünlü isim", "o sahne", "yasak aşk ortaya çıktı" gibi kimin ya da neyin söz konusu
 olduğunu söylemeyen ifadeler yasak. Başlıklarda (diğer kaynaklar dahil) isimler yoksa o haberi seçme.
 Başlık ve ekran başlığı asıl bilgiyi versin: "Zirvenin sahibi kim oldu?" değil "Reytinglerde zirve Kızılcık Şerbeti'nin".
-Görsel aramaları: oyuncu fotoğrafı kullanılmaz; image_queries'e konunun geçtiği ortamı yaz (örnek: "film set",
+Görseller: haberde adı geçen oyuncu ve sanatçıların kendi fotoğrafları "subjects" alanındaki isimlerden bulunur
+(tam adlarını yaz). image_queries'e ise yalnızca destek görseli için konunun geçtiği ortamı yaz (örnek: "film set",
 "television studio", "theatre stage", "concert stage", "cinema hall", "film festival red carpet", "art gallery").
 Son soru izleyiciyi görüş bildirmeye çağırsın (örnek: "Sen bu filmi sinemada izler misin?", "Sence ödülü hak etti mi?",
 "Dizinin finalini beğendin mi?"). "pick" alanına seçtiğin haberin numarasını yaz.
@@ -241,8 +242,11 @@ Other fields:
 - hashtags: 3 topic-specific tags; one word each, lowercase, no spaces (example: "eu", "inflation", "nasa").
 - image_prompt: a symbolic vertical illustration of the topic with no real people and no text.
 
+- subjects: up to 3 proper names the story is about, most important first: people named in the story first (full
+  name as on Wikipedia), then the work, club, organisation or place. Their own photos are shown in the video.
+  Empty list if there are none.
 Return only JSON:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "..."}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "subjects": []}
 """
 
 # Seslendirme yabancı isimleri bu okunuşla söyler, altyazıda orijinal yazım kalır (tts.PRONOUNCE)
@@ -276,9 +280,13 @@ Ek alanlar:
   "huzunlu" (kayıp, yas, üzücü olay).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz (örnek: "deprem", "istanbul", "emekli").
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
+- subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
+  futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
+  kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
+  Haberde özel isim yoksa boş liste.
 """ + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}, "subjects": []}
 """
 
 DEBATE_RULES = """
@@ -300,9 +308,13 @@ Ek alanlar:
 """ + IMAGE_FIELDS.format(n=4) + """
 - mood: "notr" ya da "gergin" (konuya göre).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
+- subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
+  futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
+  kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
+  Haberde özel isim yoksa boş liste.
 """ + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}}
+{"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "subjects": []}
 """
 
 DIGEST_RULES = """Görev: YouTube Shorts için Türkçe {subject}. Aşağıdaki haberlerden birbirinden farklı {count} tanesini
@@ -474,6 +486,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
             "sources": [headline], **_image_fields(out),
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "category": spec.get("category"),
+            "subjects": [str(x).strip() for x in out.get("subjects") or [] if str(x).strip()][:3],
             "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out)}
 
 

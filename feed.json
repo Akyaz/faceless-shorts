@@ -3531,5 +3531,21 @@
     "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
    }
   ]
+ },
+ {
+  "time": "2026-11-01T21:15:56Z",
+  "run": "41350696063",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41350696063",
+  "videos": [
+   {
+    "title": "Sosyal Medyada Yaş Doğrulaması: Gerekli mi, Gizlilik İhlali mi?",
+    "url": "https://youtu.be/cDGdAWLHiTQ",
+    "instagram": "https://www.instagram.com/reel/DfNrKAkE0SP/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

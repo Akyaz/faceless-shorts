@@ -3441,5 +3441,21 @@
    }
   ],
   "slot": "pazar 11:00"
+ },
+ {
+  "time": "2026-11-01T15:34:15Z",
+  "run": "41321445355",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41321445355",
+  "videos": [
+   {
+    "title": "Derinkuyu Yeraltı Şehri: Yerin 85 Metre Altındaki Gizem",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfNEEvCkerZ/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -3396,21 +3396,6 @@
   "script": "scripts/longform/tr-mimar-sinan.json"
  },
  {
-  "time": "2026-11-01T19:30:59Z",
-  "run": "41330606796",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342097052",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Tarihin Akışını Değiştiren Dünyanın En Eski Yapısı",
-    "url": "https://youtu.be/NWLNEEfiWHc",
-    "instagram": "https://www.instagram.com/reel/DfNQnWkDYzJ/"
-   }
-  ]
- },
- {
   "time": "2026-11-01T19:31:12Z",
   "run": "41238987218",
   "event": "workflow_dispatch",
@@ -3545,6 +3530,21 @@
     "title": "Derinkuyu Yeraltı Şehri: Yerin 85 Metre Altındaki Gizem",
     "url": "https://youtu.be/PgKEXlhOB2c",
     "instagram": "https://www.instagram.com/reel/DfNEEvCkerZ/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-01T22:01:35Z",
+  "run": "41330606796",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41354971596",
+  "videos": [
+   {
+    "title": "Göbeklitepe: Tarihin Akışını Değiştiren Dünyanın En Eski Yapısı",
+    "url": "https://youtu.be/NWLNEEfiWHc",
+    "instagram": "https://www.instagram.com/reel/DfNQnWkDYzJ/"
    }
   ]
  }

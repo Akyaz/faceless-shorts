@@ -3458,21 +3458,6 @@
  },
  {
   "time": "2026-11-01T19:31:08Z",
-  "run": "41313258672",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342112273",
-  "videos": [
-   {
-    "title": "Ocak Zammı Tahminleri: Emekli ve Memur Maaşı Ne Kadar Olacak?",
-    "url": "https://youtu.be/yTynKpXgx8g",
-    "instagram": "https://www.instagram.com/reel/DfM5KitjRM9/"
-   }
-  ]
- },
- {
-  "time": "2026-11-01T19:31:08Z",
   "run": "41316670044",
   "event": "workflow_dispatch",
   "mode": "weekly",
@@ -3498,6 +3483,21 @@
     "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
     "url": "https://youtu.be/hmpMy6SJDyA",
     "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-01T19:31:22Z",
+  "run": "41313258672",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342138140",
+  "videos": [
+   {
+    "title": "Ocak Zammı Tahminleri: Emekli ve Memur Maaşı Ne Kadar Olacak?",
+    "url": "https://youtu.be/yTynKpXgx8g",
+    "instagram": "https://www.instagram.com/reel/DfM5KitjRM9/"
    }
   ]
  }

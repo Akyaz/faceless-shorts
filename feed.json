@@ -3457,5 +3457,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-01T16:53:17Z",
+  "run": "41328460504",
+  "event": "schedule",
+  "mode": "matchday",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41328460504",
+  "videos": [
+   {
+    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 1 Kasım Maç Programı ve Saatleri",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfNNHkbgbdy/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

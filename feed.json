@@ -3394,22 +3394,6 @@
   ]
  },
  {
-  "time": "2026-11-01T15:01:33Z",
-  "run": "41316670044",
-  "event": "schedule",
-  "mode": "weekly",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41316670044",
-  "videos": [
-   {
-    "title": "Doğalgazda Limitler Güncellendi, Emekliye Refah Payı Geliyor",
-    "url": null,
-    "instagram": null
-   }
-  ],
-  "slot": "pazar 11:00"
- },
- {
   "time": "2026-11-01T16:53:17Z",
   "run": "41328460504",
   "event": "schedule",
@@ -3499,6 +3483,21 @@
     "title": "Ocak Zammı Tahminleri: Emekli ve Memur Maaşı Ne Kadar Olacak?",
     "url": "https://youtu.be/yTynKpXgx8g",
     "instagram": "https://www.instagram.com/reel/DfM5KitjRM9/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-01T19:31:08Z",
+  "run": "41316670044",
+  "event": "workflow_dispatch",
+  "mode": "weekly",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342108394",
+  "videos": [
+   {
+    "title": "Doğalgazda Limitler Güncellendi, Emekliye Refah Payı Geliyor",
+    "url": "https://youtu.be/fDWD_iBx9lo",
+    "instagram": null
    }
   ]
  }

@@ -3500,5 +3500,21 @@
     "instagram": "https://www.instagram.com/reel/DfM5KitjRM9/"
    }
   ]
+ },
+ {
+  "time": "2026-11-01T19:46:02Z",
+  "run": "41341619504",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41341619504",
+  "videos": [
+   {
+    "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
+    "url": "https://youtu.be/AGvUqGaJYb8",
+    "instagram": null
+   }
+  ],
+  "script": "scripts/longform/tr-mimar-sinan.json"
  }
 ]

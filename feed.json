@@ -3364,21 +3364,6 @@
   "slot": "19:00"
  },
  {
-  "time": "2026-10-31T21:49:50Z",
-  "run": "41238987218",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41245385933",
-  "videos": [
-   {
-    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
-   }
-  ]
- },
- {
   "time": "2026-10-31T22:13:32Z",
   "run": "41240354685",
   "event": "schedule",
@@ -3407,6 +3392,21 @@
     "title": "Canlı Hücreli Robot Köpek ve 4,1 Milyar Yıllık Mars Taşı",
     "url": null,
     "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-01T00:14:53Z",
+  "run": "41238987218",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41255883832",
+  "videos": [
+   {
+    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
+    "url": null,
+    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
    }
   ]
  }

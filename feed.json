@@ -3516,5 +3516,21 @@
    }
   ],
   "script": "scripts/longform/tr-mimar-sinan.json"
+ },
+ {
+  "time": "2026-11-01T19:58:44Z",
+  "run": "41344140975",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41344140975",
+  "videos": [
+   {
+    "title": "Beşiktaş Kasımpaşa Deplasmanında Son Anlarda Yıkıldı: 2-2",
+    "url": "https://youtu.be/A1xy6NP7AX0",
+    "instagram": "https://www.instagram.com/reel/DfNiWVNCCur/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

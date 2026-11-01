@@ -3379,21 +3379,6 @@
   ]
  },
  {
-  "time": "2026-11-01T07:28:23Z",
-  "run": "41238987218",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41284902866",
-  "videos": [
-   {
-    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
-   }
-  ]
- },
- {
   "time": "2026-11-01T16:53:17Z",
   "run": "41328460504",
   "event": "schedule",
@@ -3498,6 +3483,21 @@
     "title": "Doğalgazda Limitler Güncellendi, Emekliye Refah Payı Geliyor",
     "url": "https://youtu.be/fDWD_iBx9lo",
     "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-01T19:31:12Z",
+  "run": "41238987218",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342117839",
+  "videos": [
+   {
+    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
+    "url": "https://youtu.be/hmpMy6SJDyA",
+    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
    }
   ]
  }

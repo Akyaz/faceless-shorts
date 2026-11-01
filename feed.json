@@ -3425,5 +3425,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-01T15:01:33Z",
+  "run": "41316670044",
+  "event": "schedule",
+  "mode": "weekly",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41316670044",
+  "videos": [
+   {
+    "title": "Doğalgazda Limitler Güncellendi, Emekliye Refah Payı Geliyor",
+    "url": null,
+    "instagram": null
+   }
+  ],
+  "slot": "pazar 11:00"
  }
 ]

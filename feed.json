@@ -3458,22 +3458,6 @@
   "slot": "13:30"
  },
  {
-  "time": "2026-11-01T17:23:50Z",
-  "run": "41330606796",
-  "event": "schedule",
-  "mode": "fact",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41330606796",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Tarihin Akışını Değiştiren Dünyanın En Eski Yapısı",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DfNQnWkDYzJ/"
-   }
-  ],
-  "slot": "15:00"
- },
- {
   "time": "2026-11-01T19:01:24Z",
   "run": "41337488067",
   "event": "workflow_dispatch",
@@ -3504,5 +3488,20 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/tr-mimar-sinan.json"
+ },
+ {
+  "time": "2026-11-01T19:30:59Z",
+  "run": "41330606796",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342097052",
+  "videos": [
+   {
+    "title": "Göbeklitepe: Tarihin Akışını Değiştiren Dünyanın En Eski Yapısı",
+    "url": "https://youtu.be/NWLNEEfiWHc",
+    "instagram": "https://www.instagram.com/reel/DfNQnWkDYzJ/"
+   }
+  ]
  }
 ]

@@ -3491,19 +3491,18 @@
   "slot": "15:00"
  },
  {
-  "time": "2026-11-01T18:45:14Z",
+  "time": "2026-11-01T19:01:24Z",
   "run": "41337488067",
-  "event": "schedule",
+  "event": "workflow_dispatch",
   "mode": "culture",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41337488067",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41339562003",
   "videos": [
    {
     "title": "Susuz Yaz Dizi Oluyor: Hülya Koçyiğit'ten İlk Açıklama Geldi",
-    "url": null,
+    "url": "https://youtu.be/XmqW4tbN6A4",
     "instagram": "https://www.instagram.com/reel/DfNZ7JikjNo/"
    }
-  ],
-  "slot": "17:00"
+  ]
  }
 ]

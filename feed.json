@@ -3364,23 +3364,6 @@
   "slot": "19:00"
  },
  {
-  "time": "2026-10-31T22:13:32Z",
-  "run": "41240354685",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41240354685",
-  "videos": [
-   {
-    "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
-    "url": null,
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/tr-mimar-sinan.json"
- },
- {
   "time": "2026-10-31T22:13:35Z",
   "run": "41219202219",
   "event": "workflow_dispatch",
@@ -3504,5 +3487,22 @@
     "instagram": "https://www.instagram.com/reel/DfNZ7JikjNo/"
    }
   ]
+ },
+ {
+  "time": "2026-11-01T19:26:09Z",
+  "run": "41240354685",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41240354685",
+  "videos": [
+   {
+    "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
+    "url": "https://youtu.be/dde_BWpwfYk",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-mimar-sinan.json"
  }
 ]

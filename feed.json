@@ -3579,15 +3579,6 @@
   ]
  },
  {
-  "time": "2026-11-02T16:54:34Z",
-  "run": "41485358031",
-  "event": "workflow_dispatch",
-  "mode": "culture",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41485358031",
-  "videos": []
- },
- {
   "time": "2026-11-02T17:19:21Z",
   "run": "41489319670",
   "event": "workflow_dispatch",
@@ -3644,6 +3635,21 @@
     "title": "Şampiyonlar Ligi'nde Bugün Hangi Maçlar Var? 3 Kasım Maç Programı ve Saatleri",
     "url": "https://youtu.be/mqld-7FptnQ",
     "instagram": "https://www.instagram.com/reel/DfQOYuKjOgE/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-02T21:08:51Z",
+  "run": "41485358031",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41485358031",
+  "videos": [
+   {
+    "title": "Sevdam Karadeniz Final Yapıyor: Ekip Trabzon'dan Ayrıldı",
+    "url": "https://youtu.be/C4F39vgriEs",
+    "instagram": "https://www.instagram.com/reel/DfQPKHKFci9/"
    }
   ]
  }

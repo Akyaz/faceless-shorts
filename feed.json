@@ -3631,5 +3631,20 @@
     "instagram": "https://www.instagram.com/reel/DfP66k1j3d9/"
    }
   ]
+ },
+ {
+  "time": "2026-11-02T21:01:56Z",
+  "run": "41524129856",
+  "event": "workflow_dispatch",
+  "mode": "ucl",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41524129856",
+  "videos": [
+   {
+    "title": "Şampiyonlar Ligi'nde Bugün Hangi Maçlar Var? 3 Kasım Maç Programı ve Saatleri",
+    "url": "https://youtu.be/mqld-7FptnQ",
+    "instagram": "https://www.instagram.com/reel/DfQOYuKjOgE/"
+   }
+  ]
  }
 ]

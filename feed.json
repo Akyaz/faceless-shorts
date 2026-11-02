@@ -3652,5 +3652,21 @@
     "instagram": "https://www.instagram.com/reel/DfQPKHKFci9/"
    }
   ]
+ },
+ {
+  "time": "2026-11-02T23:33:26Z",
+  "run": "41545716997",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41545716997",
+  "videos": [
+   {
+    "title": "Fenerbahçe Sergio Conceiçao İle Anlaştı: Yeni Teknik Direktör Belli Oldu",
+    "url": "https://youtu.be/r_BKusfOIYg",
+    "instagram": "https://www.instagram.com/reel/DfQftGOIVQ7/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

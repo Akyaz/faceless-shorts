@@ -3668,5 +3668,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-02T23:58:32Z",
+  "run": "41549063335",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41549063335",
+  "videos": [
+   {
+    "title": "İl Olmaya Aday 19 İlçe: Hangileri İl Statüsü Kazanmalı?",
+    "url": "https://youtu.be/H0B3fgcUZmQ",
+    "instagram": "https://www.instagram.com/reel/DfQikx-EVnu/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

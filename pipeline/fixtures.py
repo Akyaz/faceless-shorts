@@ -183,18 +183,23 @@ def main():
             draw(n, work / f"results{n}.png")
             parts.append((work / f"results{n}.png", _silence(0.6, work / f"tick{n}.mp3"), 0.0, False))
         parts.append((work / f"results{len(rows)}.png", _silence(3.0, work / "hold.mp3"), 0.0, False))
+    single = matches[0] if len(matches) == 1 else None
+    question = ("Sence kim kazanır?" if single else
+                "Sence kaç galibiyet gelir?" if turks_abroad else "Sence hangi maç sürpriz yapar?")
     if matches:
         card, voice = work / "card.png", work / "voice.mp3"
         render.draw_fixture_card("Günün Maçları", _label(day), list(groups.items()), card, label,
                                  highlight=highlight, note="Saatler Türkiye saatiyle")
         if results:
             spoken = "Ve bugünün programı."
+        elif single:
+            # Tek maçta "hangi maç sürpriz yapar" ya da "kaç galibiyet gelir" diye sormak anlamsız
+            where = "Avrupa'da bir Türk takımı sahada" if turks_abroad else f"{_in(name)} bugün tek maç var"
+            spoken = f"{where}: {single[1]} ile {single[2]} karşılaşıyor. {question} Skor tahminini yorumlara yaz."
         elif turks_abroad:
-            spoken = (f"Türk takımları bugün Avrupa'da {_count(len(matches))} maça çıkıyor. "
-                      "Sence kaç galibiyet gelir? Yorumlara yaz.")
+            spoken = f"Türk takımları bugün Avrupa'da {_count(len(matches))} maça çıkıyor. {question} Yorumlara yaz."
         else:
-            spoken = (f"{_in(name)} bugün {_count(len(matches))} maç var. "
-                      "Sence hangi maç sürpriz yapar? Yorumlara yaz.")
+            spoken = f"{_in(name)} bugün {_count(len(matches))} maç var. {question} Yorumlara yaz."
         synthesize(spoken, voice)
         hold = max(0.35, MIN_SECONDS - render.audio_duration(voice)) if not results else 5.0
         parts.append((card, voice, hold, True))
@@ -224,7 +229,9 @@ def main():
             f"{day.day} {MONTHS[day.month - 1]} programı:\n{listing}\n\n" if listing else "")
     else:
         when = f"{day.day} {MONTHS[day.month - 1]}"
-        if turks_abroad:
+        if single:
+            title = f"{single[1]} - {single[2]} Maçı Bugün Saat Kaçta? {when} {'' if turks_abroad else name + ' '}Maç Programı"
+        elif turks_abroad:
             title = f"Türk Takımlarının Avrupa Maçları Bugün Saat Kaçta? {when} Maç Programı"
         else:
             title = f"{_in(name)} Bugün Hangi Maçlar Var? {when} Maç Programı ve Saatleri"
@@ -239,7 +246,8 @@ def main():
         "tags": tags + [name.lower(), "maç sonuçları", "maç programı", "bugün hangi maçlar var", "shorts"],
         "category": "17",
         # kanal adına ilk yorum: yorum getirsin diye videodaki soru
-        "comment": "" if results else ("Sence Türk takımlarından kaç galibiyet gelir?" if turks_abroad
+        "comment": "" if results else (f"{single[1]} - {single[2]}: sence kim kazanır? Skor tahminin ne?" if single
+                                       else "Sence Türk takımlarından kaç galibiyet gelir?" if turks_abroad
                                        else "Sence bugün hangi maç sürpriz yapar?"),
         "language": "tr",
     }

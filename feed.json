@@ -3577,5 +3577,14 @@
     "instagram": "https://www.instagram.com/reel/DfPvJNcFS0x/"
    }
   ]
+ },
+ {
+  "time": "2026-11-02T16:54:34Z",
+  "run": "41485358031",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41485358031",
+  "videos": []
  }
 ]

@@ -3616,5 +3616,20 @@
     "instagram": "https://www.instagram.com/reel/DfP4BOPihcO/"
    }
   ]
+ },
+ {
+  "time": "2026-11-02T18:11:59Z",
+  "run": "41497476690",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41497476690",
+  "videos": [
+   {
+    "title": "Antik Çağın Gizemli Analog Bilgisayarı",
+    "url": "https://youtu.be/UkqlOw9H51M",
+    "instagram": "https://www.instagram.com/reel/DfP66k1j3d9/"
+   }
+  ]
  }
 ]

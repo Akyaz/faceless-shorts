@@ -3586,5 +3586,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41485358031",
   "videos": []
+ },
+ {
+  "time": "2026-11-02T17:19:21Z",
+  "run": "41489319670",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41489319670",
+  "videos": [
+   {
+    "title": "Arda Güler Fenerbahçe'ye Rekor Kazandırdı: Toplam 30 Milyon Euro!",
+    "url": "https://youtu.be/ws1knUGu-ok",
+    "instagram": "https://www.instagram.com/reel/DfP03AtE3_9/"
+   }
+  ]
  }
 ]

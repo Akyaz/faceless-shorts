@@ -3684,5 +3684,21 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-03T00:05:29Z",
+  "run": "41549855560",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41549855560",
+  "videos": [
+   {
+    "title": "Süper Lig yayın geliri 400 milyon euroyu geçmeli mi?",
+    "url": "https://youtu.be/MkW_A_HRps0",
+    "instagram": "https://www.instagram.com/reel/DfQjX_IjkZs/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

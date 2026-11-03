@@ -3749,5 +3749,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-03T17:53:34Z",
+  "run": "41688300866",
+  "event": "schedule",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41688300866",
+  "videos": [
+   {
+    "title": "Galatasaray - Stuttgart Maçı Bugün Saat Kaçta? 3 Kasım Maç Programı",
+    "url": "https://youtu.be/rCSC6QziL04",
+    "instagram": "https://www.instagram.com/reel/DfSdm3tif1D/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

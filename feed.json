@@ -3797,5 +3797,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-03T21:22:11Z",
+  "run": "41720394187",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41720394187",
+  "videos": [
+   {
+    "title": "Galatasaray 2-0 Stuttgart: Batrakov Rekorları Altüst Etti",
+    "url": "https://youtu.be/gMguomBas2A",
+    "instagram": "https://www.instagram.com/reel/DfS1eS2gUrz/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

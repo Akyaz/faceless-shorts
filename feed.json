@@ -3765,5 +3765,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-03T18:48:41Z",
+  "run": "41695975636",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41695975636",
+  "videos": [
+   {
+    "title": "Dünyanın En Dayanıklı Canlısı: Tardigrad",
+    "url": "https://youtu.be/yVTPQdsxbvQ",
+    "instagram": "https://www.instagram.com/reel/DfSj6aYjnYN/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

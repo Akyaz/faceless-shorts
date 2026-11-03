@@ -3781,5 +3781,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-03T20:25:47Z",
+  "run": "41711217124",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41711217124",
+  "videos": [
+   {
+    "title": "Cevher Dizisi: Elçin Sangu ve Ertan Saban Yan Yana",
+    "url": "https://youtu.be/Mvh8x0UL8s8",
+    "instagram": "https://www.instagram.com/reel/DfSvBQyAED2/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

@@ -3909,5 +3909,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-04T18:01:35Z",
+  "run": "41882566707",
+  "event": "schedule",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41882566707",
+  "videos": [
+   {
+    "title": "Fenerbahçe - Liverpool Maçı Bugün Saat Kaçta? 4 Kasım Maç Programı",
+    "url": "https://youtu.be/g2_GiyQwUxQ",
+    "instagram": "https://www.instagram.com/reel/DfVDUH_FLzh/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

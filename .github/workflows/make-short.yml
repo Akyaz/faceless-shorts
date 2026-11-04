@@ -32,6 +32,10 @@ on:
     - cron: "45 17 * * *"
   workflow_dispatch:
     inputs:
+      slot:
+        description: "Saat adı (örnek: 10:00); dışarıdan zamanlayıcı (cron-job.org) doldurur. Doluysa o saatin türü üretilir, bugün zaten çıktıysa atlanır ve video yüklenir"
+        type: string
+        default: ""
       upload:
         description: "Üretilen videoyu kanala da yükle"
         type: boolean
@@ -86,13 +90,14 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           SCHEDULE: ${{ github.event.schedule }}
           INPUT_MODE: ${{ inputs.mode }}
+          SLOT_INPUT: ${{ inputs.slot }}
           CUSTOM: ${{ (inputs.script || inputs.script_json) && '1' || '' }}
           WORKFLOW_FILE: make-short.yml
         run: python3 -m pipeline.slots
       # YouTube'a önceden zamanlı yüklenen videonun Instagram paylaşımı (Instagram API zamanlamayı desteklemiyor):
       # scripts/scheduled/TARİH-SAAT.instagram dosyasında videoyu üreten çalışmanın numarası durur
       - name: Zamanlanmış Instagram paylaşımı
-        if: ${{ github.event_name == 'schedule' && steps.decide.outputs.slot != '' }}
+        if: ${{ steps.decide.outputs.slot != '' }}
         env:
           GH_TOKEN: ${{ github.token }}
           SLOT: ${{ steps.decide.outputs.slot }}
@@ -165,7 +170,7 @@ jobs:
           path: state
           key: history-${{ github.run_id }}
       - name: YouTube'a yükle
-        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) }}
+        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload || inputs.slot != '') }}
         env:
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -183,7 +188,7 @@ jobs:
       # IG_ACCESS_TOKEN secret'ı yoksa adım hiçbir şey yapmaz.
       - name: Instagram'a yükle
         # Zamanlanmış YouTube yayınında Instagram ayrıca yayın günü yüklenir (Instagram API zamanlamayı desteklemiyor)
-        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload) && !inputs.publish_at }}
+        if: ${{ !cancelled() && (github.event_name == 'schedule' || inputs.upload || inputs.slot != '') && !inputs.publish_at }}
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}

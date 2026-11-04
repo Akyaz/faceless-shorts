@@ -1,10 +1,12 @@
 """Zamanlanmış çalışmanın hangi saatin videosu olduğunu ve o saatin videosunun bugün üretilip üretilmediğini söyler.
 
-GitHub zamanlanmış çalışmaları geciktirebiliyor ya da hiç başlatmayabiliyor. Bu yüzden her saatin 25 dakika
-sonrasında bir yedek tetikleme var: asıl çalışma o gün kayda geçtiyse yedek hiçbir şey üretmeden kapanır.
+GitHub zamanlanmış çalışmaları saatlerce geciktirebiliyor ya da hiç başlatmayabiliyor. Bu yüzden asıl tetikleme
+dışarıdan (cron-job.org) slot girdisiyle gelir; GitHub'ın kendi zamanlaması ve her saatin 25 dakika sonrasındaki
+tetikleme yedektir: o saatin videosu o gün kayda geçtiyse yedek hiçbir şey üretmeden kapanır.
 
 Kullanım (GitHub Actions adımı): python -m pipeline.slots
-Ortam: GITHUB_EVENT_NAME, SCHEDULE (github.event.schedule), INPUT_MODE, CUSTOM (elle metin varsa 1)
+Ortam: GITHUB_EVENT_NAME, SCHEDULE (github.event.schedule), SLOT_INPUT (elle/dışarıdan tetiklemede saat adı,
+ör. "10:00"), INPUT_MODE, CUSTOM (elle metin varsa 1)
 Çıktı (GITHUB_OUTPUT): run=true|false, mode=..., slot=..., script=...
 
 Önceden yazılmış video: scripts/scheduled/YYYY-AA-GG-SSDD.json (Türkiye tarihi ve saati, ör. 2026-10-24-2030.json)
@@ -53,23 +55,24 @@ def done_today(slot):
 
 
 def wait_for_running():
-    """Aynı iş akışının başka bir zamanlanmış çalışması sürüyorsa (GitHub asıl çalışmayı geciktirmiş olabilir)
-    bitmesini bekler; böylece kayda bakıldığında asıl çalışmanın sonucu görünür. En fazla 40 dakika."""
+    """Aynı iş akışının başka bir zamanlanmış ya da dışarıdan tetiklenmiş çalışması sürüyorsa
+    bitmesini bekler; böylece kayda bakıldığında asıl çalışmanın sonucu görünür. En fazla 40 dakika.
+    Yalnızca daha önce başlamış çalışmalar beklenir: aynı anda başlayan iki çalışma birbirini beklemesin."""
     repo, me = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_RUN_ID")
     workflow = os.environ.get("WORKFLOW_FILE")
-    if not (repo and workflow and os.environ.get("GITHUB_TOKEN")):
+    if not (repo and me and workflow and os.environ.get("GITHUB_TOKEN")):
         return
     for _ in range(80):
         busy = []
-        for status in ("in_progress", "queued"):
+        for event, status in [(e, s) for e in ("schedule", "workflow_dispatch") for s in ("in_progress", "queued")]:
             req = urllib.request.Request(
-                f"https://api.github.com/repos/{repo}/actions/workflows/{workflow}/runs?event=schedule&status={status}",
+                f"https://api.github.com/repos/{repo}/actions/workflows/{workflow}/runs?event={event}&status={status}",
                 headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Accept": "application/vnd.github+json"})
             with urllib.request.urlopen(req, timeout=30) as resp:
-                busy += [r["id"] for r in json.load(resp)["workflow_runs"] if str(r["id"]) != str(me)]
+                busy += [r["id"] for r in json.load(resp)["workflow_runs"] if r["id"] < int(me)]
         if not busy:
             return
-        print(f"Başka bir zamanlanmış çalışma sürüyor ({busy}); bitmesi bekleniyor")
+        print(f"Daha önce başlamış bir çalışma sürüyor ({busy}); bitmesi bekleniyor")
         time.sleep(30)
 
 
@@ -95,10 +98,17 @@ def scheduled_script(slot):
 
 def decide():
     """(üretilsin mi, tür, saat, önceden yazılmış metin)"""
-    if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
+    slot_input = os.environ.get("SLOT_INPUT", "").strip()
+    if slot_input:  # dışarıdan tetikleme: zamanlanmış çalışmayla aynı kurallar
+        modes = {name: mode for name, mode in SLOTS.values()}
+        if slot_input not in modes:
+            raise SystemExit(f"Bilinmeyen saat: {slot_input} (geçerli: {', '.join(modes)})")
+        slot, mode = slot_input, modes[slot_input]
+    elif os.environ.get("GITHUB_EVENT_NAME") != "schedule":
         mode = "custom" if os.environ.get("CUSTOM") else (os.environ.get("INPUT_MODE") or "story")
         return True, mode, "", ""
-    slot, mode = SLOTS[os.environ["SCHEDULE"]]
+    else:
+        slot, mode = SLOTS[os.environ["SCHEDULE"]]
     try:
         wait_for_running()
     except Exception as exc:  # bekleme yapılamasa da karar kayda göre verilir

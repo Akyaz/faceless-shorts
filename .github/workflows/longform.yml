@@ -8,6 +8,10 @@ on:
     - cron: "30 18 * * *"  # yedek: asıl çalışma başlamadıysa (pipeline/slots.py)
   workflow_dispatch:
     inputs:
+      slot:
+        description: "Saat adı (örnek: 21:00); dışarıdan zamanlayıcı (cron-job.org) doldurur. Doluysa o saatin türü üretilir, bugün zaten çıktıysa atlanır ve video yüklenir"
+        type: string
+        default: ""
       script:
         description: "Metin dosyası (örnek: scripts/longform/tr-gobeklitepe.json); boşsa sıradaki"
         type: string
@@ -33,6 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SCHEDULE: ${{ github.event.schedule }}
+          SLOT_INPUT: ${{ inputs.slot }}
           WORKFLOW_FILE: longform.yml
         run: python3 -m pipeline.slots
 
@@ -70,7 +75,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -m pipeline.longform "$SCRIPT_PATH" --out out
       - name: YouTube'a yükle
-        if: ${{ env.SCRIPT_PATH != '' && (github.event_name == 'schedule' || inputs.upload) }}
+        if: ${{ env.SCRIPT_PATH != '' && (github.event_name == 'schedule' || inputs.upload || inputs.slot != '') }}
         env:
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -79,7 +84,7 @@ jobs:
         run: python -m pipeline.upload out/video.mp4 out/metadata.json
       # Yüklenmeyen deneme üretimi kısa süre saklanır ki yayından önce izlenebilsin
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() && env.SCRIPT_PATH != '' && github.event_name != 'schedule' && !inputs.upload }}
+        if: ${{ !cancelled() && env.SCRIPT_PATH != '' && github.event_name != 'schedule' && !inputs.upload && inputs.slot == '' }}
         with:
           name: longform-video
           path: out/video.mp4

@@ -8,6 +8,10 @@ on:
     - cron: "15 8 * * 0"  # yedek: asıl çalışma başlamadıysa (pipeline/slots.py)
   workflow_dispatch:
     inputs:
+      slot:
+        description: "Saat adı (örnek: pazar 11:00); dışarıdan zamanlayıcı (cron-job.org) doldurur. Doluysa o saatin türü üretilir, bugün zaten çıktıysa atlanır ve video yüklenir"
+        type: string
+        default: ""
       upload:
         description: "Üretilen videoyu kanala da yükle"
         type: boolean
@@ -29,6 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SCHEDULE: ${{ github.event.schedule }}
+          SLOT_INPUT: ${{ inputs.slot }}
           WORKFLOW_FILE: weekly.yml
         run: python3 -m pipeline.slots
 
@@ -73,7 +78,7 @@ jobs:
             out/short.mp4
             out/metadata.json
       - name: YouTube'a yükle
-        if: ${{ github.event_name == 'schedule' || inputs.upload }}
+        if: ${{ github.event_name == 'schedule' || inputs.upload || inputs.slot != '' }}
         env:
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}

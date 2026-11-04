@@ -3845,5 +3845,21 @@
     "instagram": "https://www.instagram.com/reel/DfUOax7iqx1/"
    }
   ]
+ },
+ {
+  "time": "2026-11-04T11:55:43Z",
+  "run": "41824276811",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41824276811",
+  "videos": [
+   {
+    "title": "Çatalhöyük: Kapısı Olmayan 9000 Yıllık Antik Kent",
+    "url": "https://youtu.be/bmKLsDoEWTo",
+    "instagram": "https://www.instagram.com/reel/DfUZdPdjkQY/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

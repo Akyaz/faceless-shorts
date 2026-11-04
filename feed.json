@@ -3941,5 +3941,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-04T22:45:50Z",
+  "run": "41927460297",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41927460297",
+  "videos": [
+   {
+    "title": "Okullarda uzaktan eğitim kararı doğru mu?",
+    "url": "https://youtu.be/GGm3hs8DZ7A",
+    "instagram": "https://www.instagram.com/reel/DfVj2KOEQ20/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

@@ -3925,5 +3925,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-04T21:39:40Z",
+  "run": "41917335984",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41917335984",
+  "videos": [
+   {
+    "title": "TFF Açıkladı: İskenderunspor Türkiye Kupası'ndan Men Edildi",
+    "url": "https://youtu.be/ue5NR8ulqCI",
+    "instagram": "https://www.instagram.com/reel/DfVcRwPlcx5/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

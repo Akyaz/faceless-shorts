@@ -19,6 +19,7 @@ import time
 import urllib.request
 
 # cron -> (saat adı, video türü). Saatler UTC; Türkiye saati = UTC+3. Her saatin ikinci satırı yedektir.
+# Saat eklenir ya da değişirse panelin günlük planı da güncellenmeli (faceless-shorts-panel/api.js, PLAN).
 SLOTS = {
     # Günde 6 Shorts (maç günü 7). 07:15 sabah özeti ve 16:00 İngilizce "On This Day" kaldırıldı: özetler akılda
     # kalmıyordu, İngilizce video Türkçe kitleyi karıştırıyordu.

@@ -3989,5 +3989,15 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-05T11:37:06Z",
+  "run": "42019219135",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019219135",
+  "videos": [],
+  "slot": "12:00"
  }
 ]

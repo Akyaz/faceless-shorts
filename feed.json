@@ -3973,5 +3973,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-05T11:35:34Z",
+  "run": "42019223836",
+  "event": "workflow_dispatch",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019223836",
+  "videos": [
+   {
+    "title": "Türk Takımlarının Avrupa Maçları Bugün Saat Kaçta? 5 Kasım Maç Programı",
+    "url": "https://youtu.be/gaOJmBl36cs",
+    "instagram": "https://www.instagram.com/reel/DfW777tmSdA/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

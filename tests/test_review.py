@@ -59,6 +59,11 @@ class Story(unittest.TestCase):
         with self.assertRaises(review.Incomplete):
             self.run_check({"status": "unfixable", "questions": ["Hangi ilçeler?"]})
 
+    def test_ok_with_hollow_paragraph_is_rejected(self):
+        # 5 Kasım denemesi: "kaynak ayırdıklarını duyurdu" (ne kadar?) varken denetçi "ok" demişti
+        with self.assertRaises(review.Incomplete):
+            self.run_check({"status": "ok", "checks": [{"n": 2, "concrete": False, "missing": "ne kadar?"}]})
+
     def test_prompt_contains_article_text(self):
         with mock.patch("pipeline.script._call", return_value=reply({"status": "ok"})) as call:
             review.check_story(story())

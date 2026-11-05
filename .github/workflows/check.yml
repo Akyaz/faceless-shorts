@@ -4,7 +4,7 @@ name: Kod kontrolü
 # (16 Ekim'de yanlış uygulanan bir isim değişikliği görsel seçim kuralını iki gün boyunca bozdu).
 on:
   push:
-    paths: ["pipeline/**", "scripts/**.py", ".github/workflows/check.yml"]
+    paths: ["pipeline/**", "scripts/**.py", "tests/**", ".github/workflows/check.yml"]
 
 jobs:
   pyflakes:
@@ -14,4 +14,6 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - run: pip install pyflakes && python -m pyflakes pipeline scripts/*.py
+      - run: pip install pyflakes && python -m pyflakes pipeline scripts/*.py tests
+      # Saat kararı ve yükleme tekrarı: yanlışlığı videolar yanlış saatte ya da iki kez çıkınca fark ediliyordu
+      - run: python -m unittest discover -s tests -t .

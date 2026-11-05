@@ -74,7 +74,7 @@ jobs:
   # Hangi saatin videosu, bugün zaten üretildi mi? Paket kurmadan birkaç saniyede karar verir.
   slot:
     runs-on: ubuntu-latest
-    timeout-minutes: 45  # asıl çalışma sürüyorsa bitmesi beklenir
+    timeout-minutes: 130  # öndeki çalışmalar bitene kadar beklenir (pipeline/slots.py, WAIT_MINUTES)
     permissions:
       actions: write  # zamanlanmış Instagram paylaşımını başlatır
       contents: read

@@ -9,6 +9,7 @@ import datetime
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -35,11 +36,24 @@ def collect(out_dir):
 
 
 def _github(method, path, body=None):
-    req = urllib.request.Request(API + path, method=method, data=json.dumps(body).encode() if body else None, headers={
-        "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}", "Accept": "application/vnd.github+json",
-        "User-Agent": "faceless-shorts"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.load(resp)
+    """GitHub aksadığında (5xx, zaman aşımı) birkaç kez dener: kayıt yazılamazsa o saat kayıtsız kalır ve yedek
+    tetikleme videoyu yeniden üretip yükler. Kayıt yazımı çalışma numarasına göre olduğundan tekrar zararsızdır."""
+    for attempt in range(4):
+        req = urllib.request.Request(API + path, method=method, data=json.dumps(body).encode() if body else None,
+                                     headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+                                              "Accept": "application/vnd.github+json", "User-Agent": "faceless-shorts"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            if exc.code < 500 or attempt == 3:
+                raise
+            print(f"GitHub {method} {path}: HTTP {exc.code}, yeniden deneniyor")
+        except (urllib.error.URLError, TimeoutError) as exc:
+            if attempt == 3:
+                raise
+            print(f"GitHub {method} {path}: {exc}, yeniden deneniyor")
+        time.sleep(15 * (attempt + 1))
 
 
 def append_feed(entry):
@@ -87,7 +101,7 @@ def find_link(run, title, key):
     """Panel kaydında bu çalışmanın bu videosu için kayıtlı bağlantı (key: "url" YouTube, "instagram")."""
     try:
         feed, _ = read_feed()
-    except (KeyError, urllib.error.HTTPError):
+    except (KeyError, urllib.error.URLError, TimeoutError):  # HTTPError da URLError'dır
         return None
     for entry in feed:
         if str(entry.get("run")) == str(run):

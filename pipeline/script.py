@@ -28,8 +28,10 @@ VAGUE = re.compile(r"\b(hakkında|ilişkin|ile ilgili|konusunda)\s+(resmi\s+|yen
 def vague(text):
     return bool(VAGUE.search(text or ""))
 
-# Yoğunlukta 503 dönebiliyor; sırayla denenir
+# Yoğunlukta 503 dönebiliyor; sırayla denenir. Hepsi düşerse yoğunluğun geçmesi beklenip tur yeniden başlar
+# (503 dalgaları birkaç dakika sürüyor; tek turluk deneme dakikasında bitiyordu).
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
+ROUND_WAITS = (0, 60, 180)
 _out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
 
 
@@ -44,28 +46,36 @@ def _generate(prompt, key, images=(), models=None):
     }).encode()
     models = (models or os.environ.get("GEMINI_MODELS", DEFAULT_MODELS)).split(",")
     last_err = None
-    for model in models:
-        if model in _out_of_quota:
-            continue
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model.strip()}:generateContent"
-        for attempt in range(2):
-            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
-                                                                  "x-goog-api-key": key})
-            try:
-                with urllib.request.urlopen(req, timeout=120) as resp:
-                    data = json.load(resp)
-                return data["candidates"][0]["content"]["parts"][0]["text"]
-            except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError) as exc:
-                last_err = exc
-                print(f"Gemini {model} deneme {attempt + 1}: {exc}")
-                if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
-                    # Hangi sınırın dolduğu (dakikalık mı günlük mü) yanıtın içinde yazıyor
-                    print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:700])
-                    _out_of_quota.add(model)
-                    break
-                if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):
-                    break  # tekrar denemek işe yaramaz, sıradaki modele geç
-                time.sleep(10)
+    for wait in ROUND_WAITS:
+        busy = False  # yalnızca geçici hatada (500/503, zaman aşımı) yeni tur denenir
+        if wait:
+            print(f"Gemini modelleri yanıt vermedi; {wait} sn sonra yeniden denenecek")
+            time.sleep(wait)
+        for model in models:
+            if model in _out_of_quota:
+                continue
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model.strip()}:generateContent"
+            for attempt in range(2):
+                req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
+                                                                      "x-goog-api-key": key})
+                try:
+                    with urllib.request.urlopen(req, timeout=120) as resp:
+                        data = json.load(resp)
+                    return data["candidates"][0]["content"]["parts"][0]["text"]
+                except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError) as exc:
+                    last_err = exc
+                    print(f"Gemini {model} deneme {attempt + 1}: {exc}")
+                    if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
+                        # Hangi sınırın dolduğu (dakikalık mı günlük mü) yanıtın içinde yazıyor
+                        print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:700])
+                        _out_of_quota.add(model)
+                        break
+                    if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):
+                        break  # tekrar denemek işe yaramaz, sıradaki modele geç
+                    busy = True
+                    time.sleep(10)
+        if not busy:
+            break
     raise RuntimeError(f"Hiçbir Gemini modeli yanıt vermedi: {last_err}")
 
 
@@ -584,9 +594,14 @@ def build_script(headlines, mode="story", recent=()):
                     print(f"{exc}; bu saat gündem haberine dönüyor")
                     return story_script(headlines, "story", recent=recent)
             return digest_script(headlines, mode)
-        except Exception as exc:  # dil modeli düşerse o saatin videosu yine çıksın
+        except Exception as exc:
+            # Tek konulu videoda başlıkların düz okunduğu özet hem türüne uymuyor hem belirsiz kalıyor; çalışma
+            # düşerse saatin yedek tetiklemesi yeniden dener. Toplu özetler dil modeli olmadan da okunabilir.
+            if mode in STORIES:
+                raise RuntimeError(f"Dil modeli metni yazamadı; bu saatin videosu atlanıyor: {exc}") from exc
             print(f"Gemini başarısız, özet formatına geçiliyor: {exc}")
     if STORIES.get(mode, {}).get("lang") == "en":
         raise RuntimeError("İngilizce video dil modeli olmadan yazılamıyor; bu saatin videosu atlanıyor.")
+    # Dil modeli anahtarı yoksa (yerelde --offline deneme) tek konulu türler de düz özetle denenebilir
     fallback = "sports" if mode == "sportstory" else "digest" if mode in STORIES else mode
     return plain_digest(headlines, fallback)

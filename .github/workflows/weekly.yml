@@ -20,7 +20,7 @@ on:
 jobs:
   slot:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 130  # öndeki çalışmalar bitene kadar beklenir (pipeline/slots.py, WAIT_MINUTES)
     permissions:
       actions: read
       contents: read

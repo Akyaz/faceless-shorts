@@ -8,6 +8,7 @@ Kullanım: python -m pipeline.upload out/short.mp4 out/metadata.json
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -47,22 +48,71 @@ def upload(video_path, meta):
         # GitHub zamanlaması saatlerce gecikebildiği için kesin saatli videolar (bayram tebriği) böyle yüklenir.
         resource["status"].update({"privacyStatus": "private", "publishAt": os.environ["YT_PUBLISH_AT"]})
         print(f"Yayın zamanı: {os.environ['YT_PUBLISH_AT']}")
-    size = os.path.getsize(video_path)
-    init = urllib.request.Request(UPLOAD_URL, data=json.dumps(resource).encode(), method="POST", headers={
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json; charset=UTF-8",
-        "X-Upload-Content-Type": "video/mp4",
-        "X-Upload-Content-Length": str(size),
-    })
-    with urllib.request.urlopen(init, timeout=60) as resp:
-        session_url = resp.headers["Location"]
-
     with open(video_path, "rb") as f:
-        put = urllib.request.Request(session_url, data=f.read(), method="PUT", headers={
-            "Authorization": f"Bearer {token}", "Content-Type": "video/mp4"})
-    with urllib.request.urlopen(put, timeout=600) as resp:
-        video = json.load(resp)
-    return video["id"]
+        data = f.read()
+    for attempt in range(RETRIES):  # oturum açılmadan düşen istek videoyu oluşturmaz; tekrarı güvenli
+        init = urllib.request.Request(UPLOAD_URL, data=json.dumps(resource).encode(), method="POST", headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json; charset=UTF-8",
+            "X-Upload-Content-Type": "video/mp4",
+            "X-Upload-Content-Length": str(len(data)),
+        })
+        try:
+            with urllib.request.urlopen(init, timeout=60) as resp:
+                session_url = resp.headers["Location"]
+            break
+        except Exception as exc:
+            if not _transient(exc) or attempt == RETRIES - 1:
+                raise
+            print(f"Yükleme oturumu açılamadı ({exc}); yeniden deneniyor")
+            time.sleep(20 * (attempt + 1))
+    return _send(session_url, token, data)["id"]
+
+
+RETRIES = 4
+
+
+def _transient(exc):
+    """Sunucu ya da ağ kaynaklı geçici hata mı (kota ve izin hataları değil)."""
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code >= 500
+    return isinstance(exc, (urllib.error.URLError, TimeoutError, ConnectionError))
+
+
+def _send(session_url, token, data):
+    """Videoyu aynı yükleme oturumuna gönderir. Bağlantı yarıda koparsa YouTube'a ne kadarının ulaştığı sorulur ve
+    kalandan devam edilir; baştan yeni oturum açmak, ilk gönderim aslında tamamlandıysa videoyu ikinci kez çıkarırdı."""
+    size, offset = len(data), 0
+    for attempt in range(RETRIES):
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "video/mp4"}
+        if attempt:
+            headers["Content-Range"] = f"bytes {offset}-{size - 1}/{size}"
+        try:
+            req = urllib.request.Request(session_url, data=data[offset:], method="PUT", headers=headers)
+            with urllib.request.urlopen(req, timeout=600) as resp:
+                return json.load(resp)
+        except Exception as exc:
+            if not _transient(exc) or attempt == RETRIES - 1:
+                raise
+            print(f"Video gönderimi yarıda kaldı ({exc}); YouTube'a ulaşan kısım soruluyor")
+        time.sleep(20 * (attempt + 1))
+        probe = urllib.request.Request(session_url, data=b"", method="PUT", headers={
+            "Authorization": f"Bearer {token}", "Content-Range": f"bytes */{size}"})
+        try:
+            with urllib.request.urlopen(probe, timeout=60) as resp:
+                return json.load(resp)  # gönderim aslında tamamlanmış
+        except urllib.error.HTTPError as exc:
+            if exc.code != 308:  # 308: eksik; Range başlığı ulaşan baytları söyler
+                if not _transient(exc):
+                    raise
+                continue
+            received = exc.headers.get("Range")  # "bytes=0-12345"
+            offset = int(received.split("-")[1]) + 1 if received else 0
+            print(f"YouTube'a {offset}/{size} bayt ulaşmış; kalandan devam ediliyor")
+        except Exception as exc:
+            if not _transient(exc):
+                raise
+    raise RuntimeError("Video gönderilemedi")
 
 
 def check():

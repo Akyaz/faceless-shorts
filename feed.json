@@ -4084,16 +4084,16 @@
   ]
  },
  {
-  "time": "2026-11-05T14:11:25Z",
+  "time": "2026-11-05T16:35:35Z",
   "run": "42041314167",
   "event": "workflow_dispatch",
   "mode": "story",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42041314167",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42065998651",
   "videos": [
    {
     "title": "Antalya COP31 Tedbirleri: 7 İlçede Okullar Uzaktan Eğitime Geçiyor",
-    "url": null,
+    "url": "https://youtu.be/0IS_dMn-4HA",
     "instagram": null
    }
   ]

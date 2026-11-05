@@ -4139,5 +4139,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-05T23:30:30Z",
+  "run": "42127743398",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42127743398",
+  "videos": [
+   {
+    "title": "Kapalıçarşı: 570 Yıllık Dev Çarşının Bilinmeyen Hikâyesi",
+    "url": "https://youtu.be/GvJGdFlKQUc",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-kapalicarsi.json"
  }
 ]

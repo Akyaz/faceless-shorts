@@ -87,5 +87,28 @@ class Check(unittest.TestCase):
                 review.check(story(), True)
 
 
+class Quota(unittest.TestCase):
+    def test_search_quota_does_not_block_plain_calls(self):
+        # 5 Kasım: aramalı istekte 429, aynı çalışmanın görsel seçimini de durdurmuştu
+        import io
+        import urllib.error
+        from pipeline import script
+        script._out_of_quota.clear()
+        calls = []
+
+        def fake(req, timeout=None):
+            searching = b"google_search" in req.data
+            calls.append(searching)
+            if searching:
+                raise urllib.error.HTTPError("u", 429, "x", {}, io.BytesIO(b"quota"))
+            return io.BytesIO(json.dumps({"candidates": [reply({"ok": 1})]}).encode())
+
+        with mock.patch("urllib.request.urlopen", fake), mock.patch("time.sleep"):
+            with self.assertRaises(RuntimeError):
+                script._call({"tools": [{"google_search": {}}]}, "k", "m1")
+            self.assertEqual(script._call({}, "k", "m1")["content"]["parts"][0]["text"][:7], "```json")
+        script._out_of_quota.clear()
+
+
 if __name__ == "__main__":
     unittest.main()

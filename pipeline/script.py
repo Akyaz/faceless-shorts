@@ -32,7 +32,9 @@ def vague(text):
 # (503 dalgaları birkaç dakika sürüyor; tek turluk deneme dakikasında bitiyordu).
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
 ROUND_WAITS = (0, 60, 180)
-_out_of_quota = set()  # 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor
+# 429 dönen model bu çalışmada bir daha denenmez; kota dakikalar içinde açılmıyor. Google Arama'nın kotası ayrı:
+# aramalı istekte dolan kota, aynı modelle yapılan metin ve görsel seçimini engellememeli.
+_out_of_quota = set()
 
 
 def _generate(prompt, key, images=(), models=None):
@@ -50,6 +52,7 @@ def _parts_text(candidate):
 
 def _call(body, key, models=None):
     """Gemini'ye istek; yanıtın ilk adayını (metin parçaları ve varsa arama kaynakları) döndürür."""
+    search = "+arama" if body.get("tools") else ""
     body = json.dumps(body).encode()
     models = (models or os.environ.get("GEMINI_MODELS", DEFAULT_MODELS)).split(",")
     last_err = None
@@ -59,7 +62,7 @@ def _call(body, key, models=None):
             print(f"Gemini modelleri yanıt vermedi; {wait} sn sonra yeniden denenecek")
             time.sleep(wait)
         for model in models:
-            if model in _out_of_quota:
+            if model + search in _out_of_quota:
                 continue
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model.strip()}:generateContent"
             for attempt in range(2):
@@ -75,7 +78,7 @@ def _call(body, key, models=None):
                     if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
                         # Hangi sınırın dolduğu (dakikalık mı günlük mü) yanıtın içinde yazıyor
                         print("  " + " ".join(exc.read().decode("utf-8", "replace").split())[:700])
-                        _out_of_quota.add(model)
+                        _out_of_quota.add(model + search)
                         break
                     if isinstance(exc, urllib.error.HTTPError) and exc.code not in (500, 503):
                         break  # tekrar denemek işe yaramaz, sıradaki modele geç

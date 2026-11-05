@@ -4067,5 +4067,20 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-05T14:01:34Z",
+  "run": "42039783228",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42039783228",
+  "videos": [
+   {
+    "title": "Emekliler İçin 2027 Bütçesinde Yeni Kaynak Açıklandı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

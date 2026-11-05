@@ -4052,5 +4052,20 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/en-hannibal.json"
+ },
+ {
+  "time": "2026-11-05T13:46:59Z",
+  "run": "42038208143",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42038208143",
+  "videos": [
+   {
+    "title": "Emekli zammında iki formül: Masadaki ek iyileştirme detayı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

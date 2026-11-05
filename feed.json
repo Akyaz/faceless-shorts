@@ -3957,5 +3957,21 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-05T11:33:16Z",
+  "run": "42019214593",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019214593",
+  "videos": [
+   {
+    "title": "Milli Enerji 2040 Vizyonu: Türkiye'den Dev Hedef",
+    "url": "https://youtu.be/wx4I-AXj5tw",
+    "instagram": "https://www.instagram.com/reel/DfW7qnCjvnO/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

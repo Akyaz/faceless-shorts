@@ -4009,5 +4009,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019233424",
   "videos": [],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-05T11:48:24Z",
+  "run": "42019239798",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019239798",
+  "videos": [
+   {
+    "title": "Ara Güler-Master of Leica Sergisi Açıldı: Ustanın Arşivi Gün Yüzünde",
+    "url": "https://youtu.be/mzVdqGSa_9o",
+    "instagram": "https://www.instagram.com/reel/DfW9aQHgtyT/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

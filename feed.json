@@ -4035,5 +4035,22 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019251938",
   "videos": [],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-05T11:55:18Z",
+  "run": "41936926743",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41936926743",
+  "videos": [
+   {
+    "title": "Hannibal Crosses the Alps: Elephants, Ambushes and a Route Nobody Can Find",
+    "url": "https://youtu.be/dt_fsW94S1Y",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-hannibal.json"
  }
 ]

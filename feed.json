@@ -4123,5 +4123,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-05T22:47:23Z",
+  "run": "42123809438",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42123809438",
+  "videos": [
+   {
+    "title": "Mekke Anlaşması TBMM'de kabul edildi mi?",
+    "url": "https://youtu.be/D42ZsU0toDA",
+    "instagram": "https://www.instagram.com/reel/DfYI1PSodMv/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

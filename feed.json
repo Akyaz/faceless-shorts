@@ -4097,5 +4097,15 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-05T21:25:01Z",
+  "run": "42109173974",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42109173974",
+  "videos": [],
+  "slot": "17:00"
  }
 ]

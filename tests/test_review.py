@@ -1,4 +1,4 @@
-"""Metin denetimi: eksik bilgi aramayla tamamlanır, bulunamazsa haber atlanır (pipeline/review.py)."""
+"""Metin denetimi: eksik bilgi haber metinlerinden tamamlanır, bulunamazsa haber atlanır (pipeline/review.py)."""
 import json
 import os
 import unittest
@@ -7,10 +7,19 @@ from unittest import mock
 from pipeline import review
 
 SOURCE = {"title": "İstanbul'da 5 ilçede su kesintisi", "source": "Haber", "related": []}
-_env = mock.patch.dict(os.environ, {"GEMINI_API_KEY": "k"})
-setUpModule, tearDownModule = _env.start, _env.stop
+ARTICLE = [{"source": "İSKİ", "title": "Su kesintisi", "text": "Kadıköy, Üsküdar, Ataşehir, Maltepe ve Kartal..."}]
+_patches = [mock.patch.dict(os.environ, {"GEMINI_API_KEY": "k"}),
+            mock.patch("pipeline.articles.texts", return_value=ARTICLE)]
 
-WEB = {"groundingChunks": [{"web": {"uri": "https://iski.istanbul", "title": "iski.istanbul"}}]}
+
+def setUpModule():
+    for p in _patches:
+        p.start()
+
+
+def tearDownModule():
+    for p in _patches:
+        p.stop()
 
 
 def story():
@@ -27,14 +36,13 @@ def digest():
                         + [{"kind": "outro", "text": "Sence hangisi önemli?"}]}
 
 
-def reply(out, grounding=WEB):
-    return {"content": {"parts": [{"text": "```json\n" + json.dumps(out, ensure_ascii=False) + "\n```"}]},
-            "groundingMetadata": grounding}
+def reply(out):
+    return {"content": {"parts": [{"text": json.dumps(out, ensure_ascii=False)}]}}
 
 
 class Story(unittest.TestCase):
-    def run_check(self, out, grounding=WEB):
-        with mock.patch("pipeline.script._call", return_value=reply(out, grounding)):
+    def run_check(self, out):
+        with mock.patch("pipeline.script._call", return_value=reply(out)):
             return review.check_story(story())
 
     def test_fills_missing_districts(self):
@@ -51,10 +59,10 @@ class Story(unittest.TestCase):
         with self.assertRaises(review.Incomplete):
             self.run_check({"status": "unfixable", "questions": ["Hangi ilçeler?"]})
 
-    def test_fix_without_search_is_rejected(self):
-        # Arama yapmadan eklenen bilgi uydurma olabilir
-        with self.assertRaises(review.Incomplete):
-            self.run_check({"status": "fixed", "paragraphs": ["a", "b", "c"]}, grounding={})
+    def test_prompt_contains_article_text(self):
+        with mock.patch("pipeline.script._call", return_value=reply({"status": "ok"})) as call:
+            review.check_story(story())
+        self.assertIn("Kadıköy, Üsküdar", call.call_args[0][0]["contents"][0]["parts"][0]["text"])
 
     def test_structure_change_is_rejected(self):
         with self.assertRaises(review.Incomplete):
@@ -81,6 +89,12 @@ class Check(unittest.TestCase):
         with mock.patch("pipeline.script._call", side_effect=RuntimeError("503")):
             self.assertEqual(review.check(story(), True), story())
 
+    def test_no_article_keeps_text(self):
+        # Siteler engellerse ya da Google News biçimi değişirse saat boşa gitmesin
+        with mock.patch("pipeline.articles.texts", return_value=[]), mock.patch("pipeline.script._call") as call:
+            self.assertEqual(review.check(story(), True), story())
+        call.assert_not_called()
+
     def test_incomplete_is_not_swallowed(self):
         with mock.patch("pipeline.script._call", return_value=reply({"status": "unfixable"})):
             with self.assertRaises(review.Incomplete):
@@ -106,7 +120,7 @@ class Quota(unittest.TestCase):
         with mock.patch("urllib.request.urlopen", fake), mock.patch("time.sleep"):
             with self.assertRaises(RuntimeError):
                 script._call({"tools": [{"google_search": {}}]}, "k", "m1")
-            self.assertEqual(script._call({}, "k", "m1")["content"]["parts"][0]["text"][:7], "```json")
+            self.assertEqual(json.loads(script._call({}, "k", "m1")["content"]["parts"][0]["text"]), {"ok": 1})
         script._out_of_quota.clear()
 
 

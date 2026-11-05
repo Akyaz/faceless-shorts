@@ -45,13 +45,15 @@ def _text(fragment):
 
 
 def _related(description_html):
-    """Açıklamadaki aynı habere ait diğer kaynaklar: [{title, source}]."""
+    """Açıklamadaki aynı habere ait diğer kaynaklar: [{title, source, link}]."""
     out = []
     for li in re.findall(r"<li>(.*?)</li>", html.unescape(description_html), re.S):
         title = re.search(r"<a[^>]*>(.*?)</a>", li, re.S)
+        href = re.search(r'<a[^>]*href="([^"]+)"', li)
         source = re.search(r"<font[^>]*>(.*?)</font>", li, re.S)
         if title and not COLUMN.search(_text(title.group(1))):
-            out.append({"title": _text(title.group(1)), "source": _text(source.group(1)) if source else ""})
+            out.append({"title": _text(title.group(1)), "source": _text(source.group(1)) if source else "",
+                        "link": href.group(1) if href else ""})
     return out
 
 

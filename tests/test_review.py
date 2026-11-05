@@ -1,0 +1,91 @@
+"""Metin denetimi: eksik bilgi aramayla tamamlanır, bulunamazsa haber atlanır (pipeline/review.py)."""
+import json
+import os
+import unittest
+from unittest import mock
+
+from pipeline import review
+
+SOURCE = {"title": "İstanbul'da 5 ilçede su kesintisi", "source": "Haber", "related": []}
+_env = mock.patch.dict(os.environ, {"GEMINI_API_KEY": "k"})
+setUpModule, tearDownModule = _env.start, _env.stop
+
+WEB = {"groundingChunks": [{"web": {"uri": "https://iski.istanbul", "title": "iski.istanbul"}}]}
+
+
+def story():
+    texts = ["Yarın musluklar kuruyabilir.", "İstanbul'da 5 ilçede su kesilecek.", "Sence önlem yeterli mi?"]
+    return {"title": "5 ilçede su kesintisi", "hook_title": "Su kesintisi", "lang": "tr", "sources": [SOURCE],
+            "segments": [{"kind": "story", "source": "Haber", "text": t} for t in texts], "pronounce": {}}
+
+
+def digest():
+    items = [{"kind": "item", "label": f"GÜNÜN ÖZETİ {i}/3", "heading": f"Başlık {i}", "text": f"Madde {i}.",
+              "headline": {"title": f"Haber {i}", "source": "X"}} for i in (1, 2, 3)]
+    return {"title": "Günün üç haberi", "lang": "tr", "sources": [i["headline"] for i in items],
+            "segments": [{"kind": "intro", "text": "Bugünün üç haberi, bir dakikada."}] + items
+                        + [{"kind": "outro", "text": "Sence hangisi önemli?"}]}
+
+
+def reply(out, grounding=WEB):
+    return {"content": {"parts": [{"text": "```json\n" + json.dumps(out, ensure_ascii=False) + "\n```"}]},
+            "groundingMetadata": grounding}
+
+
+class Story(unittest.TestCase):
+    def run_check(self, out, grounding=WEB):
+        with mock.patch("pipeline.script._call", return_value=reply(out, grounding)):
+            return review.check_story(story())
+
+    def test_fills_missing_districts(self):
+        fixed = ["Yarın musluklar kuruyabilir.", "Kadıköy, Üsküdar, Ataşehir, Maltepe ve Kartal'da su kesilecek.",
+                 "Sence önlem yeterli mi?"]
+        plan = self.run_check({"status": "fixed", "questions": ["Hangi ilçeler?"], "paragraphs": fixed})
+        self.assertIn("Kadıköy", plan["segments"][1]["text"])
+        self.assertEqual(plan["segments"][1]["source"], "Haber")  # diğer alanlar korunur
+
+    def test_ok_keeps_text(self):
+        self.assertEqual(self.run_check({"status": "ok"}), story())
+
+    def test_unfixable_raises(self):
+        with self.assertRaises(review.Incomplete):
+            self.run_check({"status": "unfixable", "questions": ["Hangi ilçeler?"]})
+
+    def test_fix_without_search_is_rejected(self):
+        # Arama yapmadan eklenen bilgi uydurma olabilir
+        with self.assertRaises(review.Incomplete):
+            self.run_check({"status": "fixed", "paragraphs": ["a", "b", "c"]}, grounding={})
+
+    def test_structure_change_is_rejected(self):
+        with self.assertRaises(review.Incomplete):
+            self.run_check({"status": "fixed", "paragraphs": ["tek paragraf"]})
+
+
+class Digest(unittest.TestCase):
+    def test_drops_unfixable_item_and_recounts(self):
+        out = {"items": [{"n": 1, "status": "ok"}, {"n": 2, "status": "unfixable", "questions": ["Neden?"]},
+                         {"n": 3, "status": "fixed", "text": "Madde üç, nedeniyle birlikte"}]}
+        with mock.patch("pipeline.script._call", return_value=reply(out)):
+            plan = review.check_digest(digest())
+        items = [s for s in plan["segments"] if s["kind"] == "item"]
+        self.assertEqual([s["text"] for s in items], ["Madde 1.", "Madde üç, nedeniyle birlikte."])
+        self.assertEqual([s["label"] for s in items], ["GÜNÜN ÖZETİ 1/2", "GÜNÜN ÖZETİ 2/2"])
+        self.assertEqual(plan["segments"][0]["text"], "Bugünün iki haberi, bir dakikada.")
+        self.assertEqual(plan["title"], "Günün iki haberi")
+        self.assertEqual(len(plan["sources"]), 2)
+
+
+class Check(unittest.TestCase):
+    def test_service_failure_keeps_text(self):
+        # Gemini yanıt vermezse saat boşa gitmesin: metin denetimsiz kullanılır
+        with mock.patch("pipeline.script._call", side_effect=RuntimeError("503")):
+            self.assertEqual(review.check(story(), True), story())
+
+    def test_incomplete_is_not_swallowed(self):
+        with mock.patch("pipeline.script._call", return_value=reply({"status": "unfixable"})):
+            with self.assertRaises(review.Incomplete):
+                review.check(story(), True)
+
+
+if __name__ == "__main__":
+    unittest.main()

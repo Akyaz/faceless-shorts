@@ -14,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import evergreen, images, music, onthisday, render, script
+from . import evergreen, images, music, onthisday, render, review, script
 
 
 def _offline_audio(text, out_path):
@@ -184,7 +184,7 @@ def _clock(seconds):
     return f"{seconds // 60}:{seconds % 60:02d}"
 
 
-def news_plan(args, exclude=()):
+def news_plan(args, exclude=(), _tries=0):
     """Haber akışından o saatin videosunu planlar. exclude: bu çalışmada elenmiş haberlerin başlıkları."""
     if args.offline:
         headlines = [{"title": f"Örnek haber başlığı numara {i} burada yer alıyor", "source": "Örnek Kaynak",
@@ -225,9 +225,21 @@ def news_plan(args, exclude=()):
     else:
         print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
     plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+    if not args.offline:
+        try:
+            plan = review.check(plan, single)
+        except review.Incomplete as exc:
+            # Cevabı kaynaklarda bulunmayan haber atlanır, sıradaki denenir (belirsiz video yayınlanmaz)
+            if not single or _tries >= REVIEW_TRIES:
+                raise RuntimeError(f"Metin eksik kaldı; bu saatin videosu atlanıyor: {exc}") from exc
+            print(f"Metin eksik ({exc}); başka haber deneniyor")
+            return news_plan(args, exclude=list(exclude) + [h["title"] for h in plan["sources"]], _tries=_tries + 1)
     if use_history:
         save_history(args.history, history, plan)
     return plan
+
+
+REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayısı
 
 
 # Bu türlerde haber bir kişi ya da eser hakkında: onu göstermeyen video (kanal binası, genel set fotoğrafı)

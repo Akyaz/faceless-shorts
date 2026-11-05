@@ -6,6 +6,7 @@ Akış: Google News Türkiye RSS → metin → Edge TTS seslendirme → Pillow +
 
 - `GEMINI_API_KEY` secret'ı tanımlıysa en üstteki haberden özgün bir hikaye metni yazılır.
 - Tanımlı değilse "Günün 3 Haberi" özet formatı kullanılır (dil modeli gerekmez).
+- Metin denetimi (`pipeline/review.py`): yazılan metin yayından önce Gemini'nin Google Arama özelliğiyle aynı olaya karşı denetlenir. Metnin cevaplamadığı soru ("hangi 5 ilçe?", "neden men edildi?") ya da yanlış bilgi varsa bulunan kaynaklarla düzeltilir. Bulunamazsa tek konulu videoda sıradaki haber denenir, özette o madde çıkarılır. Denetçi yanıt veremezse metin olduğu gibi kullanılır. `REVIEW=0` ortam değişkeniyle kapatılır.
 - Arka plan: her paragrafta Wikimedia Commons'tan serbest lisanslı ayrı bir fotoğraf (Gemini adayların fotoğrafına bakıp habere uymayanları eler), bulunamazsa Gemini illüstrasyonu, o da olmazsa renkli degrade. Görsel kaynakları açıklamaya yazılır.
 - Fon müziği: haberin duygusuna göre (nötr, gergin, umutlu, hüzünlü) `assets/music` altındaki dört parçadan biri seslendirmenin altına hafifçe eklenir. Parçalar Kevin MacLeod (incompetech.com), CC BY 3.0; kaynak açıklamaya yazılır. Ses düzeyi `pipeline/music.py` içindeki `GAIN_DB` ile ayarlanır.
 

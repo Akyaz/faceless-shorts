@@ -40,10 +40,17 @@ def _generate(prompt, key, images=(), models=None):
     models: denenecek modeller, virgülle; verilmezse metin yazımı için ayrılan sıra kullanılır."""
     parts = [{"text": prompt}] + [{"inline_data": {"mime_type": "image/jpeg",
                                                    "data": base64.b64encode(img).decode()}} for img in images]
-    body = json.dumps({
-        "contents": [{"parts": parts}],
-        "generationConfig": {"responseMimeType": "application/json"},
-    }).encode()
+    body = {"contents": [{"parts": parts}], "generationConfig": {"responseMimeType": "application/json"}}
+    return _parts_text(_call(body, key, models))
+
+
+def _parts_text(candidate):
+    return "".join(p.get("text", "") for p in candidate["content"]["parts"])
+
+
+def _call(body, key, models=None):
+    """Gemini'ye istek; yanıtın ilk adayını (metin parçaları ve varsa arama kaynakları) döndürür."""
+    body = json.dumps(body).encode()
     models = (models or os.environ.get("GEMINI_MODELS", DEFAULT_MODELS)).split(",")
     last_err = None
     for wait in ROUND_WAITS:
@@ -61,7 +68,7 @@ def _generate(prompt, key, images=(), models=None):
                 try:
                     with urllib.request.urlopen(req, timeout=120) as resp:
                         data = json.load(resp)
-                    return data["candidates"][0]["content"]["parts"][0]["text"]
+                    return data["candidates"][0]
                 except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError) as exc:
                     last_err = exc
                     print(f"Gemini {model} deneme {attempt + 1}: {exc}")

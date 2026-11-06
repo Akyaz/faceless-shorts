@@ -3991,16 +3991,6 @@
   "slot": "13:30"
  },
  {
-  "time": "2026-11-05T11:41:04Z",
-  "run": "42019233424",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019233424",
-  "videos": [],
-  "slot": "15:00"
- },
- {
   "time": "2026-11-05T11:48:24Z",
   "run": "42019239798",
   "event": "workflow_dispatch",
@@ -4162,5 +4152,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-06T18:15:01Z",
+  "run": "42019233424",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42019233424",
+  "videos": [
+   {
+    "title": "Zeugma Antik Kenti: Sular Altında Kalan Dev Tarih",
+    "url": "https://youtu.be/oQY-sC9mBC4",
+    "instagram": "https://www.instagram.com/reel/DfaOc90k_VM/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -4184,5 +4184,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-06T22:13:24Z",
+  "run": "42301883928",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42301883928",
+  "videos": [
+   {
+    "title": "Hava Durumu Alarmı: Hafta Sonu 26 İle Kar ve Zirai Don Geliyor",
+    "url": "https://youtu.be/QEeHztFmlIU",
+    "instagram": "https://www.instagram.com/reel/DfapupigcA4/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

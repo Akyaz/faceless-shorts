@@ -4216,5 +4216,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-06T22:45:59Z",
+  "run": "42301898037",
+  "event": "workflow_dispatch",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42301898037",
+  "videos": [
+   {
+    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 7 Kasım Maç Programı ve Saatleri",
+    "url": "https://youtu.be/P6R0woqLnEM",
+    "instagram": "https://www.instagram.com/reel/DfateHLCUpV/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

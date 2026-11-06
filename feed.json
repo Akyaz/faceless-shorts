@@ -4232,5 +4232,22 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-06T22:56:48Z",
+  "run": "42306287542",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42306287542",
+  "videos": [
+   {
+    "title": "The Last Day of the Roman Empire: The Fall of Constantinople, 1453",
+    "url": "https://youtu.be/8Fgm9gpg78I",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/en-fall-of-constantinople.json"
  }
 ]

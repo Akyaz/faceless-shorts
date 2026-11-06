@@ -4168,5 +4168,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-06T21:12:59Z",
+  "run": "42293932612",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42293932612",
+  "videos": [
+   {
+    "title": "Sergen Yalçın'dan Kerem Aktürkoğlu Kararı: Aday Kadroda Yok",
+    "url": "https://youtu.be/dKtpDUdG9Vs",
+    "instagram": "https://www.instagram.com/reel/Dfai0U_iItO/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

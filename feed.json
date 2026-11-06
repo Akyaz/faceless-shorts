@@ -4249,5 +4249,21 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/en-fall-of-constantinople.json"
+ },
+ {
+  "time": "2026-11-06T23:26:24Z",
+  "run": "42301903996",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "cancelled",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42301903996",
+  "videos": [
+   {
+    "title": "Voyager 1: İnsanlığın En Uzak Uzay Yolculuğu",
+    "url": "https://youtu.be/94xN47cPQ9Q",
+    "instagram": null
+   }
+  ],
+  "slot": "15:00"
  }
 ]

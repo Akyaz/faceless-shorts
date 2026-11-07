@@ -4297,5 +4297,20 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-07T13:30:00Z",
+  "run": "42376722970",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42376722970",
+  "videos": [
+   {
+    "title": "Üniversitelerde eğitim süresi 3 yıla düşmeli mi?",
+    "url": "https://youtu.be/plLyBPOk82g",
+    "instagram": "https://www.instagram.com/reel/DfcSlJ0jbrL/"
+   }
+  ]
  }
 ]

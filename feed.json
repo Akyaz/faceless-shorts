@@ -4327,5 +4327,21 @@
     "instagram": "https://www.instagram.com/reel/DfcTuDsjvCV/"
    }
   ]
+ },
+ {
+  "time": "2026-11-07T21:09:47Z",
+  "run": "42414127497",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42414127497",
+  "videos": [
+   {
+    "title": "Üniversite eğitimi 3 yıla düşmeli mi?",
+    "url": "https://youtu.be/w3FEoEwivbA",
+    "instagram": "https://www.instagram.com/reel/DfdHPAkEw4I/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

@@ -4312,5 +4312,20 @@
     "instagram": "https://www.instagram.com/reel/DfcSlJ0jbrL/"
    }
   ]
+ },
+ {
+  "time": "2026-11-07T13:39:29Z",
+  "run": "42376761561",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42376761561",
+  "videos": [
+   {
+    "title": "Meteorolojiden 5 İl İçin Zirai Don Uyarısı Başlıyor",
+    "url": "https://youtu.be/P3wAkHgHFXM",
+    "instagram": "https://www.instagram.com/reel/DfcTuDsjvCV/"
+   }
+  ]
  }
 ]

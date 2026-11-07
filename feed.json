@@ -4265,5 +4265,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-07T00:01:13Z",
+  "run": "42301908724",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42301908724",
+  "videos": [
+   {
+    "title": "Vahşi At Dokuz Vizyonda: Malkovich İçin Oscar İddiası",
+    "url": "https://youtu.be/UH2cjXWtcJA",
+    "instagram": "https://www.instagram.com/reel/Dfa2EEJjiHS/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

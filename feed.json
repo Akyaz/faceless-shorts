@@ -4423,5 +4423,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-08T19:25:35Z",
+  "run": "42514217440",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42514217440",
+  "videos": [
+   {
+    "title": "Nemrut Dağı: 2150 Metrede Bulunamayan Mezar ve En Eski Horoskop",
+    "url": "https://youtu.be/vu8SvJbKMUg",
+    "instagram": "https://www.instagram.com/reel/DffgG-oGbmn/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -4359,5 +4359,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-08T16:35:36Z",
+  "run": "42500053212",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42500053212",
+  "videos": [
+   {
+    "title": "Fenerbahçe Çorum Deplasmanında Coştu: Belözoğlu ile Farklı Tarife",
+    "url": "https://youtu.be/MzkVULLDeI8",
+    "instagram": "https://www.instagram.com/reel/DffMqLgjDZt/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

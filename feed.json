@@ -4407,5 +4407,21 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-08T19:24:49Z",
+  "run": "42514210357",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42514210357",
+  "videos": [
+   {
+    "title": "Nemrut Dağı: Dev Heykellerin Ve Kayıp Mezarın Sırrı",
+    "url": "https://youtu.be/kSklkO2edJ8",
+    "instagram": "https://www.instagram.com/reel/Dfff-0ZFRjA/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

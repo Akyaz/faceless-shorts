@@ -4375,5 +4375,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-08T17:05:15Z",
+  "run": "42500056593",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42500056593",
+  "videos": [
+   {
+    "title": "Mehmet Günsür Muhteşem Yüzyıl Dizisindeki İdam Sahnesini Anlattı",
+    "url": "https://youtu.be/mgiSIAeD4kM",
+    "instagram": "https://www.instagram.com/reel/DffQAm1jtNa/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

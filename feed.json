@@ -4582,5 +4582,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-09T21:46:25Z",
+  "run": "42704457206",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42704457206",
+  "videos": [
+   {
+    "title": "Ölümsüz Denizanası Turritopsis Dohrnii Nasıl Sonsuz Yaşar?",
+    "url": "https://youtu.be/rS5cwQceZeM",
+    "instagram": "https://www.instagram.com/reel/DfiVBNwDubn/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -4487,5 +4487,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-09T10:17:47Z",
+  "run": "42598357248",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42598357248",
+  "videos": [
+   {
+    "title": "Şafak Sezer Açıkladı: Bülent Ersoy'un 10 Saatlik Makyajı Seti Karıştırdı",
+    "url": "https://youtu.be/IkjSKMEJyTw",
+    "instagram": "https://www.instagram.com/reel/DfhGN81FWCE/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

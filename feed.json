@@ -4550,5 +4550,21 @@
    }
   ],
   "slot": "pazartesi 08:30"
+ },
+ {
+  "time": "2026-11-09T11:29:08Z",
+  "run": "42607175707",
+  "event": "workflow_dispatch",
+  "mode": "horoscope3",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42607175707",
+  "videos": [
+   {
+    "title": "Yay, Oğlak, Kova, Balık Haftalık Burç Yorumu (9-15 Kasım)",
+    "url": "https://youtu.be/h6mVUsohoV0",
+    "instagram": "https://www.instagram.com/reel/DfhOYLQH2Ev/"
+   }
+  ],
+  "slot": "pazartesi 09:00"
  }
 ]

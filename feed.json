@@ -4566,5 +4566,21 @@
    }
   ],
   "slot": "pazartesi 09:00"
+ },
+ {
+  "time": "2026-11-09T19:56:40Z",
+  "run": "42687082989",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42687082989",
+  "videos": [
+   {
+    "title": "Kara Delik Hakkında Bilmediğiniz Şaşırtıcı Gerçekler",
+    "url": "https://youtu.be/B-NWKxfGSyQ",
+    "instagram": "https://www.instagram.com/reel/DfiIbpWjeR_/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

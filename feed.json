@@ -4518,5 +4518,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-09T10:31:12Z",
+  "run": "42599382127",
+  "event": "workflow_dispatch",
+  "mode": "horoscope1",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42599382127",
+  "videos": [
+   {
+    "title": "Koç, Boğa, İkizler, Yengeç Haftalık Burç Yorumu (9-15 Kasım)",
+    "url": "https://youtu.be/EtFQfV1EQtQ",
+    "instagram": "https://www.instagram.com/reel/DfhHte6D1Ow/"
+   }
+  ],
+  "slot": "pazartesi 08:00"
  }
 ]

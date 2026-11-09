@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-13T09:09:18Z",
-  "run": "38374165137",
-  "event": "workflow_dispatch",
-  "mode": "ucl",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38374165137",
-  "videos": [
-   {
-    "title": "Şampiyonlar Ligi'nde Bugün Hangi Maçlar Var? 13 Ekim Maç Programı",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T11:38:53Z",
   "run": "38390528852",
   "event": "schedule",
@@ -4614,5 +4600,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-09T23:55:35Z",
+  "run": "42723890763",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42723890763",
+  "videos": [
+   {
+    "title": "Galatasaray'a Rafael Leao'dan Şok Haber: Beşiktaş Derbisinde Yok mu?",
+    "url": "https://youtu.be/h8-j5PqrOdk",
+    "instagram": "https://www.instagram.com/reel/DfijzTvjDT8/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

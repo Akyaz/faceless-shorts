@@ -4455,5 +4455,21 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-09T09:30:28Z",
+  "run": "42593049180",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42593049180",
+  "videos": [
+   {
+    "title": "COP31 İklim Zirvesi Antalya'da Başlıyor: Sıfır Atık Paylaşılacak",
+    "url": "https://youtu.be/BLxA5XFgGD8",
+    "instagram": "https://www.instagram.com/reel/DfhAzCHjurL/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

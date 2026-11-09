@@ -4471,5 +4471,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-09T09:37:11Z",
+  "run": "42593104327",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42593104327",
+  "videos": [
+   {
+    "title": "Pamukkale'nin 100 Derecelik Sıcak Suları ve Gizemli Tarihi",
+    "url": "https://youtu.be/Lc4zvxgZja8",
+    "instagram": "https://www.instagram.com/reel/DfhBlXfldtr/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

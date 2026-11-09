@@ -14,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import evergreen, images, music, onthisday, render, review, script
+from . import evergreen, horoscope, images, music, onthisday, render, review, script
 
 
 def _offline_audio(text, out_path):
@@ -136,11 +136,11 @@ def find_images(plan, work):
         return [paths[i % len(paths)] if paths else None for i in range(len(segments))], [c for _, c in found]
 
     per_segment, credits = [None] * len(segments), []
-    for i, seg in enumerate(segments):  # toplu özet: her haberin kendi görseli
-        if not seg.get("image_queries"):
+    for i, seg in enumerate(segments):  # toplu özet: her haberin kendi görseli (burçta her burcun kartı)
+        if not seg.get("image_queries") and not seg.get("image_files"):
             continue
-        item = {"title": seg.get("heading") or seg["text"], "sources": [seg["headline"]],
-                **{k: seg.get(k) for k in ("image_queries", "object_query", "place")}}
+        item = {"title": seg.get("heading") or seg["text"], "sources": [seg.get("headline") or plan["sources"][0]],
+                **{k: seg.get(k) for k in ("image_queries", "object_query", "place", "image_files")}}
         found = images.find_backgrounds(item, work / f"item{i}", 1, per_query=2)
         if found:
             per_segment[i], credit = found[0]
@@ -267,7 +267,8 @@ def with_subject_photos(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact", "sportstory", "culture"],
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact", "sportstory", "culture",
+                                       "horoscope1", "horoscope2", "horoscope3"],
                     default="story")
     ap.add_argument("--out", default="out")
     ap.add_argument("--offline", action="store_true")
@@ -289,6 +290,8 @@ def main():
     else:
         if args.mode == "onthisday":
             plan = onthisday.plan()
+        elif args.mode.startswith("horoscope"):  # haftalık burç: horoscope1 Koç-Yengeç, 2 Aslan-Akrep, 3 Yay-Balık
+            plan = horoscope.plan(int(args.mode[-1]))
         elif args.mode == "fact":
             plan = evergreen.plan(Path(args.history).parent / "evergreen.json" if args.history else evergreen.STATE)
         else:

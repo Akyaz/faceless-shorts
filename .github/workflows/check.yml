@@ -14,6 +14,6 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - run: pip install pyflakes && python -m pyflakes pipeline scripts/*.py tests
+      - run: pip install pyflakes ephem && python -m pyflakes pipeline scripts/*.py tests
       # Saat kararı ve yükleme tekrarı: yanlışlığı videolar yanlış saatte ya da iki kez çıkınca fark ediliyordu
       - run: python -m unittest discover -s tests -t .

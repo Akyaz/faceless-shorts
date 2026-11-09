@@ -40,7 +40,12 @@ SLOTS = {
     # 12:00 ve 15:00: eskimeyen "Biliyor muydun?" (haber birkaç saatte eskiyor, bu videolar aylarca önerilebilir)
     "50 8 * * *": ("12:00", "fact"), "15 9 * * *": ("12:00", "fact"),
     # 13:30: maç programı; Süper Lig maçı yoksa Türk takımlarının Avrupa maçları, o da yoksa video çıkmaz
-    "20 10 * * *": ("13:30", "matchday"), "45 10 * * *": ("13:30", "matchday"),
+    # Maç programı pazartesi yok: o gün sabah üç burç videosu çıkıyor (günlük yükleme sınırı)
+    "20 10 * * 0,2-6": ("13:30", "matchday"), "45 10 * * 0,2-6": ("13:30", "matchday"),
+    # Haftalık burç: pazartesi 08:00 Koç-Yengeç, 08:30 Aslan-Akrep, 09:00 Yay-Balık
+    "50 4 * * 1": ("pazartesi 08:00", "horoscope1"), "15 5 * * 1": ("pazartesi 08:00", "horoscope1"),
+    "20 5 * * 1": ("pazartesi 08:30", "horoscope2"), "45 5 * * 1": ("pazartesi 08:30", "horoscope2"),
+    "50 5 * * 1": ("pazartesi 09:00", "horoscope3"), "15 6 * * 1": ("pazartesi 09:00", "horoscope3"),
     "50 11 * * *": ("15:00", "fact"), "15 12 * * *": ("15:00", "fact"),
     # 17:00: magazin ve kültür-sanat (film, dizi, konser, tiyatro, ödül)
     "50 13 * * *": ("17:00", "culture"), "15 14 * * *": ("17:00", "culture"),

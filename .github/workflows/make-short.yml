@@ -20,9 +20,17 @@ on:
     # 17:00: magazin ve kültür-sanat haberi
     - cron: "50 13 * * *"
     - cron: "15 14 * * *"
-    # 13:30: maç programı (Süper Lig, yoksa Türk takımlarının Avrupa maçları); maç olmayan gün video yok
-    - cron: "20 10 * * *"
-    - cron: "45 10 * * *"
+    # 13:30: maç programı (Süper Lig, yoksa Türk takımlarının Avrupa maçları); maç olmayan gün video yok.
+    # Pazartesi yok: o gün sabah üç burç videosu çıkıyor
+    - cron: "20 10 * * 0,2-6"
+    - cron: "45 10 * * 0,2-6"
+    # Pazartesi 08:00, 08:30, 09:00: haftalık burç yorumu (Koç-Yengeç, Aslan-Akrep, Yay-Balık)
+    - cron: "50 4 * * 1"
+    - cron: "15 5 * * 1"
+    - cron: "20 5 * * 1"
+    - cron: "45 5 * * 1"
+    - cron: "50 5 * * 1"
+    - cron: "15 6 * * 1"
     # 13:00: yalnızca scripts/scheduled/ altında o güne video varsa (bayram tebriği gibi)
     - cron: "0 10 * * *"
     - cron: "25 10 * * *"
@@ -65,9 +73,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), horoscope1/2/3 (haftalık burç: Koç-Yengeç, Aslan-Akrep, Yay-Balık), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, culture, matchday, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, culture, horoscope1, horoscope2, horoscope3, matchday, ucl]
         default: story
 
 jobs:

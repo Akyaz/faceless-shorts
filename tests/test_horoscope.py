@@ -43,8 +43,8 @@ class Plan(unittest.TestCase):
             plan = horoscope.plan(2, MONDAY)
         self.assertEqual(plan["title"], "Aslan, Başak, Terazi, Akrep Haftalık Burç Yorumu (9-15 Kasım)")
         items = [s for s in plan["segments"] if s["kind"] == "item"]
-        self.assertEqual([s["heading"] for s in items][0], "Aslan (23 Temmuz - 22 Ağustos)")
-        self.assertEqual(items[3]["label"], "BURÇ 4/4")
+        self.assertEqual(items[0]["heading"], "Aslan")
+        self.assertEqual(items[3]["label"], "4/4 · 23 EKİM - 21 KASIM")
         self.assertTrue(all(s["image_files"] for s in plan["segments"]))
         self.assertIn("Yeniay Akrep burcunda", gen.call_args[0][0])  # gökyüzü olayları isteme giriyor
 

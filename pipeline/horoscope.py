@@ -168,11 +168,12 @@ def plan(part, now=None):
               "source": "PyEphem", "link": "https://rhodesmill.org/pyephem/"}
     segments = [{"kind": "intro", "text": script._sentence(out["intro"]), "image_files": [signs[0][4]]}]
     for i, (name, dates, *_rest, card) in enumerate(signs, 1):
-        segments.append({"kind": "item", "label": f"BURÇ {i}/4", "heading": f"{name} ({dates})",
+        # Tarih aralığı başlıkta iki satıra bölünüyordu; üstteki etikete taşındı
+        segments.append({"kind": "item", "label": f"{i}/4 · {dates.replace("i", "İ").upper()}", "heading": name,
                          "text": script._sentence(texts[name]), "source": "", "image_files": [card],
                          "headline": source})
     segments.append({"kind": "outro", "text": out["outro"].strip(), "image_files": [signs[-1][4]]})
-    return {"title": f"{', '.join(s[0] for s in signs)} Haftalık Burç Yorumu ({week})", "hook_title": "",
+    return {"title": f"{', '.join(s[0] for s in signs)} Haftalık Burç Yorumu ({week})", "hook_title": f"{week} Burç Yorumu",
             "label": "HAFTALIK BURÇ", "lang": "tr", "segments": segments, "sources": [source],
             "kind": "horoscope", "mood": "umutlu", "category": "24", "image_prompt": "",
             "hashtags": ["burçyorumu", "haftalıkburç", "astroloji"], "pronounce": script._pronounce(out),

@@ -4503,5 +4503,20 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-09T10:23:07Z",
+  "run": "42599279274",
+  "event": "workflow_dispatch",
+  "mode": "horoscope2",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42599279274",
+  "videos": [
+   {
+    "title": "Aslan, Başak, Terazi, Akrep Haftalık Burç Yorumu (9-15 Kasım)",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

@@ -132,6 +132,8 @@ Kurallar:
    - Yasak: "bu hafta senin için önemli", "evren seninle", "her şey yoluna girecek" gibi her burca uyan boş cümleler;
      korkutma ve kesin kehanet ("kesinlikle", "kaza", "hastalık", "ayrılık kapıda"); sağlık ve tedavi önerisi;
      yatırım, borsa, kripto ve kumar önerisi. Yukarıda olmayan bir gökyüzü olayı uydurma.
+   - Türkçe terim kullan: "geri hareket", "ileri harekete geçiyor". "Retro", "retrograd" ve "rötar" yazma
+     (rötar gecikme demektir; seslendirmede de yanlış anlaşılıyor).
 2. "intro": en fazla 12 kelime; haftanın en dikkat çekici gökyüzü olayını tarihiyle söyle (selam yok).
 3. "outro": izleyiciyi burcunu yorumlara yazmaya çağıran kısa bir soru (örnek: "Senin burcun hangisi? Yorumlara yaz.").
 """ + script.PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """

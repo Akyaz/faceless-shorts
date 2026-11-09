@@ -4598,5 +4598,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-09T23:18:52Z",
+  "run": "42718390743",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42718390743",
+  "videos": [
+   {
+    "title": "Haluk Bilginer Tartışma Yarattı: Türk Sineması Değil Türkiye Sineması",
+    "url": "https://youtu.be/SF1bNoFfPzQ",
+    "instagram": "https://www.instagram.com/reel/DfifmjziTWC/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

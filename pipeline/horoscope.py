@@ -169,7 +169,7 @@ def plan(part, now=None):
     segments = [{"kind": "intro", "text": script._sentence(out["intro"]), "image_files": [signs[0][4]]}]
     for i, (name, dates, *_rest, card) in enumerate(signs, 1):
         # Tarih aralığı başlıkta iki satıra bölünüyordu; üstteki etikete taşındı
-        segments.append({"kind": "item", "label": f"{i}/4 · {dates.replace("i", "İ").upper()}", "heading": name,
+        segments.append({"kind": "item", "label": f"{i}/4 · {dates.replace('i', 'İ').upper()}", "heading": name,
                          "text": script._sentence(texts[name]), "source": "", "image_files": [card],
                          "headline": source})
     segments.append({"kind": "outro", "text": out["outro"].strip(), "image_files": [signs[-1][4]]})

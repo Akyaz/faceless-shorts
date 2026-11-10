@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T04:23:52Z",
-  "run": "38447475601",
-  "event": "workflow_dispatch",
-  "mode": "trend",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511151466",
-  "videos": [
-   {
-    "title": "Mars'ta Rekor ve Uzayda Gülen Yüz: Günün Bilim Gelişmeleri",
-    "url": "https://youtu.be/jAYtAAcwVy8"
-   }
-  ]
- },
- {
   "time": "2026-10-14T04:24:06Z",
   "run": "38440514533",
   "event": "workflow_dispatch",
@@ -4611,5 +4597,21 @@
    }
   ],
   "script": "scripts/longform/tr-ayasofya.json"
+ },
+ {
+  "time": "2026-11-10T21:34:34Z",
+  "run": "42905172175",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42905172175",
+  "videos": [
+   {
+    "title": "Alanyaspor'da Joao Pereira gitti Uğur Uçar geldi",
+    "url": "https://youtu.be/pKqh3ORjNXk",
+    "instagram": "https://www.instagram.com/reel/Dfk4dmUkitz/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

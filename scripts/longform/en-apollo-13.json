@@ -1,0 +1,425 @@
+{
+  "lang": "en",
+  "topic": "Apollo 13",
+  "era": "April 1970, NASA Apollo program",
+  "country": "United States",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Apollo 13: How Three Astronauts Came Home in a Lifeboat Built for Two",
+  "description": "In April 1970, about 56 hours into the flight and some 320,000 kilometres from Earth, an oxygen tank exploded aboard Apollo 13. The Moon landing was cancelled and the mission became a fight to get three men home alive. This is how the crew and Mission Control used the lunar module as a lifeboat, fixed the air with tape and a plastic bag, and steered home by hand.",
+  "hashtags": [
+    "apollo13",
+    "nasa",
+    "history"
+  ],
+  "tags": [
+    "apollo 13",
+    "nasa",
+    "jim lovell",
+    "houston we have a problem",
+    "apollo program",
+    "moon mission",
+    "space history",
+    "gene kranz",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Apollo 13, The Planetary Society",
+      "url": "https://planetary.org/space-missions/apollo-13"
+    },
+    {
+      "title": "Apollo 13: Facts about NASA's near-disaster moon mission, Space.com",
+      "url": "https://www.space.com/17250-apollo-13"
+    },
+    {
+      "title": "Apollo 13, History.com",
+      "url": "https://www.history.com/articles/apollo-13"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "United States",
+      "image_queries": [
+        "Apollo 13 crew portrait",
+        "Apollo 13 damaged service module",
+        "Apollo 13 mission control"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, finish this sentence. \"Houston, we have...\""
+        },
+        {
+          "s": "B",
+          "t": "\"...a problem.\" Everyone knows that."
+        },
+        {
+          "s": "A",
+          "t": "Almost. The real words were \"Okay, Houston, we've had a problem here.\" Past tense."
+        },
+        {
+          "s": "B",
+          "t": "Who said it?"
+        },
+        {
+          "s": "A",
+          "t": "Jack Swigert first, then Jim Lovell repeated it. They were about three hundred and twenty thousand kilometres from Earth, and they had just heard a loud bang."
+        },
+        {
+          "s": "B",
+          "t": "And no way to turn around."
+        },
+        {
+          "s": "A",
+          "t": "None. What followed was four days of improvisation that NASA later called a successful failure."
+        }
+      ]
+    },
+    {
+      "heading": "The Third Landing",
+      "country": "United States",
+      "city": "Cape Canaveral",
+      "image_queries": [
+        "Apollo 13 launch Saturn V",
+        "Jim Lovell Fred Haise Jack Swigert",
+        "Fra Mauro highlands Moon"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Apollo 13 launched on the 11th of April, 1970. It was meant to be the third crewed landing on the Moon."
+        },
+        {
+          "s": "B",
+          "t": "By then people were getting used to it."
+        },
+        {
+          "s": "A",
+          "t": "They were. The television networks did not even carry the crew's broadcast from space live that week."
+        },
+        {
+          "s": "A",
+          "t": "The commander was Jim Lovell, on his fourth spaceflight. Fred Haise was the lunar module pilot. Jack Swigert flew the command module."
+        },
+        {
+          "s": "B",
+          "t": "Swigert was a late change, right?"
+        },
+        {
+          "s": "A",
+          "t": "Three days before launch. The original pilot, Ken Mattingly, had been exposed to German measles and was pulled from the crew."
+        },
+        {
+          "s": "A",
+          "t": "The spacecraft had three parts. The command module, called Odyssey, where the crew lived. The service module behind it, with the engine, oxygen and power. And the lunar module, Aquarius, the lander."
+        }
+      ]
+    },
+    {
+      "heading": "The Bang",
+      "country": "United States",
+      "city": "Houston",
+      "image_queries": [
+        "Apollo oxygen tank service module",
+        "Mission Control Houston 1970",
+        "Apollo 13 service module damage photo"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Almost fifty-six hours into the flight, Mission Control asked for a routine job: stir the oxygen tanks."
+        },
+        {
+          "s": "B",
+          "t": "Stir them?"
+        },
+        {
+          "s": "A",
+          "t": "The oxygen was stored as a very cold, dense fluid, and fans inside the tanks mixed it for accurate readings. Swigert flipped the switch."
+        },
+        {
+          "s": "A",
+          "t": "Inside tank number two, damaged wiring sparked. The insulation burned. The tank burst."
+        },
+        {
+          "s": "B",
+          "t": "What did the crew notice?"
+        },
+        {
+          "s": "A",
+          "t": "A bang, a shudder, and warning lights. Then the readings for one oxygen tank dropped to zero and the other began falling."
+        },
+        {
+          "s": "A",
+          "t": "Lovell looked out of the window and saw gas streaming into space. He understood it immediately."
+        },
+        {
+          "s": "B",
+          "t": "That was their oxygen."
+        },
+        {
+          "s": "A",
+          "t": "Their oxygen, and also their electricity and water. The command module's fuel cells needed oxygen to make all three."
+        }
+      ]
+    },
+    {
+      "heading": "The Lifeboat",
+      "country": "United States",
+      "city": "Houston",
+      "image_queries": [
+        "Apollo lunar module Aquarius",
+        "Apollo 13 crew inside lunar module",
+        "Gene Kranz mission control"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "About an hour after the explosion, Mission Control told the crew to power up the lunar module and move in."
+        },
+        {
+          "s": "B",
+          "t": "Use the lander as a lifeboat."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. The idea had been studied, but never tried. And Aquarius was designed to keep two men alive for about two days."
+        },
+        {
+          "s": "B",
+          "t": "Now it needed to keep three alive for four."
+        },
+        {
+          "s": "A",
+          "t": "So they shut down almost everything. The command module was switched off completely, to save its batteries for re-entry."
+        },
+        {
+          "s": "A",
+          "t": "The cabin temperature fell to a few degrees above freezing. Water was rationed to a few sips a day. Nobody slept much."
+        },
+        {
+          "s": "B",
+          "t": "And on the ground?"
+        },
+        {
+          "s": "A",
+          "t": "Flight director Gene Kranz and the other teams worked in shifts around the clock. Engineers tested every procedure in simulators before it was read up to the crew. Ken Mattingly, the pilot who had been removed, was one of them."
+        }
+      ]
+    },
+    {
+      "heading": "Square Peg, Round Hole",
+      "country": "United States",
+      "city": "Houston",
+      "image_queries": [
+        "Apollo 13 mailbox CO2 scrubber",
+        "Apollo 13 duct tape fix",
+        "lithium hydroxide canister Apollo"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "A day and a half in, a new danger appeared. Carbon dioxide."
+        },
+        {
+          "s": "B",
+          "t": "From their own breathing."
+        },
+        {
+          "s": "A",
+          "t": "The lander used chemical canisters to scrub it from the air, but it only carried enough for two men for two days. The level was climbing toward dangerous."
+        },
+        {
+          "s": "B",
+          "t": "Did the command module not have spare canisters?"
+        },
+        {
+          "s": "A",
+          "t": "Plenty. But they were square. The lander's were round."
+        },
+        {
+          "s": "B",
+          "t": "You are joking."
+        },
+        {
+          "s": "A",
+          "t": "Different contractors, different designs. So engineers in Houston dumped onto a table exactly what the crew had on board, and built an adapter."
+        },
+        {
+          "s": "A",
+          "t": "A plastic bag, cardboard from a flight manual cover, a hose from a spacesuit, and grey tape. They read the instructions up by radio, step by step."
+        },
+        {
+          "s": "B",
+          "t": "And it worked?"
+        },
+        {
+          "s": "A",
+          "t": "Within hours the carbon dioxide level dropped. The crew nicknamed the device \"the mailbox\"."
+        }
+      ]
+    },
+    {
+      "heading": "Around the Moon",
+      "country": "United States",
+      "image_queries": [
+        "far side of the Moon Apollo 13",
+        "Earth from Apollo 13",
+        "Apollo lunar module descent engine"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The ship still had to get home. The safest path was to keep going, swing around the Moon, and let its gravity throw them back."
+        },
+        {
+          "s": "B",
+          "t": "Using which engine?"
+        },
+        {
+          "s": "A",
+          "t": "The lander's descent engine. Nobody trusted the main engine, which sat right beside the explosion."
+        },
+        {
+          "s": "A",
+          "t": "A first burn put them on a path that would return to Earth. They passed behind the Moon, and set a record that stood for decades for the farthest humans had travelled from Earth."
+        },
+        {
+          "s": "B",
+          "t": "While not landing on it."
+        },
+        {
+          "s": "A",
+          "t": "Haise and Swigert took photographs. Lovell had seen it before. Two hours later, a second burn sped them up, cutting hours off the trip."
+        },
+        {
+          "s": "B",
+          "t": "How did they aim without a working computer?"
+        },
+        {
+          "s": "A",
+          "t": "For one later correction, Lovell lined up the Earth in his window crosshairs and steered by eye, while Haise handled the other axis and Swigert timed the burn with his wristwatch."
+        }
+      ]
+    },
+    {
+      "heading": "Re-entry",
+      "country": "United States",
+      "image_queries": [
+        "Apollo 13 splashdown",
+        "Apollo 13 recovery USS Iwo Jima",
+        "Apollo 13 parachutes"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The last problem was waking up the frozen command module. It had never been powered up from cold in flight."
+        },
+        {
+          "s": "B",
+          "t": "And the walls were wet."
+        },
+        {
+          "s": "A",
+          "t": "Covered in condensation. Engineers feared short circuits. The power-up sequence was written in three days. Normally that takes months."
+        },
+        {
+          "s": "A",
+          "t": "It worked. The crew released the service module and finally saw the damage: an entire side panel had been blown off."
+        },
+        {
+          "s": "B",
+          "t": "Then they let the lifeboat go."
+        },
+        {
+          "s": "A",
+          "t": "\"Farewell, Aquarius, and we thank you,\" said Mission Control."
+        },
+        {
+          "s": "A",
+          "t": "During re-entry, radio contact is always lost for a few minutes. This time the silence lasted more than a minute longer than expected."
+        },
+        {
+          "s": "B",
+          "t": "Everyone thinking about the heat shield."
+        },
+        {
+          "s": "A",
+          "t": "Then three parachutes appeared on television. Odyssey splashed down in the Pacific on the 17th of April, close to the recovery ship."
+        }
+      ]
+    },
+    {
+      "heading": "What Went Wrong",
+      "country": "United States",
+      "city": "Houston",
+      "image_queries": [
+        "Apollo 13 review board",
+        "Apollo 13 crew after recovery",
+        "Apollo 13 command module Odyssey museum"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did they ever work out the cause?"
+        },
+        {
+          "s": "A",
+          "t": "Yes. The tank had been dropped slightly, years earlier. Before launch it would not drain properly, so technicians used its heater to boil the oxygen off."
+        },
+        {
+          "s": "A",
+          "t": "A thermostat switch inside was rated for a lower voltage than the ground equipment supplied. It welded shut. The heater ran for hours and baked the wire insulation."
+        },
+        {
+          "s": "B",
+          "t": "So the tank was a bomb before it left Earth."
+        },
+        {
+          "s": "A",
+          "t": "Waiting for someone to stir it. NASA redesigned the tanks, and the next four Moon missions flew safely."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "United States",
+      "image_queries": [
+        "Apollo 13 crew welcome",
+        "Apollo 13 mission patch",
+        "Earth from space Apollo"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "The square canisters and the tape. That is the part I will remember."
+        },
+        {
+          "s": "A",
+          "t": "Nobody on that mission did the thing they trained for. They all did something harder."
+        },
+        {
+          "s": "B",
+          "t": "Which moment would have scared you most?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

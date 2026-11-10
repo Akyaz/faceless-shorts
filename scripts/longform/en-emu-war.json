@@ -1,0 +1,407 @@
+{
+  "lang": "en",
+  "topic": "The Emu War of 1932",
+  "era": "November-December 1932, Western Australia",
+  "country": "Australia",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "The Great Emu War: When Australia Sent Machine Guns Against Birds and Lost",
+  "description": "In 1932, some 20,000 emus moved into the wheat fields of Western Australia. Struggling farmers, many of them war veterans, asked the government for machine guns. The army sent a major, two soldiers, two Lewis guns and 10,000 rounds. This is the true story of what happened next, and why the birds won.",
+  "hashtags": [
+    "emuwar",
+    "australia",
+    "history"
+  ],
+  "tags": [
+    "emu war",
+    "great emu war",
+    "australia",
+    "1932",
+    "emus",
+    "western australia",
+    "major meredith",
+    "strange history",
+    "lewis gun",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Emu War, Encyclopaedia Britannica",
+      "url": "https://www.britannica.com/topic/Emu-War"
+    },
+    {
+      "title": "Emu War, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Emu_War"
+    },
+    {
+      "title": "The Emu War, Pickering Brook Heritage Group",
+      "url": "https://pickeringbrookheritagegroup.com.au/?p=18692"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Australia",
+      "image_queries": [
+        "emu bird running",
+        "emu flock Western Australia",
+        "Lewis gun soldiers 1932"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, name a war Australia lost."
+        },
+        {
+          "s": "B",
+          "t": "I am not sure I can."
+        },
+        {
+          "s": "A",
+          "t": "There is one that Australians themselves joke about. It lasted about five weeks. The enemy had no weapons, no leaders and no plan."
+        },
+        {
+          "s": "B",
+          "t": "And still won?"
+        },
+        {
+          "s": "A",
+          "t": "Comfortably. The enemy was a bird."
+        },
+        {
+          "s": "B",
+          "t": "You are making this up."
+        },
+        {
+          "s": "A",
+          "t": "I am not. It is known as the Great Emu War of 1932, and everything I am about to tell you is in the official record."
+        }
+      ]
+    },
+    {
+      "heading": "Soldiers Turned Farmers",
+      "country": "Australia",
+      "image_queries": [
+        "Western Australia wheatbelt farm 1930s",
+        "soldier settlers Australia",
+        "wheat field Western Australia"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "After the First World War, Australia gave land to returning soldiers. In Western Australia, thousands of them were settled on new wheat farms, often on poor, dry ground."
+        },
+        {
+          "s": "B",
+          "t": "A reward that sounds like hard work."
+        },
+        {
+          "s": "A",
+          "t": "Very hard. Then came the Great Depression. Wheat prices collapsed. The government encouraged farmers to plant more and promised support that did not fully arrive."
+        },
+        {
+          "s": "B",
+          "t": "So they were already desperate."
+        },
+        {
+          "s": "A",
+          "t": "And then, in late 1932, the emus came."
+        },
+        {
+          "s": "B",
+          "t": "How many?"
+        },
+        {
+          "s": "A",
+          "t": "About twenty thousand. Emus breed inland and then move toward the coast in search of food and water. That year they discovered that the new farms offered both."
+        },
+        {
+          "s": "B",
+          "t": "Free wheat and water troughs."
+        },
+        {
+          "s": "A",
+          "t": "They ate and trampled the crops. They also broke gaps in the fences, and rabbits poured through the gaps."
+        }
+      ]
+    },
+    {
+      "heading": "Send the Machine Guns",
+      "country": "Australia",
+      "image_queries": [
+        "George Pearce Australian minister",
+        "Lewis machine gun",
+        "Australian army 1930s soldiers"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The farmers were ex-soldiers. They knew exactly what tool they wanted. They sent a delegation to the Minister of Defence, Sir George Pearce, and asked for machine guns."
+        },
+        {
+          "s": "B",
+          "t": "And he agreed?"
+        },
+        {
+          "s": "A",
+          "t": "He did, with conditions. The guns would be handled by military personnel. The farmers would feed and house them and pay for the ammunition."
+        },
+        {
+          "s": "B",
+          "t": "Why would the army say yes to this?"
+        },
+        {
+          "s": "A",
+          "t": "Pearce thought the birds would make good target practice. There was also a hope that it would show the government helping struggling farmers."
+        },
+        {
+          "s": "A",
+          "t": "So the army sent Major Meredith of the Royal Australian Artillery, two soldiers, two Lewis guns and ten thousand rounds of ammunition. A newsreel cameraman came too."
+        },
+        {
+          "s": "B",
+          "t": "Three men against twenty thousand birds."
+        },
+        {
+          "s": "A",
+          "t": "With machine guns. Everyone expected it to be quick."
+        }
+      ]
+    },
+    {
+      "heading": "First Contact",
+      "country": "Australia",
+      "image_queries": [
+        "emus running field",
+        "emu close up head",
+        "Western Australia bush dam"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Operations began on the 2nd of November 1932, near a place called Campion. The soldiers spotted about fifty emus."
+        },
+        {
+          "s": "B",
+          "t": "And opened fire."
+        },
+        {
+          "s": "A",
+          "t": "The birds were out of range. Local settlers tried to herd them toward the guns. The emus split into small groups and ran in different directions."
+        },
+        {
+          "s": "B",
+          "t": "Sensible birds."
+        },
+        {
+          "s": "A",
+          "t": "Two days later, Meredith set an ambush at a dam. Around a thousand emus were approaching the water. The gunners waited until they were close."
+        },
+        {
+          "s": "B",
+          "t": "This is where it works."
+        },
+        {
+          "s": "A",
+          "t": "The gun fired, a dozen or so birds fell, and then the gun jammed. The rest scattered before it could be cleared."
+        },
+        {
+          "s": "B",
+          "t": "Oh no."
+        },
+        {
+          "s": "A",
+          "t": "Meredith tried mounting a gun on a truck to chase them. Emus can run at about fifty kilometres an hour. The truck could not keep up on rough ground, and the ride was so bumpy the gunner could not fire a single shot."
+        }
+      ]
+    },
+    {
+      "heading": "Guerrilla Tactics",
+      "country": "Australia",
+      "image_queries": [
+        "emu running fast",
+        "emu flock scattering",
+        "Australian outback scrub"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Were the emus just lucky?"
+        },
+        {
+          "s": "A",
+          "t": "They were hard to hit and harder to stop. An emu's vital organs are a small target under a great deal of feather. Many birds kept running after being struck."
+        },
+        {
+          "s": "A",
+          "t": "And the soldiers noticed something else. Each group seemed to have a tall bird that stood watch while the others fed, and gave the alarm when the men came near."
+        },
+        {
+          "s": "B",
+          "t": "Sentries."
+        },
+        {
+          "s": "A",
+          "t": "An ornithologist who followed the campaign wrote that the emu command had evidently ordered guerrilla tactics, and that its army had split into countless small units that made military equipment uneconomic."
+        },
+        {
+          "s": "B",
+          "t": "He was enjoying himself."
+        },
+        {
+          "s": "A",
+          "t": "After about a week, some two and a half thousand rounds had been fired. The number of birds killed was disputed. One figure was fifty. The settlers claimed a few hundred."
+        },
+        {
+          "s": "A",
+          "t": "The press was having a wonderful time. On the 8th of November, the minister withdrew the troops."
+        }
+      ]
+    },
+    {
+      "heading": "The Second Attempt",
+      "country": "Australia",
+      "image_queries": [
+        "Major Meredith emu war 1932",
+        "dead emu soldiers 1932 photograph",
+        "Australian parliament 1930s"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So that was the end."
+        },
+        {
+          "s": "A",
+          "t": "No. The emus kept eating, the farmers kept complaining, and the state premier backed them. Within days the major was sent back."
+        },
+        {
+          "s": "B",
+          "t": "Did it go better?"
+        },
+        {
+          "s": "A",
+          "t": "Somewhat. By early December they were reporting about a hundred birds a week. On the 10th of December Meredith was recalled for good."
+        },
+        {
+          "s": "B",
+          "t": "What was the final score?"
+        },
+        {
+          "s": "A",
+          "t": "His report claimed nine hundred and eighty-six emus killed, using nine thousand eight hundred and sixty rounds."
+        },
+        {
+          "s": "B",
+          "t": "Exactly ten bullets per bird. That is suspiciously tidy."
+        },
+        {
+          "s": "A",
+          "t": "People noticed. He also claimed that a couple of thousand more had died later of their wounds."
+        },
+        {
+          "s": "B",
+          "t": "Out of twenty thousand."
+        },
+        {
+          "s": "A",
+          "t": "The crops were still being eaten. Meredith himself sounded almost admiring. He said that if Australia had a military division with the bullet-carrying capacity of these birds, it could face any army in the world."
+        }
+      ]
+    },
+    {
+      "heading": "Questions in Parliament",
+      "country": "Australia",
+      "city": "Canberra",
+      "image_queries": [
+        "Old Parliament House Canberra",
+        "Australian newspaper 1932 emu war",
+        "emu fence Western Australia"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In the federal parliament, the opposition enjoyed it enormously. One member asked whether a medal would be struck for the campaign."
+        },
+        {
+          "s": "B",
+          "t": "And the answer?"
+        },
+        {
+          "s": "A",
+          "t": "Another replied that any medals should go to the emus, who had won every round so far. The Minister of Defence was nicknamed the Minister for the Emu War."
+        },
+        {
+          "s": "B",
+          "t": "Did the farmers give up?"
+        },
+        {
+          "s": "A",
+          "t": "They asked for the army again in later years. Each time the government said no."
+        },
+        {
+          "s": "B",
+          "t": "So what actually solved the problem?"
+        },
+        {
+          "s": "A",
+          "t": "Two unglamorous things. A bounty system, which paid ordinary people for each bird, and which accounted for tens of thousands of emus in a few months. And better fencing."
+        },
+        {
+          "s": "B",
+          "t": "Far more effective than the machine guns."
+        },
+        {
+          "s": "A",
+          "t": "Far more. Exclusion fences are still used in Western Australia today."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "Australia",
+      "image_queries": [
+        "emu portrait",
+        "emus walking sunset",
+        "Australian coat of arms emu"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What about the emus now?"
+        },
+        {
+          "s": "A",
+          "t": "They are a protected native species. The emu stands on the Australian coat of arms, opposite the kangaroo."
+        },
+        {
+          "s": "B",
+          "t": "Which seems fair, given the result."
+        },
+        {
+          "s": "A",
+          "t": "The serious point is a simple one. A wildlife problem is not a military problem, and force is a poor substitute for a fence."
+        },
+        {
+          "s": "B",
+          "t": "Who were you cheering for, the major or the birds?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

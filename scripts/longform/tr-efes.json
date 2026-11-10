@@ -1,0 +1,362 @@
+{
+  "lang": "tr",
+  "topic": "Ephesus and the Temple of Artemis",
+  "era": "6th century BC to late antiquity, Ionia",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Efes: Dünyanın Yedi Harikasından Biri Nasıl Tek Sütuna Dönüştü?",
+  "description": "Efes'teki Artemis Tapınağı antik dünyanın yedi harikasından biriydi. Milattan önce 356'da, ünlü olmak isteyen bir adam onu yaktı. Yeniden yapıldı, yeniden yıkıldı ve 1869'da altı metre toprağın altında bulundu. Tapınağın, Celsus Kütüphanesi'nin ve limanı dolunca denizden uzaklaşan Efes'in hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "efes",
+    "artemis",
+    "tarih"
+  ],
+  "tags": [
+    "efes",
+    "ephesus",
+    "artemis tapınağı",
+    "yedi harika",
+    "celsus kütüphanesi",
+    "selçuk",
+    "izmir",
+    "herostratos",
+    "antik kent",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Ephesus, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Ephesus"
+    },
+    {
+      "title": "Temple of Artemis at Ephesus, World History Encyclopedia",
+      "url": "https://www.worldhistory.org/audioplayer/en/1-17191/"
+    },
+    {
+      "title": "A Wonder of the Ancient World, Artnet News",
+      "url": "https://news.artnet.com/art-world/huge-temple-of-artemis-2560156"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Library of Celsus Ephesus",
+        "Temple of Artemis column Selçuk",
+        "Ephesus Curetes street"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, tarihe adını yazdırmak için ne yapardın?"
+        },
+        {
+          "s": "B",
+          "t": "Bilmem. Güzel bir şey icat etmeye çalışırdım."
+        },
+        {
+          "s": "A",
+          "t": "Milattan önce 356'da Efesli bir adam başka bir yol seçti. Dünyanın en ünlü tapınağını yaktı."
+        },
+        {
+          "s": "B",
+          "t": "Sırf tanınmak için mi?"
+        },
+        {
+          "s": "A",
+          "t": "Sırf tanınmak için. Efesliler de ceza olarak adının anılmasını yasakladı."
+        },
+        {
+          "s": "B",
+          "t": "Ama biz adını biliyoruz."
+        },
+        {
+          "s": "A",
+          "t": "İşte ironi orada. Adı Herostratos. Yaktığı yapı da dünyanın yedi harikasından biri olan Artemis Tapınağı. Bugün ondan geriye tek bir sütun kaldı."
+        }
+      ]
+    },
+    {
+      "heading": "Bataklıktaki Dev",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Temple of Artemis Ephesus model",
+        "Temple of Artemis reconstruction drawing",
+        "Artemis of Ephesus statue"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Efes, bugünkü İzmir'in Selçuk ilçesinde. Antik çağda Ege kıyısının en önemli limanlarından biriydi."
+        },
+        {
+          "s": "B",
+          "t": "Tapınak şehrin içinde miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Biraz dışında, bataklık bir düzlükte. Antik yazarlara göre yer bilerek seçilmişti: yumuşak zemin depremlerin etkisini azaltsın diye."
+        },
+        {
+          "s": "A",
+          "t": "Büyük mermer tapınak milattan önce 550 civarında yapıldı. Masrafın önemli kısmını Lidya kralı Kroisos karşıladı."
+        },
+        {
+          "s": "B",
+          "t": "Zenginliğiyle ünlü olan kral."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Sütun kaidelerinden birinde onun adını taşıyan yazıt bulundu, bugün British Museum'da."
+        },
+        {
+          "s": "A",
+          "t": "Romalı yazar Plinius'a göre tapınakta yüz yirmi yedi sütun vardı ve her biri yaklaşık on sekiz metre yüksekliğindeydi. Atina'daki Parthenon'dan çok daha büyüktü."
+        },
+        {
+          "s": "B",
+          "t": "İçinde ne vardı?"
+        },
+        {
+          "s": "A",
+          "t": "Efes Artemisi'nin heykeli. Yunan av tanrıçasından farklı, Anadolu'nun eski ana tanrıçasıyla birleşmiş bir Artemis. Tapınak aynı zamanda bir sığınak ve bir tür bankaydı. İnsanlar paralarını oraya emanet ederdi."
+        }
+      ]
+    },
+    {
+      "heading": "Ünlü Olmak İsteyen Adam",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Herostratus engraving",
+        "Temple of Artemis fire illustration",
+        "Alexander the Great bust"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Milattan önce 356'da bir gece Herostratos tapınağın ahşap çatısını ateşe verdi. Yapı büyük ölçüde yandı."
+        },
+        {
+          "s": "B",
+          "t": "Yakalandı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yakalandı ve nedenini itiraf etti: adı sonsuza dek hatırlansın istiyordu. İdam edildi ve adını anmak yasaklandı."
+        },
+        {
+          "s": "B",
+          "t": "Yasak tutmamış."
+        },
+        {
+          "s": "A",
+          "t": "O dönemin bir tarihçisi olayı adıyla yazdı. Bugün bazı dillerde ne pahasına olursa olsun kazanılan şöhrete \"Herostratos şöhreti\" deniyor."
+        },
+        {
+          "s": "A",
+          "t": "Bir de efsane var. Plutarkhos'a göre tapınak, Büyük İskender'in doğduğu gece yandı. Artemis doğuma yardım etmekle meşgul olduğu için tapınağını koruyamamış."
+        },
+        {
+          "s": "B",
+          "t": "İskender tapınakla ilgilendi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Yıllar sonra Efes'e geldiğinde yeniden yapım masrafını üstlenmeyi önerdi. Efeslilerin onu kibarca reddettiği anlatılır: bir tanrının başka bir tanrıya tapınak yapması yakışık almaz, dediler."
+        },
+        {
+          "s": "B",
+          "t": "Zekice bir ret."
+        },
+        {
+          "s": "A",
+          "t": "Tapınağı kendi paralarıyla, öncekinden de görkemli biçimde yeniden yaptılar. Yedi harika listelerine giren yapı bu ikinci tapınaktır."
+        }
+      ]
+    },
+    {
+      "heading": "Roma'nın Asya Başkenti",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Library of Celsus facade",
+        "Ephesus Great Theatre",
+        "Ephesus terrace houses"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Roma döneminde Efes, Asya eyaletinin başkenti oldu. Nüfus tahminleri değişiyor ama imparatorluğun en büyük şehirlerinden biriydi."
+        },
+        {
+          "s": "B",
+          "t": "Bugün gezdiğimiz Efes o dönemden mi?"
+        },
+        {
+          "s": "A",
+          "t": "Büyük ölçüde. Yirmi beş bin kişilik tiyatro, mermer caddeler, hamamlar, yamaç evler."
+        },
+        {
+          "s": "A",
+          "t": "En tanınmış yapı Celsus Kütüphanesi. İkinci yüzyılın başında, Roma valisi Celsus'un anısına oğlu tarafından yaptırıldı."
+        },
+        {
+          "s": "B",
+          "t": "Yani bir anıt mezar mı?"
+        },
+        {
+          "s": "A",
+          "t": "İkisi birden. Celsus'un lahdi kütüphanenin altında duruyor. Binada yaklaşık on iki bin rulo bulunduğu tahmin ediliyor."
+        },
+        {
+          "s": "B",
+          "t": "O ünlü cephe orijinal mi?"
+        },
+        {
+          "s": "A",
+          "t": "Yıkılmıştı. 1970'lerde Avusturyalı arkeologlar orijinal parçaları kullanarak yeniden ayağa kaldırdı."
+        },
+        {
+          "s": "A",
+          "t": "Efes, erken Hristiyanlık için de önemli. İncil'e göre Aziz Pavlus burada vaaz verdiğinde, Artemis heykelcikleri satan gümüşçüler işlerinin bozulacağından korkup tiyatroda büyük bir gösteri yaptı."
+        }
+      ]
+    },
+    {
+      "heading": "Denizin Çekilişi",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Ephesus harbour street",
+        "Küçük Menderes river delta",
+        "Ephesus aerial view"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Böyle bir şehir neden terk edildi?"
+        },
+        {
+          "s": "A",
+          "t": "En büyük neden bir nehir. Küçük Menderes, getirdiği alüvyonla limanı yavaş yavaş doldurdu."
+        },
+        {
+          "s": "B",
+          "t": "Liman tıkanınca ticaret de gider."
+        },
+        {
+          "s": "A",
+          "t": "Efesliler yüzyıllarca limanı tarayıp açık tutmaya çalıştı. Ama deniz geri çekilmeye devam etti. Bugün kıyı, antik limandan beş kilometreden fazla uzakta."
+        },
+        {
+          "s": "A",
+          "t": "Milattan sonra 262'de Gotlar şehre saldırdı ve tapınağı yağmalayıp tahrip etti. Hristiyanlık yayıldıkça tapınak önemini kaybetti."
+        },
+        {
+          "s": "B",
+          "t": "Taşlarına ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Başka yapılarda kullanıldı. Geriye kalanlar alüvyonun altına gömüldü. Bin yıl sonra kimse tapınağın yerini bilmiyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Altı Metre Derinde",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Temple of Artemis ruins Selçuk",
+        "John Turtle Wood Ephesus excavation",
+        "British Museum Ephesus column drum"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1863'te İngiliz mühendis John Turtle Wood, British Museum adına tapınağı aramaya başladı."
+        },
+        {
+          "s": "B",
+          "t": "Elinde ne vardı?"
+        },
+        {
+          "s": "A",
+          "t": "Neredeyse hiçbir şey. Yıllarca kazdı, parası tükendi, sıtmaya yakalandı."
+        },
+        {
+          "s": "A",
+          "t": "Sonunda tiyatroda bir yazıt buldu. Yazıt, bir tören alayının tapınaktan şehre hangi kapıdan girdiğini anlatıyordu. Wood o yolu izledi."
+        },
+        {
+          "s": "B",
+          "t": "Ve buldu."
+        },
+        {
+          "s": "A",
+          "t": "1869'un son günlerinde, yaklaşık altı metre toprağın altında tapınağın mermer zeminine ulaştı."
+        },
+        {
+          "s": "B",
+          "t": "Bulduklarını ne yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "Heykelli sütun parçalarını Londra'ya gönderdi. Hâlâ British Museum'dalar."
+        },
+        {
+          "s": "A",
+          "t": "Yerinde ise bugün tek bir sütun duruyor. 1970'lerde dağınık parçalardan birleştirilerek dikildi. Üstüne çoğu zaman bir leylek yuva yapıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Selçuk",
+      "image_queries": [
+        "Ephesus ruins sunset",
+        "Temple of Artemis single column stork",
+        "Ephesus visitors Celsus"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Efes 2015'te UNESCO Dünya Mirası Listesi'ne girdi. Kazılar yüz yılı aşkın süredir devam ediyor ve şehrin büyük kısmı hâlâ toprak altında."
+        },
+        {
+          "s": "B",
+          "t": "Yedi harikadan birinin yerinde tek sütun olması insanı düşündürüyor."
+        },
+        {
+          "s": "A",
+          "t": "Ve onu yakan adamın adını hâlâ biliyor olmamız."
+        },
+        {
+          "s": "B",
+          "t": "Sence Herostratos'un adı anılmalı mı, yoksa Efesliler haklı mıydı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

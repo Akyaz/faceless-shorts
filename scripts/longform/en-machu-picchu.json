@@ -1,0 +1,426 @@
+{
+  "lang": "en",
+  "topic": "Machu Picchu",
+  "era": "built about 1450, Inca Empire; brought to world attention 1911",
+  "country": "Peru",
+  "label": "HISTORY",
+  "mood": "umutlu",
+  "title": "Machu Picchu: The Inca Citadel the Spanish Never Found",
+  "description": "High on a ridge in the Peruvian Andes, the Inca built a royal estate of stone so precisely cut that it has survived five centuries of earthquakes. The Spanish conquerors never saw it. In 1911 a local boy led an American lecturer up the mountain. This is the story of who built Machu Picchu, how, why it was abandoned, and whether it was ever really lost.",
+  "hashtags": [
+    "machupicchu",
+    "inca",
+    "history"
+  ],
+  "tags": [
+    "machu picchu",
+    "inca empire",
+    "hiram bingham",
+    "pachacuti",
+    "peru",
+    "cusco",
+    "andes",
+    "lost city of the incas",
+    "archaeology",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Machu Picchu, National Geographic",
+      "url": "https://www.nationalgeographic.com/history/article/machu-picchu"
+    },
+    {
+      "title": "Machu Picchu Unveiled: Why Hiram Bingham Didn't \"Discover\" It, TheCollector",
+      "url": "https://www.thecollector.com/machu-picchu-bingham-discovery/"
+    },
+    {
+      "title": "Machu Picchu, History.com",
+      "url": "https://www.history.com/topics/machu-picchu"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Machu Picchu panorama",
+        "Machu Picchu stone walls",
+        "Huayna Picchu mountain"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, imagine building a town on a mountain ridge, two thousand four hundred metres up, with cliffs on three sides."
+        },
+        {
+          "s": "B",
+          "t": "I would want a very good crane."
+        },
+        {
+          "s": "A",
+          "t": "No cranes. No iron tools. No wheels for transport. No horses. And no writing to draw up the plans."
+        },
+        {
+          "s": "B",
+          "t": "Then it cannot be much of a town."
+        },
+        {
+          "s": "A",
+          "t": "About two hundred buildings, temples, fountains, and hundreds of farming terraces. With stonework so tight you cannot slide a knife between the blocks."
+        },
+        {
+          "s": "B",
+          "t": "Machu Picchu."
+        },
+        {
+          "s": "A",
+          "t": "Built by the Inca around 1450. And when the Spanish conquered the empire eighty years later, they never found it."
+        }
+      ]
+    },
+    {
+      "heading": "An Emperor's Retreat",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Pachacuti statue Cusco",
+        "Sacred Valley Peru",
+        "Inca road Andes"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "For a long time nobody knew what Machu Picchu was for. A fortress? A convent? The birthplace of the Inca?"
+        },
+        {
+          "s": "B",
+          "t": "And now?"
+        },
+        {
+          "s": "A",
+          "t": "The best evidence, including Spanish legal documents from the 1500s, points to a royal estate. A country palace for the emperor Pachacuti."
+        },
+        {
+          "s": "B",
+          "t": "Who was he?"
+        },
+        {
+          "s": "A",
+          "t": "The ruler who turned a small kingdom around Cusco into an empire. Under him and his successors it stretched along the Andes for thousands of kilometres."
+        },
+        {
+          "s": "B",
+          "t": "So this was his holiday home."
+        },
+        {
+          "s": "A",
+          "t": "A retreat for the court, a few days' walk from the capital. Probably around seven hundred and fifty people lived there at most: nobles, priests, and many servants and craftsmen brought from all over the empire."
+        },
+        {
+          "s": "A",
+          "t": "The traditional date for its construction is about 1450. Recent radiocarbon dating of burials suggests people were already living there some decades earlier."
+        }
+      ]
+    },
+    {
+      "heading": "Building on a Fault Line",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Machu Picchu Temple of the Sun",
+        "Inca ashlar masonry wall",
+        "Machu Picchu terraces"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Why build in such a difficult place?"
+        },
+        {
+          "s": "A",
+          "t": "Partly the view. To the Inca, mountains were sacred, and this ridge is surrounded by peaks, with a river looping around its base."
+        },
+        {
+          "s": "A",
+          "t": "Partly the stone. The ridge is made of granite, already cracked into blocks by geological faults. The quarry was on site."
+        },
+        {
+          "s": "B",
+          "t": "Faults mean earthquakes."
+        },
+        {
+          "s": "A",
+          "t": "Yes, and the builders knew it. The finest walls use no mortar. The blocks are shaped to fit each other exactly, and the walls lean slightly inward. Doors and windows are wider at the bottom."
+        },
+        {
+          "s": "B",
+          "t": "What happens when the ground shakes?"
+        },
+        {
+          "s": "A",
+          "t": "The stones are said to move and then settle back into place. Spanish colonial buildings in Cusco collapsed in earthquakes. The Inca walls beneath them stayed standing."
+        },
+        {
+          "s": "B",
+          "t": "How did they cut granite without iron?"
+        },
+        {
+          "s": "A",
+          "t": "With harder stones as hammers, bronze tools, sand, water and a great deal of time."
+        }
+      ]
+    },
+    {
+      "heading": "The Hidden Half",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Machu Picchu agricultural terraces",
+        "Machu Picchu fountain water channel",
+        "Machu Picchu drainage"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Here is what visitors do not see. Engineers who have studied the site estimate that more than half of the construction work is underground."
+        },
+        {
+          "s": "B",
+          "t": "Foundations?"
+        },
+        {
+          "s": "A",
+          "t": "Foundations and drainage. This ridge receives close to two metres of rain a year. Without drainage, the whole town would have slid into the valley centuries ago."
+        },
+        {
+          "s": "B",
+          "t": "So how does it drain?"
+        },
+        {
+          "s": "A",
+          "t": "Each terrace is a layered filter. Topsoil on top, then sand, then gravel, then large stones. Water sinks through instead of running off."
+        },
+        {
+          "s": "A",
+          "t": "The main plaza has a similar buried layer, and there are well over a hundred drain outlets in the walls."
+        },
+        {
+          "s": "B",
+          "t": "And drinking water?"
+        },
+        {
+          "s": "A",
+          "t": "A stone canal brings a mountain spring into the town. It feeds a chain of sixteen fountains, one below another. The first is beside the emperor's residence, so he had the cleanest water."
+        }
+      ]
+    },
+    {
+      "heading": "Sun and Stone",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Intihuatana stone Machu Picchu",
+        "Temple of the Three Windows",
+        "Machu Picchu sunrise solstice"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What about religion?"
+        },
+        {
+          "s": "A",
+          "t": "The Inca worshipped the sun, Inti, and several buildings track it. In the curved Temple of the Sun, a window lines up with sunrise at the June solstice."
+        },
+        {
+          "s": "A",
+          "t": "On a high point stands a carved rock called the Intihuatana. The name is often translated as \"hitching post of the sun\"."
+        },
+        {
+          "s": "B",
+          "t": "A sundial?"
+        },
+        {
+          "s": "A",
+          "t": "Probably an astronomical marker of some kind, though its exact use is debated. Most stones like it elsewhere were smashed by the Spanish as idols. This one survived because they never came."
+        }
+      ]
+    },
+    {
+      "heading": "Abandoned",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Inca Atahualpa Pizarro painting",
+        "Vilcabamba Espiritu Pampa ruins",
+        "Machu Picchu fog ruins"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In 1532 the Spanish arrived in Peru. Within a few years the empire had collapsed, helped by a civil war and by European diseases that had spread ahead of the conquerors."
+        },
+        {
+          "s": "B",
+          "t": "And Machu Picchu?"
+        },
+        {
+          "s": "A",
+          "t": "It was a royal estate. When the royal family lost its power, there was nobody to supply it or any reason to stay. It seems to have been abandoned within a few decades."
+        },
+        {
+          "s": "B",
+          "t": "And the Spanish simply never heard of it?"
+        },
+        {
+          "s": "A",
+          "t": "It does not appear in any account by the conquerors. A few land documents mention the area, but no Spaniard is known to have gone there."
+        },
+        {
+          "s": "B",
+          "t": "So the jungle took it."
+        },
+        {
+          "s": "A",
+          "t": "Not completely. This is the part that the legend usually leaves out. Local farmers always knew the ruins were there."
+        }
+      ]
+    },
+    {
+      "heading": "July 1911",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Hiram Bingham Machu Picchu 1911",
+        "Machu Picchu 1912 photograph",
+        "Urubamba river valley"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In 1911 a Yale University lecturer named Hiram Bingham came to Peru looking for Vilcabamba, the last refuge of the Inca rulers."
+        },
+        {
+          "s": "B",
+          "t": "Was he an archaeologist?"
+        },
+        {
+          "s": "A",
+          "t": "A historian and explorer. In the valley below the ridge, a farmer told him there were ruins on the mountain and agreed to guide him for a silver coin."
+        },
+        {
+          "s": "A",
+          "t": "On the 24th of July, in a cold drizzle, they climbed. Near the top they found two families living on the old terraces and farming them. A young boy led Bingham the rest of the way."
+        },
+        {
+          "s": "B",
+          "t": "So people were living in the \"lost city\"."
+        },
+        {
+          "s": "A",
+          "t": "Yes. And on one wall Bingham saw a name written in charcoal, with a date: Lizárraga, 1902. A local farmer had been there nine years before him."
+        },
+        {
+          "s": "B",
+          "t": "Did Bingham admit that?"
+        },
+        {
+          "s": "A",
+          "t": "He recorded it in his notebook. In his famous later accounts, it faded from the story."
+        },
+        {
+          "s": "A",
+          "t": "What Bingham did do was bring the site to the world. He returned with a large expedition, cleared the vegetation, photographed everything, and in 1913 National Geographic devoted an entire issue to it."
+        },
+        {
+          "s": "B",
+          "t": "Was it the city he was looking for?"
+        },
+        {
+          "s": "A",
+          "t": "He believed so until he died. It was not. The real Vilcabamba was a different ruin, deeper in the jungle, which he had also visited and dismissed."
+        }
+      ]
+    },
+    {
+      "heading": "The Artefacts",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Inca pottery Machu Picchu museum",
+        "Yale Peabody Museum",
+        "Museo Machu Picchu Casa Concha Cusco"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "I have heard there was a dispute about what he took."
+        },
+        {
+          "s": "A",
+          "t": "A long one. Bingham's expeditions shipped thousands of objects to Yale: pottery, tools, jewellery, and human remains. Peru said they had only been lent."
+        },
+        {
+          "s": "B",
+          "t": "For how long?"
+        },
+        {
+          "s": "A",
+          "t": "The argument lasted nearly a century. Peru eventually took Yale to court. An agreement was reached, and the collection went back to Cusco in 2011 and 2012."
+        },
+        {
+          "s": "A",
+          "t": "Machu Picchu itself became a UNESCO World Heritage Site in 1983. Today visitor numbers are limited, and tickets are sold for fixed routes and times, to protect the stonework."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "Peru",
+      "city": "Cusco",
+      "image_queries": [
+        "Machu Picchu llama terraces",
+        "Machu Picchu sunset",
+        "Machu Picchu aerial"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "For me it is the drains. Everyone photographs the walls, and the real genius is under the grass."
+        },
+        {
+          "s": "A",
+          "t": "That is why it is still there. They solved the water problem first and built the beauty on top."
+        },
+        {
+          "s": "B",
+          "t": "And it was never really lost."
+        },
+        {
+          "s": "A",
+          "t": "Only to people who did not ask the neighbours. Is Machu Picchu on your list?"
+        },
+        {
+          "s": "B",
+          "t": "Tell us in the comments."
+        },
+        {
+          "s": "A",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

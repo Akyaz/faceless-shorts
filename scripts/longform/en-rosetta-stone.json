@@ -1,0 +1,375 @@
+{
+  "lang": "en",
+  "topic": "Rosetta Stone",
+  "era": "196 BC decree, found 1799, deciphered 1822",
+  "country": "Egypt",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "The Rosetta Stone: How a Broken Slab Taught Us to Read Ancient Egypt",
+  "description": "For about fourteen centuries nobody on Earth could read Egyptian hieroglyphs. Then in 1799 French soldiers rebuilding a fort in the Nile Delta pulled a broken slab out of a wall. It carried the same decree in three scripts. This is the story of how it was found, how Britain took it, and how Thomas Young and Jean-François Champollion raced to crack the code.",
+  "hashtags": [
+    "rosettastone",
+    "ancientegypt",
+    "history"
+  ],
+  "tags": [
+    "rosetta stone",
+    "hieroglyphs",
+    "champollion",
+    "thomas young",
+    "ancient egypt",
+    "british museum",
+    "napoleon in egypt",
+    "decipherment",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Rosetta Stone, Encyclopaedia Britannica",
+      "url": "https://www.britannica.com/topic/Rosetta-Stone"
+    },
+    {
+      "title": "Rosetta Stone: Key to Ancient Egyptian Writing, Live Science",
+      "url": "https://www.livescience.com/60154-rosetta-stone.html"
+    },
+    {
+      "title": "How the Rosetta Stone unlocked the secrets of ancient civilizations, National Geographic",
+      "url": "https://www.nationalgeographic.com/history/article/how-the-rosetta-stone-unlocked-the-secrets-of-ancient-civilizations"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Egypt",
+      "image_queries": [
+        "Rosetta Stone British Museum",
+        "Egyptian hieroglyphs temple wall",
+        "Rosetta Stone close up"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, imagine walking through a temple covered in writing. Every wall, every column. And nobody alive can read a single word."
+        },
+        {
+          "s": "B",
+          "t": "Like a library where all the books are locked."
+        },
+        {
+          "s": "A",
+          "t": "That was ancient Egypt for about fourteen hundred years. The last known hieroglyphic inscription was carved in the year 394. After that, the knowledge simply died out."
+        },
+        {
+          "s": "B",
+          "t": "So how did we get it back?"
+        },
+        {
+          "s": "A",
+          "t": "With a broken slab of dark stone, found by soldiers who were not looking for it."
+        },
+        {
+          "s": "B",
+          "t": "The Rosetta Stone."
+        },
+        {
+          "s": "A",
+          "t": "The Rosetta Stone. And the story of reading it is really a twenty-year race between two very different men."
+        }
+      ]
+    },
+    {
+      "heading": "Soldiers, Not Scholars",
+      "country": "Egypt",
+      "city": "Rashid",
+      "image_queries": [
+        "Fort Julien Rashid",
+        "Napoleon in Egypt painting",
+        "Rashid Egypt Nile"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In 1798, Napoleon invaded Egypt. He brought an army, and he also brought about a hundred and fifty scholars to study the country."
+        },
+        {
+          "s": "B",
+          "t": "But the scholars did not find the stone."
+        },
+        {
+          "s": "A",
+          "t": "No. In July 1799, French soldiers were strengthening an old fort near the town of Rashid, which Europeans called Rosetta. An engineering officer named Pierre-François Bouchard noticed a slab built into a wall."
+        },
+        {
+          "s": "B",
+          "t": "What made him stop?"
+        },
+        {
+          "s": "A",
+          "t": "It was covered in writing, and in three clearly different scripts. He understood it might be important and had it sent to the scholars in Cairo."
+        },
+        {
+          "s": "A",
+          "t": "The exact day is uncertain. Mid-July 1799 is the usual answer."
+        },
+        {
+          "s": "B",
+          "t": "And the stone itself was not made for that fort."
+        },
+        {
+          "s": "A",
+          "t": "Not at all. It was probably an old temple stone that had been reused as building material centuries later."
+        }
+      ]
+    },
+    {
+      "heading": "What the Stone Says",
+      "country": "Egypt",
+      "city": "Memphis",
+      "image_queries": [
+        "Ptolemy V coin",
+        "Rosetta Stone Greek text",
+        "Memphis Egypt ruins"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So what is actually written on it?"
+        },
+        {
+          "s": "A",
+          "t": "Something quite ordinary. It is a decree issued by priests at Memphis in 196 BC, honoring the young king Ptolemy the Fifth."
+        },
+        {
+          "s": "B",
+          "t": "A piece of official paperwork."
+        },
+        {
+          "s": "A",
+          "t": "Exactly. It lists the king's good deeds and says copies should be set up in temples. The important part is how it was written."
+        },
+        {
+          "s": "A",
+          "t": "The same text appears three times. At the top, in hieroglyphs, the sacred script. In the middle, in Demotic, the everyday Egyptian script. At the bottom, in ancient Greek, the language of the rulers."
+        },
+        {
+          "s": "B",
+          "t": "And scholars could read Greek."
+        },
+        {
+          "s": "A",
+          "t": "They could. So for the first time they had a translation sitting right below the mystery."
+        },
+        {
+          "s": "B",
+          "t": "That sounds easy. Just match the words."
+        },
+        {
+          "s": "A",
+          "t": "It was not. The stone is broken. Only fourteen lines of hieroglyphs survive, and none of them is complete."
+        }
+      ]
+    },
+    {
+      "heading": "From Paris to London",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "British Museum Rosetta Stone display",
+        "Alexandria harbor old engraving",
+        "British Museum exterior"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The French made ink copies of the text and sent them to Europe. That turned out to be wise."
+        },
+        {
+          "s": "B",
+          "t": "Because they lost the stone."
+        },
+        {
+          "s": "A",
+          "t": "In 1801 the French army in Egypt surrendered to the British. Under the terms, the antiquities the French had collected were handed over."
+        },
+        {
+          "s": "B",
+          "t": "Including the stone."
+        },
+        {
+          "s": "A",
+          "t": "Including the stone. It reached England in 1802 and has been in the British Museum ever since."
+        },
+        {
+          "s": "B",
+          "t": "And Egypt wants it back."
+        },
+        {
+          "s": "A",
+          "t": "Egyptian officials and scholars have asked for its return for more than twenty years. The museum has kept it. That argument is still going on."
+        }
+      ]
+    },
+    {
+      "heading": "The Polymath",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Thomas Young portrait",
+        "cartouche hieroglyph Ptolemy",
+        "Demotic script papyrus"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Now the race. The first runner is Thomas Young, an English doctor and physicist."
+        },
+        {
+          "s": "B",
+          "t": "The Young from physics? The light experiment?"
+        },
+        {
+          "s": "A",
+          "t": "The same man. He treated the stone as a puzzle. He focused on the Demotic text, and then on the oval rings in the hieroglyphs, called cartouches."
+        },
+        {
+          "s": "B",
+          "t": "What is special about the rings?"
+        },
+        {
+          "s": "A",
+          "t": "Scholars suspected they enclosed royal names. Young matched one to the name Ptolemy in the Greek and worked out sound values for several signs."
+        },
+        {
+          "s": "B",
+          "t": "So hieroglyphs could spell sounds."
+        },
+        {
+          "s": "A",
+          "t": "For foreign names, he thought. He still believed most hieroglyphs were symbols, not sounds. And that is where he stopped."
+        }
+      ]
+    },
+    {
+      "heading": "The Obsessive",
+      "country": "France",
+      "city": "Paris",
+      "image_queries": [
+        "Jean-Francois Champollion portrait",
+        "Philae obelisk Kingston Lacy",
+        "Abu Simbel cartouche Ramesses"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The second runner is Jean-François Champollion, a young French scholar who had been obsessed with Egypt since he was a boy."
+        },
+        {
+          "s": "B",
+          "t": "What did he have that Young did not?"
+        },
+        {
+          "s": "A",
+          "t": "Coptic. It is the language of Egyptian Christians, and it descends from ancient Egyptian. Champollion knew it well."
+        },
+        {
+          "s": "A",
+          "t": "He compared the name Ptolemy on the stone with the name Cleopatra on an obelisk from Philae. The shared letters matched. That gave him a small alphabet."
+        },
+        {
+          "s": "B",
+          "t": "Still only foreign names."
+        },
+        {
+          "s": "A",
+          "t": "Then, in September 1822, he looked at cartouches from much older temples. He read the names Ramesses and Thutmose, using Coptic words for the signs."
+        },
+        {
+          "s": "B",
+          "t": "Native Egyptian names, spelled with sounds."
+        },
+        {
+          "s": "A",
+          "t": "Which meant the whole script mixed sound signs and meaning signs. According to a famous story, he ran to his brother shouting \"I've got it!\" and collapsed. Historians doubt the fainting, but he announced his result in Paris on the 27th of September, 1822."
+        }
+      ]
+    },
+    {
+      "heading": "A Civilization Speaks",
+      "country": "Egypt",
+      "image_queries": [
+        "Egyptian papyrus Book of the Dead",
+        "Karnak temple hieroglyphs",
+        "Champollion grammar page"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did Young accept it?"
+        },
+        {
+          "s": "A",
+          "t": "He felt he had not been given enough credit, and the argument between their supporters lasted for years. Most historians today say Young opened the door and Champollion walked through it."
+        },
+        {
+          "s": "A",
+          "t": "Champollion published a full system in 1824. He died in 1832, only forty-one years old."
+        },
+        {
+          "s": "B",
+          "t": "And after that people could just read Egypt?"
+        },
+        {
+          "s": "A",
+          "t": "Slowly, yes. Tomb walls, temple records, letters, medical texts, love poems. Three thousand years of writing came back."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Rosetta Stone visitors British Museum",
+        "Rosetta Stone full view",
+        "Egyptian hieroglyphs color"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What gets me is that it is such a dull text. A tax decree, basically."
+        },
+        {
+          "s": "A",
+          "t": "That is the lesson. Nobody carved it for us. It mattered only because it said the same thing three times."
+        },
+        {
+          "s": "B",
+          "t": "And because one officer looked twice at a stone in a wall."
+        },
+        {
+          "s": "A",
+          "t": "Do you think the Rosetta Stone should stay in London or go back to Egypt?"
+        },
+        {
+          "s": "B",
+          "t": "Tell us in the comments."
+        },
+        {
+          "s": "A",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "lang": "tr",
+  "topic": "Minelayer Nusret and the naval battle of 18 March 1915",
+  "era": "March 1915, Dardanelles, First World War",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "gergin",
+  "title": "Nusret Mayın Gemisi: 26 Mayın Çanakkale'de Tarihi Nasıl Değiştirdi?",
+  "description": "8 Mart 1915 sabahı, kırk metrelik küçük bir gemi Çanakkale Boğazı'nda Erenköy Koyu'na 26 mayın bıraktı. On gün sonra dünyanın en güçlü donanması Boğaz'a girdi ve o mayın hattında üç zırhlısını kaybetti. Nusret'in ve 18 Mart 1915'in hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "nusret",
+    "çanakkale",
+    "tarih"
+  ],
+  "tags": [
+    "nusret mayın gemisi",
+    "çanakkale",
+    "18 mart 1915",
+    "çanakkale deniz zaferi",
+    "erenköy",
+    "bouvet",
+    "birinci dünya savaşı",
+    "seyit onbaşı",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Nusret Mayın Gemisi, KÜRE Ansiklopedi",
+      "url": "https://kureansiklopedi.com/tr/detay/nusret-mayin-gemisi-3d7af"
+    },
+    {
+      "title": "The Nusret, Çanakkale, Anzac Portal (Avustralya Gaziler Bakanlığı)",
+      "url": "https://anzacportal.dva.gov.au/node/324"
+    },
+    {
+      "title": "110 years on, TCG Nusret retraces historic path in Dardanelles, Hürriyet Daily News",
+      "url": "https://hurriyetdailynews.com/110-years-on-tcg-nusret-retraces-historic-path-in-dardanelles-206693"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Nusret minelayer ship",
+        "Dardanelles strait view",
+        "TCG Nusret Çanakkale museum ship"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, bir yanda on sekiz zırhlı savaş gemisi var. Dönemin en büyük toplarıyla donatılmış."
+        },
+        {
+          "s": "B",
+          "t": "Öbür yanda?"
+        },
+        {
+          "s": "A",
+          "t": "Kırk metre boyunda, üç yüz altmış beş tonluk küçük bir gemi. Üzerinde yirmi altı mayın."
+        },
+        {
+          "s": "B",
+          "t": "Denk bir karşılaşma değil."
+        },
+        {
+          "s": "A",
+          "t": "Karşılaşmadılar bile. Küçük gemi işini on gün önce bitirip gitmişti."
+        },
+        {
+          "s": "B",
+          "t": "Nusret."
+        },
+        {
+          "s": "A",
+          "t": "Nusret Mayın Gemisi. Ve 1915'in Mart ayında Çanakkale Boğazı'nda olanlar."
+        }
+      ]
+    },
+    {
+      "heading": "Boğaz'ın Kilidi",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Dardanelles map 1915",
+        "Kilitbahir castle",
+        "Ottoman coastal artillery Dardanelles"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1915'in başında İngiltere ve Fransa, Çanakkale Boğazı'nı geçip İstanbul'a ulaşmak istiyordu."
+        },
+        {
+          "s": "B",
+          "t": "Amaç neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Osmanlı Devleti'ni savaş dışı bırakmak ve Rusya'ya giden deniz yolunu açmak."
+        },
+        {
+          "s": "A",
+          "t": "Boğaz dar bir su yolu. En dar yerinde bir buçuk kilometreden az. İki kıyıda tabyalar ve toplar vardı. Suyun içinde ise mayın hatları."
+        },
+        {
+          "s": "B",
+          "t": "Kaç hat?"
+        },
+        {
+          "s": "A",
+          "t": "Mart başına kadar on hat döşenmişti. Hepsi Boğaz'ı enine kesiyordu, kıyıdan kıyıya."
+        },
+        {
+          "s": "B",
+          "t": "Müttefikler bunu biliyor muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Biliyordu. Planları şöyleydi: zırhlılar uzaktan tabyaları susturacak, mayın tarama gemileri hatları temizleyecek, sonra donanma içeri girecekti."
+        },
+        {
+          "s": "A",
+          "t": "Şubat ayından itibaren Boğaz'ın girişini bombalamaya başladılar. Her seferinde biraz daha içeri sokuluyorlardı."
+        }
+      ]
+    },
+    {
+      "heading": "Bir Gözlem",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Erenköy bay Dardanelles",
+        "Karanlık Liman Çanakkale",
+        "battleship turning Dardanelles 1915"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Türk tarafındaki subaylar bu bombardımanları dikkatle izliyordu. Bir şey dikkatlerini çekti."
+        },
+        {
+          "s": "B",
+          "t": "Ne?"
+        },
+        {
+          "s": "A",
+          "t": "Zırhlılar ateş ettikten sonra geri dönerken hep aynı yerde manevra yapıyordu. Anadolu yakasında, Erenköy Koyu'nda. Karanlık Liman denen geniş ve sakin kesimde."
+        },
+        {
+          "s": "B",
+          "t": "Dönmek için en rahat yer orası."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Müstahkem Mevki'nin mayın uzmanı Nazmi Bey ve diğer subaylar şunu önerdi: o koya, kimsenin beklemediği biçimde bir hat daha döşeyelim."
+        },
+        {
+          "s": "B",
+          "t": "Öbür hatlardan farkı ne olacaktı?"
+        },
+        {
+          "s": "A",
+          "t": "Yönü. Diğerleri gibi Boğaz'ı enine kesmeyecek, kıyıya paralel uzanacaktı. Yani dönüş yapan gemilerin tam yoluna."
+        },
+        {
+          "s": "B",
+          "t": "Mayın var mıydı ellerinde?"
+        },
+        {
+          "s": "A",
+          "t": "Çok azdı. Eldeki son yirmi altı mayın bu iş için ayrıldı."
+        }
+      ]
+    },
+    {
+      "heading": "8 Mart Sabahı",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Nusret minelayer deck mines",
+        "naval mine 1915",
+        "Dardanelles fog dawn"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Görev Nusret'e verildi. Almanya'da yapılmış, 1913'te donanmaya katılmış küçük bir mayın gemisiydi. Komutanı Yüzbaşı Tophaneli Hakkı Bey'di."
+        },
+        {
+          "s": "B",
+          "t": "Düşman gemileri Boğaz'ın ağzındayken bunu nasıl yaptılar?"
+        },
+        {
+          "s": "A",
+          "t": "Gece karanlığından ve sisten yararlanarak. 7 Mart'ı 8 Mart'a bağlayan gece Nusret Nara'dan ayrıldı ve Anadolu kıyısına yakın, sessizce güneye indi."
+        },
+        {
+          "s": "A",
+          "t": "Müttefik gemilerinin projektörleri geceleri suyu tarıyordu. Fark edilselerdi tek bir isabet gemiyi mayınlarıyla birlikte havaya uçururdu."
+        },
+        {
+          "s": "B",
+          "t": "Fark edilmediler."
+        },
+        {
+          "s": "A",
+          "t": "Edilmediler. Sabaha karşı Erenköy Koyu'na ulaştılar ve yirmi altı mayını tek tek suya bıraktılar. Aralarında yaklaşık yüz metre, su yüzeyinin dört buçuk metre altında."
+        },
+        {
+          "s": "B",
+          "t": "Sonra?"
+        },
+        {
+          "s": "A",
+          "t": "Aynı sessizlikle geri döndüler. On birinci hat kurulmuştu."
+        },
+        {
+          "s": "B",
+          "t": "Müttefikler sonraki günlerde bulmadı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Koyda birkaç mayın görüldü ama bunların akıntıyla sürüklenmiş tek tük mayınlar olduğu düşünüldü. Yeni bir hattın varlığı anlaşılmadı."
+        }
+      ]
+    },
+    {
+      "heading": "18 Mart",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "French battleship Bouvet 1915",
+        "Allied fleet Dardanelles 18 March 1915",
+        "HMS Irresistible sinking"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "18 Mart 1915 sabahı Müttefik donanması Boğaz'a büyük saldırıya geçti. On sekiz büyük savaş gemisi, üç dalga hâlinde."
+        },
+        {
+          "s": "B",
+          "t": "İlk saatler nasıl geçti?"
+        },
+        {
+          "s": "A",
+          "t": "Müttefikler açısından iyi. Zırhlılar tabyaları saatlerce dövdü. Türk topçusu karşılık verdi ama bazı bataryalar sustu."
+        },
+        {
+          "s": "A",
+          "t": "Öğleden sonra saat iki sularında ön hattaki Fransız gemilerine geri çekilme emri verildi. Dönüş için sağa, Erenköy Koyu'na yöneldiler."
+        },
+        {
+          "s": "B",
+          "t": "Tam hattın üstüne."
+        },
+        {
+          "s": "A",
+          "t": "Fransız zırhlısı Bouvet büyük bir patlamayla sarsıldı, yana yattı ve birkaç dakika içinde battı. Altı yüzden fazla denizci hayatını kaybetti."
+        },
+        {
+          "s": "B",
+          "t": "Ne olduğunu anladılar mı?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Bir top mermisinin cephaneliğe isabet ettiğini ya da kıyıdan torpido atıldığını düşündüler. Saldırı devam etti."
+        },
+        {
+          "s": "A",
+          "t": "Saat dört sularında İngiliz muharebe kruvazörü Inflexible aynı bölgede mayına çarptı ve ağır yaralı olarak çekildi. Birkaç dakika sonra zırhlı Irresistible mayına çarptı ve sürüklenmeye başladı."
+        },
+        {
+          "s": "B",
+          "t": "Ona yardıma giden oldu mu?"
+        },
+        {
+          "s": "A",
+          "t": "Ocean zırhlısı yardıma gönderildi. O da mayına çarptı. Türk topçusu iki yaralı gemiyi ateş altına aldı. İkisi de o gece battı."
+        }
+      ]
+    },
+    {
+      "heading": "Seyit Onbaşı",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Seyit Onbaşı shell photo",
+        "Rumeli Mecidiye bastion",
+        "Ottoman artillery battery Çanakkale"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Seyit Onbaşı'nın hikâyesi de bu günde geçiyor, değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Rumeli Mecidiye Tabyası'nda topun mermi kaldırma düzeneği bombardımanda bozulmuştu."
+        },
+        {
+          "s": "A",
+          "t": "Anlatıya göre Seyit Onbaşı, iki yüz on beş okkalık, yani yaklaşık iki yüz yetmiş beş kiloluk mermiyi sırtlayıp namluya sürdü. O topun atışlarından birinin Ocean'a isabet ettiği kabul edilir."
+        },
+        {
+          "s": "B",
+          "t": "O ünlü fotoğraf o an mı çekildi?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır, fotoğraf sonradan çekildi. Gerçek mermiyi fotoğraf için bir daha kaldıramadığı, bu yüzden tahta bir maketle poz verdiği anlatılır."
+        },
+        {
+          "s": "A",
+          "t": "18 Mart'ın sonucu topçuyla mayının birlikte çalışmasının eseriydi. Toplar mayın tarama gemilerini uzak tuttu, mayınlar da zırhlıları durdurdu."
+        }
+      ]
+    },
+    {
+      "heading": "Geri Çekiliş",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Allied fleet withdrawing Dardanelles",
+        "Gallipoli peninsula landscape",
+        "Çanakkale martyrs memorial"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Akşama doğru Müttefik komutanı Amiral de Robeck geri çekilme emri verdi."
+        },
+        {
+          "s": "B",
+          "t": "Günün bilançosu neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Üç zırhlı batmış, üçü ağır hasar almıştı. Yani saldırıya katılan büyük gemilerin üçte biri bir günde devre dışı kalmıştı."
+        },
+        {
+          "s": "B",
+          "t": "Bir daha denediler mi?"
+        },
+        {
+          "s": "A",
+          "t": "Donanmayla hayır. Boğaz'ın sadece gemilerle geçilemeyeceği anlaşıldı. Bu yüzden 25 Nisan'da Gelibolu Yarımadası'na asker çıkarıldı ve kara savaşları başladı."
+        },
+        {
+          "s": "B",
+          "t": "Yani yirmi altı mayın savaşın yönünü değiştirdi."
+        },
+        {
+          "s": "A",
+          "t": "Deniz harekâtını bitirdi. Çanakkale Savaşları aylarca sürdü ve iki taraftan da yüz binlerce insan öldü ya da yaralandı. Ama Boğaz geçilemedi."
+        }
+      ]
+    },
+    {
+      "heading": "Nusret'e Ne Oldu?",
+      "country": "Turkey",
+      "city": "Mersin",
+      "image_queries": [
+        "Nusret original ship Tarsus museum",
+        "TCG Nusret replica Çanakkale",
+        "Nusret ship old photograph"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Nusret savaştan sonra ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Yıllarca donanmada kaldı, sonra hizmet dışına çıkarıldı. 1960'larda satıldı ve yük gemisine dönüştürüldü."
+        },
+        {
+          "s": "B",
+          "t": "Böyle bir gemi mi satıldı?"
+        },
+        {
+          "s": "A",
+          "t": "Ne yazık ki evet. 1990 dolaylarında Mersin açıklarında battı. Yıllar sonra sudan çıkarıldı ve Tarsus'ta anıt müzeye dönüştürüldü."
+        },
+        {
+          "s": "A",
+          "t": "2011'de Gölcük'te geminin aslına uygun bir benzeri yapıldı. Bugün Çanakkale'de müze gemi olarak duruyor ve her 8 Mart'ta aynı rotada seyrediyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Çanakkale",
+      "image_queries": [
+        "Dardanelles sunset",
+        "Çanakkale strait ships",
+        "Nusret monument Çanakkale"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Beni en çok etkileyen, işin bir gözleme dayanması. Gemiler hep aynı yerde dönüyor, diye fark eden biri."
+        },
+        {
+          "s": "A",
+          "t": "Ve o gözleme güvenip eldeki son mayınları oraya ayırmaya karar verenler."
+        },
+        {
+          "s": "B",
+          "t": "Kırk metrelik bir gemi."
+        },
+        {
+          "s": "A",
+          "t": "Sence tarihte küçük bir ayrıntının büyük sonuç doğurduğu başka hangi olay var?"
+        },
+        {
+          "s": "B",
+          "t": "Yorumlara yaz."
+        },
+        {
+          "s": "A",
+          "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

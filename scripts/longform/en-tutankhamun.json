@@ -1,0 +1,405 @@
+{
+  "lang": "en",
+  "topic": "Discovery of Tutankhamun's tomb",
+  "era": "1922, Valley of the Kings; 18th Dynasty Egypt",
+  "country": "Egypt",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Tutankhamun's Tomb: The Last Season, the First Step and the 'Curse'",
+  "description": "By 1922 Howard Carter had searched the Valley of the Kings for years and his sponsor was ready to quit. He was given one final season. Three days in, a single stone step appeared in the sand. This is the story of how the tomb of Tutankhamun was found, what was inside, and how the legend of a curse began.",
+  "hashtags": [
+    "tutankhamun",
+    "ancientegypt",
+    "history"
+  ],
+  "tags": [
+    "tutankhamun",
+    "king tut",
+    "howard carter",
+    "valley of the kings",
+    "lord carnarvon",
+    "ancient egypt",
+    "pharaoh",
+    "curse of the pharaohs",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Discovery of the tomb of Tutankhamun, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Discovery_of_the_tomb_of_Tutankhamun"
+    },
+    {
+      "title": "Close Call: How Howard Carter Almost Missed King Tut's Tomb, National Geographic",
+      "url": "https://www.nationalgeographic.com/history/history-magazine/article/findingkingtutstomb"
+    },
+    {
+      "title": "Howard Carter and the Discovery of King Tut's Tomb, HistoryNet",
+      "url": "https://www.historynet.com/?p=3029391"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Valley of the Kings",
+        "Tutankhamun gold mask",
+        "Howard Carter Tutankhamun tomb"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, how long would you keep digging in a desert valley if you found almost nothing?"
+        },
+        {
+          "s": "B",
+          "t": "A season? Maybe two."
+        },
+        {
+          "s": "A",
+          "t": "Howard Carter kept going for years. And by 1922, the man paying for it had had enough."
+        },
+        {
+          "s": "B",
+          "t": "So he was told to stop."
+        },
+        {
+          "s": "A",
+          "t": "He was given one last season. Three days after work began, one of his crew uncovered a step cut into the rock."
+        },
+        {
+          "s": "B",
+          "t": "One step."
+        },
+        {
+          "s": "A",
+          "t": "One step. Behind it was the most complete royal burial ever found in Egypt. And a story about a curse that newspapers still love."
+        }
+      ]
+    },
+    {
+      "heading": "The Valley Everyone Thought Was Empty",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Valley of the Kings tombs entrance",
+        "Howard Carter portrait",
+        "Highclere Castle"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The Valley of the Kings, near Luxor, is where Egypt's New Kingdom pharaohs were buried. Dozens of tombs are cut into its cliffs."
+        },
+        {
+          "s": "B",
+          "t": "And all of them had been robbed."
+        },
+        {
+          "s": "A",
+          "t": "Nearly all, and long ago. By the early 1900s, one wealthy excavator declared the valley exhausted."
+        },
+        {
+          "s": "B",
+          "t": "Carter did not agree."
+        },
+        {
+          "s": "A",
+          "t": "Carter was an English artist who became an archaeologist. He had noticed small finds bearing the name of a little-known king: Tutankhamun. Embalming materials, a cup, bits of gold foil."
+        },
+        {
+          "s": "B",
+          "t": "Clues that a tomb was nearby."
+        },
+        {
+          "s": "A",
+          "t": "That was his hunch. His sponsor was George Herbert, the Earl of Carnarvon, a rich amateur whose home was Highclere Castle in England."
+        },
+        {
+          "s": "A",
+          "t": "They worked the valley for season after season, clearing it down to bedrock, section by section."
+        }
+      ]
+    },
+    {
+      "heading": "One Last Season",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Valley of the Kings excavation 1922",
+        "Ramesses VI tomb entrance",
+        "Tutankhamun tomb staircase"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "By the summer of 1922 Carnarvon wanted to stop. The cost was high and the results were thin."
+        },
+        {
+          "s": "B",
+          "t": "How did Carter change his mind?"
+        },
+        {
+          "s": "A",
+          "t": "He pleaded for one more season to finish a single remaining patch, near the entrance to the tomb of Ramesses the Sixth. Carnarvon agreed."
+        },
+        {
+          "s": "A",
+          "t": "Digging began on the 1st of November. The crew cleared the remains of ancient workmen's huts."
+        },
+        {
+          "s": "B",
+          "t": "And on the fourth?"
+        },
+        {
+          "s": "A",
+          "t": "On the 4th of November 1922, a step appeared beneath the huts. Tradition says a water boy found it. By the next day they had cleared a staircase leading down to a sealed doorway."
+        },
+        {
+          "s": "B",
+          "t": "Did Carter open it?"
+        },
+        {
+          "s": "A",
+          "t": "No. He had the stairs filled back in and sent a telegram to England: \"At last have made wonderful discovery in Valley; a magnificent tomb with seals intact.\""
+        },
+        {
+          "s": "B",
+          "t": "And then he waited."
+        },
+        {
+          "s": "A",
+          "t": "For almost three weeks, until Carnarvon arrived."
+        }
+      ]
+    },
+    {
+      "heading": "Wonderful Things",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Tutankhamun antechamber photograph Burton",
+        "Tutankhamun chariot",
+        "Tutankhamun golden throne"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "When the doorway was fully cleared, they saw seals with the name Tutankhamun. They also saw that the door had been broken and resealed in ancient times."
+        },
+        {
+          "s": "B",
+          "t": "So robbers had been inside."
+        },
+        {
+          "s": "A",
+          "t": "At least twice, soon after the burial. But they had not taken much."
+        },
+        {
+          "s": "A",
+          "t": "On the 26th of November, Carter made a small hole in a second door and held up a candle."
+        },
+        {
+          "s": "B",
+          "t": "This is the famous line."
+        },
+        {
+          "s": "A",
+          "t": "Carnarvon asked if he could see anything. In Carter's published account, he answered: \"Yes, wonderful things.\""
+        },
+        {
+          "s": "B",
+          "t": "What was he looking at?"
+        },
+        {
+          "s": "A",
+          "t": "A room packed to the ceiling. Gilded couches shaped like animals, dismantled chariots, chests, statues, food boxes, a golden throne."
+        },
+        {
+          "s": "A",
+          "t": "More than five thousand objects were eventually recorded. Carter's team photographed, drew and numbered each one before moving it. Clearing the tomb took about ten years."
+        }
+      ]
+    },
+    {
+      "heading": "The Boy Behind the Gold",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Tutankhamun sarcophagus",
+        "Tutankhamun golden coffin",
+        "Tutankhamun burial chamber wall painting"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Who was Tutankhamun, actually?"
+        },
+        {
+          "s": "A",
+          "t": "A minor king. He came to the throne as a child, around 1332 BC, and died about nine years later, at eighteen or nineteen."
+        },
+        {
+          "s": "B",
+          "t": "So not a great conqueror."
+        },
+        {
+          "s": "A",
+          "t": "Not at all. His reign mattered mostly because it reversed the religious revolution of Akhenaten, who was very probably his father."
+        },
+        {
+          "s": "B",
+          "t": "Then why such a rich tomb?"
+        },
+        {
+          "s": "A",
+          "t": "That is the point. It is actually a small tomb, likely not built for a king. If this is what a minor pharaoh received, imagine what the great ones had before the robbers came."
+        },
+        {
+          "s": "A",
+          "t": "The burial chamber was officially opened in February 1923. Inside were four gilded shrines, one inside another, then a stone sarcophagus, then three coffins."
+        },
+        {
+          "s": "B",
+          "t": "Like nesting dolls."
+        },
+        {
+          "s": "A",
+          "t": "The innermost coffin is solid gold and weighs about a hundred and ten kilograms. On the mummy's face lay the gold mask, about ten kilograms on its own."
+        }
+      ]
+    },
+    {
+      "heading": "The Curse",
+      "country": "Egypt",
+      "city": "Cairo",
+      "image_queries": [
+        "Lord Carnarvon portrait",
+        "Tutankhamun tomb newspaper 1923",
+        "Tutankhamun mummy"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In April 1923, a few months after the opening, Lord Carnarvon died in Cairo."
+        },
+        {
+          "s": "B",
+          "t": "Here comes the curse."
+        },
+        {
+          "s": "A",
+          "t": "He had been bitten by a mosquito, cut the bite while shaving, and developed blood poisoning. He was already in poor health."
+        },
+        {
+          "s": "B",
+          "t": "But the newspapers had a better explanation."
+        },
+        {
+          "s": "A",
+          "t": "Much better. Stories spread of a curse on anyone who disturbed the king. No such curse inscription was found in the tomb."
+        },
+        {
+          "s": "B",
+          "t": "Did the others die too?"
+        },
+        {
+          "s": "A",
+          "t": "Later studies compared the people present at the opening with those who were not. There was no real difference in how long they lived."
+        },
+        {
+          "s": "A",
+          "t": "Carter himself, who spent a decade inside the tomb, died in 1939, at sixty-four."
+        }
+      ]
+    },
+    {
+      "heading": "Where It All Is Now",
+      "country": "Egypt",
+      "city": "Giza",
+      "image_queries": [
+        "Grand Egyptian Museum",
+        "Tutankhamun mask museum display",
+        "Tutankhamun tomb KV62 interior"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Where did the treasure go?"
+        },
+        {
+          "s": "A",
+          "t": "Unlike many earlier finds, it stayed in Egypt. Egypt had just become formally independent, and the government insisted the collection remain together."
+        },
+        {
+          "s": "B",
+          "t": "That caused arguments, I imagine."
+        },
+        {
+          "s": "A",
+          "t": "Serious ones. At one point Carter was locked out of the tomb. But the principle held."
+        },
+        {
+          "s": "A",
+          "t": "For decades the objects were in the Egyptian Museum in Cairo. Now the collection is displayed together at the Grand Egyptian Museum near the pyramids of Giza."
+        },
+        {
+          "s": "B",
+          "t": "And the king?"
+        },
+        {
+          "s": "A",
+          "t": "His mummy still rests in the tomb in the valley."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "Egypt",
+      "city": "Luxor",
+      "image_queries": [
+        "Valley of the Kings sunset",
+        "Tutankhamun mask close",
+        "Howard Carter examining coffin"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "The part I cannot get over is the timing. Three days into the final season."
+        },
+        {
+          "s": "A",
+          "t": "And under huts that earlier excavators had left alone. The tomb survived because it was forgotten."
+        },
+        {
+          "s": "B",
+          "t": "A forgotten king, famous because nobody remembered him."
+        },
+        {
+          "s": "A",
+          "t": "Would you have kept digging for that long?"
+        },
+        {
+          "s": "B",
+          "t": "Tell us in the comments."
+        },
+        {
+          "s": "A",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

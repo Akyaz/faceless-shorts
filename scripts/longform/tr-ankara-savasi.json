@@ -1,0 +1,401 @@
+{
+  "lang": "tr",
+  "topic": "Battle of Ankara 1402",
+  "era": "28 July 1402, Ottoman Empire and Timurid Empire",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "gergin",
+  "title": "Ankara Savaşı 1402: Yıldırım Bayezid Timur'a Nasıl Esir Düştü?",
+  "description": "28 Temmuz 1402'de Ankara'nın Çubuk Ovası'nda çağın en güçlü iki hükümdarı karşılaştı: Yıldırım Bayezid ve Timur. Akşam olduğunda Osmanlı ordusu dağılmış, padişah esir düşmüştü. Hakaret dolu mektuplardan susuz bırakılan orduya, saf değiştiren askerlerden on bir yıllık Fetret Devri'ne, Ankara Savaşı'nı anlatıyoruz.",
+  "hashtags": [
+    "ankarasavaşı",
+    "osmanlı",
+    "tarih"
+  ],
+  "tags": [
+    "ankara savaşı",
+    "1402",
+    "yıldırım bayezid",
+    "timur",
+    "çubuk ovası",
+    "fetret devri",
+    "osmanlı tarihi",
+    "çelebi mehmed",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Ankara Savaşı, KÜRE Ansiklopedi (Yusuf Halaçoğlu)",
+      "url": "https://kureansiklopedi.com/tr/detay/ankara-savasi"
+    },
+    {
+      "title": "Battle of Ankara, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Ankara"
+    },
+    {
+      "title": "1402 Ankara Savaşı ve Fetret Devri, Tarih Dersleri",
+      "url": "https://tarih.substack.com/p/1402-ankara-savas-ve-fetret-devri"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Battle of Ankara 1402 painting",
+        "Bayezid I portrait",
+        "Timur portrait reconstruction"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, Osmanlı tarihinde savaş meydanında esir düşen kaç padişah var?"
+        },
+        {
+          "s": "B",
+          "t": "Bildiğim kadarıyla bir tane."
+        },
+        {
+          "s": "A",
+          "t": "Tek bir tane. Yıldırım Bayezid. 28 Temmuz 1402'de, Ankara'nın hemen kuzeyinde."
+        },
+        {
+          "s": "B",
+          "t": "Karşısında Timur vardı."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ve o gün sadece bir savaş kaybedilmedi. Yüz yıllık bir devlet neredeyse yok oluyordu."
+        },
+        {
+          "s": "B",
+          "t": "Ama yok olmadı."
+        },
+        {
+          "s": "A",
+          "t": "Olmadı. Elli yıl sonra İstanbul'u fethedecek kadar toparlandı. Nasıl oldu, baştan anlatayım."
+        }
+      ]
+    },
+    {
+      "heading": "İki Fatih",
+      "country": "Turkey",
+      "city": "Bursa",
+      "image_queries": [
+        "Bayezid I miniature",
+        "Battle of Nicopolis miniature",
+        "Samarkand Registan"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Yıldırım Bayezid 1389'da tahta çıktı. Lakabını hızından alıyordu. Ordusunu bir cepheden ötekine şaşırtıcı bir süratle götürürdü."
+        },
+        {
+          "s": "B",
+          "t": "Ne kadar başarılıydı?"
+        },
+        {
+          "s": "A",
+          "t": "Çok. 1396'da Niğbolu'da büyük bir Haçlı ordusunu yendi. Anadolu'daki Türk beyliklerinin çoğunu topraklarına kattı. İstanbul'u yıllardır kuşatma altında tutuyordu."
+        },
+        {
+          "s": "B",
+          "t": "Timur kim?"
+        },
+        {
+          "s": "A",
+          "t": "Semerkant merkezli bir imparatorluğun kurucusu. Otuz yılda Orta Asya'yı, İran'ı, Irak'ı, Kafkasya'yı ele geçirmişti. 1398'de Hindistan'a girip Delhi'yi almıştı."
+        },
+        {
+          "s": "B",
+          "t": "Yani ikisi de yenilgi yüzü görmemiş."
+        },
+        {
+          "s": "A",
+          "t": "Ve ikisi de Müslüman Türk hükümdarı. Sınırları Doğu Anadolu'da birbirine değdi."
+        }
+      ]
+    },
+    {
+      "heading": "Mektuplar",
+      "country": "Turkey",
+      "city": "Sivas",
+      "image_queries": [
+        "Ottoman letter manuscript",
+        "Sivas old city walls",
+        "Timur court miniature"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Savaşın sebebi neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Görünürdeki sebep sığınmacılar. Timur'un topraklarını aldığı iki hükümdar Bayezid'e sığınmıştı. Bayezid'in topraklarını aldığı Anadolu beyleri de Timur'a."
+        },
+        {
+          "s": "A",
+          "t": "Timur kendi düşmanlarının teslim edilmesini, beylerin topraklarının da geri verilmesini istedi."
+        },
+        {
+          "s": "B",
+          "t": "Bayezid reddetti."
+        },
+        {
+          "s": "A",
+          "t": "Reddetti. Aralarında mektuplar gidip geldi ve üslup her seferinde sertleşti. Sonunda ağır hakaretler içeren mektuplara dönüştü."
+        },
+        {
+          "s": "B",
+          "t": "Diplomasi bitti yani."
+        },
+        {
+          "s": "A",
+          "t": "1400'de Timur Anadolu'ya girdi ve Sivas'ı alıp yıktı. Sonra güneye, Suriye'ye yöneldi. Asıl hesaplaşma iki yıl sonraya kaldı."
+        }
+      ]
+    },
+    {
+      "heading": "Ankara'ya Yürüyüş",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Ankara castle",
+        "Çubuk plain Ankara",
+        "Anatolian steppe summer"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1402 baharında Timur yeniden Anadolu'ya girdi. Bayezid İstanbul kuşatmasını kaldırdı ve ordusuyla doğuya yürüdü."
+        },
+        {
+          "s": "B",
+          "t": "Nerede karşılaşmayı bekliyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Tokat taraflarında, ormanlık ve dağlık arazide. Orası süvari ağırlıklı Timur ordusu için elverişsizdi."
+        },
+        {
+          "s": "B",
+          "t": "Timur oraya gitmedi."
+        },
+        {
+          "s": "A",
+          "t": "Gitmedi. Güneyden dolanıp Kayseri üzerinden Ankara'ya geldi ve kaleyi kuşattı. Yani Osmanlı ordusunun arkasına düştü."
+        },
+        {
+          "s": "B",
+          "t": "Bayezid geri dönmek zorunda kaldı."
+        },
+        {
+          "s": "A",
+          "t": "Temmuz sıcağında, günlerce süren zorlu bir yürüyüşle. Asker Ankara'ya vardığında yorgun ve susuzdu."
+        },
+        {
+          "s": "A",
+          "t": "Timur bu arada ovadaki su kaynaklarını denetimi altına almıştı. Kaynakların anlattığına göre Osmanlı ordusunun ulaşabileceği suyu kullanılmaz hâle getirtti."
+        },
+        {
+          "s": "B",
+          "t": "Komutanları Bayezid'i uyarmadı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Bazıları askerin dinlendirilmesini ve savunmada kalınmasını önerdi. Bayezid hemen savaşmayı seçti."
+        }
+      ]
+    },
+    {
+      "heading": "28 Temmuz 1402",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "war elephants Timur miniature",
+        "medieval cavalry battle miniature",
+        "Çubuk Ankara landscape"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "İki ordu Çubuk Ovası'nda karşılaştı. Rakamlar kaynaklara göre çok değişiyor. Dönemin kayıtlarına dayanan bir tahmine göre Timur'un yüz altmış bin, Bayezid'in yetmiş bin civarında askeri vardı."
+        },
+        {
+          "s": "B",
+          "t": "Timur'un filleri de vardı diye bilinir."
+        },
+        {
+          "s": "A",
+          "t": "Evet, Hindistan seferinden getirdiği savaş filleri ordunun merkezindeydi."
+        },
+        {
+          "s": "B",
+          "t": "Osmanlı ordusu nasıl dizilmişti?"
+        },
+        {
+          "s": "A",
+          "t": "Merkezde Bayezid ve yeniçeriler. Bir kanatta Rumeli askerleri ve Sırp müttefikler, öbür kanatta Anadolu askerleri. Anadolu askerlerinin önemli kısmı yeni alınan beyliklerdendi. Orduda Kara Tatarlar denen bir topluluk da vardı."
+        },
+        {
+          "s": "B",
+          "t": "Sorun da orada başlıyor sanırım."
+        },
+        {
+          "s": "A",
+          "t": "Timur savaştan önce casusları aracılığıyla Kara Tatarlar'la anlaşmıştı. Savaş başlayınca saf değiştirdiler."
+        },
+        {
+          "s": "A",
+          "t": "Ardından beylik askerleri karşı tarafta kendi eski beylerinin sancaklarını gördü. Onlar da karşıya geçti."
+        },
+        {
+          "s": "B",
+          "t": "Ordunun bir kanadı boşaldı."
+        },
+        {
+          "s": "A",
+          "t": "Sırp birlikleri sonuna kadar sadakatle dövüştü ve Bayezid'e çekilmesini önerdi. Bayezid reddetti."
+        },
+        {
+          "s": "A",
+          "t": "Yanında kalan birkaç bin yeniçeriyle bir tepeye çekildi ve karanlık çökene kadar savaştı. Gece kaçmaya çalışırken atı düştü ve yakalandı."
+        }
+      ]
+    },
+    {
+      "heading": "Esaret",
+      "country": "Turkey",
+      "city": "Akşehir",
+      "image_queries": [
+        "Bayezid captive Timur painting",
+        "Akşehir old town",
+        "Bayezid I tomb Bursa"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Demir kafes hikâyesi doğru mu?"
+        },
+        {
+          "s": "A",
+          "t": "Bayezid'in bir kafes içinde dolaştırıldığı sonraki yüzyıllarda çok anlatıldı, Avrupa'da oyunlara ve resimlere konu oldu. Dönemin Timur tarafı kaynakları ise ona saygılı davranıldığını yazıyor."
+        },
+        {
+          "s": "B",
+          "t": "Hangisi doğru?"
+        },
+        {
+          "s": "A",
+          "t": "Tarihçilerin çoğu kafes hikâyesini abartılı buluyor. Bir açıklamaya göre söz konusu olan, yolculukta kullanılan kafesli bir tahtırevandı. Kesin olan şu: esaret Bayezid için çok ağırdı."
+        },
+        {
+          "s": "A",
+          "t": "Yedi sekiz ay sonra, 1403'ün Mart ayında Akşehir'de öldü. Ölüm nedeni tartışmalı. Kaynaklar hastalıktan esaretin verdiği üzüntüye kadar farklı nedenler gösteriyor."
+        },
+        {
+          "s": "B",
+          "t": "Timur Anadolu'da kaldı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Bursa'yı yağmalattı, İzmir'i şövalyelerin elinden aldı ve beyliklerin topraklarını eski sahiplerine geri verdi. Sonra doğuya döndü. 1405'te Çin seferine giderken öldü."
+        }
+      ]
+    },
+    {
+      "heading": "Fetret",
+      "country": "Turkey",
+      "city": "Edirne",
+      "image_queries": [
+        "Mehmed I portrait",
+        "Ottoman princes miniature",
+        "Edirne old mosque"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Geride başsız bir devlet kaldı. Bayezid'in oğulları ayrı şehirlerde hükümdarlıklarını ilan etti."
+        },
+        {
+          "s": "B",
+          "t": "Kaç şehzade?"
+        },
+        {
+          "s": "A",
+          "t": "Dört ad öne çıkıyor: Süleyman, İsa, Musa ve Mehmed. Birbirleriyle on bir yıl savaştılar. Bu döneme Fetret Devri deniyor."
+        },
+        {
+          "s": "B",
+          "t": "Bizans ve Balkan devletleri fırsatı değerlendirmedi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Değerlendirmeye çalıştılar. Şehzadeleri birbirine karşı desteklediler, bazı toprakları geri aldılar. Ama Osmanlı'yı Balkanlar'dan çıkaracak güçleri yoktu."
+        },
+        {
+          "s": "A",
+          "t": "1413'te Mehmed Çelebi son rakibini de yendi ve devleti yeniden tek elde topladı. Bu yüzden ona devletin ikinci kurucusu denir."
+        },
+        {
+          "s": "B",
+          "t": "İstanbul'un fethi de gecikmiş oldu."
+        },
+        {
+          "s": "A",
+          "t": "Bayezid şehri almak üzereydi. Fetih yarım yüzyıl ertelendi."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Ankara plain sunset",
+        "Ottoman sultans miniature",
+        "Ankara castle view"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bana en çarpıcı gelen, savaşın meydanda değil öncesinde kaybedilmesi. Su, yürüyüş ve saf değiştiren askerler."
+        },
+        {
+          "s": "A",
+          "t": "Timur'un en büyük silahı filler değil, hazırlıktı. Rakibinin ordusunda kimin neden orada olduğunu biliyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yine de devlet yıkılmadı."
+        },
+        {
+          "s": "A",
+          "t": "Bu da ayrı bir ders. Sence Bayezid savunmada kalsaydı sonuç değişir miydi?"
+        },
+        {
+          "s": "B",
+          "t": "Yorumlara yaz."
+        },
+        {
+          "s": "A",
+          "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

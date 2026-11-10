@@ -1,0 +1,399 @@
+{
+  "lang": "en",
+  "topic": "Tunguska event",
+  "era": "30 June 1908, Siberia, Russian Empire",
+  "country": "Russia",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Tunguska 1908: The Blast That Flattened 80 Million Trees and Left No Crater",
+  "description": "On the morning of 30 June 1908 something exploded above a remote Siberian forest with the force of a large hydrogen bomb. Trees were flattened over more than 2,000 square kilometres, the night sky glowed across Europe, and yet no crater was ever found. This is what witnesses saw, what the first expedition discovered nineteen years later, and what scientists now think happened.",
+  "hashtags": [
+    "tunguska",
+    "asteroid",
+    "history"
+  ],
+  "tags": [
+    "tunguska event",
+    "tunguska 1908",
+    "siberia",
+    "asteroid impact",
+    "airburst",
+    "leonid kulik",
+    "chelyabinsk meteor",
+    "space",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "The Tunguska explosion: June 30, 1908, EarthSky",
+      "url": "https://earthsky.org/space/what-is-the-tunguska-explosion/"
+    },
+    {
+      "title": "Tunguska event, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Tunguska_event"
+    },
+    {
+      "title": "The Tunguska Event, Everything Everywhere Daily",
+      "url": "https://everything-everywhere.com/the-tunguska-event/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Russia",
+      "image_queries": [
+        "Tunguska fallen trees 1927 Kulik",
+        "Siberian taiga forest aerial",
+        "asteroid entering atmosphere illustration"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, picture a forest the size of a large city. Now picture every tree in it lying flat, all pointing away from the same spot."
+        },
+        {
+          "s": "B",
+          "t": "Like the spokes of a wheel."
+        },
+        {
+          "s": "A",
+          "t": "Exactly like that. Eighty million trees. And at the centre, where you would expect a giant hole in the ground, nothing."
+        },
+        {
+          "s": "B",
+          "t": "No crater at all?"
+        },
+        {
+          "s": "A",
+          "t": "None. Just a swamp, and a patch of trees still standing upright with every branch stripped off."
+        },
+        {
+          "s": "B",
+          "t": "Where is this?"
+        },
+        {
+          "s": "A",
+          "t": "Siberia. The date was the 30th of June, 1908. It is the largest explosion of its kind in recorded history, and for decades nobody could say what caused it."
+        }
+      ]
+    },
+    {
+      "heading": "The Morning the Sky Split",
+      "country": "Russia",
+      "image_queries": [
+        "Podkamennaya Tunguska river",
+        "Evenki reindeer herders historical",
+        "Vanavara Siberia village"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The place is the valley of the Podkamennaya Tunguska river, in central Siberia. In 1908 it was endless forest and bog, home to a few reindeer herders and fur traders."
+        },
+        {
+          "s": "B",
+          "t": "So very few witnesses."
+        },
+        {
+          "s": "A",
+          "t": "Few close ones. At about a quarter past seven in the morning, people across the region saw a bluish-white light, as bright as the sun, moving across the sky."
+        },
+        {
+          "s": "B",
+          "t": "And then?"
+        },
+        {
+          "s": "A",
+          "t": "A flash, and a sound like artillery. At a trading post about sixty-five kilometres from the centre, a man was sitting on his porch."
+        },
+        {
+          "s": "A",
+          "t": "He later said the sky seemed to split in two and the whole northern side was covered in fire. The heat was so intense he felt his shirt was burning. Then the shock wave threw him off his chair."
+        },
+        {
+          "s": "B",
+          "t": "At sixty-five kilometres."
+        },
+        {
+          "s": "A",
+          "t": "Windows broke hundreds of kilometres away. Closer in, herders were flung into the air inside their tents, and reindeer were killed. A small number of people may have died, though the records are thin."
+        }
+      ]
+    },
+    {
+      "heading": "Bright Nights",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "noctilucent clouds night sky",
+        "London 1908 street night",
+        "antique barograph instrument"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Did anyone outside Siberia notice?"
+        },
+        {
+          "s": "A",
+          "t": "Instruments did, and they did not know what they were recording. Seismographs registered a tremor like a moderate earthquake. Barometers in Britain twitched as a pressure wave passed."
+        },
+        {
+          "s": "B",
+          "t": "A pressure wave that travelled across a continent."
+        },
+        {
+          "s": "A",
+          "t": "And then came the strangest part. For the next few nights, the sky over northern Europe did not get dark."
+        },
+        {
+          "s": "B",
+          "t": "What do you mean?"
+        },
+        {
+          "s": "A",
+          "t": "It glowed. In London people reported that they could read a newspaper outdoors at midnight. Photographers took pictures without a flash."
+        },
+        {
+          "s": "B",
+          "t": "What caused that?"
+        },
+        {
+          "s": "A",
+          "t": "Most likely dust and ice crystals thrown very high into the atmosphere, catching sunlight from beyond the horizon. At the time, nobody connected it with Siberia."
+        }
+      ]
+    },
+    {
+      "heading": "Nineteen Years Later",
+      "country": "Russia",
+      "image_queries": [
+        "Leonid Kulik portrait",
+        "Kulik expedition Tunguska 1927",
+        "Tunguska telegraph pole forest"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Surely someone went to look."
+        },
+        {
+          "s": "A",
+          "t": "Not for a long time. The site was hundreds of kilometres from any railway. Then came war, revolution and civil war."
+        },
+        {
+          "s": "A",
+          "t": "In the 1920s a Russian mineralogist, Leonid Kulik, read old newspaper reports and became convinced that a giant meteorite had fallen. He persuaded the Soviet government to fund a search."
+        },
+        {
+          "s": "B",
+          "t": "With what argument?"
+        },
+        {
+          "s": "A",
+          "t": "Iron. A huge meteorite could be a valuable source of metal for Soviet industry."
+        },
+        {
+          "s": "A",
+          "t": "In 1927, after a journey by train, horse-drawn sledge, raft and on foot, he reached the edge of the destruction. His local guides did not want to go further."
+        },
+        {
+          "s": "B",
+          "t": "What did he see?"
+        },
+        {
+          "s": "A",
+          "t": "From a ridge, he looked out over flattened forest as far as he could see. Later mapping showed the trees were knocked down over about two thousand one hundred and fifty square kilometres."
+        },
+        {
+          "s": "A",
+          "t": "At the centre, the trees were still standing. Dead, scorched, without branches or bark. His team called it the telegraph pole forest."
+        },
+        {
+          "s": "B",
+          "t": "And the crater?"
+        },
+        {
+          "s": "A",
+          "t": "He searched for it for years. He drained a round bog that he was sure was the impact hole. At the bottom he found an old tree stump, still rooted."
+        },
+        {
+          "s": "B",
+          "t": "So nothing had landed there."
+        },
+        {
+          "s": "A",
+          "t": "Nothing large. He never found his meteorite."
+        }
+      ]
+    },
+    {
+      "heading": "The Answer Was Above",
+      "country": "Russia",
+      "image_queries": [
+        "airburst meteor explosion illustration",
+        "stony asteroid space",
+        "Tunguska butterfly shaped treefall map"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The standing trees at the centre were the clue. If the blast comes from directly above, trees underneath lose their branches but stay upright. Trees further out are hit from the side and fall."
+        },
+        {
+          "s": "B",
+          "t": "So the explosion happened in the air."
+        },
+        {
+          "s": "A",
+          "t": "Scientists now think a stony asteroid, perhaps fifty or sixty metres across, entered the atmosphere at tens of thousands of kilometres an hour."
+        },
+        {
+          "s": "A",
+          "t": "The air in front of it was compressed and heated until the rock could not hold together. It broke apart and released its energy in an instant, five to ten kilometres above the ground."
+        },
+        {
+          "s": "B",
+          "t": "How much energy?"
+        },
+        {
+          "s": "A",
+          "t": "Estimates range widely, but ten to fifteen megatons is often quoted. That is on the order of a thousand Hiroshima bombs."
+        },
+        {
+          "s": "B",
+          "t": "And it left nothing behind?"
+        },
+        {
+          "s": "A",
+          "t": "Almost nothing you can see. Later studies found microscopic beads of melted rock and metal in the soil and trapped in tree resin, with a chemistry that points to space."
+        }
+      ]
+    },
+    {
+      "heading": "Wilder Theories",
+      "country": "Russia",
+      "image_queries": [
+        "Lake Cheko Siberia",
+        "comet night sky",
+        "vintage science fiction magazine cover spaceship"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "With no crater, I imagine people got creative."
+        },
+        {
+          "s": "A",
+          "t": "Very. In 1946 a Soviet writer published a story suggesting it was a nuclear-powered spaceship that exploded. Many readers took it as a serious proposal."
+        },
+        {
+          "s": "B",
+          "t": "Of course they did."
+        },
+        {
+          "s": "A",
+          "t": "Others have proposed a tiny black hole, antimatter, or a burst of natural gas from underground. None fits the evidence as well as an object from space."
+        },
+        {
+          "s": "B",
+          "t": "Is there any real scientific debate left?"
+        },
+        {
+          "s": "A",
+          "t": "Some. Whether it was a stony asteroid or a piece of a comet has been argued for decades. And one team suggested a small lake a few kilometres away is a crater from a fragment. Others say the lake is much older."
+        }
+      ]
+    },
+    {
+      "heading": "It Happened Again",
+      "country": "Russia",
+      "city": "Chelyabinsk",
+      "image_queries": [
+        "Chelyabinsk meteor 2013 trail",
+        "Chelyabinsk broken windows 2013",
+        "planetary defense asteroid telescope"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "In February 2013, a much smaller asteroid, about twenty metres across, exploded high over the Russian city of Chelyabinsk."
+        },
+        {
+          "s": "B",
+          "t": "I remember the dashcam videos."
+        },
+        {
+          "s": "A",
+          "t": "This time there were thousands of witnesses and cameras. The flash was brighter than the sun. The shock wave arrived more than a minute later and blew in windows across the city."
+        },
+        {
+          "s": "B",
+          "t": "Were people hurt?"
+        },
+        {
+          "s": "A",
+          "t": "About fifteen hundred, mostly by flying glass, because they had gone to the windows to look at the trail in the sky."
+        },
+        {
+          "s": "B",
+          "t": "And that was a small one."
+        },
+        {
+          "s": "A",
+          "t": "A fraction of Tunguska. It showed that the airburst explanation was right, and it pushed governments to take the problem seriously."
+        },
+        {
+          "s": "A",
+          "t": "It is often pointed out that if the Tunguska object had arrived a few hours later, the turning Earth would have put a populated part of Europe beneath it instead of an empty forest."
+        },
+        {
+          "s": "B",
+          "t": "That is a sobering thought."
+        },
+        {
+          "s": "A",
+          "t": "Today telescopes track near-Earth asteroids, and in 2022 a spacecraft deliberately struck a small asteroid and changed its orbit, as a test. The United Nations marks the 30th of June as Asteroid Day."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "Russia",
+      "image_queries": [
+        "Tunguska forest today",
+        "Tunguska nature reserve",
+        "night sky stars meteor"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What stays with me is the man on the porch. Sixty-five kilometres away, knocked off his chair."
+        },
+        {
+          "s": "A",
+          "t": "And Kulik, draining a swamp to find a stump. The answer was never in the ground."
+        },
+        {
+          "s": "B",
+          "t": "Does it worry you, or is it just a good story?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,429 @@
+{
+  "lang": "en",
+  "topic": "Terracotta Army of Qin Shi Huang",
+  "era": "buried about 210 BC, discovered 1974, Qin dynasty China",
+  "country": "China",
+  "label": "HISTORY",
+  "mood": "notr",
+  "title": "The Terracotta Army: 8,000 Clay Soldiers and the Tomb Nobody Dares to Open",
+  "description": "In March 1974, farmers digging a well near Xi'an struck a clay head. Below their field stood an army of about 8,000 life-size soldiers, buried for 2,200 years to guard China's first emperor. This is the story of the find, the man it was built for, how the figures were made, and why the emperor's own tomb has never been opened.",
+  "hashtags": [
+    "terracottaarmy",
+    "china",
+    "history"
+  ],
+  "tags": [
+    "terracotta army",
+    "terracotta warriors",
+    "qin shi huang",
+    "first emperor of china",
+    "xian",
+    "ancient china",
+    "archaeology",
+    "mausoleum",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Terracotta Army, Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Terracotta_Army"
+    },
+    {
+      "title": "This Week in China's History: March 29, 1974, The China Project",
+      "url": "https://thechinaproject.com/?p=223287"
+    },
+    {
+      "title": "The dark history behind the record-breaking Terracotta Army, Guinness World Records",
+      "url": "https://www.guinnessworldrecords.com/news/2022/3/the-dark-history-behind-the-record-breaking-terracotta-army-694905"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "Terracotta Army pit 1",
+        "terracotta warrior face close",
+        "Qin Shi Huang mausoleum mound"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, what is the strangest thing you have ever dug up in a garden?"
+        },
+        {
+          "s": "B",
+          "t": "A rusty spoon, I think."
+        },
+        {
+          "s": "A",
+          "t": "In 1974, a group of Chinese farmers were digging a well in a drought. A few metres down, one of them hit something hard. It was a head made of clay."
+        },
+        {
+          "s": "B",
+          "t": "Just a head?"
+        },
+        {
+          "s": "A",
+          "t": "A life-size human head. Then a body. Then bronze arrowheads."
+        },
+        {
+          "s": "B",
+          "t": "I know where this is going."
+        },
+        {
+          "s": "A",
+          "t": "Under their field stood an army. About eight thousand soldiers, lined up in battle formation, underground for two thousand two hundred years."
+        }
+      ]
+    },
+    {
+      "heading": "The Well",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "Lintong farmland Shaanxi",
+        "terracotta warriors excavation 1974",
+        "terracotta warrior fragments restoration"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The place is Lintong, near the city of Xi'an, in central China. The date usually given is the 29th of March, 1974."
+        },
+        {
+          "s": "B",
+          "t": "Did the farmers know what they had found?"
+        },
+        {
+          "s": "A",
+          "t": "No. Some villagers thought the figures were unlucky. Pieces were carried off. A few bronze arrowheads were sold as scrap."
+        },
+        {
+          "s": "A",
+          "t": "Then a curator from the local museum heard about it. He collected the fragments and patiently glued two warriors back together."
+        },
+        {
+          "s": "B",
+          "t": "And he realised how old they were."
+        },
+        {
+          "s": "A",
+          "t": "He recognised the style as Qin dynasty. Soon a journalist wrote about it, the news reached Beijing, and a full archaeological team arrived."
+        },
+        {
+          "s": "B",
+          "t": "What did they expect to find?"
+        },
+        {
+          "s": "A",
+          "t": "Perhaps a small pit. They kept digging outward and could not find the edge. The first pit turned out to be about two hundred and thirty metres long."
+        }
+      ]
+    },
+    {
+      "heading": "The Man Who Wanted to Live Forever",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "Qin Shi Huang portrait",
+        "Great Wall of China Qin",
+        "Qin dynasty bronze coins"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The field was about one and a half kilometres from a huge earth mound. Everyone knew what the mound was: the tomb of Qin Shi Huang."
+        },
+        {
+          "s": "B",
+          "t": "The First Emperor."
+        },
+        {
+          "s": "A",
+          "t": "He became king of the state of Qin at thirteen. By 221 BC he had conquered six rival kingdoms and created a single empire. The name China probably comes from Qin."
+        },
+        {
+          "s": "B",
+          "t": "What did he do with it?"
+        },
+        {
+          "s": "A",
+          "t": "He standardised almost everything. One system of writing, one currency, one set of weights and measures, even one width for cart axles so that roads fitted every cart."
+        },
+        {
+          "s": "B",
+          "t": "Efficient. And ruthless, I assume."
+        },
+        {
+          "s": "A",
+          "t": "Very. Later historians accused him of burning books and executing scholars. And he was obsessed with death."
+        },
+        {
+          "s": "B",
+          "t": "With avoiding it."
+        },
+        {
+          "s": "A",
+          "t": "He sent expeditions to find an elixir of immortality. Meanwhile, work on his tomb had begun when he took the throne as a boy."
+        },
+        {
+          "s": "A",
+          "t": "The historian Sima Qian, writing about a century later, says seven hundred thousand labourers worked on it. That figure may be exaggerated, but the scale is not in doubt."
+        }
+      ]
+    },
+    {
+      "heading": "An Army in Clay",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "terracotta archer kneeling",
+        "terracotta warriors rows",
+        "terracotta horses chariot"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Three main pits have been found. The first holds the infantry, around six thousand figures in long corridors."
+        },
+        {
+          "s": "B",
+          "t": "And the others?"
+        },
+        {
+          "s": "A",
+          "t": "The second has cavalry, archers and war chariots. The third is small and seems to be the headquarters, with officers."
+        },
+        {
+          "s": "A",
+          "t": "Estimates for the whole army are about eight thousand soldiers, a hundred and thirty chariots and several hundred horses. Most are still buried."
+        },
+        {
+          "s": "B",
+          "t": "Which way do they face?"
+        },
+        {
+          "s": "A",
+          "t": "East. Toward the states the emperor had conquered."
+        },
+        {
+          "s": "B",
+          "t": "Are they really all different?"
+        },
+        {
+          "s": "A",
+          "t": "The faces are. Different ages, hairstyles, moustaches, expressions. The generals are the tallest. An average soldier stands around one metre eighty."
+        },
+        {
+          "s": "B",
+          "t": "Were they portraits of real men?"
+        },
+        {
+          "s": "A",
+          "t": "Probably not individually. The bodies were made from standard parts: legs, torsos, arms and heads produced separately and joined. Then craftsmen finished each face by hand."
+        },
+        {
+          "s": "A",
+          "t": "Many figures carry a stamp with the name of the foreman responsible. It was quality control. If the work was bad, they knew whom to punish."
+        }
+      ]
+    },
+    {
+      "heading": "Colours and Weapons",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "terracotta warrior original paint colors",
+        "Qin bronze sword",
+        "terracotta army bronze chariot"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "I always imagine them grey."
+        },
+        {
+          "s": "A",
+          "t": "They were not. Each soldier was coated in lacquer and painted in bright colours. Pink faces, red, green, purple and blue clothing."
+        },
+        {
+          "s": "B",
+          "t": "What happened to the paint?"
+        },
+        {
+          "s": "A",
+          "t": "After two thousand years in damp soil, the lacquer curls and flakes within minutes of meeting dry air. The first excavators watched the colour disappear before their eyes."
+        },
+        {
+          "s": "B",
+          "t": "That is painful."
+        },
+        {
+          "s": "A",
+          "t": "It is one reason so much has been left in the ground. Conservators now have ways to stabilise the paint, but slowly."
+        },
+        {
+          "s": "A",
+          "t": "The weapons were real. Bronze swords, spears, crossbow triggers, tens of thousands of arrowheads. Some blades were still sharp."
+        },
+        {
+          "s": "B",
+          "t": "Where are the weapons now? In the photographs the hands are empty."
+        },
+        {
+          "s": "A",
+          "t": "Soon after the emperor died, his dynasty collapsed. Rebels broke into the pits, took weapons and set the roof timbers on fire. The roofs fell in and smashed the figures."
+        },
+        {
+          "s": "B",
+          "t": "So every soldier we see has been rebuilt."
+        },
+        {
+          "s": "A",
+          "t": "From fragments. Almost none was found whole."
+        }
+      ]
+    },
+    {
+      "heading": "The Tomb Itself",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "Qin Shi Huang tomb mound trees",
+        "Sima Qian portrait",
+        "mercury liquid metal"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Now the real mystery. The army is only the outer guard. The emperor's burial chamber, under the mound, has never been opened."
+        },
+        {
+          "s": "B",
+          "t": "Do we know what is in it?"
+        },
+        {
+          "s": "A",
+          "t": "Only what Sima Qian wrote. He describes palaces and towers, a ceiling showing the heavens, and a floor that was a map of the empire."
+        },
+        {
+          "s": "B",
+          "t": "With rivers."
+        },
+        {
+          "s": "A",
+          "t": "Rivers and seas of mercury, made to flow by machines. And crossbows rigged to shoot anyone who broke in."
+        },
+        {
+          "s": "B",
+          "t": "That sounds like legend."
+        },
+        {
+          "s": "A",
+          "t": "It did. Then scientists tested the soil of the mound. They found mercury levels far above normal, concentrated in a pattern."
+        },
+        {
+          "s": "B",
+          "t": "So he may have been telling the truth."
+        },
+        {
+          "s": "A",
+          "t": "About the mercury, quite possibly."
+        },
+        {
+          "s": "B",
+          "t": "Then why not open it?"
+        },
+        {
+          "s": "A",
+          "t": "Because of what happened to the paint. Chinese authorities have said they will not excavate until they are sure they can preserve whatever is inside. Silk, wood, pigments, perhaps written texts."
+        },
+        {
+          "s": "B",
+          "t": "And the mercury would not be pleasant either."
+        },
+        {
+          "s": "A",
+          "t": "No. For now they study it with remote sensing from above."
+        }
+      ]
+    },
+    {
+      "heading": "Still Digging",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "terracotta acrobat figure",
+        "bronze crane Qin mausoleum",
+        "terracotta army museum visitors"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The whole burial complex covers many square kilometres, and new pits keep appearing."
+        },
+        {
+          "s": "B",
+          "t": "More soldiers?"
+        },
+        {
+          "s": "A",
+          "t": "Not only. One pit held clay acrobats and strongmen, to entertain the emperor. Another had officials with writing tools. Another had life-size bronze swans and cranes beside an artificial stream."
+        },
+        {
+          "s": "B",
+          "t": "He took the whole court with him."
+        },
+        {
+          "s": "A",
+          "t": "An entire world. Two bronze chariots, half life-size, were found near the mound, each made of thousands of parts."
+        },
+        {
+          "s": "A",
+          "t": "The site became a UNESCO World Heritage Site in 1987. The museum built over the pits is one of the most visited places in China."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "China",
+      "city": "Xi'an",
+      "image_queries": [
+        "terracotta warriors sunset light",
+        "terracotta general figure",
+        "Qin mausoleum aerial"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "The detail I like is the foreman's stamp. Eight thousand soldiers, and someone still wanted to know who was responsible for each one."
+        },
+        {
+          "s": "A",
+          "t": "That is the empire in one object. Standard parts, strict control, and astonishing ambition."
+        },
+        {
+          "s": "B",
+          "t": "Would you open the tomb, or leave it sealed?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

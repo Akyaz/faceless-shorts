@@ -1,0 +1,441 @@
+{
+  "lang": "tr",
+  "topic": "Hagia Sophia",
+  "era": "532-537, Byzantine Constantinople to today",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "umutlu",
+  "title": "Ayasofya: Beş Yılda Yapılan, 1500 Yıldır Ayakta Duran Kubbenin Hikâyesi",
+  "description": "532'de bir isyan Konstantinopolis'in büyük kilisesini yaktı. İmparator Justinianus yerine, iki matematikçiye o güne dek görülmemiş bir kubbe ısmarladı. Yapı beş yıl on ayda bitti, kubbesi yirmi yıl sonra çöktü, yeniden yapıldı ve bugüne ulaştı. Kilise, cami, müze ve yeniden cami olan Ayasofya'nın hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "ayasofya",
+    "istanbul",
+    "tarih"
+  ],
+  "tags": [
+    "ayasofya",
+    "hagia sophia",
+    "istanbul",
+    "justinianus",
+    "bizans",
+    "mimar sinan",
+    "kubbe",
+    "osmanlı",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Hagia Sophia, Encyclopaedia Britannica",
+      "url": "https://www.britannica.com/topic/Hagia-Sophia"
+    },
+    {
+      "title": "Ayasofya, KÜRE Ansiklopedi",
+      "url": "https://kureansiklopedi.com/tr/detay/ayasofya-84571"
+    },
+    {
+      "title": "Hagia Sophia, Archnet",
+      "url": "https://next.archnet.org/sites/1989"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia exterior",
+        "Hagia Sophia interior dome",
+        "Hagia Sophia Istanbul skyline"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, bugün bir gökdelen kaç yılda yapılır?"
+        },
+        {
+          "s": "B",
+          "t": "Birkaç yıl sürer herhalde. Üç, dört?"
+        },
+        {
+          "s": "A",
+          "t": "Peki bin beş yüz yıl önce, vinç yok, çelik yok, beton yok. Dünyanın en büyük kubbeli yapısını altı yıldan kısa sürede bitirebilir misin?"
+        },
+        {
+          "s": "B",
+          "t": "İmkânsız gibi duruyor."
+        },
+        {
+          "s": "A",
+          "t": "Ayasofya tam olarak böyle yapıldı. 532'de başlandı, 537'nin Aralık ayında açıldı."
+        },
+        {
+          "s": "B",
+          "t": "Ve hâlâ ayakta."
+        },
+        {
+          "s": "A",
+          "t": "Hâlâ ayakta. Ama kubbesi bir kere çöktü, yapı defalarca depremden geçti, kilise oldu, cami oldu, müze oldu, yeniden cami oldu. Baştan anlatayım."
+        }
+      ]
+    },
+    {
+      "heading": "Bir İsyanın Külleri",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hippodrome of Constantinople",
+        "Justinian mosaic Ravenna",
+        "Hagia Sophia Theodosian remains"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Bugünkü Ayasofya aslında aynı yerdeki üçüncü kilise."
+        },
+        {
+          "s": "B",
+          "t": "İlk ikisine ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "İlki dördüncü yüzyılda, 360 yılında açıldı ve bir ayaklanmada yandı. İkincisi 415'te açıldı. O da 532'de yandı."
+        },
+        {
+          "s": "B",
+          "t": "Yine mi ayaklanma?"
+        },
+        {
+          "s": "A",
+          "t": "Bu sefer çok büyüğü. Adı Nika İsyanı. Hipodromdaki araba yarışı taraftarları İmparator Justinianus'a karşı birleşti ve şehrin merkezini ateşe verdi."
+        },
+        {
+          "s": "A",
+          "t": "İsyan kanlı biçimde bastırıldı. Geriye yanmış bir şehir ve yıkılmış bir kilise kaldı."
+        },
+        {
+          "s": "B",
+          "t": "Justinianus da yenisini yaptırmaya karar verdi."
+        },
+        {
+          "s": "A",
+          "t": "Hem de hemen. İsyandan haftalar sonra inşaat başladı. Amacı sadece bir kilise değildi. İmparatorluğun gücünü gösterecek, öncekilerden büyük ve kalıcı bir yapı istiyordu."
+        }
+      ]
+    },
+    {
+      "heading": "İki Matematikçi",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia pendentive",
+        "Hagia Sophia dome windows",
+        "Hagia Sophia plan drawing"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Justinianus işi alışılmış ustalara vermedi. İki bilim insanına verdi: Trallesli Anthemios ve Miletoslu İsidoros."
+        },
+        {
+          "s": "B",
+          "t": "Tralles neresi?"
+        },
+        {
+          "s": "A",
+          "t": "Bugünkü Aydın. Milet de yine Aydın sınırlarında. Yani iki mimar da Batı Anadolulu."
+        },
+        {
+          "s": "A",
+          "t": "İkisi de matematik ve mekanik bilgisiyle tanınıyordu. Önlerindeki problem şuydu: kare bir zeminin üstüne dev bir yuvarlak kubbe nasıl oturur?"
+        },
+        {
+          "s": "B",
+          "t": "Köşeler boşta kalır."
+        },
+        {
+          "s": "A",
+          "t": "İşte o boşluğu pandantif denen üçgen biçimli kavisli yüzeylerle doldurdular. Kubbenin yükü dört büyük ayağa iniyor, iki yanda yarım kubbeler de yükü paylaşıyor."
+        },
+        {
+          "s": "B",
+          "t": "Bu yöntem daha önce bu ölçekte denenmiş miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Kubbenin çapı otuz bir metreyi geçiyor, zeminden yüksekliği elli beş metre civarında. Kubbenin eteğinde bir sıra pencere var. Işık oradan girince kubbe sanki havada duruyormuş gibi görünüyor."
+        },
+        {
+          "s": "B",
+          "t": "Bu kadar büyük bir yapıyı bu hızla nasıl bitirdiler?"
+        },
+        {
+          "s": "A",
+          "t": "Kaynaklara göre binlerce işçi iki ekip hâlinde, aynı anda yapının iki yanından çalıştı. Malzeme imparatorluğun dört bir yanından getirildi."
+        },
+        {
+          "s": "A",
+          "t": "Yeşil mermer Yunanistan'dan, sarı mermer Kuzey Afrika'dan, mor porfir sütunlar Mısır'dan geldi. Bazı sütunların eski tapınaklardan söküldüğü anlatılır."
+        },
+        {
+          "s": "B",
+          "t": "Yani yapı aynı zamanda imparatorluğun bir haritası gibi."
+        },
+        {
+          "s": "A",
+          "t": "Güzel benzetme. Duvarlardaki mermer levhalar da ikiye kesilip kitap sayfası gibi açılmış. Damarlar birbirinin simetriği olsun diye."
+        }
+      ]
+    },
+    {
+      "heading": "Açılış ve Çöküş",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia nave",
+        "Hagia Sophia marble columns",
+        "Hagia Sophia dome ribs"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Yapı 27 Aralık 537'de açıldı. Geleneğe göre Justinianus içeri girince \"Ey Süleyman, seni geçtim\" dedi."
+        },
+        {
+          "s": "B",
+          "t": "Kudüs'teki Süleyman Mabedi'ni kastediyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Ama sevinç uzun sürmedi. Kubbe çok basıktı ve yanlara doğru büyük bir itme yapıyordu. 557'deki depremler yapıyı zayıflattı."
+        },
+        {
+          "s": "A",
+          "t": "558'in Mayıs ayında kubbe çöktü."
+        },
+        {
+          "s": "B",
+          "t": "Açılıştan sadece yirmi bir yıl sonra."
+        },
+        {
+          "s": "A",
+          "t": "Mimarların ikisi de artık hayatta değildi. İşi İsidoros'un yeğeni Genç İsidoros aldı. Kubbeyi daha dik ve yaklaşık altı metre daha yüksek yaptı, kaburgalarla güçlendirdi."
+        },
+        {
+          "s": "A",
+          "t": "Yeni kubbe 562'de tamamlandı. Sonraki yüzyıllarda iki kez daha kısmen çöküp onarıldı ama bugün gördüğümüz kubbe özünde o ikinci tasarım."
+        }
+      ]
+    },
+    {
+      "heading": "Dokuz Yüz Yıllık Kilise",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia mosaic Deesis",
+        "Hagia Sophia Empress Zoe mosaic",
+        "Hagia Sophia upper gallery"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Ayasofya dokuz yüz yılı aşkın süre Doğu Roma'nın baş kilisesiydi. İmparatorlar burada taç giydi."
+        },
+        {
+          "s": "B",
+          "t": "O altın mozaikler bu dönemden mi?"
+        },
+        {
+          "s": "A",
+          "t": "Çoğu dokuzuncu yüzyıldan sonrasına ait. Üst galerideki Deisis mozaiği, Bizans sanatının en iyi örneklerinden sayılıyor."
+        },
+        {
+          "s": "A",
+          "t": "1204'te Dördüncü Haçlı Seferi şehri ele geçirdi. Ayasofya yağmalandı ve yarım yüzyıldan uzun süre Katolik kilisesi olarak kullanıldı."
+        },
+        {
+          "s": "B",
+          "t": "Haçlılar bir Hristiyan şehrini mi yağmaladı?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Şehir 1261'de geri alındı ama imparatorluk bir daha eski gücüne dönemedi. Yapı da bakımsız kaldı."
+        }
+      ]
+    },
+    {
+      "heading": "Duvarlardaki İzler",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia runic inscription",
+        "Hagia Sophia weeping column",
+        "Hagia Sophia marble door"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bu kadar uzun süre kullanılan bir yapıda insanların izi de kalmıştır."
+        },
+        {
+          "s": "A",
+          "t": "Hem de çok ilginç izler. Üst galerideki mermer korkuluğa birisi rün harfleriyle adını kazımış."
+        },
+        {
+          "s": "B",
+          "t": "Rün mü? Viking yazısı?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Okunabilen kısmı \"Halvdan\" adı. Büyük olasılıkla imparatorun muhafız birliğinde görev yapan bir İskandinav'dı. Dokuzuncu yüzyıla tarihleniyor."
+        },
+        {
+          "s": "B",
+          "t": "Bin yıl önce bir asker sıkılmış ve adını yazmış."
+        },
+        {
+          "s": "A",
+          "t": "Aynen öyle. Bir de Terleyen Sütun var. Üzeri bronz levhayla kaplı, ortasında bir delik bulunan bir sütun. Yüzyıllardır ziyaretçiler başparmağını o deliğe sokup dilek tutuyor."
+        },
+        {
+          "s": "B",
+          "t": "Gerçekten terliyor mu?"
+        },
+        {
+          "s": "A",
+          "t": "Sütunun nemli olduğu eskiden beri anlatılır. Nedeni büyük olasılıkla yapının altındaki su ve taşın nem çekmesi."
+        },
+        {
+          "s": "A",
+          "t": "Bir de imparatorların girdiği İmparator Kapısı var. Yedi metre yüksekliğinde. Sadece imparator ve yanındakiler o kapıdan geçebilirdi."
+        }
+      ]
+    },
+    {
+      "heading": "Cami ve Sinan'ın Payandaları",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia minarets",
+        "Hagia Sophia buttresses",
+        "Hagia Sophia calligraphy roundels"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1453'te İstanbul fethedildi ve II. Mehmed Ayasofya'yı camiye çevirdi."
+        },
+        {
+          "s": "B",
+          "t": "Yapıda neler değişti?"
+        },
+        {
+          "s": "A",
+          "t": "Mihrap, minber ve zamanla dört minare eklendi. Mozaiklerin bir bölümü sıvayla örtüldü."
+        },
+        {
+          "s": "A",
+          "t": "On altıncı yüzyılda yapı yine tehlikedeydi. Duvarlar dışa doğru açılıyordu. Mimar Sinan dışarıdan büyük payandalar ekleyerek yapıyı sağlamlaştırdı."
+        },
+        {
+          "s": "B",
+          "t": "Yani bugün ayakta durmasında Sinan'ın da payı var."
+        },
+        {
+          "s": "A",
+          "t": "Büyük payı var. Sinan aynı zamanda Ayasofya'nın kubbe düzenini inceledi. Süleymaniye'de ve Selimiye'de o fikri geliştirdi."
+        },
+        {
+          "s": "A",
+          "t": "On dokuzuncu yüzyılda Sultan Abdülmecid, Fossati kardeşlere kapsamlı bir onarım yaptırdı. İçerideki dev hat levhaları da o dönemden."
+        }
+      ]
+    },
+    {
+      "heading": "Müze ve Yeniden Cami",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia interior visitors",
+        "Hagia Sophia apse mosaic",
+        "Hagia Sophia night"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Cumhuriyet döneminde, 1934'te alınan kararla Ayasofya müzeye dönüştürüldü."
+        },
+        {
+          "s": "B",
+          "t": "Mozaikler o zaman mı ortaya çıktı?"
+        },
+        {
+          "s": "A",
+          "t": "Çalışmalar 1930'ların başında başlamıştı. Sıvanın altındaki mozaikler temizlenip yeniden görünür hâle getirildi."
+        },
+        {
+          "s": "A",
+          "t": "Yapı seksen altı yıl müze olarak kaldı ve Türkiye'nin en çok ziyaret edilen yerlerinden biri oldu."
+        },
+        {
+          "s": "A",
+          "t": "2020'de müze kararı iptal edildi ve Ayasofya yeniden cami olarak ibadete açıldı."
+        },
+        {
+          "s": "B",
+          "t": "Bugün ziyaret edilebiliyor mu?"
+        },
+        {
+          "s": "A",
+          "t": "Evet, hem ibadete hem ziyarete açık."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Hagia Sophia sunset",
+        "Hagia Sophia dome interior light",
+        "Sultanahmet square Hagia Sophia"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Bence en şaşırtıcı kısım hız. Altı yıldan kısa sürede, hesap makinesi olmadan."
+        },
+        {
+          "s": "A",
+          "t": "Ve ilk denemede kubbe çöktü. Ama vazgeçmediler, hatayı görüp daha iyisini yaptılar."
+        },
+        {
+          "s": "B",
+          "t": "Bin beş yüz yıl, onlarca deprem, üç ayrı devlet."
+        },
+        {
+          "s": "A",
+          "t": "Yine de kubbe yerinde. Bu yüzden mühendisler hâlâ onu inceliyor."
+        },
+        {
+          "s": "B",
+          "t": "Sen Ayasofya'ya girdiğinde ilk neye bakarsın? Kubbeye mi, mozaiklere mi?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

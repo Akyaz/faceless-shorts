@@ -1,0 +1,391 @@
+{
+  "lang": "tr",
+  "topic": "Hattusa, capital of the Hittites",
+  "era": "around 1650-1200 BC, Late Bronze Age Anatolia",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Hattuşa: Kil Tabletlerle Geri Dönen Kayıp Hitit Başkenti",
+  "description": "Yüz yıl öncesine kadar Hititler hakkında neredeyse hiçbir şey bilinmiyordu. 1906'da Çorum'un Boğazköy'ünde başlayan kazılar binlerce kil tablet çıkardı; 1915'te bir Çek bilgin tek bir cümleyi çözerek dili okudu. Aslanlı Kapı'dan Yazılıkaya'ya, Kadeş Antlaşması tabletinden terk edilişine, Hitit başkenti Hattuşa'yı anlatıyoruz.",
+  "hashtags": [
+    "hattuşa",
+    "hititler",
+    "tarih"
+  ],
+  "tags": [
+    "hattuşa",
+    "hattusa",
+    "hititler",
+    "boğazköy",
+    "çorum",
+    "yazılıkaya",
+    "kadeş antlaşması",
+    "hrozny",
+    "arkeoloji",
+    "anadolu",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Hattusa, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Hattusa"
+    },
+    {
+      "title": "Hugo Winckler, Encyclopaedia Britannica",
+      "url": "https://www.britannica.com/biography/Hugo-Winckler"
+    },
+    {
+      "title": "Bogazköy Archive, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Bogazk%C3%B6y_Archive"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Hattusa Lion Gate",
+        "Hattusa ruins panorama",
+        "Hittite cuneiform tablet"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, sana bir imparatorluk söyleyeceğim. Mısır'la savaşmış, Babil'i yağmalamış, dünyanın bilinen ilk barış antlaşmalarından birini imzalamış."
+        },
+        {
+          "s": "B",
+          "t": "Ve herkes tanıyor olmalı."
+        },
+        {
+          "s": "A",
+          "t": "Yüz yirmi yıl öncesine kadar neredeyse kimse tanımıyordu. Başkentinin yeri bile bilinmiyordu."
+        },
+        {
+          "s": "B",
+          "t": "Koca bir imparatorluk nasıl unutulur?"
+        },
+        {
+          "s": "A",
+          "t": "Yazısını okuyan kalmayınca. Hititlerden söz ediyorum. Başkentleri Hattuşa, bugünkü Çorum'un Boğazkale ilçesinde."
+        },
+        {
+          "s": "B",
+          "t": "Peki nasıl geri döndüler?"
+        },
+        {
+          "s": "A",
+          "t": "Kil tabletlerle. Ve tek bir cümleyi çözen bir bilginle."
+        }
+      ]
+    },
+    {
+      "heading": "Kayalıklardaki Harabeler",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Boğazkale landscape",
+        "Hattusa rock ruins",
+        "Charles Texier drawing Yazilikaya"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1834'te Fransız gezgin Charles Texier, Boğazköy yakınlarında dev harabelerle karşılaştı."
+        },
+        {
+          "s": "B",
+          "t": "Ne olduğunu anladı mı?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Surlar, kapılar, kayalara oyulmuş kabartmalar vardı ama kime ait oldukları bilinmiyordu. Bazıları bir Roma şehri sandı."
+        },
+        {
+          "s": "A",
+          "t": "On dokuzuncu yüzyılın sonuna doğru bazı araştırmacılar buranın Hitit başkenti olabileceğini öne sürdü. Köyde çivi yazılı tablet parçaları da bulunmuştu."
+        },
+        {
+          "s": "B",
+          "t": "Ama kanıt yoktu."
+        },
+        {
+          "s": "A",
+          "t": "Kanıt 1906'da geldi. Alman dil bilgini Hugo Winckler ile Osmanlı Müzesi'nden Theodor Makridi Bey birlikte kazıya başladı."
+        }
+      ]
+    },
+    {
+      "heading": "1906: Arşiv",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Hattusa Büyükkale",
+        "Boğazköy tablets museum",
+        "Hugo Winckler"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kraliyet kalesinin bulunduğu Büyükkale'de, yanmış depo odalarında binlerce kil tablet çıktı."
+        },
+        {
+          "s": "B",
+          "t": "Yangın tabletleri yok etmedi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Tam tersine. Kil pişince sertleşir. Yangın arşivi korudu."
+        },
+        {
+          "s": "A",
+          "t": "Tabletlerin küçük bir kısmı Akadcaydı. O dönemin diplomasi diliydi ve Winckler onu okuyabiliyordu."
+        },
+        {
+          "s": "B",
+          "t": "Ne yazıyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Bir tablette Mısır firavunu II. Ramses ile Hitit kralı III. Hattuşili arasındaki barış antlaşmasının metni vardı. Winckler bu metnin Mısır'daki tapınak duvarlarına kazınmış hâlini biliyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yani aynı antlaşmanın öteki kopyasını buldu."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bu, harabelerin Hattuşa olduğunu kesinleştirdi. Kadeş Savaşı'ndan yıllar sonra yapılan o antlaşma tableti bugün İstanbul Arkeoloji Müzeleri'nde. Büyütülmüş bir kopyası da New York'ta Birleşmiş Milletler binasında asılı."
+        },
+        {
+          "s": "B",
+          "t": "Peki tabletlerin geri kalanı?"
+        },
+        {
+          "s": "A",
+          "t": "Çoğu bilinmeyen bir dildeydi. İşaretler okunabiliyor ama kelimeler anlaşılmıyordu."
+        }
+      ]
+    },
+    {
+      "heading": "\"Ekmek Yiyeceksiniz\"",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Bedrich Hrozny portrait",
+        "Hittite tablet close",
+        "cuneiform clay tablet writing"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Çözüm 1915'te Çek bilgin Bedřich Hrozný'den geldi. Onu çözüme götüren cümle çok ünlüdür."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl bir cümle?"
+        },
+        {
+          "s": "A",
+          "t": "İçinde ekmek anlamına gelen ve zaten bilinen bir işaret vardı. Hrozný şöyle düşündü: ekmekle ilgili bir cümlede büyük olasılıkla yemek fiili geçer."
+        },
+        {
+          "s": "A",
+          "t": "Cümledeki bir kelime \"ezzatteni\" idi. Almancadaki \"essen\", yani yemek fiilini hatırlatıyordu. Bir başka kelime \"vatar\" idi."
+        },
+        {
+          "s": "B",
+          "t": "İngilizcedeki \"water\" gibi."
+        },
+        {
+          "s": "A",
+          "t": "Tam olarak. Cümleyi şöyle okudu: \"Şimdi ekmek yiyeceksiniz, su içeceksiniz.\""
+        },
+        {
+          "s": "B",
+          "t": "Yani Hititçe, Avrupa dilleriyle akraba."
+        },
+        {
+          "s": "A",
+          "t": "Hint-Avrupa dil ailesinin yazıya geçmiş en eski üyesi. Kimse Anadolu'nun ortasında böyle bir dil beklemiyordu."
+        },
+        {
+          "s": "A",
+          "t": "Bugüne kadar Boğazköy'de otuz bine yakın tablet ve parça bulundu. Kanunlar, antlaşmalar, dualar, mektuplar, hatta at yetiştirme talimatları var."
+        }
+      ]
+    },
+    {
+      "heading": "Surlar ve Kapılar",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Hattusa Lion Gate",
+        "Hattusa King's Gate relief",
+        "Hattusa Yerkapı tunnel"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Şehrin kendisi nasıldı?"
+        },
+        {
+          "s": "A",
+          "t": "Çok büyük ve çok iyi korunaklı. Surların uzunluğu altı kilometreyi geçiyor."
+        },
+        {
+          "s": "A",
+          "t": "En tanınmış giriş Aslanlı Kapı. İki yanında taştan oyulmuş iki aslan var. Kötülüğü şehirden uzak tutsunlar diye."
+        },
+        {
+          "s": "B",
+          "t": "Kral Kapı da var değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet, üzerinde silahlı bir figürün kabartması bulunuyor. Uzun süre kral sanıldı, bugün bir tanrı olduğu düşünülüyor. Aslı Ankara'da müzede, yerinde kopyası duruyor."
+        },
+        {
+          "s": "A",
+          "t": "Güneyde ise Yerkapı var. Yapay bir setin altından geçen, yetmiş metre uzunluğunda taş bir tünel."
+        },
+        {
+          "s": "B",
+          "t": "Ne işe yarıyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Tartışmalı. Savunma için gizli çıkış diyenler var, törenlerde kullanıldığını söyleyenler var. Üstünde Sfenksli Kapı bulunuyor."
+        },
+        {
+          "s": "B",
+          "t": "O sfenkslerden biri Almanya'daydı sanırım."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Onarım için Berlin'e götürülmüş ve yıllarca orada kalmıştı. 2011'de Türkiye'ye geri verildi."
+        }
+      ]
+    },
+    {
+      "heading": "Bin Tanrılı Ülke",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Yazılıkaya twelve gods relief",
+        "Yazılıkaya rock sanctuary",
+        "Hattusa Great Temple"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Hititler kendilerine \"bin tanrılı ülkenin halkı\" derdi. Fethettikleri yerlerin tanrılarını da kendi tanrıları arasına katıyorlardı."
+        },
+        {
+          "s": "B",
+          "t": "Şehirde tapınak var mı?"
+        },
+        {
+          "s": "A",
+          "t": "Otuzdan fazla tapınak kalıntısı bulundu. En büyüğü Aşağı Şehir'deki Büyük Tapınak. Fırtına tanrısına ve güneş tanrıçasına adanmıştı."
+        },
+        {
+          "s": "A",
+          "t": "Şehrin iki kilometre kadar dışında ise Yazılıkaya var. Açık havada, kayaların arasında bir kutsal alan."
+        },
+        {
+          "s": "B",
+          "t": "Kabartmalarıyla ünlü olan yer."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Kayalara tanrılar ve tanrıçalar sıra hâlinde oyulmuş. Bir odada, yan yana yürüyen on iki tanrı kabartması var. Sanki bir geçit töreni."
+        }
+      ]
+    },
+    {
+      "heading": "Sessiz Son",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Hattusa ruins sunset",
+        "Hattusa reconstructed wall",
+        "Hattusa green stone"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Böyle bir şehir nasıl sona erdi?"
+        },
+        {
+          "s": "A",
+          "t": "Milattan önce 1200 civarında. Doğu Akdeniz'deki pek çok devletin aynı dönemde çöktüğü bir zamanda."
+        },
+        {
+          "s": "A",
+          "t": "Eskiden şehrin düşmanlarca aniden yakılıp yıkıldığı düşünülürdü. Son kazılar daha farklı bir tablo gösteriyor."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl?"
+        },
+        {
+          "s": "A",
+          "t": "Saray ve tapınaklar yanmadan önce boşaltılmış. Değerli eşyalar götürülmüş. Yani kral ve saray halkı büyük olasılıkla şehri kendi isteğiyle terk etti. Nereye gittikleri bilinmiyor."
+        },
+        {
+          "s": "B",
+          "t": "Neden terk etsinler?"
+        },
+        {
+          "s": "A",
+          "t": "Kuraklık, kıtlık, iç çekişmeler ve sınırlardaki baskı. Araştırmacılar tek bir neden yerine bunların birleşimini öne sürüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Çorum",
+      "image_queries": [
+        "Hattusa Lion Gate close",
+        "Boğazköy museum sphinx",
+        "Hattusa panorama"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Hattuşa 1986'da UNESCO Dünya Mirası Listesi'ne girdi. Kazılar yüz yılı aşkın süredir devam ediyor."
+        },
+        {
+          "s": "B",
+          "t": "Bence en güzel kısım o cümle. \"Ekmek yiyeceksiniz, su içeceksiniz.\" Üç bin yıl sonra koca bir dili açan sıradan bir cümle."
+        },
+        {
+          "s": "A",
+          "t": "Ve bir yangın sayesinde korunan bir arşiv."
+        },
+        {
+          "s": "B",
+          "t": "Sen Hattuşa'ya gitsen önce nereyi görürdün? Aslanlı Kapı mı, Yazılıkaya mı?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

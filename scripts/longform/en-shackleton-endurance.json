@@ -1,0 +1,433 @@
+{
+  "lang": "en",
+  "topic": "Shackleton's Endurance expedition",
+  "era": "1914-1916, Imperial Trans-Antarctic Expedition",
+  "country": "Antarctica",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "Shackleton's Endurance: A Crushed Ship, an 800-Mile Lifeboat Voyage and No Lives Lost",
+  "description": "In 1915 the ship Endurance was trapped and crushed by Antarctic sea ice, leaving 28 men on a drifting floe with no way to call for help. What followed was 18 months of survival, a 1,300-kilometre voyage in a lifeboat across the stormiest ocean on Earth, and a rescue in which every man of the crew came home.",
+  "hashtags": [
+    "shackleton",
+    "antarctica",
+    "history"
+  ],
+  "tags": [
+    "shackleton",
+    "endurance",
+    "ernest shackleton",
+    "antarctica",
+    "james caird",
+    "elephant island",
+    "south georgia",
+    "polar exploration",
+    "frank worsley",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Endurance22, Royal Geographical Society interactive timeline",
+      "url": "https://interactives.rgs.org/endurance-22/"
+    },
+    {
+      "title": "Frequently asked questions, Endurance22 / Falklands Maritime Heritage Trust",
+      "url": "https://enduranceshipwreck.org/faqs"
+    },
+    {
+      "title": "Wreck of Ernest Shackleton's Endurance found, Geographical",
+      "url": "https://geographical.co.uk/science-environment/wreck-of-ernest-shackletons-endurance-found"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "Antarctica",
+      "image_queries": [
+        "Endurance ship trapped in ice Hurley",
+        "Ernest Shackleton portrait",
+        "Endurance wreck 2022"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, here is a plan. Sail to Antarctica, walk across the entire continent, about three thousand kilometres, and get picked up on the other side."
+        },
+        {
+          "s": "B",
+          "t": "In 1914? With dogs and wooden sledges?"
+        },
+        {
+          "s": "A",
+          "t": "Exactly that. It was called the Imperial Trans-Antarctic Expedition, and its leader was Ernest Shackleton."
+        },
+        {
+          "s": "B",
+          "t": "Did they make it across?"
+        },
+        {
+          "s": "A",
+          "t": "They never even set foot on the continent. The ship was caught by the ice before it could land."
+        },
+        {
+          "s": "B",
+          "t": "So it was a failure."
+        },
+        {
+          "s": "A",
+          "t": "As an expedition, completely. As a story of leadership, it may be the greatest of the polar age. Twenty-eight men went into the ice on that ship, and twenty-eight came out."
+        }
+      ]
+    },
+    {
+      "heading": "Into the Weddell Sea",
+      "country": "Antarctica",
+      "image_queries": [
+        "Endurance ship 1914",
+        "Grytviken whaling station South Georgia",
+        "Weddell Sea pack ice"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The ship was called Endurance. She left England in August 1914, in the very week the First World War began."
+        },
+        {
+          "s": "B",
+          "t": "And nobody stopped them?"
+        },
+        {
+          "s": "A",
+          "t": "Shackleton offered the ship to the navy. He was told to proceed."
+        },
+        {
+          "s": "A",
+          "t": "Their last port was a whaling station on South Georgia, a remote island in the South Atlantic. The whalers warned that the ice was unusually heavy that year."
+        },
+        {
+          "s": "B",
+          "t": "He went anyway."
+        },
+        {
+          "s": "A",
+          "t": "On the 5th of December 1914. For six weeks Endurance pushed through pack ice in the Weddell Sea. By mid-January they were within about a day's sail of their landing place."
+        },
+        {
+          "s": "B",
+          "t": "And then?"
+        },
+        {
+          "s": "A",
+          "t": "The temperature dropped, the ice closed, and the ship was frozen solid. One crew member said she was stuck like an almond in a chocolate bar."
+        }
+      ]
+    },
+    {
+      "heading": "The Ship Dies",
+      "country": "Antarctica",
+      "image_queries": [
+        "Endurance crushed by ice Hurley",
+        "Endurance night photograph ice",
+        "Endurance sinking 1915"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "There was nothing to do but wait for spring. The ship drifted with the ice for nine months."
+        },
+        {
+          "s": "B",
+          "t": "What did the men do all winter?"
+        },
+        {
+          "s": "A",
+          "t": "Shackleton understood that boredom and despair were as dangerous as cold. He kept strict routines. They trained the dogs, played football on the ice, held concerts."
+        },
+        {
+          "s": "A",
+          "t": "The expedition photographer, Frank Hurley, took some of the most famous images in exploration. The ship lit by flares in the polar night."
+        },
+        {
+          "s": "B",
+          "t": "But spring did not free them."
+        },
+        {
+          "s": "A",
+          "t": "It did the opposite. As the ice began to move, it squeezed. Beams cracked. The deck buckled. On the 27th of October 1915, Shackleton gave the order to abandon ship."
+        },
+        {
+          "s": "A",
+          "t": "They camped on the ice beside her. On the 21st of November they watched Endurance go under."
+        },
+        {
+          "s": "B",
+          "t": "So now they are standing on frozen sea."
+        },
+        {
+          "s": "A",
+          "t": "Hundreds of kilometres from land, with three lifeboats, and nobody in the world knowing where they are."
+        }
+      ]
+    },
+    {
+      "heading": "Life on a Floe",
+      "country": "Antarctica",
+      "image_queries": [
+        "Shackleton Patience Camp ice",
+        "Endurance crew hauling lifeboat",
+        "Antarctic seal ice floe"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "They tried marching, dragging the boats. It was hopeless. So they camped and let the ice carry them north."
+        },
+        {
+          "s": "B",
+          "t": "For how long?"
+        },
+        {
+          "s": "A",
+          "t": "More than five months. They ate seals and penguins. When food ran short, the sled dogs had to be shot."
+        },
+        {
+          "s": "B",
+          "t": "That must have hit morale."
+        },
+        {
+          "s": "A",
+          "t": "Shackleton managed people carefully. He put the most difficult men in his own tent, so they could not spread discontent."
+        },
+        {
+          "s": "A",
+          "t": "By April 1916 the floe was breaking apart beneath them. On the 9th of April they launched the three boats."
+        },
+        {
+          "s": "B",
+          "t": "Toward where?"
+        },
+        {
+          "s": "A",
+          "t": "The nearest land they could reach. After about a week in open boats, soaked and frostbitten, they landed on Elephant Island."
+        },
+        {
+          "s": "B",
+          "t": "Solid ground at last."
+        },
+        {
+          "s": "A",
+          "t": "For the first time in sixteen months. But it was an uninhabited rock, far from any shipping route. Nobody would ever look for them there."
+        }
+      ]
+    },
+    {
+      "heading": "The James Caird",
+      "country": "Antarctica",
+      "image_queries": [
+        "James Caird lifeboat launching Elephant Island",
+        "James Caird boat Dulwich College",
+        "Southern Ocean storm waves"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "The nearest help was back where they started. The whaling stations of South Georgia, about thirteen hundred kilometres away, across the stormiest ocean on Earth."
+        },
+        {
+          "s": "B",
+          "t": "In a lifeboat."
+        },
+        {
+          "s": "A",
+          "t": "The largest one, the James Caird. Less than seven metres long. The ship's carpenter raised its sides and built a makeshift deck from wood and canvas."
+        },
+        {
+          "s": "A",
+          "t": "Shackleton took five men. The most important was Frank Worsley, the captain of Endurance, a brilliant navigator."
+        },
+        {
+          "s": "B",
+          "t": "How do you navigate a lifeboat in a storm?"
+        },
+        {
+          "s": "A",
+          "t": "With a sextant, when you can see the sun. In sixteen days, Worsley managed only a handful of sightings, braced against the mast while others held him."
+        },
+        {
+          "s": "A",
+          "t": "They were constantly wet. Ice built up on the boat and had to be chipped off before it capsized them. At one point Shackleton saw what he took for a clearing sky. It was the white crest of an enormous wave."
+        },
+        {
+          "s": "B",
+          "t": "And Worsley found the island."
+        },
+        {
+          "s": "A",
+          "t": "A speck in the ocean. If he had missed it, the next land was Africa."
+        }
+      ]
+    },
+    {
+      "heading": "Across the Mountains",
+      "country": "South Georgia",
+      "image_queries": [
+        "South Georgia mountains glacier",
+        "Stromness whaling station",
+        "King Haakon Bay South Georgia"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "They landed in May 1916. On the wrong side of the island."
+        },
+        {
+          "s": "B",
+          "t": "Of course they did."
+        },
+        {
+          "s": "A",
+          "t": "The whaling stations were on the north coast. Between them lay mountains and glaciers that nobody had ever crossed. The boat was too damaged to sail around."
+        },
+        {
+          "s": "A",
+          "t": "Shackleton, Worsley and a seaman named Tom Crean set off on foot. They had a rope, a carpenter's tool as an ice axe, and screws from the boat pushed through their boot soles for grip."
+        },
+        {
+          "s": "B",
+          "t": "No tent?"
+        },
+        {
+          "s": "A",
+          "t": "No tent, no sleeping bags. They walked for thirty-six hours almost without stopping."
+        },
+        {
+          "s": "A",
+          "t": "At one point, stuck high on a ridge with night coming, they coiled the rope, sat on it, and slid down the mountain in the dark."
+        },
+        {
+          "s": "B",
+          "t": "And then?"
+        },
+        {
+          "s": "A",
+          "t": "On the morning of the 20th of May they heard a steam whistle. The factory whistle at the Stromness whaling station, calling men to work."
+        },
+        {
+          "s": "A",
+          "t": "When they walked in, filthy and bearded, the station manager did not recognise the man he had met a year and a half earlier. Shackleton had to say his name."
+        }
+      ]
+    },
+    {
+      "heading": "Not a Life Lost",
+      "country": "Antarctica",
+      "image_queries": [
+        "Elephant Island rescue Yelcho",
+        "Elephant Island hut crew",
+        "Frank Wild Elephant Island"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What about the twenty-two men on Elephant Island?"
+        },
+        {
+          "s": "A",
+          "t": "They were living under two overturned boats, under Shackleton's deputy, Frank Wild. Every morning Wild told them to pack up, because the boss might come today."
+        },
+        {
+          "s": "B",
+          "t": "How long did they wait?"
+        },
+        {
+          "s": "A",
+          "t": "Four and a half months. Shackleton tried three times with borrowed ships. Each time the ice turned him back."
+        },
+        {
+          "s": "A",
+          "t": "The fourth attempt was in a small Chilean tug called the Yelcho. On the 30th of August 1916 she reached the island."
+        },
+        {
+          "s": "B",
+          "t": "And he counted them."
+        },
+        {
+          "s": "A",
+          "t": "From the boat, as he came in. All twenty-two. He later wrote to his wife: \"Not a life lost, and we have been through Hell.\""
+        },
+        {
+          "s": "A",
+          "t": "It is fair to add that the expedition had a second team, laying supplies on the far side of Antarctica. Three of those men died."
+        }
+      ]
+    },
+    {
+      "heading": "The Wreck",
+      "country": "Antarctica",
+      "image_queries": [
+        "Endurance wreck stern name 2022",
+        "Endurance22 expedition ship Agulhas",
+        "Shackleton grave Grytviken"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Shackleton returned south once more, and died of a heart attack at South Georgia in 1922. He is buried there, at Grytviken."
+        },
+        {
+          "s": "B",
+          "t": "And the ship?"
+        },
+        {
+          "s": "A",
+          "t": "For more than a century, Endurance lay somewhere under the Weddell Sea ice. In March 2022 an expedition found her."
+        },
+        {
+          "s": "A",
+          "t": "She sits upright, three thousand metres down, astonishingly well preserved in the cold. The name is still clear across the stern. She was only a few kilometres from the position Worsley wrote down in 1915."
+        },
+        {
+          "s": "B",
+          "t": "With a sextant, on drifting ice."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "Antarctica",
+      "image_queries": [
+        "Shackleton crew group photo",
+        "Endurance bow ice Hurley",
+        "Antarctic ice sunset"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "What stays with me is the whistle. Thirty-six hours of walking, and then a factory whistle."
+        },
+        {
+          "s": "A",
+          "t": "And the man who, every morning, told twenty-one others to pack their bags."
+        },
+        {
+          "s": "B",
+          "t": "Would you have followed Shackleton?"
+        },
+        {
+          "s": "A",
+          "t": "Tell us in the comments. And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

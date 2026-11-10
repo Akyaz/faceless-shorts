@@ -1,0 +1,412 @@
+{
+  "lang": "tr",
+  "topic": "Evliya Çelebi and the Seyahatname",
+  "era": "17th century Ottoman Empire, 1611-1680s",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "umutlu",
+  "title": "Evliya Çelebi: Bir Dil Sürçmesiyle Başlayan 40 Yıllık Yolculuk",
+  "description": "1630'da İstanbullu genç bir hafız rüyasında \"şefaat\" diyecekken \"seyahat\" dedi. Sonraki kırk yılı aşkın süreyi yollarda geçirdi; Viyana'dan Sudan'a, Kafkasya'dan Girit'e gördüklerini on ciltlik Seyahatname'de anlattı. Abartılarıyla, mizahıyla ve benzersiz gözlemleriyle Evliya Çelebi'yi anlatıyoruz.",
+  "hashtags": [
+    "evliyaçelebi",
+    "seyahatname",
+    "tarih"
+  ],
+  "tags": [
+    "evliya çelebi",
+    "seyahatname",
+    "osmanlı",
+    "gezgin",
+    "hezarfen ahmed çelebi",
+    "istanbul",
+    "17. yüzyıl",
+    "melek ahmed paşa",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Evliya Çelebi, World History Encyclopedia (Türkçe)",
+      "url": "https://www.worldhistory.org/trans/tr/1-28804/evliya-celebi/"
+    },
+    {
+      "title": "Evliya Çelebi, KÜRE Ansiklopedi",
+      "url": "https://kureansiklopedi.com/tr/detay/evliya-celebi-2"
+    },
+    {
+      "title": "Evliya Çelebi, Historians of the Ottoman Empire (University of Chicago)",
+      "url": "https://ottomanhistorians.uchicago.edu/en/node/56"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Evliya Çelebi statue",
+        "Seyahatname manuscript",
+        "Istanbul 17th century engraving"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, hayatını değiştiren tek bir kelime oldu mu?"
+        },
+        {
+          "s": "B",
+          "t": "Sanmıyorum. Senin oldu mu?"
+        },
+        {
+          "s": "A",
+          "t": "Benim olmadı ama Evliya Çelebi'nin oldu. Üstelik yanlışlıkla söylediği bir kelime."
+        },
+        {
+          "s": "B",
+          "t": "Hangi kelime?"
+        },
+        {
+          "s": "A",
+          "t": "\"Seyahat.\" Aslında \"şefaat\" diyecekti."
+        },
+        {
+          "s": "B",
+          "t": "Bir dil sürçmesi yani."
+        },
+        {
+          "s": "A",
+          "t": "Bir dil sürçmesi ve ardından kırk yılı aşan bir yolculuk. Sonunda da on ciltlik, binlerce sayfalık bir kitap. Osmanlı dünyasını onun kadar ayrıntılı anlatan başka kimse yok."
+        }
+      ]
+    },
+    {
+      "heading": "Kuyumcubaşının Oğlu",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Unkapanı Istanbul old",
+        "Ottoman goldsmith miniature",
+        "Murad IV portrait"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Evliya 1611'de İstanbul'da, Unkapanı'nda doğdu. Babası Derviş Mehmed Zıllî, sarayın kuyumcubaşısıydı."
+        },
+        {
+          "s": "B",
+          "t": "Yani saraya yakın bir aile."
+        },
+        {
+          "s": "A",
+          "t": "Annesi tarafından da devlet adamlarıyla akrabaydı. İleride sadrazam olacak Melek Ahmed Paşa akrabasıydı ve onu yıllarca yanında gezdirdi."
+        },
+        {
+          "s": "A",
+          "t": "İyi bir eğitim aldı. Kur'an'ı ezberledi, hat, musiki ve nakış öğrendi. Sesi çok güzeldi."
+        },
+        {
+          "s": "B",
+          "t": "Sesiyle mi dikkat çekti?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bir Kadir gecesi Ayasofya'da Kur'an okurken Sultan IV. Murad onu dinledi ve saraya aldırdı. Bir süre sarayda eğitim gördü, padişahın sohbetlerinde bulundu."
+        },
+        {
+          "s": "B",
+          "t": "Rahat bir hayatı varmış. Neden yollara düştü?"
+        },
+        {
+          "s": "A",
+          "t": "Babasının dükkânına gelen yaşlı gezginlerin hikâyelerini dinleyerek büyümüştü. İçinde hep bir gitme isteği vardı. Ama ailesinden nasıl izin alacağını bilmiyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Rüya",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Ahi Çelebi Mosque Istanbul",
+        "Eminönü old Istanbul",
+        "Ottoman mosque interior night"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kendi anlatımına göre 1630 yılının bir Aşure gecesi bir rüya gördü."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl bir rüya?"
+        },
+        {
+          "s": "A",
+          "t": "Eminönü'ndeki Ahi Çelebi Camii'nde. Cami kalabalık bir cemaatle dolu ve aralarında Hazreti Peygamber de var."
+        },
+        {
+          "s": "A",
+          "t": "Sıra elini öpmeye geldiğinde heyecandan dili dolaşıyor. \"Şefaat ya Resulallah\" diyeceği yerde \"Seyahat ya Resulallah\" diyor."
+        },
+        {
+          "s": "B",
+          "t": "Peygamber ne cevap veriyor?"
+        },
+        {
+          "s": "A",
+          "t": "Gülümsüyor ve ona hem şefaati hem seyahati müjdeliyor. Cemaatteki bir başka kişi de gezdiği yerleri yazmasını öğütlüyor."
+        },
+        {
+          "s": "B",
+          "t": "Uyanınca ne yapıyor?"
+        },
+        {
+          "s": "A",
+          "t": "Rüyasını yorumlatıyor. \"Büyük bir gezgin olacaksın, önce kendi şehrini yaz\" diyorlar. O da İstanbul'u dolaşmaya başlıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Önce İstanbul",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Ottoman guild procession miniature",
+        "Galata Tower old engraving",
+        "Grand Bazaar old drawing"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Seyahatname'nin birinci cildi tamamen İstanbul'a ayrılmış. On yedinci yüzyıl İstanbul'u için eşsiz bir kaynak."
+        },
+        {
+          "s": "B",
+          "t": "Neler anlatıyor?"
+        },
+        {
+          "s": "A",
+          "t": "Camileri, hamamları, çeşmeleri, mesire yerlerini, tek tek mahalleleri. Ama en ünlü bölüm esnaf alayı."
+        },
+        {
+          "s": "A",
+          "t": "IV. Murad'ın sefer öncesinde düzenlettiği bir geçit töreninde, İstanbul'un bütün esnafı padişahın önünden geçiyor. Evliya yüzlerce meslek grubunu tek tek sayıyor."
+        },
+        {
+          "s": "B",
+          "t": "Hangi meslekler?"
+        },
+        {
+          "s": "A",
+          "t": "Fırıncılar, kasaplar, kayıkçılar, hekimler, cambazlar, hatta mezarcılar ve hırsızlar loncası. Her grup arabaların üstünde işini canlandırarak geçiyor."
+        },
+        {
+          "s": "B",
+          "t": "Hezarfen'in uçuşu da bu ciltte değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Hezarfen Ahmed Çelebi'nin Galata Kulesi'nden kanatlarla Üsküdar'a uçtuğunu, Lagari Hasan Çelebi'nin de barutla göğe yükseldiğini anlatıyor."
+        },
+        {
+          "s": "B",
+          "t": "Gerçek mi?"
+        },
+        {
+          "s": "A",
+          "t": "Bu olayların tek kaynağı Evliya. Başka hiçbir belgede geçmiyor. Tarihçilerin çoğu bu yüzden temkinli."
+        }
+      ]
+    },
+    {
+      "heading": "Yollar",
+      "country": "Turkey",
+      "image_queries": [
+        "Mostar bridge",
+        "Vienna St Stephen's Cathedral",
+        "Cairo old city citadel"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1640'tan sonra İstanbul dışına çıkmaya başladı. Önce Bursa ve İzmit, sonra Trabzon ve Kafkasya."
+        },
+        {
+          "s": "B",
+          "t": "Kendi parasıyla mı geziyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Çoğunlukla bir paşanın maiyetinde. Bazen imam ya da müezzin, bazen ulak, bazen elçilik heyetinin üyesi olarak. Savaşlara da katıldı."
+        },
+        {
+          "s": "A",
+          "t": "Gittiği yerler şaşırtıcı. Anadolu'nun hemen her köşesi, Balkanlar, Macaristan, Kırım, Girit, Suriye, Hicaz."
+        },
+        {
+          "s": "B",
+          "t": "Avrupa'ya da gitti mi?"
+        },
+        {
+          "s": "A",
+          "t": "1665'te bir Osmanlı elçilik heyetiyle Viyana'ya gitti. Aziz Stefan Katedrali'ni, şehrin kütüphanelerini ve bir cerrahın yaptığı ameliyatı hayranlıkla anlatır."
+        },
+        {
+          "s": "A",
+          "t": "Mostar Köprüsü'nü gören ve \"on altı ülke gezdim, böyle yüksek bir köprü görmedim\" diye yazan da odur."
+        },
+        {
+          "s": "B",
+          "t": "Sadece yapıları mı anlatıyor?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır, onu değerli kılan da bu. Yemekleri, giysileri, fıkraları, mezar taşlarını yazıyor. Gittiği yerin dilinden kelime listeleri çıkarıyor. Bazı Kafkas dillerinin en eski yazılı örnekleri onun defterlerinde."
+        }
+      ]
+    },
+    {
+      "heading": "Abartı mı, Üslup mu?",
+      "country": "Turkey",
+      "city": "Erzurum",
+      "image_queries": [
+        "Erzurum winter old city",
+        "Ottoman miniature storyteller",
+        "Seyahatname page illustration"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Evliya'nın abartıcı olduğu söylenir."
+        },
+        {
+          "s": "A",
+          "t": "Haklı bir ün. Erzurum'un soğuğunu anlatırken bir kedinin damdan dama atlarken havada donup kaldığını yazar."
+        },
+        {
+          "s": "B",
+          "t": "Bahar gelince de çözülüp yere düşmüştür herhalde."
+        },
+        {
+          "s": "A",
+          "t": "Tam öyle anlatıyor, miyavlayarak. Bu tür hikâyeleri okuyucuyu eğlendirmek için bilerek ekliyor."
+        },
+        {
+          "s": "A",
+          "t": "Rakamlarda da cömerttir. Bir kalenin askerini, bir şehrin evlerini yuvarlayıp büyütür. Bazen de gitmediği bir yeri başkasından dinleyip görmüş gibi anlatır."
+        },
+        {
+          "s": "B",
+          "t": "O zaman güvenilir bir kaynak mı?"
+        },
+        {
+          "s": "A",
+          "t": "Bunu üç ayrı ses gibi düşünebilirsin. Kendi gözüyle gördüğünü anlatırken çoğu zaman şaşırtıcı ölçüde doğru. Başka kitaplardan aktarırken o kitaplar kadar güvenilir. Sohbet havasına girdiğinde ise bir meddah."
+        },
+        {
+          "s": "B",
+          "t": "Yani hangi sesle konuştuğunu ayırt etmek gerekiyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Son yıllardaki çalışmalar onun gözlemlerine eskisinden çok daha fazla güveniyor."
+        }
+      ]
+    },
+    {
+      "heading": "Mısır ve Kayıp Kitap",
+      "country": "Egypt",
+      "city": "Cairo",
+      "image_queries": [
+        "Cairo Nile old view",
+        "Evliya Çelebi Nile map",
+        "Topkapı Palace library manuscript"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1671'de hacca gitti. Dönüşte Mısır'a geçti ve hayatının son yıllarını Kahire'de geçirdi."
+        },
+        {
+          "s": "B",
+          "t": "Orada da gezdi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Nil boyunca güneye, Sudan'a kadar indi. Onuncu cilt Mısır'a ayrılmış. Nil'in ayrıntılı bir haritasının da onun elinden çıktığı düşünülüyor."
+        },
+        {
+          "s": "A",
+          "t": "Seyahatname'yi büyük olasılıkla Kahire'de derleyip yazdı. 1680'lerde öldü. Tam tarihi ve mezarının yeri bilinmiyor."
+        },
+        {
+          "s": "B",
+          "t": "Kitap hemen ünlendi mi?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. El yazması onlarca yıl Kahire'de kaldı. 1742'de İstanbul'a getirildi ve çoğaltıldı."
+        },
+        {
+          "s": "A",
+          "t": "Geniş çevrelerce tanınması on dokuzuncu yüzyılı buldu. Avusturyalı bir tarihçinin dikkatini çekti ve bölümleri Avrupa dillerine çevrildi."
+        },
+        {
+          "s": "B",
+          "t": "Yani kendi çağında pek okunmamış."
+        },
+        {
+          "s": "A",
+          "t": "Asıl okurlarını üç yüz yıl sonra buldu. UNESCO, doğumunun dört yüzüncü yılı olan 2011'i onun anısına kutlama yılları arasına aldı."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "image_queries": [
+        "Evliya Çelebi monument",
+        "old map Ottoman Empire",
+        "Istanbul skyline Galata"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Benim en sevdiğim taraf, hırsızlar loncasını bile atlamaması."
+        },
+        {
+          "s": "A",
+          "t": "Hiçbir şeyi küçük görmüyor. Bir padişahın sarayı da bir köy çeşmesi de onun için yazılmaya değer."
+        },
+        {
+          "s": "B",
+          "t": "Ve bütün bunlar bir dil sürçmesiyle başlıyor."
+        },
+        {
+          "s": "A",
+          "t": "Sen bir yıl boyunca gezme imkânın olsa ilk nereye giderdin?"
+        },
+        {
+          "s": "B",
+          "t": "Yorumlara yaz."
+        },
+        {
+          "s": "A",
+          "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "lang": "en",
+  "topic": "Great Fire of London",
+  "era": "2-6 September 1666, Restoration England",
+  "country": "United Kingdom",
+  "label": "HISTORY",
+  "mood": "gergin",
+  "title": "The Great Fire of London: Four Days That Erased a Medieval City",
+  "description": "In the early hours of 2 September 1666 a fire started in a baker's house near Pudding Lane. The Lord Mayor went back to bed. Four days later 13,200 houses, 87 churches and St Paul's Cathedral were gone. This is how the fire spread, how it was finally stopped, who was blamed, and how London was rebuilt.",
+  "hashtags": [
+    "greatfireoflondon",
+    "london",
+    "history"
+  ],
+  "tags": [
+    "great fire of london",
+    "1666",
+    "pudding lane",
+    "samuel pepys",
+    "christopher wren",
+    "st pauls cathedral",
+    "london history",
+    "charles ii",
+    "history",
+    "documentary"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Emma",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Jack",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "The Great Fire of London, London Museum",
+      "url": "https://www.londonmuseum.org.uk/collections/london-stories/great-fire-of-london/"
+    },
+    {
+      "title": "The Great Fire of London, London Fire Brigade Museum",
+      "url": "https://www.london-fire.gov.uk/museum/history-and-stories/the-great-fire-of-london"
+    },
+    {
+      "title": "When London Burned: 1666's Great Fire, History.com",
+      "url": "https://www.history.com/articles/when-london-burned-1666s-great-fire"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Introduction",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Great Fire of London painting",
+        "Monument to the Great Fire of London",
+        "St Paul's Cathedral London"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Jack, what would you save first if your house was about to burn?"
+        },
+        {
+          "s": "B",
+          "t": "Documents. Photos. My laptop."
+        },
+        {
+          "s": "A",
+          "t": "In 1666, a senior naval official in London dug a hole in his garden and buried his wine and a large Parmesan cheese."
+        },
+        {
+          "s": "B",
+          "t": "Cheese."
+        },
+        {
+          "s": "A",
+          "t": "Good cheese was expensive. The man was Samuel Pepys, and his diary is the best eyewitness account we have of the Great Fire of London."
+        },
+        {
+          "s": "B",
+          "t": "How bad was it?"
+        },
+        {
+          "s": "A",
+          "t": "In four days it destroyed most of the old walled city. More than thirteen thousand houses. And it started with one oven."
+        }
+      ]
+    },
+    {
+      "heading": "A City Made of Kindling",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "London before 1666 map",
+        "timber framed houses London old",
+        "Old St Paul's Cathedral engraving"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "London in 1666 was one of the largest cities in Europe, with several hundred thousand people."
+        },
+        {
+          "s": "B",
+          "t": "And mostly wooden."
+        },
+        {
+          "s": "A",
+          "t": "Timber-framed houses, covered in pitch, with upper floors that jutted out over the street. In narrow lanes the top storeys almost touched."
+        },
+        {
+          "s": "A",
+          "t": "The riverside was packed with warehouses full of oil, tar, tallow, rope, coal and spirits."
+        },
+        {
+          "s": "B",
+          "t": "That sounds like a bonfire waiting for a match."
+        },
+        {
+          "s": "A",
+          "t": "And the summer had been long and dry. On top of that, the city was only just recovering from the plague of 1665, which had killed tens of thousands."
+        },
+        {
+          "s": "B",
+          "t": "Was there a fire brigade?"
+        },
+        {
+          "s": "A",
+          "t": "No. There were leather buckets, hand squirts, ladders and long hooks for pulling buildings down. That last one matters."
+        }
+      ]
+    },
+    {
+      "heading": "The Bakery",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Pudding Lane London plaque",
+        "17th century bakery oven",
+        "Thomas Bloodworth Lord Mayor"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Shortly after midnight on Sunday the 2nd of September, a fire broke out in the house of Thomas Farriner, a baker who supplied the navy."
+        },
+        {
+          "s": "B",
+          "t": "On Pudding Lane."
+        },
+        {
+          "s": "A",
+          "t": "That is the traditional address. Tax records suggest the bakehouse stood in a small yard just off it. Farriner always insisted he had put his oven out properly."
+        },
+        {
+          "s": "A",
+          "t": "The family escaped through an upstairs window. A maid did not, and became one of the first victims."
+        },
+        {
+          "s": "B",
+          "t": "Did anyone try to stop it?"
+        },
+        {
+          "s": "A",
+          "t": "The standard method was to pull down neighbouring houses to make a gap. But owners objected, and that needed the Lord Mayor's authority."
+        },
+        {
+          "s": "B",
+          "t": "And the Lord Mayor?"
+        },
+        {
+          "s": "A",
+          "t": "Sir Thomas Bloodworth was woken, looked at the fire, made a famously rude remark about how easily it could be put out, and went back to bed."
+        },
+        {
+          "s": "B",
+          "t": "That aged badly."
+        },
+        {
+          "s": "A",
+          "t": "By morning, around three hundred houses were burning, and a strong east wind was pushing the flames toward the warehouses on the river."
+        }
+      ]
+    },
+    {
+      "heading": "Pepys Goes to the King",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Samuel Pepys portrait",
+        "Charles II portrait",
+        "Great Fire of London Thames boats"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Pepys climbed the Tower of London to look, then took a boat along the river. He saw people throwing their belongings into the water and pigeons falling with burned wings."
+        },
+        {
+          "s": "B",
+          "t": "What did he do?"
+        },
+        {
+          "s": "A",
+          "t": "He went straight to the palace at Whitehall and told King Charles the Second. The king ordered houses to be pulled down without waiting for permission."
+        },
+        {
+          "s": "A",
+          "t": "Pepys found the Lord Mayor in the street, exhausted. According to the diary he cried out, \"Lord, what can I do? People will not obey me.\""
+        },
+        {
+          "s": "B",
+          "t": "Too late by then."
+        },
+        {
+          "s": "A",
+          "t": "The fire was now creating its own wind. On Monday it reached the financial heart of the city. On Tuesday it was at its worst."
+        }
+      ]
+    },
+    {
+      "heading": "Tuesday: St Paul's",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Old St Paul's burning 1666 Hollar",
+        "Great Fire of London Ludgate painting",
+        "Guildhall London"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "People believed St Paul's Cathedral was safe. It was stone, and it stood in an open square."
+        },
+        {
+          "s": "B",
+          "t": "So they stored things in it."
+        },
+        {
+          "s": "A",
+          "t": "Booksellers filled the crypt with their stock. But the cathedral was covered in wooden scaffolding for repairs."
+        },
+        {
+          "s": "A",
+          "t": "The scaffolding caught. The roof timbers went. The lead of the roof melted and ran down the streets. One witness wrote that the stones flew like grenades."
+        },
+        {
+          "s": "B",
+          "t": "And the books?"
+        },
+        {
+          "s": "A",
+          "t": "All lost. That same day the fire took the Guildhall and the Royal Exchange, and jumped the River Fleet toward the royal palace."
+        },
+        {
+          "s": "A",
+          "t": "The king and his brother, the Duke of York, joined the firefighting in person, passing buckets and handing out coins to workers."
+        }
+      ]
+    },
+    {
+      "heading": "How It Stopped",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Tower of London",
+        "gunpowder barrels 17th century",
+        "Moorfields London old print"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "So what finally stopped it?"
+        },
+        {
+          "s": "A",
+          "t": "Two things. The garrison at the Tower used gunpowder to blow up whole rows of houses, creating wide gaps quickly."
+        },
+        {
+          "s": "A",
+          "t": "And on Tuesday night the wind dropped. By Thursday the 6th of September the fire was essentially out."
+        },
+        {
+          "s": "B",
+          "t": "What was the damage?"
+        },
+        {
+          "s": "A",
+          "t": "About thirteen thousand two hundred houses, eighty-seven parish churches, St Paul's, and most of the city's public buildings. Around a hundred thousand people were homeless, camping in fields outside the walls."
+        },
+        {
+          "s": "B",
+          "t": "And deaths?"
+        },
+        {
+          "s": "A",
+          "t": "Only a handful were officially recorded. Historians suspect the real number was higher, because the poor were not well documented and the heat was intense enough to leave no remains."
+        }
+      ]
+    },
+    {
+      "heading": "Someone to Blame",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "Monument London inscription",
+        "Robert Hubert 1666",
+        "London 1666 refugees"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "London wanted a culprit. England was at war with the Dutch, and rumours spread that foreigners had started the fire. Mobs attacked French and Dutch residents."
+        },
+        {
+          "s": "B",
+          "t": "Was anyone charged?"
+        },
+        {
+          "s": "A",
+          "t": "A French watchmaker named Robert Hubert confessed. His story kept changing, and he was clearly not of sound mind."
+        },
+        {
+          "s": "B",
+          "t": "But they convicted him."
+        },
+        {
+          "s": "A",
+          "t": "He was hanged that autumn. It later emerged that his ship had not even arrived in London until two days after the fire began."
+        },
+        {
+          "s": "A",
+          "t": "A parliamentary inquiry eventually concluded it was an accident, helped by wind and a very dry season."
+        }
+      ]
+    },
+    {
+      "heading": "A New London",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "St Paul's Cathedral dome Wren",
+        "Christopher Wren portrait",
+        "Monument to the Great Fire top"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Within days, architects were presenting plans for a new city with wide straight avenues. Christopher Wren was one of them."
+        },
+        {
+          "s": "B",
+          "t": "Was any of that built?"
+        },
+        {
+          "s": "A",
+          "t": "No. Property owners wanted their old plots back, and the city needed to trade again quickly. So London was rebuilt on its medieval street plan."
+        },
+        {
+          "s": "B",
+          "t": "But not in wood."
+        },
+        {
+          "s": "A",
+          "t": "New laws required brick or stone and wider streets. Wren rebuilt fifty-one churches and designed the new St Paul's, finished in 1711."
+        },
+        {
+          "s": "A",
+          "t": "He also co-designed the Monument, a column sixty-one metres tall. It stands sixty-one metres from the spot where the bakery is said to have been."
+        },
+        {
+          "s": "B",
+          "t": "Anything else change?"
+        },
+        {
+          "s": "A",
+          "t": "Fire insurance. Within about fifteen years, the first insurance offices appeared, and they ran their own fire crews."
+        }
+      ]
+    },
+    {
+      "heading": "Closing",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "London skyline St Paul's",
+        "Monument London view",
+        "Pudding Lane street sign"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "The detail that stays with me is the mayor going back to bed."
+        },
+        {
+          "s": "A",
+          "t": "One hour of decisiveness on Sunday morning might have saved the city."
+        },
+        {
+          "s": "B",
+          "t": "And Pepys with his cheese."
+        },
+        {
+          "s": "A",
+          "t": "What would you have buried?"
+        },
+        {
+          "s": "B",
+          "t": "Tell us in the comments."
+        },
+        {
+          "s": "A",
+          "t": "And subscribe for more of history's most remarkable stories."
+        }
+      ]
+    }
+  ]
+}

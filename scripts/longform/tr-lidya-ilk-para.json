@@ -1,0 +1,399 @@
+{
+  "lang": "tr",
+  "topic": "Lydia and the invention of coinage",
+  "era": "7th-6th century BC, Sardis, western Anatolia",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Lidya ve İlk Para: Cebindeki Bozukluğun Hikâyesi Manisa'da Başladı",
+  "description": "Para dediğimiz şey, yaklaşık 2.600 yıl önce Batı Anadolu'da, bugünkü Manisa'nın Salihli ilçesindeki Sardes'te icat edildi. Lidyalılar önce altın-gümüş karışımı elektrumdan sikke bastı; Kral Kroisos ise saf altın ve saf gümüş paralarla ilk çift metalli para sistemini kurdu. Sikkeden Karun Hazinesi'ne, Lidya'nın hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "lidya",
+    "sardes",
+    "tarih"
+  ],
+  "tags": [
+    "lidya",
+    "lidyalılar",
+    "ilk para",
+    "sardes",
+    "kroisos",
+    "karun hazinesi",
+    "manisa",
+    "salihli",
+    "uşak",
+    "sikke",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Croeseid, Wikipedia (İngilizce)",
+      "url": "https://en.wikipedia.org/wiki/Croeseid"
+    },
+    {
+      "title": "Croesus stater: the coin that introduced the gold standard, Live Science",
+      "url": "https://www.livescience.com/archaeology/croesus-stater-the-2-500-year-old-coin-that-introduced-the-gold-standard"
+    },
+    {
+      "title": "The Invention of the First Coinage in Ancient Lydia, World History Encyclopedia",
+      "url": "https://www.worldhistory.org/article/797/the-invention-of-the-first-coinage-in-ancient-lydia/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Lydian electrum coin lion",
+        "Sardis ruins",
+        "Croeseid gold coin"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, cebinde bozuk para var mı?"
+        },
+        {
+          "s": "B",
+          "t": "Birkaç tane vardır. Neden?"
+        },
+        {
+          "s": "A",
+          "t": "Bir tanesini çıkar ve bak. Yuvarlak, üzerinde bir resim, belirli bir ağırlık, arkasında onu basan devletin işareti."
+        },
+        {
+          "s": "B",
+          "t": "Evet, sıradan bir para."
+        },
+        {
+          "s": "A",
+          "t": "O fikrin tamamı, yaklaşık iki bin altı yüz yıl önce bugünkü Manisa'da doğdu."
+        },
+        {
+          "s": "B",
+          "t": "Lidyalılar."
+        },
+        {
+          "s": "A",
+          "t": "Lidyalılar. Başkentleri Sardes, bugünkü Salihli'nin yanında. Ve hikâye bir derenin kumunda başlıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Paradan Önce",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "ancient balance scale weights",
+        "silver hacksilver hoard",
+        "ancient market trade illustration"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Paradan önce insanlar nasıl alışveriş yapıyordu?"
+        },
+        {
+          "s": "A",
+          "t": "Takasla ve tartıyla. Mezopotamya'da ve Mısır'da gümüş binlerce yıldır ödeme aracıydı ama parça parça, tartılarak."
+        },
+        {
+          "s": "B",
+          "t": "Yani her alışverişte terazi gerekiyordu."
+        },
+        {
+          "s": "A",
+          "t": "Terazi ve güven. Karşındakinin verdiği gümüş saf mı, ağırlığı doğru mu? Her seferinde kontrol etmen gerekiyordu."
+        },
+        {
+          "s": "A",
+          "t": "Sikkenin getirdiği yenilik tam da buydu. Ağırlığı önceden belirlenmiş, üzerinde bir otoritenin damgası olan metal parçası."
+        },
+        {
+          "s": "B",
+          "t": "Damga garanti anlamına geliyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. \"Bunu ben tarttım, kefilim\" demek. Tartma zahmeti ortadan kalkıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Altın Taşıyan Dere",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Sart Çayı Pactolus river",
+        "Bozdağ Tmolus mountain",
+        "electrum nugget"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Sardes'in içinden Paktolos adında bir dere akıyordu. Bugünkü adı Sart Çayı."
+        },
+        {
+          "s": "B",
+          "t": "Özelliği neydi?"
+        },
+        {
+          "s": "A",
+          "t": "Bozdağ'dan elektrum taşıyordu. Elektrum, altın ve gümüşün doğal karışımı. Açık sarı renkli bir metal."
+        },
+        {
+          "s": "A",
+          "t": "Antik çağda bunun bir efsanesi de vardı. Dokunduğu her şeyi altına çeviren Kral Midas, bu lanetten kurtulmak için Paktolos'ta yıkanmış. Altın da suya geçmiş."
+        },
+        {
+          "s": "B",
+          "t": "Güzel bir açıklama."
+        },
+        {
+          "s": "A",
+          "t": "Gerçek açıklama jeoloji tabii. Ama sonuç aynı: Lidya krallarının elinde bol miktarda değerli metal vardı."
+        }
+      ]
+    },
+    {
+      "heading": "Aslan Başlı Sikkeler",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Lydian lion trite coin",
+        "Alyattes tumulus Bin Tepe",
+        "Ephesus Artemision coin hoard"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "İlk sikkeler milattan önce yedinci yüzyılın ikinci yarısında, elektrumdan basıldı. Çoğu araştırmacı bunları Kral Alyattes dönemine bağlıyor."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl görünüyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "Fasulye biçiminde küçük külçeler. Bir yüzünde kükreyen bir aslan başı var. Lidya krallarının simgesi. Öbür yüzünde sadece zımba izi."
+        },
+        {
+          "s": "A",
+          "t": "Bazılarının üzerinde Lidya dilinde kısa bir yazı okunuyor. Pek çok uzman bunu Alyattes'in adı olarak yorumluyor."
+        },
+        {
+          "s": "B",
+          "t": "En eski örnekler nerede bulundu?"
+        },
+        {
+          "s": "A",
+          "t": "Efes'te, Artemis Tapınağı'nın temelleri altında. Tapınağa adak olarak bırakılmış bir sikke grubu."
+        },
+        {
+          "s": "B",
+          "t": "Elektrumun bir sorunu olmalı. Karışım oranı her seferinde aynı olmaz."
+        },
+        {
+          "s": "A",
+          "t": "Tam olarak. Doğal elektrumda altın oranı değişir. İncelemeler Lidyalıların bunu fark edip oranı kendilerinin ayarladığını gösteriyor: yaklaşık yüzde elli dört altın."
+        },
+        {
+          "s": "B",
+          "t": "Yani biraz gümüş ekleyip kâr ettiler."
+        },
+        {
+          "s": "A",
+          "t": "Öyle görünüyor. Devlet parayı basıyor, değerini belirliyor ve aradaki fark hazineye kalıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kroisos'un Buluşu",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Croeseid lion and bull coin",
+        "Sardis gold refinery excavation",
+        "Croesus painting"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Alyattes'in oğlu Kroisos, milattan önce 560 civarında tahta çıktı. Sorunu kökten çözdü."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl?"
+        },
+        {
+          "s": "A",
+          "t": "Elektrumu altın ve gümüşe ayırttı. Sardes'te, derenin kıyısında bu işin yapıldığı atölyeler kazılarda ortaya çıkarıldı."
+        },
+        {
+          "s": "A",
+          "t": "Sonra iki ayrı para bastırdı: saf altın ve saf gümüş. İkisinin üzerinde de aynı resim var. Karşı karşıya duran bir aslan ile bir boğa."
+        },
+        {
+          "s": "B",
+          "t": "Aralarında sabit bir oran mı vardı?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Belirli sayıda gümüş sikke bir altın sikke ediyordu. Bu, tarihin bilinen ilk çift metalli para sistemi."
+        },
+        {
+          "s": "B",
+          "t": "Herodotos bunu yazıyor muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Yazıyor. Ona göre Lidyalılar, bildiğimiz kadarıyla altın ve gümüş sikke basıp kullanan ilk halk. Ve ilk perakende satıcılar."
+        },
+        {
+          "s": "B",
+          "t": "Yani ilk dükkânlar da onlardan."
+        },
+        {
+          "s": "A",
+          "t": "Para olunca çarşı da oluyor. Kroisos'un zenginliği dillere destan oldu. Batı dillerinde hâlâ \"Kroisos kadar zengin\" denir. Türkçedeki \"Karun kadar zengin\" deyimi de zamanla onunla özdeşleşti."
+        }
+      ]
+    },
+    {
+      "heading": "Yanlış Anlaşılan Kehanet",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Delphi oracle temple",
+        "Kızılırmak river",
+        "Cyrus the Great relief"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kroisos'un sonu da en az zenginliği kadar ünlü."
+        },
+        {
+          "s": "B",
+          "t": "Perslerle savaştı."
+        },
+        {
+          "s": "A",
+          "t": "Savaşmadan önce Yunanistan'daki Delfi kâhinine danıştı. Herodotos'un anlattığına göre aldığı cevap şuydu: Perslere saldırırsan büyük bir imparatorluğu yıkacaksın."
+        },
+        {
+          "s": "B",
+          "t": "O da saldırdı."
+        },
+        {
+          "s": "A",
+          "t": "Kızılırmak'ı geçti ve Pers kralı Kyros'la savaştı. Sonra Sardes'e çekildi. Kyros peşinden geldi ve milattan önce 546 civarında şehri aldı."
+        },
+        {
+          "s": "B",
+          "t": "Yıkılan imparatorluk kendi imparatorluğuydu."
+        },
+        {
+          "s": "A",
+          "t": "Kehanet doğru çıktı, sadece beklediği gibi değil."
+        },
+        {
+          "s": "A",
+          "t": "Ama para fikri yıkılmadı. Persler Sardes'te sikke basmayı sürdürdü. Yunan şehirleri fikri hemen benimsedi. Birkaç kuşak içinde bütün Akdeniz sikke kullanıyordu."
+        }
+      ]
+    },
+    {
+      "heading": "Karun Hazinesi",
+      "country": "Turkey",
+      "city": "Uşak",
+      "image_queries": [
+        "Karun Treasure Uşak museum",
+        "Lydian treasure winged seahorse brooch",
+        "Lydian tumulus Uşak"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Karun Hazinesi de Lidya'dan değil mi?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. 1960'larda Uşak yakınlarındaki Lidya dönemi mezar tepeleri kaçak kazıcılar tarafından soyuldu. Altın takılar, gümüş kaplar, yüzlerce parça."
+        },
+        {
+          "s": "B",
+          "t": "Yurt dışına mı çıkarıldı?"
+        },
+        {
+          "s": "A",
+          "t": "New York'taki Metropolitan Müzesi'ne satıldı. Türkiye yıllarca süren bir hukuk mücadelesi verdi ve hazine 1993'te geri geldi."
+        },
+        {
+          "s": "B",
+          "t": "Mutlu son."
+        },
+        {
+          "s": "A",
+          "t": "Tam değil. Yıllar sonra, Uşak'taki müzede sergilenen kanatlı denizatı broşunun sahtesiyle değiştirildiği anlaşıldı."
+        },
+        {
+          "s": "B",
+          "t": "Müzenin içinden mi çalınmış?"
+        },
+        {
+          "s": "A",
+          "t": "Evet. Gerçek broş sonradan Almanya'da bulundu ve geri getirildi. Bugün hazine Uşak'ta sergileniyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "Sardis gymnasium",
+        "Sardis Temple of Artemis",
+        "Lydian coins museum display"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Benim için en ilginç kısım şu: asıl buluş metal değil, damga. Yani güven."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Para aslında \"bana güvenebilirsin\" diyen küçük bir söz. Lidyalılar o sözü metale bastı."
+        },
+        {
+          "s": "B",
+          "t": "Ve iki bin altı yüz yıl sonra hâlâ aynı fikri kullanıyoruz. Artık metal bile değil."
+        },
+        {
+          "s": "A",
+          "t": "Sence para bir gün tamamen dijital olur mu?"
+        },
+        {
+          "s": "B",
+          "t": "Yorumlara yaz."
+        },
+        {
+          "s": "A",
+          "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

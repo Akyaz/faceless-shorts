@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T04:24:06Z",
-  "run": "38440514533",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511170069",
-  "videos": [
-   {
-    "title": "Galatasaray'ın maçı öncesi yemek ve büyük kulüplerin borçları",
-    "url": "https://youtu.be/_X64lLjA524"
-   }
-  ]
- },
- {
   "time": "2026-10-14T04:24:12Z",
   "run": "38414886837",
   "event": "workflow_dispatch",
@@ -4613,5 +4599,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-10T22:22:58Z",
+  "run": "42910248832",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42910248832",
+  "videos": [
+   {
+    "title": "Ayasofya: Beş Yılda Yapılan, 1500 Yıldır Ayakta Duran Kubbenin Hikâyesi",
+    "url": "https://youtu.be/y5yCO7VIY20",
+    "instagram": null
+   }
+  ],
+  "script": "scripts/longform/tr-ayasofya.json"
  }
 ]

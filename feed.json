@@ -1,27 +1,5 @@
 [
  {
-  "time": "2026-10-13T11:38:53Z",
-  "run": "38390528852",
-  "event": "schedule",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38390528852",
-  "videos": [
-   {
-    "title": "Sosyal Medyada Yeni Dönem: 15-18 Yaşa Kısıtlama Geliyor",
-    "url": null
-   },
-   {
-    "title": "Zeytinyağına Hile: Bakanlık Listeyi Açıkladı",
-    "url": null
-   },
-   {
-    "title": "Sigara Satışında Yeni Dönem: TC Kimlik Yerine Ne İstenecek?",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-13T21:58:46Z",
   "run": "38474133939",
   "event": "workflow_dispatch",
@@ -4616,5 +4594,15 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-10T00:45:29Z",
+  "run": "42730542339",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42730542339",
+  "videos": [],
+  "slot": "20:30"
  }
 ]

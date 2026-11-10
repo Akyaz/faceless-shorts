@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T04:22:24Z",
-  "run": "38465976916",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38511026430",
-  "videos": [
-   {
-    "title": "12 İle Kuvvetli Yağış ve Fırtına Uyarısı Verildi",
-    "url": "https://youtu.be/VJ5qPPm-nuU"
-   }
-  ]
- },
- {
   "time": "2026-10-14T04:22:31Z",
   "run": "38455888872",
   "event": "workflow_dispatch",
@@ -4607,5 +4593,21 @@
     "instagram": "https://www.instagram.com/reel/DfjLHY6CrTm/"
    }
   ]
+ },
+ {
+  "time": "2026-11-10T16:50:55Z",
+  "run": "42857931396",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42857931396",
+  "videos": [
+   {
+    "title": "Yerebatan Sarnıcı Hakkında İnanılmaz Gerçekler",
+    "url": "https://youtu.be/HwbP2spFxsk",
+    "instagram": "https://www.instagram.com/reel/DfkX_xED8kG/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -1,0 +1,389 @@
+{
+  "lang": "tr",
+  "topic": "Kültepe-Kanesh and the Old Assyrian merchant archives",
+  "era": "around 1950-1750 BC, Middle Bronze Age Anatolia",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Kültepe: Anadolu'nun İlk Yazılı Belgeleri 4.000 Yıllık Tüccar Mektupları",
+  "description": "Kayseri yakınlarındaki Kültepe'de, dört bin yıl önce Asurlu tüccarlar bin kilometre öteden eşek kervanlarıyla kalay ve kumaş getirip gümüşle dönüyordu. Geride yaklaşık 23.500 kil tablet bıraktılar: borç senetleri, mahkeme kayıtları, evlilik sözleşmeleri ve evdeki eşlerine yazdıkları mektuplar. Anadolu'da yazının başladığı yeri anlatıyoruz.",
+  "hashtags": [
+    "kültepe",
+    "kayseri",
+    "tarih"
+  ],
+  "tags": [
+    "kültepe",
+    "kaniş",
+    "karum",
+    "kayseri",
+    "asur ticaret kolonileri",
+    "çivi yazısı",
+    "tablet",
+    "arkeoloji",
+    "anadolu",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Kültepe Ören Yeri, KÜRE Ansiklopedi",
+      "url": "https://kureansiklopedi.com/tr/detay/kultepe-oren-yeri-0388a"
+    },
+    {
+      "title": "Kültepe: Anadolu'da yazının, ticaretin ve kent yaşamının doğduğu merkez, Euronews Türkçe",
+      "url": "https://tr.euronews.com/culture/2026/06/21/kultepe-anadoluda-yazinin-ticaretin-ve-kent-yasaminin-dogdugu-merkez"
+    },
+    {
+      "title": "Kültepe, Encyclopaedia Britannica",
+      "url": "https://www.britannica.com/place/Kultepe"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "Kültepe Kanesh ruins",
+        "Old Assyrian cuneiform tablet Kültepe",
+        "Kültepe tablet clay envelope"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, dört bin yıl önce yaşamış birinin mektubunu okusan içinde ne yazmasını beklersin?"
+        },
+        {
+          "s": "B",
+          "t": "Krallar, savaşlar, tanrılar herhalde."
+        },
+        {
+          "s": "A",
+          "t": "Şöyle bir şey yazıyor: \"Gönderdiğin kumaşlar ince değildi. Bir dahaki sefere daha kalın dokut. Ayrıca bana hâlâ borcun var.\""
+        },
+        {
+          "s": "B",
+          "t": "Bu bildiğimiz iş yazışması."
+        },
+        {
+          "s": "A",
+          "t": "Tam olarak öyle. Kayseri'deki Kültepe'de bunlardan yirmi üç binden fazla bulundu. Ve bunlar Anadolu'nun bilinen en eski yazılı belgeleri."
+        },
+        {
+          "s": "B",
+          "t": "Kim yazmış?"
+        },
+        {
+          "s": "A",
+          "t": "Bin kilometre öteden gelen tüccarlar. Eşeklerle."
+        }
+      ]
+    },
+    {
+      "heading": "Kül Tepesi",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "Kültepe mound Kayseri",
+        "Mount Erciyes Kayseri plain",
+        "Kültepe lower town excavation"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kültepe, Kayseri şehir merkezinin yirmi kilometre kadar kuzeydoğusunda. Erciyes'in gördüğü düz bir ovada."
+        },
+        {
+          "s": "B",
+          "t": "Antik çağdaki adı ne?"
+        },
+        {
+          "s": "A",
+          "t": "Kaniş. Bazı metinlerde Neşa diye de geçiyor. Beş yüz metre çapında, yirmi metre yüksekliğinde bir höyük. Üzerinde kralın sarayı ve tapınaklar vardı."
+        },
+        {
+          "s": "A",
+          "t": "Höyüğün eteğinde ise aşağı şehir uzanıyordu. Tüccarların yaşadığı mahalle buradaydı. Ona \"karum\" deniyordu."
+        },
+        {
+          "s": "B",
+          "t": "Karum ne demek?"
+        },
+        {
+          "s": "A",
+          "t": "Akadcada \"liman\". Mezopotamya'da ticaret nehir limanlarında yapıldığı için kelime zamanla \"pazar yeri\" ve \"tüccar mahallesi\" anlamını kazanmış. Denizden yüzlerce kilometre uzakta bir liman."
+        }
+      ]
+    },
+    {
+      "heading": "Bin Kilometrelik Yol",
+      "country": "Iraq",
+      "image_queries": [
+        "Assur ancient city ruins Tigris",
+        "donkey caravan ancient relief",
+        "Taurus mountains pass"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Tüccarlar Asur şehrinden geliyordu. Bugünkü Irak'ın kuzeyinde, Dicle kıyısında."
+        },
+        {
+          "s": "B",
+          "t": "Neden bu kadar uzağa?"
+        },
+        {
+          "s": "A",
+          "t": "Çünkü Anadolu'da gümüş ve altın boldu ama kalay yoktu. Kalay olmadan da tunç yapılamaz."
+        },
+        {
+          "s": "A",
+          "t": "Asurlular doğudan gelen kalayı ve Mezopotamya'nın kaliteli yünlü kumaşlarını Anadolu'ya getirdi. Karşılığında gümüş ve altın götürdüler."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl taşıyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "Kara eşeklerle. Bir kervan yolu yaklaşık altı haftada alıyordu. Her eşek yetmiş kilo kadar yük taşırdı."
+        },
+        {
+          "s": "B",
+          "t": "Kârlı mıydı?"
+        },
+        {
+          "s": "A",
+          "t": "Çok. Tabletlerdeki rakamlara göre kalay Anadolu'da yaklaşık iki katına, kumaş üç katına satılabiliyordu."
+        },
+        {
+          "s": "A",
+          "t": "Bu ticaret milattan önce 1950 civarında başladı ve iki yüz yıl kadar sürdü. Kaniş, Anadolu'ya yayılmış kırk kadar ticaret merkezinin başıydı."
+        }
+      ]
+    },
+    {
+      "heading": "Kilden Zarflar",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "cuneiform tablet envelope seal",
+        "Kültepe tablets museum Ankara",
+        "cylinder seal impression clay"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Tüccarlar her şeyi yazıyordu. Kil tabletlere, çivi yazısıyla, Eski Asur lehçesinde."
+        },
+        {
+          "s": "B",
+          "t": "Devlet arşivi mi bu?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır, işte özel olan da bu. Sarayın ya da tapınağın değil, tek tek ailelerin arşivleri. Her tüccar tabletlerini evinin bir odasında, küplerde ve sandıklarda saklıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Neler var içlerinde?"
+        },
+        {
+          "s": "A",
+          "t": "Borç senetleri, ortaklık sözleşmeleri, kervan hesapları, mahkeme tutanakları. Ve çok sayıda mektup."
+        },
+        {
+          "s": "A",
+          "t": "Mektuplar kilden bir zarfın içine konuyordu. Zarfın üstüne alıcının adı yazılıyor ve gönderenin mührü basılıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Zarfı açmak için kırmak gerekiyor."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bazı tabletler zarfı hiç açılmamış hâlde bulundu. Sahibi okuyamadan şehir yanmış."
+        },
+        {
+          "s": "B",
+          "t": "Yangın yine arşivi korumuş."
+        },
+        {
+          "s": "A",
+          "t": "Hattuşa'daki gibi. Kil pişip sertleşti."
+        }
+      ]
+    },
+    {
+      "heading": "Asur'daki Eşler",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "ancient weaving loom textile",
+        "Old Assyrian letter tablet",
+        "Mesopotamian woman statue"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "En canlı mektuplar kadınlardan geliyor. Tüccarların eşleri Asur'da kalıyor, kumaşları onlar dokuyordu."
+        },
+        {
+          "s": "B",
+          "t": "Yani işin üretim tarafı kadınlardaydı."
+        },
+        {
+          "s": "A",
+          "t": "Evet ve bunun farkındaydılar. Bir kadın kocasına şöyle yazıyor: sen gittiğinden beri evde yiyecek kalmadı, gönderdiğim kumaşların parasını neden yollamadın?"
+        },
+        {
+          "s": "B",
+          "t": "Dört bin yıllık sitem."
+        },
+        {
+          "s": "A",
+          "t": "Bir başkası, kocasının kumaşları beğenmemesine kızıp nasıl dokuyacağını ondan öğrenecek olmadığını söylüyor."
+        },
+        {
+          "s": "A",
+          "t": "Tüccarlar Anadolu'da yıllarca kalıyordu. Sözleşmelere göre bazıları burada yerli bir kadınla ikinci bir evlilik yapabiliyordu. Kuralları da yazılıydı: iki eş aynı şehirde olamaz."
+        },
+        {
+          "s": "B",
+          "t": "Evlilik sözleşmeleri de mi var?"
+        },
+        {
+          "s": "A",
+          "t": "Evlilik, boşanma, miras, evlat edinme. Bir sözleşmede boşanma hâlinde iki tarafın da aynı tazminatı ödeyeceği yazıyor."
+        }
+      ]
+    },
+    {
+      "heading": "Yerel Kral ve Vergiler",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "Kültepe Warshama palace ruins",
+        "Anitta dagger inscription",
+        "Hittite ceremonial vessel Kültepe"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Asurlular burayı yönetiyor muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Hayır. Fethetmeye değil, ticarete gelmişlerdi. Şehri yerli Anadolulu krallar yönetiyordu."
+        },
+        {
+          "s": "A",
+          "t": "Tüccarlar krala vergi ödüyordu. Kalaydan yüzde üç, kumaştan yüzde beş. Saray ayrıca kumaşların onda birini öncelikle satın alma hakkına sahipti."
+        },
+        {
+          "s": "B",
+          "t": "Karşılığında ne alıyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "Oturma izni, yol güvenliği ve kendi mahkemelerini kurma hakkı. Bir kervan soyulursa zararı o bölgenin kralı karşılıyordu."
+        },
+        {
+          "s": "B",
+          "t": "Kaçakçılık yapan oluyor muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Tabii. Bir mektupta tüccar ortağına vergiden kaçmak için dağ yolunu kullanmasını öğütlüyor. Bir başkasında kaçakçılık yaparken yakalanan birinin hapse atıldığı anlatılıyor."
+        },
+        {
+          "s": "A",
+          "t": "Kaniş'in sonraki tarih için bir önemi daha var. Hititler kendi dillerine \"Neşa dili\" diyordu. Yani dillerinin adını bu şehirden alıyorlardı."
+        }
+      ]
+    },
+    {
+      "heading": "Hrozný'nin Tarlası",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "Bedrich Hrozny Kültepe 1925",
+        "Tahsin Özgüç archaeologist",
+        "Kültepe excavation site aerial"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Bu tabletler 1880'lerden itibaren antika pazarlarında görünmeye başladı. Nereden geldiği bilinmediği için \"Kapadokya tabletleri\" dendi."
+        },
+        {
+          "s": "B",
+          "t": "Kaynağı kim buldu?"
+        },
+        {
+          "s": "A",
+          "t": "Hititçeyi çözen Çek bilgin Bedřich Hrozný. 1925'te Kültepe'ye geldi ve önce herkes gibi höyüğü kazdı. Tablet çıkmadı."
+        },
+        {
+          "s": "B",
+          "t": "Çünkü tabletler aşağıdaydı."
+        },
+        {
+          "s": "A",
+          "t": "Köylülerden öğrendi. Höyüğün yanındaki bir tarlayı kazınca bin kadar tablet buldu. Karum orasıydı."
+        },
+        {
+          "s": "A",
+          "t": "Düzenli kazılar 1948'de Türk arkeolog Tahsin Özgüç'le başladı ve bugüne kadar neredeyse kesintisiz sürdü. Özgüç burada elli yıldan fazla çalıştı."
+        },
+        {
+          "s": "B",
+          "t": "Ne kadarı kazıldı?"
+        },
+        {
+          "s": "A",
+          "t": "Kazı ekibine göre alanın çok küçük bir bölümü. Tabletler 2015'te UNESCO'nun Dünya Belleği Kütüğü'ne kaydedildi."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Kayseri",
+      "image_queries": [
+        "Kültepe tablets display Kayseri museum",
+        "Kültepe ruins sunset",
+        "cuneiform tablet close hand"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Benim hoşuma giden, bunların sıradan insanlar olması. Kral değil, tüccar. Destan değil, fatura."
+        },
+        {
+          "s": "A",
+          "t": "Ve o faturalar sayesinde dört bin yıl önceki fiyatları, yolları, hatta aile kavgalarını biliyoruz."
+        },
+        {
+          "s": "B",
+          "t": "Sence bizim bugünkü mesajlarımızdan dört bin yıl sonra ne kalır?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

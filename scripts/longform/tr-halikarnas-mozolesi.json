@@ -1,0 +1,418 @@
+{
+  "lang": "tr",
+  "topic": "Mausoleum at Halicarnassus",
+  "era": "around 353-350 BC, Caria; destroyed by the 15th century",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Halikarnas Mozolesi: Bodrum'daki Dünya Harikası Nasıl Bir Kalenin Duvarına Dönüştü?",
+  "description": "\"Mozole\" kelimesi Bodrum'dan geliyor. Milattan önce dördüncü yüzyılda Karya hükümdarı Mausolos için yapılan kırk beş metrelik anıt mezar, dünyanın yedi harikasından biriydi. Bin altı yüz yıl ayakta kaldı, depremlerle yıkıldı ve taşları şövalyelerin kalesine gitti. Halikarnas Mozolesi'nin hikâyesini anlatıyoruz.",
+  "hashtags": [
+    "bodrum",
+    "halikarnas",
+    "tarih"
+  ],
+  "tags": [
+    "halikarnas mozolesi",
+    "mausoleum at halicarnassus",
+    "bodrum",
+    "mausolos",
+    "artemisia",
+    "yedi harika",
+    "bodrum kalesi",
+    "karya",
+    "british museum",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Mausoleum at Halicarnassus, Madain Project",
+      "url": "https://madainproject.com/mausoleum_at_halicarnassus"
+    },
+    {
+      "title": "The Incredible Story of How the Mausoleum of Halicarnassus Became an Ancient Wonder, TheCollector",
+      "url": "https://www.thecollector.com/mausoleum-of-halicarnassus/"
+    },
+    {
+      "title": "How the Mausoleum at Halicarnassus became the Bodrum Castle, TheTravel",
+      "url": "https://www.thetravel.com/how-mausoleum-at-halicarnassus-became-the-bodrum-castle/"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Mausoleum at Halicarnassus model",
+        "Bodrum Castle harbor",
+        "Mausoleum at Halicarnassus ruins Bodrum"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, Anıtkabir için hangi kelimeyi kullanırsın?"
+        },
+        {
+          "s": "B",
+          "t": "Anıt mezar. Ya da mozole."
+        },
+        {
+          "s": "A",
+          "t": "Mozole kelimesi nereden geliyor biliyor musun?"
+        },
+        {
+          "s": "B",
+          "t": "Fransızcadan sanırım."
+        },
+        {
+          "s": "A",
+          "t": "Fransızcaya da Bodrum'dan gitmiş. Bir insanın adı aslında: Mausolos."
+        },
+        {
+          "s": "B",
+          "t": "Bodrumlu biri mi?"
+        },
+        {
+          "s": "A",
+          "t": "Bodrum'un antik adı Halikarnassos ve Mausolos oranın hükümdarıydı. Mezarı o kadar görkemliydi ki adı bütün dillerde \"büyük anıt mezar\" anlamına geldi."
+        },
+        {
+          "s": "B",
+          "t": "Dünyanın yedi harikasından biri."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Bugün yerinde bir çukur ve birkaç sütun parçası var. Taşlarının çoğu ise beş yüz metre ötede, Bodrum Kalesi'nin duvarlarında."
+        }
+      ]
+    },
+    {
+      "heading": "Karya'nın Hükümdarı",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Mausolus statue British Museum",
+        "Bodrum ancient city walls Myndos gate",
+        "Bodrum bay aerial"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Milattan önce dördüncü yüzyılda Güneybatı Anadolu'ya Karya deniyordu. Pers İmparatorluğu'na bağlıydı."
+        },
+        {
+          "s": "B",
+          "t": "Mausolos bir Pers valisi miydi?"
+        },
+        {
+          "s": "A",
+          "t": "Unvanı satraptı, yani vali. Ama yerli bir hanedandan geliyordu ve neredeyse bağımsız bir kral gibi davranıyordu. Milattan önce 377'den 353'e kadar hüküm sürdü."
+        },
+        {
+          "s": "A",
+          "t": "Başkenti iç kesimdeki Milas'tan kıyıya, Halikarnassos'a taşıdı. Şehri baştan kurdu: surlar, liman, saray, tiyatro."
+        },
+        {
+          "s": "B",
+          "t": "Zengin bir hükümdar."
+        },
+        {
+          "s": "A",
+          "t": "Çok zengin. Vergi toplamakta da yaratıcıydı. Antik bir kaynağa göre uzun saçtan bile vergi almış."
+        },
+        {
+          "s": "A",
+          "t": "Eşi Artemisia aynı zamanda kız kardeşiydi. Karya hanedanında bu bir gelenekti."
+        }
+      ]
+    },
+    {
+      "heading": "Dört Heykeltıraş",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Mausoleum Halicarnassus reconstruction drawing",
+        "Amazon frieze Mausoleum British Museum",
+        "Mausoleum Halicarnassus lion statue"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Mausolos mezarını büyük olasılıkla sağlığında planladı. Milattan önce 353'te ölünce işi Artemisia sürdürdü."
+        },
+        {
+          "s": "B",
+          "t": "Kimlere yaptırdı?"
+        },
+        {
+          "s": "A",
+          "t": "Dönemin en iyi Yunan ustalarına. Mimarlar Pytheos ve Satyros. Romalı yazar Plinius'a göre heykelleri dört ünlü heykeltıraş yaptı ve her biri yapının bir cephesini aldı."
+        },
+        {
+          "s": "B",
+          "t": "Birbirleriyle yarışır gibi."
+        },
+        {
+          "s": "A",
+          "t": "Öyle. Yapının biçimi de alışılmadıktı. En altta yüksek bir kaide. Üstünde otuz altı sütunlu, tapınağa benzeyen bir kat. Onun üstünde yirmi dört basamaklı bir piramit."
+        },
+        {
+          "s": "B",
+          "t": "En tepede?"
+        },
+        {
+          "s": "A",
+          "t": "Dört atın çektiği mermer bir savaş arabası. Toplam yükseklik yaklaşık kırk beş metre. Bugünkü on dört katlı bir bina kadar."
+        },
+        {
+          "s": "B",
+          "t": "Yani Yunan tapınağı, Mısır piramidi ve Anadolu mezar anıtı bir arada."
+        },
+        {
+          "s": "A",
+          "t": "Üç geleneğin karışımı. Her katta heykeller vardı: aslanlar, atlılar, tanrılar. Kabartmalarda Yunanlılarla Amazonların savaşı işlenmişti."
+        }
+      ]
+    },
+    {
+      "heading": "Artemisia",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Artemisia II statue British Museum",
+        "Artemisia drinking ashes painting",
+        "Mausoleum Halicarnassus burial chamber steps"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Artemisia'nın yası antik çağda dillere destan oldu."
+        },
+        {
+          "s": "B",
+          "t": "Ne yaptı?"
+        },
+        {
+          "s": "A",
+          "t": "Anlatıya göre kocasının küllerini her gün içkisine karıştırıp içti. Onun yaşayan mezarı olmak için."
+        },
+        {
+          "s": "B",
+          "t": "Gerçek mi bu?"
+        },
+        {
+          "s": "A",
+          "t": "Romalı yazarların aktardığı bir hikâye. Doğrulamak mümkün değil ama yüzyıllarca ressamların konusu oldu."
+        },
+        {
+          "s": "A",
+          "t": "Bildiğimiz şu: Artemisia kocasından yalnızca iki yıl sonra öldü. Yapı henüz bitmemişti."
+        },
+        {
+          "s": "B",
+          "t": "İş yarım mı kaldı?"
+        },
+        {
+          "s": "A",
+          "t": "Plinius'a göre ustalar ücret alacakları kimse kalmadığı hâlde çalışmayı sürdürdü. Çünkü bu eserin kendi ünlerinin de anıtı olacağını biliyorlardı."
+        }
+      ]
+    },
+    {
+      "heading": "Bin Altı Yüz Yıl",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Mausoleum Halicarnassus engraving old",
+        "Bodrum ancient theatre",
+        "earthquake ruined ancient columns"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Mozole şaşırtıcı ölçüde uzun yaşadı. Büyük İskender milattan önce 334'te şehri kuşatıp aldığında ona dokunmadı."
+        },
+        {
+          "s": "B",
+          "t": "Romalılar da mı?"
+        },
+        {
+          "s": "A",
+          "t": "Onlar da. Korsan baskınları, savaşlar, din değişiklikleri. Yapı hepsinden sağ çıktı."
+        },
+        {
+          "s": "A",
+          "t": "On ikinci yüzyılda bölgeyi gezen bir piskopos onun hâlâ ayakta olduğunu ve hayranlık uyandırdığını yazıyor."
+        },
+        {
+          "s": "B",
+          "t": "Onu ne yıktı?"
+        },
+        {
+          "s": "A",
+          "t": "Depremler. Büyük olasılıkla on üçüncü ve on dördüncü yüzyıllardaki bir dizi sarsıntı. Önce tepedeki araba ve piramit düştü, sonra sütunlar."
+        },
+        {
+          "s": "B",
+          "t": "Yedi harikanın çoğunun kaderi."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Giza piramitleri dışında en uzun ayakta kalan oydu."
+        }
+      ]
+    },
+    {
+      "heading": "Şövalyeler ve Kireç Ocağı",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Bodrum Castle walls ancient blocks",
+        "Bodrum Castle tower knights coat of arms",
+        "Bodrum Castle frieze reused marble"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1400'lerin başında Rodos'taki Saint Jean Şövalyeleri Bodrum'a yerleşti ve limanın ucuna bir kale yapmaya başladı."
+        },
+        {
+          "s": "B",
+          "t": "Taşı nereden buldular?"
+        },
+        {
+          "s": "A",
+          "t": "Beş yüz metre ötede hazır kesilmiş taş yığını duruyordu. Yeşilimsi volkanik bloklar duvarlara, mermer parçalar ise kireç ocağına gitti."
+        },
+        {
+          "s": "B",
+          "t": "Mermeri yakıp kireç mi yaptılar?"
+        },
+        {
+          "s": "A",
+          "t": "Harç için. Kalenin en yoğun güçlendirme çalışmaları 1494 ile 1522 arasında yapıldı. Kalanı da o dönemde söküldü."
+        },
+        {
+          "s": "A",
+          "t": "Bazı kabartmaları güzel bulup süs olarak kale duvarlarına yerleştirdiler. Onlar bu sayede kurtuldu."
+        },
+        {
+          "s": "B",
+          "t": "Mezar odasına ne oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Sonradan yazılmış bir anlatıya göre şövalyeler 1522'de kazarken süslü bir odaya ve bir lahde rastladı. Akşam olduğu için bırakıp gittiler. Sabah döndüklerinde oda yağmalanmıştı."
+        },
+        {
+          "s": "B",
+          "t": "Kim tarafından?"
+        },
+        {
+          "s": "A",
+          "t": "Bilinmiyor. Arkeologlar mezarın çok daha önce soyulmuş olabileceğini düşünüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Newton'ın Kazısı",
+      "country": "United Kingdom",
+      "city": "London",
+      "image_queries": [
+        "British Museum Mausoleum room",
+        "Charles Thomas Newton portrait",
+        "Mausoleum chariot horse fragment British Museum"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "1846'da İngiliz büyükelçisi, kale duvarlarındaki kabartmaları padişahın izniyle söktürüp Londra'ya gönderdi."
+        },
+        {
+          "s": "A",
+          "t": "On yıl sonra British Museum, Charles Newton'ı mozolenin yerini bulması için yolladı."
+        },
+        {
+          "s": "B",
+          "t": "Yerini bilen yok muydu?"
+        },
+        {
+          "s": "A",
+          "t": "Üstü evler ve bahçelerle kaplıydı. Newton antik yazarların tariflerini izledi, arsaları tek tek satın aldı ve kazdı."
+        },
+        {
+          "s": "A",
+          "t": "1857'de temellere ulaştı. Dev at heykelinin parçalarını, bir araba tekerleğini, aslanları ve iki büyük heykeli buldu."
+        },
+        {
+          "s": "B",
+          "t": "Mausolos ve Artemisia mı?"
+        },
+        {
+          "s": "A",
+          "t": "Geleneksel olarak öyle adlandırılıyorlar ama kim oldukları kesin değil. Hepsi gemiyle Londra'ya gitti ve bugün British Museum'da özel bir salonda duruyor."
+        },
+        {
+          "s": "B",
+          "t": "Türkiye geri istedi mi?"
+        },
+        {
+          "s": "A",
+          "t": "İadesi için girişimler ve kampanyalar oldu. Eserler hâlâ Londra'da."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Bodrum",
+      "image_queries": [
+        "Mausoleum Halicarnassus site museum",
+        "Bodrum Castle sunset",
+        "Bodrum marina view castle"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Bugün Bodrum'da mozolenin yeri küçük bir açık hava müzesi. Temel çukurunu, sütun tamburlarını ve mezar odasına inen basamakları görebilirsin."
+        },
+        {
+          "s": "B",
+          "t": "Kaleyi gezerken duvarlara da bakmak lazım."
+        },
+        {
+          "s": "A",
+          "t": "Aralardaki yeşil taşlar ve mermer parçaları dünya harikasından kalma."
+        },
+        {
+          "s": "B",
+          "t": "Bir adamın adı iki bin dört yüz yıl sonra hâlâ her dilde yaşıyor. Mezarı gitti, kelimesi kaldı."
+        },
+        {
+          "s": "A",
+          "t": "Sence yurt dışındaki parçalar Bodrum'a dönmeli mi?"
+        },
+        {
+          "s": "B",
+          "t": "Yorumlara yaz."
+        },
+        {
+          "s": "A",
+          "t": "Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "lang": "tr",
+  "topic": "Gordion and King Midas",
+  "era": "9th-7th century BC, Phrygia; Alexander at Gordion 333 BC",
+  "country": "Turkey",
+  "label": "TARİH",
+  "mood": "notr",
+  "title": "Gordion: Kral Midas'ın Başkenti, Altınsız Kral Mezarı ve Kördüğüm",
+  "description": "Dokunduğu her şeyi altına çeviren Midas bir masal kahramanı ama gerçek bir kraldı ve başkenti Ankara'nın Polatlı ilçesindeydi. 1957'de açılan elli üç metrelik tümülüsten dünyanın ayakta kalan en eski ahşap yapısı çıktı; içinde tek gram altın yoktu. Friglerin başkenti Gordion'u, Midas'ı ve İskender'in kestiği düğümü anlatıyoruz.",
+  "hashtags": [
+    "gordion",
+    "midas",
+    "tarih"
+  ],
+  "tags": [
+    "gordion",
+    "kral midas",
+    "frigler",
+    "frigya",
+    "polatlı",
+    "ankara",
+    "midas tümülüsü",
+    "gordion düğümü",
+    "büyük iskender",
+    "unesco",
+    "tarih",
+    "belgesel"
+  ],
+  "speakers": {
+    "A": {
+      "name": "Elif",
+      "voice": "female"
+    },
+    "B": {
+      "name": "Kerem",
+      "voice": "male"
+    }
+  },
+  "sources": [
+    {
+      "title": "Gordion Antik Kenti, KÜRE Ansiklopedi",
+      "url": "https://kureansiklopedi.com/tr/detay/gordion-antik-kenti-5694f"
+    },
+    {
+      "title": "Gordion named in UNESCO World Heritage List, Penn Museum",
+      "url": "https://penn.museum/about/press-room/press-releases/gordion-first-active-penn-museum-archaeological-site-named-in-unesco-world-heritage-list"
+    },
+    {
+      "title": "Gordion Antik Kenti neden dünya mirası seçildi?, Cumhuriyet",
+      "url": "https://www.cumhuriyet.com.tr/yasam/gordion-antik-kenti-neden-dunya-mirasi-secildi-2121208"
+    }
+  ],
+  "chapters": [
+    {
+      "heading": "Giriş",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Midas Tumulus Gordion",
+        "Gordion citadel gate",
+        "Gordion museum Phrygian bronze"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Kerem, Kral Midas deyince aklına ne geliyor?"
+        },
+        {
+          "s": "B",
+          "t": "Dokunduğu her şeyin altın olması. Bir de eşek kulakları."
+        },
+        {
+          "s": "A",
+          "t": "Peki Midas'ın gerçek bir kral olduğunu biliyor muydun?"
+        },
+        {
+          "s": "B",
+          "t": "Masal sanıyordum."
+        },
+        {
+          "s": "A",
+          "t": "Asur kralının kayıtlarında adı geçiyor. Başkenti de Ankara'ya bir saat uzaklıkta, Polatlı'da."
+        },
+        {
+          "s": "B",
+          "t": "O zaman mezarı altın doludur."
+        },
+        {
+          "s": "A",
+          "t": "Elli üç metrelik bir tepenin altında bir kral mezarı bulundu. İçinden tek gram altın çıkmadı."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl olur?"
+        },
+        {
+          "s": "A",
+          "t": "Anlatayım. Şehrin adı Gordion. Kördüğümün de şehri."
+        }
+      ]
+    },
+    {
+      "heading": "Frigler",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Gordion citadel mound Yassıhöyük",
+        "Sakarya river Polatlı",
+        "Phrygian rock monument Midas city"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Gordion, Polatlı'nın Yassıhöyük köyünde, Sakarya Nehri'nin kıyısında."
+        },
+        {
+          "s": "B",
+          "t": "Kim kurdu?"
+        },
+        {
+          "s": "A",
+          "t": "Yerleşim çok eski ama onu ünlü yapanlar Frigler. Hitit İmparatorluğu çöktükten sonra Balkanlar'dan Anadolu'ya geldikleri düşünülüyor."
+        },
+        {
+          "s": "A",
+          "t": "Milattan önce dokuzuncu yüzyıldan itibaren Gordion'u güçlü bir başkente çevirdiler. Yüksek surlar, anıtsal bir kapı ve megaron denen uzun salonlu yapılar."
+        },
+        {
+          "s": "B",
+          "t": "Neleriyle tanınıyorlardı?"
+        },
+        {
+          "s": "A",
+          "t": "Dokumaları, tunç işleri ve marangozluklarıyla. Bir de müzikle. Antik Yunanlılar bazı çalgıların ve ezgilerin Frigya'dan geldiğini söylerdi."
+        },
+        {
+          "s": "A",
+          "t": "Kazılarda bir yapının zemininde renkli çakıl taşlarından yapılmış bir mozaik bulundu. Bilinen en eski çakıl mozaiklerden biri."
+        }
+      ]
+    },
+    {
+      "heading": "Gerçek Midas",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Sargon II Assyrian relief",
+        "Phrygian inscription Midas monument",
+        "Assyrian cuneiform annals"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Gerçek Midas hakkında ne biliyoruz?"
+        },
+        {
+          "s": "A",
+          "t": "Asur kralı II. Sargon'un yıllıklarında \"Muşkili Mita\" diye bir kraldan söz ediliyor. Tarihçilerin çoğu bunun Midas olduğunu kabul ediyor."
+        },
+        {
+          "s": "B",
+          "t": "Ne zaman?"
+        },
+        {
+          "s": "A",
+          "t": "Milattan önce sekizinci yüzyılın sonu. Kayıtlara göre önce Asur'a karşı komşu krallarla ittifak kurdu, sonra milattan önce 709 civarında Asur'la barış yaptı."
+        },
+        {
+          "s": "A",
+          "t": "Yunan kaynakları da onu tanıyor. Delfi'deki tapınağa bir taht adayan ilk yabancı kral olduğu yazılı."
+        },
+        {
+          "s": "B",
+          "t": "Sonu nasıl oldu?"
+        },
+        {
+          "s": "A",
+          "t": "Yedinci yüzyılın başında Kimmerler denen atlı göçebeler Anadolu'ya girdi ve Frigya'yı sarstı. Yunan anlatılarına göre Midas bu yenilginin ardından öldü. Nasıl öldüğü kesin olarak bilinmiyor."
+        }
+      ]
+    },
+    {
+      "heading": "Altın ve Eşek Kulakları",
+      "country": "Turkey",
+      "city": "Manisa",
+      "image_queries": [
+        "King Midas golden touch painting",
+        "Midas donkey ears illustration",
+        "Pactolus river Sardis"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Altın hikâyesi nereden çıkıyor?"
+        },
+        {
+          "s": "A",
+          "t": "Yunan mitolojisinden. Midas tanrı Dionysos'a bir iyilik yapar, karşılığında bir dilek hakkı kazanır. Dokunduğu her şeyin altına dönmesini ister."
+        },
+        {
+          "s": "B",
+          "t": "Yemeği de altın olur."
+        },
+        {
+          "s": "A",
+          "t": "Aç kalır ve dileğinden pişman olur. Dionysos ona Paktolos Deresi'nde yıkanmasını söyler. Altın suya geçer."
+        },
+        {
+          "s": "B",
+          "t": "Lidya'nın altın taşıyan deresi."
+        },
+        {
+          "s": "A",
+          "t": "Aynı dere. Efsane bir bakıma o derenin neden altın taşıdığını açıklıyor."
+        },
+        {
+          "s": "A",
+          "t": "İkinci hikâyede Midas bir müzik yarışmasında hakemlik yapar ve Apollon yerine rakibini seçer. Apollon da ona eşek kulakları verir."
+        },
+        {
+          "s": "B",
+          "t": "Sırrı da berberi biliyor."
+        },
+        {
+          "s": "A",
+          "t": "Berber dayanamayıp sırrı bir çukura fısıldar. Orada biten sazlar rüzgârda \"Midas'ın kulakları eşek kulakları\" diye hışırdar."
+        },
+        {
+          "s": "B",
+          "t": "Gerçek kralla ilgisi var mı?"
+        },
+        {
+          "s": "A",
+          "t": "Büyük olasılıkla yok. Ama Frig krallarının zenginliğinin komşularında bıraktığı izlenimi gösteriyor."
+        }
+      ]
+    },
+    {
+      "heading": "Büyük Tümülüs",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Tumulus MM Gordion entrance tunnel",
+        "Gordion tumulus aerial",
+        "Rodney Young Gordion excavation 1957"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Gordion'un çevresinde yüze yakın tümülüs var. Yani yığma mezar tepesi. En büyüğü elli üç metre yüksekliğinde ve üç yüz metre çapında."
+        },
+        {
+          "s": "B",
+          "t": "Elli metrelik yapay bir tepe."
+        },
+        {
+          "s": "A",
+          "t": "Anadolu'nun en büyüklerinden. Halk arasında hep Midas'ın mezarı diye bilindi."
+        },
+        {
+          "s": "A",
+          "t": "1957'de Pennsylvania Üniversitesi'nden Rodney Young burayı açmaya karar verdi. Sorun, mezar odasının tepenin neresinde olduğunu bilmemesiydi."
+        },
+        {
+          "s": "B",
+          "t": "Nasıl buldu?"
+        },
+        {
+          "s": "A",
+          "t": "Tepenin üstünden aşağıya sondaj delikleri açtırdı. Matkap taşa çarptığı noktaları haritaya işledi ve odanın yerini saptadı."
+        },
+        {
+          "s": "A",
+          "t": "Sonra tepenin yanından yatay bir tünel kazdırdı. İşi Zonguldak'tan getirilen maden işçileri yaptı."
+        },
+        {
+          "s": "B",
+          "t": "Tünelin ucunda ne vardı?"
+        },
+        {
+          "s": "A",
+          "t": "Taş bir duvar, arkasında moloz, onun arkasında kalın kütüklerden bir duvar. Ardıç ve çam kütükleriyle yapılmış kapısız bir oda."
+        }
+      ]
+    },
+    {
+      "heading": "Altınsız Kral",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Tumulus MM wooden tomb chamber",
+        "Phrygian bronze cauldron Gordion",
+        "Phrygian inlaid wooden table Ankara museum"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Oda iki bin yedi yüz yıldır kapalıydı ve sapasağlamdı. Bugün dünyanın ayakta duran en eski ahşap yapısı sayılıyor."
+        },
+        {
+          "s": "B",
+          "t": "İçinde kim vardı?"
+        },
+        {
+          "s": "A",
+          "t": "Bir yatağın üzerinde, altmış yaşlarında bir erkeğin iskeleti. Etrafında yüzlerce eşya."
+        },
+        {
+          "s": "B",
+          "t": "Ama altın yok."
+        },
+        {
+          "s": "A",
+          "t": "Hiç yok. Yüz yetmişe yakın tunç kap, büyük kazanlar, kepçeler, onlarca tunç çengelli iğne. Ve ahşap mobilyalar."
+        },
+        {
+          "s": "B",
+          "t": "Ahşap nasıl dayanmış?"
+        },
+        {
+          "s": "A",
+          "t": "Oda hava almadığı için. Şimşir ve ardıçtan, kakmalarla süslü servis masaları bulundu. Antik dünyadan kalan en iyi korunmuş ahşap mobilyalar bunlar."
+        },
+        {
+          "s": "A",
+          "t": "Kaplardaki kalıntılar yıllar sonra incelendi. Cenaze töreninde kuzu ya da keçi etli, mercimekli bir yahni yenmiş. Şarap, arpa birası ve bal şarabı karışımı bir içki içilmiş."
+        },
+        {
+          "s": "B",
+          "t": "Yani cenaze yemeğinin menüsünü biliyoruz."
+        },
+        {
+          "s": "A",
+          "t": "Evet. Peki bu adam Midas mı?"
+        },
+        {
+          "s": "B",
+          "t": "Değil sanırım."
+        },
+        {
+          "s": "A",
+          "t": "Kütüklerin yaş halkaları mezarın milattan önce 740 civarında yapıldığını gösteriyor. Midas ise otuz yıl sonra hâlâ hayattaydı. Bu yüzden mezarın büyük olasılıkla babasına ait olduğu, tepeyi de genç Midas'ın yaptırdığı düşünülüyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kördüğüm",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Alexander cuts the Gordian knot painting",
+        "ancient ox cart relief",
+        "Gordion citadel ruins"
+      ],
+      "lines": [
+        {
+          "s": "B",
+          "t": "Kördüğüme gelelim."
+        },
+        {
+          "s": "A",
+          "t": "Efsaneye göre Friglere bir kehanet verilmişti: şehre öküz arabasıyla giren ilk kişiyi kral yapın. Bu kişi Gordios adında bir çiftçi oldu."
+        },
+        {
+          "s": "A",
+          "t": "Arabası tapınağa adandı. Boyunduruğu, uçları görünmeyen karmaşık bir düğümle bağlıydı. Zamanla ikinci bir kehanet doğdu: bu düğümü çözen Asya'nın hâkimi olacak."
+        },
+        {
+          "s": "B",
+          "t": "Ve İskender geldi."
+        },
+        {
+          "s": "A",
+          "t": "Milattan önce 333'te, Pers seferi sırasında kışı Gordion'da geçirdi. Düğümü görmeye gitti."
+        },
+        {
+          "s": "B",
+          "t": "Kılıcıyla kesti."
+        },
+        {
+          "s": "A",
+          "t": "En bilinen anlatı bu. Ama onunla birlikte olan bir yazar farklı anlatıyor: İskender boyunduruğu tutan çiviyi çekip çıkarmış ve düğüm kendiliğinden çözülmüş."
+        },
+        {
+          "s": "B",
+          "t": "Yani ya kaba kuvvet ya akıl."
+        },
+        {
+          "s": "A",
+          "t": "İki durumda da kuralın dışına çıkarak. \"Kördüğümü kesmek\" deyimi buradan geliyor."
+        }
+      ]
+    },
+    {
+      "heading": "Kapanış",
+      "country": "Turkey",
+      "city": "Ankara",
+      "image_queries": [
+        "Gordion museum Yassıhöyük",
+        "Midas tumulus sunset",
+        "Gordion excavation citadel"
+      ],
+      "lines": [
+        {
+          "s": "A",
+          "t": "Gordion 2023'te UNESCO Dünya Mirası Listesi'ne girdi. Tümülüsün içine tünelden yürüyerek girip ahşap odayı görebiliyorsun."
+        },
+        {
+          "s": "B",
+          "t": "Altına dokunan kralın ailesinin mezarından altın çıkmaması güzel bir ironi."
+        },
+        {
+          "s": "A",
+          "t": "Belki de gerçek zenginlikleri ahşap ve tunç işçiliğiydi. Altın sonradan masalla eklendi."
+        },
+        {
+          "s": "B",
+          "t": "Sen olsan düğümü çözmeye mi çalışırdın, keser miydin?"
+        },
+        {
+          "s": "A",
+          "t": "Yorumlara yaz. Tarihin az bilinen hikâyeleri için kanala abone olmayı da unutma."
+        }
+      ]
+    }
+  ]
+}

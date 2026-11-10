@@ -22,7 +22,7 @@ scripts/longform/tr-kapalicarsi.json
 scripts/longform/en-fall-of-constantinople.json
 scripts/longform/tr-ayasofya.json
 scripts/longform/en-rosetta-stone.json
-scripts/longform/tr-catalhoyuk.json
+scripts/longform/tr-kultepe.json
 scripts/longform/en-tutankhamun.json
 scripts/longform/tr-hattusa.json
 scripts/longform/en-apollo-13.json
@@ -30,9 +30,9 @@ scripts/longform/tr-efes.json
 scripts/longform/en-great-fire-of-london.json
 scripts/longform/tr-lidya-ilk-para.json
 scripts/longform/en-shackleton-endurance.json
-scripts/longform/tr-nemrut.json
+scripts/longform/tr-halikarnas-mozolesi.json
 scripts/longform/en-terracotta-army.json
-scripts/longform/tr-zeugma.json
+scripts/longform/tr-gordion-midas.json
 scripts/longform/en-machu-picchu.json
 scripts/longform/tr-evliya-celebi.json
 scripts/longform/en-emu-war.json

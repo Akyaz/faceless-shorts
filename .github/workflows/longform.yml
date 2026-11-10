@@ -66,7 +66,11 @@ jobs:
           SCRIPT_INPUT: ${{ inputs.script }}
         run: |
           script="${SCRIPT_INPUT:-$(python -m pipeline.longform --next)}"
-          if [ -z "$script" ]; then echo "Sırada yayınlanmamış metin yok."; exit 0; fi
+          # Boş sıra sessizce "başarılı" bitmesin (6-10 Kasım'da video çıkmadığı fark edilmedi): çalışma düşer, görünür
+          if [ -z "$script" ]; then
+            echo "::error::Sırada yayınlanmamış tarih metni yok: scripts/longform/ altına yeni metin yazıp queue.txt'ye ekleyin."
+            exit 1
+          fi
           echo "Metin: $script"
           echo "SCRIPT_PATH=$script" >> "$GITHUB_ENV"
       - name: Videoyu üret

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T16:52:46Z",
-  "run": "38601606494",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38601606494",
-  "videos": [
-   {
-    "title": "İŞKUR Gençlik Programı: Öğrencilere Günlük 1.375 TL",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:03Z",
   "run": "38634195876",
   "event": "workflow_dispatch",
@@ -4621,5 +4607,21 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/tr-kultepe.json"
+ },
+ {
+  "time": "2026-11-11T23:40:55Z",
+  "run": "43102484583",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43102484583",
+  "videos": [
+   {
+    "title": "Çağatay Ulusoy Eşref Tek rolü için zayıfladı",
+    "url": "https://youtu.be/b9rP_2EeUcc",
+    "instagram": "https://www.instagram.com/reel/Dfnrt1mk_cv/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T12:31:30Z",
-  "run": "38564092858",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38564092858",
-  "videos": [
-   {
-    "title": "İki Şehrin Arası 2,5 Saate Düşüyor: Tarihi Projede Sona Gelindi",
-    "url": "https://youtu.be/giMOpw2leaA"
-   }
-  ]
- },
- {
   "time": "2026-10-14T16:52:46Z",
   "run": "38601606494",
   "event": "workflow_dispatch",
@@ -4618,5 +4604,22 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43040330598",
   "videos": [],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-11T22:43:47Z",
+  "run": "43112003219",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43112003219",
+  "videos": [
+   {
+    "title": "Kültepe: Anadolu'nun İlk Yazılı Belgeleri 4.000 Yıllık Tüccar Mektupları",
+    "url": "https://youtu.be/AvnzVeKsvsg",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-kultepe.json"
  }
 ]

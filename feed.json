@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-14T04:40:46Z",
-  "run": "38512538965",
-  "event": "workflow_dispatch",
-  "mode": "ucl",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38512538965",
-  "videos": [
-   {
-    "title": "Bu Şampiyonlar Ligi Haftasında Neler Oldu?! 😱 13 Ekim Sonuçları ve 14 Ekim Dev Maç Programı!",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-14T09:24:18Z",
   "run": "38541683493",
   "event": "schedule",
@@ -4620,5 +4606,21 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/en-rosetta-stone.json"
+ },
+ {
+  "time": "2026-11-11T07:21:51Z",
+  "run": "42977521309",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/42977521309",
+  "videos": [
+   {
+    "title": "Enerjide Dev Adım: Türkiye ile Suudi Arabistan Anlaşması",
+    "url": "https://youtu.be/FIrbwo_MEgA",
+    "instagram": "https://www.instagram.com/reel/Dfl7q3Cn8AG/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

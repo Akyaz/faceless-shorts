@@ -1,0 +1,29 @@
+name: Kanal istatistikleri
+
+# Yalnızca okur: her videonun izlenme, beğeni, yorum sayısı (ve izin varsa paylaşım, izlenme yüzdesi, abone).
+# Sonuç "stats" adlı dosya olarak saklanır (pipeline/stats.py).
+on:
+  workflow_dispatch:
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: İstatistikleri al
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m pipeline.stats out/stats.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stats
+          path: out/stats.json
+          retention-days: 30

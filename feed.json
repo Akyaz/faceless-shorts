@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:41:34Z",
-  "run": "38587543814",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682777798",
-  "videos": [
-   {
-    "title": "Spor Gündemi",
-    "url": "https://youtu.be/ZF3wWn7qUEI"
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:42Z",
   "run": "38594122654",
   "event": "workflow_dispatch",
@@ -4629,5 +4615,20 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-12T12:56:01Z",
+  "run": "43203482999",
+  "event": "workflow_dispatch",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43203482999",
+  "videos": [
+   {
+    "title": "Philae Comet Landing 2014: First Touchdown on a Comet",
+    "url": "https://youtu.be/HjGnCl18j0g",
+    "instagram": "https://www.instagram.com/reel/DfpGt_6mSsI/"
+   }
+  ]
  }
 ]

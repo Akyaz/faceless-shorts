@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:41:03Z",
-  "run": "38634195876",
-  "event": "workflow_dispatch",
-  "mode": "digest",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682730261",
-  "videos": [
-   {
-    "title": "Halk TV'ye Kayyum ve Eğitime Hava Engeli",
-    "url": "https://youtu.be/F3zbQg00l9U"
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:09Z",
   "run": "38613044248",
   "event": "workflow_dispatch",
@@ -4623,5 +4609,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-12T00:34:38Z",
+  "run": "43110766162",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43110766162",
+  "videos": [
+   {
+    "title": "Galatasaray'dan Victor Osimhen Açıklaması: Sakatlığı Kronik mi?",
+    "url": "https://youtu.be/uWbiXYEnSps",
+    "instagram": "https://www.instagram.com/reel/Dfnx36kldA_/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

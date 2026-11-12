@@ -16,7 +16,8 @@ import urllib.request
 import webbrowser
 
 # upload: video yükleme; force-ssl: videonun altına kanal adına ilk yorumu (videodaki soru) yazma
-SCOPE = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl"
+SCOPE = ("https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl "
+         "https://www.googleapis.com/auth/yt-analytics.readonly")  # paylaşım ve izlenme yüzdesi (pipeline/stats.py)
 PORT = 8765
 REPO = "Akyaz/faceless-shorts"
 

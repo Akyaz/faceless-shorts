@@ -14,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import evergreen, horoscope, images, music, onthisday, render, review, script
+from . import evergreen, horoscope, images, music, onthisday, platforms, render, review, script
 
 
 def _offline_audio(text, out_path):
@@ -119,6 +119,16 @@ def find_images(plan, work):
     segments = plan["segments"]
     if any(plan.get("sections") or []):
         return _section_images(plan, work)
+    if plan.get("work_images"):
+        # Dizi ve film: yapımın resmi görselleri (sahne görselleri, afiş) ilk karede ve paragraflar arasında
+        # sırayla; tek görsel varsa oyuncu fotoğraflarıyla dönüşümlü
+        own = images.save_direct(plan["work_images"], work / "work", len(segments))
+        if plan.get("subject_files") and len(own) < 3:
+            own += images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
+                                           work / "subject", len(plan["subject_files"]))
+        if own:
+            paths = [p for p, _ in own]
+            return [paths[i % len(paths)] for i in range(len(segments))], [c for _, c in own]
     if plan.get("subject_files"):
         # Haberde adı geçen kişinin ya da eserin kendi fotoğrafı ilk karede ve her iki paragrafta bir görünür;
         # aradaki paragraflarda konuyla ilgili destek görselleri
@@ -194,6 +204,8 @@ def news_plan(args, exclude=(), _tries=0):
         if args.mode == "trend":  # iki akış sırayla karıştırılır, ikisinde de çıkan haber bir kez alınır
             mixed = [h for pair in zip(fetch_headlines(20, "science"), fetch_headlines(20, "technology")) for h in pair]
             headlines = list({h["title"]: h for h in mixed}.values())
+        elif args.mode == "platform":  # Netflix Türkiye Top 10 ve platformların yeni yapımları
+            headlines = platforms.headlines()
         elif args.mode == "debate":  # tartışılacak bir tercih için geniş havuz: gündem, spor, teknoloji
             feeds = [fetch_headlines(15, t) for t in ("top", "sports", "technology")]
             mixed = [h for group in zip(*feeds) for h in group]
@@ -203,7 +215,7 @@ def news_plan(args, exclude=(), _tries=0):
                      else "entertainment" if args.mode == "culture" else "top")
             headlines = fetch_headlines(limit=30, topic=topic)
     single = args.mode in script.STORIES
-    if args.mode in ("story", "world", "trend", "debate", "sportstory", "culture") and not args.offline:
+    if args.mode in ("story", "world", "trend", "debate", "sportstory", "culture", "platform") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
         from .news import sensitive_headline
         calm = [h for h in headlines if not sensitive_headline(h)]
@@ -211,12 +223,12 @@ def news_plan(args, exclude=(), _tries=0):
         headlines = calm or headlines
     if single and not args.offline:
         # Tek başlıktan 80 kelimelik metin çıkmaz, model boşluğu uydurarak doldurur; en az üç başlığı olan haber aranır
-        rich = [h for h in headlines if len(h.get("related", [])) >= 2]
+        rich = [h for h in headlines if len(h.get("related", [])) >= 2 or h.get("body")]
         print(f"Yeterli kaynağı olan haber: {len(rich)}/{len(headlines)}")
         headlines = rich if len(rich) >= 3 else headlines
     # Günün özeti ve spor, günün haberlerini yeniden anar; tekrar kaydı tek haber ve trend videoları içindir
     headlines = [h for h in headlines if h["title"] not in exclude] or headlines
-    use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate", "sportstory", "culture")
+    use_history = bool(args.history) and args.mode in ("story", "world", "trend", "debate", "sportstory", "culture", "platform")
     history = load_history(args.history) if use_history else []
     used = {h["source"] for h in history}
     fresh = [h for h in headlines if h["title"] not in used]
@@ -244,7 +256,7 @@ REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayı
 
 # Bu türlerde haber bir kişi ya da eser hakkında: onu göstermeyen video (kanal binası, genel set fotoğrafı)
 # izleyiciyi yanıltıyor. Konunun kendi serbest lisanslı fotoğrafı yoksa sıradaki haber denenir.
-SUBJECT_REQUIRED = {"culture", "sportstory"}
+SUBJECT_REQUIRED = {"culture", "sportstory", "platform"}
 SUBJECT_TRIES = 4
 
 
@@ -258,7 +270,9 @@ def with_subject_photos(args):
         else:
             files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
         plan["subject_files"] = files
-        if files or args.mode not in SUBJECT_REQUIRED or args.offline:
+        # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
+        plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"))
+        if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
             return plan
         tried += [h["title"] for h in plan["sources"]]
         print(f"Konunun kendi fotoğrafı yok ({', '.join(plan.get('subjects') or ['isim yok'])}); başka haber deneniyor")
@@ -267,7 +281,7 @@ def with_subject_photos(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact", "sportstory", "culture",
+    ap.add_argument("--mode", choices=["story", "world", "trend", "digest", "morning", "sports", "debate", "onthisday", "fact", "sportstory", "culture", "platform",
                                        "horoscope1", "horoscope2", "horoscope3"],
                     default="story")
     ap.add_argument("--out", default="out")

@@ -66,3 +66,121 @@ Likya Yolu | Lycian Way
 Venüs | Venus
 Ahi Evran | Ahi Evren
 Köpek balığı | Shark
+
+# Konu serileri (12 Kasım 2026): 12:00 ve 15:00 videoları kategoriler arasında sırayla döner (pipeline/evergreen.py).
+# "[kategori]" satırından sonraki konular o kategorinin; kategori adları evergreen.CATEGORIES'te.
+
+[otomobil]
+Devrim (otomobil) | Devrim (automobile)
+Anadol (otomobil) | Anadol
+Togg | Togg
+Tofaş Murat 124 | Fiat 124
+Ford Model T | Ford Model T
+Volkswagen Beetle | Volkswagen Beetle
+Mercedes-Benz 300 SL | Mercedes-Benz 300 SL
+Ferrari 250 GTO | Ferrari 250 GTO
+Lamborghini Miura | Lamborghini Miura
+Porsche 911 | Porsche 911
+Bugatti Veyron | Bugatti Veyron
+Land Rover Defender | Land Rover Defender
+Willys MB | Willys MB
+Mini (1959) | Mini (marque)
+Üç noktalı emniyet kemeri | Seat belt
+ABS fren sistemi | Anti-lock braking system
+Wankel motoru | Wankel engine
+Harley-Davidson | Harley-Davidson
+Ducati | Ducati
+Toprak Razgatlıoğlu | Toprak Razgatlıoğlu
+Kenan Sofuoğlu | Kenan Sofuoğlu
+MotoGP | MotoGP
+Valentino Rossi | Valentino Rossi
+Le Mans 24 Saat | 24 Hours of Le Mans
+
+[para]
+Vehbi Koç | Vehbi Koç
+Sakıp Sabancı | Sakıp Sabancı
+Nuri Demirağ | Nuri Demirağ
+John D. Rockefeller | John D. Rockefeller
+Andrew Carnegie | Andrew Carnegie
+Henry Ford | Henry Ford
+Apple Inc. kuruluşu | History of Apple Inc.
+Amazon (şirket) | Amazon (company)
+Getir | Getir
+Trendyol | Trendyol
+Peak Games | Peak Games
+Lale Çılgınlığı | Tulip mania
+Güney Denizi Balonu | South Sea Company
+1929 Büyük Buhran | Wall Street crash of 1929
+Bretton Woods sistemi | Bretton Woods system
+Kâğıt para tarihi | History of banknotes
+Enron skandalı | Enron scandal
+Theranos | Theranos
+Bernard Madoff | Bernie Madoff
+Wirecard | Wirecard scandal
+Rolex | Rolex
+Patek Philippe | Patek Philippe
+Omega Speedmaster | Omega Speedmaster
+Gulet | Gulet
+Azzam (yat) | Azzam (yacht)
+
+[muhendislik]
+1915 Çanakkale Köprüsü | 1915 Çanakkale Bridge
+Marmaray | Marmaray
+Avrasya Tüneli | Eurasia Tunnel
+Osmangazi Köprüsü | Osman Gazi Bridge
+İstanbul Havalimanı | Istanbul Airport
+Atatürk Barajı | Atatürk Dam
+Burj Khalifa | Burj Khalifa
+Panama Kanalı | Panama Canal
+Süveyş Kanalı | Suez Canal
+Manş Tüneli | Channel Tunnel
+Üç Boğaz Barajı | Three Gorges Dam
+Golden Gate Köprüsü | Golden Gate Bridge
+Apollo 11 | Apollo 11
+Perseverance (gezgin) | Perseverance (rover)
+Vecihi Hürkuş | Vecihi Hürkuş
+Wright kardeşler | Wright brothers
+Concorde | Concorde
+Airbus A380 | Airbus A380
+Boeing 747 | Boeing 747
+Kara kutu (havacılık) | Flight recorder
+Alan Turing | Alan Turing
+Deep Blue | Deep Blue (chess computer)
+AlphaGo | AlphaGo
+Enigma makinesi | Enigma machine
+Stuxnet | Stuxnet
+Kevin Mitnick | Kevin Mitnick
+
+[tarih]
+Sümerler | Sumer
+Babil | Babylon
+Mısır piramitleri | Egyptian pyramids
+Kolezyum | Colosseum
+Maya uygarlığı | Maya civilization
+İnka İmparatorluğu | Inca Empire
+Magna Carta | Magna Carta
+Vikingler | Vikings
+Orta Çağ şatoları | Castle
+Gotik mimari | Gothic architecture
+Dolmabahçe Sarayı | Dolmabahçe Palace
+Beylerbeyi Sarayı | Beylerbeyi Palace
+Versay Sarayı | Palace of Versailles
+Neuschwanstein Şatosu | Neuschwanstein Castle
+Highclere Şatosu | Highclere Castle
+Kuzey Anadolu Fay Hattı | North Anatolian Fault
+Yellowstone süpervolkanı | Yellowstone Caldera
+Tunguska olayı | Tunguska event
+Tropikal siklon | Tropical cyclone
+Dünya nüfusu | World population
+Yeşilçam | Yeşilçam
+Hababam Sınıfı | Hababam Sınıfı
+Selvi Boylum Al Yazmalım | Selvi Boylum Al Yazmalım
+Charlie Chaplin | Charlie Chaplin
+Casablanca (film) | Casablanca (film)
+Mekanik Türk | Mechanical Turk
+Garri Kasparov | Garry Kasparov
+Magnus Carlsen | Magnus Carlsen
+Plasebo etkisi | Placebo
+Dunning-Kruger etkisi | Dunning–Kruger effect
+Pavlov'un köpeği | Classical conditioning
+Marshmallow deneyi | Stanford marshmallow experiment

@@ -1,7 +1,8 @@
 """Habere uygun arka plan görsellerini bulur.
 
 Sıra: Wikimedia Commons (serbest lisanslı gerçek fotoğraflar) -> Gemini illüstrasyonu -> yok.
-Haber sitelerinin fotoğrafları telifli olduğu için kullanılmaz.
+Haber sitelerinin fotoğrafları telifli olduğu için kullanılmaz. Tek istisna dizi ve film haberleri: yapımın resmi
+afişi ve sahne görselleri (pipeline/platforms.py, save_direct) kullanılır ve hak sahibi açıklamada belirtilir.
 """
 import base64
 import html
@@ -292,6 +293,12 @@ def _save(picked, out_dir, count, exclude_out=None):
         if len(results) >= count:
             break
     return results
+
+
+def save_direct(candidates, out_dir, count):
+    """Dışarıdan gelen hazır adaylar (resmi afiş ve sahne görselleri): sırayla indirilir, eleme yapılmaz."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    return _save(candidates, out_dir, count)
 
 
 def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):

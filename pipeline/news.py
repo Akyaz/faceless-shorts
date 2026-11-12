@@ -1,6 +1,7 @@
 """Google News Türkiye RSS'ten başlıkları çeker."""
 import html
 import re
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -57,8 +58,15 @@ def _related(description_html):
     return out
 
 
-def fetch_headlines(limit=10, topic="top"):
-    req = urllib.request.Request(FEEDS[topic], headers={"User-Agent": "Mozilla/5.0"})
+def search_headlines(query, limit=10):
+    """Google News araması (Türkiye); sonuçlar kümesizdir (diğer kaynaklar boş gelir)."""
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+        {"q": query, "hl": "tr", "gl": "TR", "ceid": "TR:tr"})
+    return fetch_headlines(limit, url=url)
+
+
+def fetch_headlines(limit=10, topic="top", url=None):
+    req = urllib.request.Request(url or FEEDS[topic], headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         root = ET.fromstring(resp.read())
 

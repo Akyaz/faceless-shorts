@@ -182,6 +182,12 @@ IMAGE_FIELDS_EN = """- country: English name of the country where the story take
 - object_query: one English search for a close-up of the object the story is about, with no people and no
   location in the frame (example: "oil barrel", "banknotes", "satellite dish"); empty if there is none."""
 
+# Dizi ve film haberlerinde yapımın resmi görselleri aranır (kanal sahibinin kararı: resmi afiş ve sahne görselleri)
+WORK = """Yapım alanı: haber bir dizi ya da film hakkındaysa JSON'a "work" alanını ekle: {"title": yapımın özgün adı
+(Netflix ya da TMDB'deki adı), "year": ilk yayın yılı (biliniyorsa; yoksa boş), "type": "tv" (dizi) ya da "movie" (film)}.
+Videoda yapımın resmi afişi ve sahne görselleri gösterilir. Haber bir yapım hakkında değilse "work": null.
+"""
+
 # Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi
 STORIES = {
     "story": {
@@ -243,7 +249,26 @@ Görseller: haberde adı geçen oyuncu ve sanatçıların kendi fotoğrafları "
 "television studio", "theatre stage", "concert stage", "cinema hall", "film festival red carpet", "art gallery").
 Haberi anlatırken sahneyi betimle: kim, nerede, ne yaptı, ne dedi (örnek: "Haluk Bilginer, ödül konuşmasında 'Türk sineması
 değil, Türkiye sineması' dedi."). Soru yalnızca adı konmuş iki seçenek varsa sorulur; yoksa sorma. "pick" alanına seçtiğin haberin numarasını yaz.
-""",
+""" + WORK,
+    },
+    # Dijital platformlar (10:00): Netflix Türkiye Top 10'daki yapımlar ve platformların yeni dizi ve filmleri.
+    # Görseller yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py).
+    "platform": {
+        "label": "DİJİTAL PLATFORM", "hashtags": ["netflix", "dizi"], "category": "24",
+        "brief": """Görev: YouTube Shorts için Türkçe dijital platform haberi (Netflix, Disney+, Prime Video, HBO Max,
+tabii, Exxen). Amaç izleyicinin sonuna kadar izlemesi ve videoyu diziyi ya da filmi sevecek bir arkadaşına göndermesi.
+
+Haber seçimi: Öncelik sırası:
+1. Netflix Türkiye haftalık Top 10'daki yapımlar ("Netflix Top 10" kaynaklı satırı olan haberler): ne anlattığı,
+   kimlerin oynadığı, kaçıncı sırada ve kaç haftadır listede olduğu.
+2. Yeni yayınlanan ya da yayın tarihi açıklanan dizi ve filmler, yeni sezonlar, ilk fragmanlar.
+3. Türk yapımlarının platformlardaki başarısı.
+Seçme: "en iyi 10 dizi" gibi öneri listeleri ve derlemeler; abonelik fiyatı, şirket yatırımı ve hisse haberleri;
+oyuncuların özel hayatı; yapımın adı geçmeyen haberler. "pick" alanına seçtiğin haberin numarasını yaz.
+Bilgi: bazı haberlerin altında "Haber metni" var; bilgiyi başlıklardan ve bu metinden al, başka bilgi ekleme.
+Metinde yapımın adını, platformu, konusunu bir cümleyle, başrol oyuncularını ve yayın tarihini (ya da Top 10 sırasını)
+söyle (örnek ilk cümle: "Netflix Türkiye'de bu hafta bir numara Organize İşler: Karun Hazinesi.").
+""" + WORK,
     },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
@@ -493,7 +518,8 @@ def _blocks(headlines, english=False):
     blocks = []
     for i, h in enumerate(headlines, 1):
         related = "\n".join(f"   - {r['title']} ({r['source']})" for r in h.get("related", [])[:6])
-        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   {others}:\n{related}" if related else ""))
+        body = f"\n   {'Article text' if english else 'Haber metni'}: {h['body']}" if h.get("body") else ""
+        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   {others}:\n{related}" if related else "") + body)
     return blocks
 
 
@@ -575,7 +601,8 @@ def story_script(headlines, kind="story", count=10, recent=()):
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "category": spec.get("category"),
             "subjects": [str(x).strip() for x in out.get("subjects") or [] if str(x).strip()][:3],
-            "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out)}
+            "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out),
+            "work": out.get("work") if isinstance(out.get("work"), dict) else None}
 
 
 def _digest_plan(kind, title, intro, items, outro, hashtags=()):

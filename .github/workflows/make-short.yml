@@ -73,9 +73,9 @@ on:
         type: string
         default: ""
       mode:
-        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen Biliyor muydun?), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), horoscope1/2/3 (haftalık burç: Koç-Yengeç, Aslan-Akrep, Yay-Balık), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
+        description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen bilgi: Biliyor muydun?, otomobil, para ve iş, bilim ve mühendislik, tarih serileri sırayla), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), platform (Netflix Top 10 ve dijital platformların yeni dizi ve filmleri), horoscope1/2/3 (haftalık burç: Koç-Yengeç, Aslan-Akrep, Yay-Balık), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
-        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, culture, horoscope1, horoscope2, horoscope3, matchday, ucl]
+        options: [story, world, trend, digest, morning, sports, debate, onthisday, fact, sportstory, culture, platform, horoscope1, horoscope2, horoscope3, matchday, ucl]
         default: story
 
 jobs:
@@ -145,6 +145,7 @@ jobs:
       - name: Videoları üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}  # isteğe bağlı: dizi ve filmlerin resmi sahne görselleri
           SCRIPT: ${{ inputs.script || needs.slot.outputs.script }}
           SCRIPT_JSON: ${{ inputs.script_json }}
           UCL_RESULTS: ${{ inputs.results }}

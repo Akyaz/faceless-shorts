@@ -36,7 +36,9 @@ WAIT_MINUTES = 120  # öndeki çalışmalar en fazla bu kadar beklenir (iş akı
 SLOTS = {
     # Günde 6 Shorts (maç günü 7). 07:15 sabah özeti ve 16:00 İngilizce "On This Day" kaldırıldı: özetler akılda
     # kalmıyordu, İngilizce video Türkçe kitleyi karıştırıyordu.
-    "50 6 * * *": ("10:00", "story"), "15 7 * * *": ("10:00", "story"),
+    # 10:00: dijital platformlar (Netflix Türkiye Top 10, yeni dizi ve filmler). Gündem haberi en zayıf saatti
+    # (ortanca 124 izlenme, 12 Kasım ölçümü); elle üretilebilir.
+    "50 6 * * *": ("10:00", "platform"), "15 7 * * *": ("10:00", "platform"),
     # 12:00 ve 15:00: eskimeyen "Biliyor muydun?" (haber birkaç saatte eskiyor, bu videolar aylarca önerilebilir)
     "50 8 * * *": ("12:00", "fact"), "15 9 * * *": ("12:00", "fact"),
     # 13:30: maç programı; Süper Lig maçı yoksa Türk takımlarının Avrupa maçları, o da yoksa video çıkmaz

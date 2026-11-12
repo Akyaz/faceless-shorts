@@ -24,5 +24,16 @@ class WeakEnding(unittest.TestCase):
         self.assertEqual(script.weak_ending(["Fenerbahçe'de hoca arayışı sürüyor.", "Montella mı, yerli hoca mı?"]), [])
 
 
+
+class Length(unittest.TestCase):
+    def test_short_script_is_flagged(self):
+        # 12 Kasım denemesi: 2 paragraf, 30 kelime, hangi maç olduğu yok
+        self.assertTrue(script.style_problems(["Arda Güler 30 metreden harika bir gol attı.", "De Bruyne övdü."]))
+
+    def test_normal_script_passes(self):
+        para = "Bu cümle tam on beş kelimeden oluşan ve haberi anlatan sade bir örnek cümledir burada."
+        self.assertEqual(script.style_problems([para, para, para, "Okullar perşembe yeniden açılıyor."]), [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -48,6 +48,19 @@ def weak_ending(paragraphs):
         out.append(last)
     return out
 
+
+MIN_WORDS = 45  # 12 Kasım denemesi: kısaltma kuralıyla 30 kelimelik, hangi maç olduğunu söylemeyen metin çıktı
+
+
+def style_problems(paragraphs):
+    """Yeniden yazdırma notu: kural dışı açılış/kapanış cümleleri ve fazla kısa metin."""
+    out = [f"kurala uymayan açılış ya da kapanış: {x}" for x in weak_ending(paragraphs)]
+    words = sum(len(p.split()) for p in paragraphs)
+    if words < MIN_WORDS or len(paragraphs) < 3:
+        out.append(f"metin çok kısa ({words} kelime, {len(paragraphs)} paragraf): 55-75 kelime ve 3-4 paragraf yaz; "
+                   "bağlamı ekle (hangi maç ya da olay, ne zaman, skor, rakam, kimin kararı)")
+    return out
+
 # Yoğunlukta 503 dönebiliyor; sırayla denenir. Hepsi düşerse yoğunluğun geçmesi beklenip tur yeniden başlar
 # (503 dalgaları birkaç dakika sürüyor; tek turluk deneme dakikasında bitiyordu).
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
@@ -545,16 +558,14 @@ def story_script(headlines, kind="story", count=10, recent=()):
         out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
         if any(vague(p) for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")]):
             raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
-    weak = [] if kind == "debate" else weak_ending(out["paragraphs"])
-    if weak:  # bir kez yeniden yazdırılır; yine olmazsa metin olduğu gibi kullanılır (kural üslup, doğruluk değil)
-        print(f"Kural dışı açılış/kapanış, yeniden yazdırılıyor: {weak}")
-        note = ("\nRewrite: the first sentence must state the news itself (no question), and do not end with a "
-                "generic question. Offending sentences: " if english else
-                "\nYeniden yaz: ilk cümle haberin kendisini söylesin (soru ya da retorik açılış değil), sonda genel "
-                "soru olmasın. Kurala uymayan cümleler: ")
-        retry = json.loads(_generate(prompt + note + " | ".join(weak), os.environ["GEMINI_API_KEY"]))
+    if kind != "debate" and style_problems(out["paragraphs"]):
+        # bir kez yeniden yazdırılır; yine olmazsa daha az sorunlu olan kullanılır (kural üslup, doğruluk değil)
+        problems = style_problems(out["paragraphs"])
+        print(f"Kural dışı metin, yeniden yazdırılıyor: {problems}")
+        note = ("\nRewrite the script. Problems: " if english else "\nMetni yeniden yaz. Sorunlar: ")
+        retry = json.loads(_generate(prompt + note + " | ".join(problems), os.environ["GEMINI_API_KEY"]))
         if retry.get("paragraphs") and not any(vague(p) for p in retry["paragraphs"]) \
-                and len(weak_ending(retry["paragraphs"])) < len(weak):
+                and len(style_problems(retry["paragraphs"])) < len(problems):
             out = retry
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]

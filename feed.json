@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-16T04:34:55Z",
-  "run": "38763325935",
-  "event": "workflow_dispatch",
-  "mode": "trend",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851345855",
-  "videos": [
-   {
-    "title": "Uzaydan sinyal ve saatlerden saniye kaldırılıyor!",
-    "url": "https://youtu.be/EVAGWKAq6s4"
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:35:08Z",
   "run": "38757590068",
   "event": "workflow_dispatch",
@@ -4636,6 +4622,21 @@
   "videos": [
    {
     "title": "Türkiye 1-2 Belçika: Sergen Yalçın Yenilgiyle Başladı",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-12T22:45:01Z",
+  "run": "43302541154",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43302541154",
+  "videos": [
+   {
+    "title": "Devrim: 130 Günde Üretilen İlk Türk Otomobilinin Hikayesi",
     "url": null,
     "instagram": null
    }

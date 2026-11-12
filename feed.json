@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T05:00:12Z",
-  "run": "38684237473",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38684237473",
-  "videos": [
-   {
-    "title": "This 50-Foot Snake Once Ruled Ancient India 🐍",
-    "url": "https://youtu.be/iqTGdPdzoXk"
-   }
-  ]
- },
- {
   "time": "2026-10-15T07:29:42Z",
   "run": "38688893532",
   "event": "workflow_dispatch",
@@ -4632,6 +4618,21 @@
   "videos": [
    {
     "title": "GSS borçlarının silinmesine yönelik kanun teklifi TBMM'ye sunuldu",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-12T19:59:33Z",
+  "run": "43273195890",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43273195890",
+  "videos": [
+   {
+    "title": "Arda Güler 30 metreden harika gol attı, Sergen Yalçın hayran kaldı",
     "url": null,
     "instagram": null
    }

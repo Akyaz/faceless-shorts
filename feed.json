@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:41:09Z",
-  "run": "38613044248",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682745276",
-  "videos": [
-   {
-    "title": "İstanbul'da Sağanak Sonrası Okullar Tatil Edildi",
-    "url": "https://youtu.be/fMSgx5XqaJs"
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:17Z",
   "run": "38608316408",
   "event": "workflow_dispatch",
@@ -4625,5 +4611,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-12T00:40:46Z",
+  "run": "43111990795",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43111990795",
+  "videos": [
+   {
+    "title": "Konut krizi için genel grev doğru mu?",
+    "url": "https://youtu.be/VqKlxWWvklM",
+    "instagram": "https://www.instagram.com/reel/DfnykLbgE5-/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

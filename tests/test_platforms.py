@@ -60,3 +60,14 @@ class Slot(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LeadImage(unittest.TestCase):
+    def test_og_image_and_size_param(self):
+        from unittest import mock
+        from pipeline import articles
+        page = ('<meta property="og:image" content="https://cdn.site.com/logo.png">'
+                '<meta name="twitter:image" content="https://cdn.site.com/a/karun.jpg?w=127&amp;q=80">')
+        with mock.patch.object(articles, "resolve", lambda l: "https://www.site.com/haber"), \
+                mock.patch.object(articles, "_get", lambda u: page):
+            self.assertEqual(articles.lead_image("x"), ("https://cdn.site.com/a/karun.jpg?q=80", "site.com"))

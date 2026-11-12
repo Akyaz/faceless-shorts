@@ -76,6 +76,29 @@ def article_text(link, limit):
     return text[:limit] if len(text) >= MIN_CHARS else ""
 
 
+META_IMAGE = re.compile(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)(?::src)?["\'][^>]*>', re.I)
+
+
+def lead_image(link):
+    """Haberin kapak görseli (og:image): dizi ve film haberlerinde çoğu zaman yapımın resmi tanıtım görseli.
+    (adres, site) ya da None."""
+    try:
+        url = resolve(link)
+        page = _get(url)
+    except Exception as exc:
+        print(f"  Kapak görseli alınamadı ({link[:60]}…): {exc}")
+        return None
+    for tag in META_IMAGE.findall(page):
+        found = re.search(r'content=["\']([^"\']+)', tag)
+        if found:
+            image = urllib.parse.urljoin(url, html.unescape(found.group(1)))
+            # Bazı siteler küçük boy verir (?w=127): boyut parametresi atılınca asıl görsel gelir
+            image = re.sub(r"([?&])(?:w|width|h|height)=\d+&?", r"\1", image).rstrip("?&")
+            if not re.search(r"logo|placeholder|default|favicon", image, re.I):
+                return image, urllib.parse.urlparse(url).netloc.removeprefix("www.")
+    return None
+
+
 def texts(headline, count=3, limit=3500):
     """Haber kümesindeki yayınlardan en fazla count metin: [{"source", "title", "text"}]."""
     out = []

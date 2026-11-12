@@ -165,9 +165,36 @@ def wiki_poster(title, kind=""):
     return []
 
 
-def work_images(work):
-    """work: {"title", "year", "type": "tv"|"movie"} → resmi görsel adayları (önce TMDB, yoksa Vikipedi afişi)."""
+def news_images(work, sources, limit=4):
+    """Yapımı anlatan haberlerin kapak görselleri (og:image). Yeni yapımın çoğu zaman Vikipedi sayfası yok;
+    haber siteleri ise platformun dağıttığı tanıtım görselini kapak yapar. Yalnızca başlığında yapım adı geçen
+    haberlerin görseli alınır."""
+    from .articles import lead_image
+    words = set(re.findall(r"\w+", work["title"].split(":")[0].lower()))
+    items = [s for h in sources for s in [h] + h.get("related", []) if s.get("link")]
+    out, seen = [], set()
+    for item in items[:8]:
+        if len(out) >= limit:
+            break
+        if not words <= set(re.findall(r"\w+", item["title"].lower())):
+            continue
+        found = lead_image(item["link"])
+        if not found or found[0] in seen:
+            continue
+        seen.add(found[0])
+        out.append({"url": found[0], "about": f"{work['title']} tanıtım görseli", "neutral": False,
+                    "credit": f"Görsel: \"{work['title']}\" tanıtım görseli, hakları yapımcısına aittir ({found[1]})"})
+    print(f"Haber kapak görseli ({work['title']}): {len(out)}")
+    return out
+
+
+def work_images(work, sources=()):
+    """work: {"title", "year", "type": "tv"|"movie"} → resmi görsel adayları: önce TMDB, yoksa Vikipedi afişi ve
+    haberlerin kapak görselleri (afiş tek görsel; video birkaç farklı görselle daha iyi akar)."""
     if not work or not work.get("title"):
         return []
     title, year, kind = work["title"].strip(), str(work.get("year") or ""), work.get("type", "")
-    return tmdb_images(title, year, kind) or wiki_poster(title, kind)
+    found = tmdb_images(title, year, kind)
+    if found:
+        return found
+    return wiki_poster(title, kind) + news_images({**work, "title": title}, sources)

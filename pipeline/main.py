@@ -271,7 +271,7 @@ def with_subject_photos(args):
             files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
         plan["subject_files"] = files
         # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
-        plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"))
+        plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"), plan.get("sources", []))
         if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
             return plan
         tried += [h["title"] for h in plan["sources"]]

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-16T04:34:02Z",
-  "run": "38801187914",
-  "event": "workflow_dispatch",
-  "mode": "digest",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851270776",
-  "videos": [
-   {
-    "title": "İstanbul'da okullar tatil edildi ve Hakan Fidan'dan tepki",
-    "url": "https://youtu.be/BMOZLHI0qfw"
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:18Z",
   "run": "38776979661",
   "event": "workflow_dispatch",
@@ -4636,6 +4622,21 @@
     "title": "Milli Takım'dan Mağlubiyet ve Melissa Vargas'ın Kararı",
     "url": "https://youtu.be/b0jVOO0ZqYw",
     "instagram": "https://www.instagram.com/reel/DfqDFKfFMhF/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-12T22:08:29Z",
+  "run": "43296180815",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43296180815",
+  "videos": [
+   {
+    "title": "A Milli Takım, UEFA Uluslar A Ligi'nde Belçika'ya 2-1 kaybetti",
+    "url": null,
+    "instagram": null
    }
   ]
  }

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:51:04Z",
-  "run": "38599888399",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38683610509",
-  "videos": [
-   {
-    "title": "Social Security COLA 2027: Benefits Rise 3.6%, the Highest in 4 Years",
-    "url": "https://youtu.be/uvR3tLbXdNU"
-   }
-  ]
- },
- {
   "time": "2026-10-15T05:00:12Z",
   "run": "38684237473",
   "event": "workflow_dispatch",
@@ -4631,6 +4617,21 @@
   "videos": [
    {
     "title": "11 Kasım Reyting Sonuçları: Sevdan Bir Ateş Üç Kategoride Zirvede",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-12T19:56:53Z",
+  "run": "43273183007",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43273183007",
+  "videos": [
+   {
+    "title": "GSS borçlarının silinmesine yönelik kanun teklifi TBMM'ye sunuldu",
     "url": null,
     "instagram": null
    }

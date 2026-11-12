@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:50:56Z",
-  "run": "38601046729",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38683602006",
-  "videos": [
-   {
-    "title": "Starlink Restrictions Threaten Ukraine's Front Line Operations",
-    "url": "https://youtu.be/fIV-PhEf9mA"
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:51:04Z",
   "run": "38599888399",
   "event": "workflow_dispatch",
@@ -4634,5 +4620,20 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-12T19:55:41Z",
+  "run": "43273211544",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43273211544",
+  "videos": [
+   {
+    "title": "11 Kasım Reyting Sonuçları: Sevdan Bir Ateş Üç Kategoride Zirvede",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

@@ -31,7 +31,7 @@ RULES_TR = """Görev: Aşağıdaki YouTube Shorts haber metnini yayından önce 
    "5 ilçede su kesintisi" deyip hangi ilçeler olduğunu, saatini söylememek; "kupadan men edildi" deyip nedenini
    ve süresini söylememek; "zam geldi" deyip ne kadar olduğunu söylememek; "açıklama yaptı" deyip ne dendiğini
    söylememek. Haberin özünü anlamak için gereken eksikleri listele (her ayrıntı değil, merak bırakan asıl bilgi).
-   Ardından ilk (kanca) ve son (soru) paragraf dışındaki her paragrafı tek tek yokla: izleyiciye somut bir bilgi
+   Ardından her paragrafı tek tek yokla (son paragraf bir soruysa onu atla): izleyiciye somut bir bilgi
    (kim, ne, ne kadar, nerede, ne zaman, neden) veriyor mu? Boş cümle örnekleri: "önemli başlıklar
    değerlendirildi" (hangileri?), "yeni adımlar detaylıca anlatıldı" (hangi adımlar?), "emekliler için kaynak
    ayrıldı" (ne kadar?), "herkes bu konuya odaklandı". Bunlar "concrete": false sayılır.
@@ -41,7 +41,7 @@ RULES_TR = """Görev: Aşağıdaki YouTube Shorts haber metnini yayından önce 
 3. Karar:
    - "ok": eksik, yanlış ve boş paragraf yok; metni değiştirme. Bir paragraf bile "concrete": false ise "ok" deme.
    - "fixed": eksikleri bulduğun bilgilerle tamamla, yanlışları düzelt. Yalnızca gereken cümleleri değiştir.
-     Paragraf sayısı, ilk cümle, son soru, üslup ve yapı aynı kalsın. Toplam en fazla {max_words} kelime;
+     Paragraf sayısı, ilk cümle, son cümle, üslup ve yapı aynı kalsın. Toplam en fazla {max_words} kelime;
      yer açmak için daha az önemli bir cümleyi kısalt. Uzun bir liste (6'dan fazla ilçe gibi) seslendirmeye
      sığmıyorsa en çok etkilenenleri ya da somut bir gruplamayı söyle ("Avrupa yakasındaki 7 ilçe: ..." gibi).
      Boş paragrafları haber metinlerindeki somut bilgilerle (rakam, isim, tarih, karar) yeniden yaz.
@@ -70,8 +70,8 @@ RULES_EN = """Task: act as an editor and check the YouTube Short news script bel
 1. Read it as a viewer: does the script, title or on-screen title leave a question it does not answer? For example
    "water cut in 5 districts" without saying which districts; "banned from the cup" without saying why or for how
    long; "made a statement" without saying what was said. List the gaps a viewer needs filled to understand the
-   story (the key missing fact, not every detail). Then check every paragraph except the first (hook) and the last
-   (question): does it give the viewer a concrete fact (who, what, how much, where, when, why)? Hollow examples:
+   story (the key missing fact, not every detail). Then check every paragraph (skip the last one if it is a
+   question): does it give the viewer a concrete fact (who, what, how much, where, when, why)? Hollow examples:
    "key issues were discussed" (which?), "new steps were explained in detail" (which steps?), "funds were set aside"
    (how much?). Those are "concrete": false.
 2. Find the missing facts in the article texts below (the full text of the same story on the publishers' sites)
@@ -81,7 +81,7 @@ RULES_EN = """Task: act as an editor and check the YouTube Short news script bel
    - "ok": nothing missing, wrong or hollow; do not change the script. Never answer "ok" if any paragraph is
      "concrete": false.
    - "fixed": fill the gaps with what you found and correct any errors. Change only the sentences that need it.
-     Keep the number of paragraphs, the first sentence, the final question, the tone and the structure. At most
+     Keep the number of paragraphs, the first sentence, the last sentence, the tone and the structure. At most
      {max_words} words in total; shorten a less important sentence to make room. Rewrite hollow paragraphs with
      concrete facts from the articles (numbers, names, dates, decisions).
    - "unfixable": the key question the script raises is not answered in the articles, or the script contradicts

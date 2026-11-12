@@ -28,6 +28,26 @@ VAGUE = re.compile(r"\b(hakkında|ilişkin|ile ilgili|konusunda)\s+(resmi\s+|yen
 def vague(text):
     return bool(VAGUE.search(text or ""))
 
+
+# Bilgi vermeden açılan ya da genel soruyla kapanan metin (kanalın en az izlenen haberlerinin kalıbı:
+# "Ocak ayında alacağın yeni maaşını şimdiden merak ediyor musun?" 11 izlenme)
+RHETORICAL = re.compile(r"\b(biliyor musun|hiç düşündün mü|merak ediyor musun|fark ettin mi|şaşıracaksın|"
+                        r"did you know|ever wondered|you won't believe)\b", re.I)
+GENERIC_QUESTION = re.compile(r"ne anlama geliyor|ne düşünüyorsun|ne diyorsun|nasıl değerlendiriyorsun|"
+                              r"what do you think|what does this mean", re.I)
+
+
+def weak_ending(paragraphs):
+    """Kural dışı açılış ya da kapanış cümleleri (tek konulu haber, spor, kültür)."""
+    if not paragraphs:
+        return []
+    first = re.split(r"(?<=[.!?])\s+", paragraphs[0].strip())[0]
+    last = re.split(r"(?<=[.!?])\s+", paragraphs[-1].strip())[-1]
+    out = [first] if first.endswith("?") or RHETORICAL.search(first) else []
+    if last.endswith("?") and GENERIC_QUESTION.search(last):
+        out.append(last)
+    return out
+
 # Yoğunlukta 503 dönebiliyor; sırayla denenir. Hepsi düşerse yoğunluğun geçmesi beklenip tur yeniden başlar
 # (503 dalgaları birkaç dakika sürüyor; tek turluk deneme dakikasında bitiyordu).
 DEFAULT_MODELS = "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest"
@@ -107,6 +127,22 @@ QUESTION_RULE = """Soru filtresi: Soruyu yazmadan önce karar ver: bu bir tercih
    yangında tahliye, fırtınada sefer iptali gibi) "doğru mu?" diye sorgulatma. Can kaybı olan olaylarda görüş
    sorma. Böyle bir durumda izleyiciye kendi deneyimini ya da bilgisini sor (örnek: "Senin bölgende durum
    nasıl?"); tartışılacak bir tercih varsa onu sor (örnek: "Sence zam yeterli mi?")."""
+# Tek konulu videolar soruyla bitmek zorunda değil. Kanalın 286 videosunda (12 Kasım ölçümü) soruyla bitenler
+# sorusuzlardan fazla yorum almadı (1.000 izlenmede 1,9'a 2,2); genel "Sence ne anlama geliyor?" soruları en
+# zayıflardı. Yorum gelen tek soru türü, adı konmuş iki seçenekti ("Montella mı, yerli hoca mı?").
+CLOSING_RULE = """Kapanış: Son cümle akılda kalan somut bir bilgi olsun: ne zaman biteceği ya da başlayacağı, ne
+   yapılması gerektiği, sıradaki adım ya da haberi özetleyen bir rakam (örnek: "Okullar perşembe yeniden açılıyor.").
+   Soru zorunlu değil; çoğu haber sorusuz biter. Soru yalnızca haberde gerçek ve adı konmuş iki seçenek varsa
+   sorulur ve iki seçeneği adıyla anar (örnek: "Montella mı, yerli hoca mı?", "Üç yıl mı, dört yıl mı?").
+   "Sence bu ne anlama geliyor?", "Sen ne düşünüyorsun?", "Nasıl değerlendiriyorsun?", "ne diyorsun?" gibi
+   genel sorular yasak. Olayın doğal ve zorunlu sonucunu (felaket sonrası okul tatili, yangında tahliye, fırtınada
+   sefer iptali) sorgulatma; can kaybı olan olaylarda soru sorma."""
+CLOSING_RULE_EN = """Ending: the last sentence is a concrete fact that sticks: when it ends or starts, what to do, the
+   next step, or one number that sums up the story (example: "Schools reopen on Thursday."). A question is not
+   required; most stories end without one. Ask only when the story has a real choice between two named options,
+   and name both (example: "Montella or a Turkish coach?"). Generic questions ("What does this mean for you?",
+   "What do you think?") are banned. Never question the natural consequence of an event, and never ask anything
+   about events with loss of life."""
 QUESTION_RULE_EN = """Question filter: before writing the question decide whether this is a genuine choice, a
    discretionary decision or a real two-sided issue, or simply the natural, necessary consequence of an event.
    Never ask whether a natural consequence was right (closing schools after a disaster, evacuating during a fire,
@@ -138,7 +174,8 @@ STORIES = {
     "story": {
         "label": "GÜNDEM", "hashtags": ["gündem", "haber"],
         "brief": """Görev: YouTube Shorts için Türkçe haber anlatımı. Kanalın sözü: "seni etkileyen haber, 40 saniyede".
-Amaç izleyicinin kaydırmadan sonuna kadar izlemesi ve videodan işine yarar bir şey öğrenmesi.
+Amaç izleyicinin kaydırmadan sonuna kadar izlemesi, işine yarar bir şey öğrenmesi ve videoyu ilgilenecek birine
+(ailesine, aynı şehirdeki arkadaşına) göndermesi.
 
 Haber seçimi: İzleyicinin gündelik hayatını doğrudan etkileyen haberi seç: zam, maaş, vergi, yeni düzenleme, yasak,
 resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim, teknoloji.
@@ -151,8 +188,8 @@ dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numaras�
     # tek konu, taraftarı yorum yazmaya iten bir soruyla biter.
     "sportstory": {
         "label": "SPOR", "hashtags": ["spor", "futbol"], "category": "17",
-        "brief": """Görev: YouTube Shorts için Türkçe spor haberi. Amaç taraftarın kaydırmadan sonuna kadar izlemesi ve
-yorumlara görüşünü yazması: Türkiye'de spor en çok tartışılan konudur.
+        "brief": """Görev: YouTube Shorts için Türkçe spor haberi. Amaç taraftarın kaydırmadan sonuna kadar izlemesi ve videoyu
+taraftar arkadaşına göndermesi: sevinç, gurur ve büyük haber paylaşılır (rekor, galibiyet, transfer, kadro kararı).
 
 Haber seçimi: Türkiye'de en çok konuşulacak ve taraftarı tartıştıracak haberi seç. Öncelik sırası:
 1. Galatasaray, Fenerbahçe, Beşiktaş ve Trabzonspor: derbiler, kritik maç sonuçları, transferler ve ayrılıklar,
@@ -163,16 +200,17 @@ Somut bilgisi olan haberi seç (skor, golü atan, transfer ücreti, kim ne dedi)
 kaynakları açıkça söylüyorsa seç ve "iddiaya göre" diye anlat.
 Seçme: sakatlığın ayrıntısı öne çıkan acı haberler; taraftar olayları, kavga ve şiddet; bahis; canlı anlatım ve
 muhtemel on birler; yalnızca bir yorumcunun görüşünü aktaran haberler.
-Son soru taraftarı taraf seçmeye ya da tahmin yapmaya çağırsın (örnek: "Sence bu transfer doğru mu?",
-"Derbiyi kim kazanır?", "Penaltı kararı doğru muydu?"). "pick" alanına seçtiğin haberin numarasını yaz.
+Skoru, golü atanı, rakamı ve kararı ilk cümlede söyle (örnek: "Galatasaray, Stuttgart'ı 2-0 yendi."). Haberde iki
+adı konmuş seçenek varsa (iki aday hoca, iki oyuncu) sonda onları sorabilirsin (örnek: "Montella mı, yerli hoca
+mı?"); yoksa soru sorma. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
     # Magazin ve kültür-sanat: günde bir video. Ünlülerin özel hayatı yerine kendi açıkladıkları ve kamuya açık
     # işleri (film, dizi, konser, ödül, gişe) anlatılır; dedikodu ve söylenti yok.
     "culture": {
         "label": "KÜLTÜR SANAT", "hashtags": ["magazin", "kültürsanat"], "category": "24",
-        "brief": """Görev: YouTube Shorts için Türkçe magazin ve kültür-sanat haberi. Amaç izleyicinin sonuna kadar izlemesi,
-videoyu bir arkadaşına göndermesi ve yorumlara görüşünü yazması.
+        "brief": """Görev: YouTube Shorts için Türkçe magazin ve kültür-sanat haberi. Amaç izleyicinin sonuna kadar izlemesi ve
+videoyu diziyi, filmi ya da sanatçıyı seven bir arkadaşına göndermesi.
 
 Haber seçimi: Türkiye'de en çok konuşulacak haberi seç: yeni film ve diziler (vizyon, fragman, final, yeni sezon,
 reyting ve gişe), ödüller ve festivaller (Altın Portakal, Oscar, Cannes gibi), konserler ve albümler, tiyatro
@@ -190,8 +228,8 @@ Başlık ve ekran başlığı asıl bilgiyi versin: "Zirvenin sahibi kim oldu?" 
 Görseller: haberde adı geçen oyuncu ve sanatçıların kendi fotoğrafları "subjects" alanındaki isimlerden bulunur
 (tam adlarını yaz). image_queries'e ise yalnızca destek görseli için konunun geçtiği ortamı yaz (örnek: "film set",
 "television studio", "theatre stage", "concert stage", "cinema hall", "film festival red carpet", "art gallery").
-Son soru izleyiciyi görüş bildirmeye çağırsın (örnek: "Sen bu filmi sinemada izler misin?", "Sence ödülü hak etti mi?",
-"Dizinin finalini beğendin mi?"). "pick" alanına seçtiğin haberin numarasını yaz.
+Haberi anlatırken sahneyi betimle: kim, nerede, ne yaptı, ne dedi (örnek: "Haluk Bilginer, ödül konuşmasında 'Türk sineması
+değil, Türkiye sineması' dedi."). Soru yalnızca adı konmuş iki seçenek varsa sorulur; yoksa sorma. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
@@ -239,22 +277,24 @@ ACCURACY_EN = """STRICT rules (they apply to the title, the on-screen text and t
 
 STORY_RULES_EN = """
 Script rules:
-1. The first sentence has at most 10 words: a surprising contrast or a direct question to the viewer.
-   No greeting, no introduction, no "today".
-2. Do not give the most striking detail straight away: context first, then lead into it near the end with a
-   transition like "but here is what stands out".
-3. Short sentences (at most 14 words), conversational, addressing the viewer as "you". No filler
-   ("stay tuned", "only time will tell", "all eyes are on").
-4. The last sentence is a short question that invites a comment.
-   """ + QUESTION_RULE_EN + """
-5. 75-90 words in total, 4-5 paragraphs (1-2 sentences each). Write everything in English.
+Viewers decide in the first second; the videos people share are told plainly, as you would tell a friend.
+1. The first sentence is the news itself: the key fact with a number, place or name, at most 9 words (example:
+   "Schools in Istanbul are closed tomorrow."). No question, no "you", no "did you know", "ever wondered",
+   "you won't believe". No greeting, no introduction, no "today".
+2. Then the details in order of importance: who, when, where, how much, why. Do not save the key fact for the end;
+   no "but here is what stands out" transitions.
+3. Plain, descriptive language: short sentences (at most 14 words), everyday words. No rhetorical questions,
+   hype, exclamation marks or filler ("stay tuned", "only time will tell", "all eyes are on"). Address the viewer
+   as "you" only for directly useful information.
+4. """ + CLOSING_RULE_EN + """
+5. 60-80 words in total, 3-4 paragraphs (1-2 sentences each); under 30 seconds. Write everything in English.
 6. Leave nothing unresolved. Anything the title, on-screen title or script makes the viewer curious about must be
    answered clearly in the script: if you say "a surprise decision", say what the decision is. If the answer is not
    in the headlines (including the other sources), do not pick that story.
 
 """ + ACCURACY_EN + """
 Other fields:
-- hook_title: on-screen title, at most 5 words.
+- hook_title: on-screen title, at most 5 words; the news itself, not a question.
 - title: YouTube title, at most 70 characters, with the story's main keyword first.
 """ + IMAGE_FIELDS_EN.format(n=4) + """
 - mood: one of "notr" (informative, everyday; use this when unsure), "gergin" (crisis, disaster, danger, warning,
@@ -278,13 +318,19 @@ PRONOUNCE_FIELD = """- pronounce: metindeki Türkçe olmayan özel isimlerin (ki
 
 STORY_RULES = """
 Metin kuralları:
-1. İlk cümle en fazla 10 kelime: şaşırtıcı bir tezat ya da doğrudan izleyiciye soru. Selam, giriş, "bugün" yok.
-2. Asıl çarpıcı ayrıntıyı hemen verme: önce bağlam, sonra "ama asıl dikkat çeken şu" gibi bir geçişle en sona yakın ver.
-3. Cümleler kısa (en fazla 12 kelime), konuşur gibi, "sen" diye hitap et. Tekrar ve dolgu cümle yok
-   ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor" yasak).
-4. Son cümle izleyiciye yorum yaptıracak kısa bir soru olsun.
-   """ + QUESTION_RULE + """
-5. Toplam 75-90 kelime, 4-5 paragraf (her paragraf 1-2 cümle).
+İzleyici ilk saniyede izleyip izlemeyeceğine karar verir; paylaşılan video, bir arkadaşa anlatılır gibi sade olandır.
+1. İlk cümle haberin kendisi: en önemli bilgiyi rakam, yer ya da isimle en fazla 8 kelimede söyle (örnek:
+   "İstanbul'da yarın okullar tatil.", "Kerem Aktürkoğlu milli takım kadrosunda yok."). Soru, "sen" hitabı ve
+   "biliyor musun", "hiç düşündün mü", "merak ediyor musun", "fark ettin mi", "şaşıracaksın" gibi açılışlar yasak.
+   Selam, giriş, "bugün" yok.
+2. Sonra ayrıntılar, önem sırasıyla: kim, ne zaman, nerede, ne kadar, neden. Bilgiyi sona saklama; "ama asıl
+   dikkat çeken şu" gibi geçişler yok.
+3. Sade ve betimleyen anlatım: kısa cümleler (en fazla 12 kelime), gündelik sözcükler, bir arkadaşa anlatır gibi.
+   Retorik soru, abartı, ünlem ve dolgu yok ("takipte kalın", "merakla bekleniyor", "dikkatle izleniyor",
+   "gözler ... çevrildi", "herkesi şaşırttı" yasak). İzleyiciye "sen" diye yalnızca doğrudan işine yarayacak bir
+   bilgide seslen (örnek: "Aracın varsa bu iki gün Vatan Caddesi'ne girme.").
+4. """ + CLOSING_RULE + """
+5. Toplam 55-75 kelime, 3-4 paragraf (her paragraf 1-2 cümle); video 30 saniyeyi geçmesin.
 6. Belirsizlik bırakma. Başlıkta, ekran başlığında ya da metinde merak uyandırdığın her şeyin cevabı metinde açıkça
    olsun: "ilk 11'de sürpriz" diyorsan sürprizin ne olduğunu (hangi oyuncu, kimin yerine) söyle; "şok karar"
    diyorsan kararın ne olduğunu söyle; "X hakkında açıklama yaptı" yetmez, ne dendiğini söyle. Cevap verilen
@@ -292,8 +338,8 @@ Metin kuralları:
 
 """ + ACCURACY + """
 Ek alanlar:
-- hook_title: ekranda yazacak en fazla 5 kelimelik başlık.
-- title: YouTube başlığı, en fazla 70 karakter; haberin anahtar kelimesi başta olsun.
+- hook_title: ekranda yazacak en fazla 5 kelimelik başlık; haberin kendisi, soru değil (örnek: "Yarın Okullar Tatil").
+- title: YouTube başlığı, en fazla 70 karakter; haberin anahtar kelimesi başta olsun, asıl bilgiyi söylesin.
 """ + IMAGE_FIELDS.format(n=4) + """
 - mood: fon müziği için haberin duygusu, şunlardan biri: "notr" (bilgilendirici, gündelik; emin değilsen bu),
   "gergin" (kriz, afet, tehlike, uyarı, çatışma), "umutlu" (iyi haber, başarı, açılış, kolaylık),
@@ -499,6 +545,17 @@ def story_script(headlines, kind="story", count=10, recent=()):
         out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
         if any(vague(p) for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")]):
             raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
+    weak = [] if kind == "debate" else weak_ending(out["paragraphs"])
+    if weak:  # bir kez yeniden yazdırılır; yine olmazsa metin olduğu gibi kullanılır (kural üslup, doğruluk değil)
+        print(f"Kural dışı açılış/kapanış, yeniden yazdırılıyor: {weak}")
+        note = ("\nRewrite: the first sentence must state the news itself (no question), and do not end with a "
+                "generic question. Offending sentences: " if english else
+                "\nYeniden yaz: ilk cümle haberin kendisini söylesin (soru ya da retorik açılış değil), sonda genel "
+                "soru olmasın. Kurala uymayan cümleler: ")
+        retry = json.loads(_generate(prompt + note + " | ".join(weak), os.environ["GEMINI_API_KEY"]))
+        if retry.get("paragraphs") and not any(vague(p) for p in retry["paragraphs"]) \
+                and len(weak_ending(retry["paragraphs"])) < len(weak):
+            out = retry
     headline = _pick(headlines, out.get("pick", 1))
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T07:29:42Z",
-  "run": "38688893532",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38699089908",
-  "videos": [
-   {
-    "title": "8 Mind-Blowing Discoveries Scientists Made This Week",
-    "url": "https://youtu.be/p-90KVSCFZo"
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:34:02Z",
   "run": "38801187914",
   "event": "workflow_dispatch",
@@ -4635,6 +4621,21 @@
     "title": "Arda Güler 30 metreden harika gol attı, Sergen Yalçın hayran kaldı",
     "url": null,
     "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-12T21:43:35Z",
+  "run": "43291738268",
+  "event": "workflow_dispatch",
+  "mode": "sports",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43291738268",
+  "videos": [
+   {
+    "title": "Milli Takım'dan Mağlubiyet ve Melissa Vargas'ın Kararı",
+    "url": "https://youtu.be/b0jVOO0ZqYw",
+    "instagram": "https://www.instagram.com/reel/DfqDFKfFMhF/"
    }
   ]
  }

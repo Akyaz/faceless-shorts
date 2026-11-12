@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-16T04:35:13Z",
-  "run": "38732679079",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38851371208",
-  "videos": [
-   {
-    "title": "Selde Zarar Gören Araçlar İçin Süre Verildi",
-    "url": "https://youtu.be/KNFf89xPZbQ"
-   }
-  ]
- },
- {
   "time": "2026-10-16T04:40:07Z",
   "run": "38709250566",
   "event": "schedule",
@@ -4642,5 +4628,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-12T23:14:54Z",
+  "run": "43307405104",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43307405104",
+  "videos": [
+   {
+    "title": "Deniz Seki Doyamadım Şarkısının Hikayesini Açıkladı",
+    "url": "https://youtu.be/FCspq5O2RGY",
+    "instagram": "https://www.instagram.com/reel/DfqNjDfjQGF/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-15T04:41:17Z",
-  "run": "38608316408",
-  "event": "workflow_dispatch",
-  "mode": "world",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38682755102",
-  "videos": [
-   {
-    "title": "Pope Leo’s Health Tests Papacy After Surgery",
-    "url": "https://youtu.be/c7GirPJW7p8"
-   }
-  ]
- },
- {
   "time": "2026-10-15T04:41:34Z",
   "run": "38587543814",
   "event": "workflow_dispatch",
@@ -4627,5 +4613,21 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-12T00:41:33Z",
+  "run": "43111961636",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43111961636",
+  "videos": [
+   {
+    "title": "Avrupa’da kırmızı alarm: Yüzlerce uçuş iptal edildi",
+    "url": "https://youtu.be/To8KjpmYOoM",
+    "instagram": "https://www.instagram.com/reel/DfnyqhBDyO6/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

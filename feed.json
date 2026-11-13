@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-16T05:22:18Z",
-  "run": "38781265839",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38781265839",
-  "videos": [
-   {
-    "title": "Kamu İhalelerinde Borç Sınırı 50 Bin Liraya Çıkarıldı",
-    "url": "https://youtu.be/ApdNTqk1HCQ"
-   }
-  ]
- },
- {
   "time": "2026-10-16T08:53:12Z",
   "run": "38876163285",
   "event": "schedule",
@@ -4649,5 +4635,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-13T00:55:42Z",
+  "run": "43323023109",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43323023109",
+  "videos": [
+   {
+    "title": "Melissa Vargas 2030'a kadar Fenerbahçe'de!",
+    "url": "https://youtu.be/qbnuapJRj28",
+    "instagram": "https://www.instagram.com/reel/DfqZFSGE_D2/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

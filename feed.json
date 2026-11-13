@@ -4559,21 +4559,6 @@
   ]
  },
  {
-  "time": "2026-11-12T22:45:14Z",
-  "run": "43302527014",
-  "event": "workflow_dispatch",
-  "mode": "platform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43302527014",
-  "videos": [
-   {
-    "title": "Organize İşler: Karun Hazinesi Netflix Türkiye Top 10'da birinci sırada",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-12T23:14:54Z",
   "run": "43307405104",
   "event": "schedule",
@@ -4653,5 +4638,20 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-13T15:14:59Z",
+  "run": "43302527014",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43450637210",
+  "videos": [
+   {
+    "title": "Organize İşler: Karun Hazinesi Netflix Türkiye Top 10'da birinci sırada",
+    "url": "https://youtu.be/C_L6q_i3rF8",
+    "instagram": null
+   }
+  ]
  }
 ]

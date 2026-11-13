@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-16T20:27:13Z",
-  "run": "38960230603",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38960230603",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-16T21:17:54Z",
   "run": "38966070537",
   "event": "workflow_dispatch",
@@ -4651,5 +4636,21 @@
     "instagram": "https://www.instagram.com/reel/DfsVrj8G4TS/"
    }
   ]
+ },
+ {
+  "time": "2026-11-13T21:55:56Z",
+  "run": "43512750454",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43512750454",
+  "videos": [
+   {
+    "title": "Exxen Avrupa Kupalarının Yayın Haklarını 328 Milyon Euroya Aldı",
+    "url": "https://youtu.be/3pFqaO-MFpI",
+    "instagram": "https://www.instagram.com/reel/DfspSwMCh-T/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

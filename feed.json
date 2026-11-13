@@ -4514,21 +4514,6 @@
   ]
  },
  {
-  "time": "2026-11-12T22:09:07Z",
-  "run": "43296165560",
-  "event": "workflow_dispatch",
-  "mode": "sportstory",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43296165560",
-  "videos": [
-   {
-    "title": "Türkiye 1-2 Belçika: Sergen Yalçın Yenilgiyle Başladı",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-12T23:14:54Z",
   "run": "43307405104",
   "event": "schedule",
@@ -4650,6 +4635,21 @@
    {
     "title": "Arda Güler 30 metreden harika gol attı, Sergen Yalçın hayran kaldı",
     "url": "https://youtu.be/v8gDQOxXBFc",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-13T15:15:18Z",
+  "run": "43296165560",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43450675895",
+  "videos": [
+   {
+    "title": "Türkiye 1-2 Belçika: Sergen Yalçın Yenilgiyle Başladı",
+    "url": "https://youtu.be/ujRFYlDx2MQ",
     "instagram": null
    }
   ]

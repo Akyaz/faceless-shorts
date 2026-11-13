@@ -4484,21 +4484,6 @@
   ]
  },
  {
-  "time": "2026-11-12T19:59:33Z",
-  "run": "43273195890",
-  "event": "workflow_dispatch",
-  "mode": "sportstory",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43273195890",
-  "videos": [
-   {
-    "title": "Arda Güler 30 metreden harika gol attı, Sergen Yalçın hayran kaldı",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-12T21:43:35Z",
   "run": "43291738268",
   "event": "workflow_dispatch",
@@ -4650,6 +4635,21 @@
    {
     "title": "Devrim: 130 Günde Üretilen İlk Türk Otomobilinin Hikayesi",
     "url": "https://youtu.be/vCaiPWNBdLI",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-13T15:15:16Z",
+  "run": "43273195890",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43450698660",
+  "videos": [
+   {
+    "title": "Arda Güler 30 metreden harika gol attı, Sergen Yalçın hayran kaldı",
+    "url": "https://youtu.be/v8gDQOxXBFc",
     "instagram": null
    }
   ]

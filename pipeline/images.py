@@ -18,6 +18,13 @@ UA = "faceless-shorts/0.1 (https://github.com/Akyaz/faceless-shorts)"
 # Lisansı serbest görünse de açıklamasında "tüm hakları saklıdır" yazan ve müstehcen sayılabilecek görseller atlanır
 EXCLUDED = re.compile(r"all rights reserved|diritti riservati|todos los derechos|alle rechte|tüm hakları|"
                       r"ithyphallic|phallic|phallus|nude|naked|erotic", re.I)
+# Kanal ve şirket binaları dizi ve televizyon haberinde konuyu göstermiyor (her dizi haberinde aynı Kanal D binası)
+MEDIA_BUILDINGS = re.compile(r"headquarters|merkez binas|genel merkez|media cent|medya merkez|plaza\b|"
+                             r"\b(kanal d|show tv|star tv|atv|fox tv|now tv|tv8|trt|demirören|doğan medya)\b", re.I)
+# Son günlerde kullanılmış arama görselleri (state/images.json): aynı fotoğraf her videoda dönmesin.
+# Kişinin ya da yapımın kendi fotoğrafı bu kurala girmez.
+RECENT = set()
+USED = []
 FREE_LICENSE = re.compile(r"^(CC0|CC BY(-SA)?( \d\.\d)?|Public domain|PD)", re.I)
 
 
@@ -50,11 +57,14 @@ def wikimedia(query, limit=5):
         # Çok yatık panoramalar dikeye kırpılınca ince bir şerit kalıyor
         if not FREE_LICENSE.match(license_name) or width < 800 or width > 2.5 * height:
             continue
-        if EXCLUDED.search(page.get("title", "") + " " + _strip(meta.get("ImageDescription", {}).get("value"))):
+        described = page.get("title", "") + " " + _strip(meta.get("ImageDescription", {}).get("value"))
+        if EXCLUDED.search(described) or MEDIA_BUILDINGS.search(described):
             continue
         artist = _strip(meta.get("Artist", {}).get("value")) or "Bilinmiyor"
         about = f"{page.get('title', '')} | {_strip(meta.get('ImageDescription', {}).get('value'))[:200]}"
-        found.append({"url": info["thumburl"], "about": about, "credit":
+        taken = re.search(r"(1[89]|20)\d\d", _strip(meta.get("DateTimeOriginal", {}).get("value"))
+                          or _strip(meta.get("DateTime", {}).get("value")))
+        found.append({"url": info["thumburl"], "about": about, "year": int(taken.group()) if taken else 0, "credit":
                       f"Görsel: {artist}, {license_name}, Wikimedia Commons ({info['descriptionurl']})"})
         if len(found) >= limit:
             break
@@ -103,7 +113,9 @@ def subject_file(name):
         try:
             hits = _wiki(lang, action="query", list="search", srsearch=name, srlimit=3)["query"]["search"]
             for hit in hits:
-                if not all(w in _fold(hit["title"]).split() for w in words):
+                # Sayfa adı ismin kendisi olmalı (parantez içi açıklama hariç): "Yeraltı" dizisi "Yeraltı Camii"
+                # sayfasıyla eşleşmesin
+                if _fold(re.sub(r"\s*\(.*?\)", "", hit["title"])).split() != words:
                     continue
                 page = _wiki(lang, action="query", prop="pageimages", titles=hit["title"], redirects=1,
                              piprop="original")["query"]["pages"][0]
@@ -120,6 +132,24 @@ def subject_file(name):
             print(f"Konu görseli aranamadı ({name}, {lang}): {exc}")
     print(f"Konu görseli yok: {name}")
     return ""
+
+
+def subject_photos(name, limit=3):
+    """Kişinin, kulübün ya da yapımın Commons'taki başka fotoğrafları: dosya adında ismin bütün kelimeleri geçmeli.
+    Genel ortam aramasının (stüdyo, şehir manzarası) yerine destek görseli olarak kullanılır."""
+    words = _fold(name).split()
+    try:
+        found = wikimedia(f'"{name}"', limit * 3)
+    except Exception as exc:
+        print(f"Konu fotoğrafı aranamadı ({name}): {exc}")
+        return []
+    # Güncel haber için: imza, belge, arma ve 2010 öncesi fotoğraflar (kulübün 1913 tüzüğü gibi) alınmaz
+    own = [c for c in found if all(w in _fold(c["about"].split("|")[0]) for w in words)
+           and not re.search(r"signature|imza|logo|emblem|arma|tüzük|charter|document|belge", c["about"], re.I)
+           and c.get("year", 0) >= 2010]
+    own = list({re.sub(r"\s*\(cropped\)", "", c["about"].split("|")[0]): c for c in own}.values())  # kırpılmış kopyası
+    print(f"Konu fotoğrafları ({name}): {len(own)}")
+    return [{**c, "neutral": False} for c in own[:limit]]
 
 
 def _download(url, out_path):
@@ -267,7 +297,9 @@ def _searches(plan):
     """(arama, nesne mi) listesi. Yer biliniyorsa her arama şehir ve ülke adıyla yapılır; yersiz arama yapılmaz."""
     place = plan.get("place") or {}
     city, country = place.get("city", ""), place.get("country", "")
-    searches = [(city, False)] if city else []  # şehrin kendi fotoğrafları her zaman doğru yerdendir
+    # Yalnızca şehir adıyla arama yapılmaz: "Istanbul" her seferinde aynı genel manzarayı (Ataşehir) getiriyordu;
+    # şehir, aramalara yer bilgisi olarak eklenir. Başka arama yoksa şehrin kendisi aranır.
+    searches = [] if plan.get("image_queries") or plan.get("object_query") or not city else [(city, False)]
     for query in plan.get("image_queries") or []:
         located = [f"{query} {loc}" for loc in (city, country) if loc and loc.lower() not in query.lower()]
         searches += [(q, False) for q in (located or [query])]
@@ -287,6 +319,7 @@ def _save(picked, out_dir, count, exclude_out=None):
             print(f"Görsel indirilemedi: {exc}")
             continue
         print(f"Arka plan: {cand['about'][:120]}")
+        USED.append(cand["url"])
         results.append((path, cand["credit"]))
         if exclude_out is not None:
             exclude_out.add(cand["url"])
@@ -334,6 +367,10 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
             if series not in seen:
                 seen.add(series)
                 candidates.append(pool[rank])
+    fresh = [c for c in candidates if c["url"] not in RECENT]
+    if len(fresh) < len(candidates):
+        print(f"Son günlerde kullanılmış {len(candidates) - len(fresh)} görsel atlandı")
+    candidates = fresh
     if exclude:  # hepsi kullanılmışsa tekrar kabul edilir; görselsiz bölüm olmasın
         candidates = [c for c in candidates if c["url"] not in exclude] or candidates
     candidates = candidates[:24]

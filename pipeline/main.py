@@ -32,6 +32,26 @@ def _offline_audio(text, out_path):
 HISTORY_KEEP = 150  # günde 7 tek haber ve 8 trend maddesiyle yaklaşık 10 gün
 
 
+IMAGES_KEEP = 120  # son kullanılan arama görselleri (yaklaşık 10 gün)
+
+
+def load_recent_images(path):
+    try:
+        images.RECENT.update(json.loads(Path(path).read_text(encoding="utf-8")))
+    except (OSError, ValueError):
+        pass
+
+
+def save_recent_images(path):
+    try:
+        old = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        old = []
+    keep = [u for u in old if u not in images.USED] + images.USED
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text(json.dumps(keep[-IMAGES_KEEP:], ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def load_history(path):
     try:
         return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -114,6 +134,14 @@ def build_metadata(plan, mode="story"):
     }
 
 
+def _subject_support(plan, work, count):
+    """Konudaki isimlerin (kişi, kulüp, yapım) Commons'taki diğer fotoğrafları; ana fotoğrafla aynısı hariç."""
+    known = set(plan.get("subject_files") or [])
+    pool = [c for n in plan.get("subjects") or [] for c in images.subject_photos(n)
+            if "File:" + c["about"].split("|")[0].strip().removeprefix("File:") not in known]
+    return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
+
+
 def find_images(plan, work):
     """Her segment için arka plan dosyası (yoksa None) ve kaynak satırları."""
     segments = plan["segments"]
@@ -123,6 +151,8 @@ def find_images(plan, work):
         # Dizi ve film: yapımın resmi görselleri (sahne görselleri, afiş) ilk karede ve paragraflar arasında
         # sırayla; tek görsel varsa oyuncu fotoğraflarıyla dönüşümlü
         own = images.save_direct(plan["work_images"], work / "work", len(segments))
+        if len(own) < 3:
+            own += _subject_support(plan, work, 3 - len(own))
         if plan.get("subject_files") and len(own) < 3:
             own += images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
                                            work / "subject", len(plan["subject_files"]))
@@ -134,7 +164,14 @@ def find_images(plan, work):
         # aradaki paragraflarda konuyla ilgili destek görselleri
         own = images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
                                       work / "subject", len(plan["subject_files"]))
-        rest = images.find_backgrounds({**plan, "image_files": []}, work / "support", max(1, len(segments) // 2))
+        rest = []
+        if plan.get("mode") in SUBJECT_REQUIRED:
+            # Dizi, film, kültür ve spor haberinde destek görseli genel ortam araması değil (stüdyo araması kanal
+            # binası, şehir araması aynı manzarayı getiriyordu): konunun kendi başka fotoğrafları
+            rest = _subject_support(plan, work, max(1, len(segments) // 2))
+        if plan.get("mode") not in SUBJECT_REQUIRED or (not rest and plan.get("mode") == "sportstory"):
+            # Spor haberinde konunun başka fotoğrafı yoksa stadyum ve salon araması yine işe yarıyor
+            rest = images.find_backgrounds({**plan, "image_files": []}, work / "support", max(1, len(segments) // 2))
         mine, other = [p for p, _ in own], [p for p, _ in rest] or [p for p, _ in own]
         backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
                        if mine else None for i in range(len(segments))]
@@ -270,6 +307,7 @@ def with_subject_photos(args):
         else:
             files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
         plan["subject_files"] = files
+        plan["mode"] = args.mode
         # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
         plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"), plan.get("sources", []))
         if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
@@ -333,7 +371,12 @@ def main():
     if args.offline:
         backgrounds, credits = [args.background] * len(segments), []
     else:
+        recent = Path(args.history).parent / "images.json" if args.history else None
+        if recent:
+            load_recent_images(recent)
         backgrounds, credits = find_images(plan, work)
+        if recent:
+            save_recent_images(recent)
         # Görselsiz (yalnızca renkli zemin) video kaydırılıp geçiliyor: hiç görsel bulunamadıysa video üretilmez.
         # Maç kartları kendi grafiğini çizdiği için hariç.
         if not plan.get("match") and not any(backgrounds):

@@ -387,6 +387,7 @@ Ek alanlar:
 - subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
   futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
   kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
+  Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
   Haberde özel isim yoksa boş liste.
 """ + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
@@ -415,6 +416,7 @@ Ek alanlar:
 - subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
   futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
   kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
+  Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
   Haberde özel isim yoksa boş liste.
 """ + PRONOUNCE_FIELD + """
 Sadece JSON döndür:

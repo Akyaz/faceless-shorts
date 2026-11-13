@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T05:20:43Z",
-  "run": "38966052777",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38966052777",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-17T05:54:17Z",
   "run": "39005392769",
   "event": "workflow_dispatch",
@@ -4653,5 +4638,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-13T23:29:10Z",
+  "run": "43525080274",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43525080274",
+  "videos": [
+   {
+    "title": "Hattuşa: Kil Tabletlerle Geri Dönen Kayıp Hitit Başkenti",
+    "url": "https://youtu.be/OmAGcPxW9SI",
+    "instagram": null
+   }
+  ],
+  "slot": "21:00",
+  "script": "scripts/longform/tr-hattusa.json"
  }
 ]

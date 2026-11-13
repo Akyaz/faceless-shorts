@@ -22,7 +22,7 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     permissions:
-      actions: read
+      actions: write  # Instagram paylaşımını başlatır
       contents: write  # sonuç kaydı panel-data dalına yazılır
     env:
       MODE: retry
@@ -55,6 +55,13 @@ jobs:
             python -m pipeline.upload "$video" "$meta" || failed=1
           done
           exit $failed
+      # Panelden ya da elle yüklenen dikey video da Instagram'a geçsin (otomatik üretimde bu adım make-short.yml'de).
+      # Instagram iş akışı zaten paylaşılmış videoyu atlar.
+      - name: Instagram paylaşımını başlat
+        if: ${{ success() && inputs.privacy == 'public' && hashFiles('out/short.mp4', 'out/*/short.mp4') != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run instagram.yml -R "$GITHUB_REPOSITORY" -f run_id="$SOURCE_RUN_ID"
       - name: Sonucu bildir
         if: ${{ always() }}
         env:

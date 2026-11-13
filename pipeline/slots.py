@@ -130,7 +130,11 @@ def wait_for_running():
         busy = []
         for status in ("in_progress", "queued"):
             runs = _api(f"/actions/workflows/{workflow}/runs?status={status}&per_page=50")["workflow_runs"]
-            busy += [r["id"] for r in runs if r["id"] < int(me)]
+            # GitHub bazen bir çalışmayı günlerce "queued" bırakıyor (11 Kasım'dan kalan çalışma her videoyu 2 saat
+            # bekletti): WAIT_MINUTES'ten eski çalışmalar beklenmez
+            limit = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(minutes=WAIT_MINUTES + 30)
+            busy += [r["id"] for r in runs if r["id"] < int(me) and
+                     datetime.datetime.fromisoformat(r["created_at"].replace("Z", "+00:00")) > limit]
         if not busy:
             return
         print(f"Daha önce başlamış bir çalışma sürüyor ({busy}); bitmesi bekleniyor")

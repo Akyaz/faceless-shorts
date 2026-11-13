@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-16T20:11:48Z",
-  "run": "38960235262",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/38960235262",
-  "videos": [
-   {
-    "title": "İstanbul'da Sağanak Yağış Alarmı: Turuncu Alarm Verildi",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-16T20:27:13Z",
   "run": "38960230603",
   "event": "workflow_dispatch",
@@ -4650,5 +4636,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43467081997",
   "videos": []
+ },
+ {
+  "time": "2026-11-13T18:59:34Z",
+  "run": "43467089733",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43467089733",
+  "videos": [
+   {
+    "title": "Lupin Netflix Türkiye Top 10 Listesinde 4. Sıraya Yükseldi",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

@@ -146,6 +146,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}  # isteğe bağlı: dizi ve filmlerin resmi sahne görselleri
+          GITHUB_TOKEN: ${{ github.token }}  # bilgi serisi yayınlanmış konuları panel kaydından okur
           SCRIPT: ${{ inputs.script || needs.slot.outputs.script }}
           SCRIPT_JSON: ${{ inputs.script_json }}
           UCL_RESULTS: ${{ inputs.results }}

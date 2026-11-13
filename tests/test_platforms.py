@@ -91,3 +91,24 @@ class VetImages(unittest.TestCase):
         from pipeline import platforms
         with mock.patch.dict("os.environ", {}, clear=True):
             self.assertEqual(platforms.vet_images({"title": "T"}, [{"url": "a"}]), [])
+
+
+class Published(unittest.TestCase):
+    def test_published_topic_skipped(self):
+        rows = [("otomobil", "Devrim", "Devrim (car)"), ("otomobil", "Anadol", "Anadol")]
+        self.assertEqual(evergreen.next_topic(rows, [], ["Devrim"]), rows[1])
+
+    def test_title_match(self):
+        import base64, json
+        feed = [{"mode": "fact", "videos": [{"title": "Devrim: 130 Günde Üretilen İlk Türk Otomobili", "url": "u"}]}]
+        rows = [("otomobil", "Devrim", ""), ("otomobil", "Anadol", ""), ("tarih", "Türk Hamamı", "")]
+        with mock.patch.dict(os.environ, {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "a/b"}), \
+                mock.patch("pipeline.report._github", return_value={"content": base64.b64encode(json.dumps(feed).encode())}):
+            self.assertEqual(evergreen.published(rows), ["Devrim"])
+
+    def test_zero_based_picks(self):
+        with mock.patch.dict(os.environ, {"GEMINI_API_KEY": "x"}), \
+                mock.patch.object(platforms, "_jpeg", lambda u: b"j"), \
+                mock.patch("pipeline.script._generate", lambda *a, **k: '{"pick": [0, 2]}'):
+            self.assertEqual(platforms.vet_images({"title": "T"}, [{"url": "a"}, {"url": "b"}, {"url": "c"}]),
+                             [{"url": "a"}, {"url": "c"}])

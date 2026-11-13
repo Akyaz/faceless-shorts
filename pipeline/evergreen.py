@@ -7,6 +7,7 @@ Görsel, sayfanın Commons'taki fotoğrafı ve konuya göre yapılan Commons ara
 """
 import json
 import os
+import re
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -97,10 +98,33 @@ def load_state(path=STATE):
         return []
 
 
-def next_topic(rows, done):
+def _fold(text):
+    return re.sub(r"\W+", " ", text.replace("İ", "i").lower().translate(str.maketrans("çğıöşüâî", "cgiosuai"))).strip()
+
+
+def published(rows):
+    """Panel kaydında (feed.json) yayınlanmış bilgi videolarının konuları. Konu kaydı çalışmalar arasında önbellekle
+    taşınıyor; aynı anda çalışan iki çalışma ya da panelden sonradan yüklenen deneme videosu kaydı kaçırabiliyor
+    (Devrim iki kez çıktı, 13 Kasım 2026). Yayınlanan başlıkta konunun adı geçiyorsa konu işlenmiş sayılır."""
+    if not (os.environ.get("GITHUB_TOKEN") and os.environ.get("GITHUB_REPOSITORY")):
+        return []
+    import base64
+    from .report import BRANCH, FEED, _github
+    try:
+        feed = json.loads(base64.b64decode(_github(
+            "GET", f"/repos/{os.environ['GITHUB_REPOSITORY']}/contents/{FEED}?ref={BRANCH}")["content"]))
+    except Exception as exc:
+        print(f"Panel kaydı okunamadı: {exc}")
+        return []
+    titles = [_fold(v.get("title", "")) for e in feed if e.get("mode") == "fact"
+              for v in e.get("videos", []) if v.get("url")]
+    return [r[1] for r in rows if any(f" {_fold(r[1])} " in f" {t} " for t in titles)]
+
+
+def next_topic(rows, done, extra=()):
     """Sırası gelen kategorinin (en uzun zamandır video çıkmayan) işlenmemiş ilk konusu; kategorinin bütün konuları
     işlendiyse o kategoride en uzun zamandır işlenmeyen."""
-    used = [d["topic"] for d in done]
+    used = [d["topic"] for d in done] + [t for t in extra if t not in {d["topic"] for d in done}]
     last_cat = {}
     for i, d in enumerate(done):
         last_cat[d.get("category", "bilgi")] = i
@@ -135,7 +159,7 @@ def wiki_page(search, lang):
 def plan(state_path=STATE):
     rows = topics()
     done = load_state(state_path)
-    category, tr, en = next_topic(rows, done)
+    category, tr, en = next_topic(rows, done, published(rows))
     spec = CATEGORIES[category]
     pages = [p for p in [wiki_page(tr, "tr")] if p]
     if not pages or len(pages[0]["text"]) < MIN_TEXT:

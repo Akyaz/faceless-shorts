@@ -241,7 +241,9 @@ def vet_images(work, candidates, limit=5):
         print(f"Kapak görselleri değerlendirilemedi: {exc}")
         return []
     print(f"Yapım karesi seçimi ({work['title']}): {picks} ({len(shown)} aday içinden)")
-    return [shown[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(shown)][:limit]
+    picks = [int(n) for n in dict.fromkeys(picks)]
+    base = 0 if 0 in picks else 1  # model bazen sıfırdan sayıyor ([0, 1, 3]): ilk aday kaybolmasın
+    return [shown[n - base] for n in picks if 0 <= n - base < len(shown)][:limit]
 
 
 def work_images(work, sources=()):

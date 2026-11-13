@@ -4638,16 +4638,16 @@
   "videos": []
  },
  {
-  "time": "2026-11-13T18:59:34Z",
+  "time": "2026-11-13T19:03:08Z",
   "run": "43467089733",
   "event": "workflow_dispatch",
   "mode": "platform",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43467089733",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43488455156",
   "videos": [
    {
     "title": "Lupin Netflix Türkiye Top 10 Listesinde 4. Sıraya Yükseldi",
-    "url": null,
+    "url": "https://youtu.be/LutAhnzQJAQ",
     "instagram": null
    }
   ]

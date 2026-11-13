@@ -28,8 +28,11 @@ class Posters(unittest.TestCase):
 
     def test_without_tmdb_key_wikipedia_poster(self):
         with mock.patch.dict(os.environ, {}, clear=True), \
+                mock.patch("pipeline.platforms.news_images", return_value=[{"url": "n"}]), \
+                mock.patch("pipeline.platforms.vet_images", side_effect=lambda w, c: c), \
                 mock.patch("pipeline.platforms.wiki_poster", return_value=[{"url": "u"}]) as wiki:
-            self.assertEqual(platforms.work_images({"title": "Bir Başkadır", "type": "tv"}), [{"url": "u"}])
+            # Önce haberlerden elenmiş yapım kareleri, afiş en sonda
+            self.assertEqual(platforms.work_images({"title": "Bir Başkadır", "type": "tv"}), [{"url": "n"}, {"url": "u"}])
         wiki.assert_called_once()
 
     def test_no_work_no_images(self):
@@ -71,3 +74,20 @@ class LeadImage(unittest.TestCase):
         with mock.patch.object(articles, "resolve", lambda l: "https://www.site.com/haber"), \
                 mock.patch.object(articles, "_get", lambda u: page):
             self.assertEqual(articles.lead_image("x"), ("https://cdn.site.com/a/karun.jpg?q=80", "site.com"))
+
+
+class VetImages(unittest.TestCase):
+    def test_keeps_only_picked(self):
+        from unittest import mock
+        from pipeline import platforms, script
+        cands = [{"url": "a"}, {"url": "b"}, {"url": "c"}]
+        with mock.patch.dict("os.environ", {"GEMINI_API_KEY": "x"}), \
+                mock.patch.object(platforms, "_jpeg", lambda u: b"j"), \
+                mock.patch.object(script, "_generate", lambda *a, **k: '{"pick": [3, 1]}'):
+            self.assertEqual(platforms.vet_images({"title": "T"}, cands), [{"url": "c"}, {"url": "a"}])
+
+    def test_no_model_no_images(self):
+        from unittest import mock
+        from pipeline import platforms
+        with mock.patch.dict("os.environ", {}, clear=True):
+            self.assertEqual(platforms.vet_images({"title": "T"}, [{"url": "a"}]), [])

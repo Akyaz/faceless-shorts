@@ -165,15 +165,21 @@ def wiki_poster(title, kind=""):
     return []
 
 
-def news_images(work, sources, limit=4):
+def news_images(work, sources, limit=5):
     """Yapımı anlatan haberlerin kapak görselleri (og:image). Yeni yapımın çoğu zaman Vikipedi sayfası yok;
     haber siteleri ise platformun dağıttığı tanıtım görselini kapak yapar. Yalnızca başlığında yapım adı geçen
     haberlerin görseli alınır."""
     from .articles import lead_image
     words = set(re.findall(r"\w+", work["title"].split(":")[0].lower()))
     items = [s for h in sources for s in [h] + h.get("related", []) if s.get("link")]
+    # Haber bir oyuncu hakkındaysa kaynak başlıklarında yapım adı geçmeyebilir: yapımın kendi haberleri de aranır
+    kind = "film" if work.get("type") == "movie" else "dizi"
+    try:
+        items += search_headlines(f'"{work["title"].split(":")[0]}" {kind}', 8)
+    except Exception as exc:
+        print(f"Yapım haberi aranamadı ({work['title']}): {exc}")
     out, seen = [], set()
-    for item in items[:8]:
+    for item in items[:16]:
         if len(out) >= limit:
             break
         if not words <= set(re.findall(r"\w+", item["title"].lower())):
@@ -188,6 +194,56 @@ def news_images(work, sources, limit=4):
     return out
 
 
+VET_RULES = """Bir dizi ya da film haberi videosunda tam ekran gösterilecek görselleri seçiyorsun. Yapım: {title}
+Aşağıda numaralı adayların sırasıyla kendisi var. Görsele bakarak karar ver.
+
+Seç: bu yapımdan bir sahne karesi, yapımın resmi afişi ya da set/çekim fotoğrafı (oyuncular rolündeyken).
+Seçme:
+- Üzerine büyük yazı, başlık, ok, çerçeve eklenmiş haber kapakları; birden fazla görselin yan yana konduğu kolajlar.
+- Başka dizi ya da filmlerden kareler; oyuncunun yapımla ilgisiz etkinlik, kırmızı halı ya da özel hayat fotoğrafları.
+- Logo, ekran görüntüsü, bulanık ya da çok küçük görseller.
+Kanal logosu gibi köşedeki küçük işaretler sorun değildir. Emin değilsen seçme.
+En uygun olan başta, en fazla {limit} aday seç; uygun aday yoksa boş liste döndür.
+Sadece JSON döndür: {{"pick": [2, 1]}}
+"""
+
+
+def _jpeg(url, width=360):
+    from PIL import Image
+    img = Image.open(io.BytesIO(_get(url, 30))).convert("RGB")
+    img.thumbnail((width, width))
+    out = io.BytesIO()
+    img.save(out, "JPEG", quality=80)
+    return out.getvalue()
+
+
+def vet_images(work, candidates, limit=5):
+    """Haber kapaklarını Gemini'ye gösterip yalnızca yapımın kendi karelerini bırakır (yazılı kapak ve kolaj elenir).
+    Model yoksa ya da yanıt vermezse hiçbiri kullanılmaz: alakasız görsel, görselsizlikten kötü."""
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key or not candidates:
+        return []
+    shown, previews = [], []
+    for cand in candidates:
+        try:
+            previews.append(_jpeg(cand["url"]))
+            shown.append(cand)
+        except Exception as exc:
+            print(f"Kapak önizlemesi alınamadı: {exc}")
+    if not shown:
+        return []
+    from . import script
+    from .images import SELECT_MODELS
+    try:
+        picks = json.loads(script._generate(VET_RULES.format(title=work["title"], limit=limit), key, previews,
+                                            SELECT_MODELS))["pick"]
+    except Exception as exc:
+        print(f"Kapak görselleri değerlendirilemedi: {exc}")
+        return []
+    print(f"Yapım karesi seçimi ({work['title']}): {picks} ({len(shown)} aday içinden)")
+    return [shown[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(shown)][:limit]
+
+
 def work_images(work, sources=()):
     """work: {"title", "year", "type": "tv"|"movie"} → resmi görsel adayları: önce TMDB, yoksa Vikipedi afişi ve
     haberlerin kapak görselleri (afiş tek görsel; video birkaç farklı görselle daha iyi akar)."""
@@ -197,4 +253,5 @@ def work_images(work, sources=()):
     found = tmdb_images(title, year, kind)
     if found:
         return found
-    return wiki_poster(title, kind) + news_images({**work, "title": title}, sources)
+    work = {**work, "title": title}
+    return vet_images(work, news_images(work, sources, limit=10)) + wiki_poster(title, kind)

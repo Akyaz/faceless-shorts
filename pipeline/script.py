@@ -185,7 +185,9 @@ IMAGE_FIELDS_EN = """- country: English name of the country where the story take
 # Dizi ve film haberlerinde yapımın resmi görselleri aranır (kanal sahibinin kararı: resmi afiş ve sahne görselleri)
 WORK = """Yapım alanı: haber bir dizi ya da film hakkındaysa JSON'a "work" alanını ekle: {"title": yapımın özgün adı
 (Netflix ya da TMDB'deki adı), "year": ilk yayın yılı (biliniyorsa; yoksa boş), "type": "tv" (dizi) ya da "movie" (film)}.
-Videoda yapımın resmi afişi ve sahne görselleri gösterilir. Haber bir yapım hakkında değilse "work": null.
+Videoda yapımın resmi afişi ve sahne görselleri gösterilir. Haber bir oyuncu, yönetmen ya da senarist hakkındaysa ve
+haberde ya da kaynaklarda oynadığı (ya da yaptığı) bir dizi veya film geçiyorsa o yapımı yaz: video oyuncunun
+fotoğrafıyla birlikte o yapımdan kareler gösterir. Haberde hiçbir yapım geçmiyorsa "work": null.
 """
 
 # Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi

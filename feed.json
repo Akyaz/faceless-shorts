@@ -4651,16 +4651,16 @@
   ]
  },
  {
-  "time": "2026-11-14T20:52:24Z",
+  "time": "2026-11-14T21:08:23Z",
   "run": "43639585055",
   "event": "workflow_dispatch",
   "mode": "fact",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43639585055",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43641181713",
   "videos": [
    {
     "title": "Sakıp Sabancı: Akbank Stajyerliğinden 3,2 Milyar Dolarlık Servete",
-    "url": null,
+    "url": "https://youtu.be/ovXsQzMAyJE",
     "instagram": null
    }
   ]

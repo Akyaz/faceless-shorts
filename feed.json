@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T09:08:33Z",
-  "run": "38958714639",
-  "event": "workflow_dispatch",
-  "mode": "digest",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019983350",
-  "videos": [
-   {
-    "title": "İstanbul'da sel felaketi ve günün öne çıkan haberleri",
-    "url": "https://youtu.be/uqOmzhjJ-qk"
-   }
-  ]
- },
- {
   "time": "2026-10-17T09:08:36Z",
   "run": "38941731231",
   "event": "workflow_dispatch",
@@ -4658,5 +4644,21 @@
     "instagram": "https://www.instagram.com/reel/Dfub1MXIQzL/"
    }
   ]
+ },
+ {
+  "time": "2026-11-14T16:49:20Z",
+  "run": "43617116998",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43617116998",
+  "videos": [
+   {
+    "title": "Sümerler: Evlilik Yüzüğü ve Nazar Boncuğunun Şaşırtıcı Tarihi",
+    "url": "https://youtu.be/U2LzKxdK6cE",
+    "instagram": "https://www.instagram.com/reel/Dfuq_rnGV-c/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

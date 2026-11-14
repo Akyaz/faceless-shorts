@@ -24,6 +24,7 @@ UA = {"User-Agent": "faceless-shorts/0.1 (https://github.com/Akyaz/faceless-shor
 PLATFORM_QUERIES = ["Netflix yeni dizi when:7d", "Netflix film when:7d", "Netflix fragman when:7d",
                     "Disney+ dizi when:7d", "Prime Video dizi when:7d", "HBO Max dizi when:7d", "tabii dizi when:7d",
                     "Exxen dizi when:7d"]
+TOP_RANKS = 2  # Netflix Türkiye dizi ve film listelerinde videoya dönen sıralar
 BODY_CHARS = 1500  # arama sonuçları kümesiz: metin, haberin sitesindeki yazının başından alınır
 
 
@@ -60,7 +61,8 @@ def headlines(limit=16):
     except Exception as exc:  # liste alınamazsa haber aramasıyla devam edilir
         print(f"Netflix Top 10 alınamadı: {exc}")
         top = []
-    for item in [t for t in top if t["category"] == "TV"][:5] + [t for t in top if t["category"] == "Films"][:3]:
+    # Yalnızca ilk iki sıra: listede 3. olan Alman komedisi paylaşılacak bir haber değildi (15 Kasım 2026)
+    for item in [t for t in top if t["rank"] <= TOP_RANKS]:
         found = search_headlines(f'"{item["title"]}" Netflix', 5)
         if not found:
             continue

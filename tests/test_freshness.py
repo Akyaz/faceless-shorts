@@ -45,3 +45,55 @@ class Repeat(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WorkOnly(unittest.TestCase):
+    """Dizi ve film haberi: yalnızca yapımın kareleri, adlar kartla, zayıf liste sırası yok (15 Kasım 2026)."""
+
+    def test_card_lines_must_be_in_text(self):
+        from pipeline import scenes
+        text = "Yeni sezon 14 Kasım'da 4 bölüm olarak yayınlandı. Başrollerde Öykü Karayel ve Fatih Artman var."
+        ok = scenes.check({"type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}, text)
+        self.assertEqual(ok["lines"], ["Öykü Karayel", "Fatih Artman"])
+        self.assertIsNone(scenes.check({"type": "kart", "lines": ["Funda Eryiğit"]}, text))  # metinde yok
+        self.assertIsNone(scenes.check({"type": "kart", "lines": ["15 Kasım"]}, text))
+
+    def test_card_draws(self):
+        from PIL import ImageFont
+        from pipeline import scenes
+        sc = {"type": "kart", "label": "Yayın", "lines": ["14 Kasım", "4 bölüm"]}
+        with mock.patch.object(scenes, "_font", lambda size, bold=True: ImageFont.load_default(size)):
+            base, _ = scenes._backdrop(None)
+            img = scenes.frame(sc, 2.0, 4.0, base, {"accent": (229, 57, 53), "words": [], "grid": True})
+        self.assertEqual(img.size, (scenes.W, scenes.H))
+
+    def test_filler_ending_flagged(self):
+        paras = ["Netflix'te bir numara X dizisi.", "Konu.", "Yapım Netflix Türkiye platformunda izleyicilerle "
+                 "buluşmayı sürdürüyor."]
+        self.assertTrue(script.weak_ending(paras))
+        self.assertFalse(script.weak_ending(paras[:2] + ["Dizi 4 bölümden oluşuyor."]))
+
+    def test_only_top_two_ranks(self):
+        from pipeline import platforms
+        top = [{"category": "TV", "rank": r, "title": f"d{r}", "week": "w", "weeks": 1, "season": ""} for r in (1, 2, 3)]
+        top += [{"category": "Films", "rank": 3, "title": "f3", "week": "w", "weeks": 1, "season": ""}]
+        searched = []
+        with mock.patch.object(platforms, "netflix_top10", return_value=top), \
+                mock.patch.object(platforms, "search_headlines", side_effect=lambda q, n: searched.append(q) or []), \
+                mock.patch.object(platforms, "PLATFORM_QUERIES", []):
+            platforms.headlines()
+        self.assertEqual(searched, ['"d1" Netflix', '"d2" Netflix'])
+
+    def test_needs_two_work_images(self):
+        import argparse
+        args = argparse.Namespace(mode="platform", offline=False)
+        plan = {"subjects": ["Berkun Oya"], "sources": [{"title": "h"}], "work": {"title": "X"}}
+        one = [{"url": "a"}]
+        with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
+                mock.patch.object(main.platforms, "work_images", return_value=one), \
+                mock.patch.object(main.images, "subject_file", side_effect=AssertionError("Commons aranmamalı")):
+            with self.assertRaises(RuntimeError):
+                main.with_subject_photos(args)
+        with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
+                mock.patch.object(main.platforms, "work_images", return_value=one + [{"url": "b"}]):
+            self.assertEqual(len(main.with_subject_photos(args)["work_images"]), 2)

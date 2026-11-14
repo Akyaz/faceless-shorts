@@ -162,9 +162,9 @@ def find_images(plan, work):
         # Dizi ve film: yapımın resmi görselleri (sahne görselleri, afiş) ilk karede ve paragraflar arasında
         # sırayla; tek görsel varsa oyuncu fotoğraflarıyla dönüşümlü
         own = images.save_direct(plan["work_images"], work / "work", len(segments))
-        if len(own) < 3:
+        if len(own) < 3 and plan.get("mode") not in WORK_ONLY:
             own += _subject_support(plan, work, 3 - len(own))
-        if plan.get("subject_files") and len(own) < 3:
+        if plan.get("subject_files") and len(own) < 3 and plan.get("mode") not in WORK_ONLY:
             own += images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
                                            work / "subject", len(plan["subject_files"]))
         if own:
@@ -342,6 +342,8 @@ def repeated(plan, recent_titles):
 # izleyiciyi yanıltıyor. Konunun kendi serbest lisanslı fotoğrafı yoksa sıradaki haber denenir.
 SUBJECT_REQUIRED = {"culture", "sportstory", "platform"}
 SUBJECT_TRIES = 4
+WORK_ONLY = {"platform"}  # görsel yalnızca yapımın kendisinden
+MIN_WORK_IMAGES = 2
 
 
 def with_subject_photos(args):
@@ -349,7 +351,7 @@ def with_subject_photos(args):
     tried = []
     for attempt in range(SUBJECT_TRIES):
         plan = news_plan(args, exclude=tried)
-        if args.offline or not plan.get("subjects"):
+        if args.offline or not plan.get("subjects") or args.mode in WORK_ONLY:
             files = []
         else:
             files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
@@ -357,17 +359,15 @@ def with_subject_photos(args):
         plan["mode"] = args.mode
         # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
         plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"), plan.get("sources", []))
-        if not plan["work_images"] and not plan.get("work") and args.mode == "platform" and not args.offline:
-            # Model yapımı "work" alanına yazmayı unuttu (Bir Başkadır, 15 Kasım 2026: yalnızca yönetmenin fotoğrafı
-            # çıktı): başlıkta geçen adlar yapım adı olarak denenir. Başlıkta geçmeyen yönetmen ya da oyuncu adı denenmez:
-            # Vikipedi'deki portresi afiş sanılırdı
-            heading = f" {_fold(plan.get('title'))} {_fold(plan.get('hook_title'))} "
-            for name in [n for n in plan.get("subjects") or [] if f" {_fold(n)} " in heading]:
-                found = platforms.work_images({"title": name}, plan.get("sources", []))
-                if found:
-                    plan["work"], plan["work_images"] = {"title": name}, found
-                    print(f"Yapım adı konulardan bulundu: {name}")
-                    break
+        if args.mode in WORK_ONLY and not args.offline:
+            # Dizi ve film haberi: yalnızca yapımın kendi kareleri (haber kapakları, Vikipedi afişi); en az iki
+            # farklı kare yoksa haber atlanır. Commons'taki oyuncu ve yönetmen fotoğrafı kullanılmaz: defile, gala
+            # ve başka biriyle çekilmiş kareler geliyordu, kim olduğu da belli değildi (15 Kasım 2026)
+            if len({c["url"] for c in plan["work_images"]}) >= MIN_WORK_IMAGES:
+                return plan
+            tried += [h["title"] for h in plan["sources"]]
+            print(f"Yapımın yeterli resmi karesi yok ({len(plan['work_images'])}); başka haber deneniyor")
+            continue
         if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
             return plan
         tried += [h["title"] for h in plan["sources"]]

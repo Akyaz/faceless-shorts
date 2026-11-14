@@ -117,6 +117,14 @@ def check(scene, text):
             return None
         out = {"type": kind, "points": sorted(points, key=lambda p: int(p["year"]))}
         labels = [p["label"] for p in points]
+    elif kind == "kart":
+        # Kısa bilgi satırları (yayın tarihi, bölüm sayısı, başrol adları); her satır paragrafta aynen geçer.
+        # Fotoğrafla kim olduğu belli olmayan kişi yerine adı yazıyla verilir (Bir Başkadır videosu, 15 Kasım 2026)
+        lines = [clean(x) for x in (scene.get("lines") or [])[:4] if clean(x)]
+        if not lines or any(_fold(x) not in _fold(text) for x in lines):
+            return None
+        out = {"type": kind, "label": clean(scene.get("label")), "lines": lines}
+        labels = [out["label"]] + lines
     elif kind == "harita":
         place = clean(scene.get("place"))
         # Yer paragrafta geçmeli: başka bir yerin haritası gösterilmesin
@@ -432,7 +440,38 @@ def _map(img, t, dur, sc, ctx):
         _pill(d, sc["label"], W / 2, cy + 110, _fit(d, sc["label"], 56, W - 220), ctx["accent"], scale=q)
 
 
-DRAW = {"sayac": _counter, "karsilastirma": _compare, "zaman": _timeline, "harita": _map}
+def _card(img, t, dur, sc, ctx):
+    """Başlık ve iki-dört kısa satır; her satır söylendiği anda belirir (bulunamazsa sırayla)."""
+    d = ImageDraw.Draw(img)
+    lines = sc["lines"]
+    y = TOP + 20
+    if sc["label"]:
+        _centered(d, sc["label"], y, _fit(d, sc["label"], 52, W - 140, bold=False), MUTED)
+        y += 90
+        d.rounded_rectangle([W / 2 - 120 * ease(t / 0.6), y - 24, W / 2 + 120 * ease(t / 0.6), y - 14], radius=5,
+                            fill=ctx["accent"])
+    size = min(96, int((BOTTOM - y) / len(lines) / 1.35))
+    step = size * 1.35
+    for i, line in enumerate(lines):
+        said = _said(ctx["words"], line.split()[0])
+        at = min(said if said is not None else 0.3 + 0.6 * i, max(0.3, dur - 1.0))
+        q = ease((t - at) / 0.35)
+        if q <= 0.02:
+            continue
+        font = _fit(d, line, size, W - 120)
+        d.text((W / 2, y + i * step + 40 * (1 - q)), line, font=font, fill=WHITE if i else GOLD, anchor="mt",
+               stroke_width=4, stroke_fill=(0, 0, 0))
+
+
+DRAW = {"sayac": _counter, "karsilastirma": _compare, "zaman": _timeline, "harita": _map, "kart": _card}
+
+# Haber videolarında (dizi ve film) modele giden sahne tarifi; bilgi serisininki evergreen.RULES içinde
+NEWS_SCENES = """- scenes: en fazla 2 paragraf için kodla çizilen bilgi kartı. Her satır ve sayı o paragrafta yazıldığı gibi geçmeli.
+  {"paragraph": 1, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
+  {"paragraph": 2, "type": "kart", "label": "Yayın", "lines": ["14 Kasım", "4 bölüm"]}
+  {"paragraph": 3, "type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}
+  Başrol adları mutlaka kartla verilir (videoda oyuncu fotoğrafı yok, adlar yazıyla görünür). paragraph 1'den başlar.
+"""
 
 
 def frame(scene, t, dur, base, ctx):

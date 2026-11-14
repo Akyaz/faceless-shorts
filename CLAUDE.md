@@ -46,7 +46,10 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
   olarak yazılmaz.
 - Dizi ve film haberi: yapımın kendi kareleri. Resmi sahne görselleri, afiş ve set fotoğrafı kullanılır. Bunlar
   telifli; kanal sahibi kabul etti (12 Kasım 2026), hak sahibi açıklamaya yazılır.
-  - Kaynak sırası: TMDB (`TMDB_API_KEY` varsa), haber kapakları (Gemini eler), Vikipedi afişi.
+  - Kaynak: haber kapakları (Gemini eler) ve Vikipedi afişi. TMDB kullanılmaz (ticari kullanım ücretli; çözüm
+    ücretsiz olmalı). En az iki farklı yapım karesi yoksa haber videoya dönmez.
+  - Oyuncu ve yönetmenin Commons fotoğrafı kullanılmaz (defile, gala karesi); başrol adları bilgi kartıyla
+    yazılır (`scenes` "kart"). Netflix listesinden yalnızca ilk iki sıra (15 Kasım 2026).
   - Yazılı haber kapağı, kolaj ve başka yapımın karesi kullanılmaz.
 - Haber sitelerinin ve ajansların fotoğrafları telifli; dizi ve film dışında kullanılmaz.
 - Kişi videosunda kişinin serbest lisanslı fotoğrafı yoksa kurumun resmi arşiv ya da basın fotoğrafı kullanılır

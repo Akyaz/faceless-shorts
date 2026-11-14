@@ -49,8 +49,14 @@ def weak_ending(paragraphs):
     out = [first] if first.endswith("?") or RHETORICAL.search(first) else []
     if last.endswith("?") and GENERIC_QUESTION.search(last):
         out.append(last)
+    if FILLER_ENDING.search(last):
+        out.append(last)
     return out
 
+
+# Bilgi vermeyen kapanış: "Yapım Netflix Türkiye platformunda izleyicilerle buluşmayı sürdürüyor" (15 Kasım 2026)
+FILLER_ENDING = re.compile(r"izleyici(ler)?(yle|le) buluşma(yı|ya) (sürdürüyor|devam)|merakla bekleniyor|"
+                           r"ilgi (görmeye|çekmeye) devam|beğeni (toplamaya|kazanmaya) devam", re.I)
 
 MIN_WORDS = 45  # 12 Kasım denemesi: kısaltma kuralıyla 30 kelimelik, hangi maç olduğunu söylemeyen metin çıktı
 
@@ -209,6 +215,8 @@ IMAGE_FIELDS_EN = """- country: English name of the country where the story take
 - object_query: one English search for a close-up of the object the story is about, with no people and no
   location in the frame (example: "oil barrel", "banknotes", "satellite dish"); empty if there is none."""
 
+from .scenes import NEWS_SCENES  # noqa: E402  (sahneler render'a bağlı; script'e bağlı değil)
+
 # Dizi ve film haberlerinde yapımın resmi görselleri aranır (kanal sahibinin kararı: resmi afiş ve sahne görselleri)
 WORK = """Yapım alanı: haber bir dizi ya da film hakkındaysa JSON'a "work" alanını ekle: {"title": yapımın özgün adı
 (Netflix ya da TMDB'deki adı), "year": ilk yayın yılı (biliniyorsa; yoksa boş), "type": "tv" (dizi) ya da "movie" (film)}.
@@ -288,8 +296,8 @@ değil, Türkiye sineması' dedi."). Soru yalnızca adı konmuş iki seçenek va
 tabii, Exxen). Amaç izleyicinin sonuna kadar izlemesi ve videoyu diziyi ya da filmi sevecek bir arkadaşına göndermesi.
 
 Haber seçimi: Öncelik sırası:
-1. Netflix Türkiye haftalık Top 10'daki yapımlar ("Netflix Top 10" kaynaklı satırı olan haberler): ne anlattığı,
-   kimlerin oynadığı, kaçıncı sırada ve kaç haftadır listede olduğu.
+1. Netflix Türkiye haftalık Top 10'da ilk iki sıradaki yapımlar ("Netflix Top 10" kaynaklı satırı olan haberler):
+   ne anlattığı, kimlerin oynadığı, kaçıncı sırada ve kaç haftadır listede olduğu.
 2. Yeni yayınlanan ya da yayın tarihi açıklanan dizi ve filmler, yeni sezonlar, ilk fragmanlar.
 3. Türk yapımlarının platformlardaki başarısı.
 Seçme: "en iyi 10 dizi" gibi öneri listeleri ve derlemeler; abonelik fiyatı, şirket yatırımı ve hisse haberleri;
@@ -297,7 +305,9 @@ oyuncuların özel hayatı; yapımın adı geçmeyen haberler. "pick" alanına s
 Bilgi: bazı haberlerin altında "Haber metni" var; bilgiyi başlıklardan ve bu metinden al, başka bilgi ekleme.
 Metinde yapımın adını, platformu, konusunu bir cümleyle, başrol oyuncularını ve yayın tarihini (ya da Top 10 sırasını)
 söyle (örnek ilk cümle: "Netflix Türkiye'de bu hafta bir numara Organize İşler: Karun Hazinesi.").
-""" + WORK,
+Son cümle somut bir bilgi olsun (bölüm sayısı, yayın günü, kaç haftadır listede); "izleyicilerle buluşmayı
+sürdürüyor", "merakla bekleniyor" gibi dolgu cümlelerle bitirme. Hiçbir haber güçlü değilse "skip": true döndür.
+""" + WORK + NEWS_SCENES,
     },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
@@ -647,6 +657,10 @@ def story_script(headlines, kind="story", count=10, recent=()):
         if not out.get("paragraphs") or stale_relative(texts(out), headline.get("published"), today):
             raise RuntimeError("Eski haberde göreli gün kaldı (\"yarın\" gibi); bu saatin videosu atlanıyor.")
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
+    if "scenes" in out:  # dizi ve film haberinde bilgi kartları (scenes.NEWS_SCENES)
+        from . import scenes
+        for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes")).items():
+            segments[i]["scene"] = scene
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
             "lang": spec.get("lang", "tr"), "segments": segments,
             "sources": [headline], **_image_fields(out),

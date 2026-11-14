@@ -1,8 +1,16 @@
-"""Habere uygun arka plan görsellerini bulur.
+"""Habere uygun arka plan görsellerini ve video kliplerini bulur.
 
-Sıra: Wikimedia Commons (serbest lisanslı gerçek fotoğraflar) -> Gemini illüstrasyonu -> yok.
-Haber sitelerinin fotoğrafları telifli olduğu için kullanılmaz. Tek istisna dizi ve film haberleri: yapımın resmi
-afişi ve sahne görselleri (pipeline/platforms.py, save_direct) kullanılır ve hak sahibi açıklamada belirtilir.
+Kaynaklar (hepsi ticari kullanıma ve kırpmaya izin veren lisanslar):
+- Wikimedia Commons: serbest lisanslı fotoğraflar.
+- Openverse: Flickr ve müze arşivlerindeki CC BY, CC BY-SA, CC0 ve kamu malı fotoğraflar (anahtarsız).
+- Pexels ve Pixabay: fotoğraf ve HD video klipler (PEXELS_API_KEY, PIXABAY_API_KEY varsa).
+- NASA görsel arşivi: bilgi serisinde uzay ve bilim konuları (kamu malı, anahtarsız).
+Yalnızca Commons'a bağlı kalınca aynı birkaç fotoğraf dönüyor, video hiç yoktu (14 Kasım 2026). Bütün adaylar
+Gemini'nin görsel elemesinden geçer. Eleme yapılamazsa yalnızca Commons sonuçları kullanılır: stok sitelerinin
+etiketleri gevşek, konunun kendisi olmayan "temsili" görsel gelebiliyor.
+Gemini illüstrasyonu en son çaredir. Haber sitelerinin fotoğrafları telifli olduğu için kullanılmaz. Tek istisna dizi
+ve film haberleri: yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py, save_direct) kullanılır ve hak
+sahibi açıklamada belirtilir.
 """
 import base64
 import html
@@ -64,11 +72,151 @@ def wikimedia(query, limit=5):
         about = f"{page.get('title', '')} | {_strip(meta.get('ImageDescription', {}).get('value'))[:200]}"
         taken = re.search(r"(1[89]|20)\d\d", _strip(meta.get("DateTimeOriginal", {}).get("value"))
                           or _strip(meta.get("DateTime", {}).get("value")))
-        found.append({"url": info["thumburl"], "about": about, "year": int(taken.group()) if taken else 0, "credit":
+        found.append({"url": info["thumburl"], "about": about, "year": int(taken.group()) if taken else 0,
+                      "source": "commons", "credit":
                       f"Görsel: {artist}, {license_name}, Wikimedia Commons ({info['descriptionurl']})"})
         if len(found) >= limit:
             break
     return found
+
+
+LANDSCAPE_LIMIT = 2.5  # daha yatık panorama dikeye kırpılınca ince bir şerit kalıyor
+
+
+def _usable(width, height, about):
+    if width and (width < 800 or width > LANDSCAPE_LIMIT * (height or 1)):
+        return False
+    return not (EXCLUDED.search(about) or MEDIA_BUILDINGS.search(about))
+
+
+def openverse(query, limit=5):
+    """Openverse: Flickr ve müze arşivlerindeki serbest lisanslı fotoğraflar. NC (ticari olmayan) ve ND (değiştirilemez)
+    lisanslar alınmaz: kanal para kazanıyor, fotoğraf da kırpılıyor. Commons sonuçları ayrıca arandığı için atlanır.
+    Anahtarsız sınır günde 200 istek (videoda 3-5 arama yapılıyor)."""
+    params = urllib.parse.urlencode({"q": query, "license": "by,by-sa,cc0,pdm", "page_size": 20, "mature": "false"})
+    names = {"cc0": "CC0", "pdm": "Public domain"}
+    found = []
+    # Servis yavaş (15 sn) ve ara sıra 504 veriyor: hata find_backgrounds içinde kaynak atlanarak geçilir
+    for r in _get_json(f"https://api.openverse.org/v1/images/?{params}", timeout=25).get("results", []):
+        if r.get("source") == "wikimedia" or r.get("category") not in (None, "photograph", "digitized_artwork"):
+            continue
+        tags = " ".join(t.get("name", "") for t in r.get("tags") or [])
+        about = f"{r.get('title', '')} | {tags}"[:240]
+        if not r.get("url") or not _usable(r.get("width") or 0, r.get("height") or 0, about):
+            continue
+        license_name = names.get(r["license"]) or f"CC {r['license'].upper()} {r.get('license_version') or ''}".strip()
+        # Flickr'ın kendi küçük boyutu (320 px) önizleme için yeter; Openverse'in önizleme servisi sınırı harcamasın
+        preview = re.sub(r"_[a-z]\.jpg$", "_n.jpg", r["url"]) if "staticflickr" in r["url"] else r.get("thumbnail")
+        found.append({"url": r["url"], "preview": preview, "about": about, "year": 0, "source": "openverse",
+                      "credit": f"Görsel: {r.get('creator') or 'Bilinmiyor'}, {license_name}, "
+                                f"{(r.get('source') or 'Openverse').capitalize()} ({r.get('foreign_landing_url')})"})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def _slug(url):
+    """Pexels sayfa adresindeki açıklama: .../video/aerial-view-of-a-bridge-123/ -> aerial view of a bridge"""
+    tail = urllib.parse.urlparse(url).path.rstrip("/").split("/")[-1]
+    return re.sub(r"-?\d+$", "", tail).replace("-", " ")
+
+
+def _best_file(files):
+    """Dikey 1080x1920 için en az 720 piksellik en küçük dosya: büyüğü indirmesi uzun, küçüğü bulanık."""
+    ok = [f for f in files if min(f.get("width") or 0, f.get("height") or 0) >= 720 and f.get("link", f.get("url"))]
+    return min(ok, key=lambda f: (f.get("width") or 0) * (f.get("height") or 0)) if ok else None
+
+
+def pexels(query, limit=5, video=False):
+    key = os.environ.get("PEXELS_API_KEY")
+    if not key:
+        return []
+    path = "videos/search" if video else "v1/search"
+    req = urllib.request.Request(f"https://api.pexels.com/{path}?" + urllib.parse.urlencode(
+        {"query": query, "per_page": 15}), headers={"Authorization": key, "User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.load(resp)
+    found = []
+    for r in data.get("videos" if video else "photos", []):
+        about = (r.get("alt") or _slug(r.get("url", ""))) + " | Pexels"
+        name = (r.get("user") or {}).get("name") if video else r.get("photographer")
+        if video:
+            best = _best_file(r.get("video_files") or [])
+            if not best or not r.get("image") or not _usable(0, 0, about):
+                continue
+            found.append({"url": r["image"], "preview": r["image"], "video": best["link"], "about": about,
+                          "year": 0, "source": "pexels",
+                          "credit": f"Video: {name or 'Bilinmiyor'}, Pexels lisansı, Pexels ({r['url']})"})
+        else:
+            if not _usable(r.get("width") or 0, r.get("height") or 0, about):
+                continue
+            found.append({"url": r["src"]["large2x"], "preview": r["src"]["medium"], "about": about, "year": 0,
+                          "source": "pexels",
+                          "credit": f"Görsel: {name or 'Bilinmiyor'}, Pexels lisansı, Pexels ({r['url']})"})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def pixabay(query, limit=5, video=False):
+    key = os.environ.get("PIXABAY_API_KEY")
+    if not key:
+        return []
+    params = {"key": key, "q": query[:100], "per_page": 20, "safesearch": "true"}
+    if not video:
+        params["image_type"] = "photo"
+    data = _get_json(f"https://pixabay.com/api/{'videos/' if video else ''}?" + urllib.parse.urlencode(params))
+    found = []
+    for r in data.get("hits", []):
+        about = f"{r.get('tags', '')} | Pixabay"
+        credit = f"{'Video' if video else 'Görsel'}: {r.get('user') or 'Bilinmiyor'}, Pixabay lisansı, " \
+                 f"Pixabay ({r.get('pageURL')})"
+        if video:
+            files = [{**v, "link": v.get("url")} for v in (r.get("videos") or {}).values()]
+            best = _best_file(files)
+            poster = ((r.get("videos") or {}).get("medium") or {}).get("thumbnail")
+            if not best or not poster or not _usable(0, 0, about):
+                continue
+            found.append({"url": poster, "preview": poster, "video": best["link"], "about": about, "year": 0,
+                          "source": "pixabay", "credit": credit})
+        else:
+            if not _usable(r.get("imageWidth") or 0, r.get("imageHeight") or 0, about):
+                continue
+            found.append({"url": r["largeImageURL"], "preview": r["webformatURL"], "about": about, "year": 0,
+                          "source": "pixabay", "credit": credit})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def nasa(query, limit=5):
+    """NASA görsel arşivi: uzay ve bilim konuları. Asıl dosya indirilirken seçilir (_resolve)."""
+    params = urllib.parse.urlencode({"q": query, "media_type": "image", "page_size": 20})
+    found = []
+    for item in _get_json(f"https://images-api.nasa.gov/search?{params}")["collection"]["items"]:
+        data, links = item["data"][0], item.get("links") or []
+        about = f"{data.get('title', '')} | {data.get('description', '')}"[:240]
+        if not links or not _usable(0, 0, about):
+            continue
+        found.append({"url": item["href"], "preview": links[0]["href"], "about": about, "source": "nasa",
+                      "year": int(data.get("date_created", "0")[:4] or 0),
+                      "credit": f"Görsel: {data.get('secondary_creator') or 'NASA'}, kamu malı, NASA "
+                                f"(https://images.nasa.gov/details/{data.get('nasa_id')})"})
+        if len(found) >= limit:
+            break
+    return found
+
+
+def _resolve(url):
+    """NASA'nın dosya listesinden dikey video için yeterli en küçük boyut."""
+    if not url.endswith("collection.json"):
+        return url
+    files = _get_json(url)
+    for size in ("~large.jpg", "~medium.jpg", "~orig.jpg"):
+        for f in files:
+            if f.endswith(size):
+                return f.replace("http://", "https://")
+    raise ValueError("NASA dosyası yok")
 
 
 def commons_files(titles):
@@ -252,11 +400,27 @@ PREVIEW_WIDTH = 330  # Wikimedia'nın hazır küçük boyutlarından biri
 SELECT_MODELS = "gemini-flash-lite-latest,gemini-flash-latest"
 
 
-def _preview(url):
-    small = re.sub(r"/\d+px-", f"/{PREVIEW_WIDTH}px-", url)
+STOCK_RULE = """
+Etiketler:
+- [stok] stok fotoğraf ve video sitesinden gelir; etiketleri gevşektir. Yalnızca konunun kendisini (aynı yapı, aynı
+  yer, aynı canlı türü, aynı nesne) tanınır biçimde gösteriyorsa seç. Benzeyen ama başka bir yapı ya da yer, ya da
+  konuyu "temsil eden" genel bir sahne ise seçme.
+- [video] kısa bir video klibin ilk karesidir. Hareketli görüntü videoyu canlandırır: uygunsa fotoğrafa tercih et.
+"""
+STOCK_SOURCES = {"pexels", "pixabay"}
+
+
+def _preview(cand):
+    small = cand.get("preview") or re.sub(r"/\d+px-", f"/{PREVIEW_WIDTH}px-", cand["url"])
     req = urllib.request.Request(small, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.read()
+
+
+def _tags(cand):
+    tags = "[nesne] " if cand.get("neutral") else ""
+    tags += "[stok] " if cand.get("source") in STOCK_SOURCES else ""
+    return tags + ("[video] " if cand.get("video") else "")
 
 
 def _select(plan, candidates):
@@ -266,11 +430,11 @@ def _select(plan, candidates):
     shown, previews = [], []
     for cand in candidates:
         try:
-            previews.append(_preview(cand["url"]))
+            previews.append(_preview(cand))
             shown.append(cand)
         except Exception as exc:
             print(f"Önizleme alınamadı: {exc}")
-    listing = "\n".join(f"{i}. {'[nesne] ' if c.get('neutral') else ''}{c['about']}" for i, c in enumerate(shown, 1))
+    listing = "\n".join(f"{i}. {_tags(c)}{c['about']}" for i, c in enumerate(shown, 1))
     where = _where(plan)
     if plan.get("kind") == "fact":
         rules = FACT_RULES.format(topic=plan["title"], where=where or "-")
@@ -278,7 +442,7 @@ def _select(plan, candidates):
         rules = HISTORY_RULES.format(topic=plan["title"], era=plan.get("era", ""), where=where or "-")
     else:
         rules = SELECT_RULES.format(place_rule=PLACE_RULE.format(where=where) if where else NO_PLACE_RULE)
-    prompt = f"{rules}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
+    prompt = f"{rules}{STOCK_RULE}\nHaber: {plan['title']}\n{plan['sources'][0]['title']}\n\nAdaylar:\n{listing}"
     try:
         picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews, SELECT_MODELS))["pick"]
         print(f"Görsel seçimi: {picks} ({len(shown)} aday içinden)")
@@ -314,11 +478,14 @@ def _save(picked, out_dir, count, exclude_out=None):
     for cand in picked:
         path = out_dir / f"background{len(results)}.jpg"
         try:
-            _download(cand["url"], path)
+            _download(_resolve(cand["url"]), path)
+            if cand.get("video"):  # klip, ilk karesinin yanında aynı adla durur (render.draw_card onu bulur)
+                _download(cand["video"], path.with_suffix(".mp4"))
         except Exception as exc:
             print(f"Görsel indirilemedi: {exc}")
+            path.with_suffix(".mp4").unlink(missing_ok=True)
             continue
-        print(f"Arka plan: {cand['about'][:120]}")
+        print(f"Arka plan{' (video)' if cand.get('video') else ''}: {cand['about'][:120]}")
         USED.append(cand["url"])
         results.append((path, cand["credit"]))
         if exclude_out is not None:
@@ -332,6 +499,21 @@ def save_direct(candidates, out_dir, count):
     """Dışarıdan gelen hazır adaylar (resmi afiş ve sahne görselleri): sırayla indirilir, eleme yapılmaz."""
     out_dir.mkdir(parents=True, exist_ok=True)
     return _save(candidates, out_dir, count)
+
+
+MAX_CANDIDATES = 30  # Gemini'ye gösterilen önizleme sayısı
+
+
+def _sources(plan):
+    """(ad, arama işlevi) listesi. Video klipler yalnızca dikey Short'ta oynatılıyor (render.render_segment)."""
+    found = [("Wikimedia", wikimedia), ("Openverse", openverse),
+             ("Pexels", pexels), ("Pixabay", pixabay)]
+    if not plan.get("wide"):
+        found += [("Pexels video", lambda q, n: pexels(q, n, video=True)),
+                  ("Pixabay video", lambda q, n: pixabay(q, n, video=True))]
+    if plan.get("kind") == "fact":
+        found.append(("NASA", nasa))
+    return found
 
 
 def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
@@ -348,13 +530,15 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
         return fixed + [(path, credit) for path, credit in rest if credit not in known]
     pools = []
     for query, neutral in _searches(plan):
-        try:
-            found = [{**c, "neutral": neutral} for c in wikimedia(query, per_query)]
-        except Exception as exc:
-            print(f"Wikimedia görseli alınamadı ({query}): {exc}")
-            continue
-        print(f"Wikimedia ({query}): {len(found)} aday")
-        pools.append(found)
+        for name, search in _sources(plan):
+            try:
+                found = [{**c, "neutral": neutral} for c in search(query, per_query)]
+            except Exception as exc:
+                print(f"{name} görseli alınamadı ({query}): {exc}")
+                continue
+            print(f"{name} ({query}): {len(found)} aday")
+            if found:
+                pools.append(found)
 
     # Sorgular arasında sırayla dolaşılır ki görseller haberin farklı yönlerini göstersin
     candidates, seen = [], set()
@@ -373,12 +557,13 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
     candidates = fresh
     if exclude:  # hepsi kullanılmışsa tekrar kabul edilir; görselsiz bölüm olmasın
         candidates = [c for c in candidates if c["url"] not in exclude] or candidates
-    candidates = candidates[:24]
+    candidates = candidates[:MAX_CANDIDATES]
 
     picked = _select(plan, candidates) if candidates else []
     if picked is None:
-        # Eleme yapılamadıysa yalnızca yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları elenmeden kullanılmaz
-        picked = [c for c in candidates if not c["neutral"]][:2]
+        # Eleme yapılamadıysa yalnızca Commons'ta yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları ve
+        # stok siteleri elenmeden kullanılmaz
+        picked = [c for c in candidates if not c["neutral"] and c.get("source", "commons") == "commons"][:2]
 
     results = _save(picked, out_dir, count, exclude)
     if not results and plan.get("image_prompt"):

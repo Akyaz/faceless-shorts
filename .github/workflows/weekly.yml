@@ -70,6 +70,8 @@ jobs:
       - name: Derlemeyi üret
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}  # isteğe bağlı: stok fotoğraf ve HD video klipler
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}  # isteğe bağlı: stok fotoğraf ve HD video klipler
         run: python -m pipeline.weekly --week week --out out
       - uses: actions/upload-artifact@v4
         with:

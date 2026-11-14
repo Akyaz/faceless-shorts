@@ -2,6 +2,7 @@
 import hashlib
 import json
 import random
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -265,7 +266,9 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
     # Stilli kartta yazılar ayrı şeffaf katmana çizilir: video hareket ederken yalnızca fotoğraf kayar,
     # logo, etiket ve başlık yerinde durur (kayınca kadraj dışına taşmasın)
     if style:
-        return _compact_card(segment, idx, Path(out_path), base, accent, hook_title, label, lang, style)
+        _compact_card(segment, idx, Path(out_path), base, accent, hook_title, label, lang, style)
+        _attach_clip(background, out_path)
+        return
     img = base
 
     d = ImageDraw.Draw(img)
@@ -305,6 +308,17 @@ def draw_card(segment, idx, out_path, background=None, hook_title="", label="GÜ
         img.save(out_path.with_suffix(".overlay.png"))
         img = Image.alpha_composite(base.convert("RGBA"), img).convert("RGB")  # tek parça kart (önizleme için)
     img.save(out_path)
+
+
+def _attach_clip(background, out_path):
+    """Arka planın video klibi varsa (images._save, ilk karesinin yanına aynı adla koyar) kartın yanına kopyalanır;
+    render_segment fotoğraf yerine klibi oynatır. Kart çizimi ilk kareyle yapılır."""
+    target = Path(out_path).with_suffix(".bg.mp4")
+    clip = Path(background).with_suffix(".mp4") if background else None
+    if clip and clip.exists():
+        shutil.copyfile(clip, target)
+    else:
+        target.unlink(missing_ok=True)
 
 
 def _shade(size=(W, H)):
@@ -709,6 +723,20 @@ def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W
     dur = audio_duration(audio) + pad
     progress = f"on/({dur}*30)"
     bg, overlay = Path(card).with_suffix(".bg.png"), Path(card).with_suffix(".overlay.png")
+    clip = Path(card).with_suffix(".bg.mp4")
+    if look and motion and clip.exists() and overlay.exists():
+        # Video klip: kadraja kırpılır, fotoğraf gibi karartılır (yazılar okunsun); kısaysa başa sarar
+        keep = round(1 - look.get("dim", 0.5), 3)
+        graph = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps=30,"
+                 f"colorchannelmixer=rr={keep}:gg={keep}:bb={keep}[bg];[bg][2:v]overlay=format=yuv420,ass={ass}[v]")
+        subprocess.run([
+            "ffmpeg", "-y", "-loglevel", "error",
+            "-stream_loop", "-1", "-i", str(clip), "-i", str(audio), "-i", str(overlay),
+            "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-af", f"apad=pad_dur={pad}", "-t", f"{dur:.2f}",
+            "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
+            "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "128k", str(out_path),
+        ], check=True)
+        return
     if look and motion:
         layered = bg.exists() and overlay.exists()
         if not layered:  # yazılar fotoğrafla birlikte hareket ediyor: kenardaki logo taşmasın diye hafif hareket

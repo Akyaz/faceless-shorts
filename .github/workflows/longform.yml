@@ -77,6 +77,8 @@ jobs:
         if: ${{ env.SCRIPT_PATH != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}  # isteğe bağlı: stok fotoğraf ve HD video klipler
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}  # isteğe bağlı: stok fotoğraf ve HD video klipler
         run: python -m pipeline.longform "$SCRIPT_PATH" --out out
       - name: YouTube'a yükle
         if: ${{ env.SCRIPT_PATH != '' && (github.event_name == 'schedule' || inputs.upload || inputs.slot != '') }}

@@ -28,7 +28,7 @@ class ImageChoice(unittest.TestCase):
     def test_recent_images_skipped(self):
         cands = [{"url": "a", "about": "File:A.jpg", "credit": "x", "neutral": False},
                  {"url": "b", "about": "File:B.jpg", "credit": "y", "neutral": False}]
-        with mock.patch.object(images, "wikimedia", lambda q, n: cands), \
+        with mock.patch.object(images, "_sources", lambda plan: [("Wikimedia", lambda q, n: cands)]), \
                 mock.patch.object(images, "_select", lambda plan, c: c), \
                 mock.patch.object(images, "_save", lambda picked, *a, **k: [(c["url"], c["credit"]) for c in picked]), \
                 mock.patch.object(images, "RECENT", {"a"}):

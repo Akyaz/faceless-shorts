@@ -81,7 +81,7 @@ def build(script, out):
                           "city": chapter.get("city", "")},
                 "image_queries": chapter.get("image_queries", []), "image_files": chapter.get("image_files", []),
                 "object_query": ""}
-        found = images.find_backgrounds(plan, work / f"chapter{c}", count, per_query=4, exclude=used)
+        found = images.find_backgrounds({**plan, "wide": True}, work / f"chapter{c}", count, per_query=4, exclude=used)
         pool = [path for path, _ in found]
         credits += [credit for _, credit in found]
         if not pool:  # bölüme uygun görsel çıkmadıysa düz renk yerine önceki bölümlerin görselleri kullanılır

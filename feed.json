@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T19:29:48Z",
-  "run": "39062320898",
-  "event": "schedule",
-  "mode": "digest",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39062320898",
-  "videos": [
-   {
-    "title": "Kripto Balinası İstanbul'da Yakalandı, Kocaeli'de Motokurye Yasağı",
-    "url": "https://youtu.be/vaELSgdrnTg",
-    "instagram": "https://www.instagram.com/reel/Dem3HlGD9-6/"
-   }
-  ]
- },
- {
   "time": "2026-10-17T20:00:40Z",
   "run": "39064634029",
   "event": "workflow_dispatch",
@@ -4665,5 +4650,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-14T23:08:55Z",
+  "run": "43650807093",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650807093",
+  "videos": [
+   {
+    "title": "Togg: Türkiye'nin Yerli Otomobilinin Gemlik'ten Yollara Hikayesi",
+    "url": "https://youtu.be/yHhkUfJfO7w",
+    "instagram": "https://www.instagram.com/reel/DfvWcZ9FCnk/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

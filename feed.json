@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T18:34:34Z",
-  "run": "39056495963",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39058689808",
-  "videos": [
-   {
-    "title": "Galatasaray 88'de Güldü: Deniz Gül Golü, Leão Sakatlığı ve Buruk'un Zemin Tepkisi",
-    "url": "https://youtu.be/ZaxhpnHj7ss",
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-17T19:29:48Z",
   "run": "39062320898",
   "event": "schedule",
@@ -4662,6 +4647,21 @@
    {
     "title": "VGM Burs Sonuçları Açıklandı mı? 2026-2027 Sonuç Tarihi",
     "url": "https://youtu.be/p7ItiE-np7o",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T23:03:30Z",
+  "run": "43650688476",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650688476",
+  "videos": [
+   {
+    "title": "Galatasaray MCT Technic, Körfez Basket'e son saniyede mağlup oldu",
+    "url": null,
     "instagram": null
    }
   ]

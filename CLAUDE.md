@@ -1,7 +1,8 @@
 # faceless-shorts — çalışma kuralları
 
-Türkçe YouTube Shorts ve Instagram Reels kanalı için otomatik video hattı. Videolar GitHub Actions'ta üretilir.
-Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim paneli ayrı bir depoda
+Haber ve gündem kanalı (YouTube Shorts, Instagram Reels) için otomatik video hattı: Türkçe gündem, spor, kültür,
+dizi ve bilgi videoları; İngilizce türler de var, hedef küresel izlenmeyi de artırmak. Videolar GitHub Actions'ta
+üretilir, metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim paneli ayrı bir depoda
 (`../faceless-shorts-panel`). Ayrıntılar: [README.md](README.md), kurulum: [KURULUM.md](KURULUM.md).
 
 ## İletişim
@@ -23,60 +24,42 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
   kullanıcıya ver (örnek: `gh secret set TMDB_API_KEY`). Anahtar ve token isteme, tekrar yazma.
 - `git push` öncesi `git pull --rebase`: başka oturumlar ve panel aynı dala yazıyor.
 
-## Metin kuralları
+## Yedi ilke
 
-- İlk cümle haberin kendisi. En fazla 8 kelime. Soru ya da retorik giriş yok.
-- 55–75 kelime, 3–4 paragraf, sade ve betimleyen dil. Ayrıntılar önem sırasıyla verilir.
-- Son cümle somut bir bilgidir. Genel soru yasak: "Sence bu karar ne anlama geliyor?", "Sen ne düşünüyorsun?"
-  türü sorular kullanılmaz. Soru yalnızca adı konmuş iki seçenek varsa sorulur ("Fenerbahçe mi, Galatasaray mı?").
-  Olayın doğal ve zorunlu sonucu tartışmaya açılmaz (selden sonra okulların tatil edilmesi gibi).
-- **Belirsizlik yok.** Başlık ya da metin merak uyandırıyorsa cevap videoda ve açıklamada açıkça verilir.
-  Kimin, neyin söz konusu olduğunu söylemeyen ifade ("ünlü isim", "o sahne") yasak.
-- Can kaybı olan haberde merak kancası, soru ve abone çağrısı yok; haberin duygusuna uygun sade dil.
-- "Bu senin için ne demek?" türü açıklama yok.
-- Yabancı isimler Türkçe seslendirmede doğru okunur (`pronounce` alanı).
-- Kodda karşılığı: `script.STORY_RULES`, `script.style_problems`, `script.vague`, `pipeline/review.py`.
+Amaç paylaşım: izleyici videoyu birine göndermek istemeli. Kurallar bu yedi ilkenin uygulamasıdır.
 
-## Görsel kuralları
+| İlke | Kodda nerede |
+|---|---|
+| 1. **Konu:** insanların aradığı ya da konuştuğu tek bir güncel konu; olayda yer alan kişiler | `trends.py`, `script.STORIES` (seçim), `SUBJECTS_FIELD`, `slots.SLOTS` |
+| 2. **İlk 2 saniye:** konunun görüntüsü ve haberin kendisi, ilk cümle en fazla 8 kelime, soru ya da giriş yok | `script.STORY_RULES`, `style_problems` |
+| 3. **Görüntü:** yalnızca konunun gerçek görüntüsü, en az iki farklı kare; yoksa bilgi kartı; o da yoksa video yok | `main.subject_kind`, `main.settle_scenes`, `images.py` |
+| 4. **Doğruluk:** her bilgi kaynakta var, tarih doğru, adı söylenmeyen "ünlü isim" yok, karttaki her sayı metinde | `script.text_problems`, `review.py`, `scenes.check` |
+| 5. **Kısalık:** 55–75 kelime, 3–4 paragraf; ekranda az yazı (başlık yalnızca ilk 3 saniye) | `script.style_problems`, `render.HOOK_SECONDS` |
+| 6. **Kapanış:** somut bir bilgi; soru yalnızca adı konmuş iki seçenek varsa; yorum çağrısı ve dolgu yok | `script.CLOSING_RULE`, `text_problems` |
+| 7. **Az ama güçlü:** bu şartları tutturamayan video üretilmez, o saat boş geçer | `TextRejected`, `settle_scenes`, `with_subject_photos` |
 
-- **Eski ya da başka olaya ait video ve görsel yok.** "Temsili" stok içerik önerme.
-- Görsel haberin ülkesinden, haber bir şehirdeyse o şehirden.
-- Yalnızca şehir adıyla arama yapılmaz: "Istanbul" araması her seferinde aynı Ataşehir manzarasını getiriyordu.
-- Kanal ve medya şirketi binaları kullanılmaz (Kanal D genel merkezi). Kanal ve platform adı konu (`subjects`)
-  olarak yazılmaz.
-- Dizi ve film haberi: yapımın kendi kareleri. Resmi sahne görselleri, afiş ve set fotoğrafı kullanılır. Bunlar
-  telifli; kanal sahibi kabul etti (12 Kasım 2026), hak sahibi açıklamaya yazılır.
-  - Kaynak: haber kapakları (Gemini eler) ve Vikipedi afişi. TMDB kullanılmaz (ticari kullanım ücretli; çözüm
-    ücretsiz olmalı). En az iki farklı yapım karesi yoksa haber videoya dönmez.
-  - Oyuncu ve yönetmenin Commons fotoğrafı kullanılmaz (defile, gala karesi); başrol adları bilgi kartıyla
-    yazılır (`scenes` "kart"). Netflix listesinden yalnızca ilk iki sıra (15 Kasım 2026).
-  - Yazılı haber kapağı, kolaj ve başka yapımın karesi kullanılmaz.
-- Haber sitelerinin ve ajansların fotoğrafları telifli; dizi ve film dışında kullanılmaz.
-- Kişi videosunda kişinin serbest lisanslı fotoğrafı yoksa kurumun resmi arşiv ya da basın fotoğrafı kullanılır
-  (kanal sahibinin kararı, 14 Kasım 2026): `scripts/evergreen/images.json`, kaynak açıklamaya yazılır.
-  Ajans fotoğrafı yine kullanılmaz; aile ve çocuk fotoğrafı (özel hayat) alınmaz.
-- Maç gibi tek bir güne ait olayda başka tarihten portre yetmez. O güne ait kendi grafiklerimiz (skor, gol dakikası,
-  kadro kartı) tercih edilir.
-- Son ~10 günde kullanılan arama görseli tekrar seçilmez (`state/images.json`).
-- 29 Ekim videolarında Anıtkabir görseli yok (Anıtkabir 10 Kasım içindir). Atatürk anılarında yalnızca belgeli olanlar.
-- En az iki farklı gerçek görsel yoksa video üretilmez; tek görselli video yok (15 Kasım 2026). Televizyon
-  stüdyosu ve "show" fotoğrafı kullanılmaz.
-- Az ama doğru görsel, çok ama alakasız görselden iyidir. Kural mümkünse kodla zorlanır, modele bırakılmaz.
-- Bilgi videosunda en fazla iki paragraf animasyonlu sahne olur: sayaç, karşılaştırma, zaman çizelgesi ya da
-  harita (`pipeline/scenes.py`). Sahnedeki her sayı paragrafta aynen geçer, harita koordinatı Vikipedi'den gelir.
+Görsel kararı konuya göre verilir, video türüne göre değil (`subject_kind`): dizi ve film → yalnızca yapımın kareleri;
+kişi → kişinin kendi fotoğrafları ve olayın geçtiği şehir; yer ve olay → o yerin fotoğrafı; yeri olmayan haber (burs,
+zam) → bilgi kartları. Beğenilen örnek: Kızılcık Şerbeti videosu (15 Kasım 2026).
 
-## İçerik seçimi
+**Değişiklik kuralı:** Bir hata çıkınca önce hangi ilkenin tutmadığı bulunur ve o ilkenin tek uygulaması düzeltilir.
+Yeni kural ancak eskisi kaldırılarak ya da birleştirilerek eklenir. Tür silmek ya da kapatmak için kanal sahibine sorulur.
 
-- Az ama güçlü video: zayıf videolar kanalın bütün videolarının gösterimini düşürüyor.
-- Amaç paylaşım ve yeni kitleye görünürlük: izleyici videoyu birine göndermek istemeli.
-- Alınmayan nişler: NASCAR, Amishler, Amerikan tarihi, poker, işkence tarihi, kadın suçlular, mahkeme davaları,
-  komplo teorileri, dini hikâyeler. Ayrıca borsa ve yatırım tavsiyesi ile yaşlılara sağlık tavsiyesi verilmez.
-- Magazinde söylenti ve özel hayat yok. Para serisinde yalnızca kesinleşmiş skandallar anlatılır.
-- Konu seçiminde Google Trends Türkiye kullanılır (`pipeline/trends.py`, ücretsiz RSS): 21:00 gündem haberi en çok
-  aranan konudan, kültür, spor ve dizi saatlerinde aranan konunun haberi öne. X (Twitter) gündemi kullanılmaz.
-  İzlenmeyen türler takvimden çıkarıldı: tarih videosu, haftalık derleme (15 Kasım 2026 ölçümü).
-- Zamanlama ve saat-tür eşleşmesi `pipeline/slots.py` içindeki `SLOTS` tablosunda. Saat değişirse panelin günlük
-  planı da güncellenir (`faceless-shorts-panel/api.js`, `PLAN`).
+## Kanal sahibinin kararları
+
+- **Telif:** Dizi ve film haberinde yapımın resmi kareleri, afişi ve set fotoğrafı (12 Kasım 2026); serbest lisanslı
+  fotoğrafı olmayan kişide kurumun resmi arşiv ya da basın fotoğrafı (`scripts/evergreen/images.json`, 14 Kasım
+  2026). Hak sahibi açıklamaya yazılır. Ajans ve haber sitesi fotoğrafı, aile ve çocuk fotoğrafı kullanılmaz.
+- **Ücretsiz:** Ücretli servis yok (TMDB, X API, Runway). Google Trends ücretsiz RSS'tir.
+- **Kullanılmayan görseller:** kanal ve medya binaları, televizyon stüdyosu, büst ve heykel, "temsili" stok, eski ya
+  da başka olaya ait görüntü. 29 Ekim'de Anıtkabir yok (10 Kasım içindir); Atatürk anılarında yalnızca belgeli olanlar.
+- **Alınmayan konular:** NASCAR, Amishler, Amerikan tarihi, poker, işkence tarihi, kadın suçlular, mahkeme davaları,
+  komplo teorileri, dini hikâyeler; borsa ve yatırım tavsiyesi; yaşlılara sağlık tavsiyesi; magazinde söylenti ve
+  özel hayat. Para serisinde yalnızca kesinleşmiş skandallar. Can kaybı olan haberde soru, merak kancası ve abone
+  çağrısı yok.
+- **Takvim:** `pipeline/slots.py` `SLOTS`; saat değişirse panelin planı da (`faceless-shorts-panel/api.js`, `PLAN`).
+  Tarih videosu ve haftalık derleme takvimden çıktı, iş akışları elle çalışır (15 Kasım 2026 ölçümü).
+- Yabancı isimler Türkçe seslendirmede doğru okunur (`pronounce`). Son ~10 günde kullanılan görsel tekrar seçilmez.
 
 ## Geliştirme
 

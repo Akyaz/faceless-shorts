@@ -4554,21 +4554,6 @@
   "slot": "pazar 11:00"
  },
  {
-  "time": "2026-11-14T21:33:59Z",
-  "run": "43643257936",
-  "event": "workflow_dispatch",
-  "mode": "platform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43643257936",
-  "videos": [
-   {
-    "title": "En Yakın Arkadaşım, Sevgilisi ve Ben Netflix Türkiye Top 10 Listesinde",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-14T21:39:24Z",
   "run": "43643543747",
   "event": "schedule",
@@ -4670,5 +4655,20 @@
   "videos": [],
   "slot": "21:00",
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-11-14T22:39:34Z",
+  "run": "43643257936",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43649224846",
+  "videos": [
+   {
+    "title": "En Yakın Arkadaşım, Sevgilisi ve Ben Netflix Türkiye Top 10 Listesinde",
+    "url": "https://youtu.be/PXAJwBDhuQ8",
+    "instagram": null
+   }
+  ]
  }
 ]

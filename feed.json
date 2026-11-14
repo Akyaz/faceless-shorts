@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T11:31:59Z",
-  "run": "39025535950",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39029045751",
-  "videos": [
-   {
-    "title": "Cenk Tosun'dan Flaş İtiraf! Beşiktaş'tan EuroLeague Zaferi",
-    "url": "https://youtu.be/hQC4k3jJ_y8"
-   }
-  ]
- },
- {
   "time": "2026-10-17T11:41:23Z",
   "run": "39027727540",
   "event": "workflow_dispatch",
@@ -4664,6 +4650,21 @@
   "mode": "custom",
   "status": "success",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43644681885",
+  "videos": [
+   {
+    "title": "Ronaldinho 46 Yaşında Sahaya Dönüyor: Ravenna - Forlì Derbisi",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T21:51:41Z",
+  "run": "43644866357",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43644866357",
   "videos": [
    {
     "title": "Ronaldinho 46 Yaşında Sahaya Dönüyor: Ravenna - Forlì Derbisi",

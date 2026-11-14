@@ -4652,16 +4652,16 @@
   "videos": []
  },
  {
-  "time": "2026-11-14T23:00:51Z",
+  "time": "2026-11-14T23:01:53Z",
   "run": "43650680602",
   "event": "workflow_dispatch",
   "mode": "story",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650680602",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43651112613",
   "videos": [
    {
     "title": "VGM Burs Sonuçları Açıklandı mı? 2026-2027 Sonuç Tarihi",
-    "url": null,
+    "url": "https://youtu.be/p7ItiE-np7o",
     "instagram": null
    }
   ]

@@ -4620,21 +4620,6 @@
   "slot": "15:00"
  },
  {
-  "time": "2026-11-14T17:08:01Z",
-  "run": "43619028668",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43619028668",
-  "videos": [
-   {
-    "title": "Uluburun Batığı: Akdeniz'in En Eski Hazinesi",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-14T17:18:12Z",
   "run": "43619988917",
   "event": "workflow_dispatch",
@@ -4660,6 +4645,21 @@
    {
     "title": "Sakıp Sabancı: Stajyerlikten Forbes Listesine Uzanan Hikaye",
     "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T19:53:45Z",
+  "run": "43619028668",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43634531347",
+  "videos": [
+   {
+    "title": "Uluburun Batığı: Akdeniz'in En Eski Hazinesi",
+    "url": "https://youtu.be/EFc0mDpmTkA",
     "instagram": null
    }
   ]

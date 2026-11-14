@@ -19,6 +19,9 @@ UA = {"User-Agent": "Mozilla/5.0"}
 # Liste son 24 saati kapsıyor: gece 01:30'da dün akşamki "Gönül Dağı bu akşam var mı?" araması seçildi ve video
 # yayınlanmış bölümü "yayına giriyor" diye anlattı (15 Kasım 2026). Yalnızca son saatlerde yükselen aramalar.
 FRESH_HOURS = 12
+# Gündem saatinde bundan az aranan konu kullanılmaz: 100+ aranan "avustralya" Edirne Belediyesi'nin bir basın
+# bültenine dönüştü (Turnbull videosu, 15 Kasım 2026)
+MIN_TRAFFIC = 500
 
 
 def _started(text):
@@ -76,10 +79,10 @@ def note(trend):
             "source": "Google Trends", "link": ""}
 
 
-def headlines(items):
+def headlines(items, min_traffic=MIN_TRAFFIC):
     """Her aranan konu bir haber: ilk haberi başlık, diğerleri ve arama bilgisi kaynak satırı."""
     out = []
-    for t in items:
+    for t in [t for t in items if t["traffic"] >= min_traffic]:
         first, rest = t["news"][0], t["news"][1:]
         out.append({**first, "related": rest + [note(t)], "trend": t["query"]})
     return out

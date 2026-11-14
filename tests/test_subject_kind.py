@@ -62,10 +62,36 @@ class Kind(unittest.TestCase):
             return [(work / "r.jpg", "c")]
 
         with mock.patch.object(main.images, "find_backgrounds", side_effect=search) as fb, \
+                mock.patch.object(main, "_place_photos", return_value=[]), \
                 mock.patch.object(main, "_subject_support", return_value=[(work / "s.jpg", "d")]):
             backgrounds, _ = main.find_images(plan, work)
         self.assertEqual(fb.call_count, 1)  # yalnızca kişinin kendi dosyası
         self.assertEqual(set(backgrounds), {work / "r.jpg", work / "s.jpg"})
+
+
+class PlaceAndStatues(unittest.TestCase):
+    def test_place_search_only_with_city(self):
+        plan = {"place": {"city": "Edirne", "country": "Turkey"},
+                "image_queries": ["Selimiye Mosque Edirne", "Malcolm Turnbull", "stadium Turkey"]}
+        seen = []
+        with mock.patch.object(main.images, "find_backgrounds",
+                               side_effect=lambda p, *a, **k: seen.append(p["image_queries"]) or []):
+            main._place_photos(plan, pathlib.Path(tempfile.mkdtemp()), 2)
+            main._place_photos({**plan, "place": {"country": "Italy"}}, pathlib.Path(tempfile.mkdtemp()), 2)
+        self.assertEqual(seen, [["Selimiye Mosque Edirne"]])  # şehirsizde arama yok
+
+    def test_bust_not_a_photo_of_the_person(self):
+        from pipeline import images
+        found = [{"about": "File:Bust of Malcolm Turnbull.jpg | Bust in Ballarat", "url": "b", "year": 2020},
+                 {"about": "File:Malcolm Turnbull 2019.jpg | Turnbull", "url": "p", "year": 2019}]
+        with mock.patch.object(images, "wikimedia", return_value=found):
+            self.assertEqual([c["url"] for c in images.subject_photos("Malcolm Turnbull")], ["p"])
+
+    def test_weak_trends_dropped(self):
+        from pipeline import trends
+        items = [{"query": "avustralya", "traffic": 100, "news": [{"title": "t", "source": "s", "link": ""}]},
+                 {"query": "tev burs", "traffic": 5000, "news": [{"title": "u", "source": "s", "link": ""}]}]
+        self.assertEqual([h["trend"] for h in trends.headlines(items)], ["tev burs"])
 
 
 if __name__ == "__main__":

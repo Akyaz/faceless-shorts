@@ -307,7 +307,9 @@ def subject_photos(name, limit=3):
         return []
     # Güncel haber için: imza, belge, arma ve 2010 öncesi fotoğraflar (kulübün 1913 tüzüğü gibi) alınmaz
     own = [c for c in found if all(w in _fold(c["about"].split("|")[0]) for w in words)
-           and not re.search(r"signature|imza|logo|emblem|arma|tüzük|charter|document|belge", c["about"], re.I)
+           and not re.search(r"signature|imza|logo|emblem|arma|tüzük|charter|document|belge|"
+                             # Heykel kişinin kendisi değil: Turnbull videosunda Avustralya'daki büstü çıktı (15 Kasım 2026)
+                             r"\bbust\b|büst|statue|heykel|sculpture|wax|balmumu", c["about"], re.I)
            and c.get("year", 0) >= 2010]
     own = list({re.sub(r"\s*\(cropped\)", "", c["about"].split("|")[0]): c for c in own}.values())  # kırpılmış kopyası
     print(f"Konu fotoğrafları ({name}): {len(own)}")

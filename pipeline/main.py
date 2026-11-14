@@ -153,6 +153,19 @@ def _subject_support(plan, work, count):
     return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
 
 
+def _place_photos(plan, work, count):
+    """Kişi haberinde olayın geçtiği şehrin fotoğrafları: yalnızca şehir adını içeren aramalar ("Selimiye Edirne").
+    Ülke düzeyinde genel arama ("football stadium Italy") yok. Turnbull'un Edirne ziyaretinde videoda Edirne hiç
+    görünmedi (15 Kasım 2026)."""
+    city = ((plan.get("place") or {}).get("city") or "").strip()
+    key = images._fold(city)
+    queries = [q for q in plan.get("image_queries") or [] if key and key in images._fold(q)]
+    if not queries:
+        return []
+    return images.find_backgrounds({**plan, "image_queries": queries, "object_query": "", "image_files": []},
+                                   work / "place", count)
+
+
 def subject_kind(plan):
     """Görsel kararı konuya göre verilir, video türüne göre değil (15 Kasım 2026: dizi kuralı yalnızca dizi saatinde
     çalışıyordu; gündeme düşen Gönül Dağı videosunun tek görseli bir televizyon stüdyosuydu):
@@ -182,7 +195,8 @@ def find_images(plan, work):
         # fotoğrafları. Genel ortam araması yok: Ronaldinho videosunda stat kapısı geliyordu (15 Kasım 2026)
         own = images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
                                       work / "subject", len(plan["subject_files"]))
-        rest = _subject_support(plan, work, max(1, len(segments) // 2))
+        rest = _place_photos(plan, work, max(1, len(segments) // 2))
+        rest += _subject_support(plan, work, max(1, len(segments) // 2 - len(rest)))
         mine, other = [p for p, _ in own], [p for p, _ in rest] or [p for p, _ in own]
         backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
                        if mine else None for i in range(len(segments))]
@@ -271,9 +285,9 @@ def news_plan(args, exclude=(), _tries=0):
             feeds = [fetch_headlines(15, t) for t in ("top", "sports", "technology")]
             mixed = [h for group in zip(*feeds) for h in group]
             headlines = list({h["title"]: h for h in mixed}.values())
-        elif args.mode == "story" and (searched := trends.fetch()):
+        elif args.mode == "story" and (searched := trends.headlines(trends.fetch())):
             # Gündem: Türkiye'de Google'da en çok aranan konular (pipeline/trends.py, 15 Kasım 2026 ölçümü)
-            headlines = trends.headlines(searched)
+            headlines = searched
         else:
             topic = ("sports" if args.mode in ("sports", "sportstory") else "world" if args.mode == "world"
                      else "entertainment" if args.mode == "culture" else "top")

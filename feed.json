@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T10:16:46Z",
-  "run": "39022218151",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39024268700",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": "https://youtu.be/wD8ADKp_o2k"
-   }
-  ]
- },
- {
   "time": "2026-10-17T10:34:45Z",
   "run": "39025270306",
   "event": "workflow_dispatch",
@@ -4665,5 +4651,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-14T21:22:57Z",
+  "run": "43641442314",
+  "event": "workflow_dispatch",
+  "mode": "weekly",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43641442314",
+  "videos": [
+   {
+    "title": "GSS Borçları ve YÖK Kararı: Bu Hafta Öne Çıkan Gelişmeler",
+    "url": "https://youtu.be/S_ajI9MUV9I",
+    "instagram": null
+   }
+  ],
+  "slot": "pazar 11:00"
  }
 ]

@@ -298,6 +298,13 @@ def news_plan(args, exclude=(), _tries=0):
     else:
         print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
     plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+    repeat = repeated(plan, [h["title"] for h in history[-RECENT_TOPICS:]]) if args.mode in REPEAT_CHECKED else ""
+    if repeat and not args.offline:
+        # Aynı yapımın haberi farklı başlıkla ertesi gün yine seçildi (Bir Başkadır, 15 Kasım 2026): başka haber
+        if _tries >= REVIEW_TRIES:
+            raise RuntimeError(f"Son videolarda işlenmiş konu ({repeat}); başka haber kalmadı, bu saat atlanıyor.")
+        print(f"Son videolarda işlenmiş konu ({repeat}); başka haber deneniyor")
+        return news_plan(args, exclude=list(exclude) + [h["title"] for h in plan["sources"]], _tries=_tries + 1)
     if not args.offline:
         try:
             plan = review.check(plan, single)
@@ -313,6 +320,22 @@ def news_plan(args, exclude=(), _tries=0):
 
 
 REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayısı
+REPEAT_CHECKED = {"platform"}  # yapım haberi: aynı dizi iki gün üst üste video olmaz
+RECENT_TOPICS = 8  # yaklaşık iki günün platform ve gündem videoları
+
+
+def _fold(text):
+    return re.sub(r"\W+", " ", (text or "").replace("İ", "i").replace("I", "ı").lower()).strip()
+
+
+def repeated(plan, recent_titles):
+    """Planın yapımı ya da adı geçen biri son video başlıklarından birinde geçiyorsa o ad; yoksa boş."""
+    names = [(plan.get("work") or {}).get("title", "")] + list(plan.get("subjects") or [])
+    titles = [f" {_fold(t)} " for t in recent_titles]
+    for name in filter(None, names):
+        if len(_fold(name)) >= 4 and any(f" {_fold(name)} " in t for t in titles):
+            return name
+    return ""
 
 
 # Bu türlerde haber bir kişi ya da eser hakkında: onu göstermeyen video (kanal binası, genel set fotoğrafı)
@@ -334,6 +357,17 @@ def with_subject_photos(args):
         plan["mode"] = args.mode
         # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
         plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"), plan.get("sources", []))
+        if not plan["work_images"] and not plan.get("work") and args.mode == "platform" and not args.offline:
+            # Model yapımı "work" alanına yazmayı unuttu (Bir Başkadır, 15 Kasım 2026: yalnızca yönetmenin fotoğrafı
+            # çıktı): başlıkta geçen adlar yapım adı olarak denenir. Başlıkta geçmeyen yönetmen ya da oyuncu adı denenmez:
+            # Vikipedi'deki portresi afiş sanılırdı
+            heading = f" {_fold(plan.get('title'))} {_fold(plan.get('hook_title'))} "
+            for name in [n for n in plan.get("subjects") or [] if f" {_fold(n)} " in heading]:
+                found = platforms.work_images({"title": name}, plan.get("sources", []))
+                if found:
+                    plan["work"], plan["work_images"] = {"title": name}, found
+                    print(f"Yapım adı konulardan bulundu: {name}")
+                    break
         if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
             return plan
         tried += [h["title"] for h in plan["sources"]]

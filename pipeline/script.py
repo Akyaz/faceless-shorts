@@ -55,6 +55,30 @@ def weak_ending(paragraphs):
 MIN_WORDS = 45  # 12 Kasım denemesi: kısaltma kuralıyla 30 kelimelik, hangi maç olduğunu söylemeyen metin çıktı
 
 
+# Göreli gün: haberin yazıldığı güne göredir, videonun yayınlandığı güne göre değil (Bir Başkadır videosu, 15 Kasım
+# 2026: bir gün önceki haberden "yarın yayınlanacak" dedi, dizi bir gün önce yayınlanmıştı)
+RELATIVE_DAY = re.compile(r"\b(yarın|yarın(ki|dan|a)|bugün(kü|den|e)?|dün(kü|den|e)?|bu akşam|bu gece|"
+                          r"tomorrow|today|yesterday|tonight)\b", re.I)
+TR_MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+
+
+def today_tr():
+    import datetime
+    return (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=3)).date().isoformat()
+
+
+def _day(iso):
+    y, m, d = (int(x) for x in iso.split("-"))
+    return f"{d} {TR_MONTHS[m - 1]} {y}"
+
+
+def stale_relative(texts, published, today=None):
+    """Haber bugünden eskiyse göreli gün geçen metinler ("yarın yayınlanacak")."""
+    if not published or published >= (today or today_tr()):
+        return []
+    return [t for t in texts if t and RELATIVE_DAY.search(t)]
+
+
 def style_problems(paragraphs):
     """Yeniden yazdırma notu: kural dışı açılış/kapanış cümleleri ve fazla kısa metin."""
     out = [f"kurala uymayan açılış ya da kapanış: {x}" for x in weak_ending(paragraphs)]
@@ -526,7 +550,9 @@ def _blocks(headlines, english=False):
     for i, h in enumerate(headlines, 1):
         related = "\n".join(f"   - {r['title']} ({r['source']})" for r in h.get("related", [])[:6])
         body = f"\n   {'Article text' if english else 'Haber metni'}: {h['body']}" if h.get("body") else ""
-        blocks.append(f"{i}. {h['title']} ({h['source']})" + (f"\n   {others}:\n{related}" if related else "") + body)
+        date = f", {'published' if english else 'yayın'}: {_day(h['published'])}" if h.get("published") else ""
+        blocks.append(f"{i}. {h['title']} ({h['source']}{date})" + (f"\n   {others}:\n{related}" if related else "")
+                      + body)
     return blocks
 
 
@@ -577,6 +603,12 @@ def story_script(headlines, kind="story", count=10, recent=()):
         prompt += ("\nTopics covered in recent videos (do not pick a story about the same event):\n" if english
                    else "\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n")
         prompt += "\n".join(f"- {t}" for t in recent) + "\n"
+    today = today_tr()
+    prompt += (f"\nToday is {_day(today)}. Words like \"tomorrow\", \"today\", \"yesterday\" in a story refer to its "
+               "publication date: write the actual date instead (\"on 14 November\") and use past tense for "
+               "anything that has already happened.\n" if english else
+               f"\nBugün {_day(today)}. Haberdeki \"yarın\", \"bugün\", \"dün\" haberin yayın gününe göredir: metinde "
+               "göreli gün kullanma, tarihi yaz (\"14 Kasım'da\"); gerçekleşmiş olayı geçmiş zamanla anlat.\n")
     prompt += ("\nStories:\n" if english else "\nHaberler:\n") + "\n".join(_blocks(headlines, english))
     out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
     if out.get("skip") or not out.get("paragraphs"):
@@ -601,6 +633,19 @@ def story_script(headlines, kind="story", count=10, recent=()):
                 and len(style_problems(retry["paragraphs"])) < len(problems):
             out = retry
     headline = _pick(headlines, out.get("pick", 1))
+    texts = lambda o: o["paragraphs"] + [o.get("title", ""), o.get("hook_title", "")]
+    stale = stale_relative(texts(out), headline.get("published"), today)
+    if stale:
+        # Eski haberde "yarın" videonun gününe göre yanlış: tarih yazdırılır; yine olmazsa video çıkmaz
+        print(f"Eski haberde göreli gün, yeniden yazdırılıyor: {stale}")
+        note = (f"\nThis story was published on {_day(headline['published'])}, today is {_day(today)}. Replace "
+                "relative days with dates and use past tense for what already happened: " if english else
+                f"\nBu haber {_day(headline['published'])} tarihli, bugün {_day(today)}. Göreli günleri tarihle değiştir, "
+                "gerçekleşmiş olayı geçmiş zamanla anlat: ")
+        out = json.loads(_generate(prompt + note + " | ".join(stale), os.environ["GEMINI_API_KEY"]))
+        headline = _pick(headlines, out.get("pick", 1))
+        if not out.get("paragraphs") or stale_relative(texts(out), headline.get("published"), today):
+            raise RuntimeError("Eski haberde göreli gün kaldı (\"yarın\" gibi); bu saatin videosu atlanıyor.")
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
             "lang": spec.get("lang", "tr"), "segments": segments,

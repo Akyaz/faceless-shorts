@@ -65,6 +65,20 @@ def search_headlines(query, limit=10):
     return fetch_headlines(limit, url=url)
 
 
+def _published(text):
+    """RSS pubDate -> Türkiye saatiyle "YYYY-AA-GG"; okunamazsa boş. Haberdeki "yarın" bu güne göredir: Bir Başkadır
+    videosu bir gün önceki haberden "yarın yayınlanacak" dedi, oysa dizi o gün yayınlanmıştı (15 Kasım 2026)."""
+    import datetime
+    import email.utils
+    try:
+        when = email.utils.parsedate_to_datetime(text)
+    except (TypeError, ValueError):
+        return ""
+    if when.tzinfo is None:
+        when = when.replace(tzinfo=datetime.timezone.utc)
+    return (when.astimezone(datetime.timezone.utc) + datetime.timedelta(hours=3)).date().isoformat()
+
+
 def fetch_headlines(limit=10, topic="top", url=None):
     req = urllib.request.Request(url or FEEDS[topic], headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -81,7 +95,8 @@ def fetch_headlines(limit=10, topic="top", url=None):
             if not related:
                 continue
             title, source, related = related[0]["title"], related[0]["source"], related[1:]
-        items.append({"title": title, "source": source, "link": item.findtext("link", ""), "related": related})
+        items.append({"title": title, "source": source, "link": item.findtext("link", ""), "related": related,
+                      "published": _published(item.findtext("pubDate", ""))})
         if len(items) >= limit:
             break
     return items

@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T16:01:46Z",
-  "run": "39047344329",
-  "event": "schedule",
-  "mode": "world",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39047344329",
-  "videos": [
-   {
-    "title": "Alberta Secession Referendum Draws Huge Early Voting Turnout",
-    "url": "https://youtu.be/_oZG9GSYR5c",
-    "instagram": "https://www.instagram.com/reel/Demr-8GicYe/"
-   }
-  ]
- },
- {
   "time": "2026-10-17T18:02:41Z",
   "run": "39055982036",
   "event": "schedule",
@@ -4666,6 +4651,21 @@
   "videos": [
    {
     "title": "Kızılcık Şerbeti dizisinde Lider'in gerçek yüzü ortaya çıktı",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T22:52:34Z",
+  "run": "43649992446",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43649992446",
+  "videos": [
+   {
+    "title": "Avustralya Eski Başbakanı Malcolm Turnbull Edirne Belediyesi'ni Ziyaret Etti",
     "url": null,
     "instagram": null
    }

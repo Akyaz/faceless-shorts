@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T12:16:20Z",
-  "run": "39028780876",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39031853970",
-  "videos": [
-   {
-    "title": "İstanbul'un Sel Tarihi: 1811'den 14 Ekim 2026'ya Aynı Dereler, Aynı Semtler",
-    "url": "https://youtu.be/s1u64ewcbLk"
-   }
-  ]
- },
- {
   "time": "2026-10-17T12:30:18Z",
   "run": "39032560502",
   "event": "schedule",
@@ -4668,5 +4654,21 @@
     "instagram": "https://www.instagram.com/reel/DfvP3xFlG5t/"
    }
   ]
+ },
+ {
+  "time": "2026-11-14T22:14:31Z",
+  "run": "43646760019",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43646760019",
+  "videos": [
+   {
+    "title": "Babil İmparatorluğu'nun Gizli Tarihi ve Yükselişi",
+    "url": "https://youtu.be/iThtd0kDlbc",
+    "instagram": "https://www.instagram.com/reel/DfvQNYQiEHg/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

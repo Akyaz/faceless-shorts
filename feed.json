@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T11:28:38Z",
-  "run": "39027233763",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39027233763",
-  "videos": [
-   {
-    "title": "İstanbul'un Fethi: 53 Gün, 72 Gemi ve Karadan Yürüyen Donanma",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-istanbulun-fethi.json"
- },
- {
   "time": "2026-10-17T11:31:59Z",
   "run": "39025535950",
   "event": "workflow_dispatch",
@@ -4667,6 +4652,21 @@
   "videos": [
    {
     "title": "Ray Gunn Fragmanı Yayınlandı: Netflix'in Yeni Animasyonu Geliyor",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T21:49:30Z",
+  "run": "43644681885",
+  "event": "workflow_dispatch",
+  "mode": "custom",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43644681885",
+  "videos": [
+   {
+    "title": "Ronaldinho 46 Yaşında Sahaya Dönüyor: Ravenna - Forlì Derbisi",
     "url": null,
     "instagram": null
    }

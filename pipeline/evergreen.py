@@ -96,6 +96,25 @@ FILES = {}
 PHOTOS = ROOT / "scripts" / "evergreen" / "images.json"
 
 
+def arrange(photos, paragraphs, scened=()):
+    """Resmi fotoğrafları paragraflara göre sıralar: önce sahnesiz paragraflar (scenes.spread fotoğrafları onlara
+    sırayla verir), sonra sahnelerin bulanık zeminleri. Paragrafta "match" sözcüğü geçen fotoğraf o paragrafa, genel
+    portre eşleşmeyen paragrafa düşer. Sırayla dağıtınca üniversite anlatılırken Akbank fotoğrafı çıktı
+    (14 Kasım 2026)."""
+    left, order = list(photos), []
+    fold = lambda t: _fold(t)
+    for i in [i for i in range(len(paragraphs)) if i not in scened] + sorted(scened):
+        if not left:
+            break
+        text = fold(paragraphs[i])
+        hit = [p for p in left if any(fold(m) in text for m in p.get("match") or [])]
+        generic = [p for p in left if not p.get("match")]
+        pick = (hit or generic or left)[0]
+        order.append(pick)
+        left.remove(pick)
+    return order + left
+
+
 def official_photos(topic):
     try:
         return json.loads(PHOTOS.read_text(encoding="utf-8")).get(topic) or []
@@ -249,7 +268,8 @@ def plan(state_path=STATE):
               "image_files": (FILES.get(tr) or [p["image"] for p in pages if p["image"]])[:2],
               "fill_with_search": True,
               # Resmi fotoğraflar varsa arama yapılmaz, yalnızca onlar kullanılır (main.find_images)
-              "work_images": official,
+              "work_images": arrange(official, out["paragraphs"], {i for i, g in enumerate(segments) if g.get("scene")}),
+              "own_images": bool(official),  # kişinin kendi fotoğrafları: açıklamada "temsilidir" yazmaz
               "mood": out.get("mood", "notr"),
               "hashtags": script._tags(out.get("hashtags")) + spec["hashtags"],
               "category": "27", "image_prompt": "", "pronounce": script._pronounce(out),

@@ -1,30 +1,44 @@
 {
-  "_aciklama": "Konunun Vikipedi'de ve Commons'ta serbest lisanslı fotoğrafı yoksa kurumun resmi basın ya da arşiv fotoğrafları (kanal sahibinin kararı, 14 Kasım 2026). Kaynak açıklamaya yazılır. Sıra paragrafların sırasıdır.",
+  "_aciklama": "Konunun Vikipedi'de ve Commons'ta serbest lisanslı fotoğrafı yoksa kurumun resmi basın ya da arşiv fotoğrafları (kanal sahibinin kararı, 14 Kasım 2026). Kaynak açıklamaya yazılır. Sıra paragrafların sırasıdır. match: fotoğrafın gösterileceği paragrafta geçen sözcükler (boşsa genel portre, eşleşmeyen paragrafta kullanılır).",
   "Sakıp Sabancı": [
     {
       "url": "https://sakipsabanci.com.tr/galeri/institutions/b31.jpg",
       "about": "Sakıp Sabancı kürsüde, Sabancı Üniversitesi Sakıp Sabancı Müzesi töreni",
-      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)"
+      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)",
+      "match": []
     },
     {
       "url": "https://sakipsabanci.com.tr/galeri/institutions/b25.jpg",
       "about": "Sakıp Sabancı, Akbank basın toplantısı",
-      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)"
+      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)",
+      "match": [
+        "Akbank"
+      ]
     },
     {
       "url": "https://sakipsabanci.com.tr/galeri/institutions/b01.jpg",
       "about": "Sakıp Sabancı, Emirgan'daki Atlı Köşk'ün bahçesinde",
-      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)"
+      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)",
+      "match": [
+        "Atlı Köşk",
+        "Emirgan",
+        "Sakıp Sabancı Müzesi"
+      ]
     },
     {
       "url": "https://sakipsabanci.com.tr/galeri/institutions/b48.jpg",
       "about": "Sakıp Sabancı, Sabancı Üniversitesi kampüsünde",
-      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)"
+      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)",
+      "match": [
+        "Sabancı Üniversitesi",
+        "üniversite"
+      ]
     },
     {
       "url": "https://sakipsabanci.com.tr/galeri/institutions/b27.jpg",
       "about": "Sakıp Sabancı, Sabancı Center önünde",
-      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)"
+      "credit": "Fotoğraf: Sakıp Sabancı resmi web sitesi arşivi (https://sakipsabanci.com.tr/galeri/fotograflar)",
+      "match": []
     }
   ]
 }

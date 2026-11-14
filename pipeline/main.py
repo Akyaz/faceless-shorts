@@ -131,7 +131,9 @@ def build_metadata(plan, mode="story"):
                        + f"{text['subscribe_long' if wide else 'subscribe']}\n\n"
                        + (f"{text['chapters']}\n" + "\n".join(chapters) + "\n\n" if chapters else "")
                        + f"{text['sources']}\n{sources}\n"
-                       + (f"\n{text['images']}\n{image_credit}\n" if image_credit else "")
+                       # Kişinin kendi (resmi arşiv) fotoğrafları temsili değil
+                       + (f"\n{'' if plan.get('own_images') else text['images'] + chr(10)}{image_credit}\n"
+                          if image_credit else "")
                        + (f"\n{music_credit}\n" if music_credit else "")
                        + "\n" + " ".join(f"#{t}" for t in tags + ([] if wide else ["shorts"])),
         "tags": list(dict.fromkeys(tags + [t for t in text["tags"] if not (wide and t == "shorts")])),

@@ -95,6 +95,17 @@ class OfficialPhotos(unittest.TestCase):
         self.assertTrue(all(p["url"].startswith("https://") and "sakipsabanci.com.tr" in p["credit"] for p in photos))
         self.assertEqual(evergreen.official_photos("Ahtapot"), [])
 
+    def test_photos_follow_paragraphs(self):
+        from pipeline import evergreen
+        photos = [{"url": "kursu", "match": []}, {"url": "akbank", "match": ["Akbank"]},
+                  {"url": "kosk", "match": ["Atlı Köşk"]}, {"url": "uni", "match": ["Sabancı Üniversitesi"]},
+                  {"url": "center", "match": []}]
+        paras = ["Forbes listesinde 147. sıradaydı.", "1948'de Akbank'ta stajyer oldu.",
+                 "1999'da Sabancı Üniversitesi'ni kurdu.", "Cenazesine 100.000 kişi katıldı."]
+        order = [p["url"] for p in evergreen.arrange(photos, paras, {1})]
+        # sahnesiz paragraflar 0, 2, 3; sonra sahneli 1'in zemini
+        self.assertEqual(order[:4], ["kursu", "uni", "center", "akbank"])
+
     def test_small_photo_shown_whole(self):
         import pathlib, tempfile
         from PIL import Image

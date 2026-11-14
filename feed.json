@@ -4651,16 +4651,16 @@
   ]
  },
  {
-  "time": "2026-11-14T20:29:45Z",
+  "time": "2026-11-14T20:34:03Z",
   "run": "43637273110",
   "event": "workflow_dispatch",
   "mode": "fact",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43637273110",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43638150506",
   "videos": [
    {
     "title": "Uluburun Batığı: Akdeniz'deki 3 Bin Yıllık Hazine",
-    "url": null,
+    "url": "https://youtu.be/SLubcnNi6cU",
     "instagram": null
    }
   ]

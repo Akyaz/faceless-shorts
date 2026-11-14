@@ -4655,16 +4655,16 @@
   "script": "scripts/longform/tr-gobeklitepe.json"
  },
  {
-  "time": "2026-11-14T22:05:51Z",
+  "time": "2026-11-14T22:09:39Z",
   "run": "43646088409",
   "event": "workflow_dispatch",
   "mode": "custom",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43646088409",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43646571001",
   "videos": [
    {
     "title": "Ronaldinho 46 Yaşında Sahaya Dönüyor: Ravenna - Forlì Derbisi",
-    "url": null,
+    "url": "https://youtu.be/uS8faNvt6ow",
     "instagram": null
    }
   ]

@@ -22,6 +22,9 @@ VAGUE = re.compile(r"\b(hakkında|ilişkin|ile ilgili|konusunda)\s+(resmi\s+|yen
                    # Kimden ya da hangi eserden söz edildiğini söylemeyen ifadeler (isimsiz video tepki çekiyor)
                    r"|\bünlü (bir )?(isim|oyuncu|şarkıcı|sanatçı|futbolcu)\b|\bo sahne|\biki (oyuncu|isim|ünlü)\b"
                    r"|\b(sürpriz|gizemli) (isim|aşk|ilişki)\b|\bkim oldu\?|\bzirvenin sahibi\b"
+                   # Kurulan ya da yaptırılan şeyin adı yok: "vakıf üniversitelerinden birini kurdu" (Sakıp Sabancı
+                   # denemesi, 14 Kasım 2026); adı verilmeli ("Sabancı Üniversitesi'ni kurdu")
+                   r"|\b\w+(lerinden|larından) birini (kurdu|kurmuş|yaptırdı|yaptırmış|açtı|inşa ettirdi)\b"
                    r"|\b(made|issued|gave) an? (official )?(statement|update) (on|about)\b", re.I)
 
 

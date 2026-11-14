@@ -202,7 +202,15 @@ def plan(state_path=STATE):
     out = json.loads(script._generate(rules + "\n" + text, os.environ["GEMINI_API_KEY"]))
     unclear = [p for p in out["paragraphs"] if script.vague(p)]
     if unclear:
-        print(f"Belirsiz cümle: {unclear}")
+        # Belirsiz cümle bir kez yeniden yazdırılır: izleyici neyin söz konusu olduğunu videoda duymalı
+        print(f"Belirsiz cümle, yeniden yazdırılıyor: {unclear}")
+        note = ("\nÖnceki yanıtında şu paragraflar neyin söz konusu olduğunu söylemiyordu: " + " | ".join(unclear)
+                + "\nKurulan, yaptırılan ya da sözü edilen şeyin adını açıkça yaz (örnek: \"Sabancı Üniversitesi'ni "
+                  "kurdu\"). Bütün JSON'u yeniden döndür.\n")
+        out = json.loads(script._generate(rules + note + "\n" + text, os.environ["GEMINI_API_KEY"]))
+        unclear = [p for p in out["paragraphs"] if script.vague(p)]
+        if unclear:
+            print(f"Belirsiz cümle kaldı: {unclear}")
 
     sources = [{"title": p["title"], "source": "Vikipedi" if p["lang"] == "tr" else "Wikipedia", "link": p["url"]}
                for p in pages]

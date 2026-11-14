@@ -73,6 +73,13 @@ class ChosenTopic(unittest.TestCase):
         self.assertEqual(evergreen.chosen_topic(rows, "Kapadokya"), ("bilgi", "Kapadokya", "Kapadokya"))
 
 
+class Vague(unittest.TestCase):
+    def test_unnamed_founding_is_vague(self):
+        from pipeline import script
+        self.assertTrue(script.vague("1999 yılında Türkiye'nin ilk vakıf üniversitelerinden birini kurdu."))
+        self.assertFalse(script.vague("1999 yılında Sabancı Üniversitesi'ni kurdu."))
+
+
 class Spread(unittest.TestCase):
     def test_photos_go_to_plain_paragraphs_first(self):
         segs = [{}, {"scene": {"type": "sayac"}}, {}, {}]

@@ -27,8 +27,10 @@ W, H, FPS = render.W, render.H, 30
 MAP = Path(__file__).resolve().parent.parent / "assets" / "map" / "countries-10m.json"
 UA = "faceless-shorts/1.0 (https://github.com/Akyaz/faceless-shorts)"
 MAX_SCENES = 2
-# Yazı katmanının (render._compact_card) boş bıraktığı orta bölge: üstte başlık, altta altyazı var
-TOP, BOTTOM = 520, 1120
+# Yazı katmanının (render._compact_card) boş bıraktığı orta bölge: üstte başlık, altta altyazı var. Alt sınır abone
+# düğmesinin (render._subscribe_layer, 980-1150) üstünde: Sakıp Sabancı denemesinde son sayacın birimi düğmenin
+# altında kaldı (14 Kasım 2026)
+TOP, BOTTOM = 520, 960
 MAX_LABEL = 34  # karakter; daha uzunu kutuya sığmıyor
 
 BG1, BG2 = (10, 22, 40), (18, 44, 74)
@@ -286,20 +288,23 @@ def _counter(img, t, dur, sc, ctx):
     unit = sc["unit"]
     glued = unit[:1] in (".", "%", "'", "’")  # "147." sıra, "%40"
     final = fmt(value, decimals, thousands) + (unit if glued else "")
-    font = _fit(d, final, 210, W - 140)
-    y = TOP + 40
+    font = _fit(d, final, 190, W - 140)
+    y = TOP + 20
     if sc["label"]:
-        _centered(d, sc["label"], y, _fit(d, sc["label"], 54, W - 140, bold=False), MUTED)
-        y += 100
+        _centered(d, sc["label"], y, _fit(d, sc["label"], 52, W - 140, bold=False), MUTED)
+        y += 80
     _centered(d, fmt(value * p, decimals, thousands) + (unit if glued else ""), y, font, WHITE, stroke=4)
-    y += font.size + 40
+    y += font.size + 20
+    if unit and not glued:
+        q = ease((t - end + 0.1) / 0.4)
+        if q > 0.05:
+            unit_font = _fit(d, unit, 64, W - 160)
+            d.text((W / 2, y + 30 * (1 - q)), unit, font=unit_font, fill=GOLD, anchor="mt", stroke_width=3,
+                   stroke_fill=(0, 0, 0))
+        y += 90
     half = 220 * ease((t - 0.2) / 1.0)
     if half > 4:
         d.rounded_rectangle([W / 2 - half, y, W / 2 + half, y + 14], radius=7, fill=ctx["accent"])
-    if unit and not glued:
-        q = pop((t - end + 0.1) / 0.4)
-        if q > 0.05:
-            _pill(d, unit, W / 2, y + 110, _fit(d, unit, 64, W - 220), GOLD, BG1, scale=q)
 
 
 def _compare(img, t, dur, sc, ctx):
@@ -312,6 +317,7 @@ def _compare(img, t, dur, sc, ctx):
         _centered(d, sc["label"], y0, _fit(d, sc["label"], 56, W - 140), WHITE, stroke=3)
         y0 += 110
     row = min(200, (BOTTOM - y0) // len(items))
+    bar = max(36, min(80, row - 64))
     full, left = W - 200, 100
     unit = f" {sc['unit']}" if sc["unit"] else ""
     for k, (name, (value, decimals, thousands)) in enumerate(items):
@@ -319,11 +325,12 @@ def _compare(img, t, dur, sc, ctx):
         p = ease((t - 0.25 - 0.45 * k) / 1.3)
         d.text((left, y), name, font=_fit(d, name, 44, full, bold=False), fill=WHITE, stroke_width=2,
                stroke_fill=(0, 0, 0))
-        d.rounded_rectangle([left, y + 60, left + full, y + 140], radius=20, fill=TRACK)
+        d.rounded_rectangle([left, y + 56, left + full, y + 56 + bar], radius=bar // 4, fill=TRACK)
         if p > 0.01:
-            d.rounded_rectangle([left, y + 60, left + max(40, full * value / top * p), y + 140], radius=20,
+            d.rounded_rectangle([left, y + 56, left + max(40, full * value / top * p), y + 56 + bar], radius=bar // 4,
                                 fill=ctx["accent"] if value == top else MUTED)
-        d.text((left + 26, y + 100), fmt(value * p, decimals, thousands) + unit, font=_font(48), fill=WHITE,
+        d.text((left + 26, y + 56 + bar / 2), fmt(value * p, decimals, thousands) + unit, font=_font(min(48, bar)),
+               fill=WHITE,
                anchor="lm", stroke_width=3, stroke_fill=(0, 0, 0))
 
 
@@ -332,7 +339,7 @@ def _timeline(img, t, dur, sc, ctx):
     d = ImageDraw.Draw(img)
     points = sc["points"]
     n = len(points)
-    step = min(220, (BOTTOM - TOP - 120) / (n - 1))
+    step = min(220, (BOTTOM - TOP - 100) / (n - 1))
     ys = [(TOP + BOTTOM) / 2 - step * (n - 1) / 2 + i * step for i in range(n)]
     times = []
     for i, p in enumerate(points):
@@ -356,7 +363,7 @@ def _timeline(img, t, dur, sc, ctx):
         d.ellipse([x - r, ys[i] - r, x + r, ys[i] + r], fill=ctx["accent"] if current else GOLD, outline=WHITE,
                   width=5)
         shift = (1 - ease((t - times[i]) / 0.4)) * 60
-        year_font = _font(88)
+        year_font = _font(min(88, int(step * 0.7)))
         d.text((x + 60 + shift, ys[i]), p["year"], font=year_font, fill=GOLD, anchor="lm", stroke_width=3,
                stroke_fill=(0, 0, 0))
         if p["label"]:
@@ -400,7 +407,7 @@ def _map(img, t, dur, sc, ctx):
     z = ease_io(t / zoom_end)
     ppd = math.exp(math.log(28) + (math.log(380) - math.log(28)) * z)  # derece başına piksel
     k = math.cos(math.radians(lat))
-    cy = (TOP + BOTTOM) / 2
+    cy = (TOP + BOTTOM) / 2 - 40
     half_lon, up, down = W / 2 / (ppd * k) + 0.5, cy / ppd + 0.5, (H - cy) / ppd + 0.5
     d.rectangle([0, 0, W, H], fill=WATER)
     step = max(1, int(240 / ppd))

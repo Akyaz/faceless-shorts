@@ -51,7 +51,6 @@ def weak_ending(paragraphs):
         out.append(last)
     if FILLER_ENDING.search(last):
         out.append(last)
-    out += [p for p in paragraphs if COMMENT_CALL.search(p) and p not in out]
     return out
 
 
@@ -174,11 +173,12 @@ ACCURACY = """KESİN kurallar (başlık, ekran yazısı ve metin için aynen ge�
 # İzleyiciye sorulan soru: yalnızca gerçekten bir tercih ya da insiyatif içeren konularda görüş sorulur.
 # Olayın doğal ve zorunlu sonucunu sorgulatmak tepki çeker (kanal sahibinin örneği: büyük sel felaketinden sonra
 # okulların tatil edilmesi "kadar normal bir şey yok").
-QUESTION_RULE = """Soru filtresi: Soruyu yazmadan önce karar ver: bu bir tercih, insiyatif ya da gerçekten iki tarafı
-   olan bir karar mı, yoksa olayın doğal ve zorunlu sonucu mu? Doğal sonuçları (felaket sonrası okul tatili,
-   yangında tahliye, fırtınada sefer iptali gibi) "doğru mu?" diye sorgulatma. Can kaybı olan olaylarda görüş
-   sorma. Böyle bir durumda izleyiciye kendi deneyimini ya da bilgisini sor (örnek: "Senin bölgende durum
-   nasıl?"); tartışılacak bir tercih varsa onu sor (örnek: "Sence zam yeterli mi?")."""
+# Soru kuralı kapanış kuralıyla aynı ilkeye bağlandı (15 Kasım 2026): önce "Sence zam yeterli mi?", "Senin bölgende
+# durum nasıl?" gibi genel sorular öneriyordu; CLOSING_RULE ve kanalın paylaşım hedefi bunları yasaklıyor.
+QUESTION_RULE = """Soru: Soru zorunlu değil; son cümle somut bir bilgi olabilir. Soru yalnızca haberde gerçek ve adı
+   konmuş iki seçenek varsa sorulur ve iki seçeneği adıyla anar (örnek: "Montella mı, yerli hoca mı?"). Genel görüş
+   sorusu ("Sence yeterli mi?", "Senin bölgende durum nasıl?") ve yorum çağrısı yok. Olayın doğal ve zorunlu
+   sonucunu sorgulatma; can kaybı olan olaylarda soru sorma."""
 # Tek konulu videolar soruyla bitmek zorunda değil. Kanalın 286 videosunda (12 Kasım ölçümü) soruyla bitenler
 # sorusuzlardan fazla yorum almadı (1.000 izlenmede 1,9'a 2,2); genel "Sence ne anlama geliyor?" soruları en
 # zayıflardı. Yorum gelen tek soru türü, adı konmuş iki seçenekti ("Montella mı, yerli hoca mı?").
@@ -195,11 +195,10 @@ CLOSING_RULE_EN = """Ending: the last sentence is a concrete fact that sticks: w
    and name both (example: "Montella or a Turkish coach?"). Generic questions ("What does this mean for you?",
    "What do you think?") are banned. Never question the natural consequence of an event, and never ask anything
    about events with loss of life."""
-QUESTION_RULE_EN = """Question filter: before writing the question decide whether this is a genuine choice, a
-   discretionary decision or a real two-sided issue, or simply the natural, necessary consequence of an event.
-   Never ask whether a natural consequence was right (closing schools after a disaster, evacuating during a fire,
-   cancelling flights in a storm). Never ask for opinions on events with loss of life. In those cases ask about the
-   viewer's own experience instead; if there is a real choice, ask about it."""
+QUESTION_RULE_EN = """Question: a question is not required; the last sentence can be a concrete fact. Ask only when
+   there is a real choice between two named options, and name both. No generic opinion questions ("Is it enough?",
+   "How is it where you live?") and no call to comment. Never question the natural consequence of an event, and
+   never ask anything about events with loss of life."""
 
 # Görsel alanları. Yer adı aramaya kodda eklenir: böylece insan, sokak ve bina fotoğrafları yalnızca haberin
 # geçtiği ülkeden ya da şehirden aranır.
@@ -614,6 +613,18 @@ class NoSuitableStory(Exception):
     """Model bu türe uygun haber bulamadı (ör. tartışılacak gerçek bir tercih yok)."""
 
 
+def text_problems(out, published="", today=None):
+    """Metnin bütün kural denetimi tek yerde (15 Kasım 2026; önce üç ayrı yeniden yazma döngüsü vardı).
+    (kesin, üslup) döner. Kesin: cevabı vermeyen cümle, eski haberde göreli gün, yorum çağrısı. Üslup: ilk cümle,
+    kapanış ve uzunluk (style_problems). Türkçe ve İngilizce aynı denetimden geçer."""
+    paragraphs = out.get("paragraphs") or []
+    texts = paragraphs + [out.get("title", ""), out.get("hook_title", "")]
+    hard = [f"vague: {t}" for t in texts if vague(t)]
+    hard += [f"relative day in an old story: {t}" for t in stale_relative(texts, published, today)]
+    hard += [f"comment call: {p}" for p in paragraphs if COMMENT_CALL.search(p)]
+    return hard, style_problems(paragraphs)
+
+
 def story_script(headlines, kind="story", count=10, recent=()):
     spec = STORIES[kind]
     english = spec.get("lang") == "en"
@@ -632,47 +643,24 @@ def story_script(headlines, kind="story", count=10, recent=()):
                f"\nBugün {_day(today)}. Haberdeki \"yarın\", \"bugün\", \"dün\" haberin yayın gününe göredir: metinde "
                "göreli gün kullanma, tarihi yaz (\"14 Kasım'da\"); gerçekleşmiş olayı geçmiş zamanla anlat.\n")
     prompt += ("\nStories:\n" if english else "\nHaberler:\n") + "\n".join(_blocks(headlines, english))
-    out = json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"]))
+    key = os.environ["GEMINI_API_KEY"]
+    out = json.loads(_generate(prompt, key))
     if out.get("skip") or not out.get("paragraphs"):
         raise NoSuitableStory(f"{kind}: uygun haber yok")
-    unclear = [p for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")] if vague(p)]
-    if unclear:  # bir kez düzelttir; yine olmazsa video belirsiz çıkmasın diye hata verir
-        print(f"Cevabı vermeyen cümle, yeniden yazdırılıyor: {unclear}")
-        note = ("\nThe following sentences do not give the answer; say exactly what was said or decided, or pick "
-                "another story: " if english else
-                "\nŞu cümleler cevabı vermiyor; ne dendiğini ya da ne karar verildiğini açıkça söyle, "
-                "yoksa başka bir haber seç: ")
-        out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
-        if any(vague(p) for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")]):
-            raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
-    if style_problems(out["paragraphs"]) if kind != "debate" else weak_ending(out["paragraphs"]):
-        # bir kez yeniden yazdırılır; yine olmazsa daha az sorunlu olan kullanılır (kural üslup, doğruluk değil)
-        problems = style_problems(out["paragraphs"]) if kind != "debate" else [
-            f"kurala uymayan cümle: {x}" for x in weak_ending(out["paragraphs"])]
-        print(f"Kural dışı metin, yeniden yazdırılıyor: {problems}")
-        note = ("\nRewrite the script. Problems: " if english else "\nMetni yeniden yaz. Sorunlar: ")
-        retry = json.loads(_generate(prompt + note + " | ".join(problems), os.environ["GEMINI_API_KEY"]))
-        if retry.get("paragraphs") and not any(vague(p) for p in retry["paragraphs"]) \
-                and len(style_problems(retry["paragraphs"])) < len(problems):
-            out = retry
-        if any(COMMENT_CALL.search(p) for p in out["paragraphs"]):
-            # Yorum çağrısı kalırsa o paragraf çıkarılır (üslup değil, kanalın hedefi)
-            out["paragraphs"] = [p for p in out["paragraphs"] if not COMMENT_CALL.search(p)]
-            print("Yorum çağrısı olan paragraf çıkarıldı")
     headline = _pick(headlines, out.get("pick", 1))
-    texts = lambda o: o["paragraphs"] + [o.get("title", ""), o.get("hook_title", "")]
-    stale = stale_relative(texts(out), headline.get("published"), today)
-    if stale:
-        # Eski haberde "yarın" videonun gününe göre yanlış: tarih yazdırılır; yine olmazsa video çıkmaz
-        print(f"Eski haberde göreli gün, yeniden yazdırılıyor: {stale}")
-        note = (f"\nThis story was published on {_day(headline['published'])}, today is {_day(today)}. Replace "
-                "relative days with dates and use past tense for what already happened: " if english else
-                f"\nBu haber {_day(headline['published'])} tarihli, bugün {_day(today)}. Göreli günleri tarihle değiştir, "
-                "gerçekleşmiş olayı geçmiş zamanla anlat: ")
-        out = json.loads(_generate(prompt + note + " | ".join(stale), os.environ["GEMINI_API_KEY"]))
-        headline = _pick(headlines, out.get("pick", 1))
-        if not out.get("paragraphs") or stale_relative(texts(out), headline.get("published"), today):
-            raise RuntimeError("Eski haberde göreli gün kaldı (\"yarın\" gibi); bu saatin videosu atlanıyor.")
+    hard, soft = text_problems(out, headline.get("published"), today)
+    if hard or soft:
+        # Tek yeniden yazım; kesin sorun kalırsa video çıkmaz, üslup sorunu kalırsa daha az sorunlu metin kullanılır
+        print(f"Kural dışı metin, yeniden yazdırılıyor: {hard + soft}")
+        note = "\nRewrite the script. Problems: " if english else "\nMetni yeniden yaz. Sorunlar: "
+        retry = json.loads(_generate(prompt + note + " | ".join(hard + soft), key))
+        if retry.get("paragraphs") and not retry.get("skip"):
+            again = _pick(headlines, retry.get("pick", 1))
+            r_hard, r_soft = text_problems(retry, again.get("published"), today)
+            if (len(r_hard), len(r_soft)) < (len(hard), len(soft)):
+                out, headline, hard = retry, again, r_hard
+        if hard:
+            raise RuntimeError(f"Metin kurala uymadı; bu saatin videosu atlanıyor: {hard}")
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     if "scenes" in out:  # dizi ve film haberinde bilgi kartları (scenes.NEWS_SCENES)
         from . import scenes

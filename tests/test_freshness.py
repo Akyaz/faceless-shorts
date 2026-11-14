@@ -104,8 +104,33 @@ class NoCommentCall(unittest.TestCase):
 
     def test_comment_call_flagged(self):
         for text in ["Sen hangi taraftasın? Yorumlara yaz.", "Düşünceni yorumlarda belirt.", "Comment below!"]:
-            self.assertTrue(script.weak_ending(["a", text]), text)
-        self.assertFalse(script.weak_ending(["a", "Derbi 15 Kasım'da başlıyor."]))
+            hard, _ = script.text_problems({"paragraphs": ["a", text]})
+            self.assertTrue(hard, text)
+        self.assertEqual(script.text_problems({"paragraphs": ["a", "Derbi 15 Kasım'da başlıyor."]})[0], [])
+
+
+class SingleRewrite(unittest.TestCase):
+    """Metin bir kez yeniden yazdırılır: kesin sorun kalırsa video çıkmaz, üslup sorunu kalırsa daha azı seçilir."""
+    HEADS = [{"title": "h", "source": "s", "published": "", "related": []}]
+
+    def run_with(self, *replies):
+        import json
+        calls = iter(json.dumps(r) for r in replies)
+        with mock.patch.dict("os.environ", {"GEMINI_API_KEY": "k"}), \
+                mock.patch.object(script, "_generate", side_effect=lambda *a, **k: next(calls)):
+            return script.story_script(self.HEADS, "story")
+
+    def test_hard_problem_left_skips_video(self):
+        bad = {"paragraphs": ["Kısa.", "Sen hangi taraftasın? Yorumlara yaz."], "title": "t", "pick": 1}
+        with self.assertRaises(RuntimeError):
+            self.run_with(bad, bad)
+
+    def test_fixed_text_used(self):
+        bad = {"paragraphs": ["Kısa.", "Sen hangi taraftasın? Yorumlara yaz."], "title": "t", "pick": 1}
+        good = {"paragraphs": ["Okullar yarın kapalı."] + ["Bilgi cümlesi burada yer alıyor."] * 12,
+                "title": "t", "pick": 1}
+        plan = self.run_with(bad, good)
+        self.assertEqual(plan["segments"][0]["text"], "Okullar yarın kapalı.")
 
     def test_custom_paragraph_scene(self):
         item = {"title": "t", "sources": [{"title": "s", "source": "x"}],

@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T08:14:42Z",
-  "run": "39015884134",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39015884134",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-17T09:08:33Z",
   "run": "38958714639",
   "event": "workflow_dispatch",
@@ -4657,5 +4642,21 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-14T13:26:21Z",
+  "run": "43598531114",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43598531114",
+  "videos": [
+   {
+    "title": "Aleyna Solaker Güller ve Günahlar Dizisindeki Azra Rolünü Anlattı",
+    "url": "https://youtu.be/Lyqc8GBYku4",
+    "instagram": "https://www.instagram.com/reel/DfuTxFiGbte/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

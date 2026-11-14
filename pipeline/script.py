@@ -114,7 +114,14 @@ def _generate(prompt, key, images=(), models=None):
     parts = [{"text": prompt}] + [{"inline_data": {"mime_type": "image/jpeg",
                                                    "data": base64.b64encode(img).decode()}} for img in images]
     body = {"contents": [{"parts": parts}], "generationConfig": {"responseMimeType": "application/json"}}
-    return _parts_text(_call(body, key, models))
+    text = _parts_text(_call(body, key, models))
+    try:
+        json.loads(text)
+    except ValueError:
+        # Bozuk JSON bir kez yeniden istenir: gündem denemesi "Expecting ':' delimiter" ile düştü (15 Kasım 2026)
+        print("Dil modeli bozuk JSON döndürdü; istek yineleniyor")
+        text = _parts_text(_call(body, key, models))
+    return text
 
 
 def _parts_text(candidate):
@@ -237,7 +244,9 @@ SUBJECTS_FIELD = """- subjects: haberin konusu olan en fazla 3 özel isim, en ö
   futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
   kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
   Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
-  Haberde özel isim yoksa boş liste.
+  Yalnızca olayda yer alanları yaz (golü atan, kararı veren, sahneye çıkan); olayda bulunmayan, sakat, kadroda
+  olmayan ya da yalnızca adı anılan kişiyi yazma: Ronaldo'nun oynamadığı maçta Ronaldo değil golleri atan Højlund
+  (15 Kasım 2026 denemesinde video baştan sona Ronaldo'ydu). Haberde özel isim yoksa boş liste.
 """
 
 # Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi
@@ -401,7 +410,8 @@ Other fields:
 
 - subjects: up to 3 proper names the story is about, most important first: people named in the story first (full
   name as on Wikipedia), then the work, club, organisation or place. Their own photos are shown in the video.
-  Empty list if there are none.
+  Only those who take part in the event (the scorer, the decision maker); never someone who is absent, injured or
+  only mentioned. Empty list if there are none.
 Return only JSON:
 {"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "subjects": []}
 """

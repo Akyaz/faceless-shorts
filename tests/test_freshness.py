@@ -114,6 +114,13 @@ class NoCommentCall(unittest.TestCase):
         self.assertTrue(any(h.startswith("metin çok kısa") for h in hard))
 
 
+class BrokenJson(unittest.TestCase):
+    def test_retried_once(self):
+        replies = iter(['{"a": 1, "b"', '{"a": 1}'])
+        with mock.patch.object(script, "_call", side_effect=lambda *a, **k: {"content": {"parts": [{"text": next(replies)}]}}):
+            self.assertEqual(script._generate("x", "k"), '{"a": 1}')
+
+
 class SingleRewrite(unittest.TestCase):
     """Metin bir kez yeniden yazdırılır: kesin sorun kalırsa video çıkmaz, üslup sorunu kalırsa daha azı seçilir."""
     HEADS = [{"title": "h", "source": "s", "published": "", "related": []}]

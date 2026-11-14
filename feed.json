@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T05:54:17Z",
-  "run": "39005392769",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39005392769",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-17T07:21:11Z",
   "run": "39005376622",
   "event": "workflow_dispatch",
@@ -4655,5 +4640,21 @@
   ],
   "slot": "21:00",
   "script": "scripts/longform/tr-hattusa.json"
+ },
+ {
+  "time": "2026-11-14T09:52:50Z",
+  "run": "43582099673",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43582099673",
+  "videos": [
+   {
+    "title": "Bir Başkadır 2. Sezon Fragmanı Paylaşıldı: Yayın Tarihi Belli Oldu",
+    "url": "https://youtu.be/yFfxpA-72F8",
+    "instagram": "https://www.instagram.com/reel/Dft7VIekXPV/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

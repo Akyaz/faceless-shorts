@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T09:08:57Z",
-  "run": "39019287273",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019287273",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-17T09:08:59Z",
   "run": "39019289604",
   "event": "workflow_dispatch",
@@ -4660,6 +4645,21 @@
   "videos": [
    {
     "title": "Sakıp Sabancı: Stajyerlikten Milyarderliğe Uzanan Hayatı",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T20:15:07Z",
+  "run": "43635817829",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43635817829",
+  "videos": [
+   {
+    "title": "Uluburun Batığı: Akdeniz'in Dibindeki 3.300 Yıllık Hazine",
     "url": null,
     "instagram": null
    }

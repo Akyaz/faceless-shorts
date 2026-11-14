@@ -54,6 +54,8 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
 - Son ~10 günde kullanılan arama görseli tekrar seçilmez (`state/images.json`).
 - 29 Ekim videolarında Anıtkabir görseli yok (Anıtkabir 10 Kasım içindir). Atatürk anılarında yalnızca belgeli olanlar.
 - Az ama doğru görsel, çok ama alakasız görselden iyidir. Kural mümkünse kodla zorlanır, modele bırakılmaz.
+- Bilgi videosunda en fazla iki paragraf animasyonlu sahne olur: sayaç, karşılaştırma, zaman çizelgesi ya da
+  harita (`pipeline/scenes.py`). Sahnedeki her sayı paragrafta aynen geçer, harita koordinatı Vikipedi'den gelir.
 
 ## İçerik seçimi
 

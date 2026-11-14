@@ -19,7 +19,7 @@ for run in "$@"; do
   until [ "$(gh run view "$run" --json status --jq .status 2>/dev/null)" = completed ]; do sleep 180; done
   echo "=== $run $(gh run view "$run" --json conclusion --jq .conclusion)"
   gh run view "$run" --log 2>/dev/null \
-    | grep -E "Traceback|RuntimeError|Konu görseli|Konu fotoğrafları|Haber kapak|Yapım karesi|Vikipedi afişi|TMDB|Arka plan|atlandı|yeniden yazdırılıyor|Görsel seçimi|Konu:" \
+    | grep -E "Traceback|RuntimeError|Konu görseli|Konu fotoğrafları|Haber kapak|Yapım karesi|Vikipedi afişi|TMDB|Arka plan|atlandı|yeniden yazdırılıyor|Görsel seçimi|Konu:|Sahne" \
     | grep -v "_KEY:" | sed -E 's/^.*Z //' | cut -c1-200 | head -40
   dir="$OUT/$run"; rm -rf "$dir"; mkdir -p "$dir"  # gh run download var olan dosyanın üstüne yazmıyor
   gh run download "$run" -n short -D "$dir" >/dev/null 2>&1 || { echo "Video yok (çalışma video üretmedi)"; continue; }

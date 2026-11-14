@@ -724,14 +724,18 @@ def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W
     progress = f"on/({dur}*30)"
     bg, overlay = Path(card).with_suffix(".bg.png"), Path(card).with_suffix(".overlay.png")
     clip = Path(card).with_suffix(".bg.mp4")
-    if look and motion and clip.exists() and overlay.exists():
-        # Video klip: kadraja kırpılır, fotoğraf gibi karartılır (yazılar okunsun); kısaysa başa sarar
-        keep = round(1 - look.get("dim", 0.5), 3)
+    # Animasyonlu sahne (scenes.render_scene) varsa fotoğrafın ve klibin yerine o oynar
+    anim = Path(card).with_suffix(".anim.mp4")
+    if look and overlay.exists() and (anim.exists() or (motion and clip.exists())):
+        # Video klip: kadraja kırpılır, fotoğraf gibi karartılır (yazılar okunsun); kısaysa başa sarar.
+        # Sahne kendi renkleriyle çizildiği için karartılmaz ve başa sarmaz (süresi parçayla aynı).
+        keep = 1 if anim.exists() else round(1 - look.get("dim", 0.5), 3)
         graph = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps=30,"
                  f"colorchannelmixer=rr={keep}:gg={keep}:bb={keep}[bg];[bg][2:v]overlay=format=yuv420,ass={ass}[v]")
         subprocess.run([
             "ffmpeg", "-y", "-loglevel", "error",
-            "-stream_loop", "-1", "-i", str(clip), "-i", str(audio), "-i", str(overlay),
+            *(["-i", str(anim)] if anim.exists() else ["-stream_loop", "-1", "-i", str(clip)]),
+            "-i", str(audio), "-i", str(overlay),
             "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-af", f"apad=pad_dur={pad}", "-t", f"{dur:.2f}",
             "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
             "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "128k", str(out_path),

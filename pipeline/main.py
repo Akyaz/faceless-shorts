@@ -14,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import captions, evergreen, horoscope, images, music, onthisday, platforms, playlists, render, review, script
+from . import captions, evergreen, horoscope, images, music, onthisday, platforms, playlists, render, review, scenes, script
 
 
 def _offline_audio(text, out_path):
@@ -234,6 +234,19 @@ def _section_images(plan, work):
     return backgrounds, credits
 
 
+def _draw_scene(scene, words, card, audio, background, look, idx):
+    """Animasyonlu sahne kartın yanına (.anim.mp4) yazılır; çizilemezse parça fotoğrafla devam eder."""
+    anim = card.with_suffix(".anim.mp4")
+    palette = render.PALETTES.get(look.get("palette"), render.ACCENTS)
+    try:
+        # Parça sesten 0,35 sn uzun (render_segment); sahne biraz daha uzun çizilir ki görüntü erken bitmesin
+        scenes.render_scene(scene, words, anim, render.audio_duration(audio) + 0.6, background,
+                            palette[idx % len(palette)])
+    except Exception as exc:
+        anim.unlink(missing_ok=True)
+        print(f"Sahne çizilemedi, fotoğraf kullanılıyor: {exc}")
+
+
 def _clock(seconds):
     seconds = int(seconds)
     return f"{seconds // 60}:{seconds % 60:02d}"
@@ -385,6 +398,7 @@ def main():
         backgrounds, credits = find_images(plan, work)
         if recent:
             save_recent_images(recent)
+        backgrounds = scenes.spread(backgrounds, segments)
         # Görselsiz (yalnızca renkli zemin) video kaydırılıp geçiliyor: hiç görsel bulunamadıysa video üretilmez.
         # Maç kartları kendi grafiğini çizdiği için hariç.
         if not plan.get("match") and not any(backgrounds):
@@ -423,6 +437,8 @@ def main():
         else:
             render.draw_card(seg, i, card, backgrounds[i], plan.get("hook_title", ""), plan.get("label", "GÜNDEM"),
                              lang=plan.get("lang", "tr"), style=look)
+            if seg.get("scene") and look:
+                _draw_scene(seg["scene"], words, card, audio, backgrounds[i], look, i)
             render.write_ass(words, ass, look=look)
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, look=look, idx=i)
         if seg.get("chapter"):

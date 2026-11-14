@@ -12,7 +12,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from . import onthisday, script
+from . import onthisday, scenes, script
 
 ROOT = Path(__file__).resolve().parent.parent
 TOPICS = ROOT / "scripts" / "evergreen" / "topics.txt"
@@ -48,9 +48,20 @@ Ek alanlar:
 - country: konu belirli bir ülkedeyse İngilizce adı ("Turkey" gibi); değilse boş.
 - mood: "notr", "umutlu", "gergin" ya da "huzunlu" (çoğu konu için "notr" ya da "umutlu").
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
+- scenes: en fazla 2 paragraf için animasyonlu sahne (fotoğraf yerine kodla çizilen grafik). Yalnızca paragrafta
+  gerçekten çarpıcı bir sayı, iki-üç şeyin karşılaştırması, art arda yıllar ya da haritada gösterilecek bir yer
+  varsa ekle; yoksa boş liste. Sahnedeki her sayı ve yıl o paragrafta yazıldığı gibi geçmeli (metinde "3,2" ise
+  "3,2", "22.413" ise "22.413"). unit, label ve name en fazla 3 kelime. paragraph: 1'den başlayan paragraf sırası.
+  Türler:
+  {"paragraph": 2, "type": "sayac", "value": "22.413", "unit": "dalış", "label": "Batığı çıkarmak için"}
+  {"paragraph": 1, "type": "karsilastirma", "label": "Orta açıklık", "unit": "m", "items": [{"name": "Akashi Kaikyō", "value": "1.991"}, {"name": "1915 Çanakkale", "value": "2.023"}]}
+  {"paragraph": 2, "type": "zaman", "points": [{"year": "1948", "label": "Akbank'ta stajyer"}, {"year": "1966", "label": "Holdingin başında"}]}
+  {"paragraph": 1, "type": "harita", "place": "Kaş", "label": "Kaş açıkları"}
+  Karşılaştırmada 2-3 öğe, zaman çizelgesinde 2-4 yıl. Haritada place, paragrafta geçen yerin Vikipedi sayfa adı
+  (şehir, ilçe, ada, yapı); ülke ya da kıta değil.
 """ + script.PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "object_query": "", "country": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}}
+{"hook_title": "...", "title": "...", "paragraphs": ["..."], "image_queries": ["..."], "object_query": "", "country": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "scenes": []}
 """
 
 
@@ -181,6 +192,8 @@ def plan(state_path=STATE):
     sources = [{"title": p["title"], "source": "Vikipedi" if p["lang"] == "tr" else "Wikipedia", "link": p["url"]}
                for p in pages]
     segments = [{"kind": "story", "source": sources[0]["source"], "text": p} for p in out["paragraphs"]]
+    for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes")).items():
+        segments[i]["scene"] = scene
     result = {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
               "lang": "tr", "segments": segments, "sources": [{**sources[0], "related": sources[1:]}],
               "kind": "fact", **script._image_fields(out),

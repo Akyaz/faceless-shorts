@@ -4629,21 +4629,6 @@
   "slot": "12:00"
  },
  {
-  "time": "2026-11-14T13:13:39Z",
-  "run": "43598314060",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43598314060",
-  "videos": [
-   {
-    "title": "1915 Çanakkale Köprüsü: Dünyanın En Uzun Asma Köprüsü",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-14T13:26:21Z",
   "run": "43598531114",
   "event": "workflow_dispatch",
@@ -4658,5 +4643,20 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-14T14:35:18Z",
+  "run": "43598314060",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43605620458",
+  "videos": [
+   {
+    "title": "1915 Çanakkale Köprüsü: Dünyanın En Uzun Asma Köprüsü",
+    "url": "https://youtu.be/uEAM62DFHhY",
+    "instagram": null
+   }
+  ]
  }
 ]

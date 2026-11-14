@@ -1,14 +1,5 @@
 [
  {
-  "time": "2026-10-17T14:28:59Z",
-  "run": "39040866976",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39040866976",
-  "videos": []
- },
- {
   "time": "2026-10-17T16:01:46Z",
   "run": "39047344329",
   "event": "schedule",
@@ -4664,5 +4655,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43649447602",
   "videos": []
+ },
+ {
+  "time": "2026-11-14T22:51:54Z",
+  "run": "43650001814",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650001814",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti dizisinde Lider'in gerçek yüzü ortaya çıktı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

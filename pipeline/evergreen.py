@@ -87,8 +87,15 @@ CATEGORIES = {
 }
 
 
+# Vikipedi sayfasında fotoğrafı olmayan konunun Commons'taki kendi görseli (konu listesinin üçüncü alanı). Sakıp
+# Sabancı'nın serbest lisanslı portresi yok; David Cregeen'in büstünün fotoğrafı adı yanlış yazıldığı için
+# aramalarda çıkmıyordu, videoda kendisi hiç görünmedi (14 Kasım 2026).
+FILES = {}
+
+
 def topics():
-    """[(kategori, Türkçe arama, İngilizce arama)] dosyadaki sırayla; "[kategori]" satırı sonraki konuların kategorisi."""
+    """[(kategori, Türkçe arama, İngilizce arama)] dosyadaki sırayla; "[kategori]" satırı sonraki konuların kategorisi.
+    Üçüncü alan (isteğe bağlı) konunun elle seçilmiş Commons dosyaları: FILES'a yazılır."""
     rows, category = [], "bilgi"
     for line in TOPICS.read_text(encoding="utf-8").splitlines():
         line = line.strip()
@@ -99,7 +106,9 @@ def topics():
             if category not in CATEGORIES:
                 raise ValueError(f"Bilinmeyen kategori: {category}")
             continue
-        tr, _, en = (part.strip() for part in line.partition("|"))
+        tr, en, files = ([part.strip() for part in line.split("|")] + ["", ""])[:3]
+        if files:
+            FILES[tr] = [f.strip() for f in files.split(",") if f.strip()]
         rows.append((category, tr, en or tr))
     return rows
 
@@ -196,7 +205,7 @@ def plan(state_path=STATE):
 
     text = "\n\n".join(f"Vikipedi ({p['lang']}) \"{p['title']}\":\n{p['text']}" for p in pages)
     rules = RULES + (f"\n{spec['angle']}\n" if spec["angle"] else "")
-    own_photo = any(p["image"] for p in pages)
+    own_photo = bool(FILES.get(tr)) or any(p["image"] for p in pages)
     if not own_photo:
         # Konunun kendi fotoğrafı yok (Sakıp Sabancı'nın serbest lisanslı portresi yok; videoda müze bahçesindeki at
         # heykeli çıktı, 14 Kasım 2026): boşluğu ilgisiz fotoğraf yerine animasyonlu sahneler doldursun
@@ -226,7 +235,8 @@ def plan(state_path=STATE):
     result = {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
               "lang": "tr", "segments": segments, "sources": [{**sources[0], "related": sources[1:]}],
               "kind": "fact", **script._image_fields(out),
-              "image_files": [p["image"] for p in pages if p["image"]][:1], "fill_with_search": True,
+              "image_files": (FILES.get(tr) or [p["image"] for p in pages if p["image"]])[:2],
+              "fill_with_search": True,
               "mood": out.get("mood", "notr"),
               "hashtags": script._tags(out.get("hashtags")) + spec["hashtags"],
               "category": "27", "image_prompt": "", "pronounce": script._pronounce(out),

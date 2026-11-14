@@ -73,6 +73,12 @@ class ChosenTopic(unittest.TestCase):
         self.assertEqual(evergreen.chosen_topic(rows, "Sakıp Sabancı")[0], "para")
         self.assertEqual(evergreen.chosen_topic(rows, "Kapadokya"), ("bilgi", "Kapadokya", "Kapadokya"))
 
+    def test_topic_files_field(self):
+        from pipeline import evergreen
+        rows = evergreen.topics()
+        self.assertIn(("para", "Sakıp Sabancı", "Sakıp Sabancı"), rows)  # üçüncü alan İngilizce aramaya karışmaz
+        self.assertEqual(evergreen.FILES["Sakıp Sabancı"], ["File:Sakip Sabanci - bronze-1997 (17).jpg"])
+
 
 class Vague(unittest.TestCase):
     def test_unnamed_founding_is_vague(self):

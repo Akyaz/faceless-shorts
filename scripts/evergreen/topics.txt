@@ -1,5 +1,6 @@
 # "Biliyor muydun?" serisinin konuları (pipeline/evergreen.py), yukarıdan aşağı sırayla işlenir.
 # Biçim: Türkçe Vikipedi araması | İngilizce Vikipedi araması (Türkçe sayfa kısaysa bu kullanılır)
+#        | konunun Commons dosyaları, virgülle (isteğe bağlı; Vikipedi sayfasında fotoğraf yoksa)
 # Satır eklemek yeterli; işlenen konular state/evergreen.json'da tutulur, liste bitince en eskiden yeniden başlar.
 # Konular eskimeyen, herkesin anlayabileceği ve "vay be" dedirten şeyler olmalı; ölüm, savaş ve felaket ağırlıklı konular yok.
 Derinkuyu Yeraltı Şehri | Derinkuyu underground city
@@ -98,7 +99,7 @@ Le Mans 24 Saat | 24 Hours of Le Mans
 
 [para]
 Vehbi Koç | Vehbi Koç
-Sakıp Sabancı | Sakıp Sabancı
+Sakıp Sabancı | Sakıp Sabancı | File:Sakip Sabanci - bronze-1997 (17).jpg
 Nuri Demirağ | Nuri Demirağ
 John D. Rockefeller | John D. Rockefeller
 Andrew Carnegie | Andrew Carnegie

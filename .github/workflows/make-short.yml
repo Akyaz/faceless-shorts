@@ -38,6 +38,9 @@ on:
     # 20:30: "Sen ne dersin?" tartışma videosu (günün özeti yorum getirmiyordu)
     - cron: "20 17 * * *"
     - cron: "45 17 * * *"
+    # 21:00: Google'da en çok aranan konunun haberi (tarih videosunun yerine, 15 Kasım 2026)
+    - cron: "50 17 * * *"
+    - cron: "15 18 * * *"
   workflow_dispatch:
     inputs:
       slot:

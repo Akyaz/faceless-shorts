@@ -15,7 +15,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import captions, evergreen, horoscope, images, music, onthisday, platforms, playlists, render, review, scenes, script
+from . import captions, evergreen, horoscope, images, music, onthisday, platforms, playlists, render, review, scenes, script, trends
 
 
 def _offline_audio(text, out_path):
@@ -271,10 +271,15 @@ def news_plan(args, exclude=(), _tries=0):
             feeds = [fetch_headlines(15, t) for t in ("top", "sports", "technology")]
             mixed = [h for group in zip(*feeds) for h in group]
             headlines = list({h["title"]: h for h in mixed}.values())
+        elif args.mode == "story" and (searched := trends.fetch()):
+            # Gündem: Türkiye'de Google'da en çok aranan konular (pipeline/trends.py, 15 Kasım 2026 ölçümü)
+            headlines = trends.headlines(searched)
         else:
             topic = ("sports" if args.mode in ("sports", "sportstory") else "world" if args.mode == "world"
                      else "entertainment" if args.mode == "culture" else "top")
             headlines = fetch_headlines(limit=30, topic=topic)
+        if args.mode in TREND_BOOSTED:  # aranan konunun haberi öne
+            headlines = trends.boost(headlines, trends.fetch())
     single = args.mode in script.STORIES
     if args.mode in ("story", "world", "trend", "debate", "sportstory", "culture", "platform") and not args.offline:
         # Can kaybı ve ağır suç haberleri tek başına videoya dönmez; günün özetinde sade bir dille geçer
@@ -320,6 +325,7 @@ def news_plan(args, exclude=(), _tries=0):
 
 
 REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayısı
+TREND_BOOSTED = {"culture", "sportstory", "platform"}  # Google'da aranan konunun haberi öne alınır
 REPEAT_CHECKED = {"platform"}  # yapım haberi: aynı dizi iki gün üst üste video olmaz
 RECENT_TOPICS = 8  # yaklaşık iki günün platform ve gündem videoları
 

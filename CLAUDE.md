@@ -70,6 +70,9 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
 - Alınmayan nişler: NASCAR, Amishler, Amerikan tarihi, poker, işkence tarihi, kadın suçlular, mahkeme davaları,
   komplo teorileri, dini hikâyeler. Ayrıca borsa ve yatırım tavsiyesi ile yaşlılara sağlık tavsiyesi verilmez.
 - Magazinde söylenti ve özel hayat yok. Para serisinde yalnızca kesinleşmiş skandallar anlatılır.
+- Konu seçiminde Google Trends Türkiye kullanılır (`pipeline/trends.py`, ücretsiz RSS): 21:00 gündem haberi en çok
+  aranan konudan, kültür, spor ve dizi saatlerinde aranan konunun haberi öne. X (Twitter) gündemi kullanılmaz.
+  İzlenmeyen türler takvimden çıkarıldı: tarih videosu, haftalık derleme (15 Kasım 2026 ölçümü).
 - Zamanlama ve saat-tür eşleşmesi `pipeline/slots.py` içindeki `SLOTS` tablosunda. Saat değişirse panelin günlük
   planı da güncellenir (`faceless-shorts-panel/api.js`, `PLAN`).
 

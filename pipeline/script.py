@@ -240,14 +240,17 @@ Amaç izleyicinin kaydırmadan sonuna kadar izlemesi, işine yarar bir şey öğ
 (ailesine, aynı şehirdeki arkadaşına) göndermesi.
 
 Haber seçimi: İzleyicinin gündelik hayatını doğrudan etkileyen haberi seç: zam, maaş, vergi, yeni düzenleme, yasak,
-resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim, teknoloji.
+resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim (sınav ve burs sonuçları), teknoloji.
+Haberlerin çoğu Türkiye'de Google'da en çok aranan konulardır ("Google Trends" satırı): insanların aradığı sorunun
+cevabını ilk cümlede ver (örnek: "VGM burs sonuçları açıklandı." / "Gönül Dağı bu akşam yeni bölümle ekranda.") ve
+nasıl, nereden, ne zaman sorusunu somut bilgiyle cevapla. Haberde cevap yoksa o konuyu seçme.
 Seçme: cinayet, cinsel suç, kaza ve ölüm ayrıntısı öne çıkan haberler; adı geçen kişilere yönelik suçlama ve
 tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; magazin; Türkiye'deki izleyicinin hayatına
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.
 """,
     },
-    # Spor tek haber: Türkiye'de en çok etkileşim alan konu. Özet (4 başlık) hiçbirini akılda bırakmıyordu;
-    # tek konu, taraftarı yorum yazmaya iten bir soruyla biter.
+    # Spor tek haber: Türkiye'de en çok izlenen türlerden (ortanca 1.118, 15 Kasım 2026). Özet (4 başlık) hiçbirini
+    # akılda bırakmıyordu; tek konu, somut bilgiyle biter (yorum çağrısı yok, amaç paylaşım).
     "sportstory": {
         "label": "SPOR", "hashtags": ["spor", "futbol"], "category": "17",
         "brief": """Görev: YouTube Shorts için Türkçe spor haberi. Amaç taraftarın kaydırmadan sonuna kadar izlemesi ve videoyu

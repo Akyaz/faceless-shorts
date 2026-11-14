@@ -57,9 +57,9 @@ SLOTS = {
     "20 17 * * *": ("20:30", "debate"), "45 17 * * *": ("20:30", "debate"),
     # 13:00: yalnızca önceden zamanlanmış video varsa (ör. bayram tebriği); yoksa hiçbir şey üretilmez
     "0 10 * * *": ("13:00", "scheduled"), "25 10 * * *": ("13:00", "scheduled"), "55 10 * * *": ("13:00", "scheduled"),
-    # Tarih videosu ve haftalık derleme kendi iş akışlarında
-    "0 18 * * *": ("21:00", "longform"), "30 18 * * *": ("21:00", "longform"),
-    "50 7 * * 0": ("pazar 11:00", "weekly"), "15 8 * * 0": ("pazar 11:00", "weekly"),
+    # 21:00: Google'da en çok aranan konunun haberi (pipeline/trends.py). Tarih videosu (ortanca 16 izlenme) ve pazar
+    # 11:00 haftalık derleme (36) kapatıldı (15 Kasım 2026 ölçümü); iş akışları elle çalıştırılabilir
+    "50 17 * * *": ("21:00", "story"), "15 18 * * *": ("21:00", "story"),
 }
 
 

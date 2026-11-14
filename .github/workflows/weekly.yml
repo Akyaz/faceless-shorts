@@ -3,9 +3,6 @@ name: Haftalık derleme
 # Son 7 günün tek haber videolarından yatay, uzun bir "haftanın haberleri" videosu üretir
 on:
   # Pazar 11:00 (Türkiye saati, UTC+3); GitHub geciktirebildiği için 10 dakika erken başlar
-  schedule:
-    - cron: "50 7 * * 0"
-    - cron: "15 8 * * 0"  # yedek: asıl çalışma başlamadıysa (pipeline/slots.py)
   workflow_dispatch:
     inputs:
       slot:
@@ -27,6 +24,7 @@ jobs:
     outputs:
       run: ${{ steps.decide.outputs.run }}
       slot: ${{ steps.decide.outputs.slot }}
+      mode: ${{ steps.decide.outputs.mode }}
     steps:
       - uses: actions/checkout@v4
       - id: decide
@@ -39,7 +37,8 @@ jobs:
 
   weekly:
     needs: slot
-    if: ${{ needs.slot.outputs.run == 'true' }}
+    # Takvimden çıkarıldı (15 Kasım 2026); dışarıdan tetikleme saat adı başka türe aitse üretmez
+    if: ${{ needs.slot.outputs.run == 'true' && (needs.slot.outputs.mode == 'weekly' || needs.slot.outputs.slot == '') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:

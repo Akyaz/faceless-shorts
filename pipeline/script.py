@@ -231,6 +231,16 @@ haberde ya da kaynaklarda oynadığı (ya da yaptığı) bir dizi veya film geç
 fotoğrafıyla birlikte o yapımdan kareler gösterir. Haberde hiçbir yapım geçmiyorsa "work": null.
 """
 
+# Haberin konusu: kişiler, kulüpler, eserler. Görsel kararı bunlardan çıkar (main.subject_kind): yapım varsa yapımın
+# kareleri, kişi varsa kişinin fotoğrafları, yoksa yer ve olay araması. Her haber türünde aynı metin (15 Kasım 2026:
+# önce yalnızca dizi ve kültür saatleri yapımı bildiriyordu; gündeme düşen Gönül Dağı dizi olarak tanınmadı).
+SUBJECTS_FIELD = """- subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
+  futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
+  kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
+  Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
+  Haberde özel isim yoksa boş liste.
+"""
+
 # Tek konulu video türleri: ekran etiketi, görev ve seçim tarifi
 STORIES = {
     "story": {
@@ -297,7 +307,7 @@ Görseller: haberde adı geçen oyuncu ve sanatçıların kendi fotoğrafları "
 "television studio", "theatre stage", "concert stage", "cinema hall", "film festival red carpet", "art gallery").
 Haberi anlatırken sahneyi betimle: kim, nerede, ne yaptı, ne dedi (örnek: "Haluk Bilginer, ödül konuşmasında 'Türk sineması
 değil, Türkiye sineması' dedi."). Soru yalnızca adı konmuş iki seçenek varsa sorulur; yoksa sorma. "pick" alanına seçtiğin haberin numarasını yaz.
-""" + WORK,
+""",
     },
     # Dijital platformlar (10:00): Netflix Türkiye Top 10'daki yapımlar ve platformların yeni dizi ve filmleri.
     # Görseller yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py).
@@ -318,7 +328,7 @@ Metinde yapımın adını, platformu, konusunu bir cümleyle, başrol oyuncular�
 söyle (örnek ilk cümle: "Netflix Türkiye'de bu hafta bir numara Organize İşler: Karun Hazinesi.").
 Son cümle somut bir bilgi olsun (bölüm sayısı, yayın günü, kaç haftadır listede); "izleyicilerle buluşmayı
 sürdürüyor", "merakla bekleniyor" gibi dolgu cümlelerle bitirme. Hiçbir haber güçlü değilse "skip": true döndür.
-""" + WORK + NEWS_SCENES,
+""" + NEWS_SCENES,
     },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
@@ -434,14 +444,9 @@ Ek alanlar:
   "huzunlu" (kayıp, yas, üzücü olay).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz (örnek: "deprem", "istanbul", "emekli").
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
-- subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
-  futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
-  kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
-  Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
-  Haberde özel isim yoksa boş liste.
-""" + PRONOUNCE_FIELD + """
+""" + SUBJECTS_FIELD + WORK + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}, "subjects": []}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}, "subjects": [], "work": null}
 """
 
 DEBATE_RULES = """
@@ -464,14 +469,9 @@ Ek alanlar:
 """ + IMAGE_FIELDS.format(n=4) + """
 - mood: "notr" ya da "gergin" (konuya göre).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
-- subjects: haberin konusu olan en fazla 3 özel isim, en önemlisi başta: önce haberde adı geçen kişiler (oyuncu,
-  futbolcu, teknik direktör, şarkıcı; Vikipedi'deki tam adıyla, örnek "Murat Aygen", "Victor Osimhen"), sonra eser,
-  kulüp ya da yer (örnek "Kızılcık Şerbeti", "RAMS Park"). Videoda bu isimlerin kendi fotoğrafları gösterilir.
-  Televizyon kanalı, dijital platform ve şirket adı yazma (Kanal D, Netflix, Show TV): onların fotoğrafı binadır.
-  Haberde özel isim yoksa boş liste.
-""" + PRONOUNCE_FIELD + """
+""" + SUBJECTS_FIELD + WORK + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "subjects": []}
+{"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "subjects": [], "work": null}
 """
 
 DIGEST_RULES = """Görev: YouTube Shorts için Türkçe {subject}. Aşağıdaki haberlerden birbirinden farklı {count} tanesini

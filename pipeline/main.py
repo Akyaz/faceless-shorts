@@ -153,36 +153,36 @@ def _subject_support(plan, work, count):
     return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
 
 
+def subject_kind(plan):
+    """Görsel kararı konuya göre verilir, video türüne göre değil (15 Kasım 2026: dizi kuralı yalnızca dizi saatinde
+    çalışıyordu; gündeme düşen Gönül Dağı videosunun tek görseli bir televizyon stüdyosuydu):
+    - "yapim": dizi, film ya da konunun elle verilmiş resmi görselleri; yalnızca onlar.
+    - "kisi": haberde adı geçen kişinin, kulübün ya da eserin kendi fotoğrafları; yalnızca onlar.
+    - "yer": ikisi de yoksa haberin yeri ve olayı için arama."""
+    if plan.get("work_images"):
+        return "yapim"
+    if plan.get("subject_files"):
+        return "kisi"
+    return "yer"
+
+
 def find_images(plan, work):
     """Her segment için arka plan dosyası (yoksa None) ve kaynak satırları."""
     segments = plan["segments"]
     if any(plan.get("sections") or []):
         return _section_images(plan, work)
-    if plan.get("work_images"):
-        # Dizi ve film: yapımın resmi görselleri (sahne görselleri, afiş) ilk karede ve paragraflar arasında
-        # sırayla; tek görsel varsa oyuncu fotoğraflarıyla dönüşümlü
+    kind = subject_kind(plan)
+    if kind == "yapim":
+        # Yapımın (ya da konunun) resmi görselleri, paragraflar arasında sırayla; başka görsel karışmaz
         own = images.save_direct(plan["work_images"], work / "work", len(segments))
-        if len(own) < 3 and plan.get("mode") not in WORK_ONLY:
-            own += _subject_support(plan, work, 3 - len(own))
-        if plan.get("subject_files") and len(own) < 3 and plan.get("mode") not in WORK_ONLY:
-            own += images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
-                                           work / "subject", len(plan["subject_files"]))
-        if own:
-            paths = [p for p, _ in own]
-            return [paths[i % len(paths)] for i in range(len(segments))], [c for _, c in own]
-    if plan.get("subject_files"):
-        # Haberde adı geçen kişinin ya da eserin kendi fotoğrafı ilk karede ve her iki paragrafta bir görünür;
-        # aradaki paragraflarda konuyla ilgili destek görselleri
+        paths = [p for p, _ in own]
+        return [paths[i % len(paths)] if paths else None for i in range(len(segments))], [c for _, c in own]
+    if kind == "kisi":
+        # Kişinin (kulübün, eserin) kendi fotoğrafı ilk karede ve iki paragrafta bir; aradakiler onun başka
+        # fotoğrafları. Genel ortam araması yok: Ronaldinho videosunda stat kapısı geliyordu (15 Kasım 2026)
         own = images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
                                       work / "subject", len(plan["subject_files"]))
-        rest = []
-        if plan.get("mode") in SUBJECT_REQUIRED:
-            # Dizi, film, kültür ve spor haberinde destek görseli genel ortam araması değil (stüdyo araması kanal
-            # binası, şehir araması aynı manzarayı getiriyordu): konunun kendi başka fotoğrafları
-            rest = _subject_support(plan, work, max(1, len(segments) // 2))
-        if plan.get("mode") not in SUBJECT_REQUIRED or (not rest and plan.get("mode") == "sportstory"):
-            # Spor haberinde konunun başka fotoğrafı yoksa stadyum ve salon araması yine işe yarıyor
-            rest = images.find_backgrounds({**plan, "image_files": []}, work / "support", max(1, len(segments) // 2))
+        rest = _subject_support(plan, work, max(1, len(segments) // 2))
         mine, other = [p for p, _ in own], [p for p, _ in rest] or [p for p, _ in own]
         backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
                        if mine else None for i in range(len(segments))]
@@ -345,41 +345,44 @@ def repeated(plan, recent_titles):
     return ""
 
 
-# Bu türlerde haber bir kişi ya da eser hakkında: onu göstermeyen video (kanal binası, genel set fotoğrafı)
-# izleyiciyi yanıltıyor. Konunun kendi serbest lisanslı fotoğrafı yoksa sıradaki haber denenir.
+# Bu türlerde haber bir kişi ya da eser hakkında olmalı: yer ve olay aramasına düşen haber atlanır.
 SUBJECT_REQUIRED = {"culture", "sportstory", "platform"}
 SUBJECT_TRIES = 4
-WORK_ONLY = {"platform"}  # görsel yalnızca yapımın kendisinden
-MIN_WORK_IMAGES = 2
 
 
 def with_subject_photos(args):
-    """news_plan + haberde adı geçenlerin kendi fotoğrafları (plan["subject_files"])."""
+    """news_plan + konunun kendi görselleri (subject_kind). Konunun en az MIN_IMAGES görseli yoksa sıradaki haber."""
     tried = []
     for attempt in range(SUBJECT_TRIES):
         plan = news_plan(args, exclude=tried)
-        if args.offline or not plan.get("subjects") or args.mode in WORK_ONLY:
-            files = []
-        else:
-            files = [f for f in dict.fromkeys(images.subject_file(n) for n in plan["subjects"]) if f]
-        plan["subject_files"] = files
         plan["mode"] = args.mode
-        # Dizi ve film haberinde yapımın resmi afişi ve sahne görselleri (pipeline/platforms.py)
-        plan["work_images"] = [] if args.offline else platforms.work_images(plan.get("work"), plan.get("sources", []))
-        if args.mode in WORK_ONLY and not args.offline:
-            # Dizi ve film haberi: yalnızca yapımın kendi kareleri (haber kapakları, Vikipedi afişi); en az iki
-            # farklı kare yoksa haber atlanır. Commons'taki oyuncu ve yönetmen fotoğrafı kullanılmaz: defile, gala
-            # ve başka biriyle çekilmiş kareler geliyordu, kim olduğu da belli değildi (15 Kasım 2026)
-            if len({c["url"] for c in plan["work_images"]}) >= MIN_WORK_IMAGES:
-                return plan
-            tried += [h["title"] for h in plan["sources"]]
-            print(f"Yapımın yeterli resmi karesi yok ({len(plan['work_images'])}); başka haber deneniyor")
-            continue
-        if files or plan["work_images"] or args.mode not in SUBJECT_REQUIRED or args.offline:
+        if args.offline:
+            plan["subject_files"], plan["work_images"] = [], []
             return plan
+        if plan.get("work"):
+            # Dizi ya da film: yalnızca yapımın kareleri (haber kapakları, Vikipedi afişi)
+            plan["subject_files"] = []
+            plan["work_images"] = platforms.work_images(plan["work"], plan.get("sources", []))
+            count = len({c["url"] for c in plan["work_images"]})
+            if count >= MIN_IMAGES:
+                return plan
+            reason = f"yapımın yeterli karesi yok ({count})"
+        else:
+            plan["work_images"] = []
+            names = plan.get("subjects") or []
+            plan["subject_files"] = [f for f in dict.fromkeys(images.subject_file(n) for n in names) if f]
+            if not plan["subject_files"]:
+                if args.mode not in SUBJECT_REQUIRED:
+                    return plan  # yer ve olay: arama (en az iki görsel denetimi main'de)
+                reason = f"konunun kendi fotoğrafı yok ({', '.join(names) or 'isim yok'})"
+            else:
+                support = {c["url"] for n in names for c in images.subject_photos(n)}
+                if len(plan["subject_files"]) + len(support) >= MIN_IMAGES:
+                    return plan
+                reason = "konunun yalnızca bir fotoğrafı var"
         tried += [h["title"] for h in plan["sources"]]
-        print(f"Konunun kendi fotoğrafı yok ({', '.join(plan.get('subjects') or ['isim yok'])}); başka haber deneniyor")
-    raise RuntimeError("Konusunun fotoğrafı bulunan haber çıkmadı; bu saatin videosu atlanıyor.")
+        print(f"{reason}; başka haber deneniyor")
+    raise RuntimeError("Görseli yeterli haber çıkmadı; bu saatin videosu atlanıyor.")
 
 
 def main():

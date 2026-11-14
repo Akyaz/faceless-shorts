@@ -52,3 +52,9 @@ class Upload(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Numbers(unittest.TestCase):
+    def test_number_not_split(self):
+        parts = captions._chunks("2024 yılında bu köprüden 2 milyon 684 bin 738 araç geçti.")
+        self.assertTrue(any("2 milyon 684 bin 738" in p for p in parts), parts)

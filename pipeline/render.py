@@ -375,7 +375,17 @@ def _compact_card(segment, idx, out_path, base, accent, hook_title, label, lang,
     d.rounded_rectangle([x0, cy - 28, x0 + lw + 44, cy + 28], radius=28, fill=accent + (255,))
     d.text((x0 + 22, cy), label, font=label_font, fill="white", anchor="lm")
 
-    hook_title = segment.get("heading") or hook_title
+    # Video başlığı yalnızca ilk parçada ve ayrı katmanda: ilk HOOK_SECONDS saniye görünür, sonra silinir.
+    # Bütün video boyunca ekranda duran başlık kalabalık görünüyordu (kanal sahibi, 15 Kasım 2026). Bölüm başlığı
+    # (toplu özette her haberin adı) o parçanın kendi katmanında kalır.
+    heading = segment.get("heading")
+    hook_title = heading or (hook_title if idx == 0 else "")
+    hook_path = out_path.with_suffix(".hook.png")
+    hook_path.unlink(missing_ok=True)
+    layer = img
+    if hook_title and not heading:
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(layer)
     if hook_title:
         color = HOOK_COLORS.get(style.get("hook_color"), HOOK_COLORS["sari"])
         size = 60
@@ -394,13 +404,19 @@ def _compact_card(segment, idx, out_path, base, accent, hook_title, label, lang,
         for n, line in enumerate(lines[:2]):
             d.text((W / 2, top + n * step), line, font=hook_font, fill=color, anchor="mm",
                    stroke_width=3, stroke_fill="black")
+    if layer is not img:
+        layer.save(hook_path)
+        d = ImageDraw.Draw(img)
     if segment.get("source"):
         d.text((W / 2, 1462), f"{TEXTS[lang]['source']}: {segment['source']}",
                font=ImageFont.truetype(_font_path(False), 28), fill=(215, 215, 215, 255), anchor="mm",
                stroke_width=2, stroke_fill="black")
     base.save(out_path.with_suffix(".bg.png"))
-    img.save(out_path.with_suffix(".overlay.png"))
-    Image.alpha_composite(base.convert("RGBA"), img).convert("RGB").save(out_path)  # tek parça kart (önizleme)
+    img.save(out_path.with_suffix(".overlay.png"))  # başlıksız: başlık render_segment'te ayrı katman
+    preview = Image.alpha_composite(base.convert("RGBA"), img)
+    if layer is not img:
+        preview.alpha_composite(layer)
+    preview.convert("RGB").save(out_path)  # tek parça kart (önizleme, başlıklı)
 
 
 # Maç kartları: o maçın bilgileriyle çizilir (ajans fotoğrafı ve yayın görüntüsü telifli; başka tarihlerin
@@ -735,6 +751,18 @@ def _move(look, idx, progress):
     return zoom, center_x, center_y
 
 
+HOOK_SECONDS = 3.0  # video başlığı ilk parçada bu kadar görünür, sonra yarım saniyede silinir
+
+
+def _hook_input(card):
+    """Başlık katmanı varsa (_compact_card, yalnızca ilk parça): ffmpeg girdisi ve süzgeç parçası."""
+    hook = Path(card).with_suffix(".hook.png")
+    if not hook.exists():
+        return [], ""
+    fade = f"[3:v]format=rgba,fade=t=out:st={HOOK_SECONDS}:d=0.5:alpha=1[h];"
+    return ["-loop", "1", "-framerate", "30", "-i", str(hook)], fade
+
+
 def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W, H), motion=True, look=None, idx=0):
     """motion=False: görüntü kıpırdamaz (art arda gelen kartlarda sıçrama olmasın diye).
     look: make_style() çıktısı; hareketin türünü ve miktarını belirler (idx: parçanın sırası)."""
@@ -749,12 +777,14 @@ def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W
         # Video klip: kadraja kırpılır, fotoğraf gibi karartılır (yazılar okunsun); kısaysa başa sarar.
         # Sahne kendi renkleriyle çizildiği için karartılmaz ve başa sarmaz (süresi parçayla aynı).
         keep = 1 if anim.exists() else round(1 - look.get("dim", 0.5), 3)
-        graph = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps=30,"
-                 f"colorchannelmixer=rr={keep}:gg={keep}:bb={keep}[bg];[bg][2:v]overlay=format=yuv420,ass={ass}[v]")
+        hook_args, hook_graph = _hook_input(card)
+        top = "[o];[o][h]overlay=format=yuv420," if hook_args else ","
+        graph = (f"{hook_graph}[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps=30,"
+                 f"colorchannelmixer=rr={keep}:gg={keep}:bb={keep}[bg];[bg][2:v]overlay=format=yuv420{top}ass={ass}[v]")
         subprocess.run([
             "ffmpeg", "-y", "-loglevel", "error",
             *(["-i", str(anim)] if anim.exists() else ["-stream_loop", "-1", "-i", str(clip)]),
-            "-i", str(audio), "-i", str(overlay),
+            "-i", str(audio), "-i", str(overlay), *hook_args,
             "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-af", f"apad=pad_dur={pad}", "-t", f"{dur:.2f}",
             "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
             "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "128k", str(out_path),
@@ -768,11 +798,15 @@ def render_segment(card, audio, ass, out_path, pad=0.35, zoom_out=False, size=(W
         # Görüntü iki kat büyütülüp hareket ettirilir: küçük çözünürlükte zoompan titriyor
         zoom, x, y = _move(look, idx, progress)
         moving = f"[0:v]scale={2 * w}:{2 * h},zoompan=z='{zoom}':x='{x}':y='{y}':d=1:s={w}x{h}:fps=30"
-        graph = (f"{moving}[bg];[bg][2:v]overlay=format=yuv420,ass={ass}[v]" if layered else f"{moving},ass={ass}[v]")
+        hook_args, hook_graph = _hook_input(card) if layered else ([], "")
+        top = "[o];[o][h]overlay=format=yuv420," if hook_args else ","
+        graph = (f"{hook_graph}{moving}[bg];[bg][2:v]overlay=format=yuv420{top}ass={ass}[v]" if layered
+                 else f"{moving},ass={ass}[v]")
         subprocess.run([
             "ffmpeg", "-y", "-loglevel", "error",
             "-loop", "1", "-framerate", "30", "-i", str(bg if layered else card), "-i", str(audio),
             *(["-i", str(overlay)] if layered else []),  # tek kare: overlay son kareyi tekrarlar
+            *hook_args,
             "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-af", f"apad=pad_dur={pad}", "-t", f"{dur:.2f}",
             "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
             "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "128k", str(out_path),

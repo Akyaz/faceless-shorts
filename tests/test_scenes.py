@@ -185,3 +185,27 @@ class PhotoSize(unittest.TestCase):
         paras = [TEXT] * 3
         raw = [{"paragraph": k, "type": "sayac", "value": "3,2"} for k in (1, 2, 3)]
         self.assertEqual(list(scenes.prepare(paras, raw, 1, first=False)), [1])
+
+
+class HookTitle(unittest.TestCase):
+    """Video başlığı yalnızca ilk parçada, ayrı katmanda (ilk birkaç saniye görünür; 15 Kasım 2026)."""
+
+    def test_only_first_card_has_hook_layer(self):
+        import pathlib, tempfile
+        from pipeline import render
+        try:
+            font = render._font_path(True)  # GitHub'da fc-match ile DejaVu
+        except Exception:
+            font = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+        if not font or not pathlib.Path(font).exists():
+            self.skipTest("yazı tipi dosyası yok")
+        work = pathlib.Path(tempfile.mkdtemp())
+        look = render.make_style("x")
+        with mock.patch.object(render, "_font_path", lambda bold=True: font):
+            for i in (0, 1):
+                render.draw_card({"text": "t"}, i, work / f"card{i}.png", None, "Başlık burada", "SPOR", style=look)
+        self.assertTrue((work / "card0.hook.png").exists())
+        self.assertFalse((work / "card1.hook.png").exists())
+        # kalıcı katmanda başlık yok: başlık bölgesi (300-450) şeffaf
+        overlay = __import__("PIL.Image", fromlist=["Image"]).open(work / "card0.overlay.png")
+        self.assertLess(max(overlay.crop((300, 330, 780, 420)).getchannel("A").getdata()), 255)

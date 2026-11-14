@@ -17,7 +17,7 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
   (yeniden) yüklemeden önce `panel-data` dalındaki `feed.json`'da o çalışmanın bağlantısına bak. Son dakikalarda
   aynı `run_id` için `upload-video` ya da `instagram` çalışması başlamış mı, ona da bak.
 - Denemeler **yüklemesiz** yapılır: `gh workflow run make-short.yml -f mode=<tür> -f upload=false`.
-  Deneme videosu sonradan panelden yüklenebilir. Bu yüzden deneme de gerçek bir video gibi kurallara uymalı.
+  Deneme videosu panelde "Önizle" ile izlenir (14 gün) ve sonradan panelden yüklenebilir. Bu yüzden deneme de gerçek bir video gibi kurallara uymalı.
 - Videoyu silmek, gizlemek ya da yayından kaldırmak kullanıcının işi; önerilir, yapılmaz.
 - GitHub secret'larını yazmak, iş akışlarını açıp kapatmak ve çalışma iptal etmek izinli değil. Gerekirse komutu
   kullanıcıya ver (örnek: `gh secret set TMDB_API_KEY`). Anahtar ve token isteme, tekrar yazma.

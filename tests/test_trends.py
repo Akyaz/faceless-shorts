@@ -39,6 +39,14 @@ class Parse(unittest.TestCase):
         self.assertEqual(trends.boost(heads, []), heads)
 
 
+class Freshness(unittest.TestCase):
+    def test_old_searches_dropped(self):
+        import datetime
+        xml = XML.replace("<title>gönül dağı</title>", "<title>gönül dağı</title><pubDate>Sat, 14 Nov 2026 00:00:00 -0800</pubDate>")
+        now = datetime.datetime(2026, 11, 15, 1, 30, tzinfo=datetime.timezone.utc) - datetime.timedelta(hours=3)
+        self.assertEqual([t["query"] for t in trends.parse(xml, now)], ["tev burs sonuçları"])  # 14,5 saat önce
+
+
 class Schedule(unittest.TestCase):
     def test_longform_and_weekly_off_story_at_nine(self):
         modes = {name: mode for name, mode in slots.SLOTS.values()}

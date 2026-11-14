@@ -244,6 +244,8 @@ resmi uyarı, deprem ve hava durumu, ulaşım ve yol durumu, sağlık, eğitim (
 Haberlerin çoğu Türkiye'de Google'da en çok aranan konulardır ("Google Trends" satırı): insanların aradığı sorunun
 cevabını ilk cümlede ver (örnek: "VGM burs sonuçları açıklandı." / "Gönül Dağı bu akşam yeni bölümle ekranda.") ve
 nasıl, nereden, ne zaman sorusunu somut bilgiyle cevapla. Haberde cevap yoksa o konuyu seçme.
+Dizi, film, televizyon programı ve magazin konularını seçme (bunlar kendi saatlerinde anlatılıyor); olmuş bitmiş bir
+yayını ya da etkinliği "bu akşam", "yayına giriyor" diye anlatma.
 Seçme: cinayet, cinsel suç, kaza ve ölüm ayrıntısı öne çıkan haberler; adı geçen kişilere yönelik suçlama ve
 tutuklama haberleri; seçim ve parti çekişmesi; köşe yazısı ve yorum; magazin; Türkiye'deki izleyicinin hayatına
 dokunmayan dış politika haberleri. "pick" alanına seçtiğin haberin numarasını yaz.

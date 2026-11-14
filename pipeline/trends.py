@@ -6,6 +6,8 @@ ortancası ise 151'de kaldı (15 Kasım 2026 ölçümü). Bu yüzden 21:00 günd
 konulardan seçilir; kültür, spor ve dizi saatlerinde de aranan konunun haberi öne alınır.
 X (Twitter) gündemi kullanılmaz: resmi servisi ücretli, listesi çoğunlukla siyasi ve hayran kampanyası hashtag'leri.
 """
+import datetime
+import email.utils
 import html
 import re
 import urllib.request
@@ -14,6 +16,16 @@ import xml.etree.ElementTree as ET
 FEED = "https://trends.google.com/trending/rss?geo=TR"
 NS = {"ht": "https://trends.google.com/trending/rss"}
 UA = {"User-Agent": "Mozilla/5.0"}
+# Liste son 24 saati kapsıyor: gece 01:30'da dün akşamki "Gönül Dağı bu akşam var mı?" araması seçildi ve video
+# yayınlanmış bölümü "yayına giriyor" diye anlattı (15 Kasım 2026). Yalnızca son saatlerde yükselen aramalar.
+FRESH_HOURS = 12
+
+
+def _started(text):
+    try:
+        return email.utils.parsedate_to_datetime(text)
+    except (TypeError, ValueError):
+        return None
 
 
 def _fold(text):
@@ -25,11 +37,16 @@ def _traffic(text):
     return int(digits) if digits else 0
 
 
-def parse(xml_text):
-    """[{"query", "traffic", "news": [{"title", "source", "link"}]}], en çok arananlar önce."""
+def parse(xml_text, now=None):
+    """[{"query", "traffic", "news": [{"title", "source", "link"}]}], en çok arananlar önce. Başlangıcı FRESH_HOURS'tan
+    eski aramalar alınmaz (tarihi okunamayan alınır)."""
     root = ET.fromstring(xml_text)
+    now = now or datetime.datetime.now(datetime.timezone.utc)
     out = []
     for item in root.iter("item"):
+        started = _started(item.findtext("pubDate", ""))
+        if started and now - started > datetime.timedelta(hours=FRESH_HOURS):
+            continue
         news = [{"title": html.unescape(n.findtext("ht:news_item_title", "", NS)).strip(),
                  "source": (n.findtext("ht:news_item_source", "", NS) or "").strip(),
                  "link": (n.findtext("ht:news_item_url", "", NS) or "").strip()}

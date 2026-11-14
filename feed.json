@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T18:33:12Z",
-  "run": "39058328139",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39058328139",
-  "videos": [
-   {
-    "title": "Fenerbahçe 3-0 Alanyaspor: Kaçan Penaltı, İptal Edilen Gol ve 6-0'ın Rövanşı",
-    "url": "https://youtu.be/_JGwAof_130",
-    "instagram": "https://www.instagram.com/reel/DemwoGRlHWD/"
-   }
-  ]
- },
- {
   "time": "2026-10-17T18:34:34Z",
   "run": "39056495963",
   "event": "workflow_dispatch",
@@ -4665,5 +4650,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650011139",
   "videos": []
+ },
+ {
+  "time": "2026-11-14T23:00:51Z",
+  "run": "43650680602",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650680602",
+  "videos": [
+   {
+    "title": "VGM Burs Sonuçları Açıklandı mı? 2026-2027 Sonuç Tarihi",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

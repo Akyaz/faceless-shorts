@@ -105,8 +105,13 @@ class NoCommentCall(unittest.TestCase):
     def test_comment_call_flagged(self):
         for text in ["Sen hangi taraftasın? Yorumlara yaz.", "Düşünceni yorumlarda belirt.", "Comment below!"]:
             hard, _ = script.text_problems({"paragraphs": ["a", text]})
-            self.assertTrue(hard, text)
-        self.assertEqual(script.text_problems({"paragraphs": ["a", "Derbi 15 Kasım'da başlıyor."]})[0], [])
+            self.assertTrue([h for h in hard if h.startswith("comment call")], text)
+        hard, _ = script.text_problems({"paragraphs": ["a", "Derbi 15 Kasım'da başlıyor."]})
+        self.assertEqual([h for h in hard if h.startswith("comment call")], [])
+
+    def test_short_text_is_hard(self):
+        hard, _ = script.text_problems({"paragraphs": ["Galatasaray 82-81 yenildi.", "Son saniye basketi."]})
+        self.assertTrue(any(h.startswith("metin çok kısa") for h in hard))
 
 
 class SingleRewrite(unittest.TestCase):

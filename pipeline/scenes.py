@@ -466,15 +466,17 @@ def _card(img, t, dur, sc, ctx):
 DRAW = {"sayac": _counter, "karsilastirma": _compare, "zaman": _timeline, "harita": _map, "kart": _card}
 
 # Haber videolarında (dizi ve film) modele giden sahne tarifi; bilgi serisininki evergreen.RULES içinde
-# Haberde en fazla bir kart, ilk paragrafta değil: Ray Gunn denemesinde üç paragrafın ikisi kart oldu, video bulanık
-# bir kartla açıldı ve filmin kareleri neredeyse görünmedi (15 Kasım 2026)
+# Haber kartları: model her paragraf için kart önerir, hangisinin kullanılacağına görseller bulunduktan sonra kod karar
+# verir (main.settle_scenes). Gerçek görüntü varsa ilk paragraf hariç en fazla bir kart (Ray Gunn denemesinde üç
+# paragrafın ikisi kart olunca filmin kareleri görünmedi); yeri olmayan haberde (burs, zam) video kartlarla yapılır
+# (VGM burs denemesinde üniversite kampüsü ve tapu binası çıktı, 15 Kasım 2026).
 NEWS_SCENE_LIMIT = 1
-NEWS_SCENES = """- scenes: tek bir paragraf için kodla çizilen bilgi kartı (ilk paragraf olamaz; video yapımın karesiyle açılır).
-  Satırlar o paragrafta yazıldığı gibi geçmeli. Öncelik başrol adları; yoksa yayın tarihi ya da Netflix sırası.
-  {"paragraph": 3, "type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}
-  {"paragraph": 2, "type": "kart", "label": "Yayın", "lines": ["14 Kasım", "4 bölüm"]}
-  {"paragraph": 2, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
-  paragraph 1'den başlar.
+NEWS_SCENES = """- scenes: her paragraf için kodla çizilen bir bilgi kartı. Satırlar ve sayılar o paragrafta yazıldığı gibi geçmeli;
+  paragrafın en önemli bilgisini 1-3 kısa satırla ver (tarih, tutar, sonuç, sıra, ad). Görüntü bulunursa yalnızca biri
+  kullanılır; bulunamazsa video bu kartlarla anlatılır. paragraph 1'den başlar.
+  {"paragraph": 1, "type": "kart", "label": "VGM bursu", "lines": ["Ortaöğrenim 1.750 TL", "Yükseköğrenim 4.000 TL"]}
+  {"paragraph": 2, "type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}
+  {"paragraph": 3, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
 """
 
 

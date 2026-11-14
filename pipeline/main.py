@@ -166,6 +166,32 @@ def _place_photos(plan, work, count):
                                    work / "place", count)
 
 
+def settle_scenes(plan, backgrounds):
+    """Görseller bulunduktan sonra videonun nasıl anlatılacağı (ilke: gerçek görüntü; yoksa grafik; o da yoksa video yok):
+    - en az MIN_IMAGES farklı gerçek görsel: fotoğraflı video; haberde ilk paragraf hariç en fazla bir kart
+    - haber ve her paragrafın kartı var: kartlı video (yeri olmayan haber: burs, zam)
+    - ikisi de yoksa video üretilmez. Tek görselli video yok (Gönül Dağı, 15 Kasım 2026). Maç kartları hariç."""
+    if plan.get("match"):
+        return
+    segments = plan["segments"]
+    real = len({b for b in backgrounds if b})
+    news = bool(plan.get("mode"))  # bilgi serisi ve elle yazılan metin kendi sahne kararını verir
+    if real >= MIN_IMAGES:
+        if news:
+            kept = 0
+            for i, seg in enumerate(segments):
+                if seg.get("scene") and (i == 0 or kept >= scenes.NEWS_SCENE_LIMIT):
+                    seg.pop("scene")
+                elif seg.get("scene"):
+                    kept += 1
+        return
+    if news and segments and all(seg.get("scene") for seg in segments):
+        print("Yeterli gerçek görsel yok; video bilgi kartlarıyla anlatılıyor")
+        return
+    raise RuntimeError(f"Yalnızca {real} görsel bulundu (en az {MIN_IMAGES}) ve kartlar her paragrafı karşılamıyor; "
+                       "video üretilmiyor, bu saat atlanıyor.")
+
+
 def subject_kind(plan):
     """Görsel kararı konuya göre verilir, video türüne göre değil (15 Kasım 2026: dizi kuralı yalnızca dizi saatinde
     çalışıyordu; gündeme düşen Gönül Dağı videosunun tek görseli bir televizyon stüdyosuydu):
@@ -201,6 +227,9 @@ def find_images(plan, work):
         backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
                        if mine else None for i in range(len(segments))]
         return backgrounds, [c for _, c in own + rest]
+    if plan.get("mode") and not ((plan.get("place") or {}).get("city") or "").strip():
+        # Yeri olmayan haber (burs, zam, sınav): bina araması alakasız görsel getiriyordu; video kartlarla anlatılır
+        return [None] * len(segments), []
     if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
         # Tek haber: görseller paragraflar arasında sırayla döner
         found = images.find_backgrounds(plan, work, len(segments))
@@ -316,7 +345,13 @@ def news_plan(args, exclude=(), _tries=0):
         headlines = fresh
     else:
         print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
-    plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+    try:
+        plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+    except script.TextRejected as exc:
+        if _tries >= REVIEW_TRIES:
+            raise RuntimeError(f"{exc}; başka haber kalmadı, bu saat atlanıyor.") from exc
+        print(f"{exc}; başka haber deneniyor")
+        return news_plan(args, exclude=list(exclude) + [exc.headline["title"]], _tries=_tries + 1)
     repeat = repeated(plan, [h["title"] for h in history[-RECENT_TOPICS:]]) if args.mode in REPEAT_CHECKED else ""
     if repeat and not args.offline:
         # Aynı yapımın haberi farklı başlıkla ertesi gün yine seçildi (Bir Başkadır, 15 Kasım 2026): başka haber
@@ -327,6 +362,14 @@ def news_plan(args, exclude=(), _tries=0):
     if not args.offline:
         try:
             plan = review.check(plan, single)
+            # Denetim paragrafı değiştirdiyse kartın satırları metinde aynen geçmeyebilir: yeniden kontrol
+            for seg in plan["segments"]:
+                if seg.get("scene"):
+                    checked = scenes.check(seg["scene"], seg["text"])
+                    if checked:
+                        seg["scene"] = checked
+                    else:
+                        del seg["scene"]
         except review.Incomplete as exc:
             # Cevabı kaynaklarda bulunmayan haber atlanır, sıradaki denenir (belirsiz video yayınlanmaz)
             if not single or _tries >= REVIEW_TRIES:
@@ -467,13 +510,7 @@ def main():
         backgrounds = scenes.spread(backgrounds, segments)
         # Görselsiz (yalnızca renkli zemin) video kaydırılıp geçiliyor: hiç görsel bulunamadıysa video üretilmez.
         # Maç kartları kendi grafiğini çizdiği için hariç.
-        if not plan.get("match") and not any(backgrounds):
-            raise RuntimeError("Hiç görsel bulunamadı; görselsiz video üretilmiyor, bu saat atlanıyor.")
-        # Tek görselli video üretilmez: Gönül Dağı videosu tek ve ilgisiz bir stüdyo fotoğrafıyla çıktı (kanal sahibi,
-        # 15 Kasım 2026: "tek görsel istemiyorum"). Maç kartları kendi grafiğini çizer.
-        if not plan.get("match") and len({b for b in backgrounds if b}) < MIN_IMAGES:
-            raise RuntimeError(f"Yalnızca {len({b for b in backgrounds if b})} görsel bulundu (en az {MIN_IMAGES}); "
-                               "video üretilmiyor, bu saat atlanıyor.")
+        settle_scenes(plan, backgrounds)
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
     # Önce bütün sesler: anlatıcının sesi ortada değişirse önceki parçalar da yeni sesle okunur

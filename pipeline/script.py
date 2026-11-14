@@ -327,7 +327,7 @@ Metinde yapımın adını, platformu, konusunu bir cümleyle, başrol oyuncular�
 söyle (örnek ilk cümle: "Netflix Türkiye'de bu hafta bir numara Organize İşler: Karun Hazinesi.").
 Son cümle somut bir bilgi olsun (bölüm sayısı, yayın günü, kaç haftadır listede); "izleyicilerle buluşmayı
 sürdürüyor", "merakla bekleniyor" gibi dolgu cümlelerle bitirme. Hiçbir haber güçlü değilse "skip": true döndür.
-""" + NEWS_SCENES,
+""",
     },
     # "Sen ne dersin?": makul insanların farklı düşündüğü gerçek bir tercih; iki taraf eşit anlatılır, izleyici seçer
     "debate": {
@@ -443,7 +443,7 @@ Ek alanlar:
   "huzunlu" (kayıp, yas, üzücü olay).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz (örnek: "deprem", "istanbul", "emekli").
 - image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
-""" + SUBJECTS_FIELD + WORK + PRONOUNCE_FIELD + """
+""" + SUBJECTS_FIELD + WORK + NEWS_SCENES + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
 {"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}, "subjects": [], "work": null}
 """
@@ -468,7 +468,7 @@ Ek alanlar:
 """ + IMAGE_FIELDS.format(n=4) + """
 - mood: "notr" ya da "gergin" (konuya göre).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
-""" + SUBJECTS_FIELD + WORK + PRONOUNCE_FIELD + """
+""" + SUBJECTS_FIELD + WORK + NEWS_SCENES + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
 {"pick": 1, "skip": false, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "subjects": [], "work": null}
 """
@@ -609,6 +609,14 @@ def _tags(values):
     return [t for t in (re.sub(r"[^\w]", "", str(v)).lower() for v in values or []) if t][:3]
 
 
+class TextRejected(RuntimeError):
+    """Metin yeniden yazımdan sonra da kesin kurala uymadı; haber atlanır, sıradaki denenir."""
+
+    def __init__(self, message, headline):
+        super().__init__(message)
+        self.headline = headline
+
+
 class NoSuitableStory(Exception):
     """Model bu türe uygun haber bulamadı (ör. tartışılacak gerçek bir tercih yok)."""
 
@@ -622,7 +630,10 @@ def text_problems(out, published="", today=None):
     hard = [f"vague: {t}" for t in texts if vague(t)]
     hard += [f"relative day in an old story: {t}" for t in stale_relative(texts, published, today)]
     hard += [f"comment call: {p}" for p in paragraphs if COMMENT_CALL.search(p)]
-    return hard, style_problems(paragraphs)
+    # Kısa metin zayıf video: gece haberlerin yalnızca başlığı varken 16-38 kelimelik metinler çıktı (15 Kasım 2026)
+    style = style_problems(paragraphs)
+    hard += [x for x in style if x.startswith("metin çok kısa")]
+    return hard, [x for x in style if not x.startswith("metin çok kısa")]
 
 
 def story_script(headlines, kind="story", count=10, recent=()):
@@ -660,12 +671,11 @@ def story_script(headlines, kind="story", count=10, recent=()):
             if (len(r_hard), len(r_soft)) < (len(hard), len(soft)):
                 out, headline, hard = retry, again, r_hard
         if hard:
-            raise RuntimeError(f"Metin kurala uymadı; bu saatin videosu atlanıyor: {hard}")
+            raise TextRejected(f"Metin kurala uymadı: {hard}", headline)
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
-    if "scenes" in out:  # dizi ve film haberinde bilgi kartları (scenes.NEWS_SCENES)
+    if "scenes" in out:  # bilgi kartı adayları; hangilerinin kullanılacağına main.settle_scenes karar verir
         from . import scenes
-        for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes"), scenes.NEWS_SCENE_LIMIT,
-                                       first=False).items():
+        for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes"), len(segments)).items():
             segments[i]["scene"] = scene
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
             "lang": spec.get("lang", "tr"), "segments": segments,
@@ -779,6 +789,8 @@ def build_script(headlines, mode="story", recent=()):
                     print(f"{exc}; bu saat gündem haberine dönüyor")
                     return story_script(headlines, "story", recent=recent)
             return digest_script(headlines, mode)
+        except TextRejected:
+            raise
         except Exception as exc:
             # Tek konulu videoda başlıkların düz okunduğu özet hem türüne uymuyor hem belirsiz kalıyor; çalışma
             # düşerse saatin yedek tetiklemesi yeniden dener. Toplu özetler dil modeli olmadan da okunabilir.

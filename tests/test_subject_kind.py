@@ -94,5 +94,62 @@ class PlaceAndStatues(unittest.TestCase):
         self.assertEqual([h["trend"] for h in trends.headlines(items)], ["tev burs"])
 
 
+class SettleScenes(unittest.TestCase):
+    """Gerçek görüntü; yoksa grafik; o da yoksa video yok (15 Kasım 2026)."""
+    CARD = {"type": "kart", "label": "", "lines": ["x"]}
+
+    def segs(self, n, cards):
+        return [{"text": "t", **({"scene": dict(self.CARD)} if i in cards else {})} for i in range(n)]
+
+    def test_photos_keep_one_card_not_first(self):
+        plan = {"mode": "story", "segments": self.segs(4, {0, 1, 2, 3})}
+        main.settle_scenes(plan, ["a", "b", "a", "b"])
+        self.assertEqual([bool(s.get("scene")) for s in plan["segments"]], [False, True, False, False])
+
+    def test_no_photos_all_cards(self):
+        plan = {"mode": "story", "segments": self.segs(3, {0, 1, 2})}
+        main.settle_scenes(plan, [None, None, None])
+        self.assertTrue(all(s.get("scene") for s in plan["segments"]))
+
+    def test_single_photo_without_cards_fails(self):
+        plan = {"mode": "story", "segments": self.segs(3, {1})}
+        with self.assertRaises(RuntimeError):
+            main.settle_scenes(plan, ["a", "a", None])
+
+    def test_fact_series_untouched(self):
+        plan = {"segments": self.segs(4, {0, 2})}  # bilgi serisi: mode yok, kendi sahne kararı
+        main.settle_scenes(plan, ["a", "b", "a", "b"])
+        self.assertEqual([bool(s.get("scene")) for s in plan["segments"]], [True, False, True, False])
+
+    def test_no_city_news_skips_building_search(self):
+        plan = {"mode": "story", "segments": [{}] * 3, "place": {"country": "Turkey", "city": ""},
+                "image_queries": ["government building"]}
+        with mock.patch.object(main.images, "find_backgrounds", side_effect=AssertionError("bina araması")):
+            backgrounds, credits = main.find_images(plan, pathlib.Path(tempfile.mkdtemp()))
+        self.assertEqual((backgrounds, credits), ([None] * 3, []))
+
+
+class RejectedText(unittest.TestCase):
+    def test_next_story_tried(self):
+        from pipeline import script
+        heads = [{"title": "kısa haber", "source": "s"}, {"title": "iyi haber", "source": "s"}]
+        good = {"title": "t", "segments": [{"text": "x"}], "sources": [heads[1]]}
+        calls = []
+
+        def build(h, mode, recent=()):
+            calls.append([x["title"] for x in h])
+            if h[0]["title"] == "kısa haber":
+                raise script.TextRejected("kısa", heads[0])
+            return dict(good)
+        a = argparse.Namespace(mode="story", offline=False, history=None)
+        with mock.patch.object(main.trends, "fetch", return_value=[]), \
+                mock.patch("pipeline.news.fetch_headlines", return_value=heads), \
+                mock.patch.object(main.script, "build_script", side_effect=build), \
+                mock.patch.object(main.review, "check", side_effect=lambda plan, single: plan):
+            plan = main.news_plan(a)
+        self.assertEqual(plan["sources"], [heads[1]])
+        self.assertEqual(calls[1], ["iyi haber"])
+
+
 if __name__ == "__main__":
     unittest.main()

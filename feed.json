@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T10:10:02Z",
-  "run": "39021924002",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39021924002",
-  "videos": [
-   {
-    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/tr-gobeklitepe.json"
- },
- {
   "time": "2026-10-17T10:16:46Z",
   "run": "39022218151",
   "event": "workflow_dispatch",
@@ -4664,5 +4649,21 @@
     "instagram": "https://www.instagram.com/reel/DfvI1PAkhdM/"
    }
   ]
+ },
+ {
+  "time": "2026-11-14T21:14:20Z",
+  "run": "43641452027",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43641452027",
+  "videos": [
+   {
+    "title": "Bir Başkadır 2. Sezon Yarın Netflix'te Yayınlanıyor",
+    "url": "https://youtu.be/Dak4xUJVtYI",
+    "instagram": "https://www.instagram.com/reel/DfvJVBNiYPf/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

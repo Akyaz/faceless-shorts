@@ -97,3 +97,21 @@ class WorkOnly(unittest.TestCase):
         with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
                 mock.patch.object(main.platforms, "work_images", return_value=one + [{"url": "b"}]):
             self.assertEqual(len(main.with_subject_photos(args)["work_images"]), 2)
+
+
+class NoCommentCall(unittest.TestCase):
+    """Kanalın amacı paylaşım: "yorumlara yaz" çağrısı yok (Ronaldinho videosu, 15 Kasım 2026)."""
+
+    def test_comment_call_flagged(self):
+        for text in ["Sen hangi taraftasın? Yorumlara yaz.", "Düşünceni yorumlarda belirt.", "Comment below!"]:
+            self.assertTrue(script.weak_ending(["a", text]), text)
+        self.assertFalse(script.weak_ending(["a", "Derbi 15 Kasım'da başlıyor."]))
+
+    def test_custom_paragraph_scene(self):
+        item = {"title": "t", "sources": [{"title": "s", "source": "x"}],
+                "paragraphs": [{"text": "46 yaşındaki yıldız 11 yıl sonra sahada.",
+                                "scene": {"type": "kart", "lines": ["46 yaşında", "11 yıl sonra"]}},
+                               {"text": "Maç bugün.", "scene": {"type": "kart", "lines": ["20.30"]}}]}
+        segs = script.custom_plan(item)["segments"]
+        self.assertEqual(segs[0]["scene"]["lines"], ["46 yaşında", "11 yıl sonra"])
+        self.assertNotIn("scene", segs[1])  # satır metinde yok

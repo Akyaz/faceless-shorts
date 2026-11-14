@@ -51,8 +51,14 @@ def weak_ending(paragraphs):
         out.append(last)
     if FILLER_ENDING.search(last):
         out.append(last)
+    out += [p for p in paragraphs if COMMENT_CALL.search(p) and p not in out]
     return out
 
+
+# Yorum çağrısı: kanalın amacı yorum değil paylaşım. Ronaldinho videosu "Sen hangi taraftasın? Yorumlara yaz" diye
+# bitti (15 Kasım 2026)
+COMMENT_CALL = re.compile(r"yorum(lar)?(a|da) (yaz|belirt|paylaş|buluşalım)|hangi taraftas[ıi]n|"
+                          r"\b(comment below|let us know in the comments|which side are you)\b", re.I)
 
 # Bilgi vermeyen kapanış: "Yapım Netflix Türkiye platformunda izleyicilerle buluşmayı sürdürüyor" (15 Kasım 2026)
 FILLER_ENDING = re.compile(r"izleyici(ler)?(yle|le) buluşma(yı|ya) (sürdürüyor|devam)|merakla bekleniyor|"
@@ -440,7 +446,8 @@ Metin kuralları:
 3. Üçüncü paragraf "Destekleyenler" diye başlar: bu tarafın en güçlü bir-iki gerekçesi.
 4. Dördüncü paragraf "Karşı çıkanlar" diye başlar: diğer tarafın en güçlü bir-iki gerekçesi.
    İki taraf yaklaşık eşit uzunlukta ve saygılı olsun; sen taraf tutma, "doğrusu şu" deme.
-5. Son paragraf: "Sen hangi taraftasın? Yorumlara yaz." gibi kısa bir çağrı; iki seçeneği adıyla an.
+5. Son paragraf somut bir bilgi: kararın ne zaman uygulanacağı, kimleri ne kadar etkileyeceği gibi. "Yorumlara yaz",
+   "Sen hangi taraftasın?" gibi çağrı yok: kanalın amacı yorum değil paylaşım (15 Kasım 2026).
 6. Toplam 75-95 kelime, cümleler kısa (en fazla 14 kelime), "sen" diye hitap et.
 Gerekçeler genel ve makul olsun: başlıklarda olmayan rakam, kurum, araştırma ya da alıntı uydurma; somut bilgiler
 yalnızca başlıklardan gelsin.
@@ -633,15 +640,20 @@ def story_script(headlines, kind="story", count=10, recent=()):
         out = json.loads(_generate(prompt + note + " | ".join(unclear), os.environ["GEMINI_API_KEY"]))
         if any(vague(p) for p in out["paragraphs"] + [out.get("title", ""), out.get("hook_title", "")]):
             raise RuntimeError("Metin belirsiz kaldı; bu saatin videosu atlanıyor.")
-    if kind != "debate" and style_problems(out["paragraphs"]):
+    if style_problems(out["paragraphs"]) if kind != "debate" else weak_ending(out["paragraphs"]):
         # bir kez yeniden yazdırılır; yine olmazsa daha az sorunlu olan kullanılır (kural üslup, doğruluk değil)
-        problems = style_problems(out["paragraphs"])
+        problems = style_problems(out["paragraphs"]) if kind != "debate" else [
+            f"kurala uymayan cümle: {x}" for x in weak_ending(out["paragraphs"])]
         print(f"Kural dışı metin, yeniden yazdırılıyor: {problems}")
         note = ("\nRewrite the script. Problems: " if english else "\nMetni yeniden yaz. Sorunlar: ")
         retry = json.loads(_generate(prompt + note + " | ".join(problems), os.environ["GEMINI_API_KEY"]))
         if retry.get("paragraphs") and not any(vague(p) for p in retry["paragraphs"]) \
                 and len(style_problems(retry["paragraphs"])) < len(problems):
             out = retry
+        if any(COMMENT_CALL.search(p) for p in out["paragraphs"]):
+            # Yorum çağrısı kalırsa o paragraf çıkarılır (üslup değil, kanalın hedefi)
+            out["paragraphs"] = [p for p in out["paragraphs"] if not COMMENT_CALL.search(p)]
+            print("Yorum çağrısı olan paragraf çıkarıldı")
     headline = _pick(headlines, out.get("pick", 1))
     texts = lambda o: o["paragraphs"] + [o.get("title", ""), o.get("hook_title", "")]
     stale = stale_relative(texts(out), headline.get("published"), today)
@@ -741,7 +753,15 @@ def custom_plan(item):
         else:
             text = p
         card = p.get("card") if isinstance(p, dict) else None  # maç kartı: fotoğraf yerine o güne ait grafik
-        segments.append({"kind": "story", "text": text, **current, **({"card": card} if card else {})})
+        # Bilgi kartı ya da sayaç (pipeline/scenes.py); satırları ve sayıları paragrafta aynen geçmeli
+        scene = None
+        if isinstance(p, dict) and p.get("scene"):
+            from . import scenes
+            scene = scenes.check(p["scene"], text)
+            if not scene:
+                print(f"Sahne atlandı (kural dışı): {p['scene']}")
+        segments.append({"kind": "story", "text": text, **current, **({"card": card} if card else {}),
+                         **({"scene": scene} if scene else {})})
         current = {k: v for k, v in current.items() if k != "chapter"}  # zaman damgası yalnız bölümün ilk paragrafında
     return {"title": item["title"], "hook_title": item.get("hook_title", ""),
             "wide": bool(item.get("wide")), "sections": sections,

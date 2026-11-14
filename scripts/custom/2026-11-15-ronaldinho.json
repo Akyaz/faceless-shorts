@@ -1,0 +1,70 @@
+[
+  {
+    "label": "SPOR",
+    "mood": "umutlu",
+    "category": "17",
+    "title": "Ronaldinho 46 Yaşında Sahaya Dönüyor: Ravenna - Forlì Derbisi",
+    "hook_title": "Ronaldinho 11 Yıl Sonra Sahada",
+    "hashtags": [
+      "ronaldinho",
+      "futbol",
+      "ravenna"
+    ],
+    "country": "Italy",
+    "city": "Ravenna",
+    "image_files": [
+      "File:Milan gaúcho.jpg",
+      "File:Ronaldinho Gaúcho em junho de 2019.jpg",
+      "File:Ronaldinho Real Madrid-Milan.jpg",
+      "File:Ronaldinho-fcb-2005-2006-home-shirt.jpg"
+    ],
+    "pronounce": {
+      "Forlì": "Forli",
+      "Mandorlini": "Mandorlini",
+      "Benelli": "Benelli"
+    },
+    "paragraphs": [
+      {
+        "text": "Ronaldinho 11 yıl sonra resmi maça çıkıyor. 46 yaşındaki Brezilyalı yıldız, İtalya'nın üçüncü liginde Ravenna formasını giyecek.",
+        "scene": {
+          "type": "kart",
+          "label": "Ronaldinho",
+          "lines": [
+            "46 yaşında",
+            "11 yıl sonra"
+          ]
+        }
+      },
+      "İlk maçı Forlì derbisi. İki kulüp 103. kez karşılaşacak. Ronaldinho Barselona'dan özel uçakla geldi, son antrenmana 90 dakika geç kaldı.",
+      "Sky Sport, Ronaldinho'nun ilk 11'de başlayacağını yazdı. Teknik direktör Andrea Mandorlini ise ikinci yarıda gireceğini söyledi.",
+      {
+        "text": "2005'te Altın Top'u kazanan yıldızın derbisi 15 Kasım Pazar, Türkiye saatiyle 19.30'da Stadio Bruno Benelli'de başlıyor.",
+        "scene": {
+          "type": "kart",
+          "label": "Ravenna - Forlì",
+          "lines": [
+            "15 Kasım Pazar",
+            "Türkiye saatiyle 19.30"
+          ]
+        }
+      }
+    ],
+    "sources": [
+      {
+        "title": "Ronaldinho è in Italia: partirà titolare in Ravenna Forlì",
+        "source": "Sky Sport",
+        "link": "https://sport.sky.it/calcio/serie-c/2026/11/13/ronaldinho-italia-ravenna-forli-news-diretta"
+      },
+      {
+        "title": "Ronaldinho è in Italia: domenica il debutto con il Ravenna nel derby con Forlì",
+        "source": "Sportmediaset",
+        "link": "https://www.sportmediaset.mediaset.it/calcio/ravenna-ronaldinho-e-arrivato-a-forli-domenica-il-debutto-nel-derby_118937541-202602k.shtml"
+      },
+      {
+        "title": "Ronaldinho arriva con 90' di ritardo all'allenamento di rifinitura del Ravenna",
+        "source": "Il Messaggero",
+        "link": "https://www.ilmessaggero.it/persone/ronaldinho_ritardo_allenamento_ravenna_derby_forli_ultime_notizie-9889656.html"
+      }
+    ]
+  }
+]

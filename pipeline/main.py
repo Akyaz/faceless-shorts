@@ -14,7 +14,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import evergreen, horoscope, images, music, onthisday, platforms, render, review, script
+from . import captions, evergreen, horoscope, images, music, onthisday, platforms, playlists, render, review, script
 
 
 def _offline_audio(text, out_path):
@@ -103,6 +103,13 @@ def _closing_question(plan):
     return questions[-1] if questions else ""
 
 
+def _spoken(clock, words, fallback):
+    """Konuşmanın videodaki başlangıcı ve süresi: kelime zamanları varsa onlardan, yoksa parçanın tamamı."""
+    if words:
+        return clock + words[0]["start"], max(0.5, words[-1]["end"] - words[0]["start"])
+    return clock, fallback
+
+
 def build_metadata(plan, mode="story"):
     lang = plan.get("lang", "tr")
     text = {**DESCRIPTION[lang], **(plan.get("texts") or {})}  # türün kendi abone cümlesi ve etiketleri
@@ -131,6 +138,7 @@ def build_metadata(plan, mode="story"):
         # Videodaki soru kanal adına ilk yorum olarak yazılır (acı haberde soru ve çağrı yok)
         "comment": _closing_question(plan) if plan.get("subscribe", True) else "",
         "language": lang,
+        "playlist": playlists.for_video(mode, plan.get("label")),
     }
 
 
@@ -393,7 +401,7 @@ def main():
                              "pronounce": plan.get("pronounce")}
                             for i, seg in enumerate(segments)])
 
-    parts, chapters, clock = [], [], 0.0
+    parts, chapters, clock, spoken_lines = [], [], 0.0, []
     for i, seg in enumerate(segments):
         audio = work / f"seg{i}.mp3"
         words = spoken[i]
@@ -419,7 +427,9 @@ def main():
             render.render_segment(card, audio, ass, part, zoom_out=i % 2 == 1, look=look, idx=i)
         if seg.get("chapter"):
             chapters.append(f"{_clock(clock)} {seg['chapter']}")
-        clock += render.audio_duration(part)
+        length = render.audio_duration(part)
+        spoken_lines.append((*_spoken(clock, words, length), seg["text"]))
+        clock += length
         parts.append(part)
 
     # YouTube bölümleri 0:00 ile başlamalı ve en az üç tane olmalı
@@ -436,6 +446,7 @@ def main():
         voice = work / "voice_sub.mp4"
     plan["music_credit"] = music.add(voice, plan.get("mood"), out / "short.mp4")
     meta = build_metadata(plan, args.mode)
+    meta["captions"] = captions.srt(spoken_lines)
     for seg in segments:  # haberin tamamı zaten plan["sources"] içinde
         seg.pop("headline", None)
     (out / "metadata.json").write_text(json.dumps({**meta, "plan": plan}, ensure_ascii=False, indent=2))

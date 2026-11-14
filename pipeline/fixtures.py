@@ -250,6 +250,7 @@ def main():
                                        else "Sence Türk takımlarından kaç galibiyet gelir?" if turks_abroad
                                        else "Sence bugün hangi maç sürpriz yapar?"),
         "language": "tr",
+        "playlist": "Maç Programı",
     }
     (out / "metadata.json").write_text(json.dumps(
         {**meta, "matches": [[f"{s:%H:%M}", h, a] for s, h, a in matches],

@@ -11,7 +11,7 @@ import os
 import re
 from pathlib import Path
 
-from . import images, music, render, script
+from . import captions, images, music, render, script
 from .news import is_sensitive
 from .tts import RATE, speak_all
 
@@ -139,7 +139,7 @@ def main():
 
     spoken = speak_all([{"text": seg["text"], "out": work / f"seg{n}.mp3", "lang": "tr", "speaker": "male",
                          "rate": RATE, "pronounce": None} for n, seg in enumerate(segments)])
-    parts, chapters, clock, shown = [], [], 0.0, {}
+    parts, chapters, clock, shown, lines = [], [], 0.0, {}, []
     for n, seg in enumerate(segments):
         audio, card, ass, part = (work / f"seg{n}.{ext}" for ext in ("mp3", "png", "ass", "mp4"))
         words = spoken[n]
@@ -152,7 +152,10 @@ def main():
         render.render_segment(card, audio, ass, part, zoom_out=n % 2 == 1, size=render.WIDE)
         if seg.get("chapter"):
             chapters.append(f"{_clock(clock)} {seg['chapter']}")
-        clock += render.audio_duration(part)
+        length = render.audio_duration(part)
+        lines.append((clock + words[0]["start"], max(0.5, words[-1]["end"] - words[0]["start"])) + (seg["text"],)
+                     if words else (clock, length, seg["text"]))
+        clock += length
         parts.append(part)
 
     render.concat(parts, work / "voice.mp4")
@@ -169,6 +172,8 @@ def main():
                        + f"\n{music_credit}\n\n#gündem #haber #haftanınözeti",
         "tags": ["gündem", "haber", "haftanın özeti", "haftanın haberleri", "türkiye"],
         "category": "25",
+        "playlist": "Haftanın Özeti",
+        "captions": captions.srt(lines),
     }
     (out / "metadata.json").write_text(json.dumps({**meta, "segments": segments}, ensure_ascii=False, indent=2))
     print(f"Başlık: {title}")

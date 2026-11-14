@@ -142,6 +142,64 @@ def post_comment(video_id, text):
             print(f"Yorum yazılamadı (HTTP {exc.code}): {detail[:300]}")
 
 
+API = "https://www.googleapis.com/youtube/v3"
+
+
+def _call(method, url, token, body=None, data=None, content_type="application/json"):
+    req = urllib.request.Request(url, method=method, data=data if data is not None else
+                                 (json.dumps(body).encode() if body is not None else None),
+                                 headers={"Authorization": f"Bearer {token}", "Content-Type": content_type})
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        return json.load(resp)
+
+
+def add_captions(token, video_id, text, lang="tr"):
+    """Seslendirme metnini altyazı olarak ekler (pipeline/captions.py). Hata yüklemeyi bozmaz.
+    Kota: 400 birim (video yüklemesinin yanında küçük)."""
+    boundary = "faceless-shorts-captions"
+    snippet = {"snippet": {"videoId": video_id, "language": lang, "name": "", "isDraft": False}}
+    data = (f"--{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{json.dumps(snippet)}\r\n"
+            f"--{boundary}\r\nContent-Type: application/octet-stream\r\n\r\n{text}\r\n--{boundary}--\r\n").encode()
+    try:
+        _call("POST", "https://www.googleapis.com/upload/youtube/v3/captions?part=snippet&uploadType=multipart",
+              token, data=data, content_type=f"multipart/related; boundary={boundary}")
+        print(f"Altyazı eklendi ({text.count(chr(10) + chr(10))} satır)")
+    except Exception as exc:
+        detail = exc.read().decode("utf-8", "replace")[:300] if isinstance(exc, urllib.error.HTTPError) else exc
+        print(f"Altyazı eklenemedi: {detail}")
+
+
+def _playlist_id(token, title):
+    """Kanalın bu adlı oynatma listesi; yoksa açılır (herkese açık, açıklamasıyla)."""
+    page = ""
+    while True:
+        data = _call("GET", f"{API}/playlists?part=snippet&mine=true&maxResults=50&pageToken={page}", token)
+        for item in data.get("items", []):
+            if item["snippet"]["title"] == title:
+                return item["id"]
+        page = data.get("nextPageToken")
+        if not page:
+            break
+    from .playlists import PLAYLISTS
+    made = _call("POST", f"{API}/playlists?part=snippet,status", token, {
+        "snippet": {"title": title, "description": PLAYLISTS.get(title, ""), "defaultLanguage": "tr"},
+        "status": {"privacyStatus": "public"}})
+    print(f"Oynatma listesi açıldı: {title}")
+    return made["id"]
+
+
+def add_to_playlist(token, video_id, title):
+    """Videoyu türünün oynatma listesine ekler (pipeline/playlists.py). Hata yüklemeyi bozmaz."""
+    try:
+        playlist = _playlist_id(token, title)
+        _call("POST", f"{API}/playlistItems?part=snippet", token, {"snippet": {
+            "playlistId": playlist, "resourceId": {"kind": "youtube#video", "videoId": video_id}}})
+        print(f"Oynatma listesine eklendi: {title}")
+    except Exception as exc:
+        detail = exc.read().decode("utf-8", "replace")[:300] if isinstance(exc, urllib.error.HTTPError) else exc
+        print(f"Oynatma listesine eklenemedi ({title}): {detail}")
+
+
 def uploaded_before(meta):
     """Aynı çalışmanın aynı videosu panel kaydında YouTube bağlantısıyla duruyorsa o bağlantı.
     Yeniden yükleme çalışmanın kendi dosyasını güncelleyemediği için tekrar yüklemeyi bu kayıt önler."""
@@ -178,6 +236,13 @@ def main():
     meta["youtube_url"] = f"https://youtu.be/{video_id}"
     if meta.get("comment"):
         post_comment(video_id, meta["comment"])
+    # Zamanlanmış (özel) videoya da eklenir: yayın anında altyazısı ve listesi hazır olur
+    if meta.get("captions") or meta.get("playlist"):
+        token = access_token()
+        if meta.get("captions"):
+            add_captions(token, video_id, meta["captions"], meta.get("language", "tr"))
+        if meta.get("playlist"):
+            add_to_playlist(token, video_id, meta["playlist"])
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print(f"Yüklendi: {meta['youtube_url']}")

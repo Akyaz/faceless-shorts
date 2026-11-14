@@ -11,7 +11,7 @@ import math
 import re
 from pathlib import Path
 
-from . import images, music, render
+from . import captions, images, music, render
 from .tts import speak_all
 
 RATE = "+8%"  # akıcı belgesel temposu; Shorts'taki +%15'ten biraz yavaş
@@ -71,7 +71,7 @@ def build(script, out):
                         for c, chapter in enumerate(script["chapters"]) for i, line in enumerate(chapter["lines"])])
     spoken = iter(spoken)
 
-    parts, chapters, credits, clock, used, earlier = [], [], [], 0.0, set(), []
+    parts, chapters, credits, clock, used, earlier, lines = [], [], [], 0.0, set(), [], []
     for c, chapter in enumerate(script["chapters"]):
         lines = chapter["lines"]
         count = max(2, math.ceil(len(lines) / LINES_PER_IMAGE))
@@ -106,7 +106,10 @@ def build(script, out):
                                    "speaker": who["name"], "speaker_index": order.index(line["s"])},
                                   c, card, background, lang=lang)
             parts.append((card, audio, words))
-            clock += render.audio_duration(audio) + PAUSE
+            length = render.audio_duration(audio)
+            lines.append((clock + words[0]["start"], max(0.5, words[-1]["end"] - words[0]["start"]), line["t"])
+                         if words else (clock, length, line["t"]))
+            clock += length + PAUSE
 
     clips = []
     for n, (card, audio, words) in enumerate(parts):
@@ -141,7 +144,9 @@ def build(script, out):
     description = description.replace(f"\n\n{music_credit}", f"\n\n{text['images']} {'; '.join(listed)}. "
                                       f"{text['public']}\n\n{music_credit}")
     meta = {"title": script["title"][:100], "description": description[:5000],
-            "tags": script.get("tags", []), "category": "27", "language": lang}
+            "tags": script.get("tags", []), "category": "27", "language": lang,
+            "playlist": "History Documentaries" if lang == "en" else "Tarih Belgeselleri",
+            "captions": captions.srt(lines)}
     (out / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("\n".join(chapters))
     print(f"Hazır: {out / 'video.mp4'} ({_clock(duration)})")

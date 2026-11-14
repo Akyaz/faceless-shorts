@@ -89,15 +89,26 @@ def _usable(width, height, about):
     return not (EXCLUDED.search(about) or MEDIA_BUILDINGS.search(about))
 
 
+OPENVERSE_DOWN = False
+
+
 def openverse(query, limit=5):
     """Openverse: Flickr ve müze arşivlerindeki serbest lisanslı fotoğraflar. NC (ticari olmayan) ve ND (değiştirilemez)
     lisanslar alınmaz: kanal para kazanıyor, fotoğraf da kırpılıyor. Commons sonuçları ayrıca arandığı için atlanır.
     Anahtarsız sınır günde 200 istek (videoda 3-5 arama yapılıyor)."""
+    if OPENVERSE_DOWN:
+        return []
     params = urllib.parse.urlencode({"q": query, "license": "by,by-sa,cc0,pdm", "page_size": 20, "mature": "false"})
     names = {"cc0": "CC0", "pdm": "Public domain"}
     found = []
-    # Servis yavaş (15 sn) ve ara sıra 504 veriyor: hata find_backgrounds içinde kaynak atlanarak geçilir
-    for r in _get_json(f"https://api.openverse.org/v1/images/?{params}", timeout=25).get("results", []):
+    # Servis yavaş (15 sn) ve 14 Kasım'da sürekli 504 verdi: ilk zaman aşımından sonra bu çalışmada bir daha sorulmaz
+    try:
+        data = _get_json(f"https://api.openverse.org/v1/images/?{params}", timeout=20)
+    except Exception as exc:
+        if "504" in str(exc) or "timed out" in str(exc):
+            globals()["OPENVERSE_DOWN"] = True
+        raise
+    for r in data.get("results", []):
         if r.get("source") == "wikimedia" or r.get("category") not in (None, "photograph", "digitized_artwork"):
             continue
         tags = " ".join(t.get("name", "") for t in r.get("tags") or [])
@@ -516,6 +527,26 @@ def _sources(plan):
     return found
 
 
+def _names(plan):
+    """Konunun ayırt edici adları: haberdeki kişi, kurum, yapım; bilgi serisinde konunun Vikipedi başlığı; şehir.
+    Ülke adı alınmaz: "Turkey" etiketli her stok fotoğraf geçerdi."""
+    names = list(plan.get("subjects") or [])
+    if plan.get("kind") == "fact" and plan.get("sources"):
+        names.append(re.sub(r"\s*\(.*?\)", "", plan["sources"][0].get("title", "")))
+    names.append((plan.get("place") or {}).get("city") or "")
+    return {w for n in names for w in _fold(n).split() if len(w) >= 4}
+
+
+def _stock_ok(cand, names):
+    """Stok sitesi adayı ya nesne aramasından gelir (direksiyon, mikroskop: genel nesne yeter) ya da etiketlerinde
+    konunun adı geçer. Anadol videosunda "classic car" etiketli Amerikan arabası Gemini elemesini geçti
+    (14 Kasım 2026); bu yüzden kural modele bırakılmaz."""
+    if cand.get("neutral"):
+        return True
+    about = set(re.findall(r"\w+", _fold(cand.get("about", ""))))
+    return bool(names & about)
+
+
 def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
     """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner.
     exclude: daha önce kullanılmış adresler; uzun videoda bölümler aynı görseli tekrarlamasın diye."""
@@ -528,14 +559,17 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
         rest = find_backgrounds({**plan, "image_files": []}, out_dir / "search", count - len(fixed), per_query, exclude)
         known = {credit for _, credit in fixed}  # aynı dosya aramada da çıkabiliyor; iki kez gösterilmesin
         return fixed + [(path, credit) for path, credit in rest if credit not in known]
-    pools = []
+    pools, names = [], _names(plan)
     for query, neutral in _searches(plan):
         for name, search in _sources(plan):
+            stock = name.split()[0].lower() in STOCK_SOURCES
             try:
-                found = [{**c, "neutral": neutral} for c in search(query, per_query)]
+                found = [{**c, "neutral": neutral} for c in search(query, per_query * 4 if stock else per_query)]
             except Exception as exc:
                 print(f"{name} görseli alınamadı ({query}): {exc}")
                 continue
+            if stock:
+                found = [c for c in found if _stock_ok(c, names)][:per_query]
             print(f"{name} ({query}): {len(found)} aday")
             if found:
                 pools.append(found)

@@ -80,6 +80,31 @@ class Stock(unittest.TestCase):
         self.assertEqual(images._tags({"source": "openverse"}), "")
 
 
+class StockGuard(unittest.TestCase):
+    PLAN = {"kind": "fact", "sources": [{"title": "Anadol (otomobil)"}], "place": {"country": "Turkey"}}
+
+    def test_generic_stock_rejected(self):
+        names = images._names(self.PLAN)
+        self.assertEqual(names, {"anadol"})
+        car = {"about": "vintage car, classic car, yellow car | Pixabay", "neutral": False}
+        self.assertFalse(images._stock_ok(car, names))
+        self.assertTrue(images._stock_ok({**car, "about": "anadol, otomobil | Pixabay"}, names))
+
+    def test_object_query_allows_generic(self):
+        self.assertTrue(images._stock_ok({"about": "steering wheel", "neutral": True}, set()))
+
+    def test_filter_applied_in_search(self):
+        stock = [{"url": "s", "about": "classic car", "credit": "x", "source": "pixabay"}]
+        shown = []
+        with mock.patch.object(images, "_sources", lambda plan: [("Pixabay", lambda q, n: stock)]), \
+                mock.patch.object(images, "_select", lambda plan, c: shown.extend(c) or c), \
+                mock.patch.object(images, "_save", lambda picked, *a, **k: []), \
+                mock.patch.object(images, "RECENT", set()):
+            images.find_backgrounds({**self.PLAN, "image_queries": ["Anadol car"], "title": "t"},
+                                    pathlib.Path(tempfile.mkdtemp()), 2)
+        self.assertEqual(shown, [])
+
+
 class Fallback(unittest.TestCase):
     def test_without_vetting_only_commons(self):
         cands = [{"url": "p", "about": "a", "credit": "x", "source": "pexels"},

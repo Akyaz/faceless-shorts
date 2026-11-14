@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T09:08:48Z",
-  "run": "38919749873",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39019995478",
-  "videos": [
-   {
-    "title": "Spor Gündemi",
-    "url": "https://youtu.be/LdL_dPotuNE"
-   }
-  ]
- },
- {
   "time": "2026-10-17T09:08:57Z",
   "run": "39019287273",
   "event": "workflow_dispatch",
@@ -4659,6 +4645,21 @@
   "videos": [
    {
     "title": "Marmaray: Boğazın Altındaki 8.500 Yıllık Keşif",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T20:13:02Z",
+  "run": "43635814505",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43635814505",
+  "videos": [
+   {
+    "title": "Sakıp Sabancı: Stajyerlikten Milyarderliğe Uzanan Hayatı",
     "url": null,
     "instagram": null
    }

@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T10:34:45Z",
-  "run": "39025270306",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39025270306",
-  "videos": [
-   {
-    "title": "Cenk Tosun'dan Fenerbahçe İtirafı ve Beşiktaş'ın EuroLeague Zaferi!",
-    "url": null
-   }
-  ]
- },
- {
   "time": "2026-10-17T10:43:33Z",
   "run": "39025838514",
   "event": "workflow_dispatch",
@@ -4667,5 +4653,20 @@
    }
   ],
   "slot": "pazar 11:00"
+ },
+ {
+  "time": "2026-11-14T21:33:59Z",
+  "run": "43643257936",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43643257936",
+  "videos": [
+   {
+    "title": "En Yakın Arkadaşım, Sevgilisi ve Ben Netflix Türkiye Top 10 Listesinde",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

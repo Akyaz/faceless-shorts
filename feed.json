@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T07:21:11Z",
-  "run": "39005376622",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39005376622",
-  "videos": [
-   {
-    "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
-    "url": null
-   }
-  ],
-  "script": "scripts/longform/en-krakatoa.json"
- },
- {
   "time": "2026-10-17T07:37:22Z",
   "run": "39013150018",
   "event": "workflow_dispatch",
@@ -4656,5 +4641,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-14T09:59:32Z",
+  "run": "43582103381",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43582103381",
+  "videos": [
+   {
+    "title": "Vehbi Koç: Bakkal Dükkânından Kurulan Dev Holding",
+    "url": "https://youtu.be/BzIY4N3M4s0",
+    "instagram": "https://www.instagram.com/reel/Dft8GaJnMC3/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

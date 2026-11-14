@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-17T20:13:32Z",
-  "run": "39063935511",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39063935511",
-  "videos": [
-   {
-    "title": "İstanbul'un Fethi: 53 Gün, 72 Gemi ve Karadan Yürüyen Donanma",
-    "url": "https://youtu.be/AqDtZRX_OCY",
-    "instagram": null
-   }
-  ],
-  "script": "scripts/longform/tr-istanbulun-fethi.json"
- },
- {
   "time": "2026-10-17T20:17:29Z",
   "run": "39065682725",
   "event": "workflow_dispatch",
@@ -4660,5 +4644,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43651886880",
   "videos": []
+ },
+ {
+  "time": "2026-11-14T23:13:31Z",
+  "run": "43651895562",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43651895562",
+  "videos": [
+   {
+    "title": "Portekiz, Ronaldo'suz Maçta Danimarka'ya 4-1 Mağlup Oldu",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

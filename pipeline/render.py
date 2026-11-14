@@ -78,7 +78,10 @@ def _gradient(accent, size=(W, H)):
     return img
 
 
-SMALL_PHOTO = 1.8  # dikey kadraja kırpmak için bundan fazla büyütülmesi gereken fotoğraf bütün hâliyle gösterilir
+# Bu boyuttan (uzun kenar, piksel) küçük fotoğraf kırpılmadan, bütün hâliyle gösterilir. Önce büyütme oranına
+# bakılıyordu: 1280'lik film kareleri ve 1400'lük Commons fotoğrafları da ince şerit olarak çıktı (Ray Gunn
+# denemesi, 15 Kasım 2026); yalnızca gerçekten küçük arşiv fotoğrafları (Sakıp Sabancı, 540-900) içindir
+SMALL_PHOTO = 1000
 
 
 def _photo(path, size=(W, H), dim=0.5):
@@ -86,7 +89,7 @@ def _photo(path, size=(W, H), dim=0.5):
     w, h = size
     src = Image.open(path).convert("RGB")
     scale = max(w / src.width, h / src.height)
-    if scale > SMALL_PHOTO and h > w:
+    if max(src.size) < SMALL_PHOTO and scale > 1.2 and h > w:
         # Küçük fotoğraf dikey kadraja kırpılınca bulanıklaşıp yüz kesiliyordu (Sakıp Sabancı arşiv fotoğrafları
         # 540-900 piksel, 14 Kasım 2026): ekran genişliğinde bütün hâliyle, arkasında aynı fotoğrafın bulanık hâli
         from PIL import ImageFilter

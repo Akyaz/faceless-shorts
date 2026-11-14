@@ -671,7 +671,8 @@ def story_script(headlines, kind="story", count=10, recent=()):
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     if "scenes" in out:  # dizi ve film haberinde bilgi kartları (scenes.NEWS_SCENES)
         from . import scenes
-        for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes")).items():
+        for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes"), scenes.NEWS_SCENE_LIMIT,
+                                       first=False).items():
             segments[i]["scene"] = scene
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
             "lang": spec.get("lang", "tr"), "segments": segments,

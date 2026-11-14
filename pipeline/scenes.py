@@ -163,7 +163,7 @@ def coords(place):
     return None
 
 
-def prepare(paragraphs, raw, limit=MAX_SCENES):
+def prepare(paragraphs, raw, limit=MAX_SCENES, first=True):
     """{paragraf sırası: sahne}. Kurala uymayan ya da haritada yeri bulunamayan sahne atlanır.
     En az bir paragraf gerçek görüntüyle kalır: üç paragraflı Sakıp Sabancı videosu baştan sona animasyondu
     (14 Kasım 2026)."""
@@ -176,7 +176,7 @@ def prepare(paragraphs, raw, limit=MAX_SCENES):
             i = int(scene.get("paragraph")) - 1
         except (AttributeError, TypeError, ValueError):
             continue
-        if not 0 <= i < len(paragraphs) or i in chosen:
+        if not 0 <= i < len(paragraphs) or i in chosen or (i == 0 and not first):
             continue
         out = check(scene, paragraphs[i])
         if out and out["type"] == "harita":
@@ -466,11 +466,15 @@ def _card(img, t, dur, sc, ctx):
 DRAW = {"sayac": _counter, "karsilastirma": _compare, "zaman": _timeline, "harita": _map, "kart": _card}
 
 # Haber videolarında (dizi ve film) modele giden sahne tarifi; bilgi serisininki evergreen.RULES içinde
-NEWS_SCENES = """- scenes: en fazla 2 paragraf için kodla çizilen bilgi kartı. Her satır ve sayı o paragrafta yazıldığı gibi geçmeli.
-  {"paragraph": 1, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
-  {"paragraph": 2, "type": "kart", "label": "Yayın", "lines": ["14 Kasım", "4 bölüm"]}
+# Haberde en fazla bir kart, ilk paragrafta değil: Ray Gunn denemesinde üç paragrafın ikisi kart oldu, video bulanık
+# bir kartla açıldı ve filmin kareleri neredeyse görünmedi (15 Kasım 2026)
+NEWS_SCENE_LIMIT = 1
+NEWS_SCENES = """- scenes: tek bir paragraf için kodla çizilen bilgi kartı (ilk paragraf olamaz; video yapımın karesiyle açılır).
+  Satırlar o paragrafta yazıldığı gibi geçmeli. Öncelik başrol adları; yoksa yayın tarihi ya da Netflix sırası.
   {"paragraph": 3, "type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}
-  Başrol adları mutlaka kartla verilir (videoda oyuncu fotoğrafı yok, adlar yazıyla görünür). paragraph 1'den başlar.
+  {"paragraph": 2, "type": "kart", "label": "Yayın", "lines": ["14 Kasım", "4 bölüm"]}
+  {"paragraph": 2, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
+  paragraph 1'den başlar.
 """
 
 

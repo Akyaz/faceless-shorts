@@ -169,3 +169,19 @@ class Draw(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PhotoSize(unittest.TestCase):
+    def test_film_still_fills_screen(self):
+        import pathlib, tempfile
+        from PIL import Image
+        from pipeline import render
+        path = pathlib.Path(tempfile.mkdtemp()) / "k.jpg"
+        Image.new("RGB", (1280, 720), (200, 30, 30)).save(path)
+        img = render._photo(path, dim=0)
+        self.assertGreater(img.getpixel((540, 100))[0], 180)  # kırpılıp tam ekran, üstte de fotoğraf var
+
+    def test_news_scene_not_first_and_single(self):
+        paras = [TEXT] * 3
+        raw = [{"paragraph": k, "type": "sayac", "value": "3,2"} for k in (1, 2, 3)]
+        self.assertEqual(list(scenes.prepare(paras, raw, 1, first=False)), [1])

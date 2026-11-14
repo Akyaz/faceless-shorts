@@ -1,19 +1,5 @@
 [
  {
-  "time": "2026-10-17T18:02:41Z",
-  "run": "39055982036",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39055982036",
-  "videos": [
-   {
-    "title": "Kocaeli'nde Şiddetli Yağış Nedeniyle Motokuryelere Yasak Getirildi",
-    "url": "https://youtu.be/GHJpj8n-YJw"
-   }
-  ]
- },
- {
   "time": "2026-10-17T18:33:12Z",
   "run": "39058328139",
   "event": "workflow_dispatch",
@@ -4670,5 +4656,14 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-14T22:53:35Z",
+  "run": "43650011139",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650011139",
+  "videos": []
  }
 ]

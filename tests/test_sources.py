@@ -90,8 +90,9 @@ class StockGuard(unittest.TestCase):
         self.assertFalse(images._stock_ok(car, names))
         self.assertTrue(images._stock_ok({**car, "about": "anadol, otomobil | Pixabay"}, names))
 
-    def test_object_query_allows_generic(self):
-        self.assertTrue(images._stock_ok({"about": "steering wheel", "neutral": True}, set()))
+    def test_object_query_not_exempt(self):
+        wreck = {"about": "ship, sea, paphos, cyprus, shipwreck | Pixabay", "neutral": True}
+        self.assertFalse(images._stock_ok(wreck, {"marmaray"}))
 
     def test_filter_applied_in_search(self):
         stock = [{"url": "s", "about": "classic car", "credit": "x", "source": "pixabay"}]

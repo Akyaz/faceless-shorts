@@ -538,11 +538,10 @@ def _names(plan):
 
 
 def _stock_ok(cand, names):
-    """Stok sitesi adayı ya nesne aramasından gelir (direksiyon, mikroskop: genel nesne yeter) ya da etiketlerinde
-    konunun adı geçer. Anadol videosunda "classic car" etiketli Amerikan arabası Gemini elemesini geçti
-    (14 Kasım 2026); bu yüzden kural modele bırakılmaz."""
-    if cand.get("neutral"):
-        return True
+    """Stok sitesi adayının etiketlerinde konunun adı geçmeli. Anadol videosunda "classic car" etiketli Amerikan
+    arabası Gemini elemesini geçti (14 Kasım 2026); bu yüzden kural modele bırakılmaz. Nesne araması da istisna
+    değil: Marmaray videosunda "shipwreck" aramasından Kıbrıs'ta karaya oturmuş gemi ve kumsalda tekne geldi
+    (14 Kasım 2026), temsili stok görüntü."""
     about = set(re.findall(r"\w+", _fold(cand.get("about", ""))))
     return bool(names & about)
 

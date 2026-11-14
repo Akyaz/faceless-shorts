@@ -10,6 +10,7 @@ trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler; fact eskimey
 """
 import argparse
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -393,6 +394,11 @@ def main():
         backgrounds, credits = [args.background] * len(segments), []
     else:
         recent = Path(args.history).parent / "images.json" if args.history else None
+        if os.environ.get("FACT_TOPIC") and args.mode == "fact":
+            # Aynı konunun yeniden üretimi: önceki denemenin görselleri "son kullanılan" sayılınca Sakıp Sabancı'da
+            # Sabancı Center yerine banknot, Uluburun'da tek aday kaldı (14 Kasım 2026). Eski video kaldırılacağı
+            # için tekrar sayılmaz.
+            recent = None
         if recent:
             load_recent_images(recent)
         backgrounds, credits = find_images(plan, work)

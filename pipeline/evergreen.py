@@ -36,7 +36,9 @@ Metin kuralları:
    Soru sorma.
 5. Cümleler kısa (en fazla 12 kelime), gündelik sözcükler, bir arkadaşa anlatır gibi.
 6. Toplam 55-75 kelime, 3-4 paragraf (her paragraf 1-2 cümle).
-7. YALNIZCA aşağıdaki Vikipedi metnindeki bilgileri kullan. Metinde olmayan sayı, tarih, isim ya da sonuç ekleme.
+7. Sözü edilen her şeyin adını yaz: "camilerinden birini yaptırdı" değil "Sabancı Merkez Camii'ni yaptırdı".
+   Adı metinde yoksa o bilgiyi hiç kullanma. Aynı sayıyı iki kez söyleme.
+8. YALNIZCA aşağıdaki Vikipedi metnindeki bilgileri kullan. Metinde olmayan sayı, tarih, isim ya da sonuç ekleme.
    Tartışmalı ya da kanıtlanmamış bir şeyse "iddia ediliyor", "tahmin ediliyor" de. Metin İngilizceyse Türkçeye çevir.
 
 Ek alanlar:
@@ -201,16 +203,19 @@ def plan(state_path=STATE):
         rules += f"\nBu konunun kendi fotoğrafı yok: scenes için en fazla {scenes.MAX_SCENES + 1} paragraf kullanabilirsin.\n"
     out = json.loads(script._generate(rules + "\n" + text, os.environ["GEMINI_API_KEY"]))
     unclear = [p for p in out["paragraphs"] if script.vague(p)]
-    if unclear:
-        # Belirsiz cümle bir kez yeniden yazdırılır: izleyici neyin söz konusu olduğunu videoda duymalı
+    for _ in range(2):
+        if not unclear:
+            break
+        # Belirsiz cümle yeniden yazdırılır: izleyici neyin söz konusu olduğunu videoda duymalı. Tek deneme
+        # yetmedi: Sakıp Sabancı'da üniversitenin adı geldi, camininki gelmedi (14 Kasım 2026)
         print(f"Belirsiz cümle, yeniden yazdırılıyor: {unclear}")
         note = ("\nÖnceki yanıtında şu paragraflar neyin söz konusu olduğunu söylemiyordu: " + " | ".join(unclear)
                 + "\nKurulan, yaptırılan ya da sözü edilen şeyin adını açıkça yaz (örnek: \"Sabancı Üniversitesi'ni "
-                  "kurdu\"). Bütün JSON'u yeniden döndür.\n")
+                  "kurdu\"); adı metinde yoksa o bilgiyi çıkar. Bütün JSON'u yeniden döndür.\n")
         out = json.loads(script._generate(rules + note + "\n" + text, os.environ["GEMINI_API_KEY"]))
         unclear = [p for p in out["paragraphs"] if script.vague(p)]
-        if unclear:
-            print(f"Belirsiz cümle kaldı: {unclear}")
+    if unclear:
+        print(f"Belirsiz cümle kaldı: {unclear}")
 
     sources = [{"title": p["title"], "source": "Vikipedi" if p["lang"] == "tr" else "Wikipedia", "link": p["url"]}
                for p in pages]

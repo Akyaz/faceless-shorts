@@ -62,6 +62,7 @@ class Prepare(unittest.TestCase):
         paras = [TEXT] * 4
         raw = [{"paragraph": k, "type": "sayac", "value": "3,2"} for k in (1, 2, 3, 4)]
         self.assertEqual(len(scenes.prepare(paras, raw, 3)), 3)
+        self.assertEqual(len(scenes.prepare(paras[:3], raw, 3)), 2)  # bir paragraf fotoğrafla kalır
 
 
 class ChosenTopic(unittest.TestCase):

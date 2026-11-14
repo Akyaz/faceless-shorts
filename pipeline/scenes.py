@@ -156,7 +156,10 @@ def coords(place):
 
 
 def prepare(paragraphs, raw, limit=MAX_SCENES):
-    """{paragraf sırası: sahne}. Kurala uymayan ya da haritada yeri bulunamayan sahne atlanır."""
+    """{paragraf sırası: sahne}. Kurala uymayan ya da haritada yeri bulunamayan sahne atlanır.
+    En az bir paragraf gerçek görüntüyle kalır: üç paragraflı Sakıp Sabancı videosu baştan sona animasyondu
+    (14 Kasım 2026)."""
+    limit = min(limit, len(paragraphs) - 1)
     chosen = {}
     for scene in raw if isinstance(raw, list) else []:
         if len(chosen) >= limit:

@@ -4651,16 +4651,16 @@
   ]
  },
  {
-  "time": "2026-11-14T20:40:06Z",
+  "time": "2026-11-14T20:41:01Z",
   "run": "43638490930",
   "event": "workflow_dispatch",
   "mode": "fact",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43638490930",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43638752446",
   "videos": [
    {
     "title": "Sakıp Sabancı: Stajyerlikten Forbes Milyarderler Listesine",
-    "url": null,
+    "url": "https://youtu.be/fd2kA_-vaMI",
     "instagram": null
    }
   ]

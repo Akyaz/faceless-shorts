@@ -15,7 +15,9 @@ class ImageChoice(unittest.TestCase):
 
     def test_media_buildings(self):
         self.assertTrue(images.MEDIA_BUILDINGS.search("File:Kanal D Headquarters.jpg | Kanal D Merkez Binası"))
-        self.assertFalse(images.MEDIA_BUILDINGS.search("File:Beyaz Show.jpg | stüdyo"))
+        # Stüdyo fotoğrafı da konuyu göstermiyor (Gönül Dağı videosu, 15 Kasım 2026)
+        self.assertTrue(images.MEDIA_BUILDINGS.search("File:Beyaz Show.jpg | stüdyo"))
+        self.assertFalse(images.MEDIA_BUILDINGS.search("File:Gönül Dağı çekim yeri, Çankırı.jpg"))
 
     def test_subject_title_must_be_the_name(self):
         def wiki(lang, **p):

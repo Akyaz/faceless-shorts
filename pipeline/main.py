@@ -325,6 +325,7 @@ def news_plan(args, exclude=(), _tries=0):
 
 
 REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayısı
+MIN_IMAGES = 2  # bundan az farklı gerçek görselle video üretilmez
 TREND_BOOSTED = {"culture", "sportstory", "platform"}  # Google'da aranan konunun haberi öne alınır
 REPEAT_CHECKED = {"platform"}  # yapım haberi: aynı dizi iki gün üst üste video olmaz
 RECENT_TOPICS = 8  # yaklaşık iki günün platform ve gündem videoları
@@ -451,6 +452,11 @@ def main():
         # Maç kartları kendi grafiğini çizdiği için hariç.
         if not plan.get("match") and not any(backgrounds):
             raise RuntimeError("Hiç görsel bulunamadı; görselsiz video üretilmiyor, bu saat atlanıyor.")
+        # Tek görselli video üretilmez: Gönül Dağı videosu tek ve ilgisiz bir stüdyo fotoğrafıyla çıktı (kanal sahibi,
+        # 15 Kasım 2026: "tek görsel istemiyorum"). Maç kartları kendi grafiğini çizer.
+        if not plan.get("match") and len({b for b in backgrounds if b}) < MIN_IMAGES:
+            raise RuntimeError(f"Yalnızca {len({b for b in backgrounds if b})} görsel bulundu (en az {MIN_IMAGES}); "
+                               "video üretilmiyor, bu saat atlanıyor.")
     plan["image_credit"] = "\n".join(dict.fromkeys(credits)) or None
 
     # Önce bütün sesler: anlatıcının sesi ortada değişirse önceki parçalar da yeni sesle okunur

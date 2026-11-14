@@ -47,6 +47,18 @@ class Freshness(unittest.TestCase):
         self.assertEqual([t["query"] for t in trends.parse(xml, now)], ["tev burs sonuçları"])  # 14,5 saat önce
 
 
+class Images(unittest.TestCase):
+    def test_studio_photo_excluded(self):
+        from pipeline import images
+        self.assertTrue(images.MEDIA_BUILDINGS.search("Beyaz Show stüdyosundan bir görünüm."))
+        self.assertTrue(images.MEDIA_BUILDINGS.search("TV studio set"))
+        self.assertFalse(images.MEDIA_BUILDINGS.search("Gönül Dağı dizisinden bir sahne"))
+
+    def test_minimum_two_images(self):
+        from pipeline import main
+        self.assertEqual(main.MIN_IMAGES, 2)
+
+
 class Schedule(unittest.TestCase):
     def test_longform_and_weekly_off_story_at_nine(self):
         modes = {name: mode for name, mode in slots.SLOTS.values()}

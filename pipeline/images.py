@@ -27,7 +27,10 @@ UA = "faceless-shorts/0.1 (https://github.com/Akyaz/faceless-shorts)"
 EXCLUDED = re.compile(r"all rights reserved|diritti riservati|todos los derechos|alle rechte|tüm hakları|"
                       r"ithyphallic|phallic|phallus|nude|naked|erotic", re.I)
 # Kanal ve şirket binaları dizi ve televizyon haberinde konuyu göstermiyor (her dizi haberinde aynı Kanal D binası)
+# Televizyon stüdyosu ve "show" fotoğrafı da konuyu göstermiyor: Gönül Dağı videosunun tek görseli Beyaz Show
+# stüdyosuydu (15 Kasım 2026)
 MEDIA_BUILDINGS = re.compile(r"headquarters|merkez binas|genel merkez|media cent|medya merkez|plaza\b|"
+                             r"st[uü]dyo|studio|\bshow\b|"
                              r"\b(kanal d|show tv|star tv|atv|fox tv|now tv|tv8|trt|demirören|doğan medya)\b", re.I)
 # Son günlerde kullanılmış arama görselleri (state/images.json): aynı fotoğraf her videoda dönmesin.
 # Kişinin ya da yapımın kendi fotoğrafı bu kurala girmez.

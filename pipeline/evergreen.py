@@ -167,10 +167,20 @@ def wiki_page(search, lang):
             "image": onthisday._commons_file({"originalimage": {"source": original}}), "lang": lang}
 
 
+def chosen_topic(rows, name):
+    """Elle seçilen konu (iş akışının topic girişi): kötü çıkan bir videoyu yeniden üretmek için (14 Kasım 2026).
+    Listede yoksa genel "bilgi" serisinden sayılır."""
+    for row in rows:
+        if _fold(row[1]) == _fold(name) or _fold(row[2]) == _fold(name):
+            return row
+    return ("bilgi", name, name)
+
+
 def plan(state_path=STATE):
     rows = topics()
     done = load_state(state_path)
-    category, tr, en = next_topic(rows, done, published(rows))
+    forced = os.environ.get("FACT_TOPIC", "").strip()
+    category, tr, en = chosen_topic(rows, forced) if forced else next_topic(rows, done, published(rows))
     spec = CATEGORIES[category]
     pages = [p for p in [wiki_page(tr, "tr")] if p]
     if not pages or len(pages[0]["text"]) < MIN_TEXT:
@@ -184,6 +194,11 @@ def plan(state_path=STATE):
 
     text = "\n\n".join(f"Vikipedi ({p['lang']}) \"{p['title']}\":\n{p['text']}" for p in pages)
     rules = RULES + (f"\n{spec['angle']}\n" if spec["angle"] else "")
+    own_photo = any(p["image"] for p in pages)
+    if not own_photo:
+        # Konunun kendi fotoğrafı yok (Sakıp Sabancı'nın serbest lisanslı portresi yok; videoda müze bahçesindeki at
+        # heykeli çıktı, 14 Kasım 2026): boşluğu ilgisiz fotoğraf yerine animasyonlu sahneler doldursun
+        rules += f"\nBu konunun kendi fotoğrafı yok: scenes için en fazla {scenes.MAX_SCENES + 1} paragraf kullanabilirsin.\n"
     out = json.loads(script._generate(rules + "\n" + text, os.environ["GEMINI_API_KEY"]))
     unclear = [p for p in out["paragraphs"] if script.vague(p)]
     if unclear:
@@ -192,7 +207,8 @@ def plan(state_path=STATE):
     sources = [{"title": p["title"], "source": "Vikipedi" if p["lang"] == "tr" else "Wikipedia", "link": p["url"]}
                for p in pages]
     segments = [{"kind": "story", "source": sources[0]["source"], "text": p} for p in out["paragraphs"]]
-    for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes")).items():
+    limit = scenes.MAX_SCENES if own_photo else scenes.MAX_SCENES + 1
+    for i, scene in scenes.prepare(out["paragraphs"], out.get("scenes"), limit).items():
         segments[i]["scene"] = scene
     result = {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": spec["label"],
               "lang": "tr", "segments": segments, "sources": [{**sources[0], "related": sources[1:]}],

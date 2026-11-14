@@ -153,11 +153,11 @@ def coords(place):
     return None
 
 
-def prepare(paragraphs, raw):
+def prepare(paragraphs, raw, limit=MAX_SCENES):
     """{paragraf sırası: sahne}. Kurala uymayan ya da haritada yeri bulunamayan sahne atlanır."""
     chosen = {}
     for scene in raw if isinstance(raw, list) else []:
-        if len(chosen) >= MAX_SCENES:
+        if len(chosen) >= limit:
             break
         try:
             i = int(scene.get("paragraph")) - 1

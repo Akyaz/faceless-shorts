@@ -58,6 +58,21 @@ class Prepare(unittest.TestCase):
         self.assertEqual(scenes.prepare(paras, None), {})
 
 
+    def test_limit_raised_when_topic_has_no_photo(self):
+        paras = [TEXT] * 4
+        raw = [{"paragraph": k, "type": "sayac", "value": "3,2"} for k in (1, 2, 3, 4)]
+        self.assertEqual(len(scenes.prepare(paras, raw, 3)), 3)
+
+
+class ChosenTopic(unittest.TestCase):
+    def test_topic_from_list_or_free(self):
+        from pipeline import evergreen
+        rows = [("tarih", "Uluburun batığı", "Uluburun shipwreck"), ("para", "Sakıp Sabancı", "Sakıp Sabancı")]
+        self.assertEqual(evergreen.chosen_topic(rows, "uluburun Batığı")[0], "tarih")
+        self.assertEqual(evergreen.chosen_topic(rows, "Sakıp Sabancı")[0], "para")
+        self.assertEqual(evergreen.chosen_topic(rows, "Kapadokya"), ("bilgi", "Kapadokya", "Kapadokya"))
+
+
 class Spread(unittest.TestCase):
     def test_photos_go_to_plain_paragraphs_first(self):
         segs = [{}, {"scene": {"type": "sayac"}}, {}, {}]

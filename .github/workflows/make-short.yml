@@ -72,6 +72,10 @@ on:
         description: "YouTube'da yayın zamanı (UTC, örnek 2026-10-29T07:00:00Z = 10:00 TSİ); doluysa video özel yüklenir, o anda açılır, Instagram'a yüklenmez"
         type: string
         default: ""
+      topic:
+        description: "Bilgi videosu (fact): sıradaki konu yerine bu konu (örnek: Uluburun batığı); konu listesindeki adla"
+        type: string
+        default: ""
       mode:
         description: "Video türü: story (gündem haberi), world (İngilizce dünya haberi), trend (bilim ve teknoloji özeti), digest (günün özeti), morning (sabah özeti), sports (spor gündemi), debate (Sen ne dersin? tartışma), onthisday (İngilizce tarihte bugün), fact (eskimeyen bilgi: Biliyor muydun?, otomobil, para ve iş, bilim ve mühendislik, tarih serileri sırayla), sportstory (tek spor haberi), culture (magazin ve kültür-sanat), platform (Netflix Top 10 ve dijital platformların yeni dizi ve filmleri), horoscope1/2/3 (haftalık burç: Koç-Yengeç, Aslan-Akrep, Yay-Balık), matchday (günün maç programı: Süper Lig ya da Avrupa'da Türk takımları), ucl (Şampiyonlar Ligi maç programı)"
         type: choice
@@ -153,6 +157,7 @@ jobs:
           SCRIPT_JSON: ${{ inputs.script_json }}
           UCL_RESULTS: ${{ inputs.results }}
           UCL_EMPHASIZE: ${{ inputs.emphasize }}
+          FACT_TOPIC: ${{ inputs.topic }}
         run: |
           failed=0
           if [ -n "$SCRIPT_JSON" ]; then  # panelden gelen metin depoya yazılmadan kullanılır

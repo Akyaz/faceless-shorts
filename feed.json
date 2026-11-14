@@ -4642,21 +4642,6 @@
   "videos": []
  },
  {
-  "time": "2026-11-14T22:51:54Z",
-  "run": "43650001814",
-  "event": "workflow_dispatch",
-  "mode": "culture",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650001814",
-  "videos": [
-   {
-    "title": "Kızılcık Şerbeti dizisinde Lider'in gerçek yüzü ortaya çıktı",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-14T22:53:08Z",
   "run": "43649992446",
   "event": "workflow_dispatch",
@@ -4667,6 +4652,21 @@
    {
     "title": "Avustralya Eski Başbakanı Malcolm Turnbull Edirne Belediyesi'ni Ziyaret Etti",
     "url": "https://youtu.be/JlzjZFNnRV8",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-14T22:53:14Z",
+  "run": "43650001814",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650388299",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti dizisinde Lider'in gerçek yüzü ortaya çıktı",
+    "url": "https://youtu.be/ijme1VIM90E",
     "instagram": null
    }
   ]

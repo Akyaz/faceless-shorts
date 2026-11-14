@@ -91,6 +91,16 @@ CATEGORIES = {
 # Sabancı'nın serbest lisanslı portresi yok; David Cregeen'in büstünün fotoğrafı adı yanlış yazıldığı için
 # aramalarda çıkmıyordu, videoda kendisi hiç görünmedi (14 Kasım 2026).
 FILES = {}
+# Serbest lisanslı fotoğrafı hiç olmayan kişi için kurumun resmi arşiv ya da basın fotoğrafları (telifli; kanal
+# sahibi kişi videolarında bunu kabul etti, 14 Kasım 2026). Kaynak açıklamaya yazılır.
+PHOTOS = ROOT / "scripts" / "evergreen" / "images.json"
+
+
+def official_photos(topic):
+    try:
+        return json.loads(PHOTOS.read_text(encoding="utf-8")).get(topic) or []
+    except (OSError, ValueError):
+        return []
 
 
 def topics():
@@ -205,7 +215,8 @@ def plan(state_path=STATE):
 
     text = "\n\n".join(f"Vikipedi ({p['lang']}) \"{p['title']}\":\n{p['text']}" for p in pages)
     rules = RULES + (f"\n{spec['angle']}\n" if spec["angle"] else "")
-    own_photo = bool(FILES.get(tr)) or any(p["image"] for p in pages)
+    official = official_photos(tr)
+    own_photo = bool(official or FILES.get(tr)) or any(p["image"] for p in pages)
     if not own_photo:
         # Konunun kendi fotoğrafı yok (Sakıp Sabancı'nın serbest lisanslı portresi yok; videoda müze bahçesindeki at
         # heykeli çıktı, 14 Kasım 2026): boşluğu ilgisiz fotoğraf yerine animasyonlu sahneler doldursun
@@ -237,6 +248,8 @@ def plan(state_path=STATE):
               "kind": "fact", **script._image_fields(out),
               "image_files": (FILES.get(tr) or [p["image"] for p in pages if p["image"]])[:2],
               "fill_with_search": True,
+              # Resmi fotoğraflar varsa arama yapılmaz, yalnızca onlar kullanılır (main.find_images)
+              "work_images": official,
               "mood": out.get("mood", "notr"),
               "hashtags": script._tags(out.get("hashtags")) + spec["hashtags"],
               "category": "27", "image_prompt": "", "pronounce": script._pronounce(out),

@@ -87,6 +87,27 @@ class Vague(unittest.TestCase):
         self.assertFalse(script.vague("1999 yılında Sabancı Üniversitesi'ni kurdu."))
 
 
+class OfficialPhotos(unittest.TestCase):
+    def test_sabanci_has_official_photos_with_credit(self):
+        from pipeline import evergreen
+        photos = evergreen.official_photos("Sakıp Sabancı")
+        self.assertGreaterEqual(len(photos), 3)
+        self.assertTrue(all(p["url"].startswith("https://") and "sakipsabanci.com.tr" in p["credit"] for p in photos))
+        self.assertEqual(evergreen.official_photos("Ahtapot"), [])
+
+    def test_small_photo_shown_whole(self):
+        import pathlib, tempfile
+        from PIL import Image
+        from pipeline import render
+        path = pathlib.Path(tempfile.mkdtemp()) / "k.jpg"
+        Image.new("RGB", (600, 400), (200, 30, 30)).save(path)
+        img = render._photo(path, dim=0)
+        self.assertEqual(img.size, (render.W, render.H))
+        r, g, b = img.getpixel((540, 790))  # ortada fotoğrafın kendisi, karartılmadan
+        self.assertGreater(r, 180)
+        self.assertLess(img.getpixel((540, 100))[0], 150)  # üstte bulanık ve koyu zemin
+
+
 class Spread(unittest.TestCase):
     def test_photos_go_to_plain_paragraphs_first(self):
         segs = [{}, {"scene": {"type": "sayac"}}, {}, {}]

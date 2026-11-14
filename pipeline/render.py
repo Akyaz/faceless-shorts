@@ -78,11 +78,27 @@ def _gradient(accent, size=(W, H)):
     return img
 
 
+SMALL_PHOTO = 1.8  # dikey kadraja kırpmak için bundan fazla büyütülmesi gereken fotoğraf bütün hâliyle gösterilir
+
+
 def _photo(path, size=(W, H), dim=0.5):
     """Görseli kadraja kırpar ve altyazı okunsun diye karartır."""
     w, h = size
     src = Image.open(path).convert("RGB")
     scale = max(w / src.width, h / src.height)
+    if scale > SMALL_PHOTO and h > w:
+        # Küçük fotoğraf dikey kadraja kırpılınca bulanıklaşıp yüz kesiliyordu (Sakıp Sabancı arşiv fotoğrafları
+        # 540-900 piksel, 14 Kasım 2026): ekran genişliğinde bütün hâliyle, arkasında aynı fotoğrafın bulanık hâli
+        from PIL import ImageFilter
+        back = src.resize((round(src.width * scale / 8), round(src.height * scale / 8)), Image.BILINEAR)
+        back = back.filter(ImageFilter.GaussianBlur(4)).resize((round(src.width * scale), round(src.height * scale)),
+                                                              Image.BILINEAR)
+        left, top = (back.width - w) // 2, (back.height - h) // 2
+        img = Image.blend(back.crop((left, top, left + w, top + h)), Image.new("RGB", size), 0.45)
+        fit = min(w / src.width, 820 / src.height)  # başlık (300-450) ve altyazı (1150-) arasına sığsın
+        front = src.resize((round(src.width * fit), round(src.height * fit)), Image.LANCZOS)
+        img.paste(front, ((w - front.width) // 2, 790 - front.height // 2))
+        return Image.blend(img, Image.new("RGB", size), dim)
     src = src.resize((round(src.width * scale), round(src.height * scale)), Image.LANCZOS)
     left, top = (src.width - w) // 2, (src.height - h) // 2
     img = src.crop((left, top, left + w, top + h))

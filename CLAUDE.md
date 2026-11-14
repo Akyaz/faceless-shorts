@@ -49,6 +49,9 @@ Metin ve görsel seçimi Gemini ile yapılır. Kanalın sahibi Akyaz. Yönetim p
   - Kaynak sırası: TMDB (`TMDB_API_KEY` varsa), haber kapakları (Gemini eler), Vikipedi afişi.
   - Yazılı haber kapağı, kolaj ve başka yapımın karesi kullanılmaz.
 - Haber sitelerinin ve ajansların fotoğrafları telifli; dizi ve film dışında kullanılmaz.
+- Kişi videosunda kişinin serbest lisanslı fotoğrafı yoksa kurumun resmi arşiv ya da basın fotoğrafı kullanılır
+  (kanal sahibinin kararı, 14 Kasım 2026): `scripts/evergreen/images.json`, kaynak açıklamaya yazılır.
+  Ajans fotoğrafı yine kullanılmaz; aile ve çocuk fotoğrafı (özel hayat) alınmaz.
 - Maç gibi tek bir güne ait olayda başka tarihten portre yetmez. O güne ait kendi grafiklerimiz (skor, gol dakikası,
   kadro kartı) tercih edilir.
 - Son ~10 günde kullanılan arama görseli tekrar seçilmez (`state/images.json`).

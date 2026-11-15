@@ -740,6 +740,8 @@ def digest_script(headlines, kind, count=14):
                       "subjects": [str(x).strip() for x in item.get("subjects") or [] if str(x).strip()][:2]}
             from . import scenes
             card = scenes.check({"type": "kart", "label": "", "lines": item.get("lines") or []}, text)
+            if not card:
+                print(f"Madde kartı kurulamadı (önerilen satırlar: {item.get('lines')}): {text}")
             items.append((headline, heading, text, {**fields, **({"scene": card} if card else {})}))
     if len(items) < 2:
         raise RuntimeError("Özette yeterli net madde kalmadı")

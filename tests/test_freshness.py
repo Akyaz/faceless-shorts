@@ -57,6 +57,8 @@ class WorkOnly(unittest.TestCase):
         self.assertEqual(ok["lines"], ["Öykü Karayel", "Fatih Artman"])
         self.assertIsNone(scenes.check({"type": "kart", "lines": ["Funda Eryiğit"]}, text))  # metinde yok
         self.assertIsNone(scenes.check({"type": "kart", "lines": ["15 Kasım"]}, text))
+        partly = scenes.check({"type": "kart", "lines": ["4 bölüm", "Funda Eryiğit"]}, text)
+        self.assertEqual(partly["lines"], ["4 bölüm"])  # yalnızca metinde geçmeyen satır atılır
 
     def test_card_draws(self):
         from PIL import ImageFont

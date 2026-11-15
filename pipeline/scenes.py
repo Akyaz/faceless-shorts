@@ -120,8 +120,14 @@ def check(scene, text):
     elif kind == "kart":
         # Kısa bilgi satırları (yayın tarihi, bölüm sayısı, başrol adları); her satır paragrafta aynen geçer.
         # Fotoğrafla kim olduğu belli olmayan kişi yerine adı yazıyla verilir (Bir Başkadır videosu, 15 Kasım 2026)
+        # Metinde geçmeyen satır atılır, kart kalanlarla çizilir (15 Kasım 2026: tek satır tutmayınca kart bütünüyle
+        # gidiyordu; sabah özetinde iki madde kartsız kalıp video düştü)
         lines = [clean(x) for x in (scene.get("lines") or [])[:4] if clean(x)]
-        if not lines or any(_fold(x) not in _fold(text) for x in lines):
+        dropped = [x for x in lines if _fold(x) not in _fold(text)]
+        if dropped:
+            print(f"Kart satırı metinde yok, atıldı: {dropped}")
+        lines = [x for x in lines if x not in dropped]
+        if not lines:
             return None
         out = {"type": kind, "label": clean(scene.get("label")), "lines": lines}
         labels = [out["label"]] + lines

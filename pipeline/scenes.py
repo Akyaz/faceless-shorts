@@ -82,6 +82,18 @@ def _fold(text):
     return text.replace("İ", "i").replace("I", "ı").lower()
 
 
+def _card_line_ok(line, text):
+    """Kart satırı paragrafın özeti olabilir; ama içindeki her sayı ve her özel ad metinde geçmeli (4. ilke: karttaki her
+    sayı metinde). Önce satırın aynen geçmesi isteniyordu; model "Değiştirmeyene 6 bin TL ceza" gibi özet yazınca
+    sabah özetinin kartları kurulamadı (15 Kasım 2026). Özel ad: ilk kelime dışında büyük harfle başlayan kelime, eki
+    atılmış hâli ("Trabzon'a" -> "trabzon"); metinde olmayan kişi adı kartta görünmez (Bir Başkadır videosu)."""
+    folded = _fold(text)
+    numbers = NUM.findall(line)
+    # Tümü büyük harf kısaltmalar (TL, KDV) birimdir, özel ad sayılmaz
+    names = [w.split("'")[0].split("’")[0] for w in line.split()[1:] if w[:1].isupper() and not w.isupper()]
+    return all(n in text for n in numbers) and all(_fold(re.sub(r"\W", "", n)) in folded for n in names if n)
+
+
 # ---------- sahne denetimi ----------
 def check(scene, text):
     """Modelin önerdiği sahne: kurallara uyuyorsa temizlenmiş hâli, uymuyorsa None."""
@@ -120,10 +132,10 @@ def check(scene, text):
     elif kind == "kart":
         # Kısa bilgi satırları (yayın tarihi, bölüm sayısı, başrol adları); her satır paragrafta aynen geçer.
         # Fotoğrafla kim olduğu belli olmayan kişi yerine adı yazıyla verilir (Bir Başkadır videosu, 15 Kasım 2026)
-        # Metinde geçmeyen satır atılır, kart kalanlarla çizilir (15 Kasım 2026: tek satır tutmayınca kart bütünüyle
+        # Kurala uymayan satır atılır, kart kalanlarla çizilir (15 Kasım 2026: tek satır tutmayınca kart bütünüyle
         # gidiyordu; sabah özetinde iki madde kartsız kalıp video düştü)
         lines = [clean(x) for x in (scene.get("lines") or [])[:4] if clean(x)]
-        dropped = [x for x in lines if _fold(x) not in _fold(text)]
+        dropped = [x for x in lines if not _card_line_ok(x, text)]
         if dropped:
             print(f"Kart satırı metinde yok, atıldı: {dropped}")
         lines = [x for x in lines if x not in dropped]
@@ -479,7 +491,7 @@ DRAW = {"sayac": _counter, "karsilastirma": _compare, "zaman": _timeline, "harit
 # paragrafın ikisi kart olunca filmin kareleri görünmedi); yeri olmayan haberde (burs, zam) video kartlarla yapılır
 # (VGM burs denemesinde üniversite kampüsü ve tapu binası çıktı, 15 Kasım 2026).
 NEWS_SCENE_LIMIT = 1
-NEWS_SCENES = """- scenes: her paragraf için kodla çizilen bir bilgi kartı. Satırlar ve sayılar o paragrafta yazıldığı gibi geçmeli;
+NEWS_SCENES = """- scenes: her paragraf için kodla çizilen bir bilgi kartı. Satır paragrafın kısa özeti; içindeki sayı ve adlar paragrafta yazıldığı gibi geçmeli;
   paragrafın en önemli bilgisini 1-3 kısa satırla ver (tarih, tutar, sonuç, sıra, ad). Görüntü bulunursa yalnızca biri
   kullanılır; bulunamazsa video bu kartlarla anlatılır. paragraph 1'den başlar.
   {"paragraph": 1, "type": "kart", "label": "VGM bursu", "lines": ["Ortaöğrenim 1.750 TL", "Yükseköğrenim 4.000 TL"]}
@@ -488,7 +500,7 @@ NEWS_SCENES = """- scenes: her paragraf için kodla çizilen bir bilgi kartı. S
 """
 # İngilizce haberin karşılığı (15 Kasım 2026): kart olmadan yeri olmayan İngilizce haber hiç video olamıyordu.
 # Yalnızca kart: sayaç Türkçe sayı biçimini okur ("1.750"), İngilizce "1,750" yanlış okunur.
-NEWS_SCENES_EN = """- scenes: one code-drawn info card per paragraph. Every line must appear in that paragraph exactly as written;
+NEWS_SCENES_EN = """- scenes: one code-drawn info card per paragraph. A line is a short summary of the paragraph; every number and name in it must appear in the paragraph as written;
   give the paragraph's key fact in 1-3 short lines (date, amount, result, rank, name). If real images are found only
   one card is used; if not, the video is told with these cards. paragraph starts at 1.
   {"paragraph": 1, "type": "kart", "label": "EU tariffs", "lines": ["Steel 25%", "From 1 January"]}

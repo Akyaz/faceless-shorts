@@ -59,6 +59,11 @@ class WorkOnly(unittest.TestCase):
         self.assertIsNone(scenes.check({"type": "kart", "lines": ["15 Kasım"]}, text))
         partly = scenes.check({"type": "kart", "lines": ["4 bölüm", "Funda Eryiğit"]}, text)
         self.assertEqual(partly["lines"], ["4 bölüm"])  # yalnızca metinde geçmeyen satır atılır
+        # Özet satır olabilir; sayısı ve özel adları metinde geçmeli
+        text2 = "Zorunlu kış lastiği uygulaması başladı. Lastik değiştirmeyen araçlara 6 bin lira ceza kesilecek."
+        card = scenes.check({"type": "kart", "lines": ["Kış lastiği başladı", "Değiştirmeyene 6 bin TL ceza",
+                                                        "5 bin TL ceza", "Ceza Bakan Yılmaz'dan"]}, text2)
+        self.assertEqual(card["lines"], ["Kış lastiği başladı", "Değiştirmeyene 6 bin TL ceza"])
 
     def test_card_draws(self):
         from PIL import ImageFont

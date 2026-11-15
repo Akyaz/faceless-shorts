@@ -492,7 +492,7 @@ Alanlar:
     başlıklarda bulunmayan haberleri seçme.
   - subjects: maddedeki olayda yer alan en fazla 2 kişinin tam adı (Vikipedi'deki gibi); kurum, yer ve yapım değil,
     olayda bulunmayan ya da yalnızca adı geçen kişi değil. Yoksa boş liste. Fotoğrafları videoda gösterilir.
-  - lines: maddenin en önemli bilgisi 1-3 kısa satırla, metinde yazıldığı gibi (tarih, tutar, il adları, sonuç);
+  - lines: maddenin en önemli bilgisi 1-3 kısa satırla; sayı ve adlar metinde yazıldığı gibi (tarih, tutar, il adları);
     maddenin kendi görüntüsü yoksa bilgi kartı olarak gösterilir (örnek: ["Artvin, Giresun, Ordu", "Sarı kod"]).
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
 - outro: tek kısa kapanış cümlesi, soru değil: maddelerden birinin sıradaki somut adımı (ne zaman, nerede)

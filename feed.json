@@ -4624,15 +4624,6 @@
   "videos": []
  },
  {
-  "time": "2026-11-15T11:57:12Z",
-  "run": "43710849304",
-  "event": "workflow_dispatch",
-  "mode": "morning",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43710849304",
-  "videos": []
- },
- {
   "time": "2026-11-15T13:42:40Z",
   "run": "43711649039",
   "event": "workflow_dispatch",
@@ -4644,6 +4635,21 @@
     "title": "Ehliyet Yenileme Uyarısı ve Kış Lastiği Cezası Başladı",
     "url": "https://youtu.be/WAeIbvRmOcA",
     "instagram": "https://www.instagram.com/reel/Dfw6taJAK5z/"
+   }
+  ]
+ },
+ {
+  "time": "2026-11-15T13:52:30Z",
+  "run": "43710849304",
+  "event": "workflow_dispatch",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43710849304",
+  "videos": [
+   {
+    "title": "Ehliyet Yenileme Uyarısı ve Antalya-Alanya Otoyolu Müjdesi",
+    "url": null,
+    "instagram": null
    }
   ]
  }

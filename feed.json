@@ -4637,15 +4637,6 @@
   ]
  },
  {
-  "time": "2026-11-15T07:36:23Z",
-  "run": "43682558611",
-  "event": "workflow_dispatch",
-  "mode": "morning",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682558611",
-  "videos": []
- },
- {
   "time": "2026-11-15T07:39:16Z",
   "run": "43650688476",
   "event": "workflow_dispatch",
@@ -4659,5 +4650,14 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-15T07:39:47Z",
+  "run": "43682558611",
+  "event": "workflow_dispatch",
+  "mode": "morning",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682558611",
+  "videos": []
  }
 ]

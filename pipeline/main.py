@@ -227,8 +227,10 @@ def find_images(plan, work):
         backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
                        if mine else None for i in range(len(segments))]
         return backgrounds, [c for _, c in own + rest]
-    if plan.get("mode") and not ((plan.get("place") or {}).get("city") or "").strip():
-        # Yeri olmayan haber (burs, zam, sınav): bina araması alakasız görsel getiriyordu; video kartlarla anlatılır
+    single = all(s.get("kind", "story") == "story" for s in segments)  # özetlerde yer her maddenin kendisinde
+    if plan.get("mode") and single and not ((plan.get("place") or {}).get("city") or "").strip():
+        # Yeri olmayan haber (burs, zam, sınav): bina araması alakasız görsel getiriyordu; video kartlarla anlatılır.
+        # Yalnızca tek konulu haber: sabah özeti bu kural yüzünden hiç görsel aramadı (15 Kasım 2026 denemesi)
         return [None] * len(segments), []
     if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
         # Tek haber: görseller paragraflar arasında sırayla döner

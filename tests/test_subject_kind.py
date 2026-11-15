@@ -128,6 +128,19 @@ class SettleScenes(unittest.TestCase):
             backgrounds, credits = main.find_images(plan, pathlib.Path(tempfile.mkdtemp()))
         self.assertEqual((backgrounds, credits), ([None] * 3, []))
 
+    def test_digest_items_still_searched(self):
+        # Özette yer her maddenin kendisinde; tek konulu haberin "yer yoksa kart" kuralı uygulanmaz
+        segs = [{"kind": "intro"}, {"kind": "item", "text": "Sağanak bekleniyor.", "headline": {"title": "t"}, "image_queries": ["rain"]}, {"kind": "outro"}]
+        plan = {"mode": "morning", "segments": segs, "place": {"country": "", "city": ""}}
+        called = []
+        with mock.patch.object(main, "_section_images", side_effect=AssertionError("bölüm yok")), \
+                mock.patch.object(main.images, "find_backgrounds", side_effect=lambda *a, **k: called.append(1) or []):
+            try:
+                main.find_images(plan, pathlib.Path(tempfile.mkdtemp()))
+            except Exception:
+                pass
+        self.assertTrue(called)
+
 
 class RejectedText(unittest.TestCase):
     def test_next_story_tried(self):

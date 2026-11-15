@@ -153,6 +153,22 @@ def _subject_support(plan, work, count):
     return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
 
 
+def _item_images(seg, plan, out_dir):
+    """Özet maddesinin görseli, tek konulu haberle aynı karar (subject_kind): olayda yer alan kişinin fotoğrafı; yoksa
+    olayın şehrinin fotoğrafı; o da yoksa görsel yok, madde bilgi kartıyla anlatılır. Ülke düzeyinde genel arama yok:
+    sabah özetinde Karadeniz'deki yağış uyarısına güneşli Boğaz, Çin'deki zirveye 2023'teki başka bir zirvenin
+    salonu geldi (15 Kasım 2026). Burç kartı gibi elle verilen görsel olduğu gibi kullanılır."""
+    item = {"title": seg.get("heading") or seg["text"], "sources": [seg.get("headline") or plan["sources"][0]],
+            **{k: seg.get(k) for k in ("image_queries", "object_query", "place", "image_files")}}
+    if seg.get("image_files"):
+        return images.find_backgrounds(item, out_dir, 1, per_query=2)
+    for name in seg.get("subjects") or []:
+        own = images.subject_file(name)
+        if own:
+            return images.find_backgrounds({**item, "image_files": [own], "fill_with_search": False}, out_dir, 1)
+    return _place_photos(item, out_dir, 1)
+
+
 def _place_photos(plan, work, count):
     """Kişi haberinde olayın geçtiği şehrin fotoğrafları: yalnızca şehir adını içeren aramalar ("Selimiye Edirne").
     Ülke düzeyinde genel arama ("football stadium Italy") yok. Turnbull'un Edirne ziyaretinde videoda Edirne hiç
@@ -174,6 +190,9 @@ def settle_scenes(plan, backgrounds):
     if plan.get("match"):
         return
     segments = plan["segments"]
+    if plan.get("mode") and any(s.get("kind") == "item" for s in segments):
+        _settle_digest(plan, backgrounds)
+        return
     real = len({b for b in backgrounds if b})
     news = bool(plan.get("mode"))  # bilgi serisi ve elle yazılan metin kendi sahne kararını verir
     if real >= MIN_IMAGES:
@@ -190,6 +209,34 @@ def settle_scenes(plan, backgrounds):
         return
     raise RuntimeError(f"Yalnızca {real} görsel bulundu (en az {MIN_IMAGES}) ve kartlar her paragrafı karşılamıyor; "
                        "video üretilmiyor, bu saat atlanıyor.")
+
+
+def _settle_digest(plan, backgrounds):
+    """Özet: kendi görüntüsü olan madde fotoğrafla, olmayan bilgi kartıyla anlatılır; ikisi de yoksa madde çıkar.
+    İkiden az madde kalırsa video üretilmez. Listeler yerinde değişir (main'deki segments ve backgrounds)."""
+    segments = plan["segments"]
+    kept = []
+    for seg, bg in zip(segments, backgrounds):
+        if seg.get("kind") == "item":
+            if bg:
+                seg.pop("scene", None)  # fotoğrafın üstünde başlık zaten yazıyor
+            elif not seg.get("scene"):
+                print(f"Görüntüsü ve kartı olmayan madde çıkarıldı: {seg['text']}")
+                continue
+        kept.append((seg, bg))
+    items = [s for s, _ in kept if s.get("kind") == "item"]
+    total, before = len(items), sum(1 for s in segments if s.get("kind") == "item")
+    if total < 2:
+        raise RuntimeError("Özette görüntüsü ya da kartı olan yeterli madde kalmadı; bu saat atlanıyor.")
+    for i, seg in enumerate(items, 1):
+        seg["label"] = re.sub(r"\d+/\d+$", f"{i}/{total}", seg.get("label", ""))
+    for seg, _ in kept:
+        if seg.get("kind") == "intro":
+            seg["text"] = review.recount(seg["text"], before, total)
+    plan["title"] = review.recount(plan["title"], before, total)
+    plan["sources"] = [s["headline"] for s in items if s.get("headline")] or plan["sources"]
+    segments[:] = [s for s, _ in kept]
+    backgrounds[:] = [b for _, b in kept]
 
 
 def subject_kind(plan):
@@ -240,11 +287,9 @@ def find_images(plan, work):
 
     per_segment, credits = [None] * len(segments), []
     for i, seg in enumerate(segments):  # toplu özet: her haberin kendi görseli (burçta her burcun kartı)
-        if not seg.get("image_queries") and not seg.get("image_files"):
+        if seg.get("kind") != "item":
             continue
-        item = {"title": seg.get("heading") or seg["text"], "sources": [seg.get("headline") or plan["sources"][0]],
-                **{k: seg.get(k) for k in ("image_queries", "object_query", "place", "image_files")}}
-        found = images.find_backgrounds(item, work / f"item{i}", 1, per_query=2)
+        found = _item_images(seg, plan, work / f"item{i}")
         if found:
             per_segment[i], credit = found[0]
             credits.append(credit)

@@ -128,18 +128,36 @@ class SettleScenes(unittest.TestCase):
             backgrounds, credits = main.find_images(plan, pathlib.Path(tempfile.mkdtemp()))
         self.assertEqual((backgrounds, credits), ([None] * 3, []))
 
-    def test_digest_items_still_searched(self):
-        # Özette yer her maddenin kendisinde; tek konulu haberin "yer yoksa kart" kuralı uygulanmaz
-        segs = [{"kind": "intro"}, {"kind": "item", "text": "Sağanak bekleniyor.", "headline": {"title": "t"}, "image_queries": ["rain"]}, {"kind": "outro"}]
-        plan = {"mode": "morning", "segments": segs, "place": {"country": "", "city": ""}}
-        called = []
-        with mock.patch.object(main, "_section_images", side_effect=AssertionError("bölüm yok")), \
-                mock.patch.object(main.images, "find_backgrounds", side_effect=lambda *a, **k: called.append(1) or []):
-            try:
-                main.find_images(plan, pathlib.Path(tempfile.mkdtemp()))
-            except Exception:
-                pass
-        self.assertTrue(called)
+    def test_digest_item_person_photo(self):
+        seg = {"kind": "item", "text": "Trump, Putin ve Şi buluşuyor.", "headline": {"title": "t"},
+               "subjects": ["Donald Trump"], "image_queries": ["summit hall"], "place": {"country": "China", "city": ""}}
+        seen = []
+        with mock.patch.object(main.images, "subject_file", return_value="File:Trump.jpg"), \
+                mock.patch.object(main.images, "find_backgrounds",
+                                  side_effect=lambda item, *a, **k: seen.append(item["image_files"]) or [("p", "c")]):
+            main._item_images(seg, {"sources": [{}]}, pathlib.Path(tempfile.mkdtemp()))
+        self.assertEqual(seen, [["File:Trump.jpg"]])
+
+    def test_digest_item_without_person_or_city_not_searched(self):
+        seg = {"kind": "item", "text": "Karadeniz'de sarı kod.", "headline": {"title": "t"}, "subjects": [],
+               "image_queries": ["rain"], "place": {"country": "Turkey", "city": ""}}
+        with mock.patch.object(main.images, "find_backgrounds", side_effect=AssertionError("genel arama")):
+            self.assertEqual(main._item_images(seg, {"sources": [{}]}, pathlib.Path(tempfile.mkdtemp())), [])
+
+    def test_digest_settle(self):
+        card = {"type": "kart", "label": "", "lines": ["Sarı kod"]}
+        segs = [{"kind": "intro", "text": "Bugün seni etkileyecek 3 şey."},
+                {"kind": "item", "label": "SABAH ÖZETİ 1/3", "text": "a", "headline": {"title": "a"}, "scene": card},
+                {"kind": "item", "label": "SABAH ÖZETİ 2/3", "text": "b", "headline": {"title": "b"}},
+                {"kind": "item", "label": "SABAH ÖZETİ 3/3", "text": "c", "headline": {"title": "c"}, "scene": card}]
+        plan = {"mode": "morning", "title": "Özet", "segments": segs, "sources": []}
+        backgrounds = ["p0", None, None, "p3"]
+        main.settle_scenes(plan, backgrounds)
+        self.assertEqual([s["text"] for s in segs], ["Bugün seni etkileyecek 2 şey.", "a", "c"])
+        self.assertEqual(backgrounds, ["p0", None, "p3"])
+        self.assertIn("scene", segs[1])          # görüntüsüz madde kartla
+        self.assertNotIn("scene", segs[2])       # fotoğraflı maddede kart yok
+        self.assertEqual(segs[2]["label"], "SABAH ÖZETİ 2/2")
 
 
 class RejectedText(unittest.TestCase):

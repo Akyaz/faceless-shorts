@@ -194,8 +194,8 @@ def spread(backgrounds, segments):
     """Fotoğraflar önce sahnesiz paragraflara sırayla dağılır (aynı fotoğraf daha az tekrar eder). Sahneli paragrafa
     arka plan olarak henüz gösterilmemiş bir fotoğraf, yoksa komşu paragrafınki düşer."""
     photos = list(dict.fromkeys(b for b in backgrounds if b))
-    if not photos or not any(s.get("scene") for s in segments):
-        return backgrounds
+    if not photos or not any(s.get("scene") for s in segments) or any(s.get("kind") == "item" for s in segments):
+        return backgrounds  # özette her madde ayrı konu: başka maddenin fotoğrafı karta zemin olmaz
     out, k = [], 0
     for seg in segments:
         out.append(None if seg.get("scene") else photos[k % len(photos)])
@@ -264,12 +264,14 @@ def _said(words, token):
 
 
 def _backdrop(photo):
-    """Sahnenin zemini: fotoğraf varsa bulanık ve koyu hâli, yoksa koyu lacivert degrade."""
+    """Sahnenin zemini: fotoğraf varsa hafif bulanık ve koyu hâli, yoksa koyu lacivert degrade.
+    Kartın arkasında konunun kendisi tanınmalı (kanal sahibinin isteği, 15 Kasım 2026); önce 1/6 boyuta indirilip
+    %60 karartılıyordu, fotoğraf seçilmiyordu."""
     if photo:
         try:
             img = render._photo(photo, dim=0)
-            img = img.resize((W // 6, H // 6)).filter(ImageFilter.GaussianBlur(6)).resize((W, H), Image.BILINEAR)
-            return Image.blend(img, Image.new("RGB", (W, H), BG1), 0.6), False
+            img = img.resize((W // 3, H // 3)).filter(ImageFilter.GaussianBlur(2)).resize((W, H), Image.BILINEAR)
+            return Image.blend(img, Image.new("RGB", (W, H), BG1), 0.45), False
         except Exception as exc:  # bozuk dosya: degradeyle devam
             print(f"Sahne zemini için fotoğraf açılamadı: {exc}")
     img = Image.new("RGB", (W, H))

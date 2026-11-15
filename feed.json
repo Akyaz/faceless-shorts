@@ -4552,21 +4552,6 @@
   ]
  },
  {
-  "time": "2026-11-14T23:03:30Z",
-  "run": "43650688476",
-  "event": "workflow_dispatch",
-  "mode": "sportstory",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43650688476",
-  "videos": [
-   {
-    "title": "Galatasaray MCT Technic, Körfez Basket'e son saniyede mağlup oldu",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-14T23:08:55Z",
   "run": "43650807093",
   "event": "workflow_dispatch",
@@ -4659,5 +4644,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682558611",
   "videos": []
+ },
+ {
+  "time": "2026-11-15T07:39:16Z",
+  "run": "43650688476",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43690883536",
+  "videos": [
+   {
+    "title": "Galatasaray MCT Technic, Körfez Basket'e son saniyede mağlup oldu",
+    "url": "https://youtu.be/RiMeWzE_Z-U",
+    "instagram": null
+   }
+  ]
  }
 ]

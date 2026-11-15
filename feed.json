@@ -4607,21 +4607,6 @@
   ]
  },
  {
-  "time": "2026-11-15T05:50:30Z",
-  "run": "43682553606",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682553606",
-  "videos": [
-   {
-    "title": "Avrasya Tüneli: Deniz Altındaki Rekor Mühendislik",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-11-15T06:06:04Z",
   "run": "43682558611",
   "event": "workflow_dispatch",
@@ -4656,6 +4641,21 @@
    {
     "title": "Buran: The Soviet Space Shuttle That Flew Only Once in 1988",
     "url": "https://youtu.be/PvPMReUfwos",
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-15T07:33:31Z",
+  "run": "43682553606",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43690463833",
+  "videos": [
+   {
+    "title": "Avrasya Tüneli: Deniz Altındaki Rekor Mühendislik",
+    "url": "https://youtu.be/8MfmYXMwZnQ",
     "instagram": null
    }
   ]

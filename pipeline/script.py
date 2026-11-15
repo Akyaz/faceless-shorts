@@ -36,8 +36,10 @@ def vague(text):
 # "Ocak ayında alacağın yeni maaşını şimdiden merak ediyor musun?" 11 izlenme)
 RHETORICAL = re.compile(r"\b(biliyor musun|hiç düşündün mü|merak ediyor musun|fark ettin mi|şaşıracaksın|"
                         r"did you know|ever wondered|you won't believe)\b", re.I)
+# "Sence en önemlisi hangisiydi?" da genel soru: özetler ve haftalık derleme böyle bitiyordu (15 Kasım 2026)
 GENERIC_QUESTION = re.compile(r"ne anlama geliyor|ne düşünüyorsun|ne diyorsun|nasıl değerlendiriyorsun|"
-                              r"what do you think|what does this mean", re.I)
+                              r"\ben (çok|önemli|büyük)\b[^.?!]*\bhangisi|\bhangisi seni|"
+                              r"what do you think|what does this mean|which (one|of these)", re.I)
 
 
 def weak_ending(paragraphs):
@@ -177,15 +179,9 @@ ACCURACY = """KESİN kurallar (başlık, ekran yazısı ve metin için aynen ge�
   "ekipler sevk edildi", "trafik etkilendi" gibi ayrıntılar ekleme.
 """
 
-# İzleyiciye sorulan soru: yalnızca gerçekten bir tercih ya da insiyatif içeren konularda görüş sorulur.
-# Olayın doğal ve zorunlu sonucunu sorgulatmak tepki çeker (kanal sahibinin örneği: büyük sel felaketinden sonra
-# okulların tatil edilmesi "kadar normal bir şey yok").
-# Soru kuralı kapanış kuralıyla aynı ilkeye bağlandı (15 Kasım 2026): önce "Sence zam yeterli mi?", "Senin bölgende
-# durum nasıl?" gibi genel sorular öneriyordu; CLOSING_RULE ve kanalın paylaşım hedefi bunları yasaklıyor.
-QUESTION_RULE = """Soru: Soru zorunlu değil; son cümle somut bir bilgi olabilir. Soru yalnızca haberde gerçek ve adı
-   konmuş iki seçenek varsa sorulur ve iki seçeneği adıyla anar (örnek: "Montella mı, yerli hoca mı?"). Genel görüş
-   sorusu ("Sence yeterli mi?", "Senin bölgende durum nasıl?") ve yorum çağrısı yok. Olayın doğal ve zorunlu
-   sonucunu sorgulatma; can kaybı olan olaylarda soru sorma."""
+# Soru kuralı kapanış kuralına katıldı (15 Kasım 2026): ayrı QUESTION_RULE özetlere "Sence en önemlisi hangisi?"
+# gibi genel sorular yazdırıyordu. Olayın doğal ve zorunlu sonucunu sorgulatmak da tepki çeker (kanal sahibinin
+# örneği: büyük sel felaketinden sonra okulların tatil edilmesi "kadar normal bir şey yok").
 # Tek konulu videolar soruyla bitmek zorunda değil. Kanalın 286 videosunda (12 Kasım ölçümü) soruyla bitenler
 # sorusuzlardan fazla yorum almadı (1.000 izlenmede 1,9'a 2,2); genel "Sence ne anlama geliyor?" soruları en
 # zayıflardı. Yorum gelen tek soru türü, adı konmuş iki seçenekti ("Montella mı, yerli hoca mı?").
@@ -202,11 +198,6 @@ CLOSING_RULE_EN = """Ending: the last sentence is a concrete fact that sticks: w
    and name both (example: "Montella or a Turkish coach?"). Generic questions ("What does this mean for you?",
    "What do you think?") are banned. Never question the natural consequence of an event, and never ask anything
    about events with loss of life."""
-QUESTION_RULE_EN = """Question: a question is not required; the last sentence can be a concrete fact. Ask only when
-   there is a real choice between two named options, and name both. No generic opinion questions ("Is it enough?",
-   "How is it where you live?") and no call to comment. Never question the natural consequence of an event, and
-   never ask anything about events with loss of life."""
-
 # Görsel alanları. Yer adı aramaya kodda eklenir: böylece insan, sokak ve bina fotoğrafları yalnızca haberin
 # geçtiği ülkeden ya da şehirden aranır.
 IMAGE_FIELDS = """- country: haberin geçtiği ülkenin İngilizce adı (örnek: "Turkey", "France"). Haber belirli bir ülkede
@@ -227,7 +218,7 @@ IMAGE_FIELDS_EN = """- country: English name of the country where the story take
 - object_query: one English search for a close-up of the object the story is about, with no people and no
   location in the frame (example: "oil barrel", "banknotes", "satellite dish"); empty if there is none."""
 
-from .scenes import NEWS_SCENES  # noqa: E402  (sahneler render'a bağlı; script'e bağlı değil)
+from .scenes import NEWS_SCENES, NEWS_SCENES_EN  # noqa: E402  (sahneler render'a bağlı; script'e bağlı değil)
 
 # Dizi ve film haberlerinde yapımın resmi görselleri aranır (kanal sahibinin kararı: resmi afiş ve sahne görselleri)
 WORK = """Yapım alanı: haber bir dizi ya da film hakkındaysa JSON'a "work" alanını ekle: {"title": yapımın özgün adı
@@ -412,7 +403,7 @@ Other fields:
   name as on Wikipedia), then the work, club, organisation or place. Their own photos are shown in the video.
   Only those who take part in the event (the scorer, the decision maker); never someone who is absent, injured or
   only mentioned. Empty list if there are none.
-Return only JSON:
+""" + NEWS_SCENES_EN + """Return only JSON:
 {"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "subjects": []}
 """
 
@@ -500,8 +491,9 @@ Alanlar:
     Ne olduğunu söylemeyen ("sürpriz karar", "flaş gelişme", "herkes bunu konuşuyor") ve cevabı verilen
     başlıklarda bulunmayan haberleri seçme.
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
-- outro: izleyiciye yorum yaptıracak kısa bir soru (örnek: "{outro_example}").
-  """ + QUESTION_RULE.replace("{", "{{").replace("}", "}}") + """
+- outro: tek kısa kapanış cümlesi, soru değil: maddelerden birinin sıradaki somut adımı (ne zaman, nerede)
+  (örnek: "{outro_example}"). Yalnızca maddelerdeki bilgiyi kullan; uygun bilgi yoksa boş bırak. Genel soru
+  ("Sence en önemlisi hangisi?") ve yorum çağrısı yok: kanalın amacı paylaşım.
 - title: YouTube başlığı, en fazla 70 karakter; en dikkat çekici iki haberi ansın.
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz.
 """ + PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """
@@ -518,9 +510,8 @@ DIGESTS = {
         "selection": "Türkiye'de bugün en çok konuşulan ve izleyicinin hayatına dokunan haberler; konular çeşitli olsun.",
         "avoid": "seçim ve parti çekişmesi; magazin.",
         "intro_example": "Bugünün beş haberi, bir dakikada.",
-        "outro_example": "Sence bugünün en önemli haberi hangisiydi?",
+        "outro_example": "Yeni akaryakıt fiyatları gece yarısı geçerli.",
         "fallback_title": "Günün Öne Çıkan Haberleri", "fallback_intro": "Bugün Türkiye'de öne çıkan haberler.",
-        "fallback_outro": "Sence günün en önemli haberi hangisiydi?",
         "fallback_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"],
     },
     # Sabah özeti: YouTube'un günlük yükleme sınırı yüzünden üç ayrı sabah videosunun yerini tek video aldı
@@ -532,9 +523,8 @@ DIGESTS = {
                      "kararlar, zam ve ödemeler, hava ve yol durumu, resmi uyarılar; konular çeşitli olsun.",
         "avoid": "seçim ve parti çekişmesi; magazin.",
         "intro_example": "Bugün seni etkileyecek 3 şey.",
-        "outro_example": "Bugün seni en çok hangisi etkileyecek?",
+        "outro_example": "Yağmur akşam saatlerinde duruyor.",
         "fallback_title": "Sabah Haber Özeti", "fallback_intro": "Güne başlarken öne çıkan haberler.",
-        "fallback_outro": "Bugün seni en çok hangisi etkileyecek?",
         "fallback_queries": ["Istanbul skyline", "Ankara city", "Bosphorus bridge", "Izmir city"],
     },
     "sports": {
@@ -544,9 +534,8 @@ DIGESTS = {
                      "açıklamalar; farklı takım ve branşlardan seç.",
         "avoid": "canlı anlatım, muhtemel on bir ve bahis içerikleri; yalnızca bir yorumcunun görüşünü aktaran haberler.",
         "intro_example": "Spor gündeminde bugün dört başlık var.",
-        "outro_example": "Sence haftanın sürprizi hangisi?",
+        "outro_example": "Derbi pazar akşamı 20.00'de oynanacak.",
         "fallback_title": "Spor Gündemi", "fallback_intro": "Spor gündeminde bugün öne çıkanlar.",
-        "fallback_outro": "Sence günün spor haberi hangisiydi?",
         "fallback_queries": ["football stadium", "football pitch", "soccer ball"],
     },
     # Bilim ve teknoloji akışı haber başına tek başlık verir; tek haberlik uzun anlatım için malzeme yetmez
@@ -562,9 +551,8 @@ DIGESTS = {
                  "dizi ve ünlüler; ürün tanıtımı, indirim ve fiyat haberleri; sızıntı ve söylentiler; savaş ve silah "
                  "haberleri; siyaset; dinî yorum içeren haberler.",
         "intro_example": "Bugün bilim dünyasından dört şaşırtıcı gelişme.",
-        "outro_example": "Hangisi seni en çok şaşırttı?",
+        "outro_example": "Teleskobun ilk görüntüleri haziranda geliyor.",
         "fallback_title": "Bilim ve Teknolojide Bugün", "fallback_intro": "Bilim ve teknolojide bugün öne çıkanlar.",
-        "fallback_outro": "Hangisi seni en çok şaşırttı?",
         "fallback_queries": ["space telescope", "laboratory microscope", "circuit board"],
     },
 }
@@ -631,19 +619,44 @@ class NoSuitableStory(Exception):
     """Model bu türe uygun haber bulamadı (ör. tartışılacak gerçek bir tercih yok)."""
 
 
-def text_problems(out, published="", today=None):
-    """Metnin bütün kural denetimi tek yerde (15 Kasım 2026; önce üç ayrı yeniden yazma döngüsü vardı).
-    (kesin, üslup) döner. Kesin: cevabı vermeyen cümle, eski haberde göreli gün, yorum çağrısı. Üslup: ilk cümle,
-    kapanış ve uzunluk (style_problems). Türkçe ve İngilizce aynı denetimden geçer."""
-    paragraphs = out.get("paragraphs") or []
-    texts = paragraphs + [out.get("title", ""), out.get("hook_title", "")]
+def sentence_problems(texts, published="", today=None):
+    """Tek tek cümlelerdeki kesin sorunlar: cevabı vermeyen cümle, eski haberde göreli gün, yorum çağrısı.
+    Bütün türler (hikâye, özet maddesi, bilgi, On This Day, burç) aynı denetimi kullanır (15 Kasım 2026)."""
+    texts = [t for t in texts if t]
     hard = [f"vague: {t}" for t in texts if vague(t)]
     hard += [f"relative day in an old story: {t}" for t in stale_relative(texts, published, today)]
-    hard += [f"comment call: {p}" for p in paragraphs if COMMENT_CALL.search(p)]
+    return hard + [f"comment call: {t}" for t in texts if COMMENT_CALL.search(t)]
+
+
+def text_problems(out, published="", today=None):
+    """Metnin bütün kural denetimi tek yerde (15 Kasım 2026; önce üç ayrı yeniden yazma döngüsü vardı).
+    (kesin, üslup) döner. Kesin: sentence_problems ve kısa metin. Üslup: ilk cümle ve kapanış (style_problems).
+    Türkçe ve İngilizce aynı denetimden geçer."""
+    paragraphs = out.get("paragraphs") or []
+    hard = sentence_problems(paragraphs + [out.get("title", ""), out.get("hook_title", "")], published, today)
     # Kısa metin zayıf video: gece haberlerin yalnızca başlığı varken 16-38 kelimelik metinler çıktı (15 Kasım 2026)
     style = style_problems(paragraphs)
     hard += [x for x in style if x.startswith("metin çok kısa")]
     return hard, [x for x in style if not x.startswith("metin çok kısa")]
+
+
+def rewritten(prompt, out, problems_of, english=False, headline_of=lambda o: None):
+    """Bütün türlerin tek yeniden yazımı (15 Kasım 2026; eskimeyen bilgi ve On This Day kendi döngülerini taşıyordu).
+    Kesin sorun kalırsa TextRejected (video çıkmaz); üslup sorunu kalırsa daha az sorunlu metin kullanılır."""
+    hard, soft = problems_of(out)
+    if not (hard or soft):
+        return out
+    print(f"Kural dışı metin, yeniden yazdırılıyor: {hard + soft}")
+    note = "\nRewrite the script and return the whole JSON. Problems: " if english else \
+        "\nMetni yeniden yaz ve bütün JSON'u döndür. Sorunlar: "
+    retry = json.loads(_generate(prompt + note + " | ".join(hard + soft), os.environ["GEMINI_API_KEY"]))
+    if retry.get("paragraphs") and not retry.get("skip"):
+        r_hard, r_soft = problems_of(retry)
+        if (len(r_hard), len(r_soft)) < (len(hard), len(soft)):
+            out, hard = retry, r_hard
+    if hard:
+        raise TextRejected(f"Metin kurala uymadı: {hard}", headline_of(out))
+    return out
 
 
 def story_script(headlines, kind="story", count=10, recent=()):
@@ -668,20 +681,9 @@ def story_script(headlines, kind="story", count=10, recent=()):
     out = json.loads(_generate(prompt, key))
     if out.get("skip") or not out.get("paragraphs"):
         raise NoSuitableStory(f"{kind}: uygun haber yok")
+    out = rewritten(prompt, out, lambda o: text_problems(o, _pick(headlines, o.get("pick", 1)).get("published"),
+                                                         today), english, lambda o: _pick(headlines, o.get("pick", 1)))
     headline = _pick(headlines, out.get("pick", 1))
-    hard, soft = text_problems(out, headline.get("published"), today)
-    if hard or soft:
-        # Tek yeniden yazım; kesin sorun kalırsa video çıkmaz, üslup sorunu kalırsa daha az sorunlu metin kullanılır
-        print(f"Kural dışı metin, yeniden yazdırılıyor: {hard + soft}")
-        note = "\nRewrite the script. Problems: " if english else "\nMetni yeniden yaz. Sorunlar: "
-        retry = json.loads(_generate(prompt + note + " | ".join(hard + soft), key))
-        if retry.get("paragraphs") and not retry.get("skip"):
-            again = _pick(headlines, retry.get("pick", 1))
-            r_hard, r_soft = text_problems(retry, again.get("published"), today)
-            if (len(r_hard), len(r_soft)) < (len(hard), len(soft)):
-                out, headline, hard = retry, again, r_hard
-        if hard:
-            raise TextRejected(f"Metin kurala uymadı: {hard}", headline)
     segments = [{"kind": "story", "source": source_label(headline), "text": p} for p in out["paragraphs"]]
     if "scenes" in out:  # bilgi kartı adayları; hangilerinin kullanılacağına main.settle_scenes karar verir
         from . import scenes
@@ -705,7 +707,8 @@ def _digest_plan(kind, title, intro, items, outro, hashtags=()):
         segments.append({"kind": "item", "label": f"{spec['label']} {i}/{len(items)}", "heading": heading,
                          "source": source_label(headline), "text": _sentence(text),
                          "headline": headline, **queries})
-    segments.append({"kind": "outro", "text": outro})
+    if outro:
+        segments.append({"kind": "outro", "text": _sentence(outro)})
     return {"title": title, "hook_title": "", "label": spec["label"], "segments": segments,
             "sources": [h for h, *_ in items], "mood": spec["mood"],
             "hashtags": _tags(hashtags) + spec["hashtags"]}
@@ -719,8 +722,9 @@ def digest_script(headlines, kind, count=14):
     items, seen = [], set()
     for item in out["items"]:
         headline = _pick(headlines, item.get("pick", 1))
-        if vague(item.get("text")):
-            print(f"Cevabı vermeyen madde çıkarıldı: {item.get('text')}")
+        problems = sentence_problems([item.get("text"), item.get("heading")], headline.get("published"))
+        if problems:
+            print(f"Kural dışı madde çıkarıldı: {problems}")
             continue
         if headline["title"] not in seen:
             seen.add(headline["title"])
@@ -730,7 +734,14 @@ def digest_script(headlines, kind, count=14):
             items.append((headline, heading, text, _image_fields(item)))
     if len(items) < 2:
         raise RuntimeError("Özette yeterli net madde kalmadı")
-    plan = _digest_plan(kind, out["title"], out["intro"], items[:spec["count"]], out["outro"], out.get("hashtags"))
+    intro, outro = str(out.get("intro") or "").strip(), str(out.get("outro") or "").strip()
+    if not intro or sentence_problems([intro]) or weak_ending([intro]):
+        intro = spec["fallback_intro"]
+    if outro and (sentence_problems([outro]) or weak_ending([outro]) or outro.endswith("?")):
+        # Özette iki seçenekli gerçek bir tercih yok; soru ya da çağrı yerine son maddeyle biter (kapanış ilkesi)
+        print(f"Kapanış çıkarıldı: {outro}")
+        outro = ""
+    plan = _digest_plan(kind, out["title"], intro, items[:spec["count"]], outro, out.get("hashtags"))
     return {**plan, "pronounce": _pronounce(out)}
 
 
@@ -740,7 +751,7 @@ def plain_digest(headlines, kind="digest", count=3):
     queries = spec["fallback_queries"]
     items = [(h, "", h["title"], {"image_queries": [queries[i % len(queries)]]})
              for i, h in enumerate(headlines[:count])]
-    return _digest_plan(kind, spec["fallback_title"], spec["fallback_intro"], items, spec["fallback_outro"])
+    return _digest_plan(kind, spec["fallback_title"], spec["fallback_intro"], items, "")
 
 
 def custom_plan(item):

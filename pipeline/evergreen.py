@@ -240,21 +240,11 @@ def plan(state_path=STATE):
         # Konunun kendi fotoğrafı yok (Sakıp Sabancı'nın serbest lisanslı portresi yok; videoda müze bahçesindeki at
         # heykeli çıktı, 14 Kasım 2026): boşluğu ilgisiz fotoğraf yerine animasyonlu sahneler doldursun
         rules += f"\nBu konunun kendi fotoğrafı yok: scenes için en fazla {scenes.MAX_SCENES + 1} paragraf kullanabilirsin.\n"
-    out = json.loads(script._generate(rules + "\n" + text, os.environ["GEMINI_API_KEY"]))
-    unclear = [p for p in out["paragraphs"] if script.vague(p)]
-    for _ in range(2):
-        if not unclear:
-            break
-        # Belirsiz cümle yeniden yazdırılır: izleyici neyin söz konusu olduğunu videoda duymalı. Tek deneme
-        # yetmedi: Sakıp Sabancı'da üniversitenin adı geldi, camininki gelmedi (14 Kasım 2026)
-        print(f"Belirsiz cümle, yeniden yazdırılıyor: {unclear}")
-        note = ("\nÖnceki yanıtında şu paragraflar neyin söz konusu olduğunu söylemiyordu: " + " | ".join(unclear)
-                + "\nKurulan, yaptırılan ya da sözü edilen şeyin adını açıkça yaz (örnek: \"Sabancı Üniversitesi'ni "
-                  "kurdu\"); adı metinde yoksa o bilgiyi çıkar. Bütün JSON'u yeniden döndür.\n")
-        out = json.loads(script._generate(rules + note + "\n" + text, os.environ["GEMINI_API_KEY"]))
-        unclear = [p for p in out["paragraphs"] if script.vague(p)]
-    if unclear:
-        print(f"Belirsiz cümle kaldı: {unclear}")
+    prompt = rules + "\n" + text
+    # Bütün türlerle aynı denetim ve tek yeniden yazım (15 Kasım 2026; önce yalnızca belirsiz cümleye bakan iki
+    # denemelik ayrı döngü vardı). Kesin sorun kalırsa video çıkmaz, konu sonraki çalışmada yeniden denenir.
+    out = script.rewritten(prompt, json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"])),
+                           script.text_problems)
 
     sources = [{"title": p["title"], "source": "Vikipedi" if p["lang"] == "tr" else "Wikipedia", "link": p["url"]}
                for p in pages]

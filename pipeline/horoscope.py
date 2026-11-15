@@ -135,7 +135,8 @@ Kurallar:
    - Türkçe terim kullan: "geri hareket", "ileri harekete geçiyor". "Retro", "retrograd" ve "rötar" yazma
      (rötar gecikme demektir; seslendirmede de yanlış anlaşılıyor).
 2. "intro": en fazla 12 kelime; haftanın en dikkat çekici gökyüzü olayını tarihiyle söyle (selam yok).
-3. "outro": izleyiciyi burcunu yorumlara yazmaya çağıran kısa bir soru (örnek: "Senin burcun hangisi? Yorumlara yaz.").
+3. "outro": en fazla 12 kelimelik somut kapanış: haftanın son gökyüzü olayı ve tarihi (örnek: "Pazar günü Ay
+   Balık burcuna geçiyor."). Soru ve yorum çağrısı yok: kanalın amacı paylaşım (15 Kasım 2026).
 """ + script.PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """
 Sadece JSON döndür:
 {{"intro": "...", "signs": [{{"name": "Koç", "text": "..."}}], "outro": "...", "pronounce": {{}}}}
@@ -172,7 +173,11 @@ def plan(part, now=None):
         segments.append({"kind": "item", "label": f"{i}/4 · {dates.replace('i', 'İ').upper()}", "heading": name,
                          "text": script._sentence(texts[name]), "source": "", "image_files": [card],
                          "headline": source})
-    segments.append({"kind": "outro", "text": out["outro"].strip(), "image_files": [signs[-1][4]]})
+    outro = str(out.get("outro") or "").strip()
+    if outro and not (script.sentence_problems([outro]) or script.weak_ending([outro]) or outro.endswith("?")):
+        segments.append({"kind": "outro", "text": script._sentence(outro), "image_files": [signs[-1][4]]})
+    else:  # kapanış ilkesine uymayan kapanış yerine video son burçla biter
+        print(f"Kapanış çıkarıldı: {outro}")
     return {"title": f"{', '.join(s[0] for s in signs)} Haftalık Burç Yorumu ({week})", "hook_title": f"{week} Burç Yorumu",
             "label": "HAFTALIK BURÇ", "lang": "tr", "segments": segments, "sources": [source],
             "kind": "horoscope", "mood": "umutlu", "category": "24", "image_prompt": "",

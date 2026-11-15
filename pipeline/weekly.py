@@ -96,15 +96,18 @@ def build_segments(picked, today):
                  "text": f"Bu hafta Türkiye'de öne çıkan {len(picked)} haber, birkaç dakikada."}]
     for i, plan in enumerate(picked, 1):
         heading = plan.get("hook_title") or plan["title"]
-        # Son paragraf Short'un izleyiciye sorduğu soru; derlemede her haberden sonra tekrarlanmasın
-        paragraphs = [s["text"] for s in plan["segments"]][:-1] or [plan["segments"][0]["text"]]
+        # Eski Short'lar soruyla bitiyordu; soru derlemede her haberden sonra tekrarlanmasın. Yeni Short'lar somut
+        # bilgiyle bitiyor (kapanış ilkesi, 15 Kasım 2026), o paragraf kalır.
+        paragraphs = [s["text"] for s in plan["segments"]]
+        if len(paragraphs) > 1 and paragraphs[-1].rstrip().endswith("?"):
+            paragraphs = paragraphs[:-1]
         for j, text in enumerate(paragraphs):
             segments.append({"kind": "story", "label": f"HAFTANIN ÖZETİ {i}/{len(picked)}", "heading": heading,
                              "source": _source(plan), "text": text, "item": i - 1,
                              **({"chapter": heading} if j == 0 else {})})
     segments.append({"kind": "outro", "chapter": "Kapanış", "label": f"{week} HAFTASI",
-                     "text": "Sence haftanın en önemli haberi hangisiydi? Yorumlara yaz. "
-                             "Günün haberlerini her gün kısa ve net izlemek için abone ol."})
+                     # Yorum çağrısı çıkarıldı: kanalın amacı paylaşım (15 Kasım 2026)
+                     "text": "Günün haberlerini her gün kısa ve net izlemek için abone ol."})
     return segments
 
 

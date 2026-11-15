@@ -26,14 +26,15 @@ Avoid events centred on deaths, disasters, wars, attacks or crimes, and partisan
 Put the number of the event you picked in "pick".
 
 Script rules:
-1. The first sentence is a hook of at most 12 words, ideally starting with "Did you know" or a surprising fact.
+1. The first sentence is the most surprising fact itself, at most 12 words, with the year, a number or a name
+   (example: "In 1967, two men filmed what they called Bigfoot."). No question and no "did you know": the first
+   two seconds give the fact, not an introduction (channel principle, 15 November 2026).
 2. Say the year and what happened in plain words; then the most interesting details; then why it still matters or
    what happened next.
 3. Use ONLY facts that appear in the event text and the page summaries below. Do not add names, numbers, places or
    outcomes that are not there. If something is disputed (a claim, an unproven sighting), say it is a claim.
 4. Short sentences (at most 14 words), conversational, addressing the viewer as "you". 75-90 words, 4-5 paragraphs.
-5. The last sentence is a short question that invites a comment.
-   """ + script.QUESTION_RULE_EN + """
+5. """ + script.CLOSING_RULE_EN + """
 
 Other fields:
 - hook_title: on-screen title, at most 5 words (example: "Bigfoot on Film, 1967").
@@ -93,6 +94,7 @@ def plan(day=None):
         blocks.append(f"{n}. {event['year']}: {event['text']}\n{pages}")
     prompt = RULES + f"\nDate: {day:%B} {day.day}\n\nEvents:\n" + "\n".join(blocks)
     out = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"]))
+    out = script.rewritten(prompt, out, script.text_problems, english=True)  # bütün türlerle aynı denetim
     event = events[max(0, min(int(out.get("pick", 1)), len(events)) - 1)]
     print(f"Seçilen olay: {event['year']}: {event['text']}")
     files = [f for f in dict.fromkeys(_commons_file(p) for p in event["pages"]) if f]

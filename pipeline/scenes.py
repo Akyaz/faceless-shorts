@@ -478,6 +478,14 @@ NEWS_SCENES = """- scenes: her paragraf için kodla çizilen bir bilgi kartı. S
   {"paragraph": 2, "type": "kart", "label": "Başroller", "lines": ["Öykü Karayel", "Fatih Artman"]}
   {"paragraph": 3, "type": "sayac", "value": "1", "unit": ". sıra", "label": "Netflix Türkiye dizi listesi"}
 """
+# İngilizce haberin karşılığı (15 Kasım 2026): kart olmadan yeri olmayan İngilizce haber hiç video olamıyordu.
+# Yalnızca kart: sayaç Türkçe sayı biçimini okur ("1.750"), İngilizce "1,750" yanlış okunur.
+NEWS_SCENES_EN = """- scenes: one code-drawn info card per paragraph. Every line must appear in that paragraph exactly as written;
+  give the paragraph's key fact in 1-3 short lines (date, amount, result, rank, name). If real images are found only
+  one card is used; if not, the video is told with these cards. paragraph starts at 1.
+  {"paragraph": 1, "type": "kart", "label": "EU tariffs", "lines": ["Steel 25%", "From 1 January"]}
+  {"paragraph": 2, "type": "kart", "label": "Leaders", "lines": ["Ursula von der Leyen", "Emmanuel Macron"]}
+"""
 
 
 def frame(scene, t, dur, base, ctx):

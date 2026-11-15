@@ -168,7 +168,8 @@ def check_story(plan):
     # Yapıyı bozan ya da uzayan metin seslendirmeye ve tartışma videosunun düzenine uymaz
     problem = ("paragraf sayısı değişti" if len(new) != len(paragraphs) else
                f"{_words(new)} kelime" if _words(new) > MAX_WORDS else
-               "belirsiz cümle" if any(script.vague(t) for t in new + [title, hook]) else "")
+               # Düzeltme de yazılan metinle aynı denetimden geçer (15 Kasım 2026; önce yalnızca belirsiz cümle)
+               "; ".join(script.sentence_problems(new + [title, hook], plan["sources"][0].get("published"))))
     if problem:
         raise Incomplete(f"düzeltme kullanılamadı ({problem}): {'; '.join(questions)}")
     for old, text in zip(paragraphs, new):
@@ -200,7 +201,8 @@ def check_digest(plan):
     for i, seg in enumerate(items, 1):
         v = verdicts.get(i, {"status": "ok"})
         text, heading = str(v.get("text") or "").strip(), str(v.get("heading") or seg.get("heading", "")).strip()
-        if v.get("status") == "fixed" and text and len(text.split()) <= 30 and not script.vague(text):
+        if v.get("status") == "fixed" and text and len(text.split()) <= 30 and \
+                not script.sentence_problems([text, heading], seg["headline"].get("published")):
             print(f"  - {seg['text']}\n  + {text}")
             seg = {**seg, "text": script._sentence(text), "heading": heading}
         elif v.get("status") != "ok":

@@ -1,14 +1,5 @@
 [
  {
-  "time": "2026-10-18T08:24:20Z",
-  "run": "39111163692",
-  "event": "workflow_dispatch",
-  "mode": "weekly",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39111163692",
-  "videos": []
- },
- {
   "time": "2026-10-18T08:26:46Z",
   "run": "39111156757",
   "event": "workflow_dispatch",
@@ -4655,6 +4646,21 @@
   "videos": [
    {
     "title": "Avrasya Tüneli: Deniz Altındaki Rekor Mühendislik",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-15T05:57:54Z",
+  "run": "43682556105",
+  "event": "workflow_dispatch",
+  "mode": "onthisday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682556105",
+  "videos": [
+   {
+    "title": "Buran: The Soviet Space Shuttle That Flew Only Once in 1988",
     "url": null,
     "instagram": null
    }

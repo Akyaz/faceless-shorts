@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-18T12:30:46Z",
-  "run": "39126284841",
-  "event": "schedule",
-  "mode": "weekly",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39126284841",
-  "videos": [
-   {
-    "title": "Sigarada T.C. Kimlik Şartı ve Öğrencilere Günlük 1.375 TL",
-    "url": "https://youtu.be/gr_iIPzPDhA",
-    "instagram": null
-   }
-  ],
-  "slot": "pazar 11:00"
- },
- {
   "time": "2026-10-18T12:51:41Z",
   "run": "39128796687",
   "event": "schedule",
@@ -4653,5 +4637,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-15T21:40:49Z",
+  "run": "43764154964",
+  "event": "workflow_dispatch",
+  "mode": "horoscope1",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43764154964",
+  "videos": [
+   {
+    "title": "Koç, Boğa, İkizler, Yengeç Haftalık Burç Yorumu (16-22 Kasım)",
+    "url": "https://youtu.be/PczEWopRu1Y",
+    "instagram": "https://www.instagram.com/reel/DfxxG8Eis_s/"
+   }
+  ],
+  "slot": "pazartesi 08:00"
  }
 ]

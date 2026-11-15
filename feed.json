@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-17T20:17:29Z",
-  "run": "39065682725",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39065682725",
-  "videos": [
-   {
-    "title": "Runway Dresses Made From Pickleballs, Socks and Grandma's Tablecloth",
-    "url": "https://youtu.be/-jliDDlF9fc",
-    "instagram": "https://www.instagram.com/reel/Dem8kA9glg9/"
-   }
-  ]
- },
- {
   "time": "2026-10-18T08:24:20Z",
   "run": "39111163692",
   "event": "workflow_dispatch",
@@ -4655,6 +4640,21 @@
   "videos": [
    {
     "title": "Portekiz, Ronaldo'suz Maçta Danimarka'ya 4-1 Mağlup Oldu",
+    "url": null,
+    "instagram": null
+   }
+  ]
+ },
+ {
+  "time": "2026-11-15T05:50:30Z",
+  "run": "43682553606",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43682553606",
+  "videos": [
+   {
+    "title": "Avrasya Tüneli: Deniz Altındaki Rekor Mühendislik",
     "url": null,
     "instagram": null
    }

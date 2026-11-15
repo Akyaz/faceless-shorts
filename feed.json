@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-18T08:59:15Z",
-  "run": "39113404019",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39113404019",
-  "videos": [
-   {
-    "title": "Derbiye Bir Gün Kala: Tarih Fenerbahçe'den, Bu Sezon Galatasaray'dan Yana",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-18T11:23:17Z",
   "run": "39122809254",
   "event": "workflow_dispatch",
@@ -4646,5 +4631,20 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43710849304",
   "videos": []
+ },
+ {
+  "time": "2026-11-15T12:05:39Z",
+  "run": "43711649039",
+  "event": "workflow_dispatch",
+  "mode": "morning",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43711649039",
+  "videos": [
+   {
+    "title": "Ehliyet Yenileme Uyarısı ve Kış Lastiği Cezası Başladı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

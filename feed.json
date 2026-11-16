@@ -4600,16 +4600,6 @@
   "slot": "21:00"
  },
  {
-  "time": "2026-11-15T22:54:52Z",
-  "run": "43771756245",
-  "event": "schedule",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43771756245",
-  "videos": [],
-  "slot": "21:00"
- },
- {
   "time": "2026-11-16T05:43:16Z",
   "run": "43811528440",
   "event": "workflow_dispatch",
@@ -4640,5 +4630,15 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-16T05:46:43Z",
+  "run": "43771756245",
+  "event": "schedule",
+  "mode": "story",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43771756245",
+  "videos": [],
+  "slot": "21:00"
  }
 ]

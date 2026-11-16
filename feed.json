@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-19T08:51:48Z",
-  "run": "39225185673",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225185673",
-  "videos": [
-   {
-    "title": "Çalışma Süresi 40 Saate Düşmeli mi? Mesai Tartışması",
-    "url": "https://youtu.be/TtzvKZYQEIQ",
-    "instagram": "https://www.instagram.com/reel/Deq3sYzlNkw/"
-   }
-  ]
- },
- {
   "time": "2026-10-19T09:45:33Z",
   "run": "39231849995",
   "event": "schedule",
@@ -4643,5 +4628,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-16T21:21:01Z",
+  "run": "43958406074",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43958406074",
+  "videos": [
+   {
+    "title": "John D. Rockefeller: Petrolün Yüzde 90'ını Yöneten Adam",
+    "url": "https://youtu.be/cUZqkXx7fIY",
+    "instagram": "https://www.instagram.com/reel/Df0TsSeE9Cf/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

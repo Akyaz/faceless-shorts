@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-19T08:45:28Z",
-  "run": "39113703013",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225015611",
-  "videos": [
-   {
-    "title": "Asgari Ücretle 2016'da mı, Bugün mü Daha Çok Ekmek Alınıyor? Cevap Şaşırtıcı",
-    "url": "https://youtu.be/xSW62peYG7I",
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-19T08:45:36Z",
   "run": "39112945288",
   "event": "workflow_dispatch",
@@ -4640,5 +4625,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43771756245",
   "videos": [],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-16T10:04:02Z",
+  "run": "43844502102",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43844502102",
+  "videos": [
+   {
+    "title": "Mavi Balina Hakkında İnanılmaz Gerçekler",
+    "url": "https://youtu.be/RP7korkrJi4",
+    "instagram": "https://www.instagram.com/reel/DfzGM46jk0N/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-19T08:45:36Z",
-  "run": "39112945288",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225041640",
-  "videos": [
-   {
-    "title": "Fenerbahçe'de Penaltıcı Değişmeli mi? Greenwood Kararı Tartışılıyor",
-    "url": "https://youtu.be/CTPzphwQo5g",
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-19T08:46:15Z",
   "run": "39112706170",
   "event": "workflow_dispatch",
@@ -4641,5 +4626,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-16T10:21:01Z",
+  "run": "43844521772",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43844521772",
+  "videos": [
+   {
+    "title": "Nuri Demirağ: İlk Yerli Uçak Fabrikası ve Demiryolu Öncüsü",
+    "url": "https://youtu.be/UqEQLpAV7B0",
+    "instagram": "https://www.instagram.com/reel/DfzIJ9eDWwy/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

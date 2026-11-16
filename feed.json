@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-19T14:12:34Z",
-  "run": "39265658872",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39265658872",
-  "videos": [
-   {
-    "title": "Barajlarda son durum: İstanbul'da doluluk oranı yükseldi",
-    "url": "https://youtu.be/2VRrJ_JcGHE",
-    "instagram": "https://www.instagram.com/reel/DercZyPkirW/"
-   }
-  ],
-  "slot": "10:00"
- },
- {
   "time": "2026-10-19T15:57:08Z",
   "run": "39281225994",
   "event": "schedule",
@@ -4638,5 +4622,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43962368228",
   "videos": [],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-16T22:11:24Z",
+  "run": "43963391545",
+  "event": "workflow_dispatch",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43963391545",
+  "videos": [
+   {
+    "title": "Göbeklitepe: Piramitlerden 7.000 Yıl Önce Bu Taşları Kim Dikti?",
+    "url": null,
+    "instagram": null
+   }
+  ],
+  "script": "scripts/longform/tr-gobeklitepe.json"
  }
 ]

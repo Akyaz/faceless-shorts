@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-19T08:46:15Z",
-  "run": "39112706170",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39225117502",
-  "videos": [
-   {
-    "title": "Trafik Cezası Şoku: Alkollü ve Ehliyetsiz Sürücüye 265 Bin TL",
-    "url": "https://youtu.be/zOb_DP_L_L8",
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-19T08:51:48Z",
   "run": "39225185673",
   "event": "workflow_dispatch",
@@ -4642,5 +4627,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-16T10:22:40Z",
+  "run": "43844531646",
+  "event": "workflow_dispatch",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43844531646",
+  "videos": [
+   {
+    "title": "Glenn Close 8 Adaylığın Ardından Governors Ödülleri'nde Oscar Kazandı",
+    "url": "https://youtu.be/QylUIe3xihA",
+    "instagram": "https://www.instagram.com/reel/DfzIVq-AoVE/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

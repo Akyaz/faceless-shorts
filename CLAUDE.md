@@ -58,7 +58,7 @@ Yeni kural ancak eskisi kaldırılarak ya da birleştirilerek eklenir. Tür silm
   özel hayat. Para serisinde yalnızca kesinleşmiş skandallar. Can kaybı olan haberde soru, merak kancası ve abone
   çağrısı yok.
 - **Takvim:** `pipeline/slots.py` `SLOTS`; saat değişirse panelin planı da (`faceless-shorts-panel/api.js`, `PLAN`).
-  Tarih videosu ve haftalık derleme takvimden çıktı, iş akışları elle çalışır (15 Kasım 2026 ölçümü).
+  Uzun tarih videosu her gün 20:00'de (17 Kasım 2026); haftalık derleme takvimden çıktı, elle çalışır (15 Kasım 2026 ölçümü).
 - Yabancı isimler Türkçe seslendirmede doğru okunur (`pronounce`). Son ~10 günde kullanılan görsel tekrar seçilmez.
 
 ## Geliştirme

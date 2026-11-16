@@ -60,19 +60,21 @@ class Images(unittest.TestCase):
 
 
 class Schedule(unittest.TestCase):
-    def test_longform_and_weekly_off_story_at_nine(self):
+    def test_longform_at_eight_story_at_nine_weekly_off(self):
+        # Uzun tarih videosu 20:00'de geri geldi (17 Kasım 2026); haftalık derleme kapalı
         modes = {name: mode for name, mode in slots.SLOTS.values()}
         self.assertEqual(modes["21:00"], "story")
-        self.assertNotIn("longform", modes.values())
+        self.assertEqual(modes["20:00"], "longform")
         self.assertNotIn("weekly", modes.values())
 
     def test_crons_match_workflow(self):
         import pathlib, re
-        text = pathlib.Path(__file__).resolve().parent.parent.joinpath(".github/workflows/make-short.yml").read_text()
-        crons = set(re.findall(r'cron: "([^"]+)"', text))
+        root = pathlib.Path(__file__).resolve().parent.parent / ".github/workflows"
+        files = {"longform": "longform.yml"}
         for cron, (_, mode) in slots.SLOTS.items():
-            self.assertIn(cron, crons, f"{cron} ({mode}) make-short.yml'de yok")
-
+            name = files.get(mode, "make-short.yml")
+            crons = set(re.findall(r'cron: "([^"]+)"', (root / name).read_text()))
+            self.assertIn(cron, crons, f"{cron} ({mode}) {name}'de yok")
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,6 +3,10 @@ name: Tarih videosu
 # 8-12 dakikalık yatay tarih videoları. Metinler scripts/longform/ altında elle yazılır;
 # zamanlanmış çalışma queue.txt'deki sıradaki yayınlanmamış metni üretip yükler (günde bir).
 on:
+  # 20:00 Türkiye saati; kanal sahibi günlük uzun videoyu geri istedi (17 Kasım 2026)
+  schedule:
+    - cron: "0 17 * * *"
+    - cron: "30 17 * * *"  # yedek: asıl çalışma başlamadıysa (pipeline/slots.py)
   workflow_dispatch:
     inputs:
       slot:
@@ -41,7 +45,7 @@ jobs:
 
   longform:
     needs: slot
-    # Takvimden çıkarıldı (15 Kasım 2026); dışarıdan tetikleme saat adı başka türe aitse üretmez
+    # Dışarıdan tetikleme saat adı başka türe aitse (ör. 21:00 Trends haberi) üretmez
     if: ${{ needs.slot.outputs.run == 'true' && (needs.slot.outputs.mode == 'longform' || needs.slot.outputs.slot == '') }}
     runs-on: ubuntu-latest
     timeout-minutes: 90

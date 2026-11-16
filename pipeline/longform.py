@@ -71,7 +71,7 @@ def build(script, out):
                         for c, chapter in enumerate(script["chapters"]) for i, line in enumerate(chapter["lines"])])
     spoken = iter(spoken)
 
-    parts, chapters, credits, clock, used, earlier, lines = [], [], [], 0.0, set(), [], []
+    parts, chapters, credits, clock, used, earlier, timed = [], [], [], 0.0, set(), [], []
     for c, chapter in enumerate(script["chapters"]):
         lines = chapter["lines"]
         count = max(2, math.ceil(len(lines) / LINES_PER_IMAGE))
@@ -107,7 +107,7 @@ def build(script, out):
                                   c, card, background, lang=lang)
             parts.append((card, audio, words))
             length = render.audio_duration(audio)
-            lines.append((clock + words[0]["start"], max(0.5, words[-1]["end"] - words[0]["start"]), line["t"])
+            timed.append((clock + words[0]["start"], max(0.5, words[-1]["end"] - words[0]["start"]), line["t"])
                          if words else (clock, length, line["t"]))
             clock += length + PAUSE
 
@@ -146,7 +146,7 @@ def build(script, out):
     meta = {"title": script["title"][:100], "description": description[:5000],
             "tags": script.get("tags", []), "category": "27", "language": lang,
             "playlist": "History Documentaries" if lang == "en" else "Tarih Belgeselleri",
-            "captions": captions.srt(lines)}
+            "captions": captions.srt(timed)}
     (out / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("\n".join(chapters))
     print(f"Hazır: {out / 'video.mp4'} ({_clock(duration)})")

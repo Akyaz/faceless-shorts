@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-19T17:07:53Z",
-  "run": "39290637216",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39290637216",
-  "videos": [
-   {
-    "title": "1. Lig'de 7 gollü maç! Beşiktaş'tan U19 derbisinde farklı galibiyet",
-    "url": "https://youtu.be/S5K5-wFt8dU",
-    "instagram": "https://www.instagram.com/reel/DerwcDjD5PS/"
-   }
-  ],
-  "slot": "13:30"
- },
- {
   "time": "2026-10-19T17:52:47Z",
   "run": "39297167344",
   "event": "schedule",
@@ -4631,6 +4615,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43975842998",
   "videos": [],
+  "slot": "17:00"
+ },
+ {
+  "time": "2026-11-16T23:29:51Z",
+  "run": "43978662882",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43978662882",
+  "videos": [
+   {
+    "title": "Şarkıcı Çelik Veresiye Borçlarını Ödedi: Haluk Levent Benzetmesine Tepki Gösterdi",
+    "url": "https://youtu.be/dC8i8cJlNi0",
+    "instagram": "https://www.instagram.com/reel/Df0iYe9D9t9/"
+   }
+  ],
   "slot": "17:00"
  }
 ]

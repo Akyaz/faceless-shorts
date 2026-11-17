@@ -220,7 +220,11 @@ def add_subscribe(video, out_path, lang="tr", wide=False, start=(0.5, 3.5), end_
     last.unlink()
 
 
-CHANNEL_URL = "youtube.com/@QuickRecapChannel"
+CHANNEL_URL = "youtube.com/@QuickRecapChannel"  # videonun üstüne yazılan, okunacak adres
+# Açıklamadaki bağlantı kanal kimliğiyle: Instagram "@QuickRecapChannel"ı kendi kullanıcı profili sanıp onu açıyordu;
+# bu adres YouTube'u açar ve kanal adı değişse de değişmez (kanal sahibinin isteği, 18 Kasım 2026)
+CHANNEL_LINK = "https://www.youtube.com/channel/UC-FK-qTfj7X78lDNnvJZvAw"
+SUBSCRIBE_LINK = CHANNEL_LINK + "?sub_confirmation=1"  # tek dokunuşla abone olma penceresi
 
 
 TR_MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
@@ -238,7 +242,7 @@ def date_line(lang="tr"):
 def channel_line(lang="tr", subscribe=True):
     """Açıklamanın ilk satırlarında kanal adresi. Abone çağrısı yapılan videolarda bağlantı abone olma
     penceresini açar; acı haberlerde yalnızca adres yazılır."""
-    url = f"https://www.youtube.com/@QuickRecapChannel{'?sub_confirmation=1' if subscribe else ''}"
+    url = SUBSCRIBE_LINK if subscribe else CHANNEL_LINK
     if lang == "en":
         return f"{'Subscribe' if subscribe else 'Our channel'}: {url}"
     return f"{'Abone ol' if subscribe else 'Kanalımız'}: {url}"

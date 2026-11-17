@@ -69,10 +69,14 @@ def caption(meta):
     """YouTube açıklamasından Reels açıklaması: başlık, videoda söylenenler, kaynaklar ve etiketler."""
     text = meta["description"]
     # YouTube'a özel satırlar çıkar; #shorts yerine #reels
-    lines = [line for line in text.splitlines() if "abone ol" not in line.lower() and "subscribe" not in line.lower()]
-    # YouTube açıklamasındaki kanal satırı zaten başlığın altında; eski videolarda yoksa eklenir
-    if not any("youtube.com/@QuickRecapChannel" in line for line in lines):
-        lines.insert(1, "\nYouTube: https://www.youtube.com/@QuickRecapChannel")
+    # Kanal satırı (abone olma bağlantısı) kalır: Reels izleyicisi de tek dokunuşla YouTube'a abone olabilsin (18 Kasım 2026)
+    from .render import CHANNEL_LINK, SUBSCRIBE_LINK
+    lines = [line for line in text.splitlines() if CHANNEL_LINK in line
+             or ("abone ol" not in line.lower() and "subscribe" not in line.lower())]
+    # YouTube açıklamasındaki kanal satırı zaten başlığın altında; eski videolarda (@ adresli) yoksa eklenir
+    lines = [line for line in lines if "youtube.com/@QuickRecapChannel" not in line]
+    if not any(CHANNEL_LINK in line for line in lines):
+        lines.insert(1, f"\nYouTube'da abone ol: {SUBSCRIBE_LINK}")
     text = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).replace("#shorts", "#reels #quickrecapchannel")
     tags = [w for w in text.split() if w.startswith("#")]
     for extra in tags[HASHTAG_LIMIT:]:

@@ -138,18 +138,28 @@ INFOBOX_IMAGE = re.compile(r"^\s*\|\s*(?:image|görsel|resim|afiş)\s*=\s*(?:\[\
                            re.I | re.M)
 
 
-def wiki_poster(title, kind=""):
-    """Vikipedi bilgi kutusundaki afiş (yerel, adil kullanım dosyası). Sayfa başlığı yapım adını içermeli."""
-    words = set(re.findall(r"\w+", title.lower()))
+def names_work(title, text):
+    """Metin yapımın adını kendi adı olarak geçiriyor mu. Adı, daha uzun bir adın sonu olarak geçmesi sayılmaz:
+    "Collision Course" haberi için "Ice Age: Collision Course" başka bir filmdir (17 Kasım 2026, Çarpışma Anı
+    videosunda Buz Devri kareleri çıktı)."""
+    name = re.escape(title.split(":")[0].strip().lower())
+    return bool(re.search(rf"(?<![\w:–-])(?<![:–-] ){name}(?!\w)", text.lower()))
+
+
+def wiki_poster(title, kind="", year=""):
+    """Vikipedi bilgi kutusundaki afiş (yerel, adil kullanım dosyası). Sayfanın adı yapımın adının kendisi olmalı
+    (parantezdeki "film", "2026 dizisi" hariç); yıl biliniyorsa sayfanın girişinde geçmeli."""
     suffix = " film" if kind == "movie" else " dizi" if kind == "tv" else ""
     for lang in ("tr", "en"):
         try:
             hits = _wiki(lang, action="query", list="search", srsearch=title + suffix, srlimit=3)["query"]["search"]
             for hit in hits:
-                if not words <= set(re.findall(r"\w+", hit["title"].lower())):
+                if re.sub(r"\s*\(.*\)$", "", hit["title"]).strip().lower() != title.lower():
                     continue
                 text = _wiki(lang, action="parse", page=hit["title"], prop="wikitext", section=0,
                              redirects=1)["parse"]["wikitext"]
+                if year and year not in text:
+                    continue
                 match = INFOBOX_IMAGE.search(text)
                 if not match:
                     break
@@ -172,7 +182,6 @@ def news_images(work, sources, limit=5):
     haber siteleri ise platformun dağıttığı tanıtım görselini kapak yapar. Yalnızca başlığında yapım adı geçen
     haberlerin görseli alınır."""
     from .articles import lead_image
-    words = set(re.findall(r"\w+", work["title"].split(":")[0].lower()))
     items = [s for h in sources for s in [h] + h.get("related", []) if s.get("link")]
     # Haber bir oyuncu hakkındaysa kaynak başlıklarında yapım adı geçmeyebilir: yapımın kendi haberleri de aranır
     kind = "film" if work.get("type") == "movie" else "dizi"
@@ -184,7 +193,7 @@ def news_images(work, sources, limit=5):
     for item in items[:16]:
         if len(out) >= limit:
             break
-        if not words <= set(re.findall(r"\w+", item["title"].lower())):
+        if not names_work(work["title"], item["title"]):
             continue
         found = lead_image(item["link"])
         if not found or found[0] in seen:
@@ -196,13 +205,14 @@ def news_images(work, sources, limit=5):
     return out
 
 
-VET_RULES = """Bir dizi ya da film haberi videosunda tam ekran gösterilecek görselleri seçiyorsun. Yapım: {title}
+VET_RULES = """Bir dizi ya da film haberi videosunda tam ekran gösterilecek görselleri seçiyorsun. Yapım: {title} {details}
 Aşağıda numaralı adayların sırasıyla kendisi var. Görsele bakarak karar ver.
 
 Seç: bu yapımdan bir sahne karesi, yapımın resmi afişi ya da set/çekim fotoğrafı (oyuncular rolündeyken).
 Seçme:
 - Üzerine büyük yazı, başlık, ok, çerçeve eklenmiş haber kapakları; birden fazla görselin yan yana konduğu kolajlar.
-- Başka dizi ya da filmlerden kareler; oyuncunun yapımla ilgisiz etkinlik, kırmızı halı ya da özel hayat fotoğrafları.
+- Başka dizi ya da filmlerden kareler; adı aynı ya da adında bu ad geçen başka yapımlar (ör. bir serinin aynı adı
+  taşıyan filmi, aynı adlı bir animasyon); yılı ya da konusu yukarıdakine uymayan yapımlar; oyuncunun yapımla ilgisiz etkinlik, kırmızı halı ya da özel hayat fotoğrafları.
 - Logo, ekran görüntüsü, bulanık ya da çok küçük görseller.
 Kanal logosu gibi köşedeki küçük işaretler sorun değildir. Emin değilsen seçme.
 En uygun olan başta, en fazla {limit} aday seç; uygun aday yoksa boş liste döndür.
@@ -237,7 +247,11 @@ def vet_images(work, candidates, limit=5):
     from . import script
     from .images import SELECT_MODELS
     try:
-        picks = json.loads(script._generate(VET_RULES.format(title=work["title"], limit=limit), key, previews,
+        kind = {"movie": "film", "tv": "dizi"}.get(work.get("type"), "")
+        details = ", ".join(x for x in (str(work.get("year") or ""), kind) if x)
+        details = (f"({details})" if details else "") + (f"\nHaber: {work['about']}" if work.get("about") else "")
+        picks = json.loads(script._generate(VET_RULES.format(title=work["title"], details=details, limit=limit),
+                                            key, previews,
                                             SELECT_MODELS))["pick"]
     except Exception as exc:
         print(f"Kapak görselleri değerlendirilemedi: {exc}")
@@ -257,5 +271,6 @@ def work_images(work, sources=()):
     found = tmdb_images(title, year, kind)
     if found:
         return found
-    work = {**work, "title": title}
-    return vet_images(work, news_images(work, sources, limit=10)) + wiki_poster(title, kind)
+    # Haber başlığı yapımın konusunu da söyler: model aynı adlı başka bir yapımı ayırt edebilsin
+    work = {**work, "title": title, "about": next((s["title"] for s in sources if s.get("title")), "")}
+    return vet_images(work, news_images(work, sources, limit=10)) + wiki_poster(title, kind, year)

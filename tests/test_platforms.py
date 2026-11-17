@@ -35,6 +35,34 @@ class Posters(unittest.TestCase):
             self.assertEqual(platforms.work_images({"title": "Bir Başkadır", "type": "tv"}), [{"url": "n"}, {"url": "u"}])
         wiki.assert_called_once()
 
+    def test_longer_title_is_another_work(self):
+        # 17 Kasım 2026: "Collision Course" (Çarpışma Anı) için Ice Age: Collision Course kareleri seçilmişti
+        self.assertFalse(platforms.names_work("Collision Course", "Ice Age: Collision Course Netflix'e geliyor"))
+        self.assertFalse(platforms.names_work("Collision Course", "Ice Age - Collision Course"))
+        self.assertTrue(platforms.names_work("Collision Course", "Netflix's Collision Course ending explained"))
+        self.assertTrue(platforms.names_work("Çarpışma Anı", "Çarpışma Anı’nın sonu açıklandı"))
+
+    def test_wiki_poster_needs_exact_page_and_year(self):
+        def wiki(lang, **params):
+            if params.get("list") == "search":
+                return {"query": {"search": [{"title": "Ice Age: Collision Course"}, {"title": "Collision Course (2016 film)"}]}}
+            if params.get("action") == "parse":
+                return {"parse": {"wikitext": "| image = Poster.jpg\n2016 American film"}}
+            return {"query": {"pages": [{"imageinfo": [{"url": "u", "descriptionurl": "d"}]}]}}
+        with mock.patch("pipeline.platforms._wiki", side_effect=wiki):
+            self.assertEqual(platforms.wiki_poster("Collision Course", "movie", "2026"), [])
+            self.assertEqual(len(platforms.wiki_poster("Collision Course", "movie", "2016")), 1)
+
+    def test_vet_prompt_has_year_and_story(self):
+        with mock.patch.dict(os.environ, {"GEMINI_API_KEY": "k"}), \
+                mock.patch("pipeline.platforms._jpeg", return_value=b"x"), \
+                mock.patch("pipeline.script._generate", return_value='{"pick": []}') as gen:
+            platforms.vet_images({"title": "Collision Course", "year": "2026", "type": "movie",
+                                  "about": "Çarpışma Anı'nın sonu açıklandı"}, [{"url": "a"}])
+        prompt = gen.call_args[0][0]
+        self.assertIn("Collision Course (2026, film)", prompt)
+        self.assertIn("Haber: Çarpışma Anı'nın sonu açıklandı", prompt)
+
     def test_no_work_no_images(self):
         self.assertEqual(platforms.work_images(None), [])
 

@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-19T21:37:45Z",
-  "run": "39328244693",
-  "event": "schedule",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39328244693",
-  "videos": [
-   {
-    "title": "Lille-Galatasaray Maçı Ertelenmeli mi? UEFA Başvurusu Gündemde",
-    "url": "https://youtu.be/azWJADR8Qqs",
-    "instagram": "https://www.instagram.com/reel/DesPWDBEbCg/"
-   }
-  ],
-  "slot": "20:30"
- },
- {
   "time": "2026-10-19T22:17:06Z",
   "run": "39330357497",
   "event": "schedule",
@@ -4618,6 +4602,16 @@
   "mode": "debate",
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43991073626",
+  "videos": [],
+  "slot": "20:30"
+ },
+ {
+  "time": "2026-11-17T01:05:18Z",
+  "run": "43992621382",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43992621382",
   "videos": [],
   "slot": "20:30"
  }

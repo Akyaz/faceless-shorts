@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-20T17:41:33Z",
-  "run": "39467168053",
-  "event": "schedule",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39467168053",
-  "videos": [
-   {
-    "title": "First Quarks Evidence Discovered at Stanford in 1969",
-    "url": "https://youtu.be/8NJBJ2VmG1I",
-    "instagram": "https://www.instagram.com/reel/DeuZFu8CYkw/"
-   }
-  ],
-  "slot": "16:00"
- },
- {
   "time": "2026-10-20T19:44:23Z",
   "run": "39485320081",
   "event": "schedule",
@@ -4608,5 +4592,20 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-17T17:59:59Z",
+  "run": "44142148594",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44142148594",
+  "videos": [
+   {
+    "title": "Galatasaray'ın Zemin Talebine UEFA ve Aston Villa'dan Onay Çıktı",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

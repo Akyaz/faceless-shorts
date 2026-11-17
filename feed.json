@@ -4594,16 +4594,16 @@
   "slot": "20:30"
  },
  {
-  "time": "2026-11-17T17:59:59Z",
+  "time": "2026-11-17T18:00:35Z",
   "run": "44142148594",
   "event": "workflow_dispatch",
   "mode": "sportstory",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44142148594",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44143107377",
   "videos": [
    {
     "title": "Galatasaray'ın Zemin Talebine UEFA ve Aston Villa'dan Onay Çıktı",
-    "url": null,
+    "url": "https://youtu.be/GgtE1jp2PuI",
     "instagram": null
    }
   ]

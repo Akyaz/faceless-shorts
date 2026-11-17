@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-20T15:58:54Z",
-  "run": "39452227692",
-  "event": "schedule",
-  "mode": "trend",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39452227692",
-  "videos": [
-   {
-    "title": "Hücreler 60 Yıl Gençleşti! Ormanda Dev Mantar Keşfi",
-    "url": "https://youtu.be/SuLmH0vLuEg",
-    "instagram": "https://www.instagram.com/reel/DeuNWwCDKIn/"
-   }
-  ],
-  "slot": "15:00"
- },
- {
   "time": "2026-10-20T17:41:33Z",
   "run": "39467168053",
   "event": "schedule",
@@ -4607,6 +4591,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44065272561",
   "videos": [],
+  "slot": "20:30"
+ },
+ {
+  "time": "2026-11-17T17:42:51Z",
+  "run": "44138019027",
+  "event": "workflow_dispatch",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44138019027",
+  "videos": [
+   {
+    "title": "Carlos Cuesta Galatasaray'a Dönüyor: Kadroda Yer Almalı mı?",
+    "url": "https://youtu.be/fJl6zRTJiBs",
+    "instagram": "https://www.instagram.com/reel/Df2fgk9D1g9/"
+   }
+  ],
   "slot": "20:30"
  }
 ]

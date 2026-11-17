@@ -1,4 +1,5 @@
 """Eski haberde göreli gün ve aynı yapımın tekrarı (Bir Başkadır videosu, 15 Kasım 2026)."""
+import datetime
 import unittest
 from unittest import mock
 
@@ -41,6 +42,22 @@ class Repeat(unittest.TestCase):
         self.assertEqual(main.repeated(plan, self.RECENT), "Bir Başkadır")
         self.assertEqual(main.repeated({"work": {"title": "Squid Game"}, "subjects": []}, self.RECENT), "")
         self.assertEqual(main.repeated({"subjects": ["Oya"]}, ["Berkun Oyaların"]), "")  # kelime içinde değil
+
+    def test_published_titles_last_week_from_feed(self):
+        # 17 Kasım 2026: çalışma kaydının son 8 satırı yalnızca son iki videoydu; Bir Başkadır dördüncü kez seçildi
+        feed = [{"time": "2026-11-09T09:00:00Z", "videos": [{"title": "Eski", "url": "u"}]},
+                {"time": "2026-11-14T09:52:50Z", "videos": [{"title": "Bir Başkadır 2. Sezon Fragmanı", "url": "u"}]},
+                {"time": "2026-11-16T05:43:16Z", "videos": [{"title": "Yüklenmemiş deneme"}]},
+                {"time": "2026-11-17T08:45:00Z", "videos": [{"title": "Çarpışma Anı Zirvede", "url": "u"}]}]
+        now = datetime.datetime(2026, 11, 17, 12, tzinfo=datetime.timezone.utc)
+        with mock.patch("pipeline.report.read_feed", return_value=(feed, "sha")):
+            titles = main.published_titles([], now=now)
+        self.assertEqual(titles, ["Bir Başkadır 2. Sezon Fragmanı", "Çarpışma Anı Zirvede"])
+        self.assertEqual(main.repeated({"work": {"title": "Bir Başkadır"}}, titles), "Bir Başkadır")
+
+    def test_published_titles_falls_back_to_history(self):
+        with mock.patch("pipeline.report.read_feed", side_effect=KeyError("GITHUB_REPOSITORY")):
+            self.assertEqual(main.published_titles([{"source": "a", "title": "T"}, {"source": "b", "title": "T"}]), ["T"])
 
 
 if __name__ == "__main__":

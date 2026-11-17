@@ -671,8 +671,10 @@ def story_script(headlines, kind="story", count=10, recent=()):
     prompt = spec["brief"] + rules
     if recent:
         # Aynı olay farklı başlıkla yeniden gelebiliyor; başlık eşleşmesi yetmez
-        prompt += ("\nTopics covered in recent videos (do not pick a story about the same event):\n" if english
-                   else "\nSon videolarda işlenen konular (aynı olayı anlatan haberi seçme):\n")
+        # Yeni sezon, fragman, yayın günü aynı dizinin ayrı haberi değildir (Bir Başkadır, 17 Kasım 2026)
+        prompt += ("\nTopics covered in recent videos (do not pick a story about the same event, series or film):\n"
+                   if english else "\nSon videolarda işlenen konular (aynı olayı, aynı diziyi ya da filmi anlatan "
+                                   "haberi seçme; fragman, yayın günü ve liste sırası aynı yapımın haberidir):\n")
         prompt += "\n".join(f"- {t}" for t in recent) + "\n"
     today = today_tr()
     prompt += (f"\nToday is {_day(today)}. Words like \"tomorrow\", \"today\", \"yesterday\" in a story refer to its "

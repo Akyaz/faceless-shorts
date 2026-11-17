@@ -9,6 +9,7 @@ trend bilim ve teknolojiden merak uyandıran gelişmeleri özetler; fact eskimey
 --history story, world ve trend videolarında işlenen haberleri tutar; aynı haber ikinci kez videoya dönmez.
 """
 import argparse
+import datetime
 import json
 import os
 import re
@@ -392,14 +393,15 @@ def news_plan(args, exclude=(), _tries=0):
         headlines = fresh
     else:
         print("Yeni haber yok, işlenmiş haberler yeniden kullanılacak.")
+    published = published_titles(history) if use_history and not args.offline else []
     try:
-        plan = script.build_script(headlines, args.mode, recent=[h["title"] for h in history[-12:]])
+        plan = script.build_script(headlines, args.mode, recent=published[-20:])
     except script.TextRejected as exc:
         if _tries >= REVIEW_TRIES:
             raise RuntimeError(f"{exc}; başka haber kalmadı, bu saat atlanıyor.") from exc
         print(f"{exc}; başka haber deneniyor")
         return news_plan(args, exclude=list(exclude) + [exc.headline["title"]], _tries=_tries + 1)
-    repeat = repeated(plan, [h["title"] for h in history[-RECENT_TOPICS:]]) if args.mode in REPEAT_CHECKED else ""
+    repeat = repeated(plan, published) if args.mode in REPEAT_CHECKED else ""
     if repeat and not args.offline:
         # Aynı yapımın haberi farklı başlıkla ertesi gün yine seçildi (Bir Başkadır, 15 Kasım 2026): başka haber
         if _tries >= REVIEW_TRIES:
@@ -432,7 +434,30 @@ REVIEW_TRIES = 2  # eksik bilgisi bulunamayan haber yerine denenecek haber sayı
 MIN_IMAGES = 2  # bundan az farklı gerçek görselle video üretilmez
 TREND_BOOSTED = {"culture", "sportstory", "platform"}  # Google'da aranan konunun haberi öne alınır
 REPEAT_CHECKED = {"platform"}  # yapım haberi: aynı dizi iki gün üst üste video olmaz
-RECENT_TOPICS = 8  # yaklaşık iki günün platform ve gündem videoları
+# Son RECENT_DAYS günde kanala yüklenen videoların başlıkları panel kaydından okunur. Eskiden çalışma kaydının
+# son 8 satırına bakılıyordu; her video 3-5 kaynak satırı yazdığı için bu yalnızca son iki video ediyordu ve
+# Bir Başkadır dört günde dört kez seçildi (17 Kasım 2026)
+RECENT_DAYS = 7
+
+
+def published_titles(history, days=RECENT_DAYS, now=None):
+    """Son günlerde kanala yüklenen videoların başlıkları (eskiden yeniye); panel kaydı okunamazsa çalışma kaydı."""
+    from .report import read_feed
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    try:
+        feed = read_feed()[0]
+    except Exception as exc:
+        print(f"Panel kaydı okunamadı, çalışma kaydına bakılıyor ({exc})")
+        return list(dict.fromkeys(h["title"] for h in history))[-20:]
+    titles = []
+    for entry in sorted(feed, key=lambda e: e.get("time") or ""):
+        try:
+            when = datetime.datetime.fromisoformat(entry["time"].replace("Z", "+00:00"))
+        except (KeyError, ValueError):
+            continue
+        if now - when <= datetime.timedelta(days=days):
+            titles += [v["title"] for v in entry.get("videos", []) if v.get("url") and v.get("title")]
+    return titles
 
 
 def _fold(text):

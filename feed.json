@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-20T08:06:25Z",
-  "run": "39390203153",
-  "event": "workflow_dispatch",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39390203153",
-  "videos": [
-   {
-    "title": "Quarks Discovered Inside Protons in 1969",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-20T09:23:09Z",
   "run": "39399177733",
   "event": "schedule",
@@ -4613,5 +4598,21 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-17T08:43:24Z",
+  "run": "44048623731",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44048623731",
+  "videos": [
+   {
+    "title": "Mısır Piramitleri: Yıkılamayan Dünyanın Yedi Harikası",
+    "url": "https://youtu.be/6SmbIE20Cpo",
+    "instagram": "https://www.instagram.com/reel/Df1hxesARXq/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

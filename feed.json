@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-20T09:23:09Z",
-  "run": "39399177733",
-  "event": "schedule",
-  "mode": "morning",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39399177733",
-  "videos": [
-   {
-    "title": "Vize Şirketlerine Bot Operasyonu ve Tasfiye Edilen 66 Fon",
-    "url": "https://youtu.be/qUoyDFAAUSc",
-    "instagram": "https://www.instagram.com/reel/DetgEBslOEB/"
-   }
-  ],
-  "slot": "07:15"
- },
- {
   "time": "2026-10-20T12:25:03Z",
   "run": "39421410733",
   "event": "schedule",
@@ -4614,5 +4598,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-17T08:45:34Z",
+  "run": "44048620110",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44048620110",
+  "videos": [
+   {
+    "title": "Çarpışma Anı Netflix Türkiye'de 2 Haftadır Zirvede",
+    "url": "https://youtu.be/_NL6N2zPb7Y",
+    "instagram": "https://www.instagram.com/reel/Df1iA32EyxV/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

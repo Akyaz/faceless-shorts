@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-20T21:36:09Z",
-  "run": "39496444862",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39496444862",
-  "videos": [
-   {
-    "title": "Titanic: The Last 160 Minutes, and the Myths We Still Believe",
-    "url": "https://youtu.be/Ma7bKX5HT-k",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/en-titanic.json"
- },
- {
   "time": "2026-10-21T09:18:45Z",
   "run": "39574949013",
   "event": "schedule",
@@ -4600,5 +4583,15 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-17T23:13:06Z",
+  "run": "44197158615",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44197158615",
+  "videos": [],
+  "slot": "19:00"
  }
 ]

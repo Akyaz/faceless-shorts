@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-19T18:57:04Z",
-  "run": "39305976496",
-  "event": "schedule",
-  "mode": "world",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39305976496",
-  "videos": [
-   {
-    "title": "Saudi Arabia Postpones Marquee Investment Event",
-    "url": "https://youtu.be/fB5YHispetM",
-    "instagram": "https://www.instagram.com/reel/Der89A-iIVl/"
-   }
-  ],
-  "slot": "16:00"
- },
- {
   "time": "2026-10-19T20:50:21Z",
   "run": "39321818674",
   "event": "schedule",
@@ -4625,6 +4609,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43982917714",
   "videos": [],
+  "slot": "19:00"
+ },
+ {
+  "time": "2026-11-17T00:18:35Z",
+  "run": "43985742972",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/43985742972",
+  "videos": [
+   {
+    "title": "Galatasaray'da İstifa Depremi: Abdullah Kavukcu Görevinden Ayrıldı",
+    "url": "https://youtu.be/COSAUt2NXjo",
+    "instagram": "https://www.instagram.com/reel/Df0n_yLkxm_/"
+   }
+  ],
   "slot": "19:00"
  }
 ]

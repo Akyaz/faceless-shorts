@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-20T20:42:12Z",
-  "run": "39493287897",
-  "event": "schedule",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39493287897",
-  "videos": [
-   {
-    "title": "MHK Başkanı Anthony Taylor Oldu: Yabancı Kararı Doğru mu?",
-    "url": "https://youtu.be/HpjZsEXSbjE",
-    "instagram": "https://www.instagram.com/reel/DeutyPMlVbX/"
-   }
-  ],
-  "slot": "20:30"
- },
- {
   "time": "2026-10-20T21:36:09Z",
   "run": "39496444862",
   "event": "schedule",
@@ -4600,5 +4584,21 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44142394319",
   "videos": []
+ },
+ {
+  "time": "2026-11-17T22:05:51Z",
+  "run": "44184820098",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44184820098",
+  "videos": [
+   {
+    "title": "Yeni James Bond Robert Pattinson Oldu",
+    "url": "https://youtu.be/yrNic1zp72E",
+    "instagram": "https://www.instagram.com/reel/Df29oCIE1_S/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

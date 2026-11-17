@@ -146,10 +146,17 @@ def build_metadata(plan, mode="story"):
     }
 
 
+def news_context(plan):
+    """Adaş denetimi için haberin kendisi (images.same_subject): ilk kaynak başlığı ve videonun ilk iki paragrafı."""
+    head = (plan.get("sources") or [{}])[0].get("title", "")
+    text = " ".join(s["text"] for s in plan.get("segments", [])[:2]) or " ".join(plan.get("paragraphs", [])[:2])
+    return f"{head}. {text}".strip(". ")[:600]
+
+
 def _subject_support(plan, work, count):
     """Konudaki isimlerin (kişi, kulüp, yapım) Commons'taki diğer fotoğrafları; ana fotoğrafla aynısı hariç."""
     known = set(plan.get("subject_files") or [])
-    pool = [c for n in plan.get("subjects") or [] for c in images.subject_photos(n)
+    pool = [c for n in plan.get("subjects") or [] for c in images.subject_photos(n, context=news_context(plan))
             if "File:" + c["about"].split("|")[0].strip().removeprefix("File:") not in known]
     return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
 
@@ -164,7 +171,7 @@ def _item_images(seg, plan, out_dir):
     if seg.get("image_files"):
         return images.find_backgrounds(item, out_dir, 1, per_query=2)
     for name in seg.get("subjects") or []:
-        own = images.subject_file(name)
+        own = images.subject_file(name, context=seg["text"])
         if own:
             return images.find_backgrounds({**item, "image_files": [own], "fill_with_search": False}, out_dir, 1)
     return _place_photos(item, out_dir, 1)
@@ -499,13 +506,14 @@ def with_subject_photos(args):
         else:
             plan["work_images"] = []
             names = plan.get("subjects") or []
-            plan["subject_files"] = [f for f in dict.fromkeys(images.subject_file(n) for n in names) if f]
+            context = news_context(plan)
+            plan["subject_files"] = [f for f in dict.fromkeys(images.subject_file(n, context) for n in names) if f]
             if not plan["subject_files"]:
                 if args.mode not in SUBJECT_REQUIRED:
                     return plan  # yer ve olay: arama (en az iki görsel denetimi main'de)
                 reason = f"konunun kendi fotoğrafı yok ({', '.join(names) or 'isim yok'})"
             else:
-                support = {c["url"] for n in names for c in images.subject_photos(n)}
+                support = {c["url"] for n in names for c in images.subject_photos(n, context=context)}
                 if len(plan["subject_files"]) + len(support) >= MIN_IMAGES:
                     return plan
                 reason = "konunun yalnızca bir fotoğrafı var"

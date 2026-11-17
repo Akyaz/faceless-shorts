@@ -266,9 +266,44 @@ def _wiki(lang, **params):
     return _get_json(f"https://{lang}.wikipedia.org/w/api.php?{query}")
 
 
-def subject_file(name):
+SAME_SUBJECT = """Bir haber videosuna "{name}" için fotoğraf seçiliyor. Haber: {context}
+
+Aşağıdaki adayların her biri bir Vikipedi sayfası ya da Wikimedia Commons dosyasının adı ve açıklaması. Hangileri
+bu haberdeki {name}'i gösteriyor? Aynı adı taşıyan başka bir kişi, kulüp, yer ya da tarihî figür seçme (haberdeki
+Brezilya kulübü Vasco da Gama yerine kâşif Vasco da Gama; futbolcu Carlos Cuesta yerine aynı adlı gazeteci). Yalnızca
+açıklamada mesleği, kulübü, ülkesi ya da olayı habere uyan adayları seç; emin değilsen seçme.
+{candidates}
+Sadece JSON döndür: {{"pick": [1, 3]}} (uygun aday yoksa boş liste)
+"""
+_same_subject = {}
+
+
+def same_subject(name, context, candidates):
+    """Adayların (metin) hangileri haberdeki kişi ya da kurum: 1'den başlayan sıra numaraları kümesi. Adaş kişi ve
+    kurumlar ayıklanır: Galatasaray'a dönen Kolombiyalı futbolcu Carlos Cuesta haberinde İspanyol gazeteci Carlos
+    Cuesta'nın fotoğrafları ve kulüp Vasco da Gama için kâşifin 1525 tarihli portresi çıktı (17 Kasım 2026).
+    Model yanıt vermezse hiçbiri: alakasız görsel, görselsizlikten kötü."""
+    if not candidates:
+        return set()
+    cache = (name, context, tuple(candidates))
+    if cache not in _same_subject:
+        from . import script
+        listed = "\n".join(f"{i}. {c}" for i, c in enumerate(candidates, 1))
+        try:
+            picks = json.loads(script._generate(SAME_SUBJECT.format(name=name, context=context, candidates=listed),
+                                                os.environ["GEMINI_API_KEY"], models=SELECT_MODELS))["pick"]
+            _same_subject[cache] = {int(n) for n in picks}
+        except Exception as exc:
+            print(f"Konu görseli doğrulanamadı ({name}): {exc}")
+            _same_subject[cache] = set()
+        print(f"Konu doğrulaması ({name}): {sorted(_same_subject[cache])} ({len(candidates)} aday içinden)")
+    return _same_subject[cache]
+
+
+def subject_file(name, context=""):
     """Haberde adı geçen kişinin, eserin ya da yerin kendi fotoğrafı: Vikipedi sayfasının ana görseli,
-    yalnızca Commons'taysa (serbest lisanslı). Sayfa başlığı ismin bütün kelimelerini içermeli (yanlış kişi olmasın).
+    yalnızca Commons'taysa (serbest lisanslı). Sayfa başlığı ismin kendisi olmalı; context (haber başlığı) verilirse
+    sayfanın kısa açıklaması habere uymalı (same_subject: adaş kişi olmasın).
     Ajans fotoğrafı, dizi karesi ve afiş (adil kullanım dosyaları) hiçbir zaman alınmaz. Bulunamazsa boş."""
     words = _fold(name).split()
     for lang in ("tr", "en"):
@@ -279,25 +314,29 @@ def subject_file(name):
                 # sayfasıyla eşleşmesin
                 if _fold(re.sub(r"\s*\(.*?\)", "", hit["title"])).split() != words:
                     continue
-                page = _wiki(lang, action="query", prop="pageimages", titles=hit["title"], redirects=1,
+                page = _wiki(lang, action="query", prop="pageimages|description", titles=hit["title"], redirects=1,
                              piprop="original")["query"]["pages"][0]
                 source = (page.get("original") or {}).get("source", "").split("?", 1)[0]
                 if "/wikipedia/commons/" not in source:
                     break  # sayfa doğru ama görseli yok ya da adil kullanım: diğer dile bak
                 parts = source.split("/")
                 file = urllib.parse.unquote(parts[-2] if "/thumb/" in source else parts[-1]).replace("_", " ")
-                if file.lower().endswith((".jpg", ".jpeg")):  # png/svg çoğunlukla logo ve arma
-                    print(f"Konu görseli ({name}): {lang}:{hit['title']} -> {file}")
-                    return "File:" + file
-                break
+                if not file.lower().endswith((".jpg", ".jpeg")):  # png/svg çoğunlukla logo ve arma
+                    break
+                about = f"Vikipedi sayfası: {hit['title']} ({page.get('description') or 'açıklama yok'}); dosya: {file}"
+                if context and 1 not in same_subject(name, context, [about]):
+                    continue  # adaş: aramanın sıradaki sonucu ya da diğer dil
+                print(f"Konu görseli ({name}): {lang}:{hit['title']} -> {file}")
+                return "File:" + file
         except Exception as exc:
             print(f"Konu görseli aranamadı ({name}, {lang}): {exc}")
     print(f"Konu görseli yok: {name}")
     return ""
 
 
-def subject_photos(name, limit=3):
-    """Kişinin, kulübün ya da yapımın Commons'taki başka fotoğrafları: dosya adında ismin bütün kelimeleri geçmeli.
+def subject_photos(name, limit=3, context=""):
+    """Kişinin, kulübün ya da yapımın Commons'taki başka fotoğrafları: dosya adında ismin bütün kelimeleri geçmeli;
+    context (haber başlığı) verilirse açıklaması habere uymalı (same_subject).
     Genel ortam aramasının (stüdyo, şehir manzarası) yerine destek görseli olarak kullanılır."""
     words = _fold(name).split()
     try:
@@ -312,6 +351,9 @@ def subject_photos(name, limit=3):
                              r"\bbust\b|büst|statue|heykel|sculpture|wax|balmumu", c["about"], re.I)
            and c.get("year", 0) >= 2010]
     own = list({re.sub(r"\s*\(cropped\)", "", c["about"].split("|")[0]): c for c in own}.values())  # kırpılmış kopyası
+    if context and own:
+        keep = same_subject(name, context, [c["about"][:300] for c in own])
+        own = [c for i, c in enumerate(own, 1) if i in keep]
     print(f"Konu fotoğrafları ({name}): {len(own)}")
     return [{**c, "neutral": False} for c in own[:limit]]
 

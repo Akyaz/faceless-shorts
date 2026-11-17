@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-20T13:57:57Z",
-  "run": "39434039149",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39434039149",
-  "videos": [
-   {
-    "title": "Üsküdar Belediyesi Başkanvekili Muhammed Emin Sarıoğlu Oldu",
-    "url": "https://youtu.be/H6hNJPh9P4o",
-    "instagram": "https://www.instagram.com/reel/Det_gtWDtTq/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-20T15:19:15Z",
   "run": "39446193697",
   "event": "schedule",
@@ -4615,5 +4599,20 @@
   ],
   "slot": "20:00",
   "script": "scripts/longform/tr-gobeklitepe.json"
+ },
+ {
+  "time": "2026-11-17T09:37:18Z",
+  "run": "44055625038",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44055625038",
+  "videos": [
+   {
+    "title": "Bir Başkadır 2. Sezonuyla Netflix Türkiye Listesinde Zirvede",
+    "url": null,
+    "instagram": null
+   }
+  ]
  }
 ]

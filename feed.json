@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-22T14:12:07Z",
-  "run": "39792886593",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39792886593",
-  "videos": [
-   {
-    "title": "e-Devlet Siber Güvenlik Uyarısı: PHP Açığı Açıklandı",
-    "url": "https://youtu.be/JFYH_8QFwJ8",
-    "instagram": "https://www.instagram.com/reel/DezKukJggpn/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-22T15:49:46Z",
   "run": "39804356455",
   "event": "schedule",
@@ -4564,5 +4548,22 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-18T23:44:17Z",
+  "run": "44418993446",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44418993446",
+  "videos": [
+   {
+    "title": "İstanbul'un Fethi: 53 Gün, 72 Gemi ve Karadan Yürüyen Donanma",
+    "url": "https://youtu.be/if0N-fKNLfk",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/tr-istanbulun-fethi.json"
  }
 ]

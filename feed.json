@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-21T15:29:06Z",
-  "run": "39625131090",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39625131090",
-  "videos": [
-   {
-    "title": "Fenerbahçe'de Çifte Sakatlık ve Sergen Yalçın Kararı",
-    "url": "https://youtu.be/vxY9O6DX1v4",
-    "instagram": "https://www.instagram.com/reel/Dewuv0ADbEw/"
-   }
-  ],
-  "slot": "13:30"
- },
- {
   "time": "2026-10-21T16:14:22Z",
   "run": "39632050536",
   "event": "schedule",
@@ -4587,5 +4571,22 @@
    }
   ],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-18T00:10:24Z",
+  "run": "44201774346",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44201774346",
+  "videos": [
+   {
+    "title": "Krakatoa 1883: The Loudest Sound in Recorded History",
+    "url": "https://youtu.be/WVtyqEWsH8U",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/en-krakatoa.json"
  }
 ]

@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-21T18:53:27Z",
-  "run": "39656419432",
-  "event": "workflow_dispatch",
-  "mode": "ucl",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39656419432",
-  "videos": [
-   {
-    "title": "Şampiyonlar Ligi'nde Bugün Hangi Maçlar Var? 21 Ekim Maç Programı",
-    "url": "https://youtu.be/AFKsmohokmk",
-    "instagram": "https://www.instagram.com/reel/DexGISwD7r7/"
-   }
-  ]
- },
- {
   "time": "2026-10-21T19:45:04Z",
   "run": "39663767066",
   "event": "schedule",
@@ -4582,5 +4567,15 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-18T21:59:39Z",
+  "run": "44403462482",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44403462482",
+  "videos": [],
+  "slot": "17:00"
  }
 ]

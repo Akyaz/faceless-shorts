@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-21T20:43:50Z",
-  "run": "39671951814",
-  "event": "schedule",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39671951814",
-  "videos": [
-   {
-    "title": "Sergen Yalçın Milli Takım için doğru tercih mi?",
-    "url": "https://youtu.be/g4u2SPZgstw",
-    "instagram": "https://www.instagram.com/reel/DexSwnbDoYm/"
-   }
-  ],
-  "slot": "20:30"
- },
- {
   "time": "2026-10-21T21:31:51Z",
   "run": "39674860985",
   "event": "schedule",
@@ -4571,5 +4555,15 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44406110483",
   "videos": [],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-18T23:07:19Z",
+  "run": "44414173610",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44414173610",
+  "videos": [],
+  "slot": "19:00"
  }
 ]

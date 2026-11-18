@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-21T19:45:04Z",
-  "run": "39663767066",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39663767066",
-  "videos": [
-   {
-    "title": "Türkiye ve 3 Ülke Arasında Bedir Mutabakatı İmzalandı",
-    "url": "https://youtu.be/_0q8uwRpGWk",
-    "instagram": "https://www.instagram.com/reel/DexMDXTlF9W/"
-   }
-  ],
-  "slot": "19:00"
- },
- {
   "time": "2026-10-21T20:43:50Z",
   "run": "39671951814",
   "event": "schedule",
@@ -4575,6 +4559,16 @@
   "mode": "culture",
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44403462482",
+  "videos": [],
+  "slot": "17:00"
+ },
+ {
+  "time": "2026-11-18T22:14:51Z",
+  "run": "44406110483",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44406110483",
   "videos": [],
   "slot": "17:00"
  }

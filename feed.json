@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-21T14:14:16Z",
-  "run": "39614248870",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39614248870",
-  "videos": [
-   {
-    "title": "El Niño Alarmı: Aşırı Sıcaklar ve Fırtınalar Kapıda",
-    "url": "https://youtu.be/dL97_WsdnGc",
-    "instagram": "https://www.instagram.com/reel/DewmLY-FjhC/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-21T15:29:06Z",
   "run": "39625131090",
   "event": "schedule",
@@ -4586,6 +4570,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44203111077",
   "videos": [],
+  "slot": "20:30"
+ },
+ {
+  "time": "2026-11-18T00:08:22Z",
+  "run": "44203715886",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44203715886",
+  "videos": [
+   {
+    "title": "Fenerbahçe Tarfin ASVEL'i 34 sayı farkla yendi, bu skor normal mi?",
+    "url": "https://youtu.be/f-cW1MZSryg",
+    "instagram": "https://www.instagram.com/reel/Df3LoGjGR0X/"
+   }
+  ],
   "slot": "20:30"
  }
 ]

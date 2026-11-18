@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-22T09:23:57Z",
-  "run": "39753710925",
-  "event": "schedule",
-  "mode": "morning",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39753710925",
-  "videos": [
-   {
-    "title": "Ulusal Siber Alarmı ve Azerbaycan'dan 31 İsme Giriş Yasağı",
-    "url": "https://youtu.be/upt6c3jgW1s",
-    "instagram": "https://www.instagram.com/reel/DeypvfEDc0a/"
-   }
-  ],
-  "slot": "07:15"
- },
- {
   "time": "2026-10-22T12:38:53Z",
   "run": "39779111849",
   "event": "schedule",
@@ -4564,5 +4548,21 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-18T23:31:23Z",
+  "run": "44420722389",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44420722389",
+  "videos": [
+   {
+    "title": "Fenerbahçe ASVEL'i 34 sayı farkla yendi, bu skor normal mi?",
+    "url": "https://youtu.be/ir_IKLG9kgQ",
+    "instagram": "https://www.instagram.com/reel/Df5sNRKjmlH/"
+   }
+  ],
+  "slot": "20:30"
  }
 ]

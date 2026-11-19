@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-22T15:49:46Z",
-  "run": "39804356455",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/39804356455",
-  "videos": [
-   {
-    "title": "Derbinin Hakemi Belli Oldu! Galatasaray Lille'i Devirdi",
-    "url": "https://youtu.be/y_aaQAou5wQ",
-    "instagram": "https://www.instagram.com/reel/DezV4u0kTnp/"
-   }
-  ],
-  "slot": "13:30"
- },
- {
   "time": "2026-10-22T16:14:25Z",
   "run": "39810891044",
   "event": "schedule",
@@ -4565,5 +4549,14 @@
   ],
   "slot": "20:00",
   "script": "scripts/longform/tr-istanbulun-fethi.json"
+ },
+ {
+  "time": "2026-11-19T07:03:25Z",
+  "run": "44476457587",
+  "event": "workflow_dispatch",
+  "mode": "sportstory",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44476457587",
+  "videos": []
  }
 ]

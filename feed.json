@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-24T16:15:21Z",
-  "run": "40088157527",
-  "event": "workflow_dispatch",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40088157527",
-  "videos": [
-   {
-    "title": "Iceland Women's Strike 1975: When 90% Walked Out",
-    "url": "https://youtu.be/ybM2usG9rOM",
-    "instagram": "https://www.instagram.com/reel/De4iaqnjYL2/"
-   }
-  ]
- },
- {
   "time": "2026-10-24T16:21:24Z",
   "run": "40110780391",
   "event": "schedule",
@@ -4536,5 +4521,22 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-19T23:43:13Z",
+  "run": "44637238675",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44637238675",
+  "videos": [
+   {
+    "title": "Pompeii: The City That Froze in a Single Day (And Why We Still Argue About the Date)",
+    "url": "https://youtu.be/6ijUbBcmKwA",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/en-pompeii.json"
  }
 ]

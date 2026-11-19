@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-24T16:26:47Z",
-  "run": "40111448755",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40111448755",
-  "videos": [
-   {
-    "title": "Cumhuriyet Bayramımız Kutlu Olsun: Türkiye Cumhuriyeti 103 Yaşında",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-24T16:33:20Z",
   "run": "40110302554",
   "event": "workflow_dispatch",
@@ -4530,6 +4515,16 @@
   "mode": "debate",
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44639248922",
+  "videos": [],
+  "slot": "20:30"
+ },
+ {
+  "time": "2026-11-19T23:56:38Z",
+  "run": "44640521460",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44640521460",
   "videos": [],
   "slot": "20:30"
  }

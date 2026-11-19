@@ -4544,16 +4544,16 @@
   "videos": []
  },
  {
-  "time": "2026-11-19T07:17:43Z",
+  "time": "2026-11-19T07:33:11Z",
   "run": "44476896503",
   "event": "workflow_dispatch",
   "mode": "culture",
   "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44476896503",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44480465493",
   "videos": [
    {
     "title": "Cevher Dizisinin İlk Fragmanı Yayınlandı: Elçin Sangu Ekranlara Dönüyor",
-    "url": null,
+    "url": "https://youtu.be/cFrjhge8dV8",
     "instagram": null
    }
   ]

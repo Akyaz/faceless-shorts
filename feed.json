@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-24T16:10:49Z",
-  "run": "40100756284",
-  "event": "workflow_dispatch",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110344619",
-  "videos": [
-   {
-    "title": "Galatasaray'dan 22-0'lık Skor, Fenerbahçe Atina'da Kazandı",
-    "url": "https://youtu.be/6PUEUeFmjEY",
-    "instagram": "https://www.instagram.com/reel/De4T85oiQgR/"
-   }
-  ]
- },
- {
   "time": "2026-10-24T16:11:02Z",
   "run": "39992105647",
   "event": "workflow_dispatch",
@@ -4534,5 +4519,21 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44606283751",
   "videos": []
+ },
+ {
+  "time": "2026-11-19T21:57:52Z",
+  "run": "44623129669",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44623129669",
+  "videos": [
+   {
+    "title": "Van Gogh Tablosu 190,4 Milyon Dolara Satıldı",
+    "url": "https://youtu.be/Tyr7mRJEubg",
+    "instagram": "https://www.instagram.com/reel/Df8GSP1iT3s/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

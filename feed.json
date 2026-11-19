@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-24T16:10:47Z",
-  "run": "40095978152",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40110337779",
-  "videos": [
-   {
-    "title": "İstanbul Trafiğinde Yol Kapanması: Vatan Caddesi İki Gün Kapalı",
-    "url": "https://youtu.be/araolPYPYIA",
-    "instagram": "https://www.instagram.com/reel/De4MI54jj0n/"
-   }
-  ]
- },
- {
   "time": "2026-10-24T16:10:49Z",
   "run": "40100756284",
   "event": "workflow_dispatch",
@@ -4540,5 +4525,14 @@
     "instagram": null
    }
   ]
+ },
+ {
+  "time": "2026-11-19T20:21:47Z",
+  "run": "44606283751",
+  "event": "workflow_dispatch",
+  "mode": "trend",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44606283751",
+  "videos": []
  }
 ]

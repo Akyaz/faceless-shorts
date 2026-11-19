@@ -105,6 +105,6 @@ def plan(day=None):
     return {"title": out["title"], "hook_title": out.get("hook_title", ""), "label": "ON THIS DAY", "lang": "en",
             "segments": segments, "sources": [headline], "kind": "history", "era": str(event["year"]),
             "image_queries": [q for q in out.get("image_queries") or [] if q], "object_query": "",
-            "place": {"country": "", "city": ""}, "image_files": files, "fill_with_search": True, "mood": "notr",
+            "place": {"country": "", "city": ""}, "image_files": files, "vet_files": True, "fill_with_search": True, "mood": "notr",
             "hashtags": script._tags(out.get("hashtags")) + ["onthisday", "history"],
-            "category": "27", "image_prompt": ""}
+            "category": "27"}

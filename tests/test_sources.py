@@ -107,7 +107,8 @@ class StockGuard(unittest.TestCase):
 
 
 class Fallback(unittest.TestCase):
-    def test_without_vetting_only_commons(self):
+    def test_without_vetting_nothing(self):
+        # 19 Kasım 2026: görülmemiş görsel hiçbir yolda kullanılmaz (eskiden ilk iki Commons sonucu alınırdı)
         cands = [{"url": "p", "about": "a", "credit": "x", "source": "pexels"},
                  {"url": "c", "about": "b", "credit": "y", "source": "commons"}]
         with mock.patch.object(images, "_sources", lambda plan: [("x", lambda q, n: cands)]), \
@@ -115,7 +116,17 @@ class Fallback(unittest.TestCase):
                 mock.patch.object(images, "_save", lambda picked, *a, **k: [(c["url"], c["credit"]) for c in picked]), \
                 mock.patch.object(images, "RECENT", set()):
             out = images.find_backgrounds(PLAN, pathlib.Path(tempfile.mkdtemp()), 2)
-        self.assertEqual(out, [("c", "y")])
+        self.assertEqual(out, [])
+
+    def test_automatic_page_files_are_vetted(self):
+        files = [{"url": "a", "about": "File:A.jpg", "credit": "x"}, {"url": "b", "about": "File:B.jpg", "credit": "y"}]
+        plan = {**PLAN, "image_files": ["File:A.jpg", "File:B.jpg"], "vet_files": True}
+        with mock.patch.object(images, "commons_files", return_value=files), \
+                mock.patch.object(images, "_select", lambda plan, c: [c[1]]), \
+                mock.patch.object(images, "_save", lambda picked, *a, **k: [(c["url"], c["credit"]) for c in picked]):
+            self.assertEqual(images.find_backgrounds(plan, pathlib.Path(tempfile.mkdtemp()), 2), [("b", "y")])
+            # elle seçilmiş dosyalar (burç kartı, resmi arşiv) olduğu gibi
+            self.assertEqual(len(images.find_backgrounds({**plan, "vet_files": False}, pathlib.Path(tempfile.mkdtemp()), 2)), 2)
 
 
 class Clip(unittest.TestCase):

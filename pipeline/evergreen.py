@@ -256,13 +256,13 @@ def plan(state_path=STATE):
               "lang": "tr", "segments": segments, "sources": [{**sources[0], "related": sources[1:]}],
               "kind": "fact", **script._image_fields(out),
               "image_files": (FILES.get(tr) or [p["image"] for p in pages if p["image"]])[:2],
-              "fill_with_search": True,
+              "fill_with_search": True, "vet_files": not FILES.get(tr),  # elle seçilmişler olduğu gibi
               # Resmi fotoğraflar varsa arama yapılmaz, yalnızca onlar kullanılır (main.find_images)
               "work_images": arrange(official, out["paragraphs"], {i for i, g in enumerate(segments) if g.get("scene")}),
               "own_images": bool(official),  # kişinin kendi fotoğrafları: açıklamada "temsilidir" yazmaz
               "mood": out.get("mood", "notr"),
               "hashtags": script._tags(out.get("hashtags")) + spec["hashtags"],
-              "category": "27", "image_prompt": "", "pronounce": script._pronounce(out),
+              "category": "27", "pronounce": script._pronounce(out),
               # Haber kanalının "günün haberleri" sözü bu videoya uymuyor
               "texts": {"subscribe": "Her gün bir \"vay be\" bilgisi. Kaçırmamak için kanala abone ol.",
                         "tags": ["bilgi", "ilginç bilgiler", "shorts"]},

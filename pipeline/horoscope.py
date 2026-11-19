@@ -180,7 +180,7 @@ def plan(part, now=None):
         print(f"Kapanış çıkarıldı: {outro}")
     return {"title": f"{', '.join(s[0] for s in signs)} Haftalık Burç Yorumu ({week})", "hook_title": f"{week} Burç Yorumu",
             "label": "HAFTALIK BURÇ", "lang": "tr", "segments": segments, "sources": [source],
-            "kind": "horoscope", "mood": "umutlu", "category": "24", "image_prompt": "",
+            "kind": "horoscope", "mood": "umutlu", "category": "24",
             "hashtags": ["burçyorumu", "haftalıkburç", "astroloji"], "pronounce": script._pronounce(out),
             "texts": {"subscribe": "Her pazartesi haftalık burç yorumları bu kanalda. Kaçırmamak için abone ol. "
                                    "Burç yorumları eğlence amaçlıdır.",

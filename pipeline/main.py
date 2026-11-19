@@ -289,7 +289,7 @@ def find_images(plan, work):
         # Yeri olmayan haber (burs, zam, sınav): bina araması alakasız görsel getiriyordu; video kartlarla anlatılır.
         # Yalnızca tek konulu haber: sabah özeti bu kural yüzünden hiç görsel aramadı (15 Kasım 2026 denemesi)
         return [None] * len(segments), []
-    if plan.get("image_queries") or plan.get("image_prompt") or plan.get("image_files"):
+    if plan.get("image_queries") or plan.get("image_files"):
         # Tek haber: görseller paragraflar arasında sırayla döner
         found = images.find_backgrounds(plan, work, len(segments))
         paths = [path for path, _ in found]

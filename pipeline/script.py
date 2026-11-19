@@ -397,14 +397,13 @@ Other fields:
 - mood: one of "notr" (informative, everyday; use this when unsure), "gergin" (crisis, disaster, danger, warning,
   conflict), "umutlu" (good news, success, opening), "huzunlu" (loss, mourning). Use these exact words.
 - hashtags: 3 topic-specific tags; one word each, lowercase, no spaces (example: "eu", "inflation", "nasa").
-- image_prompt: a symbolic vertical illustration of the topic with no real people and no text.
 
 - subjects: up to 3 proper names the story is about, most important first: people named in the story first (full
   name as on Wikipedia), then the work, club, organisation or place. Their own photos are shown in the video.
   Only those who take part in the event (the scorer, the decision maker); never someone who is absent, injured or
   only mentioned. Empty list if there are none.
 """ + NEWS_SCENES_EN + """Return only JSON:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "subjects": []}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "subjects": []}
 """
 
 # Seslendirme yabancı isimleri bu okunuşla söyler, altyazıda orijinal yazım kalır (tts.PRONOUNCE)
@@ -443,10 +442,9 @@ Ek alanlar:
   "gergin" (kriz, afet, tehlike, uyarı, çatışma), "umutlu" (iyi haber, başarı, açılış, kolaylık),
   "huzunlu" (kayıp, yas, üzücü olay).
 - hashtags: konuya özel 3 etiket; tek kelime, küçük harf, boşluksuz (örnek: "deprem", "istanbul", "emekli").
-- image_prompt: konuyu sembolik anlatan, gerçek kişi ve yazı içermeyen dikey illüstrasyon tarifi (İngilizce).
 """ + SUBJECTS_FIELD + WORK + NEWS_SCENES + PRONOUNCE_FIELD + """
 Sadece JSON döndür:
-{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "image_prompt": "...", "pronounce": {}, "subjects": [], "work": null}
+{"pick": 1, "hook_title": "...", "title": "...", "paragraphs": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": "", "mood": "notr", "hashtags": ["..."], "pronounce": {}, "subjects": [], "work": null}
 """
 
 DEBATE_RULES = """
@@ -701,7 +699,7 @@ def story_script(headlines, kind="story", count=10, recent=()):
             "mood": out.get("mood", "notr"), "hashtags": _tags(out.get("hashtags")) + spec["hashtags"],
             "category": spec.get("category"),
             "subjects": [str(x).strip() for x in out.get("subjects") or [] if str(x).strip()][:3],
-            "image_prompt": out.get("image_prompt", ""), "pronounce": _pronounce(out),
+            "pronounce": _pronounce(out),
             "work": out.get("work") if isinstance(out.get("work"), dict) else None}
 
 
@@ -807,7 +805,7 @@ def custom_plan(item):
             "segments": segments, "sources": [headline], **_image_fields(item),
             "image_files": item.get("image_files") or [], "mood": item.get("mood", "notr"),
             "hashtags": _tags(item.get("hashtags")) + (["news"] if english else ["gündem", "haber"]),
-            "category": item.get("category"), "subscribe": item.get("subscribe", True), "image_prompt": "",
+            "category": item.get("category"), "subscribe": item.get("subscribe", True),
             "pronounce": item.get("pronounce") or {}, "match": item.get("match")}
 
 

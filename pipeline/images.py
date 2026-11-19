@@ -412,29 +412,6 @@ def _download(url, out_path):
         f.write(resp.read())
 
 
-def gemini_illustration(prompt, out_path):
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        return None
-    model = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
-    body = json.dumps({
-        "contents": [{"parts": [{"text": f"Vertical 9:16 editorial illustration, no text, no real people: {prompt}"}]}],
-        "generationConfig": {"responseModalities": ["IMAGE"]},
-    }).encode()
-    req = urllib.request.Request(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-        data=body, headers={"Content-Type": "application/json", "x-goog-api-key": key})
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        data = json.load(resp)
-    for part in data["candidates"][0]["content"]["parts"]:
-        inline = part.get("inlineData") or part.get("inline_data")
-        if inline:
-            with open(out_path, "wb") as f:
-                f.write(base64.b64decode(inline["data"]))
-            return "Görsel: yapay zekâ ile üretilmiş temsili illüstrasyon"
-    return None
-
-
 SELECT_RULES = """Bir haber videosunun arka planı için fotoğraf seçiyorsun. Aşağıda numaralı adayların dosya adı ve
 açıklaması, ardından aynı sırayla fotoğrafların kendisi var. Fotoğrafa bakarak karar ver.
 
@@ -646,7 +623,10 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
     exclude: daha önce kullanılmış adresler; uzun videoda bölümler aynı görseli tekrarlamasın diye."""
     out_dir.mkdir(parents=True, exist_ok=True)
     if plan.get("image_files"):  # görseller elle seçilmiş: arama ve eleme yapılmaz, sıra korunur
-        fixed = _save(commons_files(plan["image_files"]), out_dir, count, exclude)
+        files = commons_files(plan["image_files"])
+        if plan.get("vet_files"):  # olayın Vikipedi sayfalarından kendiliğinden gelen dosyalar: görülerek seçilir
+            files = _select(plan, files) or []
+        fixed = _save(files, out_dir, count, exclude)
         if len(fixed) >= count or not plan.get("fill_with_search"):
             return fixed
         # Olayın sayfasındaki bir-iki fotoğraf yetmezse geri kalanı aramayla tamamlanır (tarihte bugün)
@@ -687,21 +667,9 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
         candidates = [c for c in candidates if c["url"] not in exclude] or candidates
     candidates = candidates[:MAX_CANDIDATES]
 
-    picked = _select(plan, candidates) if candidates else []
-    if picked is None:
-        # Eleme yapılamadıysa yalnızca Commons'ta yer adıyla bulunan ilk sonuçlara güvenilir; nesne aramaları ve
-        # stok siteleri elenmeden kullanılmaz
-        picked = [c for c in candidates if not c["neutral"] and c.get("source", "commons") == "commons"][:2]
-
+    # Eleme yapılamazsa (model yanıt vermedi) görülmemiş görsel kullanılmaz; yapay zekâ illüstrasyonu da yok: video
+    # kartla anlatılır ya da çıkmaz (3. ilke; kişi ve yapım görselleriyle aynı kural, 19 Kasım 2026)
+    picked = (_select(plan, candidates) or []) if candidates else []
     results = _save(picked, out_dir, count, exclude)
-    if not results and plan.get("image_prompt"):
-        path = out_dir / "background.png"
-        try:
-            credit = gemini_illustration(plan["image_prompt"], path)
-        except Exception as exc:
-            print(f"Gemini görseli alınamadı: {exc}")
-            credit = None
-        if credit:
-            results.append((path, credit))
     print(f"Arka plan: {len(results)} görsel")
     return results

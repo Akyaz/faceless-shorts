@@ -1,25 +1,5 @@
 [
  {
-  "time": "2026-10-24T11:13:33Z",
-  "run": "40088460553",
-  "event": "workflow_dispatch",
-  "mode": "story",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40088460553",
-  "videos": [
-   {
-    "title": "Günün Öne Çıkan Haberleri",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/De3_vYSFZ54/"
-   },
-   {
-    "title": "Meteoroloji Uyardı: Balkanlardan Gelen Sağanak Tüm Yurdu Saracak",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/De3_44SjPvb/"
-   }
-  ]
- },
- {
   "time": "2026-10-24T11:25:11Z",
   "run": "40027694000",
   "event": "schedule",
@@ -4558,5 +4538,15 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-19T16:08:00Z",
+  "run": "44558379018",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44558379018",
+  "videos": [],
+  "slot": "15:00"
  }
 ]

@@ -618,6 +618,18 @@ def _stock_ok(cand, names):
     return bool(names & about)
 
 
+OTHER_EVENT = re.compile(r"\b(conference|summit|election|campaign|protest|demonstration|ceremony|meeting|rally|congress|"
+                         r"visit|toplantı\w*|konferans\w*|zirve\w*|seçim\w*|miting\w*|tören\w*|kongre\w*|ziyaret\w*|"
+                         r"gösteri\w*|eylem\w*)\b", re.I)
+
+
+def other_event(cand):
+    """Haber videosu için uygun olmayan aday: açıklaması bir olayı anlatıyor (toplantı, zirve, seçim, tören) ya da
+    fotoğraf 2010'dan eski. Haberin kendi olayının fotoğrafı aramada çıkmaz; bulunan hep başka bir olaydır."""
+    year = cand.get("year") or 0
+    return bool(OTHER_EVENT.search(cand.get("about", ""))) or 0 < year < 2010 or "Library of Congress" in cand.get("credit", "")
+
+
 def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
     """En fazla count görseli out_dir'e yazar; (dosya, kaynak satırı) listesi döner.
     exclude: daha önce kullanılmış adresler; uzun videoda bölümler aynı görseli tekrarlamasın diye."""
@@ -659,6 +671,13 @@ def find_backgrounds(plan, out_dir, count, per_query=3, exclude=None):
             if series not in seen:
                 seen.add(series)
                 candidates.append(pool[rank])
+    if plan.get("kind") not in ("history", "fact"):
+        # Haber: başka bir olayın fotoğrafı ve eski fotoğraf alınmaz. Model kuralı bilse de seçiyordu: tartışma
+        # denemesinde 2023 seçim sonrası basın toplantısı ve Kongre Kütüphanesi'nden eski Meclis fotoğrafı (19 Kasım 2026)
+        kept = [c for c in candidates if not other_event(c)]
+        if len(kept) < len(candidates):
+            print(f"Başka olaya ait ya da eski {len(candidates) - len(kept)} görsel atlandı")
+        candidates = kept
     fresh = [c for c in candidates if c["url"] not in RECENT]
     if len(fresh) < len(candidates):
         print(f"Son günlerde kullanılmış {len(candidates) - len(fresh)} görsel atlandı")

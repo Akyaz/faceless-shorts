@@ -156,3 +156,11 @@ class Clip(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OtherEvent(unittest.TestCase):
+    def test_other_event_and_old_photos(self):
+        # 19 Kasım 2026 tartışma denemesi: 2023 seçim sonrası basın toplantısı ve eski Meclis fotoğrafı
+        self.assertTrue(images.other_event({"about": "File:Post-election press conference, Ankara, 15 May 2023.jpg"}))
+        self.assertTrue(images.other_event({"about": "File:Turkey. Ankara. An old parliament building.jpg", "year": 1925}))
+        self.assertFalse(images.other_event({"about": "File:Ankara Valiliği binası.jpg", "year": 2019}))

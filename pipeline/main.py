@@ -193,10 +193,10 @@ def _place_photos(plan, work, count):
 
 
 def settle_scenes(plan, backgrounds):
-    """Görseller bulunduktan sonra videonun nasıl anlatılacağı (ilke: gerçek görüntü; yoksa grafik; o da yoksa video yok):
+    """Görseller bulunduktan sonra videonun nasıl anlatılacağı (ilke: gerçek görüntü; yoksa video yok):
     - en az MIN_IMAGES farklı gerçek görsel: fotoğraflı video; haberde ilk paragraf hariç en fazla bir kart
-    - haber ve her paragrafın kartı var: kartlı video (yeri olmayan haber: burs, zam)
-    - ikisi de yoksa video üretilmez. Tek görselli video yok (Gönül Dağı, 15 Kasım 2026). Maç kartları hariç."""
+    - yoksa video üretilmez. Tek görselli video yok (Gönül Dağı, 15 Kasım 2026); yalnızca kartla anlatılan video da
+      yok (kanal sahibi: "hiç hoş olmaz", 19 Kasım 2026). Maç kartları hariç."""
     if plan.get("match"):
         return
     segments = plan["segments"]
@@ -214,30 +214,26 @@ def settle_scenes(plan, backgrounds):
                 elif seg.get("scene"):
                     kept += 1
         return
-    if news and segments and all(seg.get("scene") for seg in segments):
-        print("Yeterli gerçek görsel yok; video bilgi kartlarıyla anlatılıyor")
-        return
-    raise RuntimeError(f"Yalnızca {real} görsel bulundu (en az {MIN_IMAGES}) ve kartlar her paragrafı karşılamıyor; "
-                       "video üretilmiyor, bu saat atlanıyor.")
+    raise RuntimeError(f"Yalnızca {real} görsel bulundu (en az {MIN_IMAGES}); video üretilmiyor, bu saat atlanıyor.")
 
 
 def _settle_digest(plan, backgrounds):
-    """Özet: kendi görüntüsü olan madde fotoğrafla, olmayan bilgi kartıyla anlatılır; ikisi de yoksa madde çıkar.
-    İkiden az madde kalırsa video üretilmez. Listeler yerinde değişir (main'deki segments ve backgrounds)."""
+    """Özet: her madde kendi görüntüsüyle anlatılır; görüntüsü olmayan madde çıkar (kartla anlatılan madde yok,
+    kanal sahibinin kararı, 19 Kasım 2026). İkiden az madde kalırsa video üretilmez. Listeler yerinde değişir
+    (main'deki segments ve backgrounds)."""
     segments = plan["segments"]
     kept = []
     for seg, bg in zip(segments, backgrounds):
         if seg.get("kind") == "item":
-            if bg:
-                seg.pop("scene", None)  # fotoğrafın üstünde başlık zaten yazıyor
-            elif not seg.get("scene"):
-                print(f"Görüntüsü ve kartı olmayan madde çıkarıldı: {seg['text']}")
+            if not bg:
+                print(f"Görüntüsü olmayan madde çıkarıldı: {seg['text']}")
                 continue
+            seg.pop("scene", None)  # fotoğrafın üstünde başlık zaten yazıyor
         kept.append((seg, bg))
     items = [s for s, _ in kept if s.get("kind") == "item"]
     total, before = len(items), sum(1 for s in segments if s.get("kind") == "item")
     if total < 2:
-        raise RuntimeError("Özette görüntüsü ya da kartı olan yeterli madde kalmadı; bu saat atlanıyor.")
+        raise RuntimeError("Özette kendi görüntüsü olan yeterli madde kalmadı; bu saat atlanıyor.")
     for i, seg in enumerate(items, 1):
         seg["label"] = re.sub(r"\d+/\d+$", f"{i}/{total}", seg.get("label", ""))
     for seg, _ in kept:
@@ -511,9 +507,11 @@ def with_subject_photos(args):
             context = news_context(plan)
             plan["subject_files"] = [f for f in dict.fromkeys(images.subject_file(n, context) for n in names) if f]
             if not plan["subject_files"]:
-                if args.mode not in SUBJECT_REQUIRED:
-                    return plan  # yer ve olay: arama (en az iki görsel denetimi main'de)
-                reason = f"konunun kendi fotoğrafı yok ({', '.join(names) or 'isim yok'})"
+                city = ((plan.get("place") or {}).get("city") or "").strip()
+                if args.mode not in SUBJECT_REQUIRED and city:
+                    return plan  # yer ve olay: şehirle arama (en az iki görsel denetimi main'de)
+                # Ne kişisi ne şehri olan haberin (burs, zam) görüntüsü yok; kartlı video da yok (19 Kasım 2026)
+                reason = f"konunun kendi fotoğrafı yok ({', '.join(names) or 'isim yok'}{'' if city else ', şehir yok'})"
             else:
                 plan["subject_photos"] = subject_photos(plan)
                 if len(plan["subject_photos"]) >= MIN_IMAGES:

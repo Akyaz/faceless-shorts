@@ -32,15 +32,16 @@ Amaç paylaşım: izleyici videoyu birine göndermek istemeli. Kurallar bu yedi 
 |---|---|
 | 1. **Konu:** insanların aradığı ya da konuştuğu tek bir güncel konu; olayda yer alan kişiler | `trends.py`, `script.STORIES` (seçim), `SUBJECTS_FIELD`, `slots.SLOTS` |
 | 2. **İlk 2 saniye:** konunun görüntüsü ve haberin kendisi, ilk cümle en fazla 8 kelime, soru ya da giriş yok | `script.STORY_RULES`, `style_problems` |
-| 3. **Görüntü:** yalnızca konunun gerçek görüntüsü, en az iki farklı kare; yoksa bilgi kartı; o da yoksa video yok | `main.subject_kind`, `main.settle_scenes`, `images.py` |
+| 3. **Görüntü:** yalnızca konunun gerçek görüntüsü, en az iki farklı kare, hepsi Gemini'ye gösterilerek seçilir; yoksa video yok (yalnızca kartlı video da yok) | `main.subject_kind`, `main.settle_scenes`, `images.py` |
 | 4. **Doğruluk:** her bilgi kaynakta var, tarih doğru, adı söylenmeyen "ünlü isim" yok, karttaki her sayı metinde | `script.text_problems`, `review.py`, `scenes.check` |
 | 5. **Kısalık:** 55–75 kelime, 3–4 paragraf; ekranda az yazı (başlık yalnızca ilk 3 saniye) | `script.style_problems`, `render.HOOK_SECONDS` |
 | 6. **Kapanış:** somut bir bilgi; soru yalnızca adı konmuş iki seçenek varsa; yorum çağrısı ve dolgu yok | `script.CLOSING_RULE`, `text_problems` |
 | 7. **Az ama güçlü:** bu şartları tutturamayan video üretilmez, o saat boş geçer | `TextRejected`, `settle_scenes`, `with_subject_photos` |
 
 Görsel kararı konuya göre verilir, video türüne göre değil (`subject_kind`): dizi ve film → yalnızca yapımın kareleri;
-kişi → kişinin kendi fotoğrafları ve olayın geçtiği şehir; yer ve olay → o yerin fotoğrafı; yeri olmayan haber (burs,
-zam) → bilgi kartları. Beğenilen örnek: Kızılcık Şerbeti videosu (15 Kasım 2026).
+kişi → kişinin kendi fotoğrafları ve olayın geçtiği şehir; yer ve olay → o yerin fotoğrafı; ne kişisi ne yeri olan
+haber (burs, zam) → video yok, sıradaki haber. Bilgi kartı yalnızca fotoğraflı videoda tek bir paragrafı destekler
+(19 Kasım 2026). Beğenilen örnek: Kızılcık Şerbeti videosu (15 Kasım 2026).
 
 **Değişiklik kuralı:** Bir hata çıkınca önce hangi ilkenin tutmadığı bulunur ve o ilkenin tek uygulaması düzeltilir.
 Yeni kural ancak eskisi kaldırılarak ya da birleştirilerek eklenir. Tür silmek ya da kapatmak için kanal sahibine sorulur.

@@ -490,8 +490,6 @@ Alanlar:
     başlıklarda bulunmayan haberleri seçme.
   - subjects: maddedeki olayda yer alan en fazla 2 kişinin tam adı (Vikipedi'deki gibi); kurum, yer ve yapım değil,
     olayda bulunmayan ya da yalnızca adı geçen kişi değil. Yoksa boş liste. Fotoğrafları videoda gösterilir.
-  - lines: maddenin en önemli bilgisi 1-3 kısa satırla; sayı ve adlar metinde yazıldığı gibi (tarih, tutar, il adları);
-    maddenin kendi görüntüsü yoksa bilgi kartı olarak gösterilir (örnek: ["Artvin, Giresun, Ordu", "Sarı kod"]).
 """ + "\n".join("  " + line for line in IMAGE_FIELDS.format(n=2).splitlines()).replace("{", "{{").replace("}", "}}") + """
 - outro: tek kısa kapanış cümlesi, soru değil: maddelerden birinin sıradaki somut adımı (ne zaman, nerede)
   (örnek: "{outro_example}"). Yalnızca maddelerdeki bilgiyi kullan; uygun bilgi yoksa boş bırak. Genel soru
@@ -501,7 +499,7 @@ Alanlar:
 """ + PRONOUNCE_FIELD.replace("{", "{{").replace("}", "}}") + """
 """ + ACCURACY + """
 Sadece JSON döndür:
-{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "subjects": [], "lines": ["..."], "country": "...", "city": "", "image_queries": ["..."], "object_query": ""}}], "outro": "...", "title": "...", "hashtags": ["..."], "pronounce": {{}}}}
+{{"intro": "...", "items": [{{"pick": 1, "heading": "...", "text": "...", "subjects": [], "country": "...", "city": "", "image_queries": ["..."], "object_query": ""}}], "outro": "...", "title": "...", "hashtags": ["..."], "pronounce": {{}}}}
 """
 
 # Toplu özet türleri: ekran etiketi, istem ayrıntıları ve dil modeli yokken kullanılacak yedekler
@@ -735,14 +733,11 @@ def digest_script(headlines, kind, count=14):
             heading, text = item.get("heading", ""), item["text"]
             if sensitive_headline(headline):  # acı haber ünlemle verilmez
                 heading, text = heading.replace("!", ""), text.replace("!", ".")
-            # Görsel kararı tek konulu haberle aynı (main._item_images): kişi, şehir, yoksa bilgi kartı (15 Kasım 2026)
+            # Görsel kararı tek konulu haberle aynı (main._item_images): kişi, yoksa şehir; görüntüsü olmayan madde
+            # çıkar, kartla anlatılmaz (19 Kasım 2026)
             fields = {**_image_fields(item),
                       "subjects": [str(x).strip() for x in item.get("subjects") or [] if str(x).strip()][:2]}
-            from . import scenes
-            card = scenes.check({"type": "kart", "label": "", "lines": item.get("lines") or []}, text)
-            if not card:
-                print(f"Madde kartı kurulamadı (önerilen satırlar: {item.get('lines')}): {text}")
-            items.append((headline, heading, text, {**fields, **({"scene": card} if card else {})}))
+            items.append((headline, heading, text, fields))
     if len(items) < 2:
         raise RuntimeError("Özette yeterli net madde kalmadı")
     intro, outro = str(out.get("intro") or "").strip(), str(out.get("outro") or "").strip()

@@ -51,11 +51,15 @@ class Kind(unittest.TestCase):
             self.assertEqual(vet.call_args[0][2], [{"url": "a"}, {"url": "b"}])  # Vikipedi ve Commons birlikte
 
     def test_place_story_allowed_in_news(self):
-        plan = {"work": None, "subjects": [], "sources": [{"title": "h"}]}
+        plan = {"work": None, "subjects": [], "sources": [{"title": "h"}], "place": {"city": "İzmir"}}
         with mock.patch.object(main, "news_plan", return_value=dict(plan)):
             self.assertEqual(main.subject_kind(main.with_subject_photos(args("story"))), "yer")
             with self.assertRaises(RuntimeError):  # kültür haberi bir kişi ya da eser hakkında olmalı
                 main.with_subject_photos(args("culture"))
+        # Ne kişisi ne şehri olan haber (burs, zam): görüntüsü yok, sıradaki haber (kartlı video yok)
+        with mock.patch.object(main, "news_plan", return_value={**plan, "place": {"city": ""}}):
+            with self.assertRaises(RuntimeError):
+                main.with_subject_photos(args("story"))
 
     def test_person_has_no_generic_search(self):
         plan = {"segments": [{}] * 4, "subject_files": ["File:R.jpg"], "subjects": ["R"], "image_queries": ["stadium"],
@@ -106,10 +110,11 @@ class SettleScenes(unittest.TestCase):
         main.settle_scenes(plan, ["a", "b", "a", "b"])
         self.assertEqual([bool(s.get("scene")) for s in plan["segments"]], [False, True, False, False])
 
-    def test_no_photos_all_cards(self):
+    def test_no_photos_no_card_video(self):
+        # Yalnızca kartla anlatılan video yok (kanal sahibi, 19 Kasım 2026)
         plan = {"mode": "story", "segments": self.segs(3, {0, 1, 2})}
-        main.settle_scenes(plan, [None, None, None])
-        self.assertTrue(all(s.get("scene") for s in plan["segments"]))
+        with self.assertRaises(RuntimeError):
+            main.settle_scenes(plan, [None, None, None])
 
     def test_single_photo_without_cards_fails(self):
         plan = {"mode": "story", "segments": self.segs(3, {1})}
@@ -146,19 +151,21 @@ class SettleScenes(unittest.TestCase):
             self.assertEqual(main._item_images(seg, {"sources": [{}]}, pathlib.Path(tempfile.mkdtemp())), [])
 
     def test_digest_settle(self):
+        # Görüntüsü olmayan madde kartla anlatılmaz, çıkar (19 Kasım 2026)
         card = {"type": "kart", "label": "", "lines": ["Sarı kod"]}
         segs = [{"kind": "intro", "text": "Bugün seni etkileyecek 3 şey."},
                 {"kind": "item", "label": "SABAH ÖZETİ 1/3", "text": "a", "headline": {"title": "a"}, "scene": card},
-                {"kind": "item", "label": "SABAH ÖZETİ 2/3", "text": "b", "headline": {"title": "b"}},
-                {"kind": "item", "label": "SABAH ÖZETİ 3/3", "text": "c", "headline": {"title": "c"}, "scene": card}]
+                {"kind": "item", "label": "SABAH ÖZETİ 2/3", "text": "b", "headline": {"title": "b"}, "scene": card},
+                {"kind": "item", "label": "SABAH ÖZETİ 3/3", "text": "c", "headline": {"title": "c"}}]
         plan = {"mode": "morning", "title": "Özet", "segments": segs, "sources": []}
-        backgrounds = ["p0", None, None, "p3"]
+        backgrounds = ["p0", "p1", None, "p3"]
         main.settle_scenes(plan, backgrounds)
         self.assertEqual([s["text"] for s in segs], ["Bugün seni etkileyecek 2 şey.", "a", "c"])
-        self.assertEqual(backgrounds, ["p0", None, "p3"])
-        self.assertIn("scene", segs[1])          # görüntüsüz madde kartla
-        self.assertNotIn("scene", segs[2])       # fotoğraflı maddede kart yok
+        self.assertEqual(backgrounds, ["p0", "p1", "p3"])
+        self.assertNotIn("scene", segs[1])       # fotoğraflı maddede kart yok
         self.assertEqual(segs[2]["label"], "SABAH ÖZETİ 2/2")
+        with self.assertRaises(RuntimeError):  # tek fotoğraflı madde kalırsa video yok
+            main.settle_scenes({**plan, "segments": [dict(x) for x in segs]}, ["p0", "p1", None])
 
 
 class RejectedText(unittest.TestCase):

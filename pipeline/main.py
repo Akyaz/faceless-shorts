@@ -153,12 +153,13 @@ def news_context(plan):
     return f"{head}. {text}".strip(". ")[:600]
 
 
-def _subject_support(plan, work, count):
-    """Konudaki isimlerin (kişi, kulüp, yapım) Commons'taki diğer fotoğrafları; ana fotoğrafla aynısı hariç."""
-    known = set(plan.get("subject_files") or [])
-    pool = [c for n in plan.get("subjects") or [] for c in images.subject_photos(n, context=news_context(plan))
-            if "File:" + c["about"].split("|")[0].strip().removeprefix("File:") not in known]
-    return images.save_direct(list({c["url"]: c for c in pool}.values()), work / "support", count)
+def subject_photos(plan):
+    """Konudaki isimlerin (kişi, kulüp, eser) fotoğrafları, haberle birlikte görülerek seçilmiş, en iyisi başta:
+    Vikipedi ana görseli ve Commons'taki diğer fotoğraflar birlikte Gemini'ye gösterilir (images.vet_photos)."""
+    names, context = plan.get("subjects") or [], news_context(plan)
+    pool = list(images.commons_files(plan["subject_files"])) if plan.get("subject_files") else []
+    pool += [c for n in names for c in images.subject_photos(n, limit=6)]
+    return images.vet_photos(names, context, pool)
 
 
 def _item_images(seg, plan, out_dir):
@@ -172,8 +173,9 @@ def _item_images(seg, plan, out_dir):
         return images.find_backgrounds(item, out_dir, 1, per_query=2)
     for name in seg.get("subjects") or []:
         own = images.subject_file(name, context=seg["text"])
-        if own:
-            return images.find_backgrounds({**item, "image_files": [own], "fill_with_search": False}, out_dir, 1)
+        picked = images.vet_photos([name], seg["text"], images.commons_files([own]), 1) if own else []
+        if picked:
+            return images.save_direct(picked, out_dir, 1)
     return _place_photos(item, out_dir, 1)
 
 
@@ -274,12 +276,12 @@ def find_images(plan, work):
     if kind == "kisi":
         # Kişinin (kulübün, eserin) kendi fotoğrafı ilk karede ve iki paragrafta bir; aradakiler onun başka
         # fotoğrafları. Genel ortam araması yok: Ronaldinho videosunda stat kapısı geliyordu (15 Kasım 2026)
-        own = images.find_backgrounds({**plan, "image_files": plan["subject_files"], "fill_with_search": False},
-                                      work / "subject", len(plan["subject_files"]))
+        photos = plan["subject_photos"] if "subject_photos" in plan else subject_photos(plan)
+        own = images.save_direct(photos, work / "subject", len(segments))
         rest = _place_photos(plan, work, max(1, len(segments) // 2))
-        rest += _subject_support(plan, work, max(1, len(segments) // 2 - len(rest)))
-        mine, other = [p for p, _ in own], [p for p, _ in rest] or [p for p, _ in own]
-        backgrounds = [(mine[(i // 2) % len(mine)] if i % 2 == 0 or not other else other[(i // 2) % len(other)])
+        # Kişinin fotoğrafları sırayla; şehrin fotoğrafı varsa iki paragrafta bir araya girer
+        mine, other = [p for p, _ in own], [p for p, _ in rest]
+        backgrounds = [(other[(i // 2) % len(other)] if i % 2 and other else mine[(i // 2 if other else i) % len(mine)])
                        if mine else None for i in range(len(segments))]
         return backgrounds, [c for _, c in own + rest]
     single = all(s.get("kind", "story") == "story" for s in segments)  # özetlerde yer her maddenin kendisinde
@@ -513,10 +515,10 @@ def with_subject_photos(args):
                     return plan  # yer ve olay: arama (en az iki görsel denetimi main'de)
                 reason = f"konunun kendi fotoğrafı yok ({', '.join(names) or 'isim yok'})"
             else:
-                support = {c["url"] for n in names for c in images.subject_photos(n, context=context)}
-                if len(plan["subject_files"]) + len(support) >= MIN_IMAGES:
+                plan["subject_photos"] = subject_photos(plan)
+                if len(plan["subject_photos"]) >= MIN_IMAGES:
                     return plan
-                reason = "konunun yalnızca bir fotoğrafı var"
+                reason = f"konunun habere uyan yeterli fotoğrafı yok ({len(plan['subject_photos'])})"
         tried += [h["title"] for h in plan["sources"]]
         print(f"{reason}; başka haber deneniyor")
     raise RuntimeError("Görseli yeterli haber çıkmadı; bu saatin videosu atlanıyor.")

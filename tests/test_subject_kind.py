@@ -35,16 +35,20 @@ class Kind(unittest.TestCase):
                 main.with_subject_photos(args("story"))
 
     def test_person_needs_two_photos(self):
+        # Fotoğraflar haberle birlikte görülerek seçilir; habere uyan ikinci fotoğraf yoksa sıradaki haber
         plan = {"work": None, "subjects": ["Ronaldinho"], "sources": [{"title": "h"}]}
-        with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
-                mock.patch.object(main.images, "subject_file", return_value="File:R.jpg"), \
-                mock.patch.object(main.images, "subject_photos", return_value=[]):
-            with self.assertRaises(RuntimeError):
-                main.with_subject_photos(args("sportstory"))
-        with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
-                mock.patch.object(main.images, "subject_file", return_value="File:R.jpg"), \
-                mock.patch.object(main.images, "subject_photos", return_value=[{"url": "x"}]):
-            self.assertEqual(main.subject_kind(main.with_subject_photos(args("sportstory"))), "kisi")
+        for picked, ok in (([{"url": "a"}], False), ([{"url": "a"}, {"url": "b"}], True)):
+            with mock.patch.object(main, "news_plan", return_value=dict(plan)), \
+                    mock.patch.object(main.images, "subject_file", return_value="File:R.jpg"), \
+                    mock.patch.object(main.images, "commons_files", return_value=[{"url": "a"}]), \
+                    mock.patch.object(main.images, "subject_photos", return_value=[{"url": "b"}]), \
+                    mock.patch.object(main.images, "vet_photos", return_value=picked) as vet:
+                if ok:
+                    self.assertEqual(main.subject_kind(main.with_subject_photos(args("sportstory"))), "kisi")
+                else:
+                    with self.assertRaises(RuntimeError):
+                        main.with_subject_photos(args("sportstory"))
+            self.assertEqual(vet.call_args[0][2], [{"url": "a"}, {"url": "b"}])  # Vikipedi ve Commons birlikte
 
     def test_place_story_allowed_in_news(self):
         plan = {"work": None, "subjects": [], "sources": [{"title": "h"}]}
@@ -54,19 +58,15 @@ class Kind(unittest.TestCase):
                 main.with_subject_photos(args("culture"))
 
     def test_person_has_no_generic_search(self):
-        plan = {"segments": [{}] * 4, "subject_files": ["File:R.jpg"], "subjects": ["R"], "image_queries": ["stadium"]}
+        plan = {"segments": [{}] * 4, "subject_files": ["File:R.jpg"], "subjects": ["R"], "image_queries": ["stadium"],
+                "subject_photos": [{"url": "r"}, {"url": "s"}]}
         work = pathlib.Path(tempfile.mkdtemp())
-        def search(p, *a, **k):
-            if not p.get("image_files"):
-                raise AssertionError("kişi konusunda genel arama yapıldı")
-            return [(work / "r.jpg", "c")]
-
-        with mock.patch.object(main.images, "find_backgrounds", side_effect=search) as fb, \
+        with mock.patch.object(main.images, "find_backgrounds", side_effect=AssertionError("genel arama")), \
                 mock.patch.object(main, "_place_photos", return_value=[]), \
-                mock.patch.object(main, "_subject_support", return_value=[(work / "s.jpg", "d")]):
+                mock.patch.object(main.images, "save_direct",
+                                  return_value=[(work / "r.jpg", "c"), (work / "s.jpg", "d")]):
             backgrounds, _ = main.find_images(plan, work)
-        self.assertEqual(fb.call_count, 1)  # yalnızca kişinin kendi dosyası
-        self.assertEqual(set(backgrounds), {work / "r.jpg", work / "s.jpg"})
+        self.assertEqual(backgrounds, [work / "r.jpg", work / "s.jpg", work / "r.jpg", work / "s.jpg"])
 
 
 class PlaceAndStatues(unittest.TestCase):
@@ -131,12 +131,13 @@ class SettleScenes(unittest.TestCase):
     def test_digest_item_person_photo(self):
         seg = {"kind": "item", "text": "Trump, Putin ve Şi buluşuyor.", "headline": {"title": "t"},
                "subjects": ["Donald Trump"], "image_queries": ["summit hall"], "place": {"country": "China", "city": ""}}
-        seen = []
         with mock.patch.object(main.images, "subject_file", return_value="File:Trump.jpg"), \
-                mock.patch.object(main.images, "find_backgrounds",
-                                  side_effect=lambda item, *a, **k: seen.append(item["image_files"]) or [("p", "c")]):
-            main._item_images(seg, {"sources": [{}]}, pathlib.Path(tempfile.mkdtemp()))
-        self.assertEqual(seen, [["File:Trump.jpg"]])
+                mock.patch.object(main.images, "commons_files", return_value=[{"url": "t"}]) as files, \
+                mock.patch.object(main.images, "vet_photos", return_value=[{"url": "t"}]), \
+                mock.patch.object(main.images, "save_direct", return_value=[("p", "c")]), \
+                mock.patch.object(main.images, "find_backgrounds", side_effect=AssertionError("arama")):
+            self.assertEqual(main._item_images(seg, {"sources": [{}]}, pathlib.Path(tempfile.mkdtemp())), [("p", "c")])
+        files.assert_called_once_with(["File:Trump.jpg"])
 
     def test_digest_item_without_person_or_city_not_searched(self):
         seg = {"kind": "item", "text": "Karadeniz'de sarı kod.", "headline": {"title": "t"}, "subjects": [],

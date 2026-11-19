@@ -334,9 +334,60 @@ def subject_file(name, context=""):
     return ""
 
 
-def subject_photos(name, limit=3, context=""):
-    """Kişinin, kulübün ya da yapımın Commons'taki başka fotoğrafları: dosya adında ismin bütün kelimeleri geçmeli;
-    context (haber başlığı) verilirse açıklaması habere uymalı (same_subject).
+PHOTO_RULES = """Bir haber videosunda gösterilecek fotoğrafları seçiyorsun. Haberin konusu: {names}
+Haber: {context}
+
+Aşağıda numaralı adayların dosya adı ve açıklaması, ardından aynı sırayla fotoğrafların kendisi var. Fotoğrafa bakarak
+karar ver.
+
+Seç: haberdeki kişinin kendisinin açıkça göründüğü fotoğraflar (yüzü seçiliyor, kadrajın ana konusu o); kulüp, stat ya
+da yer için onun kendisini gösteren fotoğraflar.
+Seçme:
+- Başka birinin öne çıktığı fotoğraflar (aynı takımdan başka bir oyuncu, rakip, antrenör); kişinin kalabalıkta küçük
+  kaldığı ya da kim olduğunun seçilemediği fotoğraflar.
+- Kişi bir takımdaki durumuyla haberdeyse başka takımın formasıyla çekilmiş fotoğraflar: Fenerbahçe haberinde eski
+  takımı Anadolu Efes'in formasıyla Larkin seçilmez. Milli takım forması yalnızca haber milli takımla ilgiliyse.
+- Heykel, büst, imza, logo, belge, afiş; bulanık, çok karanlık ya da çok küçük fotoğraflar.
+Emin değilsen seçme. Birbirinden farklı görünenleri tercih et; ilk sıraya kişinin yüzünün en net göründüğü fotoğrafı
+koy. En fazla {limit} aday seç; uygun aday yoksa boş liste döndür.
+Sadece JSON döndür: {{"pick": [2, 1]}}
+"""
+
+
+def vet_photos(names, context, candidates, limit=6):
+    """Kişi, kulüp ya da yer fotoğraflarını haberle birlikte Gemini'ye gösterip uygun olanları en iyisi başta seçtirir.
+    Arama sonuçları ve yapım kareleri zaten görülerek seçiliyordu; kişinin Vikipedi ve Commons fotoğrafları ise yalnızca
+    adla geliyordu: Arda Güler haberinde Real Madrid'in başka bir futbolcusu, Fenerbahçe haberinde Efes formalı Larkin
+    çıktı (19 Kasım 2026). Model yanıt vermezse hiçbiri: alakasız görsel, görselsizlikten kötü."""
+    candidates = list({c["url"]: c for c in candidates}.values())[:MAX_PHOTOS]
+    if not candidates or not os.environ.get("GEMINI_API_KEY"):
+        return []
+    shown, previews = [], []
+    for cand in candidates:
+        try:
+            previews.append(_preview(cand))
+            shown.append(cand)
+        except Exception as exc:
+            print(f"Önizleme alınamadı: {exc}")
+    if not shown:
+        return []
+    listing = "\n".join(f"{i}. {c['about'][:200]}" for i, c in enumerate(shown, 1))
+    prompt = PHOTO_RULES.format(names=", ".join(names), context=context, limit=limit) + f"\nAdaylar:\n{listing}"
+    try:
+        picks = json.loads(script._generate(prompt, os.environ["GEMINI_API_KEY"], previews, SELECT_MODELS))["pick"]
+    except Exception as exc:
+        print(f"Konu fotoğrafları değerlendirilemedi: {exc}")
+        return []
+    print(f"Konu fotoğrafı seçimi: {picks} ({len(shown)} aday içinden)")
+    return [shown[int(n) - 1] for n in dict.fromkeys(picks) if 1 <= int(n) <= len(shown)][:limit]
+
+
+MAX_PHOTOS = 14  # Gemini'ye gösterilen kişi fotoğrafı sayısı
+
+
+def subject_photos(name, limit=3):
+    """Kişinin, kulübün ya da yapımın Commons'taki başka fotoğrafları: dosya adında ismin bütün kelimeleri geçmeli.
+    Habere uyup uymadıkları (adaş, başka oyuncu, eski forma) fotoğrafa bakılarak vet_photos'ta seçilir.
     Genel ortam aramasının (stüdyo, şehir manzarası) yerine destek görseli olarak kullanılır."""
     words = _fold(name).split()
     try:
@@ -351,9 +402,6 @@ def subject_photos(name, limit=3, context=""):
                              r"\bbust\b|büst|statue|heykel|sculpture|wax|balmumu", c["about"], re.I)
            and c.get("year", 0) >= 2010]
     own = list({re.sub(r"\s*\(cropped\)", "", c["about"].split("|")[0]): c for c in own}.values())  # kırpılmış kopyası
-    if context and own:
-        keep = same_subject(name, context, [c["about"][:300] for c in own])
-        own = [c for i, c in enumerate(own, 1) if i in keep]
     print(f"Konu fotoğrafları ({name}): {len(own)}")
     return [{**c, "neutral": False} for c in own[:limit]]
 

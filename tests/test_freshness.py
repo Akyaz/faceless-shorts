@@ -55,6 +55,21 @@ class Repeat(unittest.TestCase):
         self.assertEqual(titles, ["Bir Başkadır 2. Sezon Fragmanı", "Çarpışma Anı Zirvede"])
         self.assertEqual(main.repeated({"work": {"title": "Bir Başkadır"}}, titles), "Bir Başkadır")
 
+    def test_same_event_asks_model_with_published_titles(self):
+        # 17-18 Kasım 2026: Fenerbahçe'nin ASVEL galibiyeti üç kez video oldu
+        published = ["Fenerbahçe Tarfin 115-81 LDLC Asvel Maç Sonucu", "Arda Güler Sözleşmesini Uzattı"]
+        plan = {"title": "Fenerbahçe ASVEL'i 34 sayı farkla yendi, bu skor normal mi?", "segments": [{"text": "Maç."}]}
+        with mock.patch.dict("os.environ", {"GEMINI_API_KEY": "k"}), \
+                mock.patch.object(script, "_generate", return_value='{"same": "Fenerbahçe Tarfin 115-81 LDLC Asvel Maç Sonucu"}') as gen:
+            self.assertEqual(script.same_event(plan, published), published[0])
+        self.assertIn("- Arda Güler Sözleşmesini Uzattı", gen.call_args[0][0])
+        with mock.patch.dict("os.environ", {"GEMINI_API_KEY": "k"}), \
+                mock.patch.object(script, "_generate", return_value='{"same": "uydurma başlık"}'):
+            self.assertEqual(script.same_event(plan, published), "")  # listede olmayan yanıt sayılmaz
+        with mock.patch.dict("os.environ", {"GEMINI_API_KEY": "k"}), \
+                mock.patch.object(script, "_generate", side_effect=RuntimeError("503")):
+            self.assertEqual(script.same_event(plan, published), "")  # model yoksa engellenmez
+
     def test_published_titles_falls_back_to_history(self):
         with mock.patch("pipeline.report.read_feed", side_effect=KeyError("GITHUB_REPOSITORY")):
             self.assertEqual(main.published_titles([{"source": "a", "title": "T"}, {"source": "b", "title": "T"}]), ["T"])

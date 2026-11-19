@@ -406,9 +406,12 @@ def news_plan(args, exclude=(), _tries=0):
             raise RuntimeError(f"{exc}; başka haber kalmadı, bu saat atlanıyor.") from exc
         print(f"{exc}; başka haber deneniyor")
         return news_plan(args, exclude=list(exclude) + [exc.headline["title"]], _tries=_tries + 1)
+    # Tek konulu her türde (gündem, spor, kültür, tartışma, platform): son 7 günde yayınlanan bir olayın tekrarı
+    # olmaz. Yapımın adı başlıkta geçiyorsa model sorulmadan atlanır (Bir Başkadır, 15 Kasım 2026)
     repeat = repeated(plan, published) if args.mode in REPEAT_CHECKED else ""
+    if not repeat and single and not args.offline:
+        repeat = script.same_event(plan, published)
     if repeat and not args.offline:
-        # Aynı yapımın haberi farklı başlıkla ertesi gün yine seçildi (Bir Başkadır, 15 Kasım 2026): başka haber
         if _tries >= REVIEW_TRIES:
             raise RuntimeError(f"Son videolarda işlenmiş konu ({repeat}); başka haber kalmadı, bu saat atlanıyor.")
         print(f"Son videolarda işlenmiş konu ({repeat}); başka haber deneniyor")

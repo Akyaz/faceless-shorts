@@ -659,6 +659,42 @@ def rewritten(prompt, out, problems_of, english=False, headline_of=lambda o: Non
     return out
 
 
+SAME_EVENT = """Bir haber kanalında son günlerde yayınlanan videoların başlıkları aşağıda. Yeni bir video hazırlanıyor.
+Yeni video bu başlıklardan birinin anlattığı olayı mı anlatıyor?
+
+Aynı olay: aynı maç, aynı karar, aynı açıklama, aynı transfer, aynı kaza; dizi ve filmde aynı yapım (fragman, yayın
+günü ve liste sırası aynı yapımın haberidir). Aynı olaya yorum, soru ya da tartışma eklemek yeni bir haber değildir:
+"Fenerbahçe ASVEL'i 34 sayı farkla yendi, bu skor normal mi?" dünkü "Fenerbahçe 115-81 ASVEL" videosunun olayıdır.
+Aynı olay sayılmaz: aynı kişinin ya da takımın başka bir olayı (Galatasaray'ın transferi ile maçı), olayda gerçekten
+yeni bir gelişme (maç oynandı ve sonuç belli oldu, söylenen karar kesinleşti).
+
+Yeni video: {title}
+{text}
+
+Yayınlanan videolar:
+{listed}
+
+Sadece JSON döndür: {{"same": "aynı olayı anlatan yayınlanmış başlık, yoksa boş"}}
+"""
+
+
+def same_event(plan, published):
+    """Plan son videolardan birinin olayını mı anlatıyor: o videonun başlığı, değilse boş. Fenerbahçe'nin ASVEL
+    galibiyeti 17-18 Kasım 2026'da üç kez video oldu (maç sonucu, iki tartışma videosu); başlık listesi modele
+    verilse de seçimi bağlamıyordu. Model yanıt vermezse engellenmez (yapım tekrarı main.repeated ile ayrıca bakılır)."""
+    if not published or not os.environ.get("GEMINI_API_KEY"):
+        return ""
+    text = " ".join(s["text"] for s in plan.get("segments", [])[:2])
+    prompt = SAME_EVENT.format(title=plan["title"], text=text, listed="\n".join(f"- {t}" for t in published))
+    try:
+        same = str(json.loads(_generate(prompt, os.environ["GEMINI_API_KEY"], (), "gemini-flash-lite-latest,gemini-flash-latest"))
+                   .get("same") or "").strip()
+    except Exception as exc:
+        print(f"Tekrar denetimi yapılamadı: {exc}")
+        return ""
+    return same if same in published else ""
+
+
 def story_script(headlines, kind="story", count=10, recent=()):
     spec = STORIES[kind]
     english = spec.get("lang") == "en"

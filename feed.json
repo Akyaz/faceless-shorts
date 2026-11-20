@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T12:11:56Z",
-  "run": "40191691069",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40191691069",
-  "videos": [
-   {
-    "title": "Kış Saati Başladı: Türkiye ile Saat Farkı Açıldı",
-    "url": "https://youtu.be/zH9jhEP4VKc",
-    "instagram": "https://www.instagram.com/reel/De6rWh6kZZN/"
-   }
-  ],
-  "slot": "10:00"
- },
- {
   "time": "2026-10-25T12:59:11Z",
   "run": "40194641393",
   "event": "schedule",
@@ -4527,5 +4511,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-20T21:49:03Z",
+  "run": "44821482381",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44821482381",
+  "videos": [
+   {
+    "title": "Halef: Köklerin Çağrısı Final Yaptı: Biran Damla Yılmaz Veda Etti",
+    "url": "https://youtu.be/SEF9jdXcEgs",
+    "instagram": "https://www.instagram.com/reel/Df-qEnyiBrN/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

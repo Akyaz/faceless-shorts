@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T12:59:11Z",
-  "run": "40194641393",
-  "event": "schedule",
-  "mode": "weekly",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40194641393",
-  "videos": [
-   {
-    "title": "18 İlde Fırtına Uyarısı! Borsa Çakıldı, SPK Başkanı İstifa Etti",
-    "url": "https://youtu.be/3UaZRgFh17I",
-    "instagram": null
-   }
-  ],
-  "slot": "pazar 11:00"
- },
- {
   "time": "2026-10-25T13:14:05Z",
   "run": "40196467781",
   "event": "workflow_dispatch",
@@ -4527,5 +4511,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-20T22:33:59Z",
+  "run": "44828500092",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44828500092",
+  "videos": [
+   {
+    "title": "Anadolu Efes EuroLeague'de ASVEL'i 107-81 Mağlup Etti",
+    "url": "https://youtu.be/AMlE9o45lNI",
+    "instagram": "https://www.instagram.com/reel/Df-vNiIgf1D/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

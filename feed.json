@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T09:03:03Z",
-  "run": "40178800004",
-  "event": "schedule",
-  "mode": "morning",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40178800004",
-  "videos": [
-   {
-    "title": "KPSS Heyecanı Başladı | İstanbul'a Kuvvetli Sağanak Uyarısı",
-    "url": "https://youtu.be/o_Kx_pT3fMA",
-    "instagram": "https://www.instagram.com/reel/De6VvneCCxc/"
-   }
-  ],
-  "slot": "07:15"
- },
- {
   "time": "2026-10-25T12:11:56Z",
   "run": "40191691069",
   "event": "schedule",
@@ -4527,5 +4511,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-20T12:39:04Z",
+  "run": "44732983722",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44732983722",
+  "videos": [
+   {
+    "title": "Netflix Türkiye'de 1 Numaraya Yükselen Film: Asla Teslim Olma",
+    "url": "https://youtu.be/gBjK6pINvII",
+    "instagram": "https://www.instagram.com/reel/Df9rIBRFGvM/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

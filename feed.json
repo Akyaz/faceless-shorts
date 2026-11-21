@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T16:54:45Z",
-  "run": "40213629686",
-  "event": "schedule",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40213629686",
-  "videos": [
-   {
-    "title": "Dirk Hartog's Pewter Plate in Australia, 1616",
-    "url": "https://youtu.be/XOvKZQaowRs",
-    "instagram": "https://www.instagram.com/reel/De7LuPklKXM/"
-   }
-  ],
-  "slot": "16:00"
- },
- {
   "time": "2026-10-25T18:38:01Z",
   "run": "40221867016",
   "event": "schedule",
@@ -4517,5 +4501,20 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44840822978",
   "videos": [],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-21T07:57:38Z",
+  "run": "44882259577",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44882259577",
+  "videos": [
+   {
+    "title": "İzmir'de elektrik kesintisi: 21 Kasım'da 18 ilçede sular kesilmiyor ama elektrikler gidiyor",
+    "url": "https://youtu.be/W5spLUirlag",
+    "instagram": "https://www.instagram.com/reel/Df_vtjSDyI8/"
+   }
+  ]
  }
 ]

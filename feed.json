@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-25T20:34:56Z",
-  "run": "40229143798",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40229143798",
-  "videos": [
-   {
-    "title": "Truva: Efsane mi Gerçek mi? Hazineyi Kaçıran Adamın Skandalı",
-    "url": "https://youtu.be/EIcC_s0wikk",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/tr-truva.json"
- },
- {
   "time": "2026-10-26T09:54:40Z",
   "run": "40302679950",
   "event": "schedule",
@@ -4510,5 +4493,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44914079741",
   "videos": [],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-21T14:32:33Z",
+  "run": "44914076427",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44914076427",
+  "videos": [
+   {
+    "title": "Andrew Carnegie: Servetini Dağıtan Çelik Kralının Vasiyeti",
+    "url": "https://youtu.be/p8PoZSkmy4I",
+    "instagram": "https://www.instagram.com/reel/DgAc6ccCT76/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

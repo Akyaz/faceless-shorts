@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T18:38:01Z",
-  "run": "40221867016",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40221867016",
-  "videos": [
-   {
-    "title": "Almanya ile Türkiye Arasındaki Saat Farkı İkiye Çıktı",
-    "url": "https://youtu.be/thnSsFC3Zi8",
-    "instagram": "https://www.instagram.com/reel/De7XijhAtho/"
-   }
-  ],
-  "slot": "19:00"
- },
- {
   "time": "2026-10-25T19:55:35Z",
   "run": "40226897957",
   "event": "schedule",
@@ -4516,5 +4500,21 @@
     "instagram": "https://www.instagram.com/reel/Df_vtjSDyI8/"
    }
   ]
+ },
+ {
+  "time": "2026-11-21T14:29:50Z",
+  "run": "44914073841",
+  "event": "workflow_dispatch",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44914073841",
+  "videos": [
+   {
+    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 21 Kasım Maç Programı ve Saatleri",
+    "url": "https://youtu.be/O_WWyjKQahI",
+    "instagram": "https://www.instagram.com/reel/DgAcmb_EVF4/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

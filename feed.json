@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-25T19:55:35Z",
-  "run": "40226897957",
-  "event": "schedule",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40226897957",
-  "videos": [
-   {
-    "title": "Derbiye Bir Gün Kala: Tarih Fenerbahçe'den, Bu Sezon Galatasaray'dan Yana",
-    "url": "https://youtu.be/m8h-yIjM4bs",
-    "instagram": "https://www.instagram.com/reel/De7gaXHCuOv/"
-   }
-  ],
-  "slot": "20:30"
- },
- {
   "time": "2026-10-25T20:34:56Z",
   "run": "40229143798",
   "event": "schedule",
@@ -4516,5 +4500,15 @@
    }
   ],
   "slot": "13:30"
+ },
+ {
+  "time": "2026-11-21T14:31:23Z",
+  "run": "44914079741",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44914079741",
+  "videos": [],
+  "slot": "10:00"
  }
 ]

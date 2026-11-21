@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-26T15:37:48Z",
-  "run": "40349718327",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40349718327",
-  "videos": [
-   {
-    "title": "İstanbul'da 5 İlçe İçin Sel Alarmı Verildi",
-    "url": "https://youtu.be/GUzeyXYevpw",
-    "instagram": "https://www.instagram.com/reel/De9ntf0k1of/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-26T16:55:33Z",
   "run": "40362878872",
   "event": "schedule",
@@ -4509,5 +4493,22 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-21T22:16:55Z",
+  "run": "44954335229",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44954335229",
+  "videos": [
+   {
+    "title": "Titanic: The Last 160 Minutes, and the Myths We Still Believe",
+    "url": "https://youtu.be/QAu0qOH02I0",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/en-titanic.json"
  }
 ]

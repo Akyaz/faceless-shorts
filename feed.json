@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-26T13:45:43Z",
-  "run": "40332256924",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40332256924",
-  "videos": [
-   {
-    "title": "Yanıltıcı Emlak İlanına Bakanlıktan 28 Bin Lira Ceza",
-    "url": "https://youtu.be/fa8n0dR769Q",
-    "instagram": "https://www.instagram.com/reel/De9a4bXlVwp/"
-   }
-  ],
-  "slot": "10:00"
- },
- {
   "time": "2026-10-26T15:37:48Z",
   "run": "40349718327",
   "event": "schedule",
@@ -4509,5 +4493,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-21T21:18:37Z",
+  "run": "44950458806",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/44950458806",
+  "videos": [
+   {
+    "title": "Okan Buruk Kırmızı Kart Gördü: Beşiktaş Derbisinde Yok",
+    "url": "https://youtu.be/SRqPGiNo6-M",
+    "instagram": "https://www.instagram.com/reel/DgBLYStE6Wr/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

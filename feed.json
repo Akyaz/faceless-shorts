@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-26T21:45:00Z",
-  "run": "40406049800",
-  "event": "schedule",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40406049800",
-  "videos": [
-   {
-    "title": "İzmir için 20 milyar dolarlık sıfır karbon hedefi konulmalı mı?",
-    "url": "https://youtu.be/87foT6HIEjk",
-    "instagram": "https://www.instagram.com/reel/De-RvBeiaBR/"
-   }
-  ],
-  "slot": "20:30"
- },
- {
   "time": "2026-10-26T22:21:26Z",
   "run": "40409036416",
   "event": "schedule",
@@ -4498,5 +4482,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45039216910",
   "videos": [],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-22T15:52:34Z",
+  "run": "45039219414",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45039219414",
+  "videos": [
+   {
+    "title": "Ford Model T: Dünyayı Değiştiren 15 Milyon Otomobil",
+    "url": "https://youtu.be/jFSbc01wQg0",
+    "instagram": "https://www.instagram.com/reel/DgDK3N6Gew3/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-26T22:21:26Z",
-  "run": "40409036416",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40409036416",
-  "videos": [
-   {
-    "title": "Göbekli Tepe: Older Than Stonehenge by 6,000 Years. Who Built It?",
-    "url": "https://youtu.be/71u45f9qNwk",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/en-gobekli-tepe.json"
- },
- {
   "time": "2026-10-27T09:45:54Z",
   "run": "40482466671",
   "event": "schedule",
@@ -4498,5 +4481,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-22T15:58:47Z",
+  "run": "45039226609",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45039226609",
+  "videos": [
+   {
+    "title": "İstanbul Havalimanı: Dünyanın Tek Çatı Altındaki En Büyük Terminali",
+    "url": "https://youtu.be/UoWIsHM5TJs",
+    "instagram": "https://www.instagram.com/reel/DgDLkgYkTbW/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

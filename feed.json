@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-27T20:19:27Z",
-  "run": "40576391608",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40576391608",
-  "videos": [
-   {
-    "title": "Emekliye Refah Payı: 65 Yaş Üstüne Farklı Destek Geliyor",
-    "url": "https://youtu.be/93GoK-ZH03Y",
-    "instagram": "https://www.instagram.com/reel/DfAsvWDjg6Y/"
-   }
-  ],
-  "slot": "19:00"
- },
- {
   "time": "2026-10-27T21:27:26Z",
   "run": "40585853683",
   "event": "schedule",
@@ -4498,5 +4482,21 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-23T12:34:58Z",
+  "run": "45174110576",
+  "event": "workflow_dispatch",
+  "mode": "horoscope1",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45174110576",
+  "videos": [
+   {
+    "title": "Koç, Boğa, İkizler, Yengeç Haftalık Burç Yorumu (23-29 Kasım)",
+    "url": "https://youtu.be/FToBL5GwQF8",
+    "instagram": "https://www.instagram.com/reel/DgFZAZtH-VH/"
+   }
+  ],
+  "slot": "pazartesi 08:00"
  }
 ]

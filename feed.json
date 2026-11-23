@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-28T12:42:52Z",
-  "run": "40689816817",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40689816817",
-  "videos": [
-   {
-    "title": "Cumhuriyet Bayramımız Kutlu Olsun: Türkiye Cumhuriyeti 103 Yaşında",
-    "url": "https://youtu.be/nQS1_GL0FBk",
-    "instagram": "https://www.instagram.com/reel/DfFJjSBoZrl/"
-   }
-  ]
- },
- {
   "time": "2026-10-28T13:44:24Z",
   "run": "40697905381",
   "event": "schedule",
@@ -4499,5 +4484,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-23T21:24:07Z",
+  "run": "45267950358",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45267950358",
+  "videos": [
+   {
+    "title": "Henry Ford: İflastan Doğan Otomotiv İmparatorluğu",
+    "url": "https://youtu.be/sFJDqf4H-D8",
+    "instagram": "https://www.instagram.com/reel/DgGVj74jIGz/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

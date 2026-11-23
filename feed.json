@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-28T12:38:23Z",
-  "run": "40689069422",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40689069422",
-  "videos": [
-   {
-    "title": "Onuncu Yıl Nutku: Atatürk'ün 1933'te Söylediği Unutulmaz Sözler",
-    "url": "https://youtu.be/kL5AvOKMnFY",
-    "instagram": "https://www.instagram.com/reel/DfCcww7CYxP/"
-   }
-  ]
- },
- {
   "time": "2026-10-28T12:39:41Z",
   "run": "40689054548",
   "event": "workflow_dispatch",
@@ -4497,5 +4482,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-23T13:11:04Z",
+  "run": "45174141080",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45174141080",
+  "videos": [
+   {
+    "title": "Atatürk Barajı Hakkında Az Bilinenler",
+    "url": "https://youtu.be/8aj7ucyqNfc",
+    "instagram": "https://www.instagram.com/reel/DgFdK_TDj5w/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

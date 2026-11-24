@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-29T15:40:34Z",
-  "run": "40902820668",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40902820668",
-  "videos": [
-   {
-    "title": "Sağanak Yağış Uyarısı: 19 İl İçin Sarı ve Turuncu Kodlu Alarm",
-    "url": "https://youtu.be/BDYSzN6UA-4",
-    "instagram": "https://www.instagram.com/reel/DfFWZJziZ68/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-29T17:04:01Z",
   "run": "40916833740",
   "event": "schedule",
@@ -4492,6 +4476,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45313666798",
   "videos": [],
+  "slot": "19:00"
+ },
+ {
+  "time": "2026-11-24T03:12:42Z",
+  "run": "45315525824",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45315525824",
+  "videos": [
+   {
+    "title": "Tarık Biberovic Devşirme Statüsünde Kalacak: Hidayet Türkoğlu Açıkladı",
+    "url": "https://youtu.be/-vWI55uDrEk",
+    "instagram": "https://www.instagram.com/reel/DgG9fhlDPuS/"
+   }
+  ],
   "slot": "19:00"
  }
 ]

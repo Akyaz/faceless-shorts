@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-28T22:20:43Z",
-  "run": "40776178108",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40776178108",
-  "videos": [
-   {
-    "title": "The Antikythera Mechanism: A 2,000-Year-Old Computer Found in a Shipwreck",
-    "url": "https://youtu.be/Un1bT5kIZB4",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/en-antikythera.json"
- },
- {
   "time": "2026-10-29T10:54:07Z",
   "run": "40859957561",
   "event": "schedule",
@@ -4500,5 +4483,21 @@
   ],
   "slot": "20:00",
   "script": "scripts/longform/en-bronze-age-collapse.json"
+ },
+ {
+  "time": "2026-11-24T01:26:38Z",
+  "run": "45303874482",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45303874482",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti'nde Ömer ve Kıvılcım Yeniden Yakınlaştı",
+    "url": "https://youtu.be/Yl9Vt73zzTg",
+    "instagram": "https://www.instagram.com/reel/DgGxWbogBKT/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-29T22:25:11Z",
-  "run": "40963562781",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40963562781",
-  "videos": [
-   {
-    "title": "Derinkuyu: Bir Evin Bodrumundan Çıkan Yeraltı Şehri",
-    "url": "https://youtu.be/dGU8hcpJ5iM",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/tr-derinkuyu.json"
- },
- {
   "time": "2026-10-30T10:50:16Z",
   "run": "41042962878",
   "event": "schedule",
@@ -4486,5 +4469,14 @@
     "instagram": "https://www.instagram.com/reel/DgIDtqCmViB/"
    }
   ]
+ },
+ {
+  "time": "2026-11-24T13:40:36Z",
+  "run": "45401242818",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45401242818",
+  "videos": []
  }
 ]

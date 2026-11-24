@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-30T10:50:16Z",
-  "run": "41042962878",
-  "event": "schedule",
-  "mode": "morning",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41042962878",
-  "videos": [
-   {
-    "title": "21 İle Sağanak Uyarısı ve İstanbul'da Elektrik Kesintisi",
-    "url": "https://youtu.be/XCEvxhKxCGs",
-    "instagram": "https://www.instagram.com/reel/DfHZ-rIk4eX/"
-   }
-  ],
-  "slot": "07:15"
- },
- {
   "time": "2026-10-30T13:46:32Z",
   "run": "41064153989",
   "event": "workflow_dispatch",
@@ -4478,5 +4462,21 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45401242818",
   "videos": []
+ },
+ {
+  "time": "2026-11-24T21:38:09Z",
+  "run": "45492327972",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45492327972",
+  "videos": [
+   {
+    "title": "Volkswagen Beetle: Dünyanın En Çok Satılan Tek Platformlu Otomobili",
+    "url": "https://youtu.be/_lgkNUhwYMc",
+    "instagram": "https://www.instagram.com/reel/DgI8AEcHLQn/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

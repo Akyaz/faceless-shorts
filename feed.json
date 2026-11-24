@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-29T20:49:35Z",
-  "run": "40951265212",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/40951265212",
-  "videos": [
-   {
-    "title": "Sağanak Yağış Uyarısı: 25 İl İçin Sarı ve Turuncu Alarm",
-    "url": "https://youtu.be/YPUqCCryLP8",
-    "instagram": "https://www.instagram.com/reel/DfF5xTLjdQT/"
-   }
-  ],
-  "slot": "19:00"
- },
- {
   "time": "2026-10-29T21:54:08Z",
   "run": "40960916038",
   "event": "schedule",
@@ -4487,5 +4471,21 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-24T13:23:49Z",
+  "run": "45401143744",
+  "event": "workflow_dispatch",
+  "mode": "platform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45401143744",
+  "videos": [
+   {
+    "title": "Kraliçe Yeniden Evleniyor Dizi Sektörünü Salladı: Disney+'ta Dünya Birincisi",
+    "url": "https://youtu.be/H3fhEYc7TmU",
+    "instagram": "https://www.instagram.com/reel/DgIDbQ1ETDj/"
+   }
+  ],
+  "slot": "10:00"
  }
 ]

@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-30T13:46:32Z",
-  "run": "41064153989",
-  "event": "workflow_dispatch",
-  "mode": "custom",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41064153989",
-  "videos": [
-   {
-    "title": "Oshimen Konyaspor maçında olacak mı",
-    "url": "https://youtu.be/1ak_G3fSewU",
-    "instagram": "https://www.instagram.com/reel/DfHuFE4iA2x/"
-   }
-  ]
- },
- {
   "time": "2026-10-30T13:47:05Z",
   "run": "41065076277",
   "event": "schedule",
@@ -4478,5 +4463,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-24T23:30:15Z",
+  "run": "45508722683",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45508722683",
+  "videos": [
+   {
+    "title": "Leyla Dizisi Uluslararası Emmy Ödülü Kazandı",
+    "url": "https://youtu.be/YjFEmh3r5sA",
+    "instagram": "https://www.instagram.com/reel/DgJI1V8mQtp/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

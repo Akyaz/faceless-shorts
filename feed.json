@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-30T18:20:04Z",
-  "run": "41105317554",
-  "event": "schedule",
-  "mode": "onthisday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41105317554",
-  "videos": [
-   {
-    "title": "Jean Shrimpton's Accidental Minidress in 1965",
-    "url": "https://youtu.be/7ufncvqK-t0",
-    "instagram": "https://www.instagram.com/reel/DfINdK-Gjvg/"
-   }
-  ],
-  "slot": "16:00"
- },
- {
   "time": "2026-10-30T20:19:47Z",
   "run": "41121217719",
   "event": "schedule",
@@ -4467,5 +4451,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-25T18:20:51Z",
+  "run": "45670156457",
+  "event": "workflow_dispatch",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45670156457",
+  "videos": [
+   {
+    "title": "Barcelona Sabah Maçı Öncesi Bakü'de Antrenman Yaptı",
+    "url": "https://youtu.be/O3msPhkzzRg",
+    "instagram": "https://www.instagram.com/reel/DgLKOGfS_Im/"
+   }
+  ],
+  "slot": "21:00"
  }
 ]

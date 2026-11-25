@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-30T14:02:06Z",
-  "run": "41067669396",
-  "event": "workflow_dispatch",
-  "mode": "fact",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41067669396",
-  "videos": [
-   {
-    "title": "Derinkuyu Yeraltı Şehri'nin Sırları Neler?",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-30T14:29:54Z",
   "run": "41071837209",
   "event": "workflow_dispatch",
@@ -4479,5 +4464,15 @@
    }
   ],
   "slot": "19:00"
+ },
+ {
+  "time": "2026-11-25T01:29:08Z",
+  "run": "45525954173",
+  "event": "schedule",
+  "mode": "debate",
+  "status": "failure",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45525954173",
+  "videos": [],
+  "slot": "20:30"
  }
 ]

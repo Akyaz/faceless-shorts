@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-30T13:47:05Z",
-  "run": "41065076277",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41065076277",
-  "videos": [
-   {
-    "title": "LGS 2027 Tarihi Açıklandı! Sınav Ne Zaman Yapılacak?",
-    "url": "https://youtu.be/wydlvtDZnwM",
-    "instagram": "https://www.instagram.com/reel/DfHuNsnjxOP/"
-   }
-  ],
-  "slot": "10:00"
- },
- {
   "time": "2026-10-30T14:02:06Z",
   "run": "41067669396",
   "event": "workflow_dispatch",
@@ -4479,5 +4463,21 @@
    }
   ],
   "slot": "17:00"
+ },
+ {
+  "time": "2026-11-25T00:11:51Z",
+  "run": "45515794161",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45515794161",
+  "videos": [
+   {
+    "title": "Arda Güler 2 Asist Yaptı: Real Madrid PSV'yi 5-1 Mağlup Etti",
+    "url": "https://youtu.be/LAVFt8CoJs4",
+    "instagram": "https://www.instagram.com/reel/DgJNmMAkxna/"
+   }
+  ],
+  "slot": "19:00"
  }
 ]

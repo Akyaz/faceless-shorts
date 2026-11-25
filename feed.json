@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-30T21:48:14Z",
-  "run": "41074472581",
-  "event": "workflow_dispatch",
-  "mode": "culture",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41133678679",
-  "videos": [
-   {
-    "title": "Kubat 20 Kilo Verdi: Beyaz'ı Şaşkına Çeviren Değişim",
-    "url": "https://youtu.be/3pe8M0tVVdw",
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-30T21:48:22Z",
   "run": "41075613832",
   "event": "workflow_dispatch",
@@ -4466,5 +4451,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-25T23:02:59Z",
+  "run": "45716485394",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45716485394",
+  "videos": [
+   {
+    "title": "2026 Kainat Güzeli Porto Riko'dan Jennifer Barreto Oldu",
+    "url": "https://youtu.be/U0GVWV-XveM",
+    "instagram": "https://www.instagram.com/reel/DgLqg3ZAq6L/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

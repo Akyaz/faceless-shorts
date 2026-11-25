@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-10-30T14:29:54Z",
-  "run": "41071837209",
-  "event": "workflow_dispatch",
-  "mode": "matchday",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41071837209",
-  "videos": [
-   {
-    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 30 Ekim Maç Programı ve Saatleri",
-    "url": null,
-    "instagram": null
-   }
-  ]
- },
- {
   "time": "2026-10-30T14:35:35Z",
   "run": "41072092958",
   "event": "workflow_dispatch",
@@ -4474,5 +4459,22 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45525954173",
   "videos": [],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-25T01:33:44Z",
+  "run": "45524178242",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45524178242",
+  "videos": [
+   {
+    "title": "Truva: Efsane mi Gerçek mi? Hazineyi Kaçıran Adamın Skandalı",
+    "url": "https://youtu.be/rNNuxKl2T20",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/tr-truva.json"
  }
 ]

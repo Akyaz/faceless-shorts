@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-31T14:49:26Z",
-  "run": "41211639637",
-  "event": "schedule",
-  "mode": "story",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41211639637",
-  "videos": [
-   {
-    "title": "Sosyal Medyada Yaş Sınırı Başlıyor: Hesabın Kapatılabilir",
-    "url": "https://youtu.be/TU7DmPrEvaY",
-    "instagram": "https://www.instagram.com/reel/DfKaJkEkVOJ/"
-   }
-  ],
-  "slot": "12:00"
- },
- {
   "time": "2026-10-31T15:55:53Z",
   "run": "41216547757",
   "event": "schedule",
@@ -4459,5 +4443,21 @@
    }
   ],
   "slot": "12:00"
+ },
+ {
+  "time": "2026-11-26T21:35:43Z",
+  "run": "45898532065",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45898532065",
+  "videos": [
+   {
+    "title": "Magna Carta: Kralın Gücünü Sınırlayan Tarihi Belge",
+    "url": "https://youtu.be/lbtCktYpyDM",
+    "instagram": "https://www.instagram.com/reel/DgOFVfUs0D-/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

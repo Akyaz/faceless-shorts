@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-10-31T15:55:53Z",
-  "run": "41216547757",
-  "event": "schedule",
-  "mode": "sports",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41216547757",
-  "videos": [
-   {
-    "title": "La Liga'da Hakem Kararı ve Alperen'siz Houston'ın İlk Yenilgisi",
-    "url": "https://youtu.be/a9H_C1-l22s",
-    "instagram": "https://www.instagram.com/reel/DfKhwAaEkRz/"
-   }
-  ],
-  "slot": "13:30"
- },
- {
   "time": "2026-10-31T17:28:54Z",
   "run": "41224209897",
   "event": "schedule",
@@ -4459,5 +4443,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-26T22:50:46Z",
+  "run": "45906070961",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45906070961",
+  "videos": [
+   {
+    "title": "Güneşin Doğduğu Yer Dizisinin 10. Bölümünde Leyla ve Ceyhun'un Kararı",
+    "url": "https://youtu.be/-_OcdcpTcUU",
+    "instagram": "https://www.instagram.com/reel/DgON6aeJYw1/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

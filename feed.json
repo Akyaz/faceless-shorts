@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-10-30T22:08:44Z",
-  "run": "41133430152",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41133430152",
-  "videos": [
-   {
-    "title": "Mansa Musa: Was He Really the Richest Man Who Ever Lived?",
-    "url": "https://youtu.be/n0FjPyZQZKQ",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/en-mansa-musa.json"
- },
- {
   "time": "2026-10-31T10:22:28Z",
   "run": "41191918763",
   "event": "schedule",
@@ -4461,6 +4444,22 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45724152532",
   "videos": [],
+  "slot": "19:00"
+ },
+ {
+  "time": "2026-11-26T00:33:04Z",
+  "run": "45727555852",
+  "event": "schedule",
+  "mode": "sportstory",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45727555852",
+  "videos": [
+   {
+    "title": "Ersin Destanoğlu'nun Maçında Sarhoş Hakem Skandalı",
+    "url": "https://youtu.be/XDHh3SGqIxs",
+    "instagram": "https://www.instagram.com/reel/DgL00P0C2J5/"
+   }
+  ],
   "slot": "19:00"
  }
 ]

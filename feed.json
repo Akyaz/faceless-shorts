@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-11-01T19:31:12Z",
-  "run": "41238987218",
-  "event": "workflow_dispatch",
-  "mode": "debate",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41342117839",
-  "videos": [
-   {
-    "title": "Fenerbahçe Göztepe Maç Sonucu: Kadıköy'de Şok Mağlubiyet",
-    "url": "https://youtu.be/hmpMy6SJDyA",
-    "instagram": "https://www.instagram.com/reel/DfLBc6uFfXP/"
-   }
-  ]
- },
- {
   "time": "2026-11-01T19:31:22Z",
   "run": "41313258672",
   "event": "workflow_dispatch",
@@ -4448,5 +4433,21 @@
    }
   ],
   "slot": "21:00"
+ },
+ {
+  "time": "2026-11-27T17:35:28Z",
+  "run": "46042430528",
+  "event": "workflow_dispatch",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/46042430528",
+  "videos": [
+   {
+    "title": "Mercedes-Benz 300 SL: Efsanevi Martı Kanat Aracın Hikayesi",
+    "url": "https://youtu.be/T2y6hLpltvo",
+    "instagram": "https://www.instagram.com/reel/DgQOm_jO-dC/"
+   }
+  ],
+  "slot": "12:00"
  }
 ]

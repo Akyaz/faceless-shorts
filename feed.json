@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-11-01T21:01:31Z",
-  "run": "41219202219",
-  "event": "workflow_dispatch",
-  "mode": "trend",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41349806943",
-  "videos": [
-   {
-    "title": "Canlı Hücreli Robot Köpek ve 4,1 Milyar Yıllık Mars Taşı",
-    "url": "https://youtu.be/-TnxSehIQr8",
-    "instagram": "https://www.instagram.com/reel/DfKm7n0ARVP/"
-   }
-  ]
- },
- {
   "time": "2026-11-01T21:15:56Z",
   "run": "41350696063",
   "event": "schedule",
@@ -4439,5 +4424,21 @@
    }
   ],
   "slot": "15:00"
+ },
+ {
+  "time": "2026-11-27T22:26:35Z",
+  "run": "46076334020",
+  "event": "schedule",
+  "mode": "culture",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/46076334020",
+  "videos": [
+   {
+    "title": "Kızılcık Şerbeti Kadrosuna Birand Tunca Katıldı",
+    "url": "https://youtu.be/9Sw_Q6RcSzo",
+    "instagram": "https://www.instagram.com/reel/DgQv7izO-Uc/"
+   }
+  ],
+  "slot": "17:00"
  }
 ]

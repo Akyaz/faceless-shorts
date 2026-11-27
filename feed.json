@@ -1,20 +1,5 @@
 [
  {
-  "time": "2026-11-01T20:31:30Z",
-  "run": "41223564879",
-  "event": "workflow_dispatch",
-  "mode": "trend",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41347272707",
-  "videos": [
-   {
-    "title": "Tarantula Zehrinden ABD'ye, Sam Altman'dan RAM Çıkışı",
-    "url": "https://youtu.be/iDRAX91S-2o",
-    "instagram": "https://www.instagram.com/reel/DfKrhGzis1L/"
-   }
-  ]
- },
- {
   "time": "2026-11-01T21:01:31Z",
   "run": "41219202219",
   "event": "workflow_dispatch",
@@ -4438,5 +4423,21 @@
   "status": "failure",
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/46042466342",
   "videos": []
+ },
+ {
+  "time": "2026-11-27T21:23:46Z",
+  "run": "46069211884",
+  "event": "schedule",
+  "mode": "fact",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/46069211884",
+  "videos": [
+   {
+    "title": "Ferrari 250 GTO: Dünyanın En Pahalı Otomobili",
+    "url": "https://youtu.be/zto-u6trCTw",
+    "instagram": "https://www.instagram.com/reel/DgQovLOx77e/"
+   }
+  ],
+  "slot": "15:00"
  }
 ]

@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-11-01T19:46:02Z",
-  "run": "41341619504",
-  "event": "workflow_dispatch",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41341619504",
-  "videos": [
-   {
-    "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
-    "url": "https://youtu.be/AGvUqGaJYb8",
-    "instagram": null
-   }
-  ],
-  "script": "scripts/longform/tr-mimar-sinan.json"
- },
- {
   "time": "2026-11-01T19:58:44Z",
   "run": "41344140975",
   "event": "schedule",
@@ -4450,5 +4434,21 @@
    }
   ],
   "slot": "10:00"
+ },
+ {
+  "time": "2026-11-27T17:39:47Z",
+  "run": "46042433494",
+  "event": "workflow_dispatch",
+  "mode": "matchday",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/46042433494",
+  "videos": [
+   {
+    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 27 Kasım Maç Programı ve Saatleri",
+    "url": "https://youtu.be/S096g5SA-0Q",
+    "instagram": "https://www.instagram.com/reel/DgQPG_HRDFS/"
+   }
+  ],
+  "slot": "13:30"
  }
 ]

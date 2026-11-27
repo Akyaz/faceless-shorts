@@ -1,22 +1,5 @@
 [
  {
-  "time": "2026-11-01T19:26:09Z",
-  "run": "41240354685",
-  "event": "schedule",
-  "mode": "longform",
-  "status": "success",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41240354685",
-  "videos": [
-   {
-    "title": "Mimar Sinan: Bir Yeniçeri Nasıl Çağının En Büyük Mimarı Oldu?",
-    "url": "https://youtu.be/dde_BWpwfYk",
-    "instagram": null
-   }
-  ],
-  "slot": "21:00",
-  "script": "scripts/longform/tr-mimar-sinan.json"
- },
- {
   "time": "2026-11-01T19:31:12Z",
   "run": "41238987218",
   "event": "workflow_dispatch",
@@ -4449,5 +4432,21 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45920864722",
   "videos": [],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-27T01:22:49Z",
+  "run": "45920978174",
+  "event": "schedule",
+  "mode": "story",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45920978174",
+  "videos": [
+   {
+    "title": "BDDK Başkanlığına Yusuf Kenan Bağır Atandı",
+    "url": "https://youtu.be/91zicBW98Sw",
+    "instagram": "https://www.instagram.com/reel/DgOfTbwBred/"
+   }
+  ],
+  "slot": "21:00"
  }
 ]

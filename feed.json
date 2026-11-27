@@ -1,21 +1,5 @@
 [
  {
-  "time": "2026-11-01T16:53:17Z",
-  "run": "41328460504",
-  "event": "schedule",
-  "mode": "matchday",
-  "status": "failure",
-  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/41328460504",
-  "videos": [
-   {
-    "title": "Süper Lig'de Bugün Hangi Maçlar Var? 1 Kasım Maç Programı ve Saatleri",
-    "url": null,
-    "instagram": "https://www.instagram.com/reel/DfNNHkbgbdy/"
-   }
-  ],
-  "slot": "13:30"
- },
- {
   "time": "2026-11-01T19:01:24Z",
   "run": "41337488067",
   "event": "workflow_dispatch",
@@ -4453,5 +4437,22 @@
   "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45920326239",
   "videos": [],
   "slot": "20:30"
+ },
+ {
+  "time": "2026-11-27T01:15:11Z",
+  "run": "45919579842",
+  "event": "schedule",
+  "mode": "longform",
+  "status": "success",
+  "link": "https://github.com/Akyaz/faceless-shorts/actions/runs/45919579842",
+  "videos": [
+   {
+    "title": "Malazgirt 1071: Bir İmparatorun Esir Düştüğü Gün",
+    "url": "https://youtu.be/Ud2a2jtr3s8",
+    "instagram": null
+   }
+  ],
+  "slot": "20:00",
+  "script": "scripts/longform/tr-malazgirt.json"
  }
 ]
